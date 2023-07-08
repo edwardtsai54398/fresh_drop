@@ -1,0 +1,37 @@
+main{
+    max-width: 1280px;
+    width: 100%;
+    margin: auto;
+    .pro_header {
+        width: 70%;
+        padding:44px;
+        position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: x-large;
+      color: #000;
+    font-family: Inter;
+    font-size: 36px;
+    font-weight: 700;
+    button{
+        position: absolute;
+        left: 0;
+    }
+      .type {
+        width: 98px;
+        height: 42px;
+        flex-shrink: 0;
+        border-radius: 30px;
+        background: var(--fresh-drop-3, #fed550);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span{
+            color:#fff;
+            font-size: 24px;
+            font-family:'Noto Sans TC';;
+        }
+      }
+    }
+}
