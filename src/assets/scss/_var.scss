@@ -1,0 +1,44 @@
+//text
+$xs-font: 14px;
+$s-font: 20px;
+$m-font: 24px;
+$l-font: 32px;
+$xl-font: 36px;
+$prim-font: 'Noto Sans TC';
+
+//color
+$primary: #1F8D61;
+$secondary: #FED550;
+$third: #FF7272;
+$bg: #FFF7EA;
+$text: #575655;
+$primary--: #CAE0C4;
+$secondary--: #FFF6B4;
+$third--: #FFAB87;
+$bg--: #FDFAF5;
+:root{
+    --prim-rgb: 31, 141, 97;
+    --scnd-rgb: 254, 213, 80;
+    --trd-rgb: 255, 114, 114;
+    --bg-rgb: 255, 247, 234;
+}
+
+//margin & padding
+$spacer: 8px;
+$sp1: 1 * $spacer;
+$sp2: 2 * $spacer;
+$sp3: 3 * $spacer;
+$sp4: 4 * $spacer;
+$sp5: 5 * $spacer;
+$sp6: 7 * $spacer;
+$sp7: 10 * $spacer;
+
+//border-radius
+$xs-br: 8px;
+$s-br: 12px;
+$m-br: 20px;
+$l-br: 32px;
+$xl-br: 48px;
+
+//border
+$br-dr: 1px solid $primary;

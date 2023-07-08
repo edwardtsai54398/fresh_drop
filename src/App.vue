@@ -1,30 +1,27 @@
 <template>
+
+  <!-- <MainHeader></MainHeader>   -->
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/">fresh drop</router-link> |
+    <router-link to="/shop">SHOP</router-link> |
+    <router-link to="/login">Log in</router-link>
   </nav>
-  <router-view/>
+  <main><router-view/></main>
+  <!-- <MainFooter></MainFooter>   -->
 </template>
+<script>
+//有component在這裡 import
+import HelloWorld from '@/components/HelloWorld.vue'
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+export default {
+  name: 'HomeView',
+  components: {
+    HelloWorld
   }
 }
+</script>
+
+
+<style lang="scss">
+@import "@/assets/scss/all.scss";
 </style>

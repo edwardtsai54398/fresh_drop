@@ -1,0 +1,94 @@
+@mixin img-replace-h1($w, $h, $bgurl){
+    display: inline-block;
+    width: $w;
+    height: $h;
+    background-image: url($bgurl);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-indent:101%;
+    overflow:hidden;
+    white-space:nowrap;
+}
+@mixin text-ellipsis{
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+@mixin color-mask($color){
+    position: relative;
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $color;
+        z-index: 1;       
+    }
+}
+@mixin img-fit{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+@mixin clearfix {
+    &::after {
+      display: block;
+      clear: both;
+      content: "";
+    }
+}
+@mixin gridgap($gap){
+    padding-left: $gap;
+    padding-right: $gap;
+    .row{
+        margin-left: calc($gap * -1);
+        margin-right: calc($gap * -1);
+    }
+    [class*='col-'],
+    .col{
+        padding-left: $gap; 
+        padding-right: $gap;
+    }
+}
+@mixin hover-style($color: null){
+    &:hover{
+        text-decoration: underline;
+        @if $color{
+            color: $color;
+        }
+    }
+}
+//----shape
+@mixin circle($size, $color, $border:null, $shadow:null){
+    width: $size;
+    aspect-ratio: 1/1;
+    background-color: $color;
+    border-radius: 50%;
+    @if $border{
+        border: $border;
+    }
+    @if $shadow{
+        box-shadow: $shadow;
+    }
+}
+
+@mixin pill($w, $h){
+    width: $w;
+    height: $h;
+    border-radius: 50rem;
+}
+
+
+//------media
+@mixin pad-V{
+    @media screen and (min-width: 768px){@content;}
+}
+@mixin pad-H{
+    @media screen and (min-width: 1024px){@content;}
+}
+@mixin desktop{
+    @media screen and (min-width: 1200px){@content;}
+}
