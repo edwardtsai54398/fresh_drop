@@ -22,7 +22,7 @@ export default {
       product: [
         {
           id:0,
-          name: "泰國綠咖哩",
+          name: "泰式綠咖哩",
         }
       ],
     };
