@@ -1,45 +1,111 @@
-main{
-  max-width: 1920px;
-  margin:auto;
-  padding:0 120px;
-  section {
-    width: 70%;
-    overflow:hidden;
-    .pro_header {
-      width: 100%;
-      padding: $sp5;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #000;
-      font-family: Inter;
-      // font-size: $xs-font;
-      font-weight: 700;
-      button {
-        position: absolute;
-        left: 0;
-      }
-      .title{
-        display:flex;
-        align-items:center;
-        gap:10px;
-        .type {
-          width: 98px;
-          height: 42px;
-          flex-shrink: 0;
-          border-radius: 30px;
-          background: #fed550;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          span {
-            color: #fff;
-            font-size: $xl-font;
-            font-family: "Noto Sans TC";
-          }
+main {
+    max-width: 1920px;
+    margin: auto;
+    padding: 0 120px;
+    display: flex;
+    section {
+        width: 70%;
+        overflow: hidden;
+        .pro_header {
+            width: 100%;
+            padding: $sp5;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-family: Inter;
+            // font-size: $xs-font;
+            font-weight: 700;
+            button {
+                position: absolute;
+                left: 0;
+            }
+            .title {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                .type {
+                    width: 98px;
+                    height: 42px;
+                    flex-shrink: 0;
+                    border-radius: 30px;
+                    background: #fed550;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    span {
+                        color: #fff;
+                        font-size: $xl-font;
+                        font-family: "Noto Sans TC";
+                    }
+                }
+            }
         }
-      }
     }
-}
+    aside {
+        width: 30%;
+        position: relative;
+        padding-left: 50px;
+        box-sizing: border-box;
+        height: 3000px;
+        .hot_ranking {
+            display: flex;
+            flex-direction: column;
+            position: sticky;
+            top: 20px;
+            .hot_title {
+                padding: 17px 120px;
+                color: $text;
+                font-family: $prim-font;
+                font-size: $m-font;
+                font-weight: 700;
+                border-radius: $xl-br;
+                border: 6px solid #fff;
+                background: #edebda;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                margin: auto;
+                img {
+                    position: absolute;
+                    top: -5px;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+            .hot_product {
+                display: flex;
+                margin-top: 35px;
+                gap: 35px;
+                .pic {
+                    width: 180px;
+                    height: 180px;
+                    border-radius: 5px;
+                    img {
+                        border-radius: 5px;
+                        width: 100%;
+                        height: 100%;
+                        vertical-align: top;
+                    }
+                }
+                .hot_info {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    .hot_type {
+                        padding: 6px 23px;
+                        border-radius: $m-br;
+                        background-color: $secondary--;
+                    }
+                    .hot_name {
+                        margin-top: 15px;
+                        font-size: 30px;
+                        color: $text;
+                    }
+                }
+            }
+        }
+    }
 }
