@@ -31,7 +31,6 @@ const productList = [
                 step: ['確認蛋已經熟透且番茄軟化。', '將滑嫩番茄蛋盛入碗中。', '可以撒上一些切碎的青蔥或香菜作為裝飾。']
             }
         ],
-        img: '',
         stock: 5,
         count: 1
     },
@@ -68,7 +67,6 @@ const productList = [
                 step: ['熱蓋住鍋中的蛤蠣湯，以保持溫熱狀態。', '將湯汁倒入碗中，將蛤蠣舉起，並用湯匙舀取湯汁。', '配以烤麵包或其他喜歡的主食，即可享受美味的奶油啤酒蛤蠣。']
             },
         ],
-        img: '',
         stock: 5,
         count: 1
     },
@@ -106,7 +104,6 @@ const productList = [
                 step: ['將拌好的塔香茄子盛入盤子或碗中。', '可以撒上一些白芝麻和香菜作為裝飾。']
             }
         ],
-        img: '',
         stock: 5,
         count: 1
     },
@@ -142,12 +139,11 @@ const productList = [
                 step: ['將烤好的生貝取出，放在盤子或碟子上。', '可以擺上一些新鮮檸檬片作為伴碟，增添風味。']
             }
         ],
-        img: '',
         stock: 5,
         count: 1
     },
     {
-        id: 5,
+        id:16,
         name: '日本味噌鮮魚湯',
         number: '#02001',
         price: 200,
@@ -167,12 +163,11 @@ const productList = [
             },
             
         ],
-        img: '',
         stock: 5,
         count: 1
     },
     {
-        id: 6,
+        id: 17,
         name: '韓國辣椒醬湯',
         number: '#02002',
         price: 200,
@@ -207,12 +202,11 @@ const productList = [
                 step: ['將煮好的韓國辣椒醬湯倒入湯碗中。', '在湯面上灑上一些蔥花或香菜作為裝飾。', '可以單獨享用湯或搭配米飯一起食用。']
             }
         ],
-        img: '',
         stock: 5,
         count: 1
     },
     {
-        id: 7,
+        id: 18,
         name: '法國洋蔥湯',
         number: '#02003',
         price: 200,
@@ -248,12 +242,11 @@ const productList = [
             }
             
         ],
-        img: '',
         stock: 5,
         count: 1
     },
     {
-        id: 8,
+        id: 25,
         name: '糖漬番茄',
         number: '#02004',
         price: 200,
@@ -271,12 +264,11 @@ const productList = [
             }
             
         ],
-        img: '',
         stock: 5,
         count: 1
     },
     {
-        id: 9,
+        id: 26,
         name: '泰式生菜包',
         number: '#02005',
         price: 200,
@@ -313,12 +305,11 @@ const productList = [
             }
             
         ],
-        img: '',
         stock: 5,
         count: 1
     },
     {
-        id: 10,
+        id: 27,
         name: '中東麥麩沙拉',
         number: '#02006',
         price: 200,
@@ -352,7 +343,6 @@ const productList = [
             },
             ['將中東麥麩沙拉盛入碗或盤中。', '可以在上面撒上一些薄荷葉或香菜作為裝飾。', '準備湯匙，即可享用這道健康美味的中東麥麩沙拉！']
         ],
-        img: '',
         stock: 5,
         count: 1
     }
