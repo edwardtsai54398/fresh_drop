@@ -1,9 +1,15 @@
 
 .login-container{
+    margin: 20px;
+    padding: 30px;
     width: 450px;
-    border: solid 1px;
+    border: solid 2px;
+    border-radius: 10px;
+    background-color: #ffffff80;
     h4{
         text-align: center;
+        margin: 10px;
+        font-size: $m-font;
     }
     .text{
         width: 358px;
@@ -12,6 +18,7 @@
         input{
             width: 358px;
             margin: 10px 0;
+            background-color: #fff;
         }   
     }
     .text_bottom{
@@ -43,8 +50,23 @@
         text-align: center;
         margin: 20px;
     }
+    img{
+        width: 43px;
+        margin: 0 25px;
+    }
+    .icon{
+        display: flex;
+        justify-content: center;
+    }
 }
 button{
     margin-left: auto;
     margin-right: auto;
+}
+section{
+    max-width: 1920px;
+    .login-good{
+        display: flex;
+        justify-content: center;
+    }
 }
