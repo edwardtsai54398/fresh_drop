@@ -25,6 +25,8 @@ main {
                 display: flex;
                 align-items: center;
                 gap: 10px;
+                font-size: $xl-font;
+                color: $text;
                 .type {
                     width: 98px;
                     height: 42px;
@@ -36,7 +38,7 @@ main {
                     align-items: center;
                     span {
                         color: #fff;
-                        font-size: $xl-font;
+                        font-size: $m-font;
                         font-family: "Noto Sans TC";
                     }
                 }
@@ -79,6 +81,7 @@ main {
                 display: flex;
                 margin-top: 35px;
                 gap: 35px;
+                cursor: pointer;
                 .pic {
                     width: 180px;
                     height: 180px;

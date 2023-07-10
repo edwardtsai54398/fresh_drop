@@ -7,14 +7,14 @@
             </button>
             <div class="title">
                 <div class="type">
-                    <span>主菜</span>
+                    <span>{{ newProduct.catagory }}</span>
                 </div>
-                {{ productList[0].name }}
+                {{ newProduct.name }}
             </div>
         </div>
         <div class="pro_info">
             <div class="pic">
-                <img src="../assets/images/product/10.jpg" alt="product" />
+                <img :src="newProduct.img" alt="product" />
             </div>
             <div class="text">
                 <p>
@@ -29,7 +29,12 @@
                 <img src="../assets/images/product/crown.svg" alt="" />
                 熱門推薦
             </div>
-            <div class="hot_product" v-for="item in productList" :key="item.id">
+            <div
+                class="hot_product"
+                v-for="item in productList"
+                :key="item.id"
+                @click="update(item)"
+            >
                 <div class="pic">
                     <img :src="item.img" alt="" />
                 </div>
@@ -46,10 +51,20 @@ import productList from "@/assets/data/productList.js";
 export default {
     data() {
         return {
+            newProduct: {
+                name: "泰式綠咖哩",
+                catagory: "主菜",
+                img: require("@/assets/images/product/10.jpg"),
+            },
             productList,
         };
     },
-    methods: {},
+    methods: {
+        update(item) {
+            this.newProduct = { ...item };
+            // console.log(newProduct);
+        },
+    },
 };
 </script>
 <style lang="scss">
