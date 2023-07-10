@@ -11,17 +11,17 @@
   </nav>
   <main><router-view/></main>
   <!-- <MainFooter></MainFooter>   -->
-  <HelloWorld></HelloWorld>   
+  <!-- <HelloWorld></HelloWorld>    -->
   <!-- 沒加上面這行npm run serve會報錯 GPT說是偵測引入了未使用的組件引起 -->
 </template>
 <script>
 //有component在這裡 import
-import HelloWorld from '@/components/HelloWorld.vue'
+// import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld
+    // HelloWorld
   }
 }
 </script>
