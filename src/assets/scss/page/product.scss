@@ -1,10 +1,12 @@
-main{
+main {
   max-width: 1920px;
-  margin:auto;
-  padding:0 120px;
+  margin: auto;
+  padding: 0 120px;
+
   section {
     width: 70%;
-    overflow:hidden;
+    overflow: hidden;
+
     .pro_header {
       width: 100%;
       padding: $sp5;
@@ -16,14 +18,18 @@ main{
       font-family: Inter;
       // font-size: $xs-font;
       font-weight: 700;
+
       button {
         position: absolute;
         left: 0;
       }
-      .title{
-        display:flex;
-        align-items:center;
-        gap:10px;
+
+      .title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: $xl-font;
+
         .type {
           width: 98px;
           height: 42px;
@@ -33,6 +39,7 @@ main{
           display: flex;
           justify-content: center;
           align-items: center;
+
           span {
             color: #fff;
             font-size: $xl-font;
@@ -41,5 +48,88 @@ main{
         }
       }
     }
-}
+
+    .pro_info {
+      .pic {
+        width: 100%;
+        height: 620px;
+        overflow: hidden;
+      }
+
+      .text {
+        font-size: $m-font;
+        text-align: center;
+
+        p {
+          padding: 52px 160px;
+        }
+
+        ;
+      }
+    }
+
+    article {
+      padding: 0 160px 80px 160px;
+
+      h2 {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: $l-font;
+        padding: 12px 0;
+        margin: 32px 0;
+        border: 6px solid #ffffff;
+        background-color: #EDEBDA;
+        border-radius: 50px;
+        color: $primary;
+        font-weight: 700;
+      }
+
+      .wrap {
+        padding: 0 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+
+        .number {
+          font-size: 40px;
+          color: $secondary;
+          font-weight: 700;
+          padding-right: 10px;
+          font-style: italic;
+        }
+
+        .title_border {
+          // padding-bottom: 8px;
+          border-bottom: 2px dashed $secondary;
+
+          .title {
+            margin-bottom: 5px;
+          }
+        }
+
+        .info {
+          padding: 4px 0;
+        }
+      }
+
+      div:nth-child(3)>* {
+        //選取article的第三個div之下的子元素
+        flex-direction: row;
+      }
+    }
+
+    p {
+      font-size: $m-font;
+    }
+
+    .allergy {
+      display: inline-block;
+      padding: 4px 40px;
+      border-radius: 30px;
+      border: 3px solid $secondary;
+      background-color: $secondary--;
+    }
+  }
 }

@@ -7,36 +7,64 @@
       </button>
       <div class="title">
         <div class="type">
-          <span>主菜</span>
+          <span>{{ productList[0].catagory }}</span>
         </div>
-        {{ product[0].name }}
+        {{ productList[0].name }}
       </div>
     </div>
     <div class="pro_info">
       <div class="pic">
-        <img src="../assets/images/product/10.jpg" alt="product">
+        <img :src="productList[0].img" alt="product">
       </div>
       <div class="text">
-        <p>泰式綠咖哩是一道充滿活力的料理，融合了辣味、椰奶和豐富的蔬菜，每一口都散發出獨特的香料風味，讓你彷彿置身於泰國的街頭小吃攤位。讓這道菜成為你生活中的一部分，帶給你愉悅的味覺體驗！</p>
+        <p>{{ productList[0].present }}</p>
       </div>
     </div>
+    <article>
+      <div>
+        <h2>材料【2人份】</h2>
+        <div class="wrap">
+          <p class="ingred" v-for="(item, index) in productList[0].ingred" :key="index">{{ item }}</p>
+        </div>
+      </div>
+      <div>
+        <h2>步驟</h2>
+        <ol class="wrap">
+          <li v-for="(step, index) in productList[0].step" :key="index">
+            <span class="number">{{ index + 1 }}</span>
+            <div class="title_border">
+              <p class="title">{{ step.title }}</p>
+            </div>
+            <ul>
+              <li v-for="(subStep, subIndex) in step.step" :key="subIndex">
+                <p class="info">{{ subStep }}</p>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+      <div>
+        <h2>過敏原</h2>
+        <div class="wrap">
+          <p class="allergy" v-for="(item, index) in productList[0].allergy" :key="index">{{ item }}</p>
+        </div>
+      </div>
+    </article>
   </section>
 </template>
+
 <script>
+import productList from "@/assets/data/productList.js";
 export default {
   data() {
     return {
-      product: [
-        {
-          id: 0,
-          name: "泰式綠咖哩",
-        },
-      ],
+      productList,
     };
   },
   methods: {},
 };
 </script>
+
 <style lang="scss">
 @import "@/assets/scss/all.scss";
 @import "@/assets/scss/page/product.scss";
