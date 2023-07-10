@@ -31,51 +31,17 @@
     </div>
 </template>
 <script>
-import productList from '@/assets/data/productList.js'
+import productList from "@/assets/data/productList.js";
 export default {
-data() {
+    data() {
         return {
                 productList,
         }
-},
-computed: {
-        mainDishFilter() {
-                let filterResult = []
-                this.productList.forEach((item, index) => {
-                        if(item.catagory == '主菜'){
-                                filterResult.push(this.productList[index])
-                        }
-                })
-                
-                return filterResult
-        },
-        soupFilter() {
-                let filterResult = []
-                this.productList.forEach((item, index) => {
-                        if(item.catagory == '湯品'){
-                                filterResult.push(this.productList[index])
-                        }
-                })
-                
-                return filterResult
-        },
-        saladFilter() {
-                let filterResult = []
-                this.productList.forEach((item, index) => {
-                        if(item.catagory == '沙拉'){
-                                filterResult.push(this.productList[index])
-                        }
-                })
-                
-                return filterResult
-        },
-        
-        
 },
 methods: {}
 }
 </script>
 <style lang="scss">
-        @import "@/assets/scss/all.scss";
-        @import "@/assets/scss/page/shop.scss";        
+@import "@/assets/scss/all.scss";
+@import "@/assets/scss/page/shop.scss";
 </style>
