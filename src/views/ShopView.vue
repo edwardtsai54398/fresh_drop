@@ -1,7 +1,6 @@
 <template>
   <h1>This is an shop page</h1>
-</template>
-<script>
+  <!-- <script>
 export default {
   data() {
     return {}
@@ -17,9 +16,9 @@ export default {
 <h3>{{ item.h3 }}</h3>
 <div class="btn_scd_s">選購</div>
         </div>
-    </div>
+    </div> -->
 </template>
-<script>
+<!-- <script>
 export default {
 data() {
         return {
@@ -57,4 +56,4 @@ methods: {}
 <style lang="scss">
 @import "@/assets/scss/all.scss";
 @import "@/assets/scss/page/shop.scss";
-</style>
+</style>  -->
