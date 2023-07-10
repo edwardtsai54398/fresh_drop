@@ -1,19 +1,26 @@
 <template>
-  <h1>This is an product page</h1>
-  <main>
-      <div class="pro_header">
-        <button class="btn_s btn_left">
-          <span>back</span>
-          <i class="fa-sharp fa-solid fa-arrow-left"></i>
-        </button>
-        <div style="display: flex; align-items: center; gap: 10px;">
-            <div class="type" >
-              <span>主菜</span>
-            </div>
-            {{product[0].name}}
+  <section>
+    <div class="pro_header">
+      <button class="btn_s btn_left">
+        <span>back</span>
+        <i class="fa-sharp fa-solid fa-arrow-left"></i>
+      </button>
+      <div class="title">
+        <div class="type">
+          <span>主菜</span>
         </div>
+        {{ product[0].name }}
       </div>
-  </main>
+    </div>
+    <div class="pro_info">
+      <div class="pic">
+        <img src="../assets/images/product/10.jpg" alt="product">
+      </div>
+      <div class="text">
+        <p>泰式綠咖哩是一道充滿活力的料理，融合了辣味、椰奶和豐富的蔬菜，每一口都散發出獨特的香料風味，讓你彷彿置身於泰國的街頭小吃攤位。讓這道菜成為你生活中的一部分，帶給你愉悅的味覺體驗！</p>
+      </div>
+    </div>
+  </section>
 </template>
 <script>
 export default {
@@ -21,9 +28,9 @@ export default {
     return {
       product: [
         {
-          id:0,
+          id: 0,
           name: "泰式綠咖哩",
-        }
+        },
       ],
     };
   },
@@ -31,5 +38,6 @@ export default {
 };
 </script>
 <style lang="scss">
-@import "@/assets/scss/page/_product.scss";
+@import "@/assets/scss/all.scss";
+@import "@/assets/scss/page/product.scss";
 </style>
