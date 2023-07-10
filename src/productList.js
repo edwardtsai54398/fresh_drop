@@ -31,6 +31,7 @@ const productList = [
                 step: ['確認蛋已經熟透且番茄軟化。', '將滑嫩番茄蛋盛入碗中。', '可以撒上一些切碎的青蔥或香菜作為裝飾。']
             }
         ],
+        img: '1.jpg',
         stock: 5,
         count: 1
     },
@@ -163,6 +164,7 @@ const productList = [
             },
             
         ],
+        img: '1',
         stock: 5,
         count: 1
     },
