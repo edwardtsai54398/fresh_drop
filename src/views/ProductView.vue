@@ -7,14 +7,14 @@
       </button>
       <div class="title">
         <div class="type">
-          <span>{{ productList[0].catagory }}</span>
+          <span>{{ newProduct.catagory }}</span>
         </div>
-        {{ productList[0].name }}
+        {{ newProduct.name }}
       </div>
     </div>
     <div class="pro_info">
       <div class="pic">
-        <img :src="productList[0].img" alt="product">
+        <img :src="newProduct.img" alt="product">
       </div>
       <div class="text">
         <p>{{ productList[0].present }}</p>
@@ -51,7 +51,7 @@
       </div>
     </article>
   </section>
-  <section>
+  <!-- <section>
     <div class="pro_header">
       <button class="btn_s btn_left">
         <span>back</span>
@@ -72,7 +72,7 @@
         <p>{{ productList[0].present }}</p>
       </div>
     </div>
-  </section>
+  </section> -->
   <aside>
     <div class="hot_ranking">
       <div class="hot_title">
@@ -95,12 +95,6 @@
 <script>
 import productList from "@/assets/data/productList.js";
 export default {
-  data() {
-    return {
-      productList,
-    };
-  },
-  methods: {},
   data() {
     return {
       newProduct: {
