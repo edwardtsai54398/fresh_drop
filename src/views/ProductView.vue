@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
     <section>
         <div class="pro_header">
             <button class="btn_s btn_left">
@@ -41,23 +40,6 @@
             </div>
         </div>
     </aside>
-=======
-  <h1>This is an product page</h1>
-  <main>
-    <div class="pro_header">
-      <button class="btn_s btn_left">
-        <span>back</span>
-        <i class="fa-sharp fa-solid fa-arrow-left"></i>
-      </button>
-      <div style="display: flex; align-items: center; gap: 10px">
-        <div class="type">
-          <span>主菜</span>
-        </div>
-        {{ product[0].name }}
-      </div>
-    </div>
-  </main>
->>>>>>> 56076045cf775c0b522195b3359c1bcdd27bb484
 </template>
 <script>
 import productList from "@/assets/data/productList.js";
