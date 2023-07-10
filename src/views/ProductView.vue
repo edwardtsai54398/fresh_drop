@@ -51,6 +51,45 @@
       </div>
     </article>
   </section>
+  <section>
+    <div class="pro_header">
+      <button class="btn_s btn_left">
+        <span>back</span>
+        <i class="fa-sharp fa-solid fa-arrow-left"></i>
+      </button>
+      <div class="title">
+        <div class="type">
+          <span>{{ newProduct.catagory }}</span>
+        </div>
+        {{ newProduct.name }}
+      </div>
+    </div>
+    <div class="pro_info">
+      <div class="pic">
+        <img :src="newProduct.img" alt="product" />
+      </div>
+      <div class="text">
+        <p>{{ productList[0].present }}</p>
+      </div>
+    </div>
+  </section>
+  <aside>
+    <div class="hot_ranking">
+      <div class="hot_title">
+        <img src="../assets/images/product/crown.svg" alt="" />
+        熱門推薦
+      </div>
+      <div class="hot_product" v-for="item in productList" :key="item.id" @click="update(item)">
+        <div class="pic">
+          <img :src="item.img" alt="" />
+        </div>
+        <div class="hot_info">
+          <div class="hot_type">{{ item.catagory }}</div>
+          <div class="hot_name">{{ item.name }}</div>
+        </div>
+      </div>
+    </div>
+  </aside>
 </template>
 
 <script>
@@ -62,6 +101,22 @@ export default {
     };
   },
   methods: {},
+  data() {
+    return {
+      newProduct: {
+        name: "泰式綠咖哩",
+        catagory: "主菜",
+        img: require("@/assets/images/product/10.jpg"),
+      },
+      productList,
+    };
+  },
+  methods: {
+    update(item) {
+      this.newProduct = { ...item };
+      // console.log(newProduct);
+    },
+  },
 };
 </script>
 
