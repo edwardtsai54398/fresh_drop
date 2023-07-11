@@ -1,5 +1,5 @@
 <template>
-  <section class="mainSection">
+  <div class="container product_container">
     <section>
       <div class="pro_header">
         <button class="btn_s btn_left">
@@ -69,7 +69,7 @@
         </div>
       </div>
     </aside>
-  </section>
+  </div>
 </template>
 
 <script>
