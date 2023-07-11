@@ -1,9 +1,22 @@
-* {
-    margin: 0;
-    padding: 0;
+.search{
+    width: 500px;
+    border-radius: 50rem;
+    margin: auto;
+    padding: $sp1 $sp3;
+    margin-bottom: $sp6;
 }
-body{
-    background-color: #FFF7EA;
+.menu_title{
+    margin: auto;
+    text-align: center;
+    width: 500px;
+    font-weight: 700;
+    padding: $sp2;
+    font-size: $m-font;
+    border-radius: 50rem;
+    background-color: $primary--;
+    color: $primary;
+    border: solid 6px #fff;
+    margin-bottom: $sp5;
 }
 .wrap_main_dish {
     width: 960px;
@@ -28,17 +41,4 @@ body{
 }
 .card h3{
     text-align: center;
-}
-.menu_title{
-    margin: auto;
-    text-align: center;
-    width: 500px;
-    font-weight: bolder;
-    padding: 15px;
-    text-align: center;
-    font-size: 25px;
-    border-radius: 50px;
-    background-color: #EDEBDA;
-    color: #1F8D61;
-    border: solid 6px #fff;
 }
