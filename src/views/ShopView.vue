@@ -1,32 +1,39 @@
 <template>
-        <h4 class="menu_title">主菜 MAIN DISH</h4>
-        <div class="wrap_main_dish">
-                <div class="card" v-for="(item, index) in mainDishFilter" :key="index">
-                        <div class="pic">
-                                <img :src="item.img">
+        <input type="text" class="search" placeholder="請輸入商品名稱" v-model="searchText" @input="searchFilter(searchText)">
+        <div class="container">
+                <h4 class="menu_title" v-show="mainDishFilter.length > 0">主菜 MAIN DISH</h4>
+                <div class="wrap_main_dish">
+                        <div class="card" v-for="(item, index) in mainDishFilter" :key="index">
+                                <div class="pic">
+                                        <img :src="item.img">
+                                </div>
+                                <h3>{{ item.name }}</h3>
+                                <div class="btn_scd_s">選購</div>
                         </div>
-                        <h3>{{ item.name }}</h3>
-                        <div class="btn_scd_s">選購</div>
                 </div>
         </div>
-        <h4 class="menu_title">湯品 SOUP</h4>
-        <div class="wrap_main_dish">
-                <div class="card" v-for="(item, index) in soupFilter" :key="index">
-                        <div class="pic">
-                                <img :src="item.img">
+        <div class="container">
+                <h4 class="menu_title" v-show="soupFilter.length > 0">湯品 SOUP</h4>
+                <div class="wrap_main_dish">
+                        <div class="card" v-for="(item, index) in soupFilter" :key="index">
+                                <div class="pic">
+                                        <img :src="item.img">
+                                </div>
+                                <h3>{{ item.name }}</h3>
+                                <div class="btn_scd_s">選購</div>
                         </div>
-                        <h3>{{ item.name }}</h3>
-                        <div class="btn_scd_s">選購</div>
                 </div>
         </div>
-        <h4 class="menu_title">沙拉 SALAD</h4>
-        <div class="wrap_main_dish">
-                <div class="card" v-for="(item, index) in saladFilter" :key="index">
-                        <div class="pic">
-                                <img :src="item.img">
+        <div class="container">
+                <h4 class="menu_title" v-show="saladFilter.length > 0">沙拉 SALAD</h4>
+                <div class="wrap_main_dish">
+                        <div class="card" v-for="(item, index) in saladFilter" :key="index">
+                                <div class="pic">
+                                        <img :src="item.img">
+                                </div>
+                                <h3>{{ item.name }}</h3>
+                                <div class="btn_scd_s">選購</div>
                         </div>
-                        <h3>{{ item.name }}</h3>
-                        <div class="btn_scd_s">選購</div>
                 </div>
         </div>
 </template>
@@ -36,14 +43,16 @@ export default {
         data() {
                 return {
                         productList,
+                        searchText: '',
+                        searchList: productList
                 }
         },
         computed: {
                 mainDishFilter() {
                         let filterResult = []
-                        this.productList.forEach((item, index) => {
+                        this.searchList.forEach((item, index) => {
                                 if (item.catagory == '主菜') {
-                                        filterResult.push(this.productList[index])
+                                        filterResult.push(this.searchList[index])
                                 }
                         })
 
@@ -51,9 +60,9 @@ export default {
                 },
                 soupFilter() {
                         let filterResult = []
-                        this.productList.forEach((item, index) => {
+                        this.searchList.forEach((item, index) => {
                                 if (item.catagory == '湯品') {
-                                        filterResult.push(this.productList[index])
+                                        filterResult.push(this.searchList[index])
                                 }
                         })
 
@@ -61,9 +70,9 @@ export default {
                 },
                 saladFilter() {
                         let filterResult = []
-                        this.productList.forEach((item, index) => {
+                        this.searchList.forEach((item, index) => {
                                 if (item.catagory == '沙拉') {
-                                        filterResult.push(this.productList[index])
+                                        filterResult.push(this.searchList[index])
                                 }
                         })
 
@@ -72,7 +81,14 @@ export default {
 
 
         },
-        methods: {}
+        methods: {
+                searchFilter(text){
+                        let result = this.productList.filter((item) => {
+                                return item.name.includes(text)
+                        })
+                        this.searchList = result
+                }
+        }
 }
 </script>
 <style lang="scss">
