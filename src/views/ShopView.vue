@@ -82,7 +82,7 @@ export default {
 
         },
         methods: {
-                searchFilter(text){
+                searchFilter(text) {
                         let result = this.productList.filter((item) => {
                                 return item.name.includes(text)
                         })
