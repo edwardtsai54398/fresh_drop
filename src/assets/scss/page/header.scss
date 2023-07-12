@@ -1,4 +1,7 @@
 .mainheader{
+    position: fixed;
+    top: 0;
+    left: 0;
     background-color: $bg;
     height: var(--mobile-head);
     display: flex;

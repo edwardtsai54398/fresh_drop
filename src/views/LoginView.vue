@@ -21,8 +21,8 @@
                 <hr>
                 <p>或用其他方式登入</p>
                 <div class="icon">
-                    <a href="#"><img :src="require('../assets/images/icon_bg/facebook.png')" alt=""></a>
-                    <a href="#"><img :src="require('../assets/images/icon_bg/google.png')" alt=""></a>
+                    <a href="#"><img src="../assets/images/icon_bg/facebook.png" alt=""></a>
+                    <a href="#"><img src="../assets/images/icon_bg/google.png" alt=""></a>
                 </div>
             </div>
         </div>

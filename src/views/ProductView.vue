@@ -15,7 +15,7 @@
       </div>
       <div class="pro_info">
         <div class="pic">
-          <img :src="newProduct.img" alt="product">
+          <img :src="newProduct.img" alt="product" />
         </div>
         <div class="text">
           <p>{{ newProduct.des }}</p>
@@ -25,7 +25,13 @@
         <div>
           <h2>材料【2人份】</h2>
           <div class="wrap">
-            <p class="ingred" v-for="(item, index) in newProduct.ingred" :key="index">{{ item }}</p>
+            <p
+              class="ingred"
+              v-for="(item, index) in newProduct.ingred"
+              :key="index"
+            >
+              {{ item }}
+            </p>
           </div>
         </div>
         <div>
@@ -47,7 +53,13 @@
         <div>
           <h2>過敏原</h2>
           <div class="wrap">
-            <p class="allergy" v-for="(item, index) in newProduct.allergy" :key="index">{{ item }}</p>
+            <p
+              class="allergy"
+              v-for="(item, index) in newProduct.allergy"
+              :key="index"
+            >
+              {{ item }}
+            </p>
           </div>
         </div>
       </article>
@@ -58,7 +70,12 @@
           <img src="../assets/images/product/crown.svg" alt="" />
           熱門推薦
         </div>
-        <div class="hot_product" v-for="item in productList" :key="item.id" @click="update(item)">
+        <div
+          class="hot_product"
+          v-for="item in productList"
+          :key="item.id"
+          @click="update(item)"
+        >
           <div class="pic">
             <img :src="item.img" alt="" />
           </div>
