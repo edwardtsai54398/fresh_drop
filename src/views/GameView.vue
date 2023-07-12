@@ -23,9 +23,53 @@
                                 <button class="next_btn">下一題</button>
                         </div>
                 </div>
+                <div class="card">
+                        <div class="wrap">
+                                <div class="title">分析結果</div>
+                                <div class="recommend row">
+                                        <div class="col-6">
+                                                <div class="pro_card">
+                                                        <div class="pic">
+                                                                <img :src="productList[0].img" alt="">
+                                                        </div>
+                                                        <h2>{{ productList[0].name }}</h2>
+                                                </div>
+                                        </div>
+                                        <div class="col-6">
+                                                <div class="pro_card">
+                                                        <div class="pic">
+                                                                <img :src="productList[3].img" alt="">
+                                                        </div>
+                                                        <h2>{{ productList[3].name }}</h2>
+                                                </div>
+                                        </div>
+                                        <div class="col-6">
+                                                <div class="pro_card">
+                                                        <div class="pic">
+                                                                <img :src="productList[2].img" alt="">
+                                                        </div>
+                                                        <h2>{{ productList[2].name }}</h2>
+                                                </div>
+                                        </div>
+                                        <div class="col-6">
+                                                <div class="pro_card">
+                                                        <div class="pic">
+                                                                <img :src="productList[1].img" alt="">
+                                                        </div>
+                                                        <h2>{{ productList[1].name }}</h2>
+                                                </div>
+                                        </div>
+                                </div>
+                                <p class="personality">| 冒險家 |</p>
+                                <p class="txt">對新奇和刺激的渴望使你喜歡嘗試不同的味道和料理、你尋求新的口味體驗、並享受冒險的烹飪過程。</p>
+                                <button class="next_btn">前往購買</button>
+                                <button class="next_btn">再玩一次</button>
+                        </div>
+                </div>
         </div>
 </template>
 <script>
+import productList from "@/assets/data/productList.js";
 export default {
         data() {
                 return {
@@ -70,7 +114,8 @@ export default {
                                         btn2: '安裝了vscode的筆電',
                                         id: 5
                                 }
-                        ]
+                        ],
+                        productList,
                 }
         },
         methods: {}
