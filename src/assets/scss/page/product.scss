@@ -6,107 +6,14 @@
     width: 70%;
     overflow: hidden;
 
-    .pro_header {
-      width: 100%;
-      padding: $sp5;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #000;
-      font-family: Inter;
-      // font-size: $xs-font;
-      font-weight: 700;
-
-      button {
-        position: absolute;
-        left: 0;
-      }
-
-      .title {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: $xl-font;
-        color: $text;
-
-        .type {
-          width: 98px;
-          height: 42px;
-          flex-shrink: 0;
-          border-radius: 30px;
-          background: #fed550;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-          span {
-            color: #fff;
-            font-size: $m-font;
-            font-family: "Noto Sans TC";
-          }
-
-          // max-width: 1920px;
-          // margin: auto;
-          // padding: 0 120px;
-          // display: flex;
-
-          // section {
-          //   width: 70%;
-          //   overflow: hidden;
-
-          //   .pro_header {
-          //     width: 100%;
-          //     padding: $sp5;
-          //     position: relative;
-          //     display: flex;
-          //     align-items: center;
-          //     justify-content: center;
-          //     color: #000;
-          //     font-family: Inter;
-          //     // font-size: $xs-font;
-          //     font-weight: 700;
-
-          //     button {
-          //       position: absolute;
-          //       left: 0;
-          //     }
-
-          //     .title {
-          //       display: flex;
-          //       align-items: center;
-          //       gap: 10px;
-          //       font-size: $xl-font;
-          //       color: $text;
-
-          //       .type {
-          //         width: 98px;
-          //         height: 42px;
-          //         flex-shrink: 0;
-          //         border-radius: 30px;
-          //         background: #fed550;
-          //         display: flex;
-          //         justify-content: center;
-          //         align-items: center;
-
-          //         span {
-          //           color: #fff;
-          //           font-size: $m-font;
-          //           font-family: "Noto Sans TC";
-          //         }
-          //       }
-          //     }
-          //   }
-          // }
-        }
-      }
-    }
+    
 
     .pro_info {
       .pic {
         width: 100%;
         height: 620px;
         overflow: hidden;
+        // 在_base已經有寫.pic有overflow:hidden
       }
 
       .text {
@@ -121,6 +28,7 @@
     }
 
     article {
+      //可拉出來自己有class命名
       padding: 0 160px 80px 160px;
 
       h2 {
@@ -132,6 +40,7 @@
         margin: 32px 0;
         border: 6px solid #ffffff;
         background-color: #EDEBDA;
+        //用設定好的變數顏色
         border-radius: 50px;
         color: $primary;
         font-weight: 700;
@@ -146,12 +55,13 @@
 
         li {
           width: 100%;
-
+          
           .number {
             font-size: 40px;
             color: $secondary;
             font-weight: 700;
             padding-right: 10px;
+            // 盡量使用空間變數$sp1~7
             font-style: italic;
           }
 
@@ -183,6 +93,7 @@
         display: inline-block;
         padding: 4px 40px;
         border-radius: 30px;
+        //圓角盡量用圓角變數$size-br
         border: 3px solid $secondary;
         background-color: $secondary--;
       }
@@ -194,6 +105,7 @@
     position: relative;
     padding: 120px 0 0 50px;
     box-sizing: border-box;
+    //在_base已經設定所有元素都是border-box
 
     .hot_ranking {
       display: flex;
@@ -203,8 +115,8 @@
 
       .hot_title {
         padding: 17px 120px;
-        color: $text;
-        font-family: $prim-font;
+        // color: $text;
+        // font-family: $prim-font;
         font-size: $m-font;
         font-weight: 700;
         border-radius: $xl-br;
@@ -263,6 +175,52 @@
           }
         }
       }
+    }
+  }
+}
+.pro_header {
+  width: 100%;
+  padding: $sp5;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-family: Inter;
+  // font-size: $xs-font;
+  font-weight: 700;
+
+  button {
+    position: absolute;
+    left: 0;
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: $xl-font;
+    color: $text;
+
+    .type {
+      // 到這邊已經太多層，css在搜尋時的效能會比較不好。.pro_header 和.pro_info可以拉出來
+      // 有@include pill(98px);可使用
+      // width: 98px;
+      // height: 42px;
+      flex-shrink: 0;
+      // border-radius: 30px;
+      background: #fed550;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      span {
+        color: #fff;
+        font-size: $m-font;
+        font-family: "Noto Sans TC";
+      }
+
+      
     }
   }
 }
