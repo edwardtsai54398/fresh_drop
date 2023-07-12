@@ -60,8 +60,8 @@
                                                 </div>
                                         </div>
                                 </div>
-                                <p class="personality">| 冒險家 |</p>
-                                <p class="txt">對新奇和刺激的渴望使你喜歡嘗試不同的味道和料理、你尋求新的口味體驗、並享受冒險的烹飪過程。</p>
+                                <p class="personality">|{{ result[0].personality }}|</p>
+                                <p class="txt">{{ result[0].txt }}</p>
                                 <button class="next_btn">前往購買</button>
                                 <button class="next_btn">再玩一次</button>
                         </div>
@@ -115,10 +115,53 @@ export default {
                                         id: 5
                                 }
                         ],
+                        result: [
+                                {
+                                        id: 1,
+                                        personality: '冒險家',
+                                        img: ``,
+                                        txt: `對新奇和刺激的渴望使你喜歡嘗試不同的味道和料理、你尋求新的口味體驗、並享受冒烹飪過程。`,
+                                },
+                                {
+                                        id: 2,
+                                        personality: '安逸享受者',
+                                        img: ``,
+                                        txt: '分析原因：你對舒適和享受的追求使你喜歡選擇家常菜和溫和口味的食物。你尋求平衡和放鬆，享受那種讓你感到舒服和滿足的味道。',
+                                },
+                                {
+                                        id: 3,
+                                        personality: '創意人格',
+                                        img: ``,
+                                        txt: '分析原因：你的豐富創意和熱情驅使你追求獨特的飲食體驗。你喜歡嘗試新穎的料理和特色小吃，並將食物視為藝術和表達自我的方式。',
+                                },
+                                {
+                                        id: 4,
+                                        personality: '社交達人',
+                                        img: ``,
+                                        txt: '分析原因：你喜歡社交和人際交往，食物在社交場合中扮演重要角色。你喜歡分享美食，享受小吃和下午茶點等輕鬆的社交餐點。',
+                                },
+                                {
+                                        id: 5,
+                                        personality: '健康控',
+                                        img: ``,
+                                        txt: '分析原因：你對健康和營養的關注使你傾向選擇健康沙拉、素食料理和天然有機食物。你重視身體健康和營養均衡的飲食習慣。',
+                                },
+                                {
+                                        id: 6,
+                                        personality: '情感探索者',
+                                        img: ``,
+                                        txt: '分析原因：你對情感和內心探索感興趣，食物對你來說是情感療癒的一部分。你喜歡享受舒緩心情的甜點和心靈療癒的食物，並創造溫馨的烹飪體驗。',
+                                },
+                        ],
                         productList,
+                        // sum,
                 }
         },
-        methods: {}
+        methods: {
+                // game(){
+                //         sum+1
+                // }
+        }
 }
 </script>
 <style scoped lang="scss">
