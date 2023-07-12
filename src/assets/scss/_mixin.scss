@@ -75,9 +75,11 @@
     }
 }
 
-@mixin pill($w, $h){
+@mixin pill($w, $h:null){
     width: $w;
-    height: $h;
+    @if $h{
+        height: $h;
+    }
     border-radius: 50rem;
 }
 
