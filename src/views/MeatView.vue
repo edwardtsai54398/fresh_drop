@@ -5,7 +5,7 @@
             <h5>雞肉</h5>
             <div class="meat_card">
                 <div class="">
-                    <img src="../assets/images/source/ck01.jpg" alt=""></div>
+                    <img src="../assets/images/source/ck01_1_m.png" alt=""></div>
             </div>
         </div>
     </section>
