@@ -52,5 +52,5 @@ export default {
 </script>
 <style lang="scss">
 @import "@/assets/scss/all.scss";
-@import "@/assets/scss/page/login.scss";
+@import "@/assets/scss/layout/login.scss";
 </style>
