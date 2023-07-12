@@ -1,7 +1,7 @@
 <template>
-    <section>
-        <div class="login-good">
-            <div class="login-container">
+    <section class="all_box">
+        <div class="login_box">
+            <div class="login_container">
                 <h4>會員登入</h4>
                 <div class="text">
                     <label for="email">Email</label>

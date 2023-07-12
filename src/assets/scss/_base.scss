@@ -2,14 +2,15 @@ body{
     font-family: $prim-font, 
                 Arial, Helvetica, sans-serif;
     background-color: $bg;
-    color: $text;
+    
 }
 *{
     box-sizing: border-box;
     letter-spacing: 1px;
+    color: $text;
 }
 
-h1,h2,h3,h4,h5,h6,span,a,p,div{
+p,article{
     line-height: 1.5;
 }
 
