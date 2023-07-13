@@ -1,268 +1,336 @@
 .product_container {
-  max-width: 1920px;
-  display: flex;
+    min-width: 414px;
 
-  section {
-    width: 70%;
-    overflow: hidden;
 
-    .pro_header {
-      width: 100%;
-      padding: $sp5;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #000;
-      font-family: Inter;
-      // font-size: $xs-font;
-      font-weight: 700;
+}
 
-      button {
-        position: absolute;
-        left: 0;
-      }
+.hot_ranking {}
 
-      .title {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: $xl-font;
-        color: $text;
 
-        .type {
-          width: 98px;
-          height: 42px;
-          flex-shrink: 0;
-          border-radius: 30px;
-          background: #fed550;
-          display: flex;
-          justify-content: center;
-          align-items: center;
+@include pad-V {
 
-          span {
-            color: #fff;
-            font-size: $m-font;
-            font-family: "Noto Sans TC";
-          }
+    .hot_ranking {}
+}
 
-          // max-width: 1920px;
-          // margin: auto;
-          // padding: 0 120px;
-          // display: flex;
+@include pad-H {}
 
-          // section {
-          //   width: 70%;
-          //   overflow: hidden;
+@include desktop {
+    .product_container {
+        max-width: 1920px;
+        padding: 0 120px;
 
-          //   .pro_header {
-          //     width: 100%;
-          //     padding: $sp5;
-          //     position: relative;
-          //     display: flex;
-          //     align-items: center;
-          //     justify-content: center;
-          //     color: #000;
-          //     font-family: Inter;
-          //     // font-size: $xs-font;
-          //     font-weight: 700;
-
-          //     button {
-          //       position: absolute;
-          //       left: 0;
-          //     }
-
-          //     .title {
-          //       display: flex;
-          //       align-items: center;
-          //       gap: 10px;
-          //       font-size: $xl-font;
-          //       color: $text;
-
-          //       .type {
-          //         width: 98px;
-          //         height: 42px;
-          //         flex-shrink: 0;
-          //         border-radius: 30px;
-          //         background: #fed550;
-          //         display: flex;
-          //         justify-content: center;
-          //         align-items: center;
-
-          //         span {
-          //           color: #fff;
-          //           font-size: $m-font;
-          //           font-family: "Noto Sans TC";
-          //         }
-          //       }
-          //     }
-          //   }
-          // }
+        .main_wrap {
+            display: flex;
+            flex-direction: row;
         }
-      }
     }
 
-    .pro_info {
-      .pic {
-        width: 100%;
-        height: 620px;
+    .main {
+        width: 70%;
         overflow: hidden;
-      }
+    }
 
-      .text {
-        font-size: $m-font;
-        text-align: center;
+    .main_title {
+        width: 100%;
+        padding: $sp5;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #000;
+        font-family: Inter;
+        font-weight: 700;
+
+        button {
+            position: absolute;
+            left: 0;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: $xl-font;
+            color: $text;
+
+            .type {
+                width: 98px;
+                height: 42px;
+                flex-shrink: 0;
+                border-radius: $l-br;
+                background: $secondary;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                span {
+                    color: #ffffff;
+                    font-size: $m-font;
+                    font-family: "Noto Sans TC";
+                }
+            }
+        }
+    }
+
+    .info_pic {
+        .pic {
+            width: 100%;
+            height: 700px;
+            overflow: hidden;
+            //這個有設定了?
+        }
+
+        .text {
+            font-size: $m-font;
+            text-align: center;
+
+            p {
+                padding: 52px 160px;
+            }
+
+        }
+    }
+
+    .info_text {
+        padding: 0 160px 160px 160px;
+
+        >div>p {
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-size: $l-font;
+            padding: 12px 0;
+            margin: $sp4 0;
+            border: 6px solid #ffffff;
+            background-color: #EDEBDA;
+            border-radius: 50px;
+            color: $primary;
+            font-weight: 700;
+        }
+
+        .wrap {
+            padding: 0 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+
+            li {
+                width: 100%;
+
+                .number {
+                    font-size: 40px;
+                    color: $secondary;
+                    font-weight: 700;
+                    padding-right: 10px;
+                    font-style: italic;
+                }
+
+                .title_border {
+                    border-bottom: 2px dashed $secondary;
+
+                    .title {
+                        margin-bottom: 5px;
+                    }
+                }
+
+                .info {
+                    padding: 4px 0;
+                }
+            }
+        }
+
+        div:nth-child(3)>* {
+            //選取info_text的第三個div之下的子元素
+            flex-direction: row;
+            flex-wrap: wrap
+        }
 
         p {
-          padding: 52px 160px;
+            font-size: $m-font;
         }
 
-      }
-    }
-
-    article {
-      padding: 0 160px 80px 160px;
-
-      h2 {
-        display: block;
-        width: 100%;
-        text-align: center;
-        font-size: $l-font;
-        padding: 12px 0;
-        margin: 32px 0;
-        border: 6px solid #ffffff;
-        background-color: #EDEBDA;
-        border-radius: 50px;
-        color: $primary;
-        font-weight: 700;
-      }
-
-      .wrap {
-        padding: 0 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-
-        li {
-          width: 100%;
-
-          .number {
-            font-size: 40px;
-            color: $secondary;
-            font-weight: 700;
-            padding-right: 10px;
-            font-style: italic;
-          }
-
-          .title_border {
-            // padding-bottom: 8px;
-            border-bottom: 2px dashed $secondary;
-
-            .title {
-              margin-bottom: 5px;
-            }
-          }
-
-          .info {
-            padding: 4px 0;
-          }
+        .allergy {
+            display: inline-block;
+            padding: 4px 40px;
+            border-radius: 30px;
+            border: 3px solid $secondary;
+            background-color: $secondary--;
         }
-      }
-
-      div:nth-child(3)>* {
-        //選取article的第三個div之下的子元素
-        flex-direction: row;
-      }
-
-      p {
-        font-size: $m-font;
-      }
-
-      .allergy {
-        display: inline-block;
-        padding: 4px 40px;
-        border-radius: 30px;
-        border: 3px solid $secondary;
-        background-color: $secondary--;
-      }
     }
-  }
 
-  aside {
-    width: 30%;
-    position: relative;
-    padding: 120px 0 0 50px;
-    box-sizing: border-box;
+    .recommend {
+        width: 30%;
+        position: relative;
+        padding: 120px 0 0 50px;
+    }
 
     .hot_ranking {
-      display: flex;
-      flex-direction: column;
-      position: sticky;
-      top: 60px;
-
-      .hot_title {
-        padding: 17px 120px;
-        color: $text;
-        font-family: $prim-font;
-        font-size: $m-font;
-        font-weight: 700;
-        border-radius: $xl-br;
-        border: 6px solid #fff;
-        background: #edebda;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        margin: auto;
+        flex-direction: column;
+        position: sticky;
+        top: 60px;
+        margin-bottom: 60px;
 
-        img {
-          position: absolute;
-          top: -5px;
-          left: 50%;
-          transform: translate(-50%, -50%);
+        .hot_title {
+            padding: 17px 120px;
+            color: $text;
+            font-family: $prim-font;
+            font-size: $m-font;
+            font-weight: 700;
+            border-radius: $xl-br;
+            border: 6px solid #fff;
+            background: #edebda;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin: auto;
+
+            img {
+                position: absolute;
+                top: -5px;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
         }
-      }
+    }
 
-      .hot_product {
+    .hot_product {
         display: flex;
         margin-top: 35px;
         gap: 35px;
         cursor: pointer;
 
         .pic {
-          width: 180px;
-          height: 180px;
-          border-radius: 5px;
-
-          img {
+            width: 180px;
+            height: 180px;
             border-radius: 5px;
-            width: 100%;
-            height: 100%;
-            vertical-align: top;
-          }
+
+            img {
+                border-radius: 5px;
+                width: 100%;
+                height: 100%;
+                vertical-align: top;
+            }
         }
 
         .hot_info {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
 
-          .hot_type {
-            padding: 6px 23px;
-            border-radius: $m-br;
-            background-color: $secondary--;
-            font-size: 20px;
-            font-weight: 700;
-          }
+            .hot_type {
+                padding: 6px 23px;
+                border-radius: $m-br;
+                background-color: $secondary--;
+                font-size: 20px;
+                font-weight: 700;
+            }
 
-          .hot_name {
-            margin-top: 15px;
-            font-size: 30px;
-            color: $text;
-          }
+            .hot_name {
+                margin-top: 15px;
+                font-size: 30px;
+                color: $text;
+            }
         }
-      }
     }
-  }
+
+    .share {
+        max-width: 1920px;
+        overflow: hidden;
+        padding: 40px 120px;
+        background-color: $secondary--;
+        border-radius: $m-br;
+    }
+
+    .text {
+        display: flex;
+        justify-content: space-between;
+        margin: 24px;
+        align-items: end;
+
+        .title {
+            font-size: $l-font;
+            color: $primary;
+            font-weight: 700;
+        }
+
+        .more {
+            font-size: $m-font;
+            color: $text;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .cook {
+        display: flex;
+        margin-bottom: 40px;
+
+        .card {
+            padding: 24px;
+
+        }
+    }
+
+    .pic_food {
+        width: 100%;
+        border: 5px solid $bg--;
+        border-radius: $l-br;
+        overflow: hidden;
+
+        img {
+            display: block;
+            width: 100%;
+        }
+    }
+
+    .user {
+        display: flex;
+        margin: 24px;
+        align-items: center;
+        flex-direction: column;
+
+        .wrap {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            margin-bottom: 16px;
+
+
+            .pic_people {
+                width: 60px;
+                height: 60px;
+                overflow: hidden;
+                border-radius: 50%;
+                flex-shrink: 0;
+                margin-right: 16px;
+
+                img {
+                    display: block;
+                    width: 100%;
+                    transform: translateY(10px) scale(1.8);
+                }
+            }
+
+            .name {
+                font-size: $m-font;
+                word-break: break-all;
+            }
+        }
+
+        .message {
+            font-size: $s-font;
+            width: 100%;
+        }
+    }
+
+    .btn_l {
+        margin: auto;
+        @include pill(500px, 70px)
+    }
+
 }
