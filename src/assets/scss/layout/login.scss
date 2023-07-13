@@ -1,0 +1,96 @@
+.login-container{
+    display: none;
+    position: fixed;
+    z-index: 9;
+    top: calc(var(--mobile-head) + $sp2);
+    left: 0;
+    right: 0;
+    width: 380px;
+    margin: auto;
+    border: solid 2px $primary;
+    border-radius: $xs-br;
+    background-color: $bg--;
+    padding:$sp5;
+    &.open{
+        display: block;
+    }
+
+    h4{
+        text-align: center;
+        margin: $sp3;
+        font-size: $m-font;
+    }
+}
+.login_input{
+    .text_wrap{
+        margin-bottom: $sp3;
+        label{
+            display: block;
+            margin-bottom: $sp1;
+            font-size: $s-font;
+        }
+        input{
+            display: block;
+            width: 100%;
+        }
+    }
+    .check_wrap{
+        display: flex;
+        justify-content: space-between;
+        padding: $sp1 0;
+        margin-bottom: $sp5;
+        label{
+            font-size: $xs-font;
+        }
+        input{
+            width: 10px;
+            margin-right: $sp1;
+        }
+        a{
+            font-size: $xs-font;
+            text-decoration: underline;
+        }
+    }
+}
+.login_btn.btn_s{
+    display: block;
+    width: 130px;
+    margin: auto;
+    margin-bottom: $sp3;
+}
+
+.signup{
+    display: flex;
+    justify-content: right;
+    font-size: $xs-font;
+    margin-bottom: $sp2;
+    a{
+        text-decoration: underline;
+    }
+}
+.login-container{
+    hr{
+        width: 100%;
+    }
+    p{
+        text-align: center;
+        margin: $sp2;
+        margin-top: $sp3;
+    }
+}
+.login_api{
+    display: flex;
+    justify-content: center;
+    .btn{
+        background-color: #fff;
+
+    }
+    a{
+        margin: 0 $sp3;
+    }
+    img{
+        display: inline-block;
+        width: 30px;
+        margin: 12px;
+    }
+}

@@ -1,7 +1,7 @@
 <template>
-    <section>
-        <div class="login-good">
-            <div class="login-container">
+    <section class="all_box">
+        <div class="login_box">
+            <div class="login_container">
                 <h4>會員登入</h4>
                 <div class="text">
                     <label for="email">Email</label>
@@ -21,8 +21,8 @@
                 <hr>
                 <p>或用其他方式登入</p>
                 <div class="icon">
-                    <a href="#"><img :src="require('../assets/images/icon_bg/facebook.png')" alt=""></a>
-                    <a href="#"><img :src="require('../assets/images/icon_bg/google.png')" alt=""></a>
+                    <a href="#"><img src="../assets/images/icon_bg/facebook.png" alt=""></a>
+                    <a href="#"><img src="../assets/images/icon_bg/google.png" alt=""></a>
                 </div>
             </div>
         </div>
@@ -52,5 +52,5 @@ export default {
 </script>
 <style lang="scss">
 @import "@/assets/scss/all.scss";
-@import "@/assets/scss/page/login.scss";
+@import "@/assets/scss/layout/login.scss";
 </style>
