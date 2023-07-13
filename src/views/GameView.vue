@@ -12,18 +12,26 @@
                         <p>不知道吃什麼嗎 一起來看看專屬於你的命定料理吧 </p>
                 </div>
                 <div class="card" v-for="item in card" :key="item.id">
+                        <div class="clip">
+                                <img src="@/assets/images/game/clip.png" alt="">
+                        </div>
                         <div class="wrap">
                                 <div class="title">{{ item.title }}</div>
                                 <div class="question">{{ item.question }}</div>
                                 <div class="pic">
                                         <img :src="item.img" alt="">
                                 </div>
-                                <button class="choose_btn" :class="{ active: isClicked }" @click="changeColor">{{
-                                        item.btn1
-                                }}</button>
-                                <button class="choose_btn" :class="{ active: !isClicked }" @click="changeColor">{{ item.btn2
-                                }}</button>
-                                <button class="next_btn">下一題</button>
+                                <div class="btns_wrap">
+                                        <div class="title1">{{ item.title }}</div>
+                                        <div class="question2">{{ item.question }}</div>
+                                        <button class="choose_btn" :class="{ active: isClicked }" @click="changeColor">{{
+                                                item.btn1
+                                        }}</button>
+                                        <button class="choose_btn" :class="{ active: !isClicked }" @click="changeColor">{{
+                                                item.btn2
+                                        }}</button>
+                                        <button class="next_btn">下一題</button>
+                                </div>
                         </div>
                 </div>
                 <div class="card">
