@@ -44,10 +44,17 @@ const routesUser = [
     component: () => import(/* webpackChunkName: "about" */ '../views/GiftcardView.vue')
   },
   {
-    path: '/game',
-    name: 'game',
-
-    // route level code-splitting
+    path: '/giftcardprogress',
+    name: 'giftcardprogress',
+      // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    // component: AboutView,
+    component: () => import(/* webpackChunkName: "about" */ '../views/GiftcardProgressView.vue')
+  },
+  {path: '/game',
+  name: 'game',
+     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     // component: AboutView,

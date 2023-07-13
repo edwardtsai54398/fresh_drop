@@ -16,7 +16,7 @@
                         <a href="#">忘記密碼？</a>
                     </div>
                 </div>
-                <button type="button" class="btn_arrow btn_s" @click="login()">登入</button>
+                <button type="button" class=".btn_right btn_s" @click="login()">登入</button>
                 <div class="signup">還不是會員？<a href="#">註冊會員</a></div>
                 <hr>
                 <p>或用其他方式登入</p>
