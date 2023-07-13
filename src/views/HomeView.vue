@@ -1,17 +1,3 @@
-<!-- <script>
-import Swiper from 'swiper'
-
-export default {
-  components: {
-     Swiper,
-     // SwiperSlide,
-   },
-   mounted(){
-      let swiper = new Swiper()
-      console.log(swiper);
-   },
-}
-</script> -->
 <template>
   <div class="container index_container">
     <div class="container_index">
@@ -41,76 +27,79 @@ export default {
                 <div class="swiper_pic">
                   <img :src="item.img" alt="">
                 </div>
-              </swiper-slide> -->
+              </swiper-slide>  -->
             <swiper-slide>
               <div class="swiper_pic">
-                <img src="../assets/images/product/2.jpg" alt="">
+                <img src="../assets/images/product/1tomaot_egg.jpg" alt="">
               </div>
             </swiper-slide>
             <swiper-slide>
               <div class="swiper_pic">
-                <img src="../assets/images/product/3.jpg" alt="">
+                <img src="../assets/images/product/1tomaot_egg.jpg" alt="">
               </div>
             </swiper-slide>
             <swiper-slide>
               <div class="swiper_pic">
-                <img src="../assets/images/product/4.jpg" alt="">
+                <img src="../assets/images/product/1tomaot_egg.jpg" alt="">
               </div>
             </swiper-slide>
             <swiper-slide>
               <div class="swiper_pic">
-                <img src="../assets/images/product/5.jpg" alt="">
+                <img src="../assets/images/product/1tomaot_egg.jpg" alt="">
               </div>
             </swiper-slide>
             <swiper-slide>
               <div class="swiper_pic">
-                <img src="../assets/images/product/6.jpg" alt="">
+                <img src="../assets/images/product/1tomaot_egg.jpg" alt="">
               </div>
             </swiper-slide>
             <swiper-slide>
               <div class="swiper_pic">
-                <img src="../assets/images/product/7.jpg" alt="">
+                <img src="../assets/images/product/1tomaot_egg.jpg" alt="">
               </div>
             </swiper-slide>
             <swiper-slide>
               <div class="swiper_pic">
-                <img src="../assets/images/product/8.jpg" alt="">
+                <img src="../assets/images/product/1tomaot_egg.jpg" alt="">
               </div>
             </swiper-slide>
             <swiper-slide>
               <div class="swiper_pic">
-                <img src="../assets/images/product/9.jpg" alt="">
+                <img src="../assets/images/product/1tomaot_egg.jpg" alt="">
               </div>
             </swiper-slide>
             <swiper-slide>
               <div class="swiper_pic">
-                <img src="../assets/images/product/10.jpg" alt="">
+                <img src="../assets/images/product/1tomaot_egg.jpg" alt="">
               </div>
             </swiper-slide>
           </swiper>
         </div> 
       </div>  
     </div>  
+    <div class="index_health">
+      <h3>HEALTH <br> VEGETABLE</h3>
+      <div class="index_health_pic">
+        <img src="../assets/images/index/index_vefetable.png" alt="">
       </div>
-      <div class="index_health">
-        <h3>HEALTH <br> VEGETABLE</h3>
-        <div class="index_health_pic">
-          <img src="../assets/images/index/index_vefetable.png" alt="">
-        </div>
-        <div class="index_health_pic">
-          <img src="../assets/images/index/index_vefetable1.png" alt="">
-        </div>
-        <div class="index_health_pic">
-          <img src="../assets/images/index/index_vefetable2.png" alt="">
-        </div>
-        <div class="index_health_pic">
-          <img src="../assets/images/index/index_vefetable3.png" alt="">
-        </div>
-        <div class="index_health_pic">
-          <img src="../assets/images/index/index_vefetable4.png" alt="">
-        </div>
+      <div class="index_health_pic">
+        <img src="../assets/images/index/index_vefetable1.png" alt="">
+      </div>
+      <div class="index_health_pic">
+        <img src="../assets/images/index/index_vefetable2.png" alt="">
+      </div>
+      <div class="index_health_pic">
+        <img src="../assets/images/index/index_vefetable3.png" alt="">
+      </div>
+      <div class="index_health_pic">
+        <img src="../assets/images/index/index_vefetable4.png" alt="">
       </div>
     </div>
+  </div> 
+  </div> 
+  
+ 
+ 
 </template>
 
 <script>
