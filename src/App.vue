@@ -8,7 +8,8 @@
     <router-link to="/shop">SHOP</router-link> |
     <router-link to="/login">Log in</router-link>|
     <router-link to="/product">ProductDetail</router-link>|
-    <router-link to="/game">Game</router-link>
+    <router-link to="/game">Game</router-link>|
+    <router-link to="/faq">FAQ</router-link>
   </nav>
   <main><router-view /></main>
   <!-- <MainFooter></MainFooter>   -->

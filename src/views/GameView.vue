@@ -18,8 +18,11 @@
                                 <div class="pic">
                                         <img :src="item.img" alt="">
                                 </div>
-                                <button class="choose_btn">{{ item.btn1 }}</button>
-                                <button class="choose_btn">{{ item.btn2 }}</button>
+                                <button class="choose_btn" :class="{ active: isClicked }" @click="changeColor">{{
+                                        item.btn1
+                                }}</button>
+                                <button class="choose_btn" :class="{ active: !isClicked }" @click="changeColor">{{ item.btn2
+                                }}</button>
                                 <button class="next_btn">下一題</button>
                         </div>
                 </div>
@@ -66,6 +69,20 @@
                                 <button class="next_btn">再玩一次</button>
                         </div>
                 </div>
+        </div>
+        <!-- =======以下測試 -->
+        <div style="margin:0 auto 300px ;">
+                <h1>心理測驗</h1>
+                <div id="question-container" v-if="!showResult"></div>
+                <div id="result-container" v-else></div>
+
+                <div id="progress-bar" v-show="!showResult">
+                        <div id="progress" :style="{ width: progressPercentage }"></div>
+                </div>
+
+                <button id="start-button" v-show="!showResult" @click="startTest">開始測驗</button>
+                <button id="next-button" v-show="!showResult" @click="nextQuestion">下一個問題</button>
+                <button id="restart-button" v-show="showResult" @click="restartTest">重新開始</button>
         </div>
 </template>
 <script>
@@ -154,17 +171,119 @@ export default {
                                 },
                         ],
                         productList,
-                        // sum,
+                        isClicked: false,
+                        // ==========以下測試
+                        questions: [
+                                { question: "問題 1", options: ["a", "b"], weight: [1, 2] },
+                                { question: "問題 2", options: ["a", "b"], weight: [1, 2] },
+                                { question: "問題 3", options: ["a", "b"], weight: [1, 2] },
+                                { question: "問題 4", options: ["a", "b"], weight: [1, 2] },
+                                { question: "問題 5", options: ["a", "b"], weight: [1, 2] }
+                        ],
+                        currentIndex: 0,
+                        totalWeight: 0,
+                        showResult: false,
+                        results: [
+                                { range: [1, 5], text: "第一種結果" },
+                                { range: [6, 10], text: "第二種結果" },
+                                // 根據需求繼續添加其他結果
+                        ],
+                        resultText: "",
+                        progressPercentage: "0%"
                 }
         },
         methods: {
-                // game(){
-                //         sum+1
-                // }
+                changeColor() {
+                        this.isClicked = !this.isClicked;
+                },
+                // ========以下測試
+                startTest() {
+                        this.showResult = false;
+                        this.nextQuestion();
+                },
+                renderQuestion() {
+                        const currentQuestion = this.questions[this.currentIndex];
+                        const options = currentQuestion.options.map((option, index) => `
+        <label>
+          <input type="radio" name="option" value="${index}">
+          ${option}
+        </label>
+      `).join('');
+
+                        document.getElementById("question-container").innerHTML = `
+        <p>${currentQuestion.question}</p>
+        ${options}
+      `;
+                },
+                nextQuestion() {
+                        const currentQuestion = this.questions[this.currentIndex];
+                        const selectedOption = document.querySelector('input[name="option"]:checked');
+
+                        if (selectedOption) {
+                                const selectedIndex = parseInt(selectedOption.value);
+                                const selectedWeight = currentQuestion.weight[selectedIndex];
+                                this.totalWeight += selectedWeight;
+                        }
+
+                        this.currentIndex++;
+
+                        if (this.currentIndex < this.questions.length) {
+                                this.renderQuestion();
+                        } else {
+                                this.showResult = true;
+                                this.showResult();
+                        }
+
+                        this.updateProgress();
+                        this.clearSelection();
+                },
+                clearSelection() {
+                        const selectedOption = document.querySelector('input[name="option"]:checked');
+                        if (selectedOption) {
+                                selectedOption.checked = false;
+                        }
+                },
+                // showResult() {
+                //         for (const result of this.results) {
+                //                 if (this.totalWeight >= result.range[0] && this.totalWeight <= result.range[1]) {
+                //                         this.resultText = result.text;
+                //                         break;
+                //                 }
+                //         }
+                // },
+                updateProgress() {
+                        const progress = ((this.currentIndex + 1) / this.questions.length) * 100;
+                        this.progressPercentage = `${progress}%`;
+                },
+                restartTest() {
+                        this.currentIndex = 0;
+                        this.totalWeight = 0;
+                        this.showResult = false;
+                        this.resultText = "";
+                        this.progressPercentage = "0%";
+
+                        document.getElementById("result-container").innerHTML = "";
+                }
         }
 }
 </script>
 <style scoped lang="scss">
 @import "@/assets/scss/all.scss";
 @import "@/assets/scss/page/game.scss";
+
+#question-container,
+#result-container {
+        margin-bottom: 20px;
+}
+
+#progress-bar {
+        width: 100%;
+        height: 20px;
+        background-color: #f2f2f2;
+}
+
+#progress {
+        height: 100%;
+        background-color: #4caf50;
+}
 </style>
