@@ -1,58 +1,124 @@
-.container{
+.container {
     padding: 20px;
+    padding-top: 90px;
     display: flex;
     flex-direction: column;
-    align-items: center
-    
+    align-items: center;
+    // min-width: 414px;
+
 }
+
 // 進度條
-.bar_wrap{
-    @include pill(85%,20px);
-    max-width: 800px;
+.bar_wrap {
+    @include pill(85%, 20px);
+    max-width: 500px;
     border-radius: 31px;
-border: 2px solid #2F9748;
-background: #FFF;
-margin-top: $sp6;
-    .bar{
-        @include pill(50%,100%);
+    border: 2px solid #2F9748;
+    background: #FFF;
+    margin-top: $sp6;
+
+    .bar {
+        @include pill(50%, 100%);
         font-size: 0;
-        background-color:#FF7272;
+        background-color: #FF7272;
         color: #fff;
         text-align: center;
         position: relative;
-        span{
-            font-size:$xs-font;
+
+        span {
+            font-size: $xs-font;
             line-height: $xs-font;
         }
-        .icon{
+
+        .icon {
             width: 60px;
             height: 60px;
             position: absolute;
             right: -30px;
             top: -25px;
-            img{
+
+            img {
                 width: 100%;
                 vertical-align: top;
             }
         }
     }
 }
+
 // 標語
-.solgan{
+.solgan {
     font-size: $xs-font;
     color: $primary;
     margin-top: $sp4;
+    text-align: center;
+    width: 50%;
 }
+
+// 分析結果
+.card {
+    .wrap {
+        .recommend {
+            display: flex;
+            justify-content: space-between;
+            margin-top: $sp2;
+
+            .col-6 {
+                padding: 5px;
+
+                .pro_card {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 5px;
+
+                    .pic {
+                        border-radius: 12px;
+                    }
+                }
+            }
+        }
+
+        .personality {
+            margin-top: $sp3;
+            color: $primary;
+            font-weight: 700;
+            font-size: $m-font;
+        }
+
+        .txt {
+            margin-top: $sp2;
+            margin-bottom: $sp3;
+            line-height: 1.5;
+            padding: $sp1;
+            width: 80%;
+        }
+
+        .next_btn {
+            @extend .choose_btn;
+            color: #FFF;
+            background-color: $primary;
+            margin-top: $sp1;
+            margin-bottom: $sp1;
+            width: 50%;
+        }
+    }
+}
+
 // 遊戲卡片
-.card{
+.card {
     width: 100%;
-    max-width:800px;
+    max-width: 500px;
     border-radius: 30px;
     border: 4px solid #1F8D61;
     padding: 25px;
     margin-top: $sp6;
     background-color: $primary--;
-    .wrap{
+
+    .clip {
+        display: none;
+    }
+
+    .wrap {
         width: 100%;
         border-radius: 30px;
         padding: $sp2;
@@ -61,11 +127,13 @@ margin-top: $sp6;
         display: flex;
         flex-direction: column;
         align-items: center;
-        .title{
+
+        .title {
             font-size: $xs-font;
             color: $primary;
         }
-        .question{
+
+        .question {
             font-size: $s-font;
             text-align: center;
             color: $primary;
@@ -73,69 +141,195 @@ margin-top: $sp6;
             width: 90%;
             line-height: 1.2;
         }
-        .pic{
+
+        .pic {
             width: 100%;
             border-radius: 0;
         }
-        .choose_btn{
-            padding:$sp2 $sp3;
-            font-size: $s-font;
-            background-color: $secondary--;
-            width: 100%;
-            margin-top: $sp2;
-            border-radius: 30px;
+
+        .btns_wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .title1 {
+                display: none;
+            }
+
+            .question2 {
+                display: none;
+            }
+
+            .choose_btn {
+                padding: $sp2 $sp3;
+                font-size: $s-font;
+                background-color: $secondary--;
+                width: 100%;
+                margin-top: $sp2;
+                border-radius: 30px;
+            }
+
+            .active {
+                background-color: $secondary;
+            }
+
+            .next_btn {
+                @extend .choose_btn;
+                color: #FFF;
+                background-color: $primary;
+                margin-top: $sp5;
+                margin-bottom: $sp3;
+                width: 50%;
+            }
         }
-        .next_btn{
-            @extend .choose_btn;
-            color: #FFF;
-            background-color:$primary;
-            width: 90%;
-        }
+
+
+
     }
 
 }
-// 分析結果
-.card{
-    .wrap{
-        .recommend{
-            display: flex; 
-            justify-content: space-between;
-            margin-top: $sp2;
-            .col-6{
-                padding: 5px;
-                .pro_card{
-                    display: flex;
-                     flex-direction: column; 
-                     align-items: center; 
-                     gap: 5px;
+
+// 斷點768px
+@include pad-V {
+    .bar_wrap {
+        @include pill(85%, 25px);
+        max-width: 500px;
+        border-radius: 31px;
+        border: 2px solid #2F9748;
+        background: #FFF;
+        margin-top: $sp6;
+
+        .bar {
+            @include pill(50%, 100%);
+            font-size: 0;
+            background-color: #FF7272;
+            color: #fff;
+            text-align: center;
+            position: relative;
+
+            span {
+                font-size: $s-font;
+                line-height: $s-font;
+            }
+
+            .icon {
+                width: 90px;
+                height: 90px;
+                position: absolute;
+                right: -45px;
+                top: -45px;
+
+                img {
+                    width: 100%;
+                    vertical-align: top;
                 }
             }
         }
-        .personality{
-            margin-top: $sp2;
-            color: $primary;
+    }
+
+    .solgan {
+        font-size: $s-font;
+        width: 30%;
+    }
+
+    // 遊戲卡片
+    .card {
+        width: 100%;
+        max-width: 1500px;
+        border-radius: 30px;
+        border: 4px solid #1F8D61;
+        padding: 25px;
+        margin-top: $sp6;
+        background-color: $primary--;
+        position: relative;
+
+        .clip {
+            position: absolute;
+            display: block;
+            width: 20%;
+            aspect-ratio: 5/3;
+            position: absolute;
+            top: -5%;
+            left: 42%;
+
+            img {
+                width: 100%;
+                vertical-align: middle;
+            }
+
+            // transform: translate(-50%, 0);
+        }
+
+        .wrap {
+            width: 100%;
+            aspect-ratio: 3/2;
+            border-radius: 0;
+            padding: $sp2;
+            background-color: $bg--;
             font-weight: 700;
-            font-size: $m-font;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background-image: url(@/assets/images/game/game_bg.png);
+            background-size: cover;
+
+            .title {
+                font-size: $xs-font;
+                color: $primary;
+                display: none;
+            }
+
+            .question {
+                font-size: $s-font;
+                text-align: center;
+                color: $primary;
+                margin-top: $sp2;
+                width: 90%;
+                line-height: 1.2;
+                display: none;
+            }
+
+            .pic {
+                width: 100%;
+                border-radius: 0;
+            }
+
+            .btns_wrap {
+                width: 100%;
+                aspect-ratio: 1/1;
+                justify-content: space-around;
+
+                .title1 {
+                    display: block;
+                    font-size: $m-font;
+                }
+
+                .question2 {
+                    display: block;
+                    font-size: $xl-font;
+                    width: 80%;
+                }
+
+                .choose_btn {
+                    width: 50%;
+                    min-height: 120px;
+                }
+
+                .next_btn {
+                    min-height: 0px;
+                }
+            }
         }
-        .txt{
-            margin-top: $sp2;
-            line-height: 1.5;
-            padding: $sp1;
-        }
+
     }
 }
-//推薦商品
-.recommend{
-    display: grid;
-    
-}
-// 斷點768px
-@include pad-V{}
+
 // 斷點1024
-@include pad-H{}
+@include pad-H {}
+
 // 斷點1200
-@include desktop{
-    .container{
+@include desktop {
+    .container {
         max-width: 1200px;
     }
 }
