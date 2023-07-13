@@ -5,9 +5,10 @@
     align-items: center
     
 }
+// 進度條
 .bar_wrap{
-    @include pill(350px,20px);
-    max-width: 350px;
+    @include pill(85%,20px);
+    max-width: 800px;
     border-radius: 31px;
 border: 2px solid #2F9748;
 background: #FFF;
@@ -36,13 +37,16 @@ margin-top: $sp6;
         }
     }
 }
+// 標語
 .solgan{
     font-size: $xs-font;
     color: $primary;
     margin-top: $sp4;
 }
+// 遊戲卡片
 .card{
     width: 100%;
+    max-width:800px;
     border-radius: 30px;
     border: 4px solid #1F8D61;
     padding: 25px;
@@ -53,25 +57,29 @@ margin-top: $sp6;
         border-radius: 30px;
         padding: $sp2;
         background-color: $bg--;
-        color: $primary;
         font-weight: 700;
         display: flex;
         flex-direction: column;
         align-items: center;
         .title{
             font-size: $xs-font;
+            color: $primary;
         }
         .question{
             font-size: $s-font;
             text-align: center;
+            color: $primary;
+            margin-top: $sp2;
+            width: 90%;
+            line-height: 1.2;
         }
         .pic{
             width: 100%;
             border-radius: 0;
         }
         .choose_btn{
-            padding: $sp2;
-            font-size: $m-font;
+            padding:$sp2 $sp3;
+            font-size: $s-font;
             background-color: $secondary--;
             width: 100%;
             margin-top: $sp2;
@@ -85,4 +93,49 @@ margin-top: $sp6;
         }
     }
 
+}
+// 分析結果
+.card{
+    .wrap{
+        .recommend{
+            display: flex; 
+            justify-content: space-between;
+            margin-top: $sp2;
+            .col-6{
+                padding: 5px;
+                .pro_card{
+                    display: flex;
+                     flex-direction: column; 
+                     align-items: center; 
+                     gap: 5px;
+                }
+            }
+        }
+        .personality{
+            margin-top: $sp2;
+            color: $primary;
+            font-weight: 700;
+            font-size: $m-font;
+        }
+        .txt{
+            margin-top: $sp2;
+            line-height: 1.5;
+            padding: $sp1;
+        }
+    }
+}
+//推薦商品
+.recommend{
+    display: grid;
+    
+}
+// 斷點768px
+@include pad-V{}
+// 斷點1024
+@include pad-H{}
+// 斷點1200
+@include desktop{
+    .container{
+        max-width: 1200px;
+    }
 }
