@@ -1,15 +1,24 @@
 .product_container {
+    position: relative;
     min-width: 414px;
 
+    .recommend_button {
+        position: fixed;
+        bottom: 0;
+        @include pill(500px, 70px);
+    }
 
 }
 
-.hot_ranking {}
+
 
 
 @include pad-V {
-
-    .hot_ranking {}
+    .recommend_button {
+        display: none;
+        margin: none;
+        @include pill(500px, 70px)
+    }
 }
 
 @include pad-H {}
@@ -163,6 +172,12 @@
         width: 30%;
         position: relative;
         padding: 120px 0 0 50px;
+    }
+
+    .recommend_bbutton {
+        display: none;
+        margin: auto;
+        @include pill(500px, 70px)
     }
 
     .hot_ranking {
@@ -332,5 +347,6 @@
         margin: auto;
         @include pill(500px, 70px)
     }
+
 
 }
