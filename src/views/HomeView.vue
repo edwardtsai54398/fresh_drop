@@ -1,7 +1,115 @@
+<!-- <script>
+import Swiper from 'swiper'
+
+export default {
+  components: {
+     Swiper,
+     // SwiperSlide,
+   },
+   mounted(){
+      let swiper = new Swiper()
+      console.log(swiper);
+   },
+}
+</script> -->
 <template>
-    <div class="home">
-        <img alt="Vue logo" src="../assets/logo.png" />
-        <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+  <div class="container index_container">
+    <div class="container_index">
+      <div class="decorate_index">
+        <div class="decorate_day">
+          <img src="../assets/images/index/index_decorate_vg3.png" alt="">
+        </div>
+
+        <div class="index_text">
+          <h2>每日命定料理！</h2><br>
+          <p>左右滑動找到屬於你的菜</p>
+        </div>
+
+        <div class="index_banner">
+          <div class="btn_circle btn_flat">NEXT</div>
+          <div class="index_btn_l">更多食譜</div>
+        <!-- <div v-for="item in productList" :key="item.id">{{ item.img }}</div> 
+        <div v-for="item in productList" :key="item.id">{{ searchFilter(id) }}</div> -->
+        <div class=".index_index_banner_swiper">
+          <swiper
+              :effect="'cards'"
+              :grabCursor="true"
+              :modules="modules"
+              class="mySwiper"
+            >
+              <!-- <swiper-slide v-for="item in productList" :key="item.id">
+                <div class="swiper_pic">
+                  <img :src="item.img" alt="">
+                </div>
+              </swiper-slide> -->
+            <swiper-slide>
+              <div class="swiper_pic">
+                <img src="../assets/images/product/2.jpg" alt="">
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="swiper_pic">
+                <img src="../assets/images/product/3.jpg" alt="">
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="swiper_pic">
+                <img src="../assets/images/product/4.jpg" alt="">
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="swiper_pic">
+                <img src="../assets/images/product/5.jpg" alt="">
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="swiper_pic">
+                <img src="../assets/images/product/6.jpg" alt="">
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="swiper_pic">
+                <img src="../assets/images/product/7.jpg" alt="">
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="swiper_pic">
+                <img src="../assets/images/product/8.jpg" alt="">
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="swiper_pic">
+                <img src="../assets/images/product/9.jpg" alt="">
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="swiper_pic">
+                <img src="../assets/images/product/10.jpg" alt="">
+              </div>
+            </swiper-slide>
+          </swiper>
+        </div> 
+      </div>  
+    </div>  
+      </div>
+      <div class="index_health">
+        <h3>HEALTH <br> VEGETABLE</h3>
+        <div class="index_health_pic">
+          <img src="../assets/images/index/index_vefetable.png" alt="">
+        </div>
+        <div class="index_health_pic">
+          <img src="../assets/images/index/index_vefetable1.png" alt="">
+        </div>
+        <div class="index_health_pic">
+          <img src="../assets/images/index/index_vefetable2.png" alt="">
+        </div>
+        <div class="index_health_pic">
+          <img src="../assets/images/index/index_vefetable3.png" alt="">
+        </div>
+        <div class="index_health_pic">
+          <img src="../assets/images/index/index_vefetable4.png" alt="">
+        </div>
+      </div>
     </div>
 </template>
 
@@ -9,10 +117,64 @@
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 
+  // Import Swiper Vue.js components
+  import { Swiper, SwiperSlide } from 'swiper/vue';
+
+  // Import Swiper styles
+  import 'swiper/css';
+
+  import 'swiper/css/effect-cards';
+
+  // import './style.css';
+
+  // import required modules
+  import { EffectCards } from 'swiper/modules';
+
+
+  import productList from '@/assets/data/productList.js';
+
 export default {
-    name: "HomeView",
-    components: {
-        //   HelloWorld
-    },
+  name: "HomeView",
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
+  data() {
+    return {
+      aa: 'AAAA',
+      modules:[EffectCards],
+      searchList: productList
+    }
+  },
 };
-</script>
+
+
+
+
+  // export default {
+  //   components: {
+  //     Swiper,
+  //     SwiperSlide,
+  //   },
+  //   data() {
+  //     return {
+  //       aa: 'AAAA',
+  //       modules:[EffectCards]
+  //     }
+  //   },
+  //   mounted() {
+
+  //   },
+    
+  // };
+
+</script> 
+
+<style lang="scss" scoped>
+@import "@/assets/scss/all.scss";
+// @import "@/assets/scss/index.scss";
+@import "@/assets/scss/page/home.scss";
+</style> 
+
+
+
