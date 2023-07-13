@@ -85,11 +85,12 @@
         left: -90px;
         top: -130px;
     }
-    .bg_bottom{
+        .bg_bottom{
+        // outline: solid red;
         width: 100%;
         position: absolute;
         z-index: -1;
-        right: -120px;
+        right: -40px;
         bottom: -180px;
     }
 }

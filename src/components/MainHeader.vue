@@ -30,7 +30,7 @@
           @click="isSubtoggleOpen = false; isToggleOpen = false">
             <h5>安心肉品</h5>
           </router-link>
-          <router-link to="/source" 
+          <router-link to="/certified" 
           @click="isSubtoggleOpen = false; isToggleOpen = false">
             <h5>相關認證</h5>
           </router-link>

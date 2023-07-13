@@ -78,7 +78,7 @@
 .certified_container{
     padding: 40px 0;
     background-color: $primary--;
-    margin: 50px 0;
+    margin: 80px 0;
     .certified_title{
         h5{
             font-size: $s-font;
@@ -110,18 +110,19 @@
     .circle{
         position: absolute;
         width: 50%;
-        top: 0;
+        top: -70px;
+        z-index: -1;
     }
     .mushroom{
         width: 50%;
         position: absolute;
-        top: 0;
+        top: -120px;
         left: -10px;
     }
     .doctor{
         width: 60%;
         position: absolute;
-        top: -80px;
+        top: -150px;
         right: -10px;
     }
 }
