@@ -1,0 +1,125 @@
+.sitemap{
+    padding: $sp5 $sp1;
+    background-color: $primary;
+    .logo{
+        width: 146px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: $sp4;
+    }
+}
+.social_media{
+    display: flex;
+    justify-content: center;
+    gap: $sp3;
+    div{
+        background-color: $bg;
+        height: 55px;
+        border-radius: 50rem;
+        line-height: 55px;
+    }
+    .follow{
+        aspect-ratio: none;
+        padding: 0 $sp2;
+        font-size: $s-font;
+        text-transform: uppercase;
+        font-weight: 900;
+        position: relative;
+        overflow: visible;
+        &::after{
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: -2px;
+            z-index: 2;
+            display: block;
+            border: 6px solid transparent;
+            border-top: 12px solid $bg;
+            border-bottom: none;
+            transform: rotate(-45deg);
+        }
+    }
+    .circle{
+        font-size: $l-font;
+        text-align: center;
+        // border: none;
+        aspect-ratio: 1/1;
+    }
+}
+.shoplink_wrap{
+    @include gridgap(9px);
+    margin-top: $sp4;
+    a{
+        background-color: $bg;
+        border-radius: $xs-br;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: $s-font;
+        font-weight: 900;
+    }
+    img{
+        margin-right: $sp1;
+    }
+}
+.about_wrap{
+    border: 2px solid $bg--;
+    border-radius: $xs-br;
+    @include gridgap(19px);
+    padding: $sp3;
+    margin-top: $sp3;
+    
+    *{
+        color: $bg--;
+        font-size: $s-font;
+    }
+}
+.site_link{
+    display: flex;
+    align-items: center;
+    margin-bottom: $sp3;
+    .btn_flat{
+        border: 2px solid $bg--;
+        margin-right: $sp1;
+        i{
+            margin: 5px;
+            font-size: $xs-font;
+        }
+    }
+}
+.link_subtitle{
+    display: block;
+    width: fit-content;
+    margin-bottom: $sp3;
+    margin-left: $sp6;
+    text-align: right;
+    position: relative;
+    &::before{
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 110%;
+        width: 1rem;
+        height: 2px;
+        border-radius: 1px;
+        background-color: $bg--;
+    }
+    &:last-child{
+        margin-bottom: 0;
+    }
+}
+.contact_wrap{
+    @extend .shoplink_wrap;
+}
+
+.copyright{
+    background-color: $text;
+    
+    padding: $sp4;
+    p{
+        font-size: $xs-font;
+        color: $bg--;
+    }
+}

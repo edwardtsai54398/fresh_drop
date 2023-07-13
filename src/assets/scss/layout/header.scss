@@ -1,0 +1,128 @@
+$mobile-head: 90px;
+$toggle-link-h: 52px;
+.mainheader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: $bg;
+    width: 100%;
+    height: $mobile-head;
+    display: flex;
+    align-items: center;
+    padding: 0 $sp3;
+    .main_nav{
+        display: flex;
+    }
+    nav > *{
+            font-weight: 700;
+            font-size: $s-font;
+            line-height: $toggle-link-h;
+            padding: 0 $sp5;
+    }
+}
+@media screen and (max-width: 766px){
+    .mainheader{
+        justify-content: space-between;
+        .main_nav{
+            position: fixed;
+            z-index: -2;
+            top: $mobile-head;
+            right: 100%;
+            width: 100%;
+            height: calc(100vh - $mobile-head);
+            background-color: $bg--;
+            flex-direction: column;
+            transition: .3s;
+            &.open{
+                right: 0;
+            }
+        }
+        nav > *{
+                border-bottom: 2px solid $bg;
+        }
+    }
+}
+.subtoggle_btn{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.sub_toggle_list{
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - $mobile-head);
+    top: 0;
+    left: 200%;
+    background-color: $bg--;
+    display: flex;
+    flex-direction: column;
+    transition: .3s;
+    .goback i{
+        margin-left: calc($sp1 * -1);
+    }
+    &.open{
+        left: 0;
+    }
+}
+@media screen and (max-width: 766px){
+    
+}
+%nav-button{
+    width: 44px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: 2px solid $primary;
+}
+.hamburger{
+    @extend %nav-button;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    span{
+        @include pill(70%, 2px);
+        background-color: $primary;
+    }
+}
+.header_logo h1{
+    @include img-replace-h1(85px, 110px, '@/assets/images/logo/logo.png');
+    transform: translateY($sp1);
+}
+.member{
+    @extend %nav-button;
+    img{
+        display: block;
+        margin: auto;
+        width: 24px;
+    }
+    h4{
+        display: none;
+    }
+}
+
+@include desktop{
+    .mainheader{
+        background-color: $primary--;
+        height: 110px;
+        .main_nav{
+            margin-left: auto;
+            margin-right: $sp2;
+            align-items: center;
+            gap: 70px;
+            padding: 0 $sp5;
+            height: fit-content;
+            background-color: $primary;
+            border-radius: 50rem;
+            a{
+                color: $bg--;
+                line-height: 60px;
+                &:hover{
+    
+                }
+            }
+        }
+    }
+}
