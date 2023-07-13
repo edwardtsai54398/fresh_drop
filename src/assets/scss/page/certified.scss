@@ -1,0 +1,129 @@
+.certifiedPage_title{
+    h4{
+        font-size: $s-font;
+        color: $primary;
+        margin: 20px;
+        text-align: center;
+    }
+}
+.banner_container{
+    position: relative;
+    .banner_img{
+        width: 100%;
+    }
+    .banner_title{
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        h5{
+            font-size: $s-font;
+            white-space: pre-line;
+            color: #fff;
+            line-height: 25px;
+        }
+    }
+    .veg_ill{
+        width: 25%;
+        position: absolute;
+        left: -10px;
+        bottom: -40px;
+    }
+    .tom_ill{
+        width: 30%;
+        position: absolute;
+        right: -10px;
+        bottom: -50px;
+    }
+    .bg_img{
+        width: 50%;
+        position: absolute;
+        right: 0;
+        top: 160px;
+        z-index: -1;
+    }
+}
+.person_ill_container{
+    .person_container{
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        .person_box{
+            width: 250px;
+            .person_img{
+                width: 100%;
+                // outline: solid red;
+            }
+            .person_img2{
+                width: 100%;
+                // outline: solid red;
+            }
+            .person_img3{
+                width: 100%;
+                // outline: solid red;
+            }
+            .person_title{
+                h6{
+                    position: relative;
+                    top: -50px;
+                    font-size: $xs-font;
+                    color: $primary;
+                    text-align: center;
+                    white-space: pre-line;
+                    line-height: 20px;
+                }
+            }           
+        }
+    }  
+}
+.certified_container{
+    padding: 40px 0;
+    background-color: $primary--;
+    margin: 50px 0;
+    .certified_title{
+        h5{
+            font-size: $s-font;
+            color: $primary; 
+            text-align: center;
+            padding: 10px 0;
+        }
+    }
+    .certified_text{
+        p{
+          font-size: $xs-font;  
+          color: $primary; 
+          text-align: center;
+          white-space: pre-line;
+        }
+    }
+    .certified_img_container{
+        display: flex;
+        justify-content: center;
+        .certified_img{
+            width: 50%;
+            margin: 30px 0;
+        }
+    }
+}
+.bgImg_container{
+    position: relative;
+    width: 100%;
+    .circle{
+        position: absolute;
+        width: 50%;
+        top: 0;
+    }
+    .mushroom{
+        width: 50%;
+        position: absolute;
+        top: 0;
+        left: -10px;
+    }
+    .doctor{
+        width: 60%;
+        position: absolute;
+        top: -80px;
+        right: -10px;
+    }
+}
+
+
