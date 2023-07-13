@@ -202,7 +202,7 @@ const productList = [
                 step: ['將炒好的麻婆豆腐盛入盤子或碗中。', '可以撒上一些青蔥作為裝飾。']
             }
         ],
-        img: require('@/assets/images/product/5.jpg'),
+        img: require('@/assets/images/product/5mapo_tofu.jpg'),
         stock: 5,
         count: 1,
         des: '麻婆豆腐是一道有著濃郁辣味的川菜。它由豆腐和辣椒醬一起烹製而成，擁有濃厚的麻辣口感。麻婆豆腐的特點是豆腐嫩滑，醬汁香濃，且配上碎肉和豆豉，口感豐富。這道菜色香味俱佳，適合喜歡吃辣且喜愛豆腐的人品嚐。',
@@ -243,7 +243,7 @@ const productList = [
                 step: ['將炒好的中華彗星蛋炒飯盛入盤子或碗中', '可以撒上一些蔥花或香菜碎作為裝飾。']
             }
         ],
-        img: require('@/assets/images/product/6.jpg'),
+        img: require('@/assets/images/product/6friedrice.jpg'),
         stock: 5,
         count: 1,
         des: '中華彗星炒飯是一道中國特色的經典炒飯菜品。它以米飯為主要食材，搭配鮮嫩的海鮮、蔬菜和香氣四溢的調味料炒製而成。炒飯風味豐富，口感獨特，飽滿的米粒與彈牙的海鮮交織出絕佳的口感。',
