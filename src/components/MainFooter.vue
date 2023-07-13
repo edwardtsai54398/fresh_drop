@@ -43,7 +43,7 @@
                         <router-link to="/source" class="link_subtitle">
                             小農介紹
                         </router-link>
-                        <router-link to="/source" class="link_subtitle">
+                        <router-link to="/meat" class="link_subtitle">
                             安心肉品
                         </router-link>
                         <router-link to="/source" class="link_subtitle">

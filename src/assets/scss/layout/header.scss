@@ -1,3 +1,5 @@
+$mobile-head: 90px;
+$toggle-link-h: 52px;
 .mainheader{
     position: fixed;
     top: 0;
@@ -5,39 +7,67 @@
     z-index: 10;
     background-color: $bg;
     width: 100%;
-    height: var(--mobile-head);
+    height: $mobile-head;
+    display: flex;
+    align-items: center;
+    padding: 0 $sp3;
+    .main_nav{
+        display: flex;
+    }
+    nav > *{
+            font-weight: 700;
+            font-size: $s-font;
+            line-height: $toggle-link-h;
+            padding: 0 $sp5;
+    }
+}
+@media screen and (max-width: 766px){
+    .mainheader{
+        justify-content: space-between;
+        .main_nav{
+            position: fixed;
+            z-index: -2;
+            top: $mobile-head;
+            right: 100%;
+            width: 100%;
+            height: calc(100vh - $mobile-head);
+            background-color: $bg--;
+            flex-direction: column;
+            transition: .3s;
+            &.open{
+                right: 0;
+            }
+        }
+        nav > *{
+                border-bottom: 2px solid $bg;
+        }
+    }
+}
+.subtoggle_btn{
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 $sp3;
-    nav{
-        position: fixed;
-        z-index: -1;
-        top: var(--mobile-head);
+}
+.sub_toggle_list{
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - $mobile-head);
+    top: 0;
+    left: 200%;
+    background-color: $bg--;
+    display: flex;
+    flex-direction: column;
+    transition: .3s;
+    .goback i{
+        margin-left: calc($sp1 * -1);
+    }
+    &.open{
         left: 0;
-        width: 100%;
-        height: 0;
-        background-color: $bg--;
-        display: flex;
-        flex-direction: column;
-        a{
-            font-weight: 700;
-            line-height: 48px;
-            padding: 0 $sp5;
-            border-bottom: 2px solid $bg;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-50px);
-        }
     }
-    nav.open{
-        height: calc(100vh - var(--mobile-head));
-        a{
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-    }
+}
+@media screen and (max-width: 766px){
+    
 }
 %nav-button{
     width: 44px;
@@ -72,11 +102,12 @@
         display: none;
     }
 }
+
 @include desktop{
     .mainheader{
         background-color: $primary--;
         height: 110px;
-        nav{
+        .main_nav{
             margin-left: auto;
             margin-right: $sp2;
             align-items: center;

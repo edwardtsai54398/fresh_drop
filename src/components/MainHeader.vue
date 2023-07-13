@@ -8,12 +8,38 @@
     <div class="header_logo">
       <router-link to="/"><h1>鮮食空投箱 Fresh Drop</h1></router-link>
     </div>
-    <nav :class="{ open: isToggleOpen }" @click="isToggleOpen = false">
-      <router-link to="/about" >關於我們</router-link>
-      <router-link to="/source">食材溯源</router-link>
-      <router-link to="/shop">菜色選購</router-link>
-      <router-link to="/giftcard">禮物卡</router-link>
-      <router-link to="/faq">FAQ</router-link>
+    <!-- @click="isToggleOpen = false" -->
+    <nav class="main_nav" 
+    :class="{ open: isToggleOpen }" >
+      <router-link to="/about"><h4>關於我們</h4></router-link>
+      <div class="sub_toggle">
+        <div class="subtoggle_btn" @click="isSubtoggleOpen = !isSubtoggleOpen">
+          <h4>食材溯源</h4><i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <nav class="sub_toggle_list" 
+        :class="{open : isSubtoggleOpen}" >
+          <div class="goback" 
+          @click="isSubtoggleOpen = false">
+          <i class="fa-solid fa-chevron-left"></i>
+        </div>
+          <router-link to="/source" 
+          @click="isSubtoggleOpen = false; isToggleOpen = false">
+            <h5>各地小農介紹</h5>
+          </router-link>
+          <router-link to="/meat" 
+          @click="isSubtoggleOpen = false; isToggleOpen = false">
+            <h5>安心肉品</h5>
+          </router-link>
+          <router-link to="/source" 
+          @click="isSubtoggleOpen = false; isToggleOpen = false">
+            <h5>相關認證</h5>
+          </router-link>
+        </nav>
+      </div>
+      <router-link to="/shop"><h4>菜色選購</h4></router-link>
+      <router-link to="/giftcard"><h4>禮物卡</h4></router-link>
+      <router-link to="/faq"><h4>FAQ</h4></router-link>
+      <router-link to="/game"><h4>今天吃什麼</h4></router-link>
     </nav>
     <button class="member" @click="$emit('toggle')">
       <img src="@/assets/images/icon_bg/header_member.svg" alt="" />
@@ -34,7 +60,7 @@ export default {
   data() {
     return {
       isToggleOpen: false,
-      // isModalOpen: false,
+      isSubtoggleOpen: false,
       
     };
   },
