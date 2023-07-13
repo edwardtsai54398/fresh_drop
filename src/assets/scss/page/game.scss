@@ -85,6 +85,9 @@ margin-top: $sp6;
             margin-top: $sp2;
             border-radius: 30px;
         }
+        .active {
+            background-color: $secondary;
+          }
         .next_btn{
             @extend .choose_btn;
             color: #FFF;
@@ -126,7 +129,6 @@ margin-top: $sp6;
 }
 //推薦商品
 .recommend{
-    display: grid;
     
 }
 // 斷點768px
