@@ -133,18 +133,6 @@
     }
 }
 
-.recommend {
-    display: block;
-}
-
-.hot_ranking {
-    display: flex;
-    flex-direction: column;
-    position: sticky;
-    top: 60px;
-    margin-bottom: 60px;
-}
-
 .hot_title {
     width: 110px;
     height: 60px;
@@ -171,9 +159,33 @@
     }
 }
 
+.recommend {
+    display: block;
+}
+
+.hot_ranking {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 60px;
+    margin-bottom: 60px;
+}
+
 //768以下隱藏熱門推薦
 .hot_product {
     display: none;
+
+    .pic {
+        width: 150px;
+        height: 150px;
+        border-radius: 5px;
+        flex-shrink: 0;
+
+        img {
+            border-radius: 5px;
+            vertical-align: top;
+        }
+    }
 }
 
 
@@ -283,9 +295,9 @@
     border-radius: 20px;
     padding: 20px 20px;
     position: fixed;
-    inset: 10px;
-    overflow-y: scroll;
+    inset: 100px 10px 10px 10px;
     z-index: 2;
+    overflow-y: scroll;
 }
 
 .title {
@@ -365,6 +377,14 @@
         }
     }
 
+    .hot_ranking {
+        display: flex;
+        flex-direction: column;
+        position: sticky;
+        top: 60px;
+        margin-bottom: 60px;
+    }
+
     .hot_title {
         width: 100%;
         padding: 17px 0;
@@ -385,18 +405,10 @@
 
         img {
             position: absolute;
-            top: 10px;
+            top: -10px;
             left: 50%;
             transform: translate(-50%, -50%);
         }
-    }
-
-    .hot_ranking {
-        display: flex;
-        flex-direction: column;
-        position: sticky;
-        top: 60px;
-        margin-bottom: 60px;
     }
 
     .hot_product {
@@ -588,27 +600,27 @@
         position: sticky;
         top: 60px;
         margin-bottom: 60px;
+    }
 
-        .hot_title {
-            color: $text;
-            font-family: $prim-font;
-            font-size: $m-font;
-            font-weight: 700;
-            border-radius: $xl-br;
-            border: 6px solid #fff;
-            background: #edebda;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            margin: auto;
+    .hot_title {
+        color: $text;
+        font-family: $prim-font;
+        font-size: $m-font;
+        font-weight: 700;
+        border-radius: $xl-br;
+        border: 6px solid #fff;
+        background: #edebda;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin: auto;
 
-            img {
-                position: absolute;
-                top: -10px;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
+        img {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
     }
 
@@ -902,41 +914,41 @@
         }
     }
 
-    .recommend {
-        width: 30%;
-        position: relative;
-        padding: 210px 0 0 32px;
-    }
-
     .hot_ranking {
         display: flex;
         flex-direction: column;
         position: sticky;
         top: 60px;
         margin-bottom: 60px;
+    }
 
-        .hot_title {
-            padding: 17px 120px;
-            color: $text;
-            font-family: $prim-font;
-            font-size: $m-font;
-            font-weight: 700;
-            border-radius: $xl-br;
-            border: 6px solid #fff;
-            background: #edebda;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            margin: auto;
+    .hot_title {
+        padding: 17px 120px;
+        color: $text;
+        font-family: $prim-font;
+        font-size: $m-font;
+        font-weight: 700;
+        border-radius: $xl-br;
+        border: 6px solid #fff;
+        background: #edebda;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin: auto;
 
-            img {
-                position: absolute;
-                top: -10px;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
+        img {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
+    }
+
+    .recommend {
+        width: 30%;
+        position: relative;
+        padding: 210px 0 0 32px;
     }
 
     .hot_product {

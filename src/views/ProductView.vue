@@ -197,9 +197,6 @@ export default {
         toggleExpend() {
             this.isExpendVisible = !this.isExpendVisible;
         },
-        hotExpend() {
-            this.isExpendVisibleHot = !this.isExpendVisibleHot;
-        },
     },
     computed: {
         filteredProductList() {
