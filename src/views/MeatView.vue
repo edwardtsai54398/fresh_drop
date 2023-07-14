@@ -5,16 +5,29 @@
         </div>
         <div class="meat_card_container">
             <div class="meat_card_box">
+                <carousel v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">
+                    <slide v-for="slide in example" :key="slide">
+                        <!-- slide: 輪播的物件; 10: 改成你要v-for的陣列(寫在data裡) -->
+                        <div class="box pic">
+                            <img :src="example.img" alt="Slide">
+                        </div>
+                    </slide>
+                    <template #addons>
+                        <navigation /><!--左右按鈕元件，可拿掉-->
+                        <pagination /><!--頁籤元件，可拿掉-->
+                    </template>
+                </carousel>
                 <div class="chicken_ill pic">
                     <img :src="chicken.img2" alt="">
                 </div>
+
                 <div class="meat_title">
                     <h5>{{ chicken.title }}</h5>
                 </div>
                 <div class="meat_card">
-                    <div class="pic">
+                    <!-- <div class="pic">
                         <img :src="chicken.img" alt="">
-                    </div>
+                    </div> -->
                     <div class="farmer_title">
                         <h3>{{ chicken.farmer }}</h3>
                     </div>
@@ -124,6 +137,11 @@ export default {
     name: 'MeatContainer',
     data() {
         return {
+            example: [
+                { imag: '../assets/images/source/ck01_m.png'},
+                { imag: '@/assets/images/source/ck02_m.png'},
+                { imag: '@/assets/images/source/ck03_m.png'},
+            ],
             chicken: {
                 title: '雞肉',
                 img: require('@/assets/images/source/ck01_m.png'),
