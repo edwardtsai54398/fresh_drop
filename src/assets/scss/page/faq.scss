@@ -1,7 +1,61 @@
-.container{
-    .row-cols-2{
-        .col{
-            padding: 20px;
+.container {
+    padding: 200px 20px 400px;
+
+    .question_type {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        gap: 18px 26px;
+
+
+        .type {
+            @include pill(100%, 45px);
+            background-color: $primary;
+            padding: $sp2 $sp4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            p {
+                color: #fff;
+                font-size: $xs-font;
+            }
+        }
+    }
+
+    .question_title {
+        text-align: center;
+        font-size: $l-font;
+        color: $primary;
+        margin-top: $sp2;
+    }
+
+    .group_wrap {
+        @include pill (90%);
+        border-radius: 20px;
+        border: 5px solid var(--prim, #1F8D61);
+        background: #FFF;
+        display: flex;
+        padding: $sp2;
+        gap: 10px;
+
+        .icon {}
+
+        .qa {
+            // .question {}
+
+            // .answer {}
+        }
+
+        .qa {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .question {}
+
+            .answer {}
         }
     }
 }
