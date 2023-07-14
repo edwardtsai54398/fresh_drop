@@ -24,7 +24,7 @@
                 </div>
                 <article class="info_text">
                     <div>
-                        <p>材料【2人份】</p>
+                        <p>材料</p>
                         <div class="wrap">
                             <p
                                 class="ingred"
@@ -100,21 +100,21 @@
         <section class="share">
             <div class="text">
                 <p class="title">一起做</p>
-                <a class="more" href="#">看更多</a>
+                <button class="more" @click="toggleExpend">看更多</button>
             </div>
-            <div class="cook">
+            <div class="cook row">
                 <div
-                    class="col-3"
+                    class="wrap col-6 col-md-3"
                     v-for="(item, index) in filteredProductShare"
                     :key="index"
                 >
                     <div class="card">
-                        <div class="pic_food">
+                        <div class="pic pic_food">
                             <img :src="item.img[0]" alt="share_food" />
                         </div>
                         <div class="user">
                             <div class="wrap">
-                                <div class="pic_people">
+                                <div class="pic pic_people">
                                     <img
                                         :src="item.img[1]"
                                         alt="share_people"
@@ -131,6 +131,50 @@
             </div>
             <div class="btn_l">上傳烹煮心得</div>
         </section>
+        <div class="mask" v-show="isExpendVisible"></div>
+        <section class="more_expend" v-show="isExpendVisible">
+            <div class="title">
+                <div class="type">
+                    <span>{{ newProduct.category }}</span>
+                </div>
+                <h2>{{ newProduct.name }}</h2>
+                <span>一起做</span>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div
+                        class="card col-6 col-md-3"
+                        v-for="(item, index) in productShare"
+                        :key="index"
+                    >
+                        <div class="pic pic_food">
+                            <img :src="item.img[0]" alt="share_food" />
+                        </div>
+                        <div class="user">
+                            <div class="wrap">
+                                <div class="pic pic_people">
+                                    <img
+                                        :src="item.img[1]"
+                                        alt="share_people"
+                                    />
+                                </div>
+                                <div class="name">
+                                    {{ item.name }}
+                                </div>
+                            </div>
+                            <p class="message">{{ item.message }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="button">
+                <button class="back btn_s btn_left" @click="toggleExpend">
+                    <span>back</span>
+                    <i class="fa-sharp fa-solid fa-arrow-left"></i>
+                </button>
+                <button class="upload btn_s">上傳烹煮心得</button>
+            </div>
+        </section>
     </div>
 </template>
 
@@ -143,12 +187,18 @@ export default {
             newProduct: productList[0],
             productList,
             productShare,
+            isExpendVisible: false,
         };
     },
     methods: {
         update(index) {
             this.newProduct = { ...this.filteredProductList[index] };
-            // console.log(newProduct);
+        },
+        toggleExpend() {
+            this.isExpendVisible = !this.isExpendVisible;
+        },
+        hotExpend() {
+            this.isExpendVisibleHot = !this.isExpendVisibleHot;
         },
     },
     computed: {
@@ -157,10 +207,19 @@ export default {
                 (item) => item.id >= 2 && item.id <= 6
             );
         },
+        //待修改
         filteredProductShare() {
-            return this.productShare.filter(
-                (item) => item.id >= 1 && item.id <= 4
-            );
+            if (window.innerWidth < 767) {
+                return this.productShare.filter(
+                    (item) => item.id >= 1 && item.id <= 2
+                );
+            } else if (window.innerWidth >= 768) {
+                return this.productShare.filter(
+                    (item) => item.id >= 1 && item.id <= 4
+                );
+            } else {
+                return [];
+            }
         },
     },
 };

@@ -1,39 +1,453 @@
 .product_container {
     position: relative;
     min-width: 414px;
-
-    .recommend_button {
-        position: fixed;
-        bottom: 0;
-        @include pill(500px, 70px);
-    }
-
+    max-width: 1500px;
+    //max-width確認一下
+    padding: 90px 32px 0 32px;
 }
 
-
-
-
-@include pad-V {
-    .recommend_button {
-        display: none;
-        margin: none;
-        @include pill(500px, 70px)
-    }
+.main {
+    width: 100%;
 }
 
-@include pad-H {}
+.main_title {
+    width: 100%;
+    padding: $sp5;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-family: Inter;
+    font-weight: 700;
 
-@include desktop {
-    .product_container {
-        max-width: 1920px;
-        padding: 0 120px;
+    button {
+        position: absolute;
+        left: 0;
+        height: 40px;
+    }
 
-        .main_wrap {
+    .title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        font-size: $l-font;
+        color: $text;
+
+        .type {
+            width: 98px;
+            height: 42px;
+            flex-shrink: 0;
+            border-radius: $l-br;
+            background: $secondary;
             display: flex;
-            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            span {
+                color: #ffffff;
+                font-size: $m-font;
+                font-family: "Noto Sans TC";
+            }
+        }
+    }
+}
+
+.info_pic {
+    .text {
+        font-size: $s-font;
+        text-align: center;
+
+        p {
+            padding: 20px 20px;
+        }
+    }
+}
+
+.info_text {
+    padding: 20px 20px 80px 20px;
+
+    >div>p {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: $m-font;
+        padding: 12px 0;
+        margin: $sp4 0;
+        border: 6px solid #ffffff;
+        background-color: #EDEBDA;
+        border-radius: 50px;
+        color: $primary;
+        font-weight: 700;
+    }
+
+    .wrap {
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+
+        li {
+            width: 100%;
+
+            .number {
+                font-size: 40px;
+                color: $secondary;
+                font-weight: 700;
+                padding-right: 10px;
+                font-style: italic;
+            }
+
+            .title_border {
+                border-bottom: 2px dashed $secondary;
+
+                .title {
+                    margin-bottom: 5px;
+                }
+            }
+
+            .info {
+                padding: 4px 0;
+            }
         }
     }
 
+    div:nth-child(3)>* {
+        //選取info_text的第三個div之下的子元素
+        flex-direction: row;
+        flex-wrap: wrap
+    }
+
+    p {
+        font-size: $s-font;
+    }
+
+    .allergy {
+        display: inline-block;
+        padding: 4px 30px;
+        border-radius: 30px;
+        border: 3px solid $secondary;
+        background-color: $secondary--;
+    }
+}
+
+.recommend {
+    display: block;
+}
+
+.hot_ranking {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 60px;
+    margin-bottom: 60px;
+}
+
+.hot_title {
+    width: 110px;
+    height: 60px;
+    color: $text;
+    font-family: $prim-font;
+    font-size: $xs-font;
+    font-weight: 700;
+    border-radius: $xl-br;
+    border: 6px solid #fff;
+    background: #edebda;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    margin: auto;
+    bottom: 100px;
+    right: 30px;
+
+    img {
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+//768以下隱藏熱門推薦
+.hot_product {
+    display: none;
+}
+
+
+.share {
+    max-width: 1920px;
+    overflow: hidden;
+    padding: 20px 20px;
+    background-color: $secondary--;
+    border-radius: $m-br;
+}
+
+.text {
+    display: flex;
+    justify-content: space-between;
+    margin: 24px;
+    align-items: center;
+
+    .title {
+        font-size: $m-font;
+        color: $primary;
+        font-weight: 700;
+    }
+
+    .more {
+        font-size: $s-font;
+        color: $text;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.cook {
+    display: flex;
+    margin-bottom: 40px;
+
+    .card {
+        padding: 10px;
+    }
+}
+
+.pic_food {
+    width: 100%;
+    border: 5px solid $bg--;
+    border-radius: $l-br;
+}
+
+.user {
+    display: flex;
+    margin: 20px;
+    align-items: center;
+    flex-direction: column;
+
+    .wrap {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        margin-bottom: 16px;
+        flex-direction: column;
+        gap: 10px;
+
+
+        .pic_people {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            // margin-right: 16px;
+        }
+
+        .name {
+            font-size: $xs-font;
+            word-break: break-all;
+        }
+    }
+
+    .message {
+        font-size: $xs-font;
+        width: 100%;
+    }
+}
+
+.btn_l {
+    margin: auto;
+    width: auto;
+    font-size: $m-font;
+    max-width: 500px;
+}
+
+//遮罩
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 半透明的遮罩顏色 */
+    z-index: 1;
+    /* 遮罩的層疊順序要比 .more_expend 元素低 */
+}
+
+.more_expend {
+    background-color: $secondary--;
+    margin: 20px 0;
+    border-radius: 20px;
+    padding: 20px 20px;
+    position: fixed;
+    inset: 10px;
+    overflow-y: scroll;
+    z-index: 2;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: $m-font;
+    color: $text;
+    padding: 30px 0 20px 0;
+
+    .type {
+        width: 70px;
+        height: 36px;
+        flex-shrink: 0;
+        border-radius: $l-br;
+        background: $secondary;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        span {
+            color: #ffffff;
+            font-size: $s-font;
+            font-family: "Noto Sans TC";
+        }
+    }
+}
+
+.content {
+    display: flex;
+
+
+    .card {
+        padding: 10px;
+    }
+}
+
+.button {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+
+
+    .back {
+        width: 20%;
+        justify-content: center;
+        max-width: 100px;
+    }
+
+    .upload {
+        width: 80%;
+        max-width: 500px;
+    }
+}
+
+
+// min-width: 768px
+@include pad-V {
+    .main {
+        width: 60%;
+        overflow: hidden;
+    }
+
+    .main_wrap {
+        display: flex;
+        flex-direction: row;
+
+        .recommend {
+            width: 40%;
+            position: relative;
+            padding: 210px 0 0 32px;
+            display: block;
+        }
+    }
+
+    .hot_title {
+        width: 100%;
+        padding: 17px 0;
+        color: $text;
+        font-family: $prim-font;
+        font-size: $s-font;
+        font-weight: 700;
+        border-radius: $xl-br;
+        border: 5px solid #fff;
+        background: #edebda;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin: auto;
+        bottom: 0;
+        right: 0;
+
+        img {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .hot_ranking {
+        display: flex;
+        flex-direction: column;
+        position: sticky;
+        top: 60px;
+        margin-bottom: 60px;
+    }
+
+    .hot_product {
+        display: flex;
+        margin-top: 35px;
+        gap: 28px;
+        cursor: pointer;
+
+        .pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 5px;
+            flex-shrink: 0;
+
+            img {
+                border-radius: 5px;
+                vertical-align: top;
+            }
+        }
+
+        .hot_info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            .hot_type {
+                padding: 8px 20px;
+                border-radius: $m-br;
+                background-color: $secondary--;
+                font-size: $xs-font;
+                font-weight: 700;
+                width: 70px;
+            }
+
+            .hot_name {
+                margin-top: 15px;
+                font-size: $s-font;
+                color: $text;
+            }
+        }
+    }
+
+
+    .btn_l {
+        @include pill(500px, 70px);
+        font-size: $l-font;
+    }
+}
+
+// min-width: 1024px
+@include pad-H {
     .main {
         width: 70%;
         overflow: hidden;
@@ -85,23 +499,17 @@
         .pic {
             width: 100%;
             height: 700px;
-            overflow: hidden;
-            //這個有設定了?
         }
 
         .text {
             font-size: $m-font;
             text-align: center;
 
-            p {
-                padding: 52px 160px;
-            }
-
         }
     }
 
     .info_text {
-        padding: 0 160px 160px 160px;
+        padding-bottom: 80px;
 
         >div>p {
             display: block;
@@ -161,7 +569,7 @@
 
         .allergy {
             display: inline-block;
-            padding: 4px 40px;
+            padding: 4px 30px;
             border-radius: 30px;
             border: 3px solid $secondary;
             background-color: $secondary--;
@@ -171,13 +579,333 @@
     .recommend {
         width: 30%;
         position: relative;
-        padding: 120px 0 0 50px;
+        padding: 210px 0 0 32px;
     }
 
-    .recommend_bbutton {
-        display: none;
+    .hot_ranking {
+        display: flex;
+        flex-direction: column;
+        position: sticky;
+        top: 60px;
+        margin-bottom: 60px;
+
+        .hot_title {
+            color: $text;
+            font-family: $prim-font;
+            font-size: $m-font;
+            font-weight: 700;
+            border-radius: $xl-br;
+            border: 6px solid #fff;
+            background: #edebda;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin: auto;
+
+            img {
+                position: absolute;
+                top: -10px;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+
+    .hot_product {
+        display: flex;
+        margin-top: 35px;
+        gap: 35px;
+        cursor: pointer;
+
+        .pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 5px;
+
+            img {
+                border-radius: 5px;
+                width: 100%;
+                height: 100%;
+                vertical-align: top;
+            }
+        }
+
+        .hot_info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            .hot_type {
+                border-radius: $m-br;
+                background-color: $secondary--;
+                font-size: $s-font;
+                font-weight: 700;
+                width: auto;
+            }
+
+            .hot_name {
+                margin-top: 15px;
+                font-size: $m-font;
+                color: $text;
+            }
+        }
+    }
+
+    .share {
+        max-width: 1920px;
+        overflow: hidden;
+        padding: 40px 40px;
+        background-color: $secondary--;
+        border-radius: $m-br;
+    }
+
+    .text {
+        display: flex;
+        justify-content: space-between;
+        margin: 24px;
+
+        .title {
+            font-size: $l-font;
+            color: $primary;
+            font-weight: 700;
+        }
+
+        .more {
+            font-size: $m-font;
+            color: $text;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .cook {
+        display: flex;
+        margin-bottom: 40px;
+
+        .card {
+            padding: 10px;
+
+        }
+    }
+
+    .pic_food {
+        width: 100%;
+        border: 5px solid $bg--;
+        border-radius: $l-br;
+    }
+
+    .user {
+        display: flex;
+        margin: 24px;
+        align-items: center;
+        flex-direction: column;
+
+        .wrap {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-direction: row;
+            gap: 0;
+
+
+            .pic_people {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                flex-shrink: 0;
+                margin-right: 16px;
+            }
+
+            .name {
+                font-size: $m-font;
+                word-break: break-all;
+            }
+        }
+
+        .message {
+            font-size: $m-font;
+            width: 100%;
+        }
+    }
+
+    .btn_l {
         margin: auto;
         @include pill(500px, 70px)
+    }
+
+    .more_expend {
+        padding: 20px 40px;
+
+        .button {
+            width: 100%;
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+
+
+            .back {
+                width: 20%;
+                justify-content: center;
+                max-width: 100px;
+                font-size: $l-font;
+            }
+
+            .upload {
+                width: 80%;
+                max-width: 500px;
+                font-size: $l-font;
+            }
+        }
+    }
+
+
+}
+
+// min-width: 1200px
+@include desktop {
+    .product_container {
+
+        .main_wrap {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+
+    .main {
+        width: 70%;
+        overflow: hidden;
+    }
+
+    .main_title {
+        width: 100%;
+        padding: $sp5;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #000;
+        font-family: Inter;
+        font-weight: 700;
+
+        button {
+            position: absolute;
+            left: 0;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: $xl-font;
+            color: $text;
+
+            .type {
+                width: 98px;
+                height: 42px;
+                flex-shrink: 0;
+                border-radius: $l-br;
+                background: $secondary;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                span {
+                    color: #ffffff;
+                    font-size: $m-font;
+                    font-family: "Noto Sans TC";
+                }
+            }
+        }
+    }
+
+    .info_pic {
+        .pic {
+            width: 100%;
+            height: 700px;
+        }
+
+        .text {
+            font-size: $m-font;
+            text-align: center;
+        }
+    }
+
+    .info_text {
+
+        >div>p {
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-size: $l-font;
+            padding: 12px 0;
+            margin: $sp4 0;
+            border: 6px solid #ffffff;
+            background-color: #EDEBDA;
+            border-radius: 50px;
+            color: $primary;
+            font-weight: 700;
+        }
+
+        .wrap {
+            padding: 0 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+
+            li {
+                width: 100%;
+
+                .number {
+                    font-size: 40px;
+                    color: $secondary;
+                    font-weight: 700;
+                    padding-right: 10px;
+                    font-style: italic;
+                }
+
+                .title_border {
+                    border-bottom: 2px dashed $secondary;
+
+                    .title {
+                        margin-bottom: 5px;
+                    }
+                }
+
+                .info {
+                    padding: 4px 0;
+                }
+            }
+        }
+
+        div:nth-child(3)>* {
+            //選取info_text的第三個div之下的子元素
+            flex-direction: row;
+            flex-wrap: wrap
+        }
+
+        p {
+            font-size: $m-font;
+        }
+
+        .allergy {
+            display: inline-block;
+            padding: 4px 30px;
+            border-radius: 30px;
+            border: 3px solid $secondary;
+            background-color: $secondary--;
+        }
+    }
+
+    .recommend {
+        width: 30%;
+        position: relative;
+        padding: 210px 0 0 32px;
     }
 
     .hot_ranking {
@@ -204,7 +932,7 @@
 
             img {
                 position: absolute;
-                top: -5px;
+                top: -10px;
                 left: 50%;
                 transform: translate(-50%, -50%);
             }
@@ -252,9 +980,9 @@
     }
 
     .share {
-        max-width: 1920px;
+        // max-width: 1920px;
         overflow: hidden;
-        padding: 40px 120px;
+        // padding: 40px 120px;
         background-color: $secondary--;
         border-radius: $m-br;
     }
@@ -263,7 +991,6 @@
         display: flex;
         justify-content: space-between;
         margin: 24px;
-        align-items: end;
 
         .title {
             font-size: $l-font;
@@ -285,22 +1012,16 @@
         display: flex;
         margin-bottom: 40px;
 
-        .card {
-            padding: 24px;
+        // .card {
+        //     padding: 24px;
 
-        }
+        // }
     }
 
     .pic_food {
         width: 100%;
         border: 5px solid $bg--;
         border-radius: $l-br;
-        overflow: hidden;
-
-        img {
-            display: block;
-            width: 100%;
-        }
     }
 
     .user {
@@ -314,25 +1035,20 @@
             width: 100%;
             align-items: center;
             margin-bottom: 16px;
+            flex-direction: row;
+            gap: 0;
 
 
             .pic_people {
                 width: 60px;
                 height: 60px;
-                overflow: hidden;
                 border-radius: 50%;
                 flex-shrink: 0;
                 margin-right: 16px;
-
-                img {
-                    display: block;
-                    width: 100%;
-                    transform: translateY(10px) scale(1.8);
-                }
             }
 
             .name {
-                font-size: $m-font;
+                // font-size: $m-font;
                 word-break: break-all;
             }
         }
@@ -347,6 +1063,4 @@
         margin: auto;
         @include pill(500px, 70px)
     }
-
-
 }
