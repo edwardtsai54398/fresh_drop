@@ -11,19 +11,19 @@
                 <div class="solgan">
                         <p>不知道吃什麼嗎 一起來看看專屬於你的命定料理吧 </p>
                 </div>
-                <div class="card" v-for="item in card" :key="item.id">
+                <div class="game_card" v-for="item in card" :key="item.id">
                         <div class="clip">
                                 <img src="@/assets/images/game/clip.png" alt="">
                         </div>
                         <div class="wrap">
-                                <div class="title">{{ item.title }}</div>
-                                <div class="question">{{ item.question }}</div>
+                                <div class="txt">
+                                        <div class="title">{{ item.title }}</div>
+                                        <div class="question">{{ item.question }}</div>
+                                </div>
                                 <div class="pic">
                                         <img :src="item.img" alt="">
                                 </div>
                                 <div class="btns_wrap">
-                                        <div class="title1">{{ item.title }}</div>
-                                        <div class="question2">{{ item.question }}</div>
                                         <button class="choose_btn" :class="{ active: isClicked }" @click="changeColor">{{
                                                 item.btn1
                                         }}</button>
@@ -34,7 +34,10 @@
                                 </div>
                         </div>
                 </div>
-                <div class="card">
+                <div class="analyze_card">
+                        <div class="clip">
+                                <img src="@/assets/images/game/clip.png" alt="">
+                        </div>
                         <div class="wrap">
                                 <div class="title">分析結果</div>
                                 <div class="recommend row">
@@ -71,10 +74,14 @@
                                                 </div>
                                         </div>
                                 </div>
-                                <p class="personality">|{{ result[0].personality }}|</p>
-                                <p class="txt">{{ result[0].txt }}</p>
-                                <button class="next_btn">前往購買</button>
-                                <button class="next_btn">再玩一次</button>
+                                <div class="analyze">
+                                        <p class="personality">|{{ result[0].personality }}|</p>
+                                        <p class="txt">{{ result[0].txt }}</p>
+                                </div>
+                                <div class="btns_wrap">
+                                        <button class="next_btn">前往購買</button>
+                                        <button class="next_btn">再玩一次</button>
+                                </div>
                         </div>
                 </div>
         </div>
