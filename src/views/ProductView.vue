@@ -1,6 +1,7 @@
 <template>
     <div class="container product_container">
         <div class="main_wrap">
+            <!-- 產品介紹 -->
             <section class="main">
                 <div class="main_title">
                     <button class="btn_s btn_left">
@@ -71,6 +72,7 @@
                     </div>
                 </article>
             </section>
+            <!-- 熱門推薦 -->
             <aside class="recommend">
                 <div class="hot_ranking">
                     <div class="hot_title">
@@ -97,6 +99,7 @@
                 </div>
             </aside>
         </div>
+        <!-- 心得分享 -->
         <section class="share">
             <div class="text">
                 <p class="title">一起做</p>
@@ -129,9 +132,51 @@
                     </div>
                 </div>
             </div>
-            <div class="btn_l">上傳烹煮心得</div>
+            <button class="upload_out btn_l" @click="uploadExpend">
+                上傳烹煮心得
+            </button>
         </section>
+        <!-- 上傳心得分享彈窗遮罩 -->
+        <div class="mask" v-show="isExpendUpload"></div>
+        <!-- 上傳心得分享彈窗 -->
+        <div class="upload_window" v-show="isExpendUpload">
+            <div class="title_window">
+                <p class="text_title">心得分享</p>
+                <button class="cross" @click="uploadExpend">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="title">
+                <div class="type">
+                    <span>{{ newProduct.category }}</span>
+                </div>
+                <h2>{{ newProduct.name }}</h2>
+            </div>
+            <div class="upload_wrap">
+                <div>
+                    <div class="upload_file">
+                        <input type="file" @change="handleFileUpload" />
+                        <button @click="uploadFile">
+                            <!-- <span><i class="fa-regular fa-image"></i></span>
+                                <span>點擊上傳照片</span> -->
+                        </button>
+                    </div>
+                    <div class="text_wrap">
+                        <textarea
+                            v-model="text"
+                            placeholder="說說你的烹飪心得吧！"
+                            class="upload_text"
+                        ></textarea>
+                    </div>
+                </div>
+                <button @click="uploadText" class="upload_btn btn_m">
+                    發布心得
+                </button>
+            </div>
+        </div>
+        <!-- 看更多彈窗遮罩 -->
         <div class="mask" v-show="isExpendVisible"></div>
+        <!-- 看更多心得分享彈窗 -->
         <section class="more_expend" v-show="isExpendVisible">
             <div class="title">
                 <div class="type">
@@ -172,7 +217,9 @@
                     <span>back</span>
                     <i class="fa-sharp fa-solid fa-arrow-left"></i>
                 </button>
-                <button class="upload btn_s">上傳烹煮心得</button>
+                <button class="upload btn_s" @click="uploadExpend">
+                    上傳烹煮心得
+                </button>
             </div>
         </section>
     </div>
@@ -188,6 +235,7 @@ export default {
             productList,
             productShare,
             isExpendVisible: false,
+            isExpendUpload: false,
         };
     },
     methods: {
@@ -196,6 +244,9 @@ export default {
         },
         toggleExpend() {
             this.isExpendVisible = !this.isExpendVisible;
+        },
+        uploadExpend() {
+            this.isExpendUpload = !this.isExpendUpload;
         },
     },
     computed: {

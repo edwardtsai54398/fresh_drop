@@ -87,7 +87,7 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
+        gap: 16px;
 
         li {
             width: 100%;
@@ -133,6 +133,18 @@
     }
 }
 
+.recommend {
+    display: block;
+}
+
+.hot_ranking {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 110px;
+    // margin-bottom: 60px;
+}
+
 .hot_title {
     width: 110px;
     height: 60px;
@@ -159,18 +171,6 @@
     }
 }
 
-.recommend {
-    display: block;
-}
-
-.hot_ranking {
-    display: flex;
-    flex-direction: column;
-    position: sticky;
-    top: 60px;
-    margin-bottom: 60px;
-}
-
 //768以下隱藏熱門推薦
 .hot_product {
     display: none;
@@ -188,11 +188,10 @@
     }
 }
 
-
 .share {
     max-width: 1920px;
     overflow: hidden;
-    padding: 20px 20px;
+    padding: 20px 20px 60px 20px;
     background-color: $secondary--;
     border-radius: $m-br;
 }
@@ -200,7 +199,7 @@
 .text {
     display: flex;
     justify-content: space-between;
-    margin: 24px;
+    margin: 0 24px 24px 24px;
     align-items: center;
 
     .title {
@@ -258,25 +257,124 @@
         }
 
         .name {
-            font-size: $xs-font;
+            font-size: $s-font;
             word-break: break-all;
         }
     }
 
     .message {
-        font-size: $xs-font;
+        font-size: $s-font;
         width: 100%;
     }
 }
 
-.btn_l {
+.upload_out {
+    display: flex;
     margin: auto;
-    width: auto;
-    font-size: $m-font;
+    width: 90%;
+    font-size: 24px;
     max-width: 500px;
+    justify-content: center;
 }
 
-//遮罩
+// 上傳心得分享彈窗
+.upload_window {
+    width: 90%;
+    max-width: 900px;
+    background-color: $secondary--;
+    border-radius: $m-br;
+    align-items: center;
+    margin: auto;
+
+    position: fixed;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+    .title_window {
+        border-bottom: 1px solid $secondary;
+        position: relative;
+
+        .text_title {
+            font-size: $m-font;
+            padding: 20px 0;
+            display: block;
+            text-align: center;
+        }
+
+        .cross {
+            font-size: $m-font;
+            position: absolute;
+            right: 30px;
+            top: 25px;
+        }
+    }
+
+    .title {
+        justify-content: center;
+    }
+
+    .upload_wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 30px 30px 30px;
+        align-items: center;
+
+        >div {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .upload_file {
+            width: 100%;
+            height: 250px;
+            text-align: center;
+            border: 2px solid $secondary;
+            border-radius: $m-br;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &::placeholder {
+                width: 100px;
+            }
+        }
+
+        .text_wrap {
+            width: 100%;
+            height: 200px;
+
+            .upload_text {
+                width: 100%;
+                height: 100%;
+                border: 2px solid $secondary;
+                border-radius: $m-br;
+                padding: 20px;
+                font-size: $s-font;
+
+                &:focus::placeholder {
+                    color: transparent;
+                }
+            }
+
+        }
+
+        .upload_btn {
+            width: 90%;
+            max-width: 500px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+
+// 彈窗遮罩
 .mask {
     position: fixed;
     top: 0;
@@ -295,16 +393,21 @@
     border-radius: 20px;
     padding: 20px 20px;
     position: fixed;
-    inset: 100px 10px 10px 10px;
+    // inset: 100px 10px 10px 10px;
     z-index: 2;
     overflow-y: scroll;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 80%;
 }
 
 .title {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    // justify-content: center;
     gap: 10px;
     font-size: $m-font;
     color: $text;
@@ -381,7 +484,7 @@
         display: flex;
         flex-direction: column;
         position: sticky;
-        top: 60px;
+        top: 120px;
         margin-bottom: 60px;
     }
 
@@ -451,10 +554,27 @@
         }
     }
 
-
     .btn_l {
         @include pill(500px, 70px);
         font-size: $l-font;
+    }
+
+    .upload_window {
+
+        .upload_wrap {
+
+            >div {
+                flex-direction: row;
+            }
+
+            .text_wrap {
+                height: 250px;
+            }
+
+            .upload_btn {
+                font-size: $l-font;
+            }
+        }
     }
 }
 
@@ -598,7 +718,7 @@
         display: flex;
         flex-direction: column;
         position: sticky;
-        top: 60px;
+        top: 120px;
         margin-bottom: 60px;
     }
 
@@ -667,7 +787,7 @@
     .share {
         max-width: 1920px;
         overflow: hidden;
-        padding: 40px 40px;
+        padding: 40px 40px 60px 40px;
         background-color: $secondary--;
         border-radius: $m-br;
     }
@@ -675,7 +795,7 @@
     .text {
         display: flex;
         justify-content: space-between;
-        margin: 24px;
+        margin: 0 24px 24px 24px;
 
         .title {
             font-size: $l-font;
@@ -761,9 +881,9 @@
 
 
             .back {
-                width: 20%;
+                width: 30%;
                 justify-content: center;
-                max-width: 100px;
+                max-width: 150px;
                 font-size: $l-font;
             }
 
@@ -774,9 +894,8 @@
             }
         }
     }
-
-
 }
+
 
 // min-width: 1200px
 @include desktop {
@@ -918,7 +1037,7 @@
         display: flex;
         flex-direction: column;
         position: sticky;
-        top: 60px;
+        top: 120px;
         margin-bottom: 60px;
     }
 
@@ -1002,7 +1121,7 @@
     .text {
         display: flex;
         justify-content: space-between;
-        margin: 24px;
+        margin: 0 24px 24px 24px;
 
         .title {
             font-size: $l-font;
@@ -1066,7 +1185,7 @@
         }
 
         .message {
-            font-size: $s-font;
+            font-size: $m-font;
             width: 100%;
         }
     }
