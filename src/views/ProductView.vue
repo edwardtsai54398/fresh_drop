@@ -264,7 +264,9 @@ export default {
                 (item) => item.id >= 2 && item.id <= 6
             );
         },
-        //待修改
+    },
+    watch: {
+        //待修改watch
         filteredProductShare() {
             if (window.innerWidth < 767) {
                 return this.productShare.filter(
