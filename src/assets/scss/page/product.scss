@@ -17,7 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #000;
+    color: #000000;
     font-family: Inter;
     font-weight: 700;
 
@@ -153,7 +153,7 @@
     font-size: $xs-font;
     font-weight: 700;
     border-radius: $xl-br;
-    border: 6px solid #fff;
+    border: 6px solid #ffffff;
     background: #edebda;
     display: flex;
     justify-content: center;
@@ -277,6 +277,17 @@
     justify-content: center;
 }
 
+// 上傳心得分享彈窗遮罩
+.mask_upload {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 3;
+}
+
 // 上傳心得分享彈窗
 .upload_window {
     width: 90%;
@@ -285,9 +296,9 @@
     border-radius: $m-br;
     align-items: center;
     margin: auto;
-
+    // 設定fixed位置
     position: fixed;
-    z-index: 2;
+    z-index: 4;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -374,19 +385,18 @@
     }
 }
 
-// 彈窗遮罩
-.mask {
+// 看更多彈窗遮罩
+.mask_more {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    /* 半透明的遮罩顏色 */
     z-index: 1;
-    /* 遮罩的層疊順序要比 .more_expend 元素低 */
 }
 
+// 看更多心得分享彈窗
 .more_expend {
     background-color: $secondary--;
     margin: 20px 0;
@@ -412,7 +422,7 @@
     gap: 10px;
     font-size: $m-font;
     color: $text;
-    padding: 30px 0 20px 0;
+    padding: 30px 10px 20px 10px;
 
     .type {
         width: 70px;
@@ -482,37 +492,19 @@
     }
 
     .hot_ranking {
-        display: flex;
-        flex-direction: column;
-        position: sticky;
-        top: 160px;
         margin-bottom: 60px;
     }
 
     .hot_title {
         width: 100%;
+        max-width: 400px;
         padding: 28px 0;
-        color: $text;
-        font-family: $prim-font;
         font-size: $s-font;
-        font-weight: 700;
-        border-radius: $xl-br;
         border: 5px solid #fff;
         background: #edebda;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         position: relative;
-        margin: auto;
         bottom: 0;
         right: 0;
-
-        img {
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
     }
 
     .hot_product {
@@ -583,48 +575,13 @@
 @include pad-H {
     .main {
         width: 70%;
-        overflow: hidden;
     }
 
     .main_title {
-        width: 100%;
-        padding: $sp5;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #000;
-        font-family: Inter;
-        font-weight: 700;
-
-        button {
-            position: absolute;
-            left: 0;
-        }
 
         .title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
             font-size: $xl-font;
-            color: $text;
 
-            .type {
-                width: 98px;
-                height: 42px;
-                flex-shrink: 0;
-                border-radius: $l-br;
-                background: $secondary;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                span {
-                    color: #ffffff;
-                    font-size: $m-font;
-                    font-family: "Noto Sans TC";
-                }
-            }
         }
     }
 
@@ -636,8 +593,6 @@
 
         .text {
             font-size: $m-font;
-            text-align: center;
-
         }
     }
 
@@ -645,224 +600,83 @@
         padding-bottom: 80px;
 
         >div>p {
-            display: block;
-            width: 100%;
-            text-align: center;
             font-size: $l-font;
-            padding: 12px 0;
-            margin: $sp4 0;
-            border: 6px solid #ffffff;
-            background-color: #EDEBDA;
-            border-radius: 50px;
-            color: $primary;
-            font-weight: 700;
         }
 
         .wrap {
             padding: 0 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 16px;
-
-            li {
-                width: 100%;
-
-                .number {
-                    font-size: 40px;
-                    color: $secondary;
-                    font-weight: 700;
-                    padding-right: 10px;
-                    font-style: italic;
-                }
-
-                .title_border {
-                    border-bottom: 2px dashed $secondary;
-
-                    .title {
-                        margin-bottom: 5px;
-                    }
-                }
-
-                .info {
-                    padding: 4px 0;
-                }
-            }
-        }
-
-        div:nth-child(3)>* {
-            //選取info_text的第三個div之下的子元素
-            flex-direction: row;
-            flex-wrap: wrap
         }
 
         p {
             font-size: $m-font;
         }
-
-        .allergy {
-            display: inline-block;
-            padding: 4px 30px;
-            border-radius: 30px;
-            border: 3px solid $secondary;
-            background-color: $secondary--;
-        }
     }
 
     .recommend {
         width: 30%;
-        position: relative;
-        padding: 210px 0 0 32px;
-    }
-
-    .hot_ranking {
-        display: flex;
-        flex-direction: column;
-        position: sticky;
-        top: 160px;
-        margin-bottom: 60px;
     }
 
     .hot_title {
         padding: 35px 0;
-        color: $text;
-        font-family: $prim-font;
         font-size: $m-font;
-        font-weight: 700;
-        border-radius: $xl-br;
-        border: 6px solid #fff;
-        background: #edebda;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        margin: auto;
-
-        img {
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
     }
 
     .hot_product {
-        display: flex;
-        margin-top: 35px;
         gap: 35px;
-        cursor: pointer;
 
         .pic {
             width: 180px;
             height: 180px;
-            border-radius: 5px;
 
             img {
-                border-radius: 5px;
                 width: 100%;
                 height: 100%;
-                vertical-align: top;
             }
         }
 
         .hot_info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
 
             .hot_type {
-                border-radius: $m-br;
-                background-color: $secondary--;
                 font-size: $s-font;
-                font-weight: 700;
                 width: auto;
             }
 
             .hot_name {
-                margin-top: 15px;
                 font-size: $m-font;
-                color: $text;
             }
         }
     }
 
     .share {
-        max-width: 1920px;
-        overflow: hidden;
         padding: 40px 40px 60px 40px;
-        background-color: $secondary--;
-        border-radius: $m-br;
     }
 
     .text {
-        display: flex;
-        justify-content: space-between;
-        margin: 0 24px 24px 24px;
 
         .title {
             font-size: $l-font;
-            color: $primary;
-            font-weight: 700;
         }
 
         .more {
             font-size: $m-font;
-            color: $text;
-
-            &:hover {
-                text-decoration: underline;
-            }
         }
-    }
-
-    .cook {
-        display: flex;
-        margin-bottom: 40px;
-
-        .card {
-            padding: 10px;
-
-        }
-    }
-
-    .pic_food {
-        width: 100%;
-        border: 5px solid $bg--;
-        border-radius: $l-br;
     }
 
     .user {
-        display: flex;
-        margin: 24px;
-        align-items: center;
-        flex-direction: column;
 
         .wrap {
-            display: flex;
-            width: 100%;
-            align-items: center;
-            margin-bottom: 16px;
             flex-direction: row;
             gap: 0;
-
 
             .pic_people {
                 width: 60px;
                 height: 60px;
-                border-radius: 50%;
-                flex-shrink: 0;
                 margin-right: 16px;
-            }
-
-            .name {
-                font-size: $m-font;
-                word-break: break-all;
             }
         }
 
         .message {
             font-size: $m-font;
-            width: 100%;
         }
     }
 
@@ -901,298 +715,7 @@
 
 // min-width: 1200px
 @include desktop {
-    .product_container {
-
-        .main_wrap {
-            display: flex;
-            flex-direction: row;
-        }
-    }
-
-    .main {
-        width: 70%;
-        overflow: hidden;
-    }
-
-    .main_title {
-        width: 100%;
-        padding: $sp5;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #000;
-        font-family: Inter;
-        font-weight: 700;
-
-        button {
-            position: absolute;
-            left: 0;
-        }
-
-        .title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: $xl-font;
-            color: $text;
-
-            .type {
-                width: 98px;
-                height: 42px;
-                flex-shrink: 0;
-                border-radius: $l-br;
-                background: $secondary;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                span {
-                    color: #ffffff;
-                    font-size: $m-font;
-                    font-family: "Noto Sans TC";
-                }
-            }
-        }
-    }
-
-    .info_pic {
-        .pic {
-            width: 100%;
-            height: 700px;
-        }
-
-        .text {
-            font-size: $m-font;
-            text-align: center;
-        }
-    }
-
-    .info_text {
-
-        >div>p {
-            display: block;
-            width: 100%;
-            text-align: center;
-            font-size: $l-font;
-            padding: 12px 0;
-            margin: $sp4 0;
-            border: 6px solid #ffffff;
-            background-color: #EDEBDA;
-            border-radius: 50px;
-            color: $primary;
-            font-weight: 700;
-        }
-
-        .wrap {
-            padding: 0 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 16px;
-
-            li {
-                width: 100%;
-
-                .number {
-                    font-size: 40px;
-                    color: $secondary;
-                    font-weight: 700;
-                    padding-right: 10px;
-                    font-style: italic;
-                }
-
-                .title_border {
-                    border-bottom: 2px dashed $secondary;
-
-                    .title {
-                        margin-bottom: 5px;
-                    }
-                }
-
-                .info {
-                    padding: 4px 0;
-                }
-            }
-        }
-
-        div:nth-child(3)>* {
-            //選取info_text的第三個div之下的子元素
-            flex-direction: row;
-            flex-wrap: wrap
-        }
-
-        p {
-            font-size: $m-font;
-        }
-
-        .allergy {
-            display: inline-block;
-            padding: 4px 30px;
-            border-radius: 30px;
-            border: 3px solid $secondary;
-            background-color: $secondary--;
-        }
-    }
-
-    .hot_ranking {
-        display: flex;
-        flex-direction: column;
-        position: sticky;
-        top: 160px;
-        margin-bottom: 60px;
-    }
-
-    .hot_title {
-        color: $text;
-        font-family: $prim-font;
-        font-size: $m-font;
-        font-weight: 700;
-        border-radius: $xl-br;
-        border: 6px solid #fff;
-        background: #edebda;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        margin: auto;
-
-        img {
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-    }
-
-    .recommend {
-        width: 30%;
-        position: relative;
-        padding: 210px 0 0 32px;
-    }
-
-    .hot_product {
-        display: flex;
-        margin-top: 35px;
-        gap: 35px;
-        cursor: pointer;
-
-        .pic {
-            width: 180px;
-            height: 180px;
-            border-radius: 5px;
-
-            img {
-                border-radius: 5px;
-                width: 100%;
-                height: 100%;
-                vertical-align: top;
-            }
-        }
-
-        .hot_info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-
-            .hot_type {
-                padding: 6px 23px;
-                border-radius: $m-br;
-                background-color: $secondary--;
-                font-size: 20px;
-                font-weight: 700;
-            }
-
-            .hot_name {
-                margin-top: 15px;
-                font-size: 30px;
-                color: $text;
-            }
-        }
-    }
-
-    .share {
-        // max-width: 1920px;
-        overflow: hidden;
-        // padding: 40px 120px;
-        background-color: $secondary--;
-        border-radius: $m-br;
-    }
-
-    .text {
-        display: flex;
-        justify-content: space-between;
-        margin: 0 24px 24px 24px;
-
-        .title {
-            font-size: $l-font;
-            color: $primary;
-            font-weight: 700;
-        }
-
-        .more {
-            font-size: $m-font;
-            color: $text;
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-    }
-
-    .cook {
-        display: flex;
-        margin-bottom: 40px;
-
-        // .card {
-        //     padding: 24px;
-
-        // }
-    }
-
-    .pic_food {
-        width: 100%;
-        border: 5px solid $bg--;
-        border-radius: $l-br;
-    }
-
     .user {
-        display: flex;
         margin: 24px;
-        align-items: center;
-        flex-direction: column;
-
-        .wrap {
-            display: flex;
-            width: 100%;
-            align-items: center;
-            margin-bottom: 16px;
-            flex-direction: row;
-            gap: 0;
-
-
-            .pic_people {
-                width: 60px;
-                height: 60px;
-                border-radius: 50%;
-                flex-shrink: 0;
-                margin-right: 16px;
-            }
-
-            .name {
-                // font-size: $m-font;
-                word-break: break-all;
-            }
-        }
-
-        .message {
-            font-size: $m-font;
-            width: 100%;
-        }
-    }
-
-    .btn_l {
-        margin: auto;
-        @include pill(500px, 70px)
     }
 }

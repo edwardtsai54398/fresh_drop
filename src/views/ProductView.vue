@@ -137,7 +137,7 @@
             </button>
         </section>
         <!-- 上傳心得分享彈窗遮罩 -->
-        <div class="mask" v-show="isExpendUpload"></div>
+        <div class="mask_upload" v-show="isExpendUpload"></div>
         <!-- 上傳心得分享彈窗 -->
         <div class="upload_window" v-show="isExpendUpload">
             <div class="title_window">
@@ -175,9 +175,9 @@
             </div>
         </div>
         <!-- 看更多彈窗遮罩 -->
-        <div class="mask" v-show="isExpendVisible"></div>
-        <!-- 看更多心得分享彈窗 -->
-        <section class="more_expend" v-show="isExpendVisible">
+        <div class="mask_more" v-show="isExpendVisible"></div>
+        <!-- 看更多心得分享彈窗(回到頂部) -->
+        <section class="more_expend" v-show="isExpendVisible" ref="moreRef">
             <div class="title">
                 <div class="type">
                     <span>{{ newProduct.category }}</span>
@@ -242,9 +242,18 @@ export default {
         update(index) {
             this.newProduct = { ...this.filteredProductList[index] };
         },
+        // 看更多心得分享彈窗
         toggleExpend() {
+            // 展開/收合
             this.isExpendVisible = !this.isExpendVisible;
+            // 回到頂部
+            if (this.isExpendVisible) {
+                this.$nextTick(() => {
+                    this.$refs.moreRef.scrollTop = 0;
+                });
+            }
         },
+        // 上傳心得分享彈窗
         uploadExpend() {
             this.isExpendUpload = !this.isExpendUpload;
         },
