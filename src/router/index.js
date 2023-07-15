@@ -44,10 +44,17 @@ const routesUser = [
     component: () => import(/* webpackChunkName: "about" */ '../views/GiftcardView.vue')
   },
   {
-    path: '/game',
-    name: 'game',
-
-    // route level code-splitting
+    path: '/giftcardprogress',
+    name: 'giftcardprogress',
+      // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    // component: AboutView,
+    component: () => import(/* webpackChunkName: "about" */ '../views/GiftcardProgressView.vue')
+  },
+  {path: '/game',
+  name: 'game',
+     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     // component: AboutView,
@@ -61,6 +68,33 @@ const routesUser = [
     // which is lazy-loaded when the route is visited.
     // component: AboutView,
     component: () => import(/* webpackChunkName: "about" */ '../views/MeatView.vue')
+  },
+  {
+    path: '/certified',
+    name: 'certified',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    // component: AboutView,
+    component: () => import(/* webpackChunkName: "about" */ '../views/CertifiedView.vue')
+  },
+  {
+    path: '/faq',
+    name: 'faq',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    // component: AboutView,
+    component: () => import(/* webpackChunkName: "about" */ '../views/FaqView.vue')
+  },
+  {
+    path: '/source',
+    name: 'source',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    // component: AboutView,
+    component: () => import(/* webpackChunkName: "about" */ '../views/SourceView.vue')
   },
 ]
 
