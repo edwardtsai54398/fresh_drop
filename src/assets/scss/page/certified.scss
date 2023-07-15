@@ -1,0 +1,394 @@
+//認證頁面主標
+.certifiedPage_title{
+    h4{
+        font-size: $s-font;
+        color: $primary;
+        margin: 20px;
+        text-align: center;
+    }
+}
+//banner區域
+.banner_container{
+    position: relative;
+    .banner_box{
+        .banner_img{
+            width: 100%;
+        }
+        .banner_title{
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            h5{
+                font-size: $s-font;
+                white-space: pre-line;
+                color: #fff;
+                line-height: 1.5;
+            }
+        }
+        .veg_ill{
+            width: 15%;
+            position: absolute;
+            left: 10px;
+            bottom: -30px;
+        }
+        .tom_ill{
+            width: 15%;
+            position: absolute;
+            right: 40px;
+            bottom: -40px;
+        }
+    }  
+    .bg_img{
+        width: 50%;
+        position: absolute;
+        right: 0;
+        top: 160px;
+        z-index: -1;
+    }
+}
+//人物插畫
+.person_ill_container{
+    .person_container{
+            display: flex;
+            justify-content: center;
+            margin: $sp4 0;
+        .person_box{
+            width: 250px;
+            .person_img{
+                width: 100%;
+                // outline: solid red;
+            }
+            .person_img2{
+                width: 100%;
+                // outline: solid red;
+            }
+            .person_img3{
+                width: 100%;
+                // outline: solid red;
+            }
+            .person_title{
+                h6{
+                    position: relative;
+                    top: -50px;
+                    font-size: $xs-font;
+                    color: $primary;
+                    text-align: center;
+                    white-space: pre-line;
+                    line-height: 1.5;
+                }
+            }           
+        }
+    }  
+}
+//檢驗報告
+.certified_container{
+    padding: $sp5 0;
+    background-color: $primary--;
+    // margin: $sp7 0;
+    .certified_title{
+        h5{
+            font-size: $s-font;
+            color: $primary; 
+            text-align: center;
+            padding: $sp1 0;
+        }
+    }
+    .certified_text{
+        p{
+          font-size: $xs-font;  
+          color: $primary; 
+          text-align: center;
+          white-space: pre-line;
+        }
+    }
+    .certified_img_container{
+        display: flex;
+        justify-content: center;
+        .certified_img{
+            width: 50%;
+            margin: $sp4 0;
+        }
+    }
+}
+//底部插畫
+.bgImg_container{
+    position: relative;
+    width: 100%;
+    .circle{
+        position: absolute;
+        width: 50%;
+        top: -80px;
+        z-index: 1;
+    }
+    .mushroom{
+        width: 30%;
+        position: absolute;
+        top: -60px;
+        left: 10px;
+        z-index: 2;
+    }
+    .doctor{
+        width: 20%;
+        position: absolute;
+        top: -150px;
+        right: 10px;
+        z-index: 2;
+    }
+}
+//footer
+.mainfooter{
+    position: relative;
+    z-index: 1;
+}
+
+// 斷點768px
+@include pad-V{
+    //banner區域
+    .banner_container{
+        position: relative;
+        .banner_box{
+            .banner_title{
+                position: absolute;
+                left: 145px;
+                top: 100px;
+                h5{
+                    font-size: $xl-font;
+                    line-height: 1.5;
+                }
+            }
+            .tom_ill{
+                position: absolute;
+                bottom: -50px;
+                width: 10%;
+                right: 80px;
+            }
+            .veg_ill{
+                width: 15%;
+                left: 20px;
+            }
+        }
+        .bg_img{
+            width: 35%;
+            position: absolute;
+            top: 300px;
+
+        }
+    }
+    //人物插畫
+    .personAll_container{
+        margin: $sp2 0;
+        display: flex;
+        justify-content: center;
+        .person_ill_container{
+            .person_box{
+                width: 100%;
+                margin: $sp3;
+                .person_img{
+                    width: 100%;
+                }
+                .person_img2{
+                    width: 100%;
+                }
+                .person_title{
+                    h6{
+                        font-size: $m-font;
+                        line-height: 1.5;
+                    }
+                }
+            }
+            
+        }
+    }
+    //檢驗報告
+    .certified_container{
+        // outline: solid red;
+        .certified_title{
+            h5{
+                font-size: $l-font;
+            }
+        }
+        .certified_text{
+            p{
+                font-size: $m-font;
+            }
+        }
+    }
+    //底部插畫
+    .bgImg_container{
+        position: relative;
+        .doctor{
+            width: 15%;
+            position: absolute;
+            right: 40px;
+            top:-200px
+        }
+        .mushroom{
+            width: 20%;
+            position: absolute;
+            top: -110px;
+        }
+        .circle{
+            width: 30%;
+            position: absolute;
+            top: -150px;
+        }
+        
+    }
+}
+
+// 斷點1024
+@include pad-H {
+    // //banner區域
+    // .banner_container{
+    //     position: relative;
+    //     .banner_box{
+    //         .banner_title{
+    //             position: absolute;
+    //             left: 145px;
+    //             top: 100px;
+    //             h5{
+    //                 font-size: $xl-font;
+    //                 line-height: 1.5;
+    //             }
+    //         }
+    //         .tom_ill{
+    //             position: absolute;
+    //             bottom: -50px;
+    //             width: 10%;
+    //             right: 80px;
+    //         }
+    //         .veg_ill{
+    //             width: 15%;
+    //             left: 20px;
+    //         }
+    //     }
+    //     .bg_img{
+    //         max-width: 30%;
+    //         position: absolute;
+    //         top: 500px;
+
+    //     }
+    // }
+    // //人物插畫
+    // .personAll_container{
+    //     margin: $sp2 0;
+    //     display: flex;
+    //     justify-content: center;
+    //     .person_ill_container{
+    //         .person_box{
+    //             width: 280px;
+    //             margin: $sp3;
+    //             .person_img{
+    //                 width: 100%;
+    //             }
+    //             .person_img2{
+    //                 width: 100%;
+    //             }
+    //             .person_title{
+    //                 h6{
+    //                     font-size: $m-font;
+    //                     line-height: 1.5;
+    //                 }
+    //             }
+    //         }
+            
+    //     }
+    // }
+    // //檢驗報告
+    // .certified_container{
+    //     // outline: solid red;
+    //     .certified_title{
+    //         h5{
+    //             font-size: $l-font;
+    //         }
+    //     }
+    //     .certified_text{
+    //         p{
+    //             font-size: $m-font;
+    //         }
+    //     }
+    // }
+    // //底部插畫
+    // .bgImg_container{
+    //     position: relative;
+    //     .doctor{
+    //         width: 15%;
+    //         position: absolute;
+    //         right: 40px;
+    //         top:-200px
+    //     }
+    //     .mushroom{
+    //         width: 20%;
+    //         position: absolute;
+    //         top: -110px;
+    //     }
+    //     .circle{
+    //         width: 30%;
+    //         position: absolute;
+    //         top: -150px;
+    //     }
+        
+    // }
+}
+
+
+// 斷點1200
+@include desktop {
+    //banner區域
+    .banner_container{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        .banner_box{
+            max-width: 1500px;
+            position: relative;
+            .banner_img{
+                img{
+                    max-width: 1500px;
+                }
+            }
+            .banner_title{
+                position: absolute;
+                left: 200px;
+                top: 150px;
+                h5{
+                    font-size: 48px;
+                    line-height: 1.5;
+                }
+            }    
+        }   
+        .bg_img{
+            width: 30%;
+            position: absolute;
+            top: 250px;
+        }
+    }
+    .certified_container{
+        margin-bottom:200px;
+        .certified_img{
+            display: flex;
+            justify-content: center;
+            img{
+                width: 50%;
+            }
+        }
+    }
+    .bgImg_container{
+        position: relative;
+        .circle{
+            position: absolute;
+            top: -230px;
+        }
+        .mushroom{
+            position: absolute;
+            top: -200px;
+            left: 40px;
+        }
+        .doctor{
+            max-width: 20%;
+            position: absolute;
+            right: 100px;
+            top: -350px;
+        }
+    }
+}
