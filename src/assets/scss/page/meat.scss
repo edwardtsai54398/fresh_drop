@@ -1,18 +1,20 @@
+//頁面主標題
 .meatPage_title{
     h4{
         text-align: center;
         font-size: $s-font;
         color: $primary;
-        margin: 20px;
+        margin: $sp3;
     }
 }
+//肉品介紹卡片
 .meat_card_container{
     display: flex;
     justify-content: center;
     .meat_title{
         display: flex;
         justify-content: center;
-        margin: 20px 0;
+        margin: $sp3 0;
         h5{
             font-size: $s-font;
             color: #ffffff;
@@ -23,30 +25,32 @@
             text-align: center;
         }
     }
+}
+.meat_card_box{
+    margin: $sp3 0;
+    position: relative;
     .meat_card{
-        width: 315px;
+        margin: 0 $sp4;
+        min-width: 315px;
         border: 4px solid #1F8D61;
         border-radius: $xs-br;
-        padding: 25px;
+        padding: $sp3;
         background-color: $bg--;
         .pic{
             width: 100%;
         }
         .farmer_title{
             font-size: $s-font;
-            padding: 20px;
+            padding: $sp3;
             text-align: center;
         }
     }
-}
-.meat_card_box{
-    margin: 20px 0;
-    position: relative;
     .chicken_ill{
+        outline: solid red;
         width: 50%;
         position: absolute;
-        left: -20px;
-        top: -10px;
+        left: 0px;
+        top: 0px;
     }
     .pork_ill{
         width: 50%;
@@ -73,10 +77,10 @@
         left: -80px;
     }
     .shrimp_ill{
-        width: 50%;
+        width: 30%;
         position: absolute;
         top: 5px;
-        right: -10px;
+        right: 15px;
     }
     .bg_top{
         width: 100%;
@@ -85,12 +89,26 @@
         left: -90px;
         top: -130px;
     }
-        .bg_bottom{
-        // outline: solid red;
-        width: 100%;
+    .bg_bottom{
+        width: 80%;
         position: absolute;
         z-index: -1;
-        right: -40px;
+        right: 20px;
         bottom: -180px;
     }
 }
+//斷點 768px
+@include pad-V{
+    .meat_card_container{
+        .meat_card{
+            max-width: 1500px;
+        }
+    }
+
+}
+
+//斷點 1024px
+@include pad-H{}
+
+//斷點 1200px
+@include desktop{}
