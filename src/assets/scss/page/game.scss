@@ -129,7 +129,12 @@
             }
 
             .next_btn {
-                @extend .choose_btn;
+                padding: $sp2 $sp3;
+                font-size: $s-font;
+                background-color: $secondary--;
+                width: 100%;
+                margin-top: $sp2;
+                border-radius: 30px;
                 color: #FFF;
                 background-color: $primary;
                 margin-top: $sp4;
@@ -324,12 +329,12 @@
                 width: 100%;
 
                 .title {
-                    font-size: $xs-font;
+                    font-size: $s-font;
                     color: $primary;
                 }
 
                 .question {
-                    font-size: $s-font;
+                    font-size: $m-font;
                     text-align: center;
                     color: $primary;
                     margin-top: $sp2;
@@ -357,11 +362,12 @@
 
                 .choose_btn {
                     padding: $sp2 $sp3;
-                    font-size: $s-font;
+                    font-size: $m-font;
                     background-color: $secondary--;
                     width: 100%;
                     margin-top: $sp2;
                     border-radius: 30px;
+                    aspect-ratio: 430/160;
                 }
 
                 .active {
