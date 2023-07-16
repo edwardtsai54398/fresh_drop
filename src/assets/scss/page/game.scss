@@ -77,7 +77,7 @@
         font-weight: 700;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 0.7fr 2fr 1.5fr;
+        // grid-template-rows: 0.2fr 1fr 1fr;
         padding: $sp2;
 
         .txt {
@@ -132,7 +132,7 @@
                 @extend .choose_btn;
                 color: #FFF;
                 background-color: $primary;
-                margin-top: $sp5;
+                margin-top: $sp4;
                 width: 80%;
             }
         }
@@ -160,7 +160,7 @@
         font-weight: 700;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 0.3fr 2fr .5fr 0.3fr;
+        // grid-template-rows: 0.2fr 1fr .3fr 0.5fr;
         padding: $sp2;
 
         .title {
@@ -219,7 +219,7 @@
             .next_btn {
                 color: #FFF;
                 background-color: $primary;
-                margin-top: $sp5;
+                margin-top: $sp2;
                 padding: $sp2 $sp3;
                 width: 80%;
                 font-size: $s-font;
@@ -371,7 +371,7 @@
                 .next_btn {
                     color: #FFF;
                     background-color: #1F8D61;
-                    margin-top: 40px;
+                    margin-top: $sp2;
                     width: 80%;
                 }
             }
@@ -421,7 +421,6 @@
             background-image: url(@/assets/images/game/game_bg.png);
             background-size: cover;
 
-            .title {}
 
             .recommend {
                 display: flex;
