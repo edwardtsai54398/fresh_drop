@@ -20,6 +20,27 @@ $toggle-link-h: 52px;
             line-height: $toggle-link-h;
             padding: 0 $sp5;
     }
+    .circle{
+        position: absolute;
+        bottom: 0;
+        aspect-ratio: 1/1;
+        width: calc(100% / 5);
+        border-radius: 50%;
+        background-color: $bg;
+        z-index: -1;
+        transform: scale(1.5);
+        @for $i from 1 through 5{
+            &:nth-child(#{$i}){
+                left: calc(calc($i - 1) * 100 / 5 * 1%);
+            }
+        }
+        &:nth-child(1), &:nth-child(5){
+            bottom: 8px;
+        }
+        &:nth-child(2), &:nth-child(4){
+            bottom: 4px;
+        }
+    }
 }
 @media screen and (max-width: 766px){
     .mainheader{
@@ -89,6 +110,7 @@ $toggle-link-h: 52px;
 }
 .header_logo h1{
     @include img-replace-h1(85px, 110px, '@/assets/images/logo/logo.png');
+    background-position: 3px;
     transform: translateY($sp1);
 }
 .member{
