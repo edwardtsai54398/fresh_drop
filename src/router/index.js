@@ -96,6 +96,24 @@ const routesUser = [
     // component: AboutView,
     component: () => import(/* webpackChunkName: "about" */ '../views/SourceView.vue')
   },
+  {
+    path: '/carousel',
+    name: 'carousel',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    // component: AboutView,
+    component: () => import(/* webpackChunkName: "about" */ '../views/CarouselView.vue')
+  },
+  {
+    path: '/pay',
+    name: 'pay',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    // component: AboutView,
+    component: () => import(/* webpackChunkName: "about" */ '../views/PayView.vue')
+  },
 ]
 
 const router = createRouter({

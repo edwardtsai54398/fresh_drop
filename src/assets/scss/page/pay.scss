@@ -1,0 +1,329 @@
+.pay_container {
+    padding: 0 30px;
+}
+
+.pay_title {
+    margin: $sp7 auto;
+    font-size: $m-font;
+    font-weight: 700;
+    color: $primary;
+    text-align: center;
+}
+
+.single_cart_content {
+    .cart_item {
+        border-bottom: 1px solid $text;
+        padding: $sp4 $sp1 $sp3;
+
+        &:first-child {
+            border-top: 1px solid $text;
+        }
+
+        .price {
+            margin-left: auto;
+            font-size: $s-font;
+        }
+
+        .total_price {
+            display: none;
+        }
+    }
+
+    .dishes {
+        display: flex;
+        align-items: center;
+        margin-bottom: $sp4;
+    }
+
+    .dishes_pic {
+        margin-right: $sp3;
+        position: relative;
+
+        .pic {
+            width: 100px;
+            aspect-ratio: 5/3;
+            border-radius: $s-br;
+        }
+    }
+
+    .amount {
+        aspect-ratio: 1/1;
+        width: 30px;
+        line-height: 30px;
+        border-radius: 50%;
+        font-size: $s-font;
+        font-weight: 700;
+        text-align: center;
+        background-color: $secondary;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(50%, -50%);
+        z-index: 2;
+    }
+
+    .dishes_name {
+        .category {
+            @include pill(56px);
+            line-height: 24px;
+            font-size: $xs-font;
+            font-weight: 700;
+            background-color: $secondary--;
+            text-align: center;
+        }
+
+        .name {
+            margin-top: $sp2;
+            font-size: $xs-font;
+        }
+    }
+}
+
+.keep_shopping {
+    margin-top: $sp4;
+    width: 100%;
+}
+
+.calc_pay {
+    margin-top: $sp6;
+}
+
+.calc_wrap {
+    display: flex;
+    justify-content: space-between;
+
+    &:not(:first-child) {
+        margin-top: $sp3;
+    }
+
+    span {
+        font-size: $s-font;
+    }
+}
+
+.calc_total {
+    margin-top: $sp3;
+    border-top: 1px solid $text;
+    padding-top: $sp3;
+    display: flex;
+    justify-content: space-between;
+
+    span {
+        font-size: $m-font;
+    }
+}
+
+.pay_info {
+    margin-top: $sp7;
+
+    h5 {
+        padding: 0 $sp2;
+        font-size: $s-font;
+    }
+}
+
+.radio_wrap {
+    margin-top: $sp3;
+
+    input[type="radio"] {
+        margin-right: $sp1;
+        opacity: 0;
+
+        &:checked+label::before {
+            box-shadow: .125rem .125rem 0 $bg inset, -.125rem -.125rem 0 $bg inset, -.125rem .125rem 0 #fff inset, .125rem -.125rem 0 #fff inset, .3rem .3rem 0 $primary-- inset, -.5rem -.5rem 0 $primary-- inset;
+        }
+    }
+
+    label {
+        font-size: $xs-font;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: calc(100% + 4px);
+            transform: translateY(-50%);
+            display: block;
+            width: 14px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            border: 2px solid $text;
+        }
+    }
+
+}
+
+.input_group {
+    margin-top: $sp2;
+    display: flex;
+    flex-direction: column;
+    gap: $sp2;
+
+    &::placeholder {
+        font-size: $xs-font;
+        color: #aaa;
+    }
+}
+
+.select_wrap {
+    @include gridgap($sp1);
+
+    .row {
+        margin-left: calc($sp1 * -2);
+        margin-right: calc($sp1 * -2);
+    }
+}
+
+.city_select {
+    width: 100%;
+}
+
+.payment {
+    margin-top: $sp6;
+
+    h5 {
+        padding: 0 $sp2;
+        font-size: $s-font;
+    }
+
+    .row {
+        margin-top: $sp3;
+        gap: $sp5;
+    }
+}
+
+.credit_card {
+    max-width: 370px;
+    height: 210px;
+    // margin: auto;
+    position: relative;
+    margin-top: $sp4;
+    transform-style: preserve-3d;
+    
+    margin-left: -$sp1;
+    margin-right: -$sp1;
+    transition: .5s;
+    &.flip_toB {
+        transform: perspective(400px) rotateY(180deg);
+    }
+}
+
+%creditard_basic {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #000;
+    border-radius: $m-br;
+    background: linear-gradient(313deg, #D9D9D9 0%, #FFF 44.16%);
+    position: absolute;
+    top: 0;
+    padding: 10px 20px;
+    backface-visibility: hidden;
+}
+
+.a_side {
+    @extend %creditard_basic;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.credit_16num {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+    top: 20px;
+}
+
+input.credit_4num {
+    width: 60px;
+    height: 30px;
+    padding: 4px;
+    text-align: center
+}
+
+input.holder_name {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #000;
+}
+
+.toB_side_btn {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+
+    img {
+        margin-left: 6px;
+    }
+}
+
+.b_side {
+    @extend %creditard_basic;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+}
+
+.magnet_bar {
+    background-color: #000;
+    width: 170px;
+    height: 30px;
+    margin-right: $sp2;
+}
+
+input.security_code {
+    @extend .credit_4num;
+}
+
+.exp {
+    position: absolute;
+    bottom: 10px;
+    right: $sp7;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    .title {
+        font-size: $xs-font;
+        text-align: center;
+    }
+}
+.exp_date_wrap{
+    display: flex;
+    justify-content: space-between;
+    margin-top: $sp1;
+    input.date_m, input.date_y {
+        padding: 1px 4px;
+        width: 30px;
+        border: none;
+        border-radius: 0;
+        border-bottom: 1px solid #000;
+        background-color: transparent;
+    }
+}
+
+.toA_side_btn {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+
+    img {
+        margin-right: 6px;
+        transform: scaleX(-1);
+    }
+}
+
+.note{
+    margin-top: $sp5;
+    color: rgba(0,0,0,0.5)
+}
+
+.pay_btn{
+    margin-top: $sp3;
+    width: 100%;
+}
