@@ -1,5 +1,10 @@
 <template>
   <header class="mainheader">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
     <button class="hamburger" @click="isToggleOpen = !isToggleOpen">
       <span></span>
       <span></span>
@@ -11,7 +16,7 @@
     <!-- @click="isToggleOpen = false" -->
     <nav class="main_nav" 
     :class="{ open: isToggleOpen }" >
-      <router-link to="/about"><h4>關於我們</h4></router-link>
+      <router-link to="/about" @click="isToggleOpen = !isToggleOpen"><h4>關於我們</h4></router-link>
       <div class="sub_toggle">
         <div class="subtoggle_btn" @click="isSubtoggleOpen = !isSubtoggleOpen">
           <h4>食材溯源</h4><i class="fa-solid fa-chevron-right"></i>
@@ -36,10 +41,10 @@
           </router-link>
         </nav>
       </div>
-      <router-link to="/shop"><h4>菜色選購</h4></router-link>
-      <router-link to="/giftcard"><h4>禮物卡</h4></router-link>
-      <router-link to="/faq"><h4>FAQ</h4></router-link>
-      <router-link to="/game"><h4>今天吃什麼</h4></router-link>
+      <router-link to="/shop" @click="isToggleOpen = !isToggleOpen"><h4>菜色選購</h4></router-link>
+      <router-link to="/giftcard" @click="isToggleOpen = !isToggleOpen"><h4>禮物卡</h4></router-link>
+      <router-link to="/faq" @click="isToggleOpen = !isToggleOpen"><h4>FAQ</h4></router-link>
+      <router-link to="/game" @click="isToggleOpen = !isToggleOpen"><h4>今天吃什麼</h4></router-link>
     </nav>
     <button class="member" @click="$emit('toggle')">
       <img src="@/assets/images/icon_bg/header_member.svg" alt="" />
