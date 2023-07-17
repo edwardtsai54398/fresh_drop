@@ -1,0 +1,28 @@
+.gift_modal{
+    position: fixed;
+    top: 150px;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    margin: auto;
+    width: calc(100% - $sp2 * 2);
+    background-color: #fff;
+    border: 2px solid $primary;
+    border-radius: $m-br;
+    padding: $sp6 $sp3 $sp4;
+    .pic{
+        width: 100%;
+        aspect-ratio: 9/5;
+        border: 1px solid #000;
+        border-radius: $m-br;
+    }
+    .info{
+        margin-top: $sp4;
+        p{
+            font-size: $s-font;
+            &:not(:first-child){
+                margin-top: $sp2;
+            }
+        }
+    }
+}

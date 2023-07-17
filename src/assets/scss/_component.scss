@@ -57,12 +57,12 @@ a[class*="btn_"]{
     border-width: 1px;
     i{
         font-size: $s-font;
-        margin: 2px;
+        margin: 8px;
     }
 }
 
 .btn_flat{
-    border: 2px solid $primary;
+    border: 1px solid $primary;
     box-shadow: none;
     background-color: transparent;
     color: $primary;
@@ -88,6 +88,12 @@ a[class*="btn_"]{
         &::before{
             right: 0%;
         }
+    }
+}
+
+.btn_flat.btn_icon{
+    i{
+        color: $primary;
     }
 }
 
@@ -175,57 +181,8 @@ select{
     -webkit-appearance:none;
     -ms-appearance:none;
 }
-//input:select
-%select_bgc{
-    background-color: lighten($third, 10%);
-    border: 1px solid #000;
-}
-.select{
-    position: relative;
-    width: 110px;
-    height: 36px;
-    font-size: $xs-font;
-    text-align: center;
-    color: #000;
-    border: 1px solid #000;
-    border-radius: 18px;
-    cursor: pointer;
-    transition: .1s;
-    &.open{
-        @extend %select_bgc;
-        border-bottom-left-radius: 0px;
-        border-bottom-right-radius: 0px;
-        .option{
-            @extend %select_bgc;
-        }
-    }
-}
 
-.placeholder{
-    padding: 0px $sp3;
-    line-height: 36px;
-}
-.placeholder{
-    .fa-chevron-down{
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: 10px;
-        font-size: 10px;
-    }
-}
-.option{
-    position: absolute;
-    width: 100%;
-    top: 100%;
-    left: 0;
-    li{
-        padding: calc($s-br / 2) $sp3;
-        &:first-child{
-            padding-top: $s-br
-        }
-        &:last-child{
-            padding-bottom: $s-br
-        }
-    }
+input.search_bar{
+    border: 1px solid $primary;
+    border-radius: 50rem;
 }

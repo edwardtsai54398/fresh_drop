@@ -64,7 +64,19 @@ export default {
       },
     };
   },
-  methods: {},
+  methods: {
+    login() {
+            if (this.user.email === 'test' && this.user.password === 'test') {
+                alert('登入成功');
+                this.$emit('close')
+                this.$router.push('/member')
+                
+            } else {
+                alert('帳號或密碼錯誤，請再試一次')
+            }
+
+        }
+  },
 };
 </script>
 <style lang="scss">
