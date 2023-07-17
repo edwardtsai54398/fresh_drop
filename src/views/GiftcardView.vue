@@ -16,15 +16,17 @@
             </div>
             <div class="buyGiftcard_text">
                 <p>{{ item.text }}</p>
-                <button class="btn_arrow btn_s">{{ item.btn }}</button>
+             
+                    <button class="btn_arrow btn_s"><router-link :to="item.link"  style="color:#fff">{{ item.btn }} </router-link></button>
+               
             </div>
         </div>
-        <div class="bgcShape_middle">
-            <!-- <img :src="require('../assets/images/icon_bg/bg_yelloIrregularShape.svg')" :alt="bgcShape"> -->
+        <!-- <div class="bgcShape_middle">
+            <img :src="require('../assets/images/icon_bg/bg_yelloIrregularShape.svg')" :alt="bgcShape"> 
         </div>
         <div class="bgcShape_bottom pic">
             <img :src="require('../assets/images/icon_bg/bg_redOval.svg')" :alt="bgcShape">
-        </div>
+        </div> -->
 
 
     </div>
@@ -41,13 +43,15 @@ export default {
                 icon: '../assets/images/icon_bg/wallet.svg',
                 title: '購買禮物卡',
                 text: '常煩惱送禮不知道要送什麼嗎？您可親手製作獨一無二的禮物卡圖面，禮物卡是您最好的選擇。數種食譜讓對方盡情挑選，快速存入帳戶，購物超輕鬆！',
-                btn: '購買'
+                btn: '購買',
+                link: '/giftcardProgress'
             },
             {
                 icon: '../assets/images/icon_bg/wallet.svg',
                 title: '餘額查詢',
                 text: '已經有禮物卡？請登入您的會員帳號，至會員中心查詢您的禮物卡餘額、使用狀況。',
-                btn: '會員中心'
+                btn: '會員中心',
+                link:'#'
             }
             ],
             bgcShape:{
