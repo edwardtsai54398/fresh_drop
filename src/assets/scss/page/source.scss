@@ -1,0 +1,78 @@
+
+.source_container{
+    transition: opacity 0.5s ease;
+    padding-top: 120px;
+    .sourcePage_title{
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        padding: 20px 0;
+        h4{
+            font-size: $xl-font;
+            color: $primary;
+            width: 275px;
+            border-left: solid 3px $primary;
+            border-right: solid 3px $primary;
+        }
+        span{
+            font-size: $l-font;
+            color: $primary;
+        }
+    }
+    .sourcePage_text{
+        p{
+            font-size: $s-font;
+            color: $primary;
+            text-align: center;
+            white-space: pre-line;
+            line-height: 30px;
+        }
+        h5{
+            font-size: $s-font;
+            color: $third;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .arrow{
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+            .triangle{
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 20px 10px 0 10px;
+                border-color: $third transparent transparent transparent;
+            }
+        }
+    }
+    .source_img_container{
+        position: relative;
+        .source_img{
+            width: 100%;
+        }
+        .pepper_img{
+            width: 50%;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+}
+.taiwan_container{
+    .taiwan_img{
+        width: 100%;
+        padding: 30px 0;
+    }
+}
+// .scroll-container {
+//     height: 300px;
+//     overflow-y: scroll;
+// }
+// .hidden {
+//     opacity: 0;
+//     transition: opacity 0.5s ease;
+// }
+// .source_container.hidden {
+//     opacity: 0;
+// }
