@@ -33,7 +33,7 @@ export default {
 <style lang="scss">
 @import "@/assets/scss/all.scss";
 
-main{
+main {
   // padding-top: calc($mobile-head + 10px);
   padding-top: 100px;
   padding-bottom: $sp7;
