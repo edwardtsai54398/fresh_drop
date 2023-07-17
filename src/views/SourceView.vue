@@ -45,26 +45,27 @@ export default {
             hideContent: false,
         };
     },
-    // computed: {
-    //     scrollContainer() {
-    //         return document.querySelector('.scroll-container');
-    //     },
-    // },
+    //測試
+    computed: {
+        scrollContainer() {
+            return document.querySelector('.scroll-container');
+        },
+    },
     methods: {
-        // handleScroll() {
-        //     const scrollHeight = this.scrollContainer.scrollHeight;
-        //     const scrollTop = this.scrollContainer.scrollTop;
-        //     const containerHeight = this.scrollContainer.clientHeight;
-        //     const threshold = 0.7;
+        handleScroll() {
+            const scrollHeight = this.scrollContainer.scrollHeight;
+            const scrollTop = this.scrollContainer.scrollTop;
+            const containerHeight = this.scrollContainer.clientHeight;
+            const threshold = 0.7;
 
-        //     const scrollPercentage = scrollTop / (scrollHeight - containerHeight);
+            const scrollPercentage = scrollTop / (scrollHeight - containerHeight);
 
-        //     if (scrollPercentage > threshold) {
-        //         this.hideContent = true;
-        //     } else {
-        //         this.hideContent = false;
-        //     }
-        // },
+            if (scrollPercentage > threshold) {
+                this.hideContent = true;
+            } else {
+                this.hideContent = false;
+            }
+        },
     },
 };
 </script>
