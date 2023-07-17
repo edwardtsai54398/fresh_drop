@@ -1,3 +1,46 @@
+.search {
+    width: 500px;
+    border-radius: 50rem;
+    margin: auto;
+    padding: $sp1 $sp3;
+    margin-bottom: $sp6;
+}
+
+.menu_title {
+    margin: auto;
+    text-align: center;
+    width: 500px;
+    font-weight: 700;
+    padding: $sp2;
+    font-size: $m-font;
+    border-radius: 50rem;
+    background-color: #EDEBDA;
+    color: $primary;
+    border: solid 6px #fff;
+    margin-bottom: $sp5;
+}
+
+.wrap_main_dish {
+    width: 960px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+}
+
+.card h3 {
+    text-align: center;
+}
+
 // min-width: 768px
 @include pad-V {
 
@@ -17,7 +60,7 @@
         padding: $sp2;
         font-size: $m-font;
         border-radius: 50rem;
-        background-color: $primary--;
+        background-color: #EDEBDA;
         color: $primary;
         border: solid 6px #fff;
         margin-bottom: $sp5;
