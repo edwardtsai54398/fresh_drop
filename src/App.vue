@@ -12,7 +12,7 @@
 <script>
 import MainHeader from '@/components/MainHeader.vue';
 import MainFooter from '@/components/MainFooter.vue';
-// import LoginModal from '@/components/LoginModal.vue';
+import LoginModal from '@/components/LoginModal.vue';
 
 export default {
   name: 'HomeView',
