@@ -149,20 +149,31 @@ a[class*="btn_"]{
 
 input[type="email"],
 input[type="text"],
-input[type="password"]{
+input[type="password"],
+select{
     display: block;
     font-size: $xs-font;
     line-height: 1.5;
+    height: 40px;
     background-color: transparent;
     border-radius: $xs-br;
     padding: $sp1 $sp3;
+    border: 2px solid $text;
     &::placeholder{
         color: rgba(0,0,0,0.5);
         font-size: $xs-font;
     }
 }
-.test{
-    @include gridgap(18px);           
+.normal_select{
+    display: block;
+    font-size: 14px;
+    background-image: none;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    outline:none;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    -ms-appearance:none;
 }
 //input:select
 %select_bgc{
