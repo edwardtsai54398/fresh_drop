@@ -3,6 +3,13 @@
         <div class="meatPage_title">
             <h4>｜安心肉品｜</h4>
         </div>
+        <div class="meat_btn">
+            <div class="chicken btn" @click="scrollToSection('chickenSection')">雞肉</div>
+            <div class="pork btn" @click="scrollToSection('porkSection')">豬肉</div>
+            <div class="beef btn" @click="scrollToSection('beefSection')">牛肉</div>
+            <div class="goat btn" @click="scrollToSection('goatSection')">羊肉</div>
+            <div class="seafood btn" @click="scrollToSection('seafoodSection')">海鮮</div>
+        </div>
         <div class="meat_card_container">
             <div class="meat_card_box_m">
                 <!-- <carousel v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">
@@ -36,59 +43,61 @@
                     </div>
                 </div>
             </div>
-            <div class="meat_card_box">
-                <!-- 四個角的圓形 -->
-                <!-- <div class="circle_box">
-                    <div class="circle_lt"></div>
-                    <div class="circle_rt"></div>
-                    <div class="circle_lb"></div>
-                    <div class="circle_rb"></div>
-                </div> -->
-                <div class="meat_title">
-                    <h5>{{ chicken.title }}</h5>
-                </div>
-                <div class="chicken_ill pic">
-                    <img :src="chicken.img5" alt="">
-                </div>
-                <div class="card_top">
-                    <div class="meat_img pic">
-                        <img :src="chicken.img" alt="">
+            <section id="chickenSection">
+                <div class="meat_card_box">
+                    <!-- 四個角的圓形 -->
+                    <!-- <div class="circle_box">
+                        <div class="circle_lt"></div>
+                        <div class="circle_rt"></div>
+                        <div class="circle_lb"></div>
+                        <div class="circle_rb"></div>
+                    </div> -->
+                    <div class="meat_title">
+                        <h5>{{ chicken.title }}</h5>
                     </div>
-                    <!-- 首圖底下背景 -->
-                    <div class="meat_img_bg"></div>
-                    <div class="card_text">
-                        <div class="farmer_title">
-                            <h3>{{ chicken.farmer }}</h3>
+                    <div class="chicken_ill pic">
+                        <img :src="chicken.img5" alt="">
+                    </div>
+                    <div class="card_top">
+                        <div class="meat_img pic">
+                            <img :src="chicken.img" alt="">
                         </div>
-                        <div class="farmer_text">
-                            <p>{{ chicken.description }}</p>
+                        <!-- 首圖底下背景 -->
+                        <div class="meat_img_bg"></div>
+                        <div class="card_text">
+                            <div class="farmer_title">
+                                <h3>{{ chicken.farmer }}</h3>
+                            </div>
+                            <div class="farmer_text">
+                                <p>{{ chicken.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card_bottom">
+                        <div class="farmer_img_lf">
+                            <img :src="chicken.img2" alt="">
+                            <p>
+                                <span>專業經驗 結合科技</span><br>
+                                {{ chicken.farmerText1 }}
+                            </p>
+                        </div>
+                        <div class="farmer_img_md">
+                            <img :src="chicken.img3" alt="">
+                            <p>
+                                <span>精心培育 優質育種</span><br>
+                                {{ chicken.farmerText2 }}
+                            </p>
+                        </div>
+                        <div class="farmer_img_rg">
+                            <img :src="chicken.img4" alt="">
+                            <p>
+                                <span>定期檢驗 嚴選優質肉品</span><br>
+                                {{ chicken.farmerText3 }}
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="card_bottom">
-                    <div class="farmer_img_lf">
-                        <img :src="chicken.img2" alt="">
-                        <p>
-                            <span>專業經驗 結合科技</span><br>
-                            {{ chicken.farmerText1 }}
-                        </p>
-                    </div>
-                    <div class="farmer_img_md">
-                        <img :src="chicken.img3" alt="">
-                        <p>
-                            <span>精心培育 優質育種</span><br>
-                            {{ chicken.farmerText2 }}
-                        </p>
-                    </div>
-                    <div class="farmer_img_rg">
-                        <img :src="chicken.img4" alt="">
-                        <p>
-                            <span>定期檢驗 嚴選優質肉品</span><br>
-                            {{ chicken.farmerText3 }}
-                        </p>
-                    </div>
-                </div>
-            </div>
+            </section>
             <div class="bg_img_t pic">
                 <img :src="bg.img" alt="">
             </div>
@@ -116,133 +125,137 @@
                     </div>
                 </div>
             </div>
-            <div class="meat_card_box">
-                <!-- 四個角的圓形 -->
-                <!-- <div class="circle_box">
-                    <div class="circle_lt"></div>
-                    <div class="circle_rt"></div>
-                    <div class="circle_lb"></div>
-                    <div class="circle_rb"></div>
-                </div> -->
-                <div class="meat_title">
-                    <h5>{{ pork.title }}</h5>
-                </div>
-                <div class="pork_ill pic">
-                    <img :src="pork.img5" alt="">
-                </div>
-                <div class="card_top">
-                    <div class="card_text">
-                        <div class="farmer_title">
-                            <h3>{{ pork.farmer }}</h3>
+            <section id="porkSection">
+                <div class="meat_card_box">
+                    <!-- 四個角的圓形 -->
+                    <!-- <div class="circle_box">
+                        <div class="circle_lt"></div>
+                        <div class="circle_rt"></div>
+                        <div class="circle_lb"></div>
+                        <div class="circle_rb"></div>
+                    </div> -->
+                    <div class="meat_title">
+                        <h5>{{ pork.title }}</h5>
+                    </div>
+                    <div class="pork_ill pic">
+                        <img :src="pork.img5" alt="">
+                    </div>
+                    <div class="card_top">
+                        <div class="card_text">
+                            <div class="farmer_title">
+                                <h3>{{ pork.farmer }}</h3>
+                            </div>
+                            <div class="farmer_text">
+                                <p>{{ pork.description }}</p>
+                            </div>
                         </div>
-                        <div class="farmer_text">
-                            <p>{{ pork.description }}</p>
+                        <div class="meat_img pic">
+                            <img :src="pork.img" alt="">
+                        </div>
+                        <!-- 首圖底下背景 -->
+                        <div class="meat_img_bg_r"></div>
+                    </div>
+                    <div class="card_bottom">
+                        <div class="farmer_img_lf">
+                            <img :src="pork.img2" alt="">
+                            <p>
+                                <span>產銷履歷畜牧場</span><br>
+                                {{ pork.farmerText1 }}
+                            </p>
+                        </div>
+                        <div class="farmer_img_md">
+                            <img :src="pork.img3" alt="">
+                            <p>
+                                <span>食的營養 食的安心</span><br>
+                                {{ pork.farmerText2 }}
+                            </p>
+                        </div>
+                        <div class="farmer_img_rg">
+                            <img :src="pork.img4" alt="">
+                            <p>
+                                <span>100%自營牧場 不委外加工</span><br>
+                                {{ pork.farmerText3 }}
+                            </p>
                         </div>
                     </div>
-                    <div class="meat_img pic">
-                        <img :src="pork.img" alt="">
-                    </div>
-                    <!-- 首圖底下背景 -->
-                    <div class="meat_img_bg_r"></div>
                 </div>
-                <div class="card_bottom">
-                    <div class="farmer_img_lf">
-                        <img :src="pork.img2" alt="">
-                        <p>
-                            <span>產銷履歷畜牧場</span><br>
-                            {{ pork.farmerText1 }}
-                        </p>
-                    </div>
-                    <div class="farmer_img_md">
-                        <img :src="pork.img3" alt="">
-                        <p>
-                            <span>食的營養 食的安心</span><br>
-                            {{ pork.farmerText2 }}
-                        </p>
-                    </div>
-                    <div class="farmer_img_rg">
-                        <img :src="pork.img4" alt="">
-                        <p>
-                            <span>100%自營牧場 不委外加工</span><br>
-                            {{ pork.farmerText3 }}
-                        </p>
-                    </div>
-                </div>
-            </div>
+            </section>
         </div>
         <div class="meat_card_container">
             <div class="meat_card_box_m">
-                <div class="cow_ill pic">
-                    <img :src="cow.img5" alt="">
+                <div class="beef_ill pic">
+                    <img :src="beef.img5" alt="">
                 </div>
                 <div class="meat_title">
-                    <h5>{{ cow.title }}</h5>
+                    <h5>{{ beef.title }}</h5>
                 </div>
                 <div class="meat_card">
                     <div class="meat_img_mob pic">
-                        <img :src="cow.img_m" alt="">
+                        <img :src="beef.img_m" alt="">
                     </div>
                     <div class="farmer_title">
-                        <h3>{{ cow.farmer }}</h3>
+                        <h3>{{ beef.farmer }}</h3>
                     </div>
                     <div class="farmer_text">
-                        <p>{{ cow.description }}</p>
+                        <p>{{ beef.description }}</p>
                     </div>
                 </div>
             </div>
-            <div class="meat_card_box">
-                <!-- 四個角的圓形 -->
-                <!-- <div class="circle_box">
-                    <div class="circle_lt"></div>
-                    <div class="circle_rt"></div>
-                    <div class="circle_lb"></div>
-                    <div class="circle_rb"></div>
-                </div> -->
-                <div class="meat_title">
-                    <h5>{{ cow.title }}</h5>
-                </div>
-                <div class="cow_ill pic">
-                    <img :src="cow.img5" alt="">
-                </div>
-                <div class="card_top">
-                    <div class="meat_img pic">
-                        <img :src="cow.img" alt="">
+            <section id="beefSection">
+                <div class="meat_card_box">
+                    <!-- 四個角的圓形 -->
+                    <!-- <div class="circle_box">
+                        <div class="circle_lt"></div>
+                        <div class="circle_rt"></div>
+                        <div class="circle_lb"></div>
+                        <div class="circle_rb"></div>
+                    </div> -->
+                    <div class="meat_title">
+                        <h5>{{ beef.title }}</h5>
                     </div>
-                    <!-- 首圖底下背景 -->
-                    <div class="meat_img_bg"></div>
-                    <div class="card_text">
-                        <div class="farmer_title">
-                            <h3>{{ cow.farmer }}</h3>
+                    <div class="beef_ill pic">
+                        <img :src="beef.img5" alt="">
+                    </div>
+                    <div class="card_top">
+                        <div class="meat_img pic">
+                            <img :src="beef.img" alt="">
                         </div>
-                        <div class="farmer_text">
-                            <p>{{ cow.description }}</p>
+                        <!-- 首圖底下背景 -->
+                        <div class="meat_img_bg"></div>
+                        <div class="card_text">
+                            <div class="farmer_title">
+                                <h3>{{ beef.farmer }}</h3>
+                            </div>
+                            <div class="farmer_text">
+                                <p>{{ beef.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card_bottom">
+                        <div class="farmer_img_lf">
+                            <img :src="beef.img2" alt="">
+                            <p>
+                                <span>完配飼料 在地農產</span><br>
+                                {{ beef.farmerText1 }}
+                            </p>
+                        </div>
+                        <div class="farmer_img_md">
+                            <img :src="beef.img3" alt="">
+                            <p>
+                                <span>嚴格管理 快樂牧場</span><br>
+                                {{ beef.farmerText2 }}
+                            </p>
+                        </div>
+                        <div class="farmer_img_rg">
+                            <img :src="beef.img4" alt="">
+                            <p>
+                                <span>新鮮衛生 嚴格品管</span><br>
+                                {{ beef.farmerText3 }}
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="card_bottom">
-                    <div class="farmer_img_lf">
-                        <img :src="cow.img2" alt="">
-                        <p>
-                            <span>完配飼料 在地農產</span><br>
-                            {{ cow.farmerText1 }}
-                        </p>
-                    </div>
-                    <div class="farmer_img_md">
-                        <img :src="cow.img3" alt="">
-                        <p>
-                            <span>嚴格管理 快樂牧場</span><br>
-                            {{ cow.farmerText2 }}
-                        </p>
-                    </div>
-                    <div class="farmer_img_rg">
-                        <img :src="cow.img4" alt="">
-                        <p>
-                            <span>新鮮衛生 嚴格品管</span><br>
-                            {{ cow.farmerText3 }}
-                        </p>
-                    </div>
-                </div>
-            </div>
+            </section>
         </div>
         <div class="meat_card_container">
             <div class="meat_card_box_m">
@@ -267,59 +280,61 @@
                     <img :src="bg.img" alt="">
                 </div>
             </div>
-            <div class="meat_card_box">
-                <!-- 四個角的圓形 -->
-                <!-- <div class="circle_box">
-                    <div class="circle_lt"></div>
-                    <div class="circle_rt"></div>
-                    <div class="circle_lb"></div>
-                    <div class="circle_rb"></div>
-                </div> -->
-                <div class="meat_title">
-                    <h5>{{ goat.title }}</h5>
-                </div>
-                <div class="goat_ill pic">
-                    <img :src="goat.img5" alt="">
-                </div>
-                <div class="card_top">
-                    <div class="card_text">
-                        <div class="farmer_title">
-                            <h3>{{ goat.farmer }}</h3>
+            <section id="goatSection">
+                <div class="meat_card_box">
+                    <!-- 四個角的圓形 -->
+                    <!-- <div class="circle_box">
+                        <div class="circle_lt"></div>
+                        <div class="circle_rt"></div>
+                        <div class="circle_lb"></div>
+                        <div class="circle_rb"></div>
+                    </div> -->
+                    <div class="meat_title">
+                        <h5>{{ goat.title }}</h5>
+                    </div>
+                    <div class="goat_ill pic">
+                        <img :src="goat.img5" alt="">
+                    </div>
+                    <div class="card_top">
+                        <div class="card_text">
+                            <div class="farmer_title">
+                                <h3>{{ goat.farmer }}</h3>
+                            </div>
+                            <div class="farmer_text">
+                                <p>{{ goat.description }}</p>
+                            </div>
                         </div>
-                        <div class="farmer_text">
-                            <p>{{ goat.description }}</p>
+                        <div class="meat_img pic">
+                            <img :src="goat.img" alt="">
+                        </div>
+                        <!-- 首圖底下背景 -->
+                        <div class="meat_img_bg_r"></div>
+                    </div>
+                    <div class="card_bottom">
+                        <div class="farmer_img_lf">
+                            <img :src="goat.img2" alt="">
+                            <p>
+                                <span>自種牧草 安心健康</span><br>
+                                {{ goat.farmerText1 }}
+                            </p>
+                        </div>
+                        <div class="farmer_img_md">
+                            <img :src="goat.img3" alt="">
+                            <p>
+                                <span>整潔環境 舒適空間</span><br>
+                                {{ goat.farmerText2 }}
+                            </p>
+                        </div>
+                        <div class="farmer_img_rg">
+                            <img :src="goat.img4" alt="">
+                            <p>
+                                <span>安心品質 健康天然</span><br>
+                                {{ goat.farmerText3 }}
+                            </p>
                         </div>
                     </div>
-                    <div class="meat_img pic">
-                        <img :src="goat.img" alt="">
-                    </div>
-                    <!-- 首圖底下背景 -->
-                    <div class="meat_img_bg_r"></div>
                 </div>
-                <div class="card_bottom">
-                    <div class="farmer_img_lf">
-                        <img :src="goat.img2" alt="">
-                        <p>
-                            <span>自種牧草 安心健康</span><br>
-                            {{ goat.farmerText1 }}
-                        </p>
-                    </div>
-                    <div class="farmer_img_md">
-                        <img :src="goat.img3" alt="">
-                        <p>
-                            <span>整潔環境 舒適空間</span><br>
-                            {{ goat.farmerText2 }}
-                        </p>
-                    </div>
-                    <div class="farmer_img_rg">
-                        <img :src="goat.img4" alt="">
-                        <p>
-                            <span>安心品質 健康天然</span><br>
-                            {{ goat.farmerText3 }}
-                        </p>
-                    </div>
-                </div>
-            </div>
+            </section>
             <div class="bg_img_b pic">
                 <img :src="bg.img" alt="">
             </div>
@@ -347,62 +362,64 @@
                     </div>
                 </div>
             </div>
-            <div class="meat_card_box">
-                <!-- 四個角的圓形 -->
-                <!-- <div class="circle_box">
-                    <div class="circle_lt"></div>
-                    <div class="circle_rt"></div>
-                    <div class="circle_lb"></div>
-                    <div class="circle_rb"></div>
-                </div> -->
-                <div class="meat_title">
-                    <h5>{{ seafood.title }}</h5>
-                </div>
-                <div class="fish_ill pic">
-                    <img :src="seafood.img5" alt="">
-                </div>
-                <div class="shrimp_ill pic">
-                    <img :src="seafood.img6" alt="">
-                </div>
-                <div class="card_top">
-                    <div class="meat_img pic">
-                        <img :src="seafood.img" alt="">
+            <section id="seafoodSection">
+                <div class="meat_card_box">
+                    <!-- 四個角的圓形 -->
+                    <!-- <div class="circle_box">
+                        <div class="circle_lt"></div>
+                        <div class="circle_rt"></div>
+                        <div class="circle_lb"></div>
+                        <div class="circle_rb"></div>
+                    </div> -->
+                    <div class="meat_title">
+                        <h5>{{ seafood.title }}</h5>
                     </div>
-                    <!-- 首圖底下背景 -->
-                    <div class="meat_img_bg"></div>
-                    <div class="card_text">
-                        <div class="farmer_title">
-                            <h3>{{ seafood.farmer }}</h3>
+                    <div class="fish_ill pic">
+                        <img :src="seafood.img5" alt="">
+                    </div>
+                    <div class="shrimp_ill pic">
+                        <img :src="seafood.img6" alt="">
+                    </div>
+                    <div class="card_top">
+                        <div class="meat_img pic">
+                            <img :src="seafood.img" alt="">
                         </div>
-                        <div class="farmer_text">
-                            <p>{{ seafood.description }}</p>
+                        <!-- 首圖底下背景 -->
+                        <div class="meat_img_bg"></div>
+                        <div class="card_text">
+                            <div class="farmer_title">
+                                <h3>{{ seafood.farmer }}</h3>
+                            </div>
+                            <div class="farmer_text">
+                                <p>{{ seafood.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card_bottom">
+                        <div class="farmer_img_lf">
+                            <img :src="seafood.img2" alt="">
+                            <p>
+                                <span>友善養殖環境 自然共生</span><br>
+                                {{ seafood.farmerText1 }}
+                            </p>
+                        </div>
+                        <div class="farmer_img_md">
+                            <img :src="seafood.img3" alt="">
+                            <p>
+                                <span>乾淨衛生 安心飼料</span><br>
+                                {{ seafood.farmerText2 }}
+                            </p>
+                        </div>
+                        <div class="farmer_img_rg">
+                            <img :src="seafood.img4" alt="">
+                            <p>
+                                <span>新鮮營養 嚴格控管</span><br>
+                                {{ seafood.farmerText3 }}
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="card_bottom">
-                    <div class="farmer_img_lf">
-                        <img :src="seafood.img2" alt="">
-                        <p>
-                            <span>友善養殖環境 自然共生</span><br>
-                            {{ seafood.farmerText1 }}
-                        </p>
-                    </div>
-                    <div class="farmer_img_md">
-                        <img :src="seafood.img3" alt="">
-                        <p>
-                            <span>乾淨衛生 安心飼料</span><br>
-                            {{ seafood.farmerText2 }}
-                        </p>
-                    </div>
-                    <div class="farmer_img_rg">
-                        <img :src="seafood.img4" alt="">
-                        <p>
-                            <span>新鮮營養 嚴格控管</span><br>
-                            {{ seafood.farmerText3 }}
-                        </p>
-                    </div>
-                </div>
-            </div>
+            </section>
         </div>
     </section>
 </template>
@@ -450,7 +467,7 @@ export default {
                     '餵飼日糧玉米與大豆配方飼料來增加生長效益，並添加綜合維生素、礦物質及乳酸菌，使豬隻生長更為一致與健康，育肥期的陽光豬。',
                 farmerText3: '冷凍、冷藏豬肉皆通過台灣優良農產品CAS驗證，且在良好的衛生作業環境下，以現代化加工技術，進行嚴格的製程、品質與衛生監控。',
             },
-            cow: {
+            beef: {
                 title: '牛肉',
                 img_m: require('@/assets/images/source/cw01_m.png'),
                 img: require('@/assets/images/source/cw01.png'),
@@ -510,8 +527,15 @@ export default {
             }
         };
     },
-    methods: {}
-}
+    methods: {
+        scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        },
+    },
+};
 </script>
 <style lang="scss">
 @import "@/assets/scss/all.scss";

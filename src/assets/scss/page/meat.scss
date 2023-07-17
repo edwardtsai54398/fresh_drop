@@ -7,14 +7,18 @@
         margin: $sp3;
     }
 }
+.meat_btn{
+    display: none;
+}
 //肉品介紹卡片
 .meat_card_container{
+    position: relative;
     display: flex;
     justify-content: center;
     .meat_title{
         display: flex;
         justify-content: center;
-        margin: $sp3 0;
+        margin-bottom: $sp3;
         h5{
             font-size: $s-font;
             color: #ffffff;
@@ -43,37 +47,40 @@
                 padding: $sp3;
                 text-align: center;
             }
+            .farmer_text{
+                font-size: $s-font;
+                position: relative;
+            }
         }
         .chicken_ill{
-            // outline: solid red;
             width: 50%;
             position: absolute;
-            left: 0px;
-            top: 0px;
+            left: 30px;
+            top: -30px;
         }
         .pork_ill{
             width: 50%;
             position: absolute;
-            left: -20px;
-            top: 13px;
+            left: 0px;
+            top: -30px;
         }
-        .cow_ill{
+        .beef_ill{
             width: 50%;
             position: absolute;
-            left: 155px;
-            top: -30px;
+            right: 10px;
+            top: -80px;
         }
         .goat_ill{
             width: 50%;
             position: absolute;
-            top: 5px;
-            left: -15px;
+            top: -70px;
+            left: -5px;
         }
         .fish_ill{
-            width: 50%;
+            width: 23%;
             position: absolute;
-            bottom: -50px;
-            left: -80px;
+            bottom: -80px;
+            left: 10px;
         }
         .shrimp_ill{
             width: 30%;
@@ -96,35 +103,56 @@
             bottom: -180px;
         }
     }
-    //768px以上的卡片隱藏
-    // .meat_card_box{
-    //     display: none;
-    // }
+    // 768px以上的卡片隱藏
+    .meat_card_box{
+        display: none;
+    }
+    .bg_img_t{
+        display: none;
+    }
+    .bg_img_b{
+        display: none;
+    }
 }
 
 
 //斷點 768px
 @include pad-V{
+    .meat_btn{
+        display: flex;
+        justify-content: center;
+        .chicken,.pork,.beef,.goat,.seafood{
+            font-size: $s-font;
+            padding: $sp2 $sp3;
+            margin: $sp2;
+        }
+    }
     .meat_card_container{
         position: relative;
+        #chickenSection,#porkSection,#beefSection,#goatSection,#seafoodSection{
+            padding-top: $sp7;
+        }
         .bg_img_t{
+            display: block;
             position: absolute;
-            width: 50%;
-            left: -80px;
-            bottom: -100px;
+            width: 70%;
+            left: -150px;
+            bottom: -200px;
             z-index: -1;
         }
         .bg_img_b{
+            display: block;
             position: absolute;
-            width: 50%;
+            width: 70%;
             right: 40px;
-            bottom: -100px;
+            bottom: -200px;
             z-index: -1;
         }
         .meat_card_box_m{
             display: none;
         }
         .meat_card_box{
+            display: block;
             position: relative;
             margin: $sp5 $sp7;
             max-width: 1500px;
@@ -164,7 +192,7 @@
                 right: 20px;
                 top: -70px;
             }
-            .cow_ill{
+            .beef_ill{
                 width: 35%;
                 position: absolute;
                 z-index: 2;
@@ -276,7 +304,16 @@
 }
 
 //斷點 1024px
-@include pad-H{}
+@include pad-H{
+}
 
 //斷點 1200px
-@include desktop{}
+@include desktop{
+    .meat_card_box{
+        .farmer_title{
+            h3{
+                font-size: $l-font;
+            }
+        }
+    }
+}
