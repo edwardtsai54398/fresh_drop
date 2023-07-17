@@ -4,54 +4,58 @@
             <h4>｜相關認證｜</h4>
         </div>
         <div class="banner_container">
-            <div class="banner_img pic">
-                <img :src="banner.bannerImg" alt="">
-            </div>
-            <div class="banner_title">
-                <h5>{{ banner.bannerTitle }}</h5>
-            </div>
-            <div class="veg_ill pic">
-                <img :src="banner.vegIllImg" alt="">
-            </div>
-            <div class="tom_ill pic">
-                <img :src="banner.tomIllImg" alt="">
+            <div class="banner_box">
+                <div class="banner_img pic">
+                    <img :src="banner.bannerImg" alt="">
+                </div>
+                <div class="banner_title">
+                    <h5>{{ banner.bannerTitle }}</h5>
+                </div>
+                <div class="veg_ill pic">
+                    <img :src="banner.vegIllImg" alt="">
+                </div>
+                <div class="tom_ill pic">
+                    <img :src="banner.tomIllImg" alt="">
+                </div>
             </div>
             <div class="bg_img pic">
-                <img :src="banner.bgImg" alt="">
-            </div>
+                    <img :src="banner.bgImg" alt="">
+                </div>
         </div>
-        <div class="person_ill_container">
-            <div class="person_container">
-                <div class="person_box">
-                    <div class="person_img pic">
-                        <img :src="personIll.perIllImg" alt="">
-                    </div>
-                    <div class="person_title">
-                        <h6>{{ personIll.title }}</h6>
+        <div class="personAll_container">
+            <div class="person_ill_container">
+                <div class="person_container">
+                    <div class="person_box">
+                        <div class="person_img pic">
+                            <img :src="personIll.perIllImg" alt="">
+                        </div>
+                        <div class="person_title">
+                            <h6>{{ personIll.title }}</h6>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="person_ill_container">
-            <div class="person_container">
-                <div class="person_box">
-                    <div class="person_img2 pic">
-                        <img :src="personIll.perIllImg2" alt="">
-                    </div>
-                    <div class="person_title">
-                        <h6>{{ personIll.title2 }}</h6>
+            <div class="person_ill_container">
+                <div class="person_container">
+                    <div class="person_box">
+                        <div class="person_img2 pic">
+                            <img :src="personIll.perIllImg2" alt="">
+                        </div>
+                        <div class="person_title">
+                            <h6>{{ personIll.title2 }}</h6>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="person_ill_container">
-            <div class="person_container">
-                <div class="person_box">
-                    <div class="person_img3 pic">
-                        <img :src="personIll.perIllImg3" alt="">
-                    </div>
-                    <div class="person_title">
-                        <h6>{{ personIll.title3 }}</h6>
+            <div class="person_ill_container">
+                <div class="person_container">
+                    <div class="person_box">
+                        <div class="person_img3 pic">
+                            <img :src="personIll.perIllImg3" alt="">
+                        </div>
+                        <div class="person_title">
+                            <h6>{{ personIll.title3 }}</h6>
+                        </div>
                     </div>
                 </div>
             </div>

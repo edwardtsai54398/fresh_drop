@@ -1,0 +1,149 @@
+.container {
+    padding: 200px 20px 400px;
+}
+
+.question_type {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 18px 26px;
+    margin: auto;
+
+
+    .type {
+        @include pill(100%);
+        background-color: $primary;
+        padding: $sp2;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: $sp1;
+
+        .pic {
+            display: none;
+            height: 40%;
+
+            img {
+                height: 100%;
+            }
+        }
+
+        p {
+            color: #fff;
+            font-size: $xs-font;
+        }
+    }
+}
+
+.question_title {
+    text-align: center;
+    font-size: $l-font;
+    color: $primary;
+    margin: $sp2;
+}
+
+.group_wrap {
+    @include pill (100%);
+    border-radius: 20px;
+    border: 5px solid $primary;
+    background: #FFF;
+    display: flex;
+    align-items: flex-start;
+    padding: $sp2;
+    gap: 10px;
+    margin-top: $sp2;
+
+
+    .icon {
+        aspect-ratio: 1/1;
+    }
+
+    .qa {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .question {
+            color: $primary;
+            font-size: $xs-font;
+            padding: $sp1;
+
+        }
+
+        .answer {
+            @extend .question;
+
+        }
+    }
+}
+
+// 斷點768px
+@include pad-V {
+    .question_type {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+
+        .type {
+            // aspect-ratio: 27/18;
+            border-radius: 30px;
+
+            .pic {
+                display: block;
+            }
+
+            p {
+                font-size: $m-font;
+            }
+        }
+    }
+
+    .question_title {
+        margin-top: 100px;
+        font-size: $l-font;
+    }
+
+
+    .group_wrap {
+        margin-top: $sp3;
+
+        .icon {}
+
+        .qa {
+
+            .question {
+                font-size: $m-font;
+
+            }
+
+            .answer {
+                @extend .question;
+
+            }
+        }
+    }
+}
+
+//問答區收合用
+.slide-enter-active,
+.slide-leave-active {
+    height: 100%;
+    transition: max-height 0.5s;
+}
+
+.slide-enter,
+.slide-leave-to {
+    max-height: 0;
+    overflow: hidden;
+}
+
+// 旋轉箭頭
+.icon {
+    transition: transform 0.5s;
+}
+
+.icon.open {
+    transform: rotateZ(90deg);
+}

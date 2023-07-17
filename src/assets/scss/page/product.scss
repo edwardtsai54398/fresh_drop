@@ -1,336 +1,721 @@
 .product_container {
-  min-width: 414px;
-
-
+    position: relative;
+    min-width: 414px;
+    max-width: 1500px;
+    //max-width確認一下
+    padding: 90px 32px 0 32px;
 }
 
-.hot_ranking {}
+.main {
+    width: 100%;
+}
+
+.main_title {
+    width: 100%;
+    padding: $sp5;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    font-family: Inter;
+    font-weight: 700;
+
+    button {
+        position: absolute;
+        left: 0;
+        height: 40px;
+    }
+
+    .title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        font-size: $l-font;
+        color: $text;
+
+        .type {
+            width: 98px;
+            height: 42px;
+            flex-shrink: 0;
+            border-radius: $l-br;
+            background: $secondary;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            span {
+                color: #ffffff;
+                font-size: $m-font;
+                font-family: "Noto Sans TC";
+            }
+        }
+    }
+}
+
+.info_pic {
+    .text {
+        font-size: $s-font;
+        text-align: center;
+
+        p {
+            padding: 20px 20px;
+        }
+    }
+}
+
+.info_text {
+    padding: 20px 20px 80px 20px;
+
+    >div>p {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: $m-font;
+        padding: 12px 0;
+        margin: $sp4 0;
+        border: 6px solid #ffffff;
+        background-color: #EDEBDA;
+        border-radius: 50px;
+        color: $primary;
+        font-weight: 700;
+    }
+
+    .wrap {
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+
+        li {
+            width: 100%;
+
+            .number {
+                font-size: 40px;
+                color: $secondary;
+                font-weight: 700;
+                padding-right: 10px;
+                font-style: italic;
+            }
+
+            .title_border {
+                border-bottom: 2px dashed $secondary;
+
+                .title {
+                    margin-bottom: 5px;
+                }
+            }
+
+            .info {
+                padding: 4px 0;
+            }
+        }
+    }
+
+    div:nth-child(3)>* {
+        //選取info_text的第三個div之下的子元素
+        flex-direction: row;
+        flex-wrap: wrap
+    }
+
+    p {
+        font-size: $s-font;
+    }
+
+    .allergy {
+        display: inline-block;
+        padding: 4px 30px;
+        border-radius: 30px;
+        border: 3px solid $secondary;
+        background-color: $secondary--;
+    }
+}
+
+.recommend {
+    display: block;
+}
+
+.hot_ranking {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 160px;
+    // 修改
+}
+
+.hot_title {
+    width: 110px;
+    height: 60px;
+    color: $text;
+    font-family: $prim-font;
+    font-size: $xs-font;
+    font-weight: 700;
+    border-radius: $xl-br;
+    border: 6px solid #ffffff;
+    background: #edebda;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    margin: auto;
+    bottom: 100px;
+    right: 30px;
+
+    img {
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+//768以下隱藏熱門推薦
+.hot_product {
+    display: none;
+
+    .pic {
+        width: 150px;
+        height: 150px;
+        border-radius: 5px;
+        flex-shrink: 0;
+
+        img {
+            border-radius: 5px;
+            vertical-align: top;
+        }
+    }
+}
+
+.share {
+    max-width: 1920px;
+    overflow: hidden;
+    padding: 20px 20px 60px 20px;
+    background-color: $secondary--;
+    border-radius: $m-br;
+}
+
+.text {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 24px 24px 24px;
+    align-items: center;
+
+    .title {
+        font-size: $m-font;
+        color: $primary;
+        font-weight: 700;
+    }
+
+    .more {
+        font-size: $s-font;
+        color: $text;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.cook {
+    display: flex;
+    margin-bottom: 40px;
+
+    .card {
+        padding: 10px;
+    }
+}
+
+.pic_food {
+    width: 100%;
+    border: 5px solid $bg--;
+    border-radius: $l-br;
+}
+
+.user {
+    display: flex;
+    margin: 20px;
+    align-items: center;
+    flex-direction: column;
+
+    .wrap {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        margin-bottom: 16px;
+        flex-direction: column;
+        gap: 10px;
 
 
+        .pic_people {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            // margin-right: 16px;
+        }
+
+        .name {
+            font-size: $s-font;
+            word-break: break-all;
+        }
+    }
+
+    .message {
+        font-size: $s-font;
+        width: 100%;
+    }
+}
+
+.upload_out {
+    display: flex;
+    margin: auto;
+    width: 90%;
+    font-size: 24px;
+    max-width: 500px;
+    justify-content: center;
+}
+
+// 上傳心得分享彈窗遮罩
+.mask_upload {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 3;
+}
+
+// 上傳心得分享彈窗
+.upload_window {
+    width: 90%;
+    max-width: 900px;
+    background-color: $secondary--;
+    border-radius: $m-br;
+    align-items: center;
+    margin: auto;
+    // 設定fixed位置
+    position: fixed;
+    z-index: 4;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+    .title_window {
+        border-bottom: 1px solid $secondary;
+        position: relative;
+
+        .text_title {
+            font-size: $m-font;
+            padding: 20px 0;
+            display: block;
+            text-align: center;
+        }
+
+        .cross {
+            font-size: $m-font;
+            position: absolute;
+            right: 30px;
+            top: 25px;
+        }
+    }
+
+    .title {
+        justify-content: center;
+    }
+
+    .upload_wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 30px 30px 30px;
+        align-items: center;
+
+        >div {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .upload_file {
+            width: 100%;
+            height: 250px;
+            text-align: center;
+            border: 2px solid $secondary;
+            border-radius: $m-br;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &::placeholder {
+                width: 100px;
+            }
+        }
+
+        .text_wrap {
+            width: 100%;
+            height: 200px;
+
+            .upload_text {
+                width: 100%;
+                height: 100%;
+                border: 2px solid $secondary;
+                border-radius: $m-br;
+                padding: 20px;
+                font-size: $s-font;
+
+                &:focus::placeholder {
+                    color: transparent;
+                }
+            }
+
+        }
+
+        .upload_btn {
+            width: 90%;
+            max-width: 500px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+
+// 看更多彈窗遮罩
+.mask_more {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+// 看更多心得分享彈窗
+.more_expend {
+    background-color: $secondary--;
+    margin: 20px 0;
+    border-radius: 20px;
+    padding: 20px 20px;
+    position: fixed;
+    // inset: 100px 10px 10px 10px;
+    z-index: 2;
+    overflow-y: scroll;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 80%;
+    max-width: 1200px;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    // justify-content: center;
+    gap: 10px;
+    font-size: $m-font;
+    color: $text;
+    padding: 30px 10px 20px 10px;
+
+    .type {
+        width: 70px;
+        height: 36px;
+        flex-shrink: 0;
+        border-radius: $l-br;
+        background: $secondary;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        span {
+            color: #ffffff;
+            font-size: $s-font;
+            font-family: "Noto Sans TC";
+        }
+    }
+}
+
+.content {
+    display: flex;
+
+
+    .card {
+        padding: 10px;
+    }
+}
+
+.button {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+
+
+    .back {
+        width: 20%;
+        justify-content: center;
+        max-width: 100px;
+    }
+
+    .upload {
+        width: 80%;
+        max-width: 500px;
+    }
+}
+
+
+// min-width: 768px
 @include pad-V {
+    .main {
+        width: 60%;
+        overflow: hidden;
+    }
 
-  .hot_ranking {}
+    .main_wrap {
+        display: flex;
+        flex-direction: row;
+
+        .recommend {
+            width: 40%;
+            position: relative;
+            padding: 210px 0 0 32px;
+            display: block;
+        }
+    }
+
+    .hot_ranking {
+        margin-bottom: 60px;
+    }
+
+    .hot_title {
+        width: 100%;
+        max-width: 400px;
+        padding: 28px 0;
+        font-size: $s-font;
+        border: 5px solid #fff;
+        background: #edebda;
+        position: relative;
+        bottom: 0;
+        right: 0;
+    }
+
+    .hot_product {
+        display: flex;
+        margin-top: 35px;
+        gap: 28px;
+        cursor: pointer;
+
+        .pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 5px;
+            flex-shrink: 0;
+
+            img {
+                border-radius: 5px;
+                vertical-align: top;
+            }
+        }
+
+        .hot_info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            .hot_type {
+                padding: 8px 20px;
+                border-radius: $m-br;
+                background-color: $secondary--;
+                font-size: $xs-font;
+                font-weight: 700;
+                width: 70px;
+            }
+
+            .hot_name {
+                margin-top: 15px;
+                font-size: $s-font;
+                color: $text;
+            }
+        }
+    }
+
+    .btn_l {
+        @include pill(500px, 70px);
+        font-size: $l-font;
+    }
+
+    .upload_window {
+
+        .upload_wrap {
+
+            >div {
+                flex-direction: row;
+            }
+
+            .text_wrap {
+                height: 250px;
+            }
+
+            .upload_btn {
+                font-size: $l-font;
+            }
+        }
+    }
 }
 
-@include pad-H {}
+// min-width: 1024px
+@include pad-H {
+    .main {
+        width: 70%;
+    }
 
+    .main_title {
+
+        .title {
+            font-size: $xl-font;
+
+        }
+    }
+
+    .info_pic {
+        .pic {
+            width: 100%;
+            height: 700px;
+        }
+
+        .text {
+            font-size: $m-font;
+        }
+    }
+
+    .info_text {
+        padding-bottom: 80px;
+
+        >div>p {
+            font-size: $l-font;
+        }
+
+        .wrap {
+            padding: 0 40px;
+        }
+
+        p {
+            font-size: $m-font;
+        }
+    }
+
+    .recommend {
+        width: 30%;
+    }
+
+    .hot_title {
+        padding: 35px 0;
+        font-size: $m-font;
+    }
+
+    .hot_product {
+        gap: 35px;
+
+        .pic {
+            width: 180px;
+            height: 180px;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .hot_info {
+
+            .hot_type {
+                font-size: $s-font;
+                width: auto;
+            }
+
+            .hot_name {
+                font-size: $m-font;
+            }
+        }
+    }
+
+    .share {
+        padding: 40px 40px 60px 40px;
+    }
+
+    .text {
+
+        .title {
+            font-size: $l-font;
+        }
+
+        .more {
+            font-size: $m-font;
+        }
+    }
+
+    .user {
+
+        .wrap {
+            flex-direction: row;
+            gap: 0;
+
+            .pic_people {
+                width: 60px;
+                height: 60px;
+                margin-right: 16px;
+            }
+        }
+
+        .message {
+            font-size: $m-font;
+        }
+    }
+
+    .btn_l {
+        margin: auto;
+        @include pill(500px, 70px)
+    }
+
+    .more_expend {
+        padding: 20px 40px;
+
+        .button {
+            width: 100%;
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+
+
+            .back {
+                width: 30%;
+                justify-content: center;
+                max-width: 150px;
+                font-size: $l-font;
+            }
+
+            .upload {
+                width: 80%;
+                max-width: 500px;
+                font-size: $l-font;
+            }
+        }
+    }
+}
+
+
+// min-width: 1200px
 @include desktop {
-  .product_container {
-      max-width: 1920px;
-      padding: 0 120px;
-
-      .main_wrap {
-          display: flex;
-          flex-direction: row;
-      }
-  }
-
-  .main {
-      width: 70%;
-      overflow: hidden;
-  }
-
-  .main_title {
-      width: 100%;
-      padding: $sp5;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #000;
-      font-family: Inter;
-      font-weight: 700;
-
-      button {
-          position: absolute;
-          left: 0;
-      }
-
-      .title {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          font-size: $xl-font;
-          color: $text;
-
-          .type {
-              width: 98px;
-              height: 42px;
-              flex-shrink: 0;
-              border-radius: $l-br;
-              background: $secondary;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-
-              span {
-                  color: #ffffff;
-                  font-size: $m-font;
-                  font-family: "Noto Sans TC";
-              }
-          }
-      }
-  }
-
-  .info_pic {
-      .pic {
-          width: 100%;
-          height: 700px;
-          overflow: hidden;
-          //這個有設定了?
-      }
-
-      .text {
-          font-size: $m-font;
-          text-align: center;
-
-          p {
-              padding: 52px 160px;
-          }
-
-      }
-  }
-
-  .info_text {
-      padding: 0 160px 160px 160px;
-
-      >div>p {
-          display: block;
-          width: 100%;
-          text-align: center;
-          font-size: $l-font;
-          padding: 12px 0;
-          margin: $sp4 0;
-          border: 6px solid #ffffff;
-          background-color: #EDEBDA;
-          border-radius: 50px;
-          color: $primary;
-          font-weight: 700;
-      }
-
-      .wrap {
-          padding: 0 40px;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 16px;
-
-          li {
-              width: 100%;
-
-              .number {
-                  font-size: 40px;
-                  color: $secondary;
-                  font-weight: 700;
-                  padding-right: 10px;
-                  font-style: italic;
-              }
-
-              .title_border {
-                  border-bottom: 2px dashed $secondary;
-
-                  .title {
-                      margin-bottom: 5px;
-                  }
-              }
-
-              .info {
-                  padding: 4px 0;
-              }
-          }
-      }
-
-      div:nth-child(3)>* {
-          //選取info_text的第三個div之下的子元素
-          flex-direction: row;
-          flex-wrap: wrap
-      }
-
-      p {
-          font-size: $m-font;
-      }
-
-      .allergy {
-          display: inline-block;
-          padding: 4px 40px;
-          border-radius: 30px;
-          border: 3px solid $secondary;
-          background-color: $secondary--;
-      }
-  }
-
-  .recommend {
-      width: 30%;
-      position: relative;
-      padding: 120px 0 0 50px;
-  }
-
-  .hot_ranking {
-      display: flex;
-      flex-direction: column;
-      position: sticky;
-      top: 60px;
-      margin-bottom: 60px;
-
-      .hot_title {
-          padding: 17px 120px;
-          color: $text;
-          font-family: $prim-font;
-          font-size: $m-font;
-          font-weight: 700;
-          border-radius: $xl-br;
-          border: 6px solid #fff;
-          background: #edebda;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          position: relative;
-          margin: auto;
-
-          img {
-              position: absolute;
-              top: -5px;
-              left: 50%;
-              transform: translate(-50%, -50%);
-          }
-      }
-  }
-
-  .hot_product {
-      display: flex;
-      margin-top: 35px;
-      gap: 35px;
-      cursor: pointer;
-
-      .pic {
-          width: 180px;
-          height: 180px;
-          border-radius: 5px;
-
-          img {
-              border-radius: 5px;
-              width: 100%;
-              height: 100%;
-              vertical-align: top;
-          }
-      }
-
-      .hot_info {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-
-          .hot_type {
-              padding: 6px 23px;
-              border-radius: $m-br;
-              background-color: $secondary--;
-              font-size: 20px;
-              font-weight: 700;
-          }
-
-          .hot_name {
-              margin-top: 15px;
-              font-size: 30px;
-              color: $text;
-          }
-      }
-  }
-
-  .share {
-      max-width: 1920px;
-      overflow: hidden;
-      padding: 40px 120px;
-      background-color: $secondary--;
-      border-radius: $m-br;
-  }
-
-  .text {
-      display: flex;
-      justify-content: space-between;
-      margin: 24px;
-      align-items: end;
-
-      .title {
-          font-size: $l-font;
-          color: $primary;
-          font-weight: 700;
-      }
-
-      .more {
-          font-size: $m-font;
-          color: $text;
-
-          &:hover {
-              text-decoration: underline;
-          }
-      }
-  }
-
-  .cook {
-      display: flex;
-      margin-bottom: 40px;
-
-      .card {
-          padding: 24px;
-
-      }
-  }
-
-  .pic_food {
-      width: 100%;
-      border: 5px solid $bg--;
-      border-radius: $l-br;
-      overflow: hidden;
-
-      img {
-          display: block;
-          width: 100%;
-      }
-  }
-
-  .user {
-      display: flex;
-      margin: 24px;
-      align-items: center;
-      flex-direction: column;
-
-      .wrap {
-          display: flex;
-          width: 100%;
-          align-items: center;
-          margin-bottom: 16px;
-
-
-          .pic_people {
-              width: 60px;
-              height: 60px;
-              overflow: hidden;
-              border-radius: 50%;
-              flex-shrink: 0;
-              margin-right: 16px;
-
-              img {
-                  display: block;
-                  width: 100%;
-                  transform: translateY(10px) scale(1.8);
-              }
-          }
-
-          .name {
-              font-size: $m-font;
-              word-break: break-all;
-          }
-      }
-
-      .message {
-          font-size: $s-font;
-          width: 100%;
-      }
-  }
-
-  .btn_l {
-      margin: auto;
-      @include pill(500px, 70px)
-  }
-
+    .user {
+        margin: 24px;
+    }
 }

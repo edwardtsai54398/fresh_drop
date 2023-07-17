@@ -28,7 +28,7 @@ const productShare = [
     },
     {
         id: 4,
-        name: 'Miss Dong',
+        name: 'Dong Dong',
         message: '覺得好吃的舉手~',
         img: [
             require('@/assets/images/product/s4.jpg'),
