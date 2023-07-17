@@ -1,6 +1,6 @@
 <template>
   <div class="container index_container">
-    <div class="container_index"  style="display: none;">
+    <div class="container_index">
       <div class="decorate_index">
         <div class="decorate_day">
           <img src="../assets/images/index/index_decorate_vg3.png" alt="">
@@ -71,7 +71,7 @@
       </div>  
     </div>  
     </div>
-    <div class="index_health" style="display: none;">
+    <div class="index_health">
       <h3>HEALTH<br>VEGETABLE</h3>
       <div class="index_vg">
         <div class="index_health_pic">
@@ -123,7 +123,7 @@
       </div>
     </div> -->
 
-    <div class="index_order"  style="display: none;">
+    <div class="index_order">
       <div class="index_orderpic" v-for="item in index_order" :key="item">
         <h2>{{ item.title }}</h2>
         <p>{{ item.description }}</p>
@@ -134,7 +134,7 @@
     </div> 
   </div>  
   
-  <div class="index_subscription" style="display: none;">
+  <div class="index_subscription">
     <h2>訂閱方案</h2>
     <div class="index_menu">
       <h3>.一次配送幾餐?</h3>
@@ -250,7 +250,7 @@
  
 </template>
 
-<!-- <script>
+<script>
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { defineComponent } from 'vue';
 import { Carousel, Navigation, Slide } from 'vue3-carousel';
@@ -336,9 +336,9 @@ export default defineComponent({
     },
   },
 });
-</script> -->
+</script>
 
-<script>
+<!-- <script>
   import { Scrollama } from 'vue-scrollama';
   import 'intersection-observer';
 
@@ -348,7 +348,7 @@ export default defineComponent({
     },
     // 其他组件选项
   };
-</script>
+</script> -->
 <style lang="scss" scoped>
 // @import "@/assets/scss/index.scss";
 @import "@/assets/scss/page/home.scss";
