@@ -350,43 +350,9 @@ export default defineComponent({
   };
 </script>
 <style lang="scss" scoped>
-@import "@/assets/scss/all.scss";
 // @import "@/assets/scss/index.scss";
 @import "@/assets/scss/page/home.scss";
-.intro,
-.outro {
-  padding: 20vh;
-}
 
-.main__graphic {
-  position: sticky;
-  top: 0;
-  height: 50vh;
-  border: 1px solid #ccc;
-  background-color: #eee;
-  font-size: 10rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.step {
-  padding: 15vh 0;
-  width: 50%;
-  margin: 0 auto 30vh;
-  background-color: beige;
-  border: 1px solid #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style> 
 
 
