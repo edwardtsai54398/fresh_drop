@@ -292,24 +292,9 @@ export default {
             }
         },
     },
-
-    // filteredProductShare() {
-    //     if (window.innerWidth < 767) {
-    //         return this.productShare.filter(
-    //             (item) => item.id >= 1 && item.id <= 2
-    //         );
-    //     } else if (window.innerWidth >= 768) {
-    //         return this.productShare.filter(
-    //             (item) => item.id >= 1 && item.id <= 4
-    //         );
-    //     } else {
-    //         return [];
-    //     }
-    // }
 };
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/all.scss";
 @import "@/assets/scss/page/product.scss";
 </style>
