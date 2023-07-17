@@ -12,7 +12,7 @@
 <script>
 import MainHeader from '@/components/MainHeader.vue';
 import MainFooter from '@/components/MainFooter.vue';
-import LoginModal from '@/components/LoginModal.vue';
+// import LoginModal from '@/components/LoginModal.vue';
 
 export default {
   name: 'HomeView',
@@ -33,7 +33,7 @@ export default {
 <style lang="scss">
 @import "@/assets/scss/all.scss";
 
-main{
+main {
   // padding-top: calc($mobile-head + 10px);
   padding-top: 100px;
   padding-bottom: $sp7;
