@@ -53,7 +53,34 @@
     width: 50%;
 }
 
+//過度秒數線性設定
+.game_card {
+    transition: transform 0.5s ease-in-out;
+}
 
+// 定義過度效果起始跟結束的狀態
+.game_card.fade-enter-active,
+.game_card.fade-leave-active {
+
+    // 透明淡出
+    // opacity: 0;
+    // 左滑消失
+    // transform: translateX(0);
+    // 縮小消失
+    transform: scale(1);
+}
+
+// 定義進入合離開過度的中間狀態
+.game_card.fade-enter,
+.game_card.fade-leave-to {
+
+    // 透明淡出
+    // opacity: 1;
+    // 左滑消失
+    // transform: translateX(-100%);
+    // 縮小消失
+    transform: scale(0.01);
+}
 
 // 遊戲卡片
 .game_card {
@@ -421,11 +448,15 @@
             background-color: $primary--;
             font-weight: 700;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: .9fr 1fr;
             grid-template-rows: 0.2fr 0.5fr 0.5fr;
             padding: $sp2;
             background-image: url(@/assets/images/game/game_bg.png);
             background-size: cover;
+
+            .title {
+                font-size: $m-font;
+            }
 
 
             .recommend {
@@ -433,15 +464,20 @@
                 justify-content: space-between;
                 margin: auto;
                 grid-area: 1/1/4/2;
+                padding-left: 80px;
 
                 .col-6 {
-                    padding: 5px;
+                    padding: 20px;
 
                     .pro_card {
                         display: flex;
                         flex-direction: column;
                         align-items: center;
-                        gap: 5px;
+                        gap: 10px;
+
+                        h2 {
+                            font-size: $s-font;
+                        }
 
                         .pic {
                             border-radius: 12px;
@@ -456,7 +492,7 @@
                     margin-top: $sp3;
                     color: $primary;
                     font-weight: 700;
-                    font-size: $m-font;
+                    font-size: $l-font;
                 }
 
                 .txt {
@@ -465,6 +501,7 @@
                     line-height: 1.5;
                     padding: $sp1;
                     width: 80%;
+                    font-size: $m-font;
                 }
             }
 

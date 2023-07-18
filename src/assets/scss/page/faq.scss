@@ -129,14 +129,13 @@
 //問答區收合用
 .slide-enter-active,
 .slide-leave-active {
-    height: 100%;
-    transition: max-height 0.5s;
+    transition: height 0.3s ease-in-out;
+    overflow: hidden;
 }
 
 .slide-enter,
 .slide-leave-to {
-    max-height: 0;
-    overflow: hidden;
+    height: 0;
 }
 
 // 旋轉箭頭
