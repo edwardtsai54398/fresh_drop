@@ -1,12 +1,16 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+//基本引入
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-//載入font awesome
-//使用這個方法有些 icon 出不來，再想辦法解決
-// import '@fortawesome/fontawesome-free/css/all.css'
-// import '@fortawesome/fontawesome-free/js/all.js'
+//引入要用的icon
+import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { faPen } from '@fortawesome/free-solid-svg-icons'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
-createApp(App).use(store).use(router).mount('#app')
 
+library.add(faPen)
+library.add(faUserSecret)
+library.add(faXmark)
+
+
+createApp(App).use(store).use(router).component('font-awesome-icon', FontAwesomeIcon).mount('#app')

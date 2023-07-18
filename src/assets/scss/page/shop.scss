@@ -1,3 +1,4 @@
+// 搜尋菜色
 // .search {
 //     width: 500px;
 //     border-radius: 50rem;
@@ -5,16 +6,43 @@
 //     padding: $sp1 $sp3;
 //     margin-bottom: $sp6;
 // }
+
 .main_wrap {
-    margin: 120px 0;
+    margin: 40px 0;
+    min-width: 414px;
+    overflow: hidden;
 }
 
 //選單
-.select {
+.select_bar {
     background-color: $secondary;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .item {
+        padding: 20px 45px;
+        font-size: $s-font;
+        font-weight: 700;
+        border-bottom: 5px solid transparent;
+
+        &:hover {
+            border-bottom: 5px solid $text;
+        }
+    }
 }
 
+// 不包含的食材
+
+
+
+
+
+
+
+
+
+// 菜色選擇
 .menu_title {
     margin: auto;
     text-align: center;

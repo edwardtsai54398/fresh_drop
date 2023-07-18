@@ -1,36 +1,58 @@
 <template>
-        this page is FAQ
-        <div class="container">
-                <section class="question_type">
-                        <div class="type" v-for="(item, index) in faq" :key="index" @click="update(index)">
-                                <div class="pic">
-                                        <img :src="item.icon" alt="">
-                                </div>
-                                <p>{{ item.type }}</p>
-                        </div>
-                </section>
-                <p class="question_title">
-                        {{ newFaq.type }}
-                </p>
-                <div class="group_wrap" v-for="(item, index) in newFaq.qa" :key="index" @click="toggleAnswer(item)">
-                        <div class="icon" :class="{ open: item.open }" @click="toggleAnswer(item)">
-                                <svg width="12" height="18" viewBox="0 0 12 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M12 9.18144L0.75 17.9988L0.75 0.364055L12 9.18144Z" fill="#1F8D61" />
-                                </svg>
-                        </div>
-                        <div class="qa">
-                                <div class="question">
-                                        {{ item.questions }}
-                                </div>
-                                <transition name="slide">
-                                        <div class="answer" v-if="item.open">
-                                                {{ item.answers }}
-                                        </div>
-                                </transition>
-                        </div>
-
+    this page is FAQ
+    <div class="container">
+        <section class="question_type">
+            <div
+                class="type"
+                v-for="(item, index) in faq"
+                :key="index"
+                @click="update(index)"
+            >
+                <div class="pic">
+                    <img :src="item.icon" alt="" />
                 </div>
-                <!-- <template>
+                <p>{{ item.type }}</p>
+            </div>
+        </section>
+        <p class="question_title">
+            {{ newFaq.type }}
+        </p>
+        <div
+            class="group_wrap"
+            v-for="(item, index) in newFaq.qa"
+            :key="index"
+            @click="toggleAnswer(item)"
+        >
+            <div
+                class="icon"
+                :class="{ open: item.open }"
+                @click="toggleAnswer(item)"
+            >
+                <svg
+                    width="12"
+                    height="18"
+                    viewBox="0 0 12 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M12 9.18144L0.75 17.9988L0.75 0.364055L12 9.18144Z"
+                        fill="#1F8D61"
+                    />
+                </svg>
+            </div>
+            <div class="qa">
+                <div class="question">
+                    {{ item.questions }}
+                </div>
+                <transition name="slide">
+                    <div class="answer" v-if="item.open">
+                        {{ item.answers }}
+                    </div>
+                </transition>
+            </div>
+        </div>
+        <!-- <template>
                         <Collapse v-model="value" accordion>
                                 <Panel name="1">
                                         史蒂夫·乔布斯
@@ -50,7 +72,6 @@
                                 </Panel>
                         </Collapse>
                 </template> -->
-        </div>
     </div>
 </template>
 

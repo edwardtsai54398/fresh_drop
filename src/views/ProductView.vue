@@ -27,7 +27,11 @@
                     <div>
                         <p>材料</p>
                         <div class="wrap">
-                            <p class="ingred" v-for="(item, index) in newProduct.ingred" :key="index">
+                            <p
+                                class="ingred"
+                                v-for="(item, index) in newProduct.ingred"
+                                :key="index"
+                            >
                                 {{ item }}
                             </p>
                         </div>
@@ -35,13 +39,19 @@
                     <div>
                         <p>步驟</p>
                         <ol class="wrap">
-                            <li v-for="(step, index) in newProduct.step" :key="index">
+                            <li
+                                v-for="(step, index) in newProduct.step"
+                                :key="index"
+                            >
                                 <span class="number">{{ index + 1 }}</span>
                                 <div class="title_border">
                                     <p class="title">{{ step.title }}</p>
                                 </div>
                                 <ul>
-                                    <li v-for="(subStep, subIndex) in step.step" :key="subIndex">
+                                    <li
+                                        v-for="(subStep, subIndex) in step.step"
+                                        :key="subIndex"
+                                    >
                                         <p class="info">{{ subStep }}</p>
                                     </li>
                                 </ul>
@@ -51,7 +61,11 @@
                     <div>
                         <p>過敏原</p>
                         <div class="wrap">
-                            <p class="allergy" v-for="(item, index) in newProduct.allergy" :key="index">
+                            <p
+                                class="allergy"
+                                v-for="(item, index) in newProduct.allergy"
+                                :key="index"
+                            >
                                 {{ item }}
                             </p>
                         </div>
@@ -62,11 +76,18 @@
             <aside class="recommend">
                 <div class="hot_ranking">
                     <div class="hot_title">
-                        <img src="../assets/images/product/crown.svg" alt="recommend pic" />
+                        <img
+                            src="../assets/images/product/crown.svg"
+                            alt="recommend pic"
+                        />
                         熱門推薦
                     </div>
-                    <div class="hot_product" v-for="(item, index) in filteredProductList" :key="item.id"
-                        @click="update(index)">
+                    <div
+                        class="hot_product"
+                        v-for="(item, index) in filteredProductList"
+                        :key="item.id"
+                        @click="update(index)"
+                    >
                         <div class="pic">
                             <img :src="item.img" alt="" />
                         </div>
@@ -86,7 +107,11 @@
                 <button class="more" @click="toggleExpend">看更多</button>
             </div>
             <div class="cook row">
-                <div class="wrap col-6 col-md-3" v-for="(item, index) in filteredProductShare" :key="index">
+                <div
+                    class="wrap col-6 col-md-3"
+                    v-for="(item, index) in filteredProductShare"
+                    :key="index"
+                >
                     <div class="card">
                         <div class="pic pic_food">
                             <img :src="item.img[0]" alt="share_food" />
@@ -94,7 +119,10 @@
                         <div class="user">
                             <div class="wrap">
                                 <div class="pic pic_people">
-                                    <img :src="item.img[1]" alt="share_people" />
+                                    <img
+                                        :src="item.img[1]"
+                                        alt="share_people"
+                                    />
                                 </div>
                                 <div class="name">
                                     {{ item.name }}
@@ -116,7 +144,7 @@
             <div class="title_window">
                 <p class="text_title">心得分享</p>
                 <button class="cross" @click="uploadExpend">
-                    <i class="fa-solid fa-xmark"></i>
+                    <font-awesome-icon icon="fa-solid fa-xmark" />
                 </button>
             </div>
             <div class="title">
@@ -135,7 +163,11 @@
                         </button>
                     </div>
                     <div class="text_wrap">
-                        <textarea v-model="text" placeholder="說說你的烹飪心得吧！" class="upload_text"></textarea>
+                        <textarea
+                            v-model="text"
+                            placeholder="說說你的烹飪心得吧！"
+                            class="upload_text"
+                        ></textarea>
                     </div>
                 </div>
                 <button @click="uploadText" class="upload_btn btn_m">
@@ -156,14 +188,21 @@
             </div>
             <div class="content">
                 <div class="row">
-                    <div class="card col-6 col-md-3" v-for="(item, index) in productShare" :key="index">
+                    <div
+                        class="card col-6 col-md-3"
+                        v-for="(item, index) in productShare"
+                        :key="index"
+                    >
                         <div class="pic pic_food">
                             <img :src="item.img[0]" alt="share_food" />
                         </div>
                         <div class="user">
                             <div class="wrap">
                                 <div class="pic pic_people">
-                                    <img :src="item.img[1]" alt="share_people" />
+                                    <img
+                                        :src="item.img[1]"
+                                        alt="share_people"
+                                    />
                                 </div>
                                 <div class="name">
                                     {{ item.name }}
@@ -256,6 +295,6 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @import "@/assets/scss/page/product.scss";
 </style>

@@ -1,20 +1,20 @@
 <template>
     <!-- 搜尋菜單 -->
-    <input
+    <!-- <input
         type="text"
         class="search"
         placeholder="請輸入商品名稱"
         v-model="searchText"
         @input="searchFilter(searchText)"
-    />
+    /> -->
     <div class="main_wrap">
         <!-- 選單 -->
-        <aside class="select">
+        <aside class="selectmain">
             <!-- 菜色分類 -->
             <div class="select_bar">
-                <button>主菜</button>
-                <button>湯品</button>
-                <button>沙拉</button>
+                <button class="item">主菜</button>
+                <button class="item">湯品</button>
+                <button class="item">沙拉</button>
             </div>
             <!-- 不包含的食材 -->
             <div class="select_adjust">
@@ -44,61 +44,64 @@
             <div class="food_pic">
                 <img :src="productList[0].img" alt="food" />
             </div>
-            <section class="container">
-                <h4 class="menu_title" v-show="mainDishFilter.length > 0">
-                    主菜 MAIN DISH
-                </h4>
-                <div class="wrap_main_dish">
-                    <div
-                        class="card"
-                        v-for="(item, index) in mainDishFilter"
-                        :key="index"
-                    >
-                        <div class="pic">
-                            <img :src="item.img" />
+            <div class="row">
+                <section class="container col-6 col-md-4">
+                    <h4 class="menu_title" v-show="mainDishFilter.length > 0">
+                        主菜 MAIN DISH
+                    </h4>
+                    <div class="wrap_main_dish">
+                        <div
+                            class="card"
+                            v-for="(item, index) in mainDishFilter"
+                            :key="index"
+                        >
+                            <div class="pic">
+                                <img :src="item.img" />
+                            </div>
+                            <h3>{{ item.name }}</h3>
+                            <div class="btn_scd_s">選購</div>
                         </div>
-                        <h3>{{ item.name }}</h3>
-                        <div class="btn_scd_s">選購</div>
                     </div>
-                </div>
-            </section>
-            <section class="container">
-                <h4 class="menu_title" v-show="soupFilter.length > 0">
-                    湯品 SOUP
-                </h4>
-                <div class="wrap_main_dish">
-                    <div
-                        class="card"
-                        v-for="(item, index) in soupFilter"
-                        :key="index"
-                    >
-                        <div class="pic">
-                            <img :src="item.img" />
+                </section>
+                <section class="container col-6 col-md-4">
+                    <h4 class="menu_title" v-show="soupFilter.length > 0">
+                        湯品 SOUP
+                    </h4>
+                    <div class="wrap_main_dish">
+                        <div
+                            class="card"
+                            v-for="(item, index) in soupFilter"
+                            :key="index"
+                        >
+                            <div class="pic">
+                                <img :src="item.img" />
+                            </div>
+                            <h3>{{ item.name }}</h3>
+                            <div class="btn_scd_s">選購</div>
                         </div>
-                        <h3>{{ item.name }}</h3>
-                        <div class="btn_scd_s">選購</div>
                     </div>
-                </div>
-            </section>
-            <section class="container">
-                <h4 class="menu_title" v-show="saladFilter.length > 0">
-                    沙拉 SALAD
-                </h4>
-                <div class="wrap_main_dish">
-                    <div
-                        class="card"
-                        v-for="(item, index) in saladFilter"
-                        :key="index"
-                    >
-                        <div class="pic">
-                            <img :src="item.img" />
+                </section>
+                <section class="container col-6 col-md-4">
+                    <h4 class="menu_title" v-show="saladFilter.length > 0">
+                        沙拉 SALAD
+                    </h4>
+                    <div class="wrap_main_dish">
+                        <div
+                            class="card"
+                            v-for="(item, index) in saladFilter"
+                            :key="index"
+                        >
+                            <div class="pic">
+                                <img :src="item.img" />
+                            </div>
+                            <h3>{{ item.name }}</h3>
+                            <div class="btn_scd_s">選購</div>
                         </div>
-                        <h3>{{ item.name }}</h3>
-                        <div class="btn_scd_s">選購</div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </div>
         </section>
+        <!-- 清單、結帳按鈕 -->
         <aside class="choose">
             <div class="shop_btn">
                 <button class="list_btn btn_s">
@@ -162,6 +165,6 @@ export default {
     },
 };
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 @import "@/assets/scss/page/shop.scss";
 </style>
