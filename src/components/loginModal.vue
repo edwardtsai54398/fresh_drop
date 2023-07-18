@@ -35,7 +35,7 @@
 import modalClose from '@/components/modalClose.vue'
 
 export default {
-  name: 'login-Modal',
+  name: 'Login-Modal',
   props: {
     isopen: Boolean,
   },
