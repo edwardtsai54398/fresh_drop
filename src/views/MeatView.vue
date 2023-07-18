@@ -12,19 +12,6 @@
         </div>
         <div class="meat_card_container">
             <div class="meat_card_box_m">
-                <!-- <carousel v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">
-                    <slide v-for="slide in example" :key="slide"> -->
-                <!-- slide: 輪播的物件; 10: 改成你要v-for的陣列(寫在data裡)
-                        <div class="box pic">
-                            <img :src="example.img" alt="Slide">
-                        </div>
-                    </slide>
-                    <template #addons> -->
-                <!-- <navigation />左右按鈕元件，可拿掉
-                        <pagination />頁籤元件，可拿掉
-                    </template>
-                </carousel> -->
-
                 <div class="chicken_ill pic">
                     <img :src="chicken.img5" alt="">
                 </div>
