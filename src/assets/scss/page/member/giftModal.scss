@@ -3,13 +3,20 @@
     top: 150px;
     left: 0;
     right: 0;
-    z-index: 3;
+    z-index: 20;
     margin: auto;
     width: calc(100% - $sp2 * 2);
     background-color: #fff;
     border: 2px solid $primary;
     border-radius: $m-br;
     padding: $sp6 $sp3 $sp4;
+    &::before{
+        position: absolute;
+        z-index: -1;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0,0,0,0.5);
+    }
     .pic{
         width: 100%;
         aspect-ratio: 9/5;

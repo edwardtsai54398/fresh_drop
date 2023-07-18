@@ -13,6 +13,7 @@ $toggle-link-h: 52px;
     padding: 0 $sp3;
     .main_nav{
         display: flex;
+        padding-top: $sp3;
     }
     nav > *{
             font-weight: 700;
@@ -71,24 +72,166 @@ $toggle-link-h: 52px;
     justify-content: space-between;
 }
 .sub_toggle_list{
+    padding-top: $sp3;
     position: absolute;
     width: 100%;
     height: calc(100vh - $mobile-head);
     top: 0;
     left: 200%;
+    z-index: 2;
     background-color: $bg--;
     display: flex;
     flex-direction: column;
     transition: .3s;
-    .goback i{
-        margin-left: calc($sp1 * -1);
-    }
+    
     &.open{
         left: 0;
     }
 }
+
+.goback {
+    padding: 0 $sp5;
+    i{
+        margin-left: calc($sp1 * -1);
+    }
+}
+    
+
 @media screen and (max-width: 766px){
     
+}
+.cart_toggle_btn{
+    .title_wrap{
+        display: flex;
+        align-items: center;
+    }
+    
+}
+.shopping_bag{
+    position: relative;
+    top: 10px;
+    margin-left: $sp2;
+    figcaption{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-40%, -65%);
+        color: $secondary;
+        font-size: $s-font;
+        font-weight: 700;
+    }
+    .goback{
+        flex-grow: 0;
+    }
+}
+.sub_toggle_cart{
+    @extend .sub_toggle_list;
+    padding-bottom: $sp3;
+    display: flex;
+    flex-direction: column;
+    &.open{
+        left: 0;
+    }
+}
+
+.cart_content{
+    width: 95%;
+    min-height: $toggle-link-h;
+    margin: $sp2 auto auto;
+    border: 3px solid $primary;
+    border-radius: $s-br;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.week_tabs{
+    display: flex;
+    margin: -3px -3px 0;
+    .tab{
+        width: 33.333333%;
+        background-color: $primary;
+        border-radius: $s-br;
+        border: 3px solid $primary;
+        border-bottom: none;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        color: #fff;
+        font-size: $xs-font;
+        text-align: center;
+        text-transform: uppercase;
+        &.active{
+            background-color: transparent;
+            color: $primary;
+        }
+    }
+    
+}
+.cart_list{
+    padding: 0 $sp3;
+    overflow-y: scroll;
+    flex-grow: 1;
+    width: 100%;
+}
+.cart_item{
+    border-bottom: 2px solid lighten($text, 40%);
+    padding: $sp2 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    align-items: center;
+    column-gap: $sp2;
+    .dish_pic{
+        position: relative;
+        grid-row: 2 span;
+        width: 100%;
+    }
+    .pic{
+        grid-row: 2 span;
+        aspect-ratio: 9/5;
+        border-radius: $xs-br;
+        
+    }
+    .amount{
+        position: absolute;
+        bottom: 100%;
+        right: 10px;
+        transform: translateY(50%);
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 50%;
+        font-size: $s-font;
+        text-align: center;
+        font-weight: 700;
+        background-color: $secondary;
+    }
+    .category{
+        font-size: $xs-font;
+        font-weight: 700;
+        text-align: center;
+        line-height: 30px;
+        padding: 0 $sp3;
+        width: fit-content;
+        background-color: $secondary--;
+        border-radius: 50rem;
+    }
+    .name{
+        font-size: $s-font;
+    }
+
+}
+
+.group_btn{
+    display: flex;
+    align-items: center;
+    padding: $sp3;
+    background-color: $bg--;
+    gap: $sp2;
+    border-bottom-left-radius: $m-br;
+    border-bottom-right-radius: $m-br;
+    [class*="btn_"]{
+        width: 50%;
+    }
 }
 %nav-button{
     width: 44px;

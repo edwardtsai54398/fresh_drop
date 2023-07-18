@@ -16,6 +16,11 @@ $btn_size:(
     color: #fff;
     background-color: $primary;
     box-shadow: 0px 3px 0px #000;
+
+    svg{
+        color:#fff;
+    }
+
     &:hover{
         box-shadow: none;
         transform: translate(0px, 3px);
@@ -55,9 +60,11 @@ a[class*="btn_"]{
     aspect-ratio: 1/1;
     box-shadow: 0px 2px 0px #000;
     border-width: 1px;
-    i{
-        font-size: $s-font;
+    [class*="fa-"]{
         margin: 8px;
+    }
+    svg{
+        color:#fff;
     }
 }
 
@@ -81,10 +88,15 @@ a[class*="btn_"]{
         background-color: $primary;
         transition: .3s;
     }
+    svg{
+        color: $primary;
+    }
     &:hover{
         transform: translate(0px, 0px);
         background-color: $primary;
-        color: #fff;
+        svg{
+            color: #fff;
+        }
         &::before{
             right: 0%;
         }
@@ -92,7 +104,7 @@ a[class*="btn_"]{
 }
 
 .btn_flat.btn_icon{
-    i{
+    svg{
         color: $primary;
     }
 }

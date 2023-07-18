@@ -3,7 +3,7 @@
     :class="{ open: isSelectOpen }">
     <div class="placeholder" @click="isSelectOpen = !isSelectOpen">
       {{ selectedOption || placeholder }}
-      <i class="fa-solid fa-chevron-down"></i>
+      <font-awesome-icon icon="fa-solid fa-chevron-down" />
     </div>
     <ul class="option" v-show="isSelectOpen">
       <li v-for="item in customOptions" :key="item"

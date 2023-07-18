@@ -35,7 +35,7 @@
           </li>
         </ul>
         <div class="btn_flat shoplist_toggle" @click="shoplistToggle(ordIndex)">
-          <i class="fa-solid fa-chevron-down"></i>
+          <font-awesome-icon icon="fa-solid fa-chevron-down" />
         </div>
       </li>
     </ul>

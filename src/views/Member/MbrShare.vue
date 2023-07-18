@@ -14,7 +14,7 @@
               <div class="date">{{ share.date }}</div>
               <div class="content">
                 <p>{{ share.message }}</p>
-                <button class="btn_icon btn_flat edit_massage"><i class="fa-solid fa-pen"></i></button>
+                <button class="btn_icon btn_flat edit_massage"><font-awesome-icon icon="fa-solid fa-pen" /></button>
               </div>
             </li>
           </ul>

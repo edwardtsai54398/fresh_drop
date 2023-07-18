@@ -2,7 +2,10 @@
     <section class="member_info">
       <div class="title">
         <h5>個人資料</h5>
-        <button class="btn_icon btn_flat info_edit_btn"><i class="fa-solid fa-pen"></i></button>
+        <button class="btn_icon btn_flat info_edit_btn">
+          
+          <font-awesome-icon icon="fa-solid fa-pen" />
+        </button>
       </div>
       <div class="info">
         <p class="info_item">會員編號：{{ memberInfo.id }}</p>
@@ -21,6 +24,7 @@
           <input type="text" id="address" :value="memberInfo.address" disabled>
         </p>
       </div>
+      <button class="btn_s btn_flat change_psw">修改密碼</button>
     </section>
 </template>
 

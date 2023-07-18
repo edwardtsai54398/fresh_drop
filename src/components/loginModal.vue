@@ -79,7 +79,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/scss/all.scss";
 @import "@/assets/scss/layout/login.scss";
 </style>
