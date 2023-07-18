@@ -1,0 +1,284 @@
+.container{
+    width: 100%;
+    max-width: 1920px;
+}
+.container .product_container{
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+}
+.decorate_index{
+    width: 100%;
+    height: 278px;    
+    background-color: $secondary--;
+}
+.decorate_day{
+    display: flex;
+    margin-top: 90px;
+    justify-content: center;
+}
+.index_text{
+    color: $secondary;
+    font-weight: bolder;
+    font-size: $m-font;
+    text-align: center;
+    line-height: .4;
+}
+.index_banner{
+  position: relative;
+  width: 170px;
+  line-height: 0;
+  margin: 0 auto;
+}
+
+
+// banner
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+}
+.swiper-slide{
+  border-radius: 20px;
+}
+.swiper_pic img{
+  @include img-fit;
+}
+.index_banner_swiper{
+  margin-top: -50px;
+}  
+.btn_circle{
+  position: absolute;
+  z-index: 2;
+  text-align: center;
+  width: 75px;
+  line-height: 57px;
+  height: 75px;
+  top: 155px;
+  left: 110px;
+  padding: $sp1;
+  background-color: #ffffff;
+  }
+
+  .index_btn_l{
+    position: relative;
+    top: 245px;
+    left: 130px;
+    padding: $sp2
+    ;
+  }
+  // 
+  .index_health{
+  height: 1100px;
+  padding: 30px;
+  overflow: hidden;
+  text-align: center;
+  background-color: $primary--;
+  margin : 190px 0px 50px 0px;
+  font-weight: bolder;
+} 
+.index_health_pic{
+  width: 200px;
+  margin: auto;
+}
+.index_health_pic img{
+  @include img-fit;
+}
+// 
+
+.carousel__slide {
+  padding: 5px;
+}
+
+.carousel__viewport {
+  perspective: 2000px;
+}
+
+.carousel__track {
+  transform-style: preserve-3d;
+}
+
+.carousel__slide--sliding {
+  transition: 0.5s;
+}
+
+.carousel__slide {
+  opacity: 0.9;
+  transform: rotateY(-20deg) scale(0.9);
+}
+
+.carousel__slide--active ~ .carousel__slide {
+  transform: rotateY(20deg) scale(0.9);
+}
+
+.carousel__slide--prev {
+  opacity: 1;
+  transform: rotateY(-10deg) scale(0.95);
+}
+
+.carousel__slide--next {
+  opacity: 1;
+  transform: rotateY(10deg) scale(0.95);
+}
+
+.carousel__slide--active {
+  opacity: 1;
+  transform: rotateY(0) scale(1.1);
+}
+
+// 
+.index_farmer_pic {
+  width: 250px;
+}
+
+.index_farmer_pic img {
+  width: 100%;
+}
+
+.carousel__track {
+  width: 100%; /* 或者你想要設定的適當寬度 */
+}
+.carousel__viewport{
+  margin-bottom: 100px;
+}
+
+.index_order{
+  flex-direction: column;
+  background-color:$secondary--;
+  position: sticky;
+      justify-content: center;
+    display: grid;
+  top:0;
+  margin-top: 100px;
+  height: 2500px;
+}
+.index_orderpic{
+  width: 300px;
+  background-color:$secondary--;
+  position: sticky;
+  top:0;
+}
+.index_order_pic{
+  width: 300px;
+  height: 300px;
+  position: sticky;
+  top:0;
+}
+.index_order_pic img{
+  width: 100%;
+}
+
+// 
+.index_subscription{
+    justify-content: center;
+    border: solid 6px $primary;
+    border-radius: 18px;
+    margin: 20px;
+}
+.index_subscription h2{
+  text-align: center;
+  width: 100%;
+  border-top-left-radius: 0px;
+  background-color: $primary;
+  padding: 20px;
+  color: #fff;
+}
+.index_menu{
+  padding: 30px 30px 0 30px;
+}
+.index_one{
+  margin: 38px;
+}
+.sale_menu_text{
+  font-size: $xs-font;
+}
+.index_drop_box{
+  margin: 10px;
+  justify-content: center;
+  display: flex;
+  gap: 26px;
+}
+.index_8drop{
+  border: solid 3px $primary;
+  border-radius: 23px;
+  margin: 30px;
+}
+
+.index_money{
+  text-align: center;
+  align-items: center;
+  display: grid;
+}
+.sale_text{
+  background-color: $primary;
+  padding: 8px;
+  margin: 9px;
+}
+.sale_text h4{
+  font-size: 20px;
+  color: #fff;
+}
+.index_drop{
+  padding: 15px;
+  gap: 30px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: $primary;
+}
+
+.index_drop h4{
+  text-align: center;
+  color: #fff;
+}
+// 
+.index_button{
+  display: flex;
+  justify-content: center;
+}
+.index_button_week{
+  margin: 5px 10px;
+}
+.index_btn_l_button{
+  padding: 20px;
+  display: flex;
+  line-height:16px;
+}
+.index_btn_l_button .text_number{
+  font-size: 30px;
+  color: #fff;
+  justify-content: center;
+}
+.index_illustrate{
+ margin: 20px;
+ line-height: 22px;
+}
+.index_btn_l_more{
+  margin: $sp2 auto;
+  padding: $sp2;
+}
+
+// .index_button .week {
+//   padding: 25px;
+//   background-color: $primary;
+//   margin: 15px;
+//   border-radius: 8px;
+// }
+// .index_button .week h4{
+//   color: #fff;
+//   font-size: $s-font;
+// }
+
+  // @include pad-V{
+  //   .container{
+        
+  //   }
+  // }
+
+
+
+

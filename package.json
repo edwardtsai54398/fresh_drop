@@ -10,9 +10,12 @@
   "dependencies": {
     "axios": "^1.4.0",
     "core-js": "^3.8.3",
+    "intersection-observer": "^0.12.2",
+    "swiper": "^10.0.4",
     "vue": "^3.2.13",
     "vue-axios": "^3.5.2",
     "vue-router": "^4.0.3",
+    "vue-scrollama": "^2.0.6",
     "vue3-carousel": "^0.3.1",
     "vuex": "^4.0.0"
   },
