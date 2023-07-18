@@ -80,6 +80,7 @@
         </div>
         <!-- 心得分享 -->
         <section class="share">
+            <!-- mobile: {{ mobile }} 測試用-->
             <div class="text">
                 <p class="title">一起做</p>
                 <button class="more" @click="toggleExpend">看更多</button>
@@ -189,6 +190,7 @@
 <script>
 import productList from "@/assets/data/productList.js";
 import productShare from "@/assets/data/productShare.js";
+let resizeEvent = null;
 export default {
     data() {
         return {
@@ -197,8 +199,18 @@ export default {
             productShare,
             isExpendVisible: false,
             isExpendUpload: false,
+            mobile: false,
         };
     },
+    created() {
+        this.setWidth(window.innerWidth);
+        resizeEvent = (e) => this.setWidth(e.target.innerWidth);
+        window.addEventListener("resize", resizeEvent);
+    },
+    unmounted() {
+        window.removeEventListener("resize", resizeEvent);
+    },
+
     methods: {
         update(index) {
             this.newProduct = { ...this.filteredProductList[index] };
@@ -218,6 +230,10 @@ export default {
         uploadExpend() {
             this.isExpendUpload = !this.isExpendUpload;
         },
+        setWidth(width) {
+            // console.log(width)// 換頁就可以知道unmounted有沒有效
+            this.mobile = width <= 768;
+        },
     },
     computed: {
         filteredProductList() {
@@ -225,20 +241,15 @@ export default {
                 (item) => item.id >= 2 && item.id <= 6
             );
         },
-    },
-    watch: {
-        //待修改watch
         filteredProductShare() {
-            if (window.innerWidth < 767) {
+            if (this.mobile) {
                 return this.productShare.filter(
                     (item) => item.id >= 1 && item.id <= 2
                 );
-            } else if (window.innerWidth >= 768) {
+            } else {
                 return this.productShare.filter(
                     (item) => item.id >= 1 && item.id <= 4
                 );
-            } else {
-                return [];
             }
         },
     },
@@ -246,6 +257,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/all.scss";
 @import "@/assets/scss/page/product.scss";
 </style>

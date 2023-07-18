@@ -51,32 +51,33 @@
                         </Collapse>
                 </template> -->
         </div>
+    </div>
 </template>
 
 <script>
 import faq from "@/assets/data/faq.js";
 export default {
-        data() {
-                return {
-                        newFaq: faq[0],//預設顯示[0]的內容
-                        faq,
-                        value: '1'
-                }
+    data() {
+        return {
+            newFaq: faq[0], //預設顯示[0]的內容
+            faq,
+            value: "1",
+        };
+    },
+    methods: {
+        //切換下方問答群組
+        update(index) {
+            this.newFaq = { ...this.faq[index] }; //改變newFaq的資料
         },
-        methods: {
-                //切換下方問答群組
-                update(index) {
-                        this.newFaq = { ...this.faq[index] };//改變newFaq的資料
-                },
-                //qa開合用
-                toggleAnswer(item) {
-                        this.newFaq.qa.forEach((qa) => {
-                                qa.open = false; // 把所有的欄位都關閉
-                        });
-                        item.open = !item.open; // 切换布林值
-                }
-        }
-}
+        //qa開合用
+        toggleAnswer(item) {
+            this.newFaq.qa.forEach((qa) => {
+                qa.open = false; // 把所有的欄位都關閉
+            });
+            item.open = !item.open; // 切换布林值
+        },
+    },
+};
 </script>
 <style scoped lang="scss">
 // @import "@/assets/scss/all.scss";
