@@ -1,0 +1,342 @@
+.giftcard_progress_container {
+    padding: $sp2;
+    padding-top: 200px;
+}
+
+//表格框
+.form-container {
+    border: $primary 2px solid;
+    border-radius: $xl-br;
+    background-color: $bg--;
+    padding: $sp3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    h5 {
+        font-weight: bold;
+        text-align: center;
+        font-size: $m-font;
+        color: $primary;
+    }
+
+    .to-button {
+        display: flex;
+        justify-content: center;
+        gap: 20px
+    }
+
+    .recipient-input {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        label {
+            margin-top: 10px;
+            margin-left: 15px;
+        }
+
+        #date {
+            display: block;
+            font-size: $xs-font;
+            line-height: 1.5;
+            background-color: transparent;
+            border-radius: $xs-br;
+            padding: $sp1 $sp3;
+
+            &::placeholder {
+                color: rgba(0, 0, 0, 0.5);
+                font-size: $xs-font;
+            }
+        }
+    }
+
+    .nextstep {
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+        width: 100%;
+        // width: 75vw
+
+    }
+
+    .selected-pic {
+
+        //   選到的樣式右上角的勾勾 
+        i {
+            position: absolute;
+            top: 10%;
+            left: 40%;
+
+        }
+
+        // 選到的樣式粗框線條
+        // border: 1px solid $primary;
+        // border-radius: 15px;
+    }
+
+    .piclist {
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        gap: 5px;
+
+        .selected-pic,
+        .secondary-pic {
+            width: 50%;
+        }
+    }
+
+    .upload_button {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+
+        button {
+            width: 100%;
+        }
+    }
+}
+
+.previousstep {
+    margin-right: auto;
+    margin-bottom: 10px;
+
+}
+
+.left-button,
+.right-button {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 35%;
+}
+
+.left-button {
+    left: -5%;
+}
+
+.right-button {
+    right: -5%;
+}
+
+.add-sticker,
+.sticker-list {
+    position: relative;
+}
+
+.add-sticker,
+.add-text {
+    text-align: center;
+    font-size: 20px;
+}
+
+.sticker-list {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+
+    img {
+        cursor: pointer;
+    }
+}
+
+.text-input {
+
+    position: relative;
+    width: 230px;
+
+    input {
+        padding-right: $sp4;
+    }
+
+    i {
+        position: absolute;
+        top: 13px;
+        right: 6px;
+    }
+}
+
+.add-text-content {
+    display: flex;
+    justify-content: space-around;
+}
+
+.fa-palette {
+    font-size: 40px;
+    cursor: pointer;
+}
+
+#giftcard-money {
+    text-align: center;
+    display: block;
+    color: $primary;
+    font-weight: bold;
+    width: 150px;
+    background-color: #ffffff !important;
+    font-size: $m-font;
+    line-height: 1.5;
+    background-color: transparent;
+    border-radius: $xs-br;
+    padding: $sp1 $sp3;
+
+    &::placeholder {
+        color: $primary;
+        font-size: $s-font;
+    }
+}
+
+.giftcard-money-input {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 150px;
+
+    i {
+        font-size: $m-font;
+        position: absolute;
+        top: 28%;
+        left: 10%
+    }
+}
+
+.giftcard-money-wrap {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+
+    .giftcard-money-button {
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        button {
+            background-color: #fff;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 90px;
+            height: 46px;
+            border: 1px solid $text;
+            border-radius: 26px;
+
+            img {
+                width: 22px;
+                height: auto;
+            }
+        }
+    }
+}
+
+.finished {
+    margin-left: auto;
+    margin-right: auto;
+
+    i {
+        font-size: 70px;
+        margin-bottom: 10px;
+    }
+}
+
+.finished-text {
+    display: flex;
+    justify-content: center;
+    margin-top: $sp1;
+    gap: $sp2;
+
+    .finished-title {
+        width: 6rem;
+        text-align: end;
+    }
+
+    .finished-item {
+        width: 10rem;
+
+        span {
+            color: $primary;
+        }
+    }
+}
+
+// 進度條
+/* .root{
+  display: flex;
+  justify-content: center;
+} */
+.progressbar-container{
+    width: 90%;
+    position: absolute;
+    z-index: 1;
+    margin-top: -90px;
+    border: solid 1px $primary;
+    border-radius: 50px;
+    background-color: $bg--;
+    padding:10px;
+    box-sizing: border-box;
+}
+.progressbar{
+  counter-reset: step;
+}
+.progressbar li{
+  float: left;
+  /* width: 14.28%; */
+  width: 20%;
+  position: relative;
+  text-align: center;
+  font-size: 12px;
+  color: $primary;
+}
+.progressbar li:before{
+  content:counter(step);
+  counter-increment: step;
+  width: 30px;
+  height: 30px;
+  border: 2px solid $primary--;
+  display: block;
+  margin: 0 auto 2px auto;
+  border-radius: 50%;
+  line-height: 27px;
+  background: $bg--;
+  color: $primary--;
+  text-align: center;
+  font-weight: bold;
+}
+.progressbar li:after{
+  content: '';
+  position: absolute;
+  width:100%;
+  height: 3px;
+  background: $primary--;
+  top: 15px;
+  left: -50%;
+  z-index: -1;
+}
+.progressbar li.active:before{
+ border-color: $primary;
+ background: $primary;
+ color: $bg--
+}
+.progressbar li.active:after{
+ background: $primary;
+}
+.progressbar li.active:after{
+  background: $primary;
+}
+.progressbar li.active:before{
+  border-color: $primary;
+  background: $primary;
+  color: white
+}
+
+.progressbar li:first-child:after{
+ content: none;
+}

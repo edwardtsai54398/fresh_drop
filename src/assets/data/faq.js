@@ -2,7 +2,7 @@ const faq = [
     {
         id: 1,
         type: '常見問題',
-        icon: '',
+        icon: require('@/assets/images/faq/1.svg'),
         qa: [
             {
                 questions: '機車外務人員將貨送到管理室，結果忘了取貨，隔天菜都壞了，能換嗎？',
@@ -23,8 +23,8 @@ const faq = [
     },
     {
         id: 2,
-        type: '會員註冊問題',
-        icon: '',
+        type: '會員註冊',
+        icon: require('@/assets/images/faq/2.svg'),
         qa: [
             {
                 questions: '我已經是會員，忘記密碼怎麼辦？',
@@ -46,7 +46,7 @@ const faq = [
     {
         id: 3,
         type: '付款問題',
-        icon: '',
+        icon: require('@/assets/images/faq/3.svg'),
         qa: [
             {
                 questions: '有甚麼付款方式？',
@@ -63,7 +63,7 @@ const faq = [
     {
         id: 4,
         type: '寄送問題',
-        icon: '',
+        icon: require('@/assets/images/faq/4.svg'),
         qa: [
             {
                 questions: '購買商品訂購之後多久可收到？',
@@ -84,8 +84,8 @@ const faq = [
     },
     {
         id: 5,
-        type: '購物相關問題',
-        icon: '',
+        type: '購物相關',
+        icon: require('@/assets/images/faq/5.svg'),
         qa: [
             {
                 questions: '如何確認訂單是否有訂購成功呢？',
@@ -103,7 +103,7 @@ const faq = [
     {
         id: 6,
         type: '訂單問題',
-        icon: '',
+        icon: require('@/assets/images/faq/6.svg'),
         qa: [
             {
                 questions: '收到貨怎麼沒有附發票呢？',
@@ -134,8 +134,8 @@ const faq = [
     },
     {
         id: 7,
-        type: '禮物卡相關問題',
-        icon: '',
+        type: '禮物卡相關',
+        icon: require('@/assets/images/faq/7.svg'),
         qa: [
             {
                 questions: '我的禮物卡如何激活和使用？',
@@ -157,7 +157,7 @@ const faq = [
     {
         id: 8,
         type: '退換貨問題',
-        icon: '',
+        icon: require('@/assets/images/faq/8.svg'),
         qa: [
             {
                 questions: '如何退換貨?',
