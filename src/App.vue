@@ -1,6 +1,6 @@
 <template>
   <MainHeader @toggle="isModalOpen = !isModalOpen"></MainHeader>
-  <loginModal :isopen="isModalOpen" @close="isModalOpen = false"></loginModal>
+  <LoginModal :isopen="isModalOpen" @close="isModalOpen = false"></LoginModal>
 
   <main><router-view /></main>
 
