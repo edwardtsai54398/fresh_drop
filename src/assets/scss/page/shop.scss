@@ -1,15 +1,25 @@
-.search {
-    width: 500px;
-    border-radius: 50rem;
-    margin: auto;
-    padding: $sp1 $sp3;
-    margin-bottom: $sp6;
+// .search {
+//     width: 500px;
+//     border-radius: 50rem;
+//     margin: auto;
+//     padding: $sp1 $sp3;
+//     margin-bottom: $sp6;
+// }
+.main_wrap {
+    margin: 120px 0;
+}
+
+//選單
+.select {
+    background-color: $secondary;
+    width: 100%;
 }
 
 .menu_title {
     margin: auto;
     text-align: center;
-    width: 500px;
+    width: 90%;
+    max-width: 500px;
     font-weight: 700;
     padding: $sp2;
     font-size: $m-font;
