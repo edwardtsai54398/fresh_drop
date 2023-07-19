@@ -52,7 +52,7 @@
     background: #FFF;
     display: flex;
     align-items: flex-start;
-    padding: $sp2;
+    padding: $sp3;
     gap: 10px;
     margin-top: $sp2;
 
@@ -65,16 +65,21 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
+        padding-left: $sp1;
+
 
         .question {
             color: $primary;
             font-size: $xs-font;
-            padding: $sp1;
 
         }
 
         .answer {
             @extend .question;
+
+            p {
+                color: $primary;
+            }
 
         }
     }
@@ -129,13 +134,14 @@
 //問答區收合用
 .slide-enter-active,
 .slide-leave-active {
-    transition: height 0.3s ease-in-out;
+    height: 0;
+    transition: height 0.001s ease-in-out;
     overflow: hidden;
 }
 
 .slide-enter,
 .slide-leave-to {
-    height: 0;
+    height: auto;
 }
 
 // 旋轉箭頭

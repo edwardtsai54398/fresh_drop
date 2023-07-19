@@ -2,7 +2,7 @@
         <div class="container">
                 <section class="bar_wrap" v-for="index in 5" :key="index" v-show="step === index">
                         <div class="bar" :style="{ width: progressWidth, background: getBarColor }">
-                                <span>{{ progressPercentage }}</span>
+                                <span v-show="step != 1">{{ progressPercentage }}</span>
                                 <div class="icon">
                                         <img src="../assets/images/game/carrot.png" alt="">
                                 </div>
@@ -235,312 +235,324 @@
                 </transition>
 
                 <!-- 分析結果 -->
-                <!-- 結果5 -->
-                <section class="analyze_card" v-show="!status && sum == 5">
-                        <div class="clip">
-                                <img src="@/assets/images/game/clip.png" alt="">
-                        </div>
-                        <div class="wrap">
-                                <div class="title">分析結果</div>
-                                <div class="recommend row">
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[0].img" alt="">
+                <transition name="fade">
+                        <!-- 結果5 -->
+                        <section class="analyze_card" v-show="!status && sum == 5">
+                                <div class="clip">
+                                        <img src="@/assets/images/game/clip.png" alt="">
+                                </div>
+                                <div class="wrap">
+                                        <div class="title">分析結果</div>
+                                        <div class="recommend row">
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[0].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[0].name }}</h2>
                                                         </div>
-                                                        <h2>{{ productList[0].name }}</h2>
+                                                </div>
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[3].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[3].name }}</h2>
+                                                        </div>
+                                                </div>
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[2].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[2].name }}</h2>
+                                                        </div>
+                                                </div>
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[1].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[1].name }}</h2>
+                                                        </div>
                                                 </div>
                                         </div>
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[3].img" alt="">
-                                                        </div>
-                                                        <h2>{{ productList[3].name }}</h2>
-                                                </div>
+                                        <div class="analyze">
+                                                <p class="personality">|{{ result[0].personality }}|</p>
+                                                <p class="txt">{{ result[0].txt }}</p>
                                         </div>
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[2].img" alt="">
-                                                        </div>
-                                                        <h2>{{ productList[2].name }}</h2>
-                                                </div>
-                                        </div>
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[1].img" alt="">
-                                                        </div>
-                                                        <h2>{{ productList[1].name }}</h2>
-                                                </div>
+                                        <div class="btns_wrap">
+                                                <button class="next_btn">前往購買</button>
+                                                <button class="next_btn" @click="restartTest">再玩一次</button>
                                         </div>
                                 </div>
-                                <div class="analyze">
-                                        <p class="personality">|{{ result[0].personality }}|</p>
-                                        <p class="txt">{{ result[0].txt }}</p>
+                        </section>
+                </transition>
+                <transition name="fade">
+                        <!-- 結果6 -->
+                        <section class="analyze_card" v-show="!status && sum == 6">
+                                <div class="clip">
+                                        <img src="@/assets/images/game/clip.png" alt="">
                                 </div>
-                                <div class="btns_wrap">
-                                        <button class="next_btn">前往購買</button>
-                                        <button class="next_btn" @click="restartTest">再玩一次</button>
-                                </div>
-                        </div>
-                </section>
-                <!-- 結果6 -->
-                <section class="analyze_card" v-show="!status && sum == 6">
-                        <div class="clip">
-                                <img src="@/assets/images/game/clip.png" alt="">
-                        </div>
-                        <div class="wrap">
-                                <div class="title">分析結果</div>
-                                <div class="recommend row">
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[4].img" alt="">
+                                <div class="wrap">
+                                        <div class="title">分析結果</div>
+                                        <div class="recommend row">
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[4].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[4].name }}</h2>
                                                         </div>
-                                                        <h2>{{ productList[4].name }}</h2>
+                                                </div>
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[5].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[5].name }}</h2>
+                                                        </div>
+                                                </div>
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[6].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[6].name }}</h2>
+                                                        </div>
+                                                </div>
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[7].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[7].name }}</h2>
+                                                        </div>
                                                 </div>
                                         </div>
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[5].img" alt="">
-                                                        </div>
-                                                        <h2>{{ productList[5].name }}</h2>
-                                                </div>
+                                        <div class="analyze">
+                                                <p class="personality">|{{ result[1].personality }}|</p>
+                                                <p class="txt">{{ result[1].txt }}</p>
                                         </div>
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[6].img" alt="">
-                                                        </div>
-                                                        <h2>{{ productList[6].name }}</h2>
-                                                </div>
-                                        </div>
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[7].img" alt="">
-                                                        </div>
-                                                        <h2>{{ productList[7].name }}</h2>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div class="analyze">
-                                        <p class="personality">|{{ result[1].personality }}|</p>
-                                        <p class="txt">{{ result[1].txt }}</p>
-                                </div>
-                                <div class="btns_wrap">
-                                        <button class="next_btn">前往購買</button>
-                                        <button class="next_btn" @click="restartTest">再玩一次</button>
-                                </div>
-                        </div>
-                </section>
-                <!-- 結果7 -->
-                <section class="analyze_card" v-show="!status && sum == 7">
-                        <div class="clip">
-                                <img src="@/assets/images/game/clip.png" alt="">
-                        </div>
-                        <div class="wrap">
-                                <div class="title">分析結果</div>
-                                <div class="recommend row">
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[8].img" alt="">
-                                                        </div>
-                                                        <h2>{{ productList[8].name }}</h2>
-                                                </div>
-                                        </div>
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[9].img" alt="">
-                                                        </div>
-                                                        <h2>{{ productList[9].name }}</h2>
-                                                </div>
-                                        </div>
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[10].img" alt="">
-                                                        </div>
-                                                        <h2>{{ productList[10].name }}</h2>
-                                                </div>
-                                        </div>
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[11].img" alt="">
-                                                        </div>
-                                                        <h2>{{ productList[11].name }}</h2>
-                                                </div>
+                                        <div class="btns_wrap">
+                                                <button class="next_btn">前往購買</button>
+                                                <button class="next_btn" @click="restartTest">再玩一次</button>
                                         </div>
                                 </div>
-                                <div class="analyze">
-                                        <p class="personality">|{{ result[2].personality }}|</p>
-                                        <p class="txt">{{ result[2].txt }}</p>
+                        </section>
+                </transition>
+                <transition name="fade">
+                        <!-- 結果7 -->
+                        <section class="analyze_card" v-show="!status && sum == 7">
+                                <div class="clip">
+                                        <img src="@/assets/images/game/clip.png" alt="">
                                 </div>
-                                <div class="btns_wrap">
-                                        <button class="next_btn">前往購買</button>
-                                        <button class="next_btn" @click="restartTest">再玩一次</button>
-                                </div>
-                        </div>
-                </section>
-                <!-- 結果8 -->
-                <section class="analyze_card" v-show="!status && sum == 8">
-                        <div class="clip">
-                                <img src="@/assets/images/game/clip.png" alt="">
-                        </div>
-                        <div class="wrap">
-                                <div class="title">分析結果</div>
-                                <div class="recommend row">
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[12].img" alt="">
+                                <div class="wrap">
+                                        <div class="title">分析結果</div>
+                                        <div class="recommend row">
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[8].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[8].name }}</h2>
                                                         </div>
-                                                        <h2>{{ productList[12].name }}</h2>
+                                                </div>
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[9].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[9].name }}</h2>
+                                                        </div>
+                                                </div>
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[10].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[10].name }}</h2>
+                                                        </div>
+                                                </div>
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[11].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[11].name }}</h2>
+                                                        </div>
                                                 </div>
                                         </div>
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[13].img" alt="">
-                                                        </div>
-                                                        <h2>{{ productList[13].name }}</h2>
-                                                </div>
+                                        <div class="analyze">
+                                                <p class="personality">|{{ result[2].personality }}|</p>
+                                                <p class="txt">{{ result[2].txt }}</p>
                                         </div>
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[14].img" alt="">
-                                                        </div>
-                                                        <h2>{{ productList[14].name }}</h2>
-                                                </div>
-                                        </div>
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[15].img" alt="">
-                                                        </div>
-                                                        <h2>{{ productList[15].name }}</h2>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div class="analyze">
-                                        <p class="personality">|{{ result[3].personality }}|</p>
-                                        <p class="txt">{{ result[3].txt }}</p>
-                                </div>
-                                <div class="btns_wrap">
-                                        <button class="next_btn">前往購買</button>
-                                        <button class="next_btn" @click="restartTest">再玩一次</button>
-                                </div>
-                        </div>
-                </section>
-                <!-- 結果9 -->
-                <section class="analyze_card" v-show="!status && sum == 9">
-                        <div class="clip">
-                                <img src="@/assets/images/game/clip.png" alt="">
-                        </div>
-                        <div class="wrap">
-                                <div class="title">分析結果</div>
-                                <div class="recommend row">
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[16].img" alt="">
-                                                        </div>
-                                                        <h2>{{ productList[16].name }}</h2>
-                                                </div>
-                                        </div>
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[17].img" alt="">
-                                                        </div>
-                                                        <h2>{{ productList[17].name }}</h2>
-                                                </div>
-                                        </div>
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[18].img" alt="">
-                                                        </div>
-                                                        <h2>{{ productList[18].name }}</h2>
-                                                </div>
-                                        </div>
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[19].img" alt="">
-                                                        </div>
-                                                        <h2>{{ productList[19].name }}</h2>
-                                                </div>
+                                        <div class="btns_wrap">
+                                                <button class="next_btn">前往購買</button>
+                                                <button class="next_btn" @click="restartTest">再玩一次</button>
                                         </div>
                                 </div>
-                                <div class="analyze">
-                                        <p class="personality">|{{ result[4].personality }}|</p>
-                                        <p class="txt">{{ result[4].txt }}</p>
+                        </section>
+                </transition>
+                <transition name="fade">
+                        <!-- 結果8 -->
+                        <section class="analyze_card" v-show="!status && sum == 8">
+                                <div class="clip">
+                                        <img src="@/assets/images/game/clip.png" alt="">
                                 </div>
-                                <div class="btns_wrap">
-                                        <button class="next_btn">前往購買</button>
-                                        <button class="next_btn" @click="restartTest">再玩一次</button>
-                                </div>
-                        </div>
-                </section>
-                <!-- 結果10 -->
-                <section class="analyze_card" v-show="!status && sum == 10">
-                        <div class="clip">
-                                <img src="@/assets/images/game/clip.png" alt="">
-                        </div>
-                        <div class="wrap">
-                                <div class="title">分析結果</div>
-                                <div class="recommend row">
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[20].img" alt="">
+                                <div class="wrap">
+                                        <div class="title">分析結果</div>
+                                        <div class="recommend row">
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[12].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[12].name }}</h2>
                                                         </div>
-                                                        <h2>{{ productList[20].name }}</h2>
+                                                </div>
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[13].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[13].name }}</h2>
+                                                        </div>
+                                                </div>
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[14].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[14].name }}</h2>
+                                                        </div>
+                                                </div>
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[15].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[15].name }}</h2>
+                                                        </div>
                                                 </div>
                                         </div>
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[21].img" alt="">
-                                                        </div>
-                                                        <h2>{{ productList[21].name }}</h2>
-                                                </div>
+                                        <div class="analyze">
+                                                <p class="personality">|{{ result[3].personality }}|</p>
+                                                <p class="txt">{{ result[3].txt }}</p>
                                         </div>
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[22].img" alt="">
-                                                        </div>
-                                                        <h2>{{ productList[22].name }}</h2>
-                                                </div>
-                                        </div>
-                                        <div class="col-6">
-                                                <div class="pro_card">
-                                                        <div class="pic">
-                                                                <img :src="productList[23].img" alt="">
-                                                        </div>
-                                                        <h2>{{ productList[23].name }}</h2>
-                                                </div>
+                                        <div class="btns_wrap">
+                                                <button class="next_btn">前往購買</button>
+                                                <button class="next_btn" @click="restartTest">再玩一次</button>
                                         </div>
                                 </div>
-                                <div class="analyze">
-                                        <p class="personality">|{{ result[5].personality }}|</p>
-                                        <p class="txt">{{ result[5].txt }}</p>
+                        </section>
+                </transition>
+                <transition name="fade">
+                        <!-- 結果9 -->
+                        <section class="analyze_card" v-show="!status && sum == 9">
+                                <div class="clip">
+                                        <img src="@/assets/images/game/clip.png" alt="">
                                 </div>
-                                <div class="btns_wrap">
-                                        <button class="next_btn">前往購買</button>
-                                        <button class="next_btn" @click="restartTest">再玩一次</button>
+                                <div class="wrap">
+                                        <div class="title">分析結果</div>
+                                        <div class="recommend row">
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[16].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[16].name }}</h2>
+                                                        </div>
+                                                </div>
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[17].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[17].name }}</h2>
+                                                        </div>
+                                                </div>
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[18].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[18].name }}</h2>
+                                                        </div>
+                                                </div>
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[19].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[19].name }}</h2>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="analyze">
+                                                <p class="personality">|{{ result[4].personality }}|</p>
+                                                <p class="txt">{{ result[4].txt }}</p>
+                                        </div>
+                                        <div class="btns_wrap">
+                                                <button class="next_btn">前往購買</button>
+                                                <button class="next_btn" @click="restartTest">再玩一次</button>
+                                        </div>
                                 </div>
-                        </div>
-                </section>
+                        </section>
+                </transition>
+                <transition name="fade">
+                        <!-- 結果10 -->
+                        <section class="analyze_card" v-show="!status && sum == 10">
+                                <div class="clip">
+                                        <img src="@/assets/images/game/clip.png" alt="">
+                                </div>
+                                <div class="wrap">
+                                        <div class="title">分析結果</div>
+                                        <div class="recommend row">
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[20].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[20].name }}</h2>
+                                                        </div>
+                                                </div>
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[21].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[21].name }}</h2>
+                                                        </div>
+                                                </div>
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[22].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[22].name }}</h2>
+                                                        </div>
+                                                </div>
+                                                <div class="col-6">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="productList[23].img" alt="">
+                                                                </div>
+                                                                <h2>{{ productList[23].name }}</h2>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="analyze">
+                                                <p class="personality">|{{ result[5].personality }}|</p>
+                                                <p class="txt">{{ result[5].txt }}</p>
+                                        </div>
+                                        <div class="btns_wrap">
+                                                <button class="next_btn">前往購買</button>
+                                                <button class="next_btn" @click="restartTest">再玩一次</button>
+                                        </div>
+                                </div>
+                        </section>
+                </transition>
                 sum:{{ sum }}
                 status:{{ status }}
                 score:{{ score }}
@@ -553,23 +565,9 @@
 
 <script>
 import productList from "@/assets/data/productList.js";
-//輪播
-// import { defineComponent } from 'vue'
-// import { ref } from 'vue';
-// import { Carousel, Navigation, Slide } from 'vue3-carousel'
-
-// import 'vue3-carousel/dist/carousel.css'
-// 輪播
 
 export default {
-        // name: 'Break-points',
-        // components: {
-        //         Carousel,
-        //         Slide,
-        //         Navigation,
-        // },
         data() {
-
                 return {
                         step: 1,
                         score: 0,
@@ -580,12 +578,8 @@ export default {
                                 itemsToShow: 1,
                                 snapAlign: 'start',
                         },
-                        // breakpoints are mobile first
-                        // any settings not specified will fallback to the carousel settings
-                        //輪播
                         sum: 0,
                         card: [
-
                                 {
                                         title: '第一題 ',
                                         question: '如果你是一隻動物，你會是',
@@ -679,11 +673,13 @@ export default {
                 }
         },
         computed: {
+                //胡蘿蔔寬度調整
                 progressWidth() {
-                        return `${this.step * 20}%`;
+                        return `${(this.step - 1) * 20}%`;
                 },
+                //胡蘿蔔內文調整
                 progressPercentage() {
-                        return `${this.step * 20}%`;
+                        return `${(this.step - 1) * 20}%`;
                 },
         },
         methods: {
@@ -719,26 +715,6 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-@import "@/assets/scss/all.scss";
+// @import "@/assets/scss/all.scss";
 @import "@/assets/scss/page/game.scss";
-
-#question-container,
-#result-container {
-        margin-bottom: 20px;
-}
-
-#progress-bar {
-        width: 100%;
-        height: 20px;
-        background-color: #f2f2f2;
-}
-
-#progress {
-        height: 100%;
-        background-color: #4caf50;
-}
-
-.active {
-        background-color: $secondary;
-}
 </style>

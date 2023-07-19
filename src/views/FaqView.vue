@@ -23,8 +23,8 @@
                                         {{ item.questions }}
                                 </div>
                                 <transition name="slide">
-                                        <div class="answer" v-if="item.open">
-                                                {{ item.answers }}
+                                        <div class="answer" v-show="item.open">
+                                                <p> {{ item.answers }}</p>
                                         </div>
                                 </transition>
                         </div>
