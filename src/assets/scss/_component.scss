@@ -48,13 +48,13 @@ a[class*="btn_"]{
     }
 }
 
-.btn_arrow{
-    display: flex;
-    align-items: center;
-    img[src*="arrow_long"]{
-        margin-left: 20px;
-    }
-}
+// .btn_arrow{
+//     display: flex;
+//     align-items: center;
+//     img[src*="arrow_long"]{
+//         margin-left: 20px;
+//     }
+// }
 
 .btn_icon{
     aspect-ratio: 1/1;
@@ -94,6 +94,7 @@ a[class*="btn_"]{
     &:hover{
         transform: translate(0px, 0px);
         background-color: $primary;
+        color:#fff;
         svg{
             color: #fff;
         }
