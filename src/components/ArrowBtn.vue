@@ -44,7 +44,7 @@
       },
     }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
     @import "@/assets/scss/all.scss";
     .btn_arrow{
         display: flex;
