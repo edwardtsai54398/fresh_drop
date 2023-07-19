@@ -24,9 +24,9 @@
         </div>
     </section>
     <section class="taiwan_container">
-                <div class="taiwan_img pic">
-                    <img :src="taiwan.Img" alt="">
-                </div>
+        <div class="taiwan_img pic">
+            <img :src="taiwan.Img" alt="">
+        </div>
     </section>
 </template>
 <script>
@@ -39,8 +39,8 @@ export default {
                 Img: require('@/assets/images/source/f01.png'),
                 Img2: require('@/assets/images/source/f03.png'),
             },
-            taiwan:{
-                Img:require('@/assets/images/source/Taiwan.svg'),
+            taiwan: {
+                Img: require('@/assets/images/source/Taiwan.svg'),
             },
             hideContent: false,
         };
@@ -56,7 +56,7 @@ export default {
             const scrollHeight = this.scrollContainer.scrollHeight;
             const scrollTop = this.scrollContainer.scrollTop;
             const containerHeight = this.scrollContainer.clientHeight;
-            const threshold = 0.7;
+            const threshold = 0.8;
 
             const scrollPercentage = scrollTop / (scrollHeight - containerHeight);
 

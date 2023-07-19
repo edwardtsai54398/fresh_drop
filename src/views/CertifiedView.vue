@@ -19,8 +19,8 @@
                 </div>
             </div>
             <div class="bg_img pic">
-                    <img :src="banner.bgImg" alt="">
-                </div>
+                <img :src="banner.bgImg" alt="">
+            </div>
         </div>
         <div class="personAll_container">
             <div class="person_ill_container">
@@ -69,9 +69,20 @@
             <p>{{ certified.text }}</p>
         </div>
         <div class="certified_img_container">
-            <div class="certified_img pic">
+            <carousel v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">
+                <slide v-for="slide in certified_sl" :key="slide">
+                    <div class="box">
+                        <img :src="slide" alt="">
+                    </div>
+                </slide>
+                <template #addons>
+                    <navigation />
+                    <pagination />
+                </template>
+            </carousel>
+            <!-- <div class="certified_img pic">
                 <img :src="certified.Img" alt="">
-            </div>
+            </div> -->
         </div>
     </section>
     <div class="bgImg_container">
@@ -87,8 +98,19 @@
     </div>
 </template>
 <script>
-export default {
-    name: 'CertifiedContainer',
+//斷點
+import { defineComponent } from 'vue'
+import { Carousel, Navigation, Slide } from 'vue3-carousel'
+
+import 'vue3-carousel/dist/carousel.css'
+
+export default defineComponent({
+    name: 'Break-points',
+    components: {
+        Carousel,
+        Slide,
+        Navigation,
+    },
     data() {
         return {
             banner: {
@@ -115,11 +137,33 @@ export default {
                 Img: require('@/assets/images/source/certified_bgBottom.svg'),
                 Img2: require('@/assets/images/source/mushroom.png'),
                 Img3: require('@/assets/images/source/doctor.png'),
-            }
+            },
+            settings: {
+                itemsToShow: 1,
+                snapAlign: 'center',
+            },
+            breakpoints: {
+                // 700px and up
+                700: {
+                    itemsToShow: 2,
+                    snapAlign: 'center',
+                },
+                // 1024 and up
+                1024: {
+                    itemsToShow: 3,
+                    snapAlign: 'center',
+                },
+            },
+            certified_sl: [
+                require('@/assets/images/source/certified01.png'),
+                require('@/assets/images/source/certified02.png'),
+                require('@/assets/images/source/certified01.png'),
+                require('@/assets/images/source/certified02.png'),
+            ],
         };
     },
     methods: {}
-}
+});
 </script>
 <style lang="scss">
 @import "@/assets/scss/all.scss";
