@@ -1,5 +1,4 @@
 <template>
-        this page is FAQ
         <div class="container">
                 <section class="question_type">
                         <div class="type" v-for="(item, index) in faq" :key="index" @click="update(index)">
