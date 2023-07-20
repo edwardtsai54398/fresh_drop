@@ -351,7 +351,7 @@ export default defineComponent({
 </script> -->
 <style lang="scss" scoped>
 // @import "@/assets/scss/index.scss";
-@import "@/assets/scss/page/home.scss";
+// @import "@/assets/scss/page/home.scss";
 
 </style> 
 

@@ -82,12 +82,13 @@
     .btn_flat{
         border: 2px solid $bg--;
         margin-right: $sp1;
-        i{
-            margin: 5px;
-            font-size: $xs-font;
+        svg{
+            margin: 6px;
+            transform: translateY(-1px);
         }
     }
 }
+
 .link_subtitle{
     display: block;
     width: fit-content;

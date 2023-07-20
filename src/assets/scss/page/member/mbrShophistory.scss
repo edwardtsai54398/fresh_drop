@@ -1,0 +1,91 @@
+$input-h: 32px;
+.search_group{
+    margin-top: $sp2;
+    display: flex;
+    flex-direction: column;
+    & > *:not(:first-child){
+        margin-top: $sp1;
+    }
+
+}
+.select_group{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: $sp2;
+    .select{
+        width: calc(100% - $sp2 *2);
+    }
+    .placeholder{
+        line-height: $input-h;
+    }
+}
+.member_history input.search_bar{
+    height: $input-h;
+}
+.search_btn.btn_xs.btn_flat{
+    line-height: $input-h;
+    width: 100%;
+}
+
+.order{
+    margin-top: $sp2;
+    border: 2px solid $primary;
+    border-radius: $m-br;
+    background-color: $bg--;
+    padding: $sp2;
+    &.collapse{
+        .shop_item:not(:first-child){
+            opacity: 0;
+            display: none;
+            transition: opacity .3s .1s, display .05s;
+        }
+    }
+}
+.order_info{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    p{
+        font-size: $xs-font;
+    }
+}
+.order_history{
+    margin-top: $sp3;
+}
+.shop_item{
+    margin-top: $sp2;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: repeat(3, 1fr);
+    column-gap: $sp1;
+    align-items: center;
+    opacity: 1;
+    transition: opacity .3s,  display .1s .3s;
+    .pic{
+        border-radius: $m-br;
+        grid-row: 3 span;
+        aspect-ratio: 9/5
+    }
+    .category{
+        @include pill(70px);
+        line-height: 30px;
+        font-size: $xs-font;
+        font-weight: 700;
+        background-color: $secondary--;
+        text-align: center;
+        justify-self: center;
+    }
+    .name, .amount{
+        font-size: $xs-font;
+        text-align: center;
+    }
+    
+}
+.shoplist_toggle.btn_flat{
+    margin-top: $sp3;
+    line-height: 30px;
+    width: 100%;
+    i{
+        color: $primary;
+    }
+}

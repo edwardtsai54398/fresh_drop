@@ -3,7 +3,7 @@
 }
 
 .pay_title {
-    margin: $sp7 auto;
+    margin: $sp4 auto $sp7;
     font-size: $m-font;
     font-weight: 700;
     color: $primary;
@@ -32,7 +32,7 @@
     .dishes {
         display: flex;
         align-items: center;
-        margin-bottom: $sp4;
+        // margin-bottom: $sp4;
     }
 
     .dishes_pic {
@@ -41,9 +41,10 @@
 
         .pic {
             width: 100px;
-            aspect-ratio: 5/3;
+            aspect-ratio: 1/1;
             border-radius: $s-br;
         }
+        
     }
 
     .amount {
@@ -114,16 +115,17 @@
 }
 
 .pay_info {
-    margin-top: $sp7;
+    margin-top: 120px;
 
     h5 {
         padding: 0 $sp2;
         font-size: $s-font;
+        font-weight: 700;
     }
 }
 
 .radio_wrap {
-    margin-top: $sp3;
+    margin-top: $sp4;
 
     input[type="radio"] {
         margin-right: $sp1;
@@ -180,11 +182,12 @@
 }
 
 .payment {
-    margin-top: $sp6;
+    margin-top: $sp7;
 
     h5 {
         padding: 0 $sp2;
         font-size: $s-font;
+        font-weight: 700;
     }
 
     .row {
@@ -200,7 +203,6 @@
     position: relative;
     margin-top: $sp4;
     transform-style: preserve-3d;
-    
     margin-left: -$sp1;
     margin-right: -$sp1;
     transition: .5s;

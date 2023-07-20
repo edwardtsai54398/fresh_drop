@@ -1,0 +1,29 @@
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.info_edit_btn{
+    i{
+        font-size: $xs-font;
+        margin: 4px;
+    }
+}
+.info{
+    padding: 0 $sp1;
+}
+.info_item{
+    font-size: $xs-font;
+    margin-top: $sp2;
+    input{
+        display: inline;
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        height: fit-content;
+    }
+}
+
+.change_psw{
+    margin-top: $sp2;
+}

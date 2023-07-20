@@ -4,8 +4,8 @@
             <div class="logo pic"><img src="@/assets/images/logo/logo.png" alt=""></div>
             <div class="social_media">
                 <div class=" follow">follow us</div>
-                <div class="circle"><i class="fa-brands fa-facebook-f"></i></div>
-                <div class="circle"><i class="fa-brands fa-instagram"></i></div>
+                <div class="circle"><font-awesome-icon icon="fa-brands fa-facebook-f" /></div>
+                <div class="circle"><font-awesome-icon icon="fa-brands fa-instagram" /></div>
             </div>
             <div class="shoplink_wrap">
                 <div class="row">
@@ -21,11 +21,11 @@
                 <div class="row">
                     <div class="col-6">
                         <router-link to="/game" class="site_link">
-                            <div class="btn_icon btn_flat"><i class="fa-sharp fa-solid fa-arrow-right"></i></div>
+                            <div class="btn_icon btn_flat site_link_arrow"><font-awesome-icon :style="{color:'#fff'}" icon="fa-solid fa-arrow-right" /></div>
                             今天吃什麼
                         </router-link>
                         <router-link to="/about" class="site_link">
-                            <div class="btn_icon btn_flat"><i class="fa-sharp fa-solid fa-arrow-right"></i></div>
+                            <div class="btn_icon btn_flat site_link_arrow"><font-awesome-icon :style="{color:'#fff'}" icon="fa-solid fa-arrow-right" /></div>
                             關於我們
                         </router-link>
                         <router-link to="/about" class="link_subtitle">
@@ -37,7 +37,7 @@
                     </div>
                     <div class="col-6">
                         <router-link to="/source" class="site_link">
-                            <div class="btn_icon btn_flat"><i class="fa-sharp fa-solid fa-arrow-right"></i></div>
+                            <div class="btn_icon btn_flat site_link_arrow"><font-awesome-icon :style="{color:'#fff'}" icon="fa-solid fa-arrow-right" /></div>
                             食材溯源
                         </router-link>
                         <router-link to="/source" class="link_subtitle">
@@ -88,7 +88,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     @import "@/assets/scss/all.scss";
     @import "@/assets/scss/layout/footer.scss";
 </style>

@@ -35,7 +35,7 @@
 import modalClose from '@/components/modalClose.vue'
 
 export default {
-  name: 'login-Modal',
+  name: 'Login-Modal',
   props: {
     isopen: Boolean,
   },
@@ -50,10 +50,22 @@ export default {
       },
     };
   },
-  methods: {},
+  methods: {
+    login() {
+            if (this.user.email === 'test' && this.user.password === 'test') {
+                alert('登入成功');
+                this.$emit('close')
+                this.$router.push('/member')
+                
+            } else {
+                alert('帳號或密碼錯誤，請再試一次')
+            }
+
+        }
+  },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/scss/all.scss";
 @import "@/assets/scss/layout/login.scss";
 </style>
