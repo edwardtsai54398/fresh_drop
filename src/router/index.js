@@ -141,7 +141,7 @@ const routesUser = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     // component: AboutView,
-    component: () => import(/* webpackChunkName: "about" */ '../views/Back_Index.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Back/Back_Index.vue')
   },
 ]
 

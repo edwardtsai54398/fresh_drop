@@ -1,135 +1,4 @@
 <template>
-  <div class="container index_container">
-    <!-- banner滑卡區 -->
-    <section class="container_index">
-      <div class="decorate_index">
-        <div class="index_banner_slider">
-          <div class="decorate_day">
-            <img src="../assets/images/index/index_happy.png" alt="">
-          </div>
-          <!-- 字左 -->
-          <div class="index_text">
-            <div>
-              <p>每日命定料理！</p><br>
-              <p>左右滑動找到屬於你的菜</p>
-            </div>
-            <div class="index_carrot pic">
-              <img src="../assets/images/index/index_decorate_carrot.png" alt="">
-            </div>
-          </div>
-        </div>
-        <!-- 中間滑卡 -->
-        <div class="index_index_banner_swiper">
-          <!-- 下一張按鈕 -->
-          <button class="btn_circle btn_flat">NEXT►</button>
-          <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="mySwiper">
-            <swiper-slide>
-              <div class="swiper_pic">
-                <img src="../assets/images/product/1tomaot_egg.jpg" alt="">
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div class="swiper_pic">
-                <img src="../assets/images/product/2creamy_beer_clam.jpg" alt="">
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div class="swiper_pic">
-                <img src="../assets/images/product/3basil_eggplant.jpg" alt="">
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div class="swiper_pic">
-                <img src="../assets/images/product/4grill_clam.jpg" alt="">
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div class="swiper_pic">
-                <img src="../assets/images/product/5mapo_tofu.jpg" alt="">
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div class="swiper_pic">
-                <img src="../assets/images/product/2creamy_beer_clam.jpg" alt="">
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div class="swiper_pic">
-                <img src="../assets/images/product/23thai_hot_sour_soup.jpg" alt="">
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div class="swiper_pic">
-                <img src="../assets/images/product/31vietnam_beef_salad.jpg" alt="">
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div class="swiper_pic">
-                <img src="../assets/images/product/23thai_hot_sour_soup.jpg" alt="">
-              </div>
-            </swiper-slide>
-          </swiper>
-          <button class="index_btn_l">更多食譜</button>
-        </div>
-        <!-- 字右 -->
-        <div class="index_food_title">
-          <p>清爽無負擔</p>
-          <div class="line">
-            <span>希臘烤羊肉</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 水果滑動區 -->
-    <section class="index_health_banner" style="display: none;">
-      <p>HEALTH<br>VEGETABLE</p>
-      <div class="index_health_wrap">
-        <div class="index_health" ref="box">
-          <div class="index_health_pic pic" v-for="(vegetable, index) in vegetables" :key="index">
-            <img :src="vegetable.image" alt="">
-            <h3>{{ vegetable.name }}</h3>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--  小農輪播區-->
-    <section class="framer" style="display: none;">
-      <p>｜小農介紹｜</p>
-      <Carousel v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">
-        <Slide v-for="item in farmerImg" :key="item">
-
-          <div class="index_farmer_pic">
-            <img :src="item" alt="">
-          </div>
-        </Slide>
-        <template #addons>
-          <Navigation />
-        </template>
-      </Carousel>
-    </section>
-
-
-    <!-- 訂購流程 -->
-    <section class="index_order">
-      <div class="green_line">
-        <img src="../assets/images/index/line_green.png" alt="">
-      </div>
-      <div class="green_line1">
-        <img src="../assets/images/index/line_green.png" alt="">
-      </div>
-      <div class="order_text">
-        <p>｜訂購流程｜</p>
-      </div>
-      <div class="index_orderpic" v-for="item in index_order" :key="item">
-        <h3>{{ item.title }}</h3>
-        <p>{{ item.description }}</p>
-        <div class="index_order_pic">
-          <img :src="item.image" alt="">
-        </div>
-      </div>
-    </section>
-  </div>
   <!-- 訂閱方案 -->
   <section class="index_subscription">
     <p>｜訂購流程｜</p>
@@ -337,9 +206,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-// @import "@/assets/scss/index.scss";
-@import "@/assets/scss/page/home.scss";
-</style> 
+@import "@/assets/scss/all.scss";
+@import "@/assets/scss/page/home/Home_index_subscription.scss";
+</style>
 
 
 
