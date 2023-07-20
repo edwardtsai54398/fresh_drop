@@ -1,39 +1,64 @@
+
 .container{
-    width: 100%;
-    max-width: 1920px;
+  width: 100%;
+  max-width: 1920px;
 }
 .container .product_container{
   max-width: 1200px;
   margin: auto;
   display: flex;
 }
-.decorate_index{
-    width: 100%;
-    height: 278px;    
-    background-color: $secondary--;
+.decorate_index {
+  width: 100%;
+  margin-bottom: 100px;
+  aspect-ratio: 1920/1050;
+  background-image: url('@/assets/images/index/decoeate1.png');
+  background-size: cover;
 }
+
 .decorate_day{
-    display: flex;
-    margin-top: 90px;
-    justify-content: center;
+  width: 120px;
+  padding: 20px;
+  margin: auto;
+}
+.decorate_day img{
+  width: 100%;
 }
 .index_text{
-    color: $secondary;
-    font-weight: bolder;
-    font-size: $m-font;
-    text-align: center;
-    line-height: .4;
+  font-weight: bolder;
+  font-size: 24px;
+  margin-bottom: 30px;
+  text-align: center;
+  line-height: 0.4;
+}
+.index_food_title{
+  display: none;
+}
+.index_carrot img{
+  position: relative;
+  bottom: 90px;
+  width: 50px;
+  left: 102px;
+} 
+.index_text p{
+  color: $primary;
+  line-height: 1.2;
 }
 .index_banner{
   position: relative;
-  width: 170px;
+  width: 230px;
   line-height: 0;
-  margin: 0 auto;
+  margin: 170px auto;
 }
 
 
 // banner
-
+.index_index_banner_swiper{
+  margin: -70px auto 60px;
+  width: 40%;
+  position: relative;
+  
+}
 .swiper-slide {
   display: flex;
   align-items: center;
@@ -56,40 +81,53 @@
   position: absolute;
   z-index: 2;
   text-align: center;
-  width: 75px;
-  line-height: 57px;
-  height: 75px;
-  top: 155px;
-  left: 110px;
-  padding: $sp1;
+  width: 65px;
+  line-height: 47px;
+  height: 65px;
+  font-size: 12px;
+  top: 119px;
+  left: 120px;
+  padding: 9px;
   background-color: #ffffff;
   }
 
-  .index_btn_l{
-    position: relative;
-    top: 245px;
-    left: 130px;
-    padding: $sp2
-    ;
-  }
-  // 
-  .index_health{
-  height: 1100px;
-  padding: 30px;
-  overflow: hidden;
-  text-align: center;
+.index_btn_l{
+  top: 204px;
+  left: 164px;
+  padding: 4px;
+  position: relative;
+}
+.index_health_banner {
+  height: 350vh;
+  width: 100%;
   background-color: $primary--;
-  margin : 190px 0px 50px 0px;
+}
+.index_health_banner p{
+  font-size: $l-font;
+  text-align: center;
   font-weight: bolder;
-} 
-.index_health_pic{
-  width: 200px;
-  margin: auto;
+  padding: 20px;
 }
-.index_health_pic img{
-  @include img-fit;
+.index_health_wrap{
+  width: 100%;
+  height: 100vh;
+  position: sticky;
+  overflow: hidden;
+  padding-top: 250px;
+  top: 100px;
 }
-// 
+.index_health {
+  height: 100%;
+  display: flex;
+  text-align: center;
+}
+.index_health_pic {
+  margin: 0 250px;
+  width: 500px;
+  height: 500px;
+  flex-shrink: 0;
+}
+
 
 .carousel__slide {
   padding: 5px;
@@ -135,7 +173,13 @@
 .index_farmer_pic {
   width: 250px;
 }
-
+.framer p{
+  text-align: center;
+  color: $primary;
+  padding: 30px;
+  font-weight: bolder;
+  font-size: $s-font;
+}
 .index_farmer_pic img {
   width: 100%;
 }
@@ -151,17 +195,51 @@
   flex-direction: column;
   background-color:$secondary--;
   position: sticky;
-      justify-content: center;
-    display: grid;
+  justify-content: center;
+  display: grid;
   top:0;
   margin-top: 100px;
-  height: 2500px;
+  padding-top: 120px;
+}
+.green_line,.green_line1{
+  display: none;
 }
 .index_orderpic{
   width: 300px;
+  min-height: 510px;
+  position: relative;
   background-color:$secondary--;
   position: sticky;
-  top:0;
+  top:300px;
+  margin-bottom: 500px;
+  // &:last-child{
+  //   margin-bottom: 0px;
+  // }
+}
+.order_text p{
+  text-align: center;
+  color: $primary;
+  padding: 20px;
+  font-weight: bolder;
+  font-size: $s-font;
+}
+.index_orderpic h3{
+  width: 288px;
+  padding: 15px;
+  color: $primary;
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 15px;
+  font-size: $s-font;
+  font-weight: bolder;
+  background-color: $bg;
+  border: solid 4px $primary;
+}
+.index_orderpic p{
+  color: $primary;
+  font-weight: bolder;
+  font-size: $s-font;
+  padding-bottom: 30px;
 }
 .index_order_pic{
   width: 300px;
@@ -180,7 +258,7 @@
     border-radius: 18px;
     margin: 20px;
 }
-.index_subscription h2{
+.index_subscription p{
   text-align: center;
   width: 100%;
   border-top-left-radius: 0px;
@@ -235,7 +313,7 @@
   text-align: center;
   color: #fff;
 }
-// 
+
 .index_button{
   display: flex;
   justify-content: center;
@@ -262,22 +340,105 @@
   padding: $sp2;
 }
 
-// .index_button .week {
-//   padding: 25px;
-//   background-color: $primary;
-//   margin: 15px;
-//   border-radius: 8px;
-// }
-// .index_button .week h4{
-//   color: #fff;
-//   font-size: $s-font;
-// }
 
-  // @include pad-V{
-  //   .container{
-        
-  //   }
-  // }
+  @include pad-V{
+    .container .index_container{
+          .btn_circle{
+    position: absolute;
+    z-index: 2;
+    width: 120px;
+    line-height: 100px;
+    height: 120px;
+    font-size: 22px;
+    top: 663px;
+    left: 629px;
+    padding: 9px;
+    }
+
+    }
+    .index_index_banner_swiper{
+      margin: -70px auto 60px;
+      width: 40%;
+      
+    }
+    .swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #fff;
+    }
+    .swiper-slide{
+      border-radius: 20px;
+    }
+    .swiper_pic img{
+      @include img-fit;
+    }
+    .index_banner_swiper{
+      margin-top: -50px;
+    }  
+    .btn_circle{
+      position: absolute;
+      z-index: 2;
+      text-align: center;
+      width: 65px;
+      line-height: 47px;
+      height: 65px;
+      font-size: 12px;
+      top: 466px;
+      left: 253px;
+      padding: 9px;
+      background-color: #ffffff;
+      }
+    
+    .index_btn_l{
+      position: relative;
+      top: 130px;
+      left: 270px;
+      padding: 4px;
+    }
+    .index_health_banner {
+      height: 350vh;
+      width: 100%;
+      background-color: $primary--;
+    }
+    .index_health_wrap{
+      width: 100%;
+      height: 100vh;
+      position: sticky;
+      overflow: hidden;
+      padding-top: 250px;
+      top: 100px;
+    }
+    .index_health {
+      height: 100%;
+      display: flex;
+      text-align: center;
+    }
+    .index_health_pic {
+      margin: 0 250px;
+      width: 500px;
+      height: 500px;
+      flex-shrink: 0;
+    }
+    .green_line{
+      display: block;
+      position: absolute;
+      left: 5%;
+      top: 2%;
+    }
+    .green_line1{
+      display: block;
+      position: absolute;
+      right: 5%;
+      top: 2%;
+    }
+    .index_food_title{
+      background-color: aqua;
+    }
+  }
 
 
 

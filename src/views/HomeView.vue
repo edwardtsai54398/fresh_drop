@@ -2,25 +2,27 @@
   <div class="container index_container">
     <div class="container_index">
       <div class="decorate_index">
-        <div class="decorate_day">
-          <img src="../assets/images/index/index_decorate_vg3.png" alt="">
+        <div class="index_banner_slider">
+          <div class="decorate_day">
+            <img src="../assets/images/index/index_happy.png" alt="">
+          </div>
+          <div class="index_text">
+            <p>每日命定料理！</p><br>
+            <p>左右滑動找到屬於你的菜</p>
+            <div class="index_carrot">
+              <img src="../assets/images/index/index_decorate_carrot.png" alt="">
+            </div>
+          </div>
+          <div class="index_food_title">
+            <p>清爽無負擔</p>
+            <div class="line">...........</div>
+            <p>希臘烤羊肉</p>
+          </div>
         </div>
-
-        <div class="index_text">
-          <h2>每日命定料理！</h2><br>
-          <p>左右滑動找到屬於你的菜</p>
-        </div>
-
-        <div class="index_banner">
+        <div class="index_index_banner_swiper">
           <div class="btn_circle btn_flat">NEXT►</div>
           <div class="index_btn_l">更多食譜</div>
-          <div class="index_index_banner_swiper">
-          <swiper
-              :effect="'cards'"
-              :grabCursor="true"
-              :modules="modules"
-              class="mySwiper"
-            >
+          <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="mySwiper">
             <swiper-slide>
               <div class="swiper_pic">
                 <img src="../assets/images/product/1tomaot_egg.jpg" alt="">
@@ -67,39 +69,25 @@
               </div>
             </swiper-slide>
           </swiper>
-        </div> 
-      </div>  
-    </div>  
-    </div>
-    <div class="index_health">
-      <h3>HEALTH<br>VEGETABLE</h3>
-      <div class="index_vg">
-        <div class="index_health_pic">
-          <img src="../assets/images/index/index_vefetable.png" alt="">
-          <h3>Chinese cabbage</h3>
-        </div>
-        <div class="index_health_pic">
-          <img src="../assets/images/index/index_vefetable1.png" alt="">
-          <h3>cauliflower</h3>
-        </div>
-        <div class="index_health_pic">
-          <img src="../assets/images/index/index_vefetable2.png" alt="">
-          <h3>Green pepper</h3>
-        </div>
-        <div class="index_health_pic">
-          <img src="../assets/images/index/index_vefetable3.png" alt="">
-          <h3>pumpkin</h3>
-        </div>
-        <div class="index_health_pic">
-          <img src="../assets/images/index/index_vefetable4.png" alt="">
-          <h3>onion</h3>
         </div>
       </div>
     </div>
 
+    
+        <div class="index_health_banner">
+          <p>HEALTH<br>VEGETABLE</p>
+            <div class="index_health_wrap">
+              <div class="index_health" ref="box">
+                <div class="index_health_pic pic" v-for="(vegetable, index) in vegetables" :key="index">
+                  <img :src="vegetable.image" alt="">
+                  <h3>{{ vegetable.name }}</h3>
+                </div>
+              </div>
+            </div>
+        </div>
     <!--  -->
     <div class="framer">
-      <h3>小農介紹</h3>
+      <p>｜小農介紹｜</p>
       <Carousel v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">
         <Slide v-for="item in farmerImg" :key="item">
 
@@ -113,80 +101,62 @@
       </Carousel>
     </div>
 
-    <!-- <div class="index_order">
-      <div class="index_orderpic" v-for="(item, index) in index_order" :key="index">
-        <h2>{{ item.title }}</h2>
-        <p>{{ item.description }}</p>
-        <div class="index_order_pic">
-          <img :src="item.image" alt="">
-        </div>
-      </div>
-    </div> -->
+
 
     <div class="index_order">
+      <div class="green_line">
+        <img src="../assets/images/index/line_green.png" alt="">
+      </div>
+      <div class="green_line1">
+        <img src="../assets/images/index/line_green.png" alt="">
+      </div>
+      <div class="order_text">
+        <p>｜訂購流程｜</p>
+      </div>
       <div class="index_orderpic" v-for="item in index_order" :key="item">
-        <h2>{{ item.title }}</h2>
+        <h3>{{ item.title }}</h3>
         <p>{{ item.description }}</p>
         <div class="index_order_pic">
           <img :src="item.image" alt="">
         </div>
       </div>
-    </div> 
-  </div>  
-  
+    </div>
+  </div>
+
   <div class="index_subscription">
-    <h2>訂閱方案</h2>
+    <p>｜訂購流程｜</p>
     <div class="index_menu">
-      <h3>.一次配送幾餐?</h3>
+      <h3>1.一次配送幾餐?</h3>
     </div>
     <div class="index_8drop">
       <div class="index_drop">
-          <h4>8 DROP</h4>
-      </div>  
-        
+        <h4>8 DROP</h4>
+      </div>
+
       <div class="index_drop_box">
         <div class="index_drop_pic">
           <img src="../assets/images/index/imdex_box.png" alt="">
-        </div> 
-          <div class="index_money">
-            <h4>原價1600元</h4>
-            <div class="sale_text">
-              <h4>特價1220元</h4>
-            </div>
-            <div class="sale_menu_text">
-              <h4>(一餐省下40元)</h4>
-            </div>
+        </div>
+        <div class="index_money">
+          <h4>原價1600元</h4>
+          <div class="sale_text">
+            <h4>特價1220元</h4>
           </div>
+          <div class="sale_menu_text">
+            <h4>(一餐省下40元)</h4>
+          </div>
+        </div>
       </div>
-  </div>
-  <div class="index_8drop">
-    <div class="index_drop">
+    </div>
+    <div class="index_8drop">
+      <div class="index_drop">
         <h4>8 DROP</h4>
-    </div>  
-      
+      </div>
+
       <div class="index_drop_box">
         <div class="index_drop_pic">
           <img src="../assets/images/index/imdex_box.png" alt="">
-        </div> 
-          <div class="index_money">
-            <h4>原價1600元</h4>
-            <div class="sale_text">
-              <h4>特價1220元</h4>
-            </div>
-            <div class="aa">
-              <h4>(一餐省下40元)</h4>
-            </div>
-          </div>
-      </div>
-  </div>
-  <div class="index_8drop">
-    <div class="index_drop">
-        <h4>8 DROP</h4>
-    </div>    
-    <div class="index_drop_box">
-      <div class="index_drop_pic">
-        <img src="../assets/images/index/imdex_box.png" alt="">
-      </div> 
+        </div>
         <div class="index_money">
           <h4>原價1600元</h4>
           <div class="sale_text">
@@ -196,60 +166,54 @@
             <h4>(一餐省下40元)</h4>
           </div>
         </div>
+      </div>
     </div>
-  </div>
-  <div class="index_one">
-    <h3>隔多久配送一次?</h3>
-  </div>
-  <div class="index_button">
-    <div class="index_button_week">
-      <div class="index_btn_l_button"><div class="text_number">2</div>周</div>
+    <div class="index_8drop">
+      <div class="index_drop">
+        <h4>8 DROP</h4>
+      </div>
+      <div class="index_drop_box">
+        <div class="index_drop_pic">
+          <img src="../assets/images/index/imdex_box.png" alt="">
+        </div>
+        <div class="index_money">
+          <h4>原價1600元</h4>
+          <div class="sale_text">
+            <h4>特價1220元</h4>
+          </div>
+          <div class="aa">
+            <h4>(一餐省下40元)</h4>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="index_button_week">
-      <div class="index_btn_l_button"><div class="text_number">2</div>周</div>
+    <div class="index_one">
+      <h3>2.隔多久配送一次?</h3>
     </div>
-    <div class="index_button_week">
-      <div class="index_btn_l_button"><div class="text_number">2</div>周</div>
-    </div>
+    <div class="index_button">
+      <div class="index_button_week">
+        <div class="index_btn_l_button">
+          <div class="text_number">2</div>周
+        </div>
+      </div>
+      <div class="index_button_week">
+        <div class="index_btn_l_button">
+          <div class="text_number">2</div>周
+        </div>
+      </div>
+      <div class="index_button_week">
+        <div class="index_btn_l_button">
+          <div class="text_number">2</div>周
+        </div>
+      </div>
     </div>
     <div class="index_illustrate">
-          <h3>從第二次訂購開始，您可以選擇跳過、暫停或取消訂閱。我們沒有設定任何訂單次數的限制，也沒有與暫停或取消訂閱相關的違約金。</h3> 
+      <h3>從第二次訂購開始，您可以選擇跳過、暫停或取消訂閱。我們沒有設定任何訂單次數的限制，也沒有與暫停或取消訂閱相關的違約金。</h3>
     </div>
     <div class="index_btn_l_more">更多食譜</div>
- 
+
   </div>
-
-  <div id="app">
-    <div class="intro">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, at
-        velit sint facere ipsam doloremque placeat vel impedit sapiente alias.
-      </p>
-      <p>SCROLL TO CONTINUE</p>
-    </div>
-
-    <div class="main">
-      <div class="main__graphic">{{ currStep }}</div>
-      <Scrollama
-        :debug="true"
-        :offset="0.5"
-        @step-enter="({ element }) => (currStep = element.dataset.stepNo)"
-      >
-        <div class="step" data-step-no="1">step 1</div>
-        <div class="step" data-step-no="2">step 2</div>
-        <div class="step" data-step-no="3">step 3</div>
-        <div class="step" data-step-no="4">step 4</div>
-      </Scrollama>
-    </div>
-
-    <div class="outro">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, at velit
-      sint facere ipsam doloremque placeat vel impedit sapiente alias.
-    </div>
-  </div>
- 
 </template>
-
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { defineComponent } from 'vue';
@@ -258,7 +222,6 @@ import 'swiper/css';
 import 'swiper/css/effect-cards';
 import 'vue3-carousel/dist/carousel.css';
 import { EffectCards } from 'swiper/modules';
-
 
 export default defineComponent({
   name: 'HomeView',
@@ -286,11 +249,15 @@ export default defineComponent({
           itemsToShow: 5.5,
           snapAlign: 'center',
         },
+        1200: {
+          itemsToShow: 6,
+          snapAlign: 'center',
+        },
       },
       farmerImg: [
         require('../assets/images/index/farme1.jpg'),
         require('../assets/images/index/farme1.jpg'),
-        require('../assets/images/index/farme1.jpg')
+        require('../assets/images/index/farme1.jpg'),
       ],
       index_order: [
         {
@@ -315,13 +282,21 @@ export default defineComponent({
         },
         {
           title: '詢問及配送',
-          description: '等待物流配送至目的地的同時，您可以在會員中心查看歷史記錄，以及追蹤訂單狀態，讓您了解發貨情況和預計到達時間。',
+          description: '等待物流配送至目的地的同時，您可以在會員中心查看歷史記錄及追蹤訂單狀態，讓您了解發貨情況和預計到達時間。如需修改配送选项也可以在会员中心或与客服团队联系的情况下进行修改。我們會判專員盡快與您回覆！',
           image: require('../assets/images/about/about_step5.svg'),
         },
       ],
-      currentIndex: 0, // 当前显示的内容索引
+      vegetables: [
+        { name: 'Chinese cabbage', image: require('../assets/images/index/index_vefetable.png') },
+        { name: 'cauliflower', image: require('../assets/images/index/index_vefetable1.png') },
+        { name: 'Green pepper', image: require('../assets/images/index/index_vefetable2.png') },
+        { name: 'onion', image: require('../assets/images/index/index_vefetable3.png') },
+        { name: 'Chinese cabbage', image: require('../assets/images/index/index_vefetable4.png') },
+      ]
+      // currentIndex: 0, // 当前显示的内容索引
     };
   },
+
   methods: {
     handleScroll() {
       const container = this.$el;
@@ -334,25 +309,28 @@ export default defineComponent({
 
       this.currentIndex = newIndex;
     },
+    
+    handleScroll1() {
+      if (scrollY >= 800 && scrollY <= 4000) {
+        let scrollY = window.scrollY;
+        let box = document.querySelector('.index_health');
+        box.style.transform = `translateX(-${scrollY-800}px)`;
+        // box.style.transform = `translateX(-${scrollY-2000}px)`;
+      }
+      // console.log(scrollY)
+    }
+  },
+
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll1);
+
   },
 });
 </script>
 
-<!-- <script>
-  import { Scrollama } from 'vue-scrollama';
-  import 'intersection-observer';
-
-  export default {
-    components: {
-      Scrollama,
-    },
-    // 其他组件选项
-  };
-</script> -->
 <style lang="scss" scoped>
 // @import "@/assets/scss/index.scss";
 @import "@/assets/scss/page/home.scss";
-
 </style> 
 
 
