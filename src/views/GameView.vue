@@ -715,6 +715,6 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-// @import "@/assets/scss/all.scss";
+@import "@/assets/scss/all.scss";
 @import "@/assets/scss/page/game.scss";
 </style>

@@ -1,4 +1,5 @@
 <template>
+    <div class="mask" :class="{none: !isopen}" @click="$emit('close')"></div>
     <div class="gift_modal" v-show="isOpen">
       <modalClose @click="$emit('close')"/>
       <div class="pic">

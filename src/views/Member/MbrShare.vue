@@ -1,6 +1,5 @@
 <template>
-    
-      <section class="member_share">
+      <section class="member_share" ref="mShare" :style="{top:`${top}px`, width:`${width}px`}">
         <div class="title">
           <h5>烹飪心得</h5>
           <SelectComponent :customOptions="selectOptions" :placeholder="'日期排序'"/>
@@ -10,8 +9,10 @@
               <div class="pic">
                 <img :src="share.img" alt="">
               </div>
-              <h6 class="name">{{ share.dishname }}</h6>
-              <div class="date">{{ share.date }}</div>
+              <div class="share_title_wrap">
+                <h6 class="name">{{ share.dishname }}</h6>
+                <div class="date">{{ share.date }}</div>
+              </div>
               <div class="content">
                 <p>{{ share.message }}</p>
                 <button class="btn_icon btn_flat edit_massage"><font-awesome-icon icon="fa-solid fa-pen" /></button>
@@ -31,16 +32,36 @@
     components: {
       SelectComponent,
     },
+    props: {
+        top: Number,
+        width: Number,
+    },
     data() {
         return {
           selectOptions: ['最新', '最舊'],
           memberShare,
-          // memberShareEllipsis: memberShare
+          
         };
     },
+    created() {
+      
+    },
+    // mounted() {
+    //   window.addEventListener('resize', this.shareEllipsis)
+    //   this.shareEllipsis()
+    // },
     computed: {
       shareEllipsis() {
-        let strLenStrict = 9
+        let winW = window.innerWidth
+        let strLenStrict = 0
+        if(winW < 1024){
+          strLenStrict = 9
+        }else if(winW >= 1024 && winW < 1200){
+          strLenStrict = 14
+        }else if(winW >= 1200){
+          strLenStrict = 18
+        }
+        
         let memberShareEllipsis = this.memberShare
         this.memberShare.forEach((share, index) =>{
           if(share.message.length > strLenStrict){
