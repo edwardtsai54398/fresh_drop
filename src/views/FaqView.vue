@@ -1,5 +1,4 @@
 <template>
-        this page is FAQ
         <div class="container">
                 <section class="question_type">
                         <div class="type" v-for="(item, index) in faq" :key="index" @click="update(index)">
@@ -23,8 +22,8 @@
                                         {{ item.questions }}
                                 </div>
                                 <transition name="slide">
-                                        <div class="answer" v-if="item.open">
-                                                {{ item.answers }}
+                                        <div class="answer" v-show="item.open">
+                                                <p> {{ item.answers }}</p>
                                         </div>
                                 </transition>
                         </div>
@@ -79,6 +78,6 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-// @import "@/assets/scss/all.scss";
+@import "@/assets/scss/all.scss";
 @import "@/assets/scss/page/faq.scss";
 </style>

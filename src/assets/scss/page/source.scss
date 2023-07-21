@@ -49,17 +49,22 @@
     .source_img_container{
         position: relative;
         .source_img{
-            width: 100%;
+            img{
+                position: relative;
+                left: -150px;
+                width: 200%;
+            }
         }
         .pepper_img{
             width: 50%;
             position: absolute;
             right: 0;
-            top: 0;
+            top: 20px;
         }
     }
 }
 .taiwan_container{
+    position: relative;
     .taiwan_img{
         width: 100%;
         padding: 30px 0;
