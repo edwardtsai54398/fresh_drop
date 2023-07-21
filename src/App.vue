@@ -10,12 +10,14 @@
 import MainHeader from '@/components/MainHeader.vue';
 import MainFooter from '@/components/MainFooter.vue';
 import loginModal from '@/components/loginModal.vue';
+import loginModal from '@/components/loginModal.vue';
 
 export default {
   name: 'HomeView',
   components: {
     MainHeader,
     MainFooter,
+    loginModal,
     loginModal,
   },
   data() {
