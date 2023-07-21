@@ -1,6 +1,6 @@
 <template>
-  <MainHeader @toggle="isModalOpen = !isModalOpen"></MainHeader>
-  <loginModal :isopen="isModalOpen" @close="isModalOpen = false"></loginModal>
+  <MainHeader @toggle="checkMemberStatus" :centerOpen="toggleMemeberCenter"></MainHeader>
+  <loginModal :isopen="isLoginOpen" @close="isLoginOpen = false"></loginModal>
 
   <main><router-view /></main>
 
@@ -17,12 +17,23 @@ export default {
     MainHeader,
     MainFooter,
     loginModal,
+    loginModal,
   },
   data() {
     return {
-      isModalOpen: false,
+      isLoginOpen: false,
+      toggleMemeberCenter: false,
     };
   },
+  methods: {
+    checkMemberStatus() {
+      if(this.$store.state.isLogin){
+        this.toggleMemeberCenter = !this.toggleMemeberCenter
+      }else{
+        this.isLoginOpen = true
+      }
+    }
+  }
 }
 </script>
 

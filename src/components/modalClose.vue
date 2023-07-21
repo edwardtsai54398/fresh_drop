@@ -1,6 +1,6 @@
 <template>
   <button class="close">
-    <font-awesome-icon icon="fa-solid fa-minus" />
+    <font-awesome-icon icon="fa-solid fa-xmark" />
   </button>
 </template>
 <style lang="scss" scoped>

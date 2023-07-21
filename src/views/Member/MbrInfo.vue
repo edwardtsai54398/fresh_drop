@@ -29,12 +29,12 @@
 </template>
 
 <script>
-    // import MainHeader from '@/components/MainHeader.vue'
+    // import ArrowBtn from '@/components/ArrowBtn.vue'
     
     export default {
-      // name: 'HomeView',
+      name: 'MbtInfo',
       // components: {
-      //   MainHeader,
+      //   ArrowBtn,
       // },
       data() {
         return {

@@ -1,11 +1,44 @@
-.sitemap{
-    padding: $sp5 $sp1;
+.mainfooter{
     background-color: $primary;
+}
+.sitemap{
+    padding: $sp5 $sp2;
+    
     .logo{
         width: 146px;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: $sp4;
+    }
+}
+
+@include pad-V{
+    .sitemap{
+        display: grid;
+        grid-template-columns: 40% 55%;
+        grid-template-rows: repeat(4,auto);
+        column-gap: $sp1;
+        .logo{
+            grid-area: 1/1/2/3;
+        }
+    }
+}
+@include pad-H{
+    .sitemap{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3,auto);
+        column-gap: $sp4;
+        padding-left: $sp4;
+        padding-right: $sp4;
+        .logo{
+            grid-area: 1/1/2/2;
+        }
+    }
+}
+
+@include desktop{
+    .sitemap{
+       max-width: 1200px;
     }
 }
 .social_media{
@@ -46,8 +79,24 @@
         aspect-ratio: 1/1;
     }
 }
+
+@include pad-V{
+    .social_media{
+        grid-column: 2 span;
+        margin-bottom: $sp3;
+    }
+}
+
+@include pad-H{
+    .social_media{
+        // grid-column: 1 span;
+        grid-area: 2/1/3/2;
+        margin-bottom: $sp2;
+    }
+}
+
 .shoplink_wrap{
-    @include gridgap(9px);
+    @include gridgap(19px);
     margin-top: $sp4;
     a{
         background-color: $bg;
@@ -63,6 +112,37 @@
         margin-right: $sp1;
     }
 }
+
+@include pad-V{
+    .shoplink_wrap{
+        @include gridgap(5px);
+        margin-top: $sp4;
+        a{
+            height: 80px;
+            font-size: 16px;
+            font-weight: 900;
+        }
+        img{
+            display: block;
+            width: 24px;
+        }
+    }
+}
+
+@include pad-H{
+    .shoplink_wrap{
+        @include gridgap(20px);
+        grid-area: 3/1/4/2;
+        // margin-top: $sp4;
+        a{
+            font-size: $s-font;
+        }
+        img{
+            width: 30px;
+        }
+    }
+}
+
 .about_wrap{
     border: 2px solid $bg--;
     border-radius: $xs-br;
@@ -79,11 +159,16 @@
     display: flex;
     align-items: center;
     margin-bottom: $sp3;
+    margin-left: $sp3;
+    position: relative;
     .btn_flat{
         border: 2px solid $bg--;
-        margin-right: $sp1;
+        position: absolute;
+        transform: translateX(-120%);
         svg{
-            margin: 6px;
+            width: 12px;
+            
+            margin:3px 6px;
             transform: translateY(-1px);
         }
     }
@@ -111,16 +196,64 @@
         margin-bottom: 0;
     }
 }
+
+@include pad-V{
+    .about_wrap{
+        padding: $sp3 $sp4;
+        // width: 100%;
+        grid-area: 3/2/5/3;
+        justify-self: flex-end;
+    }
+    .site_link{
+        margin-bottom: $sp4;
+    }
+    
+    .link_subtitle{
+        margin-bottom: $sp3;
+    }
+}
+
+@include pad-H{
+    .about_wrap{
+        width: 100%;
+        @include gridgap($sp5);
+        grid-area: 2/2/4/3;
+    }
+}
+
+@include desktop{
+    .about_wrap{
+        padding-top: $sp5;
+        padding-bottom: $sp5;
+        @include gridgap($sp6);
+    }
+}
+
 .contact_wrap{
     @extend .shoplink_wrap;
 }
-
+@include pad-V{
+    .contact_wrap{
+        grid-area: 4/1/5/2;
+    }
+}
+@include pad-H{
+    .contact_wrap{
+        grid-area: 1/2/2/3;
+        align-self: center;
+    }
+}
 .copyright{
     background-color: $text;
-    
     padding: $sp4;
     p{
+        max-width: 960px;
+        margin-left: auto;
+        margin-right: auto;
         font-size: $xs-font;
         color: $bg--;
+    }
+    a{
+        color: $secondary;
     }
 }

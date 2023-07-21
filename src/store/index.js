@@ -3,12 +3,18 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     isLogin: false,
-    mbrName: '高小龜',
-    mbrImg: '@/assets/images/member/71BbTEYQhgL.jpg',
+    memberInfoAll: {},
+    giftBuy: {},
+    cartList: [],
+    dishRecommand: []
   },
   getters: {
   },
   mutations: {
+    setUserData(state, {userData}){
+      state.memberInfoAll = userData
+      state.isLogin = true
+    }
   },
   actions: {
   },
