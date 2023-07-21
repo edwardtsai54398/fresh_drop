@@ -20,6 +20,7 @@
           
         </li>
       </ul>
+      <div class="multi_cart_content"></div>
       <button class="btn_s btn_flat keep_shopping" @click="fetchProduct">繼續選購</button>
       <!-- 禮物卡選項 -->
       <div class="calc_pay">

@@ -1,0 +1,61 @@
+.about_us{
+    margin-top: 30px;
+}
+.about_us_pic{
+    width: 80%;
+    margin: auto;
+}
+.about_us img{
+    width: 100%;
+}
+.about_us_text{
+    margin: 30px;
+}
+// 
+
+.about_order{
+    padding: 20px;
+}
+.about_farmer{
+    margin: 30px;
+    padding: 15px;
+    border: solid 5px $primary;
+    border-radius: 20px;
+
+}
+.farmer_pic{
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 20px;
+
+}
+// 
+.about_orderpic{
+    width: 80%;
+    margin: auto;
+}
+.about_order_illustrate{
+    margin: 20px;
+    text-align: center;
+    background-color: $secondary--;
+    padding: 20px;
+    border-radius: 20px;
+}
+.about_order_illustrate h2{
+    color: $primary;
+    font-weight: bolder;
+}
+.index_order_pic{
+    width: 300px;
+}
+// 
+.xx{
+    border: solid 5px $primary;
+    border-radius: 20px;
+    padding: 20px;
+    justify-content: center;
+    display: grid;
+    margin-top: 100px;
+    text-align: center;
+}

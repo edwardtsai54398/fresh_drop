@@ -1,9 +1,9 @@
 <template>
   <button class="close">
-    <i class="fa-solid fa-minus"></i>
+    <font-awesome-icon icon="fa-solid fa-xmark" />
   </button>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/scss/all.scss";
 .close {
   position: absolute;

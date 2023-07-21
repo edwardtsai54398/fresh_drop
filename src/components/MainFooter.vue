@@ -4,8 +4,8 @@
             <div class="logo pic"><img src="@/assets/images/logo/logo.png" alt=""></div>
             <div class="social_media">
                 <div class=" follow">follow us</div>
-                <div class="circle"><i class="fa-brands fa-facebook-f"></i></div>
-                <div class="circle"><i class="fa-brands fa-instagram"></i></div>
+                <div class="circle"><font-awesome-icon icon="fa-brands fa-facebook-f" /></div>
+                <div class="circle"><font-awesome-icon icon="fa-brands fa-instagram" /></div>
             </div>
             <div class="shoplink_wrap">
                 <div class="row">
@@ -21,11 +21,11 @@
                 <div class="row">
                     <div class="col-6">
                         <router-link to="/game" class="site_link">
-                            <div class="btn_icon btn_flat"><i class="fa-sharp fa-solid fa-arrow-right"></i></div>
+                            <div class="btn_icon btn_flat site_link_arrow"><font-awesome-icon :style="{color:'#fff'}" icon="fa-solid fa-arrow-right" /></div>
                             今天吃什麼
                         </router-link>
                         <router-link to="/about" class="site_link">
-                            <div class="btn_icon btn_flat"><i class="fa-sharp fa-solid fa-arrow-right"></i></div>
+                            <div class="btn_icon btn_flat site_link_arrow"><font-awesome-icon :style="{color:'#fff'}" icon="fa-solid fa-arrow-right" /></div>
                             關於我們
                         </router-link>
                         <router-link to="/about" class="link_subtitle">
@@ -37,11 +37,11 @@
                     </div>
                     <div class="col-6">
                         <router-link to="/source" class="site_link">
-                            <div class="btn_icon btn_flat"><i class="fa-sharp fa-solid fa-arrow-right"></i></div>
+                            <div class="btn_icon btn_flat site_link_arrow"><font-awesome-icon :style="{color:'#fff'}" icon="fa-solid fa-arrow-right" /></div>
                             食材溯源
                         </router-link>
                         <router-link to="/source" class="link_subtitle">
-                            小農介紹
+                            各地小農介紹
                         </router-link>
                         <router-link to="/meat" class="link_subtitle">
                             安心肉品
@@ -64,7 +64,7 @@
             </div>
         </div>
         <div class="copyright">
-            <p>本網站為緯育TibaMe_前端設計工程師班第83期學員專題成果作品,本平台僅供學習、展示之用。若有抵觸有關著作權,或有第三人主張侵害智慧財產權等情事,均由學員負法律上責任,緯育公司概不負責。若有侵權疑慮,您可以私訊[緯育TibaMe],後續會由專人協助處理。</p>
+            <p>本網站為緯育TibaMe_前端設計工程師班第83期學員專題成果作品,本平台僅供學習、展示之用。若有抵觸有關著作權,或有第三人主張侵害智慧財產權等情事,均由學員負法律上責任,緯育公司概不負責。若有侵權疑慮,您可以私訊[ <a href="https://www.facebook.com/TibaMe">緯育TibaMe</a> ],後續會由專人協助處理。</p>
         </div>
     </footer>
 </template>
@@ -88,7 +88,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     @import "@/assets/scss/all.scss";
     @import "@/assets/scss/layout/footer.scss";
 </style>

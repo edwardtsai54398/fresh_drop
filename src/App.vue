@@ -1,9 +1,6 @@
 <template>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <MainHeader @toggle="isModalOpen = !isModalOpen"></MainHeader>
-  <loginModal :isopen="isModalOpen" @close="isModalOpen = false"></loginModal>
+  <MainHeader @toggle="checkMemberStatus" :centerOpen="toggleMemeberCenter"></MainHeader>
+  <loginModal :isopen="isLoginOpen" @close="isLoginOpen = false"></loginModal>
 
   <main><router-view /></main>
 
@@ -12,20 +9,31 @@
 <script>
 import MainHeader from '@/components/MainHeader.vue';
 import MainFooter from '@/components/MainFooter.vue';
-import LoginModal from '@/components/LoginModal.vue';
+import loginModal from '@/components/loginModal.vue';
 
 export default {
   name: 'HomeView',
   components: {
     MainHeader,
     MainFooter,
-    LoginModal,
+    loginModal,
+    loginModal,
   },
   data() {
     return {
-      isModalOpen: false,
+      isLoginOpen: false,
+      toggleMemeberCenter: false,
     };
   },
+  methods: {
+    checkMemberStatus() {
+      if(this.$store.state.isLogin){
+        this.toggleMemeberCenter = !this.toggleMemeberCenter
+      }else{
+        this.isLoginOpen = true
+      }
+    }
+  }
 }
 </script>
 
@@ -35,7 +43,7 @@ export default {
 
 main {
   // padding-top: calc($mobile-head + 10px);
-  padding-top: 100px;
+  padding-top: 126px;
   padding-bottom: $sp7;
 }
 </style>

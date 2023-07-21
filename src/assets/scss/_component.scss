@@ -16,6 +16,11 @@ $btn_size:(
     color: #fff;
     background-color: $primary;
     box-shadow: 0px 3px 0px #000;
+
+    svg{
+        color:#fff;
+    }
+
     &:hover{
         box-shadow: none;
         transform: translate(0px, 3px);
@@ -43,26 +48,28 @@ a[class*="btn_"]{
     }
 }
 
-.btn_arrow{
-    display: flex;
-    align-items: center;
-    img[src*="arrow_long"]{
-        margin-left: 20px;
-    }
-}
+// .btn_arrow{
+//     display: flex;
+//     align-items: center;
+//     img[src*="arrow_long"]{
+//         margin-left: 20px;
+//     }
+// }
 
 .btn_icon{
     aspect-ratio: 1/1;
     box-shadow: 0px 2px 0px #000;
     border-width: 1px;
-    i{
-        font-size: $s-font;
-        margin: 2px;
+    [class*="fa-"]{
+        margin: 8px;
+    }
+    svg{
+        color:#fff;
     }
 }
 
 .btn_flat{
-    border: 2px solid $primary;
+    border: 1px solid $primary;
     box-shadow: none;
     background-color: transparent;
     color: $primary;
@@ -81,13 +88,25 @@ a[class*="btn_"]{
         background-color: $primary;
         transition: .3s;
     }
+    svg{
+        color: $primary;
+    }
     &:hover{
         transform: translate(0px, 0px);
         background-color: $primary;
-        color: #fff;
+        color:#fff;
+        svg{
+            color: #fff;
+        }
         &::before{
             right: 0%;
         }
+    }
+}
+
+.btn_flat.btn_icon{
+    svg{
+        color: $primary;
     }
 }
 
@@ -175,57 +194,26 @@ select{
     -webkit-appearance:none;
     -ms-appearance:none;
 }
-//input:select
-%select_bgc{
-    background-color: lighten($third, 10%);
-    border: 1px solid #000;
-}
-.select{
-    position: relative;
-    width: 110px;
-    height: 36px;
-    font-size: $xs-font;
-    text-align: center;
-    color: #000;
-    border: 1px solid #000;
-    border-radius: 18px;
-    cursor: pointer;
-    transition: .1s;
-    &.open{
-        @extend %select_bgc;
-        border-bottom-left-radius: 0px;
-        border-bottom-right-radius: 0px;
-        .option{
-            @extend %select_bgc;
-        }
-    }
+
+input.search_bar{
+    border: 1px solid $primary;
+    border-radius: 50rem;
 }
 
-.placeholder{
-    padding: 0px $sp3;
-    line-height: 36px;
-}
-.placeholder{
-    .fa-chevron-down{
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: 10px;
-        font-size: 10px;
-    }
-}
-.option{
-    position: absolute;
-    width: 100%;
-    top: 100%;
+//彈窗遮罩
+.mask {
+    position: fixed;
+    top: 0;
     left: 0;
-    li{
-        padding: calc($s-br / 2) $sp3;
-        &:first-child{
-            padding-top: $s-br
-        }
-        &:last-child{
-            padding-bottom: $s-br
-        }
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 20;
+    transition: .3s;
+    opacity: 1;
+    visibility: visible;
+    &.none{
+        opacity: 0;
+        visibility: hidden;
     }
 }

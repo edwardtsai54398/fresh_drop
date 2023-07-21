@@ -10,7 +10,7 @@
 // 進度條
 .bar_wrap {
     @include pill(85%, 20px);
-    max-width: 500px;
+    // max-width: 500px;
     border-radius: 31px;
     border: 2px solid #2F9748;
     background: #FFF;
@@ -53,7 +53,39 @@
     width: 50%;
 }
 
+//過度秒數線性設定
+.analyze_card,
+.game_card {
+    transition: opacity .6s, transform .5s ease-in-out;
+}
 
+// 過度效果起始跟結束的狀態
+.analyze_card.fade-enter-active,
+.analyze_card.fade-leave-active,
+.game_card.fade-enter-active,
+.game_card.fade-leave-active {
+
+    // 透明淡出
+    opacity: 0;
+    // 左滑消失
+    transform: translateX(0);
+    // 縮小消失
+    transform: scale(0);
+}
+
+// 進入合離開過度的中間狀態
+.analyze_card.fade-enter,
+.analyze_card.fade-leave-to,
+.game_card.fade-enter,
+.game_card.fade-leave-to {
+
+    // 透明淡出
+    opacity: 0;
+    // 左滑消失
+    transform: translateX(-100%);
+    // 縮小消失
+    transform: scale(0);
+}
 
 // 遊戲卡片
 .game_card {
@@ -241,9 +273,13 @@
 
 // 斷點768px
 @include pad-V {
+    .container {
+        min-height: 1300px;
+    }
+
     .bar_wrap {
         @include pill(85%, 25px);
-        max-width: 500px;
+        // max-width: 500px;
         border-radius: 31px;
         border: 2px solid #2F9748;
         background: #FFF;
@@ -279,7 +315,7 @@
 
     .solgan {
         font-size: $s-font;
-        width: 30%;
+        width: 50%;
     }
 
     // 遊戲卡片
@@ -315,7 +351,7 @@
             font-weight: 700;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            grid-template-rows: 0.5fr 1fr;
+            grid-template-rows: 0.3fr 0.7fr;
             padding: $sp2;
             background-image: url(@/assets/images/game/game_bg.png);
             background-size: cover;
@@ -327,6 +363,7 @@
                 align-items: center;
                 margin: auto;
                 width: 100%;
+                padding-top: 15%;
 
                 .title {
                     font-size: $s-font;
@@ -377,7 +414,7 @@
                 .next_btn {
                     color: #FFF;
                     background-color: #1F8D61;
-                    margin-top: $sp2;
+                    margin-top: $sp6;
                     width: 80%;
                 }
             }
@@ -421,11 +458,15 @@
             background-color: $primary--;
             font-weight: 700;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: .9fr 1fr;
             grid-template-rows: 0.2fr 0.5fr 0.5fr;
             padding: $sp2;
             background-image: url(@/assets/images/game/game_bg.png);
             background-size: cover;
+
+            .title {
+                font-size: $m-font;
+            }
 
 
             .recommend {
@@ -433,15 +474,20 @@
                 justify-content: space-between;
                 margin: auto;
                 grid-area: 1/1/4/2;
+                padding-left: 80px;
 
                 .col-6 {
-                    padding: 5px;
+                    padding: 20px;
 
                     .pro_card {
                         display: flex;
                         flex-direction: column;
                         align-items: center;
-                        gap: 5px;
+                        gap: 10px;
+
+                        h2 {
+                            font-size: $s-font;
+                        }
 
                         .pic {
                             border-radius: 12px;
@@ -456,7 +502,7 @@
                     margin-top: $sp3;
                     color: $primary;
                     font-weight: 700;
-                    font-size: $m-font;
+                    font-size: $l-font;
                 }
 
                 .txt {
@@ -465,6 +511,7 @@
                     line-height: 1.5;
                     padding: $sp1;
                     width: 80%;
+                    font-size: $m-font;
                 }
             }
 

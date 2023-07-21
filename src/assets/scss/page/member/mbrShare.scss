@@ -1,0 +1,47 @@
+.member_share{
+    .title{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+.share_item{
+    margin-top: $sp3;
+    border: 2px solid $primary;
+    border-radius: $m-br;
+    background-color: $bg--;
+    padding: $sp3;
+    .pic{
+        width: 100%;
+        aspect-ratio: 9/5;
+        border-radius: $s-br;
+    }
+    .name{
+        font-size: $s-font;
+        font-weight: 700;
+        margin-top: $sp3;
+    }
+    .date{
+        font-size: $xs-font;
+        margin-top: $sp2;
+    }
+    .content{
+        margin-top: $sp3;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 $sp2;
+        height: 66px;
+        background-color: $secondary--;
+        border-radius: $s-br;
+        p{
+            font-size: $s-font;
+            
+        }
+    }
+}
+.edit_massage.btn_icon{
+    i{
+        font-size: $xs-font;
+    }
+}

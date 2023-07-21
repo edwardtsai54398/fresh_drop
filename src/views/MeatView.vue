@@ -12,29 +12,24 @@
         </div>
         <div class="meat_card_container">
             <div class="meat_card_box_m">
-                <!-- <carousel v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">
-                    <slide v-for="slide in example" :key="slide"> -->
-                <!-- slide: 輪播的物件; 10: 改成你要v-for的陣列(寫在data裡)
-                        <div class="box pic">
-                            <img :src="example.img" alt="Slide">
-                        </div>
-                    </slide>
-                    <template #addons> -->
-                <!-- <navigation />左右按鈕元件，可拿掉
-                        <pagination />頁籤元件，可拿掉
-                    </template>
-                </carousel> -->
-
-                <div class="chicken_ill pic">
-                    <img :src="chicken.img5" alt="">
-                </div>
                 <div class="meat_title">
                     <h5>{{ chicken.title }}</h5>
                 </div>
                 <div class="meat_card">
-                    <div class="meat_img_mob pic">
-                        <img :src="chicken.img_m" alt="">
+                    <div class="chicken_ill pic">
+                        <img :src="chicken.img5" alt="">
                     </div>
+                    <carousel v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">
+                        <slide v-for="slide in chicken_sl" :key="slide">
+                            <div class="box">
+                                <img :src="slide" alt="">
+                            </div>
+                        </slide>
+                        <template #addons>
+                            <navigation />
+                            <pagination />
+                        </template>
+                    </carousel>
                     <div class="farmer_title">
                         <h3>{{ chicken.farmer }}</h3>
                     </div>
@@ -107,16 +102,24 @@
                 <div class="bg_top pic">
                     <img :src="bg.img" alt="">
                 </div>
-                <div class="pork_ill pic">
-                    <img :src="pork.img5" alt="">
-                </div>
                 <div class="meat_title">
                     <h5>{{ pork.title }}</h5>
                 </div>
                 <div class="meat_card">
-                    <div class="meat_img_mob pic">
-                        <img :src="pork.img_m" alt="">
+                    <div class="pork_ill pic">
+                        <img :src="pork.img5" alt="">
                     </div>
+                    <carousel v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">
+                        <slide v-for="slide in pork_sl" :key="slide">
+                            <div class="box">
+                                <img :src="slide" alt="">
+                            </div>
+                        </slide>
+                        <template #addons>
+                            <navigation />
+                            <pagination />
+                        </template>
+                    </carousel>
                     <div class="farmer_title">
                         <h3>{{ pork.farmer }}</h3>
                     </div>
@@ -183,16 +186,24 @@
         </div>
         <div class="meat_card_container">
             <div class="meat_card_box_m">
-                <div class="beef_ill pic">
-                    <img :src="beef.img5" alt="">
-                </div>
                 <div class="meat_title">
                     <h5>{{ beef.title }}</h5>
                 </div>
                 <div class="meat_card">
-                    <div class="meat_img_mob pic">
-                        <img :src="beef.img_m" alt="">
+                    <div class="beef_ill pic">
+                        <img :src="beef.img5" alt="">
                     </div>
+                    <carousel v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">
+                        <slide v-for="slide in beef_sl" :key="slide">
+                            <div class="box">
+                                <img :src="slide" alt="">
+                            </div>
+                        </slide>
+                        <template #addons>
+                            <navigation />
+                            <pagination />
+                        </template>
+                    </carousel>
                     <div class="farmer_title">
                         <h3>{{ beef.farmer }}</h3>
                     </div>
@@ -259,16 +270,24 @@
         </div>
         <div class="meat_card_container">
             <div class="meat_card_box_m">
-                <div class="goat_ill pic">
-                    <img :src="goat.img5" alt="">
-                </div>
                 <div class="meat_title">
                     <h5>{{ goat.title }}</h5>
                 </div>
                 <div class="meat_card">
-                    <div class="meat_img_mob pic">
-                        <img :src="goat.img_m" alt="">
+                    <div class="goat_ill pic">
+                        <img :src="goat.img5" alt="">
                     </div>
+                    <carousel v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">
+                        <slide v-for="slide in goat_sl" :key="slide">
+                            <div class="box">
+                                <img :src="slide" alt="">
+                            </div>
+                        </slide>
+                        <template #addons>
+                            <navigation />
+                            <pagination />
+                        </template>
+                    </carousel>
                     <div class="farmer_title">
                         <h3>{{ goat.farmer }}</h3>
                     </div>
@@ -341,19 +360,27 @@
         </div>
         <div class="meat_card_container">
             <div class="meat_card_box_m">
-                <div class="fish_ill pic">
-                    <img :src="seafood.img5" alt="">
-                </div>
-                <div class="shrimp_ill pic">
-                    <img :src="seafood.img6" alt="">
-                </div>
                 <div class="meat_title">
                     <h5>{{ seafood.title }}</h5>
                 </div>
                 <div class="meat_card">
-                    <div class="pmeat_img_mob pic">
-                        <img :src="seafood.img_m" alt="">
+                    <div class="fish_ill pic">
+                        <img :src="seafood.img5" alt="">
                     </div>
+                    <div class="shrimp_ill pic">
+                        <img :src="seafood.img6" alt="">
+                    </div>
+                    <carousel v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">
+                        <slide v-for="slide in seafood_sl" :key="slide">
+                            <div class="box">
+                                <img :src="slide" alt="">
+                            </div>
+                        </slide>
+                        <template #addons>
+                            <navigation />
+                            <pagination />
+                        </template>
+                    </carousel>
                     <div class="farmer_title">
                         <h3>{{ seafood.farmer }}</h3>
                     </div>
@@ -424,15 +451,21 @@
     </section>
 </template>
 <script>
-export default {
-    name: 'MeatContainer',
+//斷點
+import { defineComponent } from 'vue'
+import { Carousel, Navigation, Slide } from 'vue3-carousel'
+
+import 'vue3-carousel/dist/carousel.css'
+
+export default defineComponent({
+    name: 'Break-points',
+    components: {
+        Carousel,
+        Slide,
+        Navigation,
+    },
     data() {
         return {
-            // example: [
-            //     { imag: '../assets/images/source/ck01_m.png'},
-            //     { imag: '@/assets/images/source/ck02_m.png'},
-            //     { imag: '@/assets/images/source/ck03_m.png'},
-            // ],
             chicken: {
                 title: '雞肉',
                 img_m: require('@/assets/images/source/ck01_m.png'),
@@ -524,8 +557,54 @@ export default {
             },
             bg: {
                 img: require('@/assets/images/icon_bg/bg_yellow.svg'),
-            }
-        };
+            },
+            settings: {
+                itemsToShow: 1,
+                snapAlign: 'center',
+            },
+            breakpoints: {
+                // 700px and up
+                700: {
+                    itemsToShow: 2,
+                    snapAlign: 'center',
+                },
+                // 1024 and up
+                1024: {
+                    itemsToShow: 2,
+                    snapAlign: 'center',
+                },
+            },
+            chicken_sl: [
+                require('@/assets/images/source/ck01_m.png'),
+                require('@/assets/images/source/ck02_m.png'),
+                require('@/assets/images/source/ck03_m.png'),
+                require('@/assets/images/source/ck04_m.png'),
+            ],
+            pork_sl: [
+                require('@/assets/images/source/p01_m.png'),
+                require('@/assets/images/source/p02_m.png'),
+                require('@/assets/images/source/p03_m.png'),
+                require('@/assets/images/source/p04_m.png'),
+            ],
+            beef_sl: [
+                require('@/assets/images/source/cw01_m.png'),
+                require('@/assets/images/source/cw02_m.png'),
+                require('@/assets/images/source/cw03_m.png'),
+                require('@/assets/images/source/cw04_m.png'),
+            ],
+            goat_sl: [
+                require('@/assets/images/source/gt01_m.png'),
+                require('@/assets/images/source/gt02_m.png'),
+                require('@/assets/images/source/gt03_m.png'),
+                require('@/assets/images/source/gt04_m.png'),
+            ],
+            seafood_sl: [
+                require('@/assets/images/source/sf01_m.png'),
+                require('@/assets/images/source/sf02_m.png'),
+                require('@/assets/images/source/sf03_m.png'),
+                require('@/assets/images/source/sf04_m.png'),
+            ],
+        }
     },
     methods: {
         scrollToSection(sectionId) {
@@ -535,7 +614,7 @@ export default {
             }
         },
     },
-};
+});
 </script>
 <style lang="scss">
 @import "@/assets/scss/all.scss";
