@@ -1,7 +1,89 @@
 .giftcard_progress_container {
     padding: $sp2;
-    padding-top: 200px;
+    padding-top: 100px;
 }
+
+
+// 進度條
+/* .root{
+  display: flex;
+  justify-content: center;
+} */
+.progressbar-container{
+    width: 90%;
+    position: absolute;
+    z-index: 1;
+    margin-top: -90px;
+    border: solid 2px $primary;
+    border-radius: 50px;
+    background-color: $bg--;
+    padding:10px;
+    box-sizing: border-box;
+}
+.progressbar{
+  counter-reset: step;
+}
+.progressbar li{
+  float: left;
+  /* width: 14.28%; */
+  width: 20%;
+  position: relative;
+  text-align: center;
+  font-size: 14px;
+  color: $primary--;
+  cursor: pointer;
+  line-height: 20px;
+}
+.progressbar li:before{
+  content:counter(step);
+  counter-increment: step;
+  width: 30px;
+  height: 30px;
+  border: 2px solid $primary--;
+  display: block;
+  margin: 0 auto 2px auto;
+  border-radius: 50%;
+  line-height: 27px;
+  background: $bg--;
+  color: $primary--;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+.progressbar li:after{
+  content: '';
+  position: absolute;
+  width:100%;
+  height: 3px;
+  background: $primary--;
+  top: 15px;
+  left: -50%;
+  z-index: -1;
+}
+.progressbar li.active:before{
+ border-color: $primary;
+ background: $primary;
+ color: $bg--
+}
+.progressbar li.active:after{
+ background: $primary;
+}
+.progressbar li.active:after{
+  background: $primary;
+}
+.progressbar li.active:before{
+  border-color: $primary;
+  background: $primary;
+  color: white
+}
+.progressbar li.active{
+    color:$primary;
+}
+.progressbar li:first-child:after{
+ content: none;
+}
+
+
 
 //表格框
 .form-container {
@@ -12,6 +94,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    margin-bottom: 80px;
 
     h5 {
         font-weight: bold;
@@ -25,7 +108,11 @@
         justify-content: center;
         gap: 20px
     }
-
+    .inactive { 
+        background-color: transparent;
+        color: $primary;
+        box-shadow: 0px 3px 0px #000;
+      }
     .recipient-input {
         display: flex;
         flex-direction: column;
@@ -50,7 +137,12 @@
             }
         }
     }
-
+    .error-message{
+        span{
+            color:#FF7272;
+            font-size: 14px;
+        }
+    }
     .nextstep {
         margin-top: 20px;
         margin-left: auto;
@@ -61,7 +153,17 @@
 
     }
 
+    .select-pic{
+        border: 3px solid $primary;
+        border-radius: 20px;
+        width: 100%;
+        height: 100%;
+    }
+
     .selected-pic {
+          // 選到的樣式粗框線條
+         border: 2px solid $primary;
+        border-radius: 20px;
 
         //   選到的樣式右上角的勾勾 
         i {
@@ -71,9 +173,7 @@
 
         }
 
-        // 選到的樣式粗框線條
-        // border: 1px solid $primary;
-        // border-radius: 15px;
+      
     }
 
     .piclist {
@@ -85,12 +185,12 @@
         justify-content: space-between;
         gap: 5px;
 
-        .selected-pic,
-        .secondary-pic {
-            width: 50%;
+
+        .left-button, .right-button{
+            background: $bg--;
         }
     }
-
+ 
     .upload_button {
         margin-left: auto;
         margin-right: auto;
@@ -99,7 +199,19 @@
         button {
             width: 100%;
         }
+
+        label {
+            display: block;
+            width: 100%;
+            
+        }
     }
+
+}
+
+.giftcard_pic img{
+    border-radius: 20px;
+    border: 2px solid $text;
 }
 
 .previousstep {
@@ -108,21 +220,32 @@
 
 }
 
-.left-button,
-.right-button {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    top: 35%;
-}
 
-.left-button {
-    left: -5%;
-}
 
-.right-button {
-    right: -5%;
-}
+// .left-button,
+// .right-button {
+//     position: absolute;
+//     width: 30px;
+//     height: 30px;
+//     top: 35%;
+//     i{
+//        position: relative;
+//        left:8px;
+//        color: $primary;
+//     }
+//     i:hover{
+//      color: #fff;
+//     }
+    
+
+
+// .left-button {
+//     left: -5%;
+// }
+
+// .right-button {
+//     right: -5%;
+// }
 
 .add-sticker,
 .sticker-list {
@@ -228,7 +351,16 @@
             height: 46px;
             border: 1px solid $text;
             border-radius: 26px;
-
+            
+            &:hover{
+                transform: translate(0px, 0px);
+                background-color: $primary;
+                color: #fff;
+                &::before{
+                    right: 0%;
+                }
+            }
+            
             img {
                 width: 22px;
                 height: auto;
@@ -247,7 +379,7 @@
     }
 }
 
-.finished-text {
+.finished-text, .selected-giftcard-amount {
     display: flex;
     justify-content: center;
     margin-top: $sp1;
@@ -267,76 +399,107 @@
     }
 }
 
-// 進度條
-/* .root{
-  display: flex;
-  justify-content: center;
-} */
-.progressbar-container{
-    width: 90%;
-    position: absolute;
-    z-index: 1;
-    margin-top: -90px;
-    border: solid 1px $primary;
-    border-radius: 50px;
-    background-color: $bg--;
-    padding:10px;
+//樣式輪播
+.box {
+    img{
+        width: 100%;
+    }
+    padding: 0 $sp1;
     box-sizing: border-box;
 }
-.progressbar{
-  counter-reset: step;
+.carousel__next,
+.carousel__prev {
+    transition: .3s;
+    @extend .btn_flat;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    position: absolute;
+    background-color: $primary;
+    svg {
+        fill: #fff;
+    }
+
+    &:hover {
+        transform: translateY(-50%);
+
+        svg {
+            fill: #fff;
+        }
+    }
 }
-.progressbar li{
-  float: left;
-  /* width: 14.28%; */
-  width: 20%;
-  position: relative;
-  text-align: center;
-  font-size: 12px;
-  color: $primary;
-}
-.progressbar li:before{
-  content:counter(step);
-  counter-increment: step;
-  width: 30px;
-  height: 30px;
-  border: 2px solid $primary--;
-  display: block;
-  margin: 0 auto 2px auto;
-  border-radius: 50%;
-  line-height: 27px;
-  background: $bg--;
-  color: $primary--;
-  text-align: center;
-  font-weight: bold;
-}
-.progressbar li:after{
-  content: '';
-  position: absolute;
-  width:100%;
-  height: 3px;
-  background: $primary--;
-  top: 15px;
-  left: -50%;
-  z-index: -1;
-}
-.progressbar li.active:before{
- border-color: $primary;
- background: $primary;
- color: $bg--
-}
-.progressbar li.active:after{
- background: $primary;
-}
-.progressbar li.active:after{
-  background: $primary;
-}
-.progressbar li.active:before{
-  border-color: $primary;
-  background: $primary;
-  color: white
+.carousel__prev {
+    left:-8%;
+    &::before {
+        right: -100%;
+    }
 }
 
-.progressbar li:first-child:after{
- content: none;
+.carousel__next {
+    right:-8%;
 }
+
+.stickerBox {
+    img{
+        width: 100%;
+        padding: 0 $sp1;
+    }
+    box-sizing: border-box;
+}
+
+.sticker-overlay {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: move;
+  }
+
+  //斷點 768px
+@include pad-V{
+    main{
+        padding-bottom: 0px;
+    }
+    .bgc{
+        background-image: url(@/assets/images/icon_bg/bg_lightgreenWave.svg);
+        background-repeat: no-repeat;
+        background-position: 0% 100%;
+        background-size:100%;
+        z-index: -1;
+    }
+    
+    .giftcard_progress_container{
+        max-width: 860px;
+        width: 90%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        
+        
+    }
+
+    .root{
+        width: 90%;
+        // padding: 0 $sp2;
+    }
+.progressbar-container{
+    max-width: 860px;
+    width: 85%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+}
+
+//斷點 1024px
+@include pad-H{
+    
+}
+
+//斷點 1200px
+@include desktop{
+    .bgc{
+        background-size:100%;
+        background-position: 0% 100%;
+    }
+   
+}
+
