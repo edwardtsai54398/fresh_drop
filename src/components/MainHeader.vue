@@ -1,11 +1,9 @@
 <template>
   <header class="mainheader">
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <button class="hamburger" @click="isToggleOpen = !isToggleOpen">
+    <div class="circle" v-for="n in headCircleQty" :key="n"
+    :style="{width:100/headCircleQty+'%'}"></div>
+    
+    <button class="hamburger" @click="isToggleOpen = !isToggleOpen; isSubCartOpen = false; isSourceToggleOpen = false">
       <span></span>
       <span></span>
       <span></span>
@@ -16,10 +14,11 @@
     <!-- @click="isToggleOpen = false" -->
     <nav class="main_nav" 
     :class="{ open: isToggleOpen }" >
-      <router-link to="/about" @click="isToggleOpen = !isToggleOpen"><h4>關於我們</h4></router-link>
+      <router-link to="/about" @click="isToggleOpen = false"><h4>關於我們</h4></router-link>
       <div class="sub_toggle">
         <div class="subtoggle_btn" @click="isSourceToggleOpen = !isSourceToggleOpen">
-          <h4>食材溯源</h4><font-awesome-icon icon="fa-solid fa-chevron-right" />
+          <h4>食材溯源</h4>
+          <font-awesome-icon icon="fa-solid fa-chevron-right" />
         </div>
         <nav class="sub_toggle_list" 
         :class="{open : isSourceToggleOpen}" >
@@ -41,16 +40,17 @@
           </router-link>
         </nav>
       </div>
-      <router-link to="/shop" @click="isToggleOpen = !isToggleOpen"><h4>菜色選購</h4></router-link>
-      <router-link to="/giftcard" @click="isToggleOpen = !isToggleOpen"><h4>禮物卡</h4></router-link>
-      <router-link to="/faq" @click="isToggleOpen = !isToggleOpen"><h4>FAQ</h4></router-link>
-      <router-link to="/game" @click="isToggleOpen = !isToggleOpen"><h4>今天吃什麼</h4></router-link>
+      <router-link to="/shop" @click="isToggleOpen = false"><h4>菜色選購</h4></router-link>
+      <router-link to="/giftcard" @click="isToggleOpen = false"><h4>禮物卡</h4></router-link>
+      <router-link to="/faq" @click="isToggleOpen = false"><h4>FAQ</h4></router-link>
+      
       <div class="sub_toggle">
         <div class="subtoggle_btn cart_toggle_btn" @click="isSubCartOpen = true">
           <div class="title_wrap">
-            購物車
+            <h4>購物車</h4>
             <figure class="shopping_bag">
-              <img src="@/assets/images/icon_bg/shoppingBag_black.svg" alt="">
+              <img src="@/assets/images/icon_bg/shoppingBag_black.svg" alt="" v-if="headCircleQty>1">
+              <img src="@/assets/images/icon_bg/shoppingBag_fff.svg" alt="" v-else-if="headCircleQty<=1">
               <figcaption>16</figcaption>
             </figure>
           </div>
@@ -95,10 +95,18 @@
         </div>
       </div>
     </nav>
-    <button class="member" @click="$emit('toggle')">
-      <img src="@/assets/images/icon_bg/header_member.svg" alt="" />
-      <h4>會員登入</h4>
+    <button class="member" @click="$emit('toggle')" :class="{had_login:$store.state.isLogin}">
+      <img src="@/assets/images/icon_bg/header_member.svg" alt="" v-if="!$store.state.isLogin"/>
+      <div class="pic avatar_img" v-if="$store.state.isLogin">
+        <img :src="$store.state.memberInfoAll.avatarImg" alt="" >
+      </div>
+      <h4>{{$store.state.memberInfoAll.name ? $store.state.memberInfoAll.name : '會員登入'}}</h4>
+      <div class="member_center" :class="{open:centerOpen}">
+        <router-link to="/member"><span>會員中心</span></router-link>
+        <div @click="logOut"><span>登出</span></div>
+      </div>
     </button>
+    <div class="circle" v-if="headCircleQty == 0"></div>
   </header>
   
 </template>
@@ -107,26 +115,48 @@
 
 // import modalClose from '@/components/modalClose.vue'
 export default {
-  // name: 'modalClose',
-  // components: {
-  //   modalClose,
-  // },
+  name: 'modalClose',
+  props: {
+    centerOpen: Boolean,
+  },
   data() {
     return {
       isToggleOpen: false,
       isSourceToggleOpen: false,
       isSubCartOpen: false,
-      
+      headCircleQty: 5
     };
   },
+  created() {
+    window.addEventListener('resize', this.circleQty)
+  },
+  mounted() {
+    this.circleQty()
+  },
   methods: {
-    login() {
-      if (this.user.email === "test" && this.user.password === "test") {
-        alert("登入成功");
-      } else {
-        alert("帳號或密碼錯誤，請再試一次");
+    circleQty() {
+      let windowW = window.innerWidth
+      // let circle = document.querySelectorAll('.circle')
+      if(windowW < 768){
+        this.headCircleQty = 5
+
+      }else if(windowW >= 768 && windowW < 1024){
+        this.headCircleQty = 7
+      }else if(windowW >= 1024 && windowW < 1200){
+        this.headCircleQty = 9
+      }
+      // circle.style.width= windowW / this.headCircleQty
+      if(windowW >= 1200){
+        this.headCircleQty = 0
+        // let circle = document.querySelector('.circle')
+        // circle.style.width= 0
       }
     },
+    logOut() {
+      this.F2ERefugee = {}
+      this.isLogin = false
+      this.$router.push('/')
+    }
   },
 };
 </script>

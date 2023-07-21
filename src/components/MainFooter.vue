@@ -41,7 +41,7 @@
                             食材溯源
                         </router-link>
                         <router-link to="/source" class="link_subtitle">
-                            小農介紹
+                            各地小農介紹
                         </router-link>
                         <router-link to="/meat" class="link_subtitle">
                             安心肉品
@@ -64,7 +64,7 @@
             </div>
         </div>
         <div class="copyright">
-            <p>本網站為緯育TibaMe_前端設計工程師班第83期學員專題成果作品,本平台僅供學習、展示之用。若有抵觸有關著作權,或有第三人主張侵害智慧財產權等情事,均由學員負法律上責任,緯育公司概不負責。若有侵權疑慮,您可以私訊[緯育TibaMe],後續會由專人協助處理。</p>
+            <p>本網站為緯育TibaMe_前端設計工程師班第83期學員專題成果作品,本平台僅供學習、展示之用。若有抵觸有關著作權,或有第三人主張侵害智慧財產權等情事,均由學員負法律上責任,緯育公司概不負責。若有侵權疑慮,您可以私訊[ <a href="https://www.facebook.com/TibaMe">緯育TibaMe</a> ],後續會由專人協助處理。</p>
         </div>
     </footer>
 </template>

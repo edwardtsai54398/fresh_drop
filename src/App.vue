@@ -1,6 +1,6 @@
 <template>
-  <MainHeader @toggle="isModalOpen = !isModalOpen"></MainHeader>
-  <LoginModal :isopen="isModalOpen" @close="isModalOpen = false"></LoginModal>
+  <MainHeader @toggle="checkMemberStatus" :centerOpen="toggleMemeberCenter"></MainHeader>
+  <loginModal :isopen="isLoginOpen" @close="isLoginOpen = false"></loginModal>
 
   <main><router-view /></main>
 
@@ -9,20 +9,30 @@
 <script>
 import MainHeader from '@/components/MainHeader.vue';
 import MainFooter from '@/components/MainFooter.vue';
-import LoginModal from '@/components/LoginModal.vue';
+import loginModal from '@/components/loginModal.vue';
 
 export default {
   name: 'HomeView',
   components: {
     MainHeader,
     MainFooter,
-    LoginModal,
+    loginModal,
   },
   data() {
     return {
-      isModalOpen: false,
+      isLoginOpen: false,
+      toggleMemeberCenter: false,
     };
   },
+  methods: {
+    checkMemberStatus() {
+      if(this.$store.state.isLogin){
+        this.toggleMemeberCenter = !this.toggleMemeberCenter
+      }else{
+        this.isLoginOpen = true
+      }
+    }
+  }
 }
 </script>
 
