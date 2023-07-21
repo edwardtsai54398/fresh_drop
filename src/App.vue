@@ -1,6 +1,6 @@
 <template>
   <MainHeader @toggle="isModalOpen = !isModalOpen"></MainHeader>
-  <LoginModal :isopen="isModalOpen" @close="isModalOpen = false"></LoginModal>
+  <loginModal :isopen="isModalOpen" @close="isModalOpen = false"></loginModal>
 
   <main><router-view /></main>
 
@@ -9,14 +9,14 @@
 <script>
 import MainHeader from '@/components/MainHeader.vue';
 import MainFooter from '@/components/MainFooter.vue';
-import LoginModal from '@/components/LoginModal.vue';
+import loginModal from '@/components/loginModal.vue';
 
 export default {
   name: 'HomeView',
   components: {
     MainHeader,
     MainFooter,
-    LoginModal,
+    loginModal,
   },
   data() {
     return {
