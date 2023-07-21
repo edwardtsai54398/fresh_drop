@@ -17,7 +17,6 @@ export default {
     MainHeader,
     MainFooter,
     loginModal,
-    loginModal,
   },
   data() {
     return {
