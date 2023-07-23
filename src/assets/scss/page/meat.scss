@@ -364,13 +364,13 @@
 
 //斷點 1024px
 @include pad-H{
-    .meat_card_box{
-        .farmer_title{
-            h3{
-                font-size: $l-font;
-            }
-        }
-    }
+    // .meat_card_box{
+    //     .farmer_title{
+    //         h3{
+    //             font-size: $l-font;
+    //         }
+    //     }
+    // }
 }
 
 //斷點 1200px
@@ -378,8 +378,15 @@
     .meat_card_box{
         .farmer_title{
             h3{
+                // outline: solid red;
+                font-size: $l-font;
+            }
+        }
+        .farmer_text{
+            p{
                 font-size: $l-font;
             }
         }
     }
+        
 }
