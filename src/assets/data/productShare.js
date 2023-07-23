@@ -6,7 +6,8 @@ const productShare = [
         img: [
             require('@/assets/images/product/s1.jpg'),
             require('@/assets/images/product/p1.jpg')
-        ]
+        ],
+        isInputReport: false
     },
     {
         id: 2,
@@ -15,7 +16,8 @@ const productShare = [
         img: [
             require('@/assets/images/product/s2.jpg'),
             require('@/assets/images/product/p2.jpg')
-        ]
+        ],
+        isInputReport: false
     },
     {
         id: 3,
@@ -24,7 +26,8 @@ const productShare = [
         img: [
             require('@/assets/images/product/s3.jpg'),
             require('@/assets/images/product/p3.jpg')
-        ]
+        ],
+        isInputReport: false
     },
     {
         id: 4,
@@ -32,7 +35,9 @@ const productShare = [
         message: '覺得好吃的舉手~',
         img: [
             require('@/assets/images/product/s4.jpg'),
-            require('@/assets/images/product/p4.jpg')]
+            require('@/assets/images/product/p4.jpg')
+        ],
+        isInputReport: false
     },
     {
         id: 5,
@@ -41,7 +46,8 @@ const productShare = [
         img: [
             require('@/assets/images/product/s5.jpg'),
             require('@/assets/images/product/p5.jpg')
-        ]
+        ],
+        isInputReport: false
     },
     {
         id: 6,
@@ -50,7 +56,8 @@ const productShare = [
         img: [
             require('@/assets/images/product/s6.jpg'),
             require('@/assets/images/product/p1.jpg')
-        ]
+        ],
+        isInputReport: false
     },
     {
         id: 7,
@@ -59,7 +66,8 @@ const productShare = [
         img: [
             require('@/assets/images/product/s7.jpg'),
             require('@/assets/images/product/p2.jpg')
-        ]
+        ],
+        isInputReport: false
     },
     {
         id: 8,
@@ -68,7 +76,8 @@ const productShare = [
         img: [
             require('@/assets/images/product/s1.jpg'),
             require('@/assets/images/product/p3.jpg')
-        ]
+        ],
+        isInputReport: false
     },
     {
         id: 9,
@@ -77,7 +86,8 @@ const productShare = [
         img: [
             require('@/assets/images/product/s2.jpg'),
             require('@/assets/images/product/p4.jpg')
-        ]
+        ],
+        isInputReport: false
     },
     {
         id: 10,
@@ -86,7 +96,8 @@ const productShare = [
         img: [
             require('@/assets/images/product/s3.jpg'),
             require('@/assets/images/product/p5.jpg')
-        ]
+        ],
+        isInputReport: false
     },
     {
         id: 11,
@@ -95,7 +106,8 @@ const productShare = [
         img: [
             require('@/assets/images/product/s4.jpg'),
             require('@/assets/images/product/p1.jpg')
-        ]
+        ],
+        isInputReport: false
     },
     {
         id: 12,
@@ -104,7 +116,8 @@ const productShare = [
         img: [
             require('@/assets/images/product/s5.jpg'),
             require('@/assets/images/product/p2.jpg')
-        ]
+        ],
+        isInputReport: false
     }
 ]
 

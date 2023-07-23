@@ -72,7 +72,7 @@
                     </div>
                 </article>
             </section>
-            <!-- 熱門推薦 -->
+            <!-- 熱門推薦(screen > 768) -->
             <aside class="recommend">
                 <div class="hot_ranking">
                     <div class="hot_title">
@@ -93,15 +93,49 @@
                         </div>
                         <div class="hot_info">
                             <div class="hot_type">{{ item.category }}</div>
-                            <div class="hot_name">{{ item.name }}</div>
+                            <h2 class="hot_name">{{ item.name }}</h2>
                         </div>
                     </div>
+                </div>
+            </aside>
+            <!-- 熱門推薦輪播圖(screen <= 768) -->
+            <aside class="recommend_carousel">
+                <div class="hot_ranking">
+                    <div class="hot_title">
+                        <img
+                            src="../assets/images/product/crown.svg"
+                            alt="recommend pic"
+                        />
+                        熱門推薦
+                    </div>
+                    <carousel
+                        v-bind="settings"
+                        :breakpoints="breakpoints"
+                        :wrap-around="true"
+                    >
+                        <slide
+                            v-for="(item, index) in filteredProductList"
+                            :key="item.id"
+                            @click="update(index)"
+                        >
+                            <div class="pic">
+                                <img :src="item.img" alt="" />
+                            </div>
+                            <div class="hot_info">
+                                <div class="hot_type">{{ item.category }}</div>
+                                <h2 class="hot_name">{{ item.name }}</h2>
+                            </div>
+                        </slide>
+                        <template #addons>
+                            <!-- <navigation />左右按鈕元件，可拿掉 -->
+                            <pagination /><!--頁籤元件，可拿掉-->
+                        </template>
+                    </carousel>
                 </div>
             </aside>
         </div>
         <!-- 心得分享 -->
         <section class="share">
-            <!-- mobile: {{ mobile }} 測試用-->
             <div class="text">
                 <p class="title">一起做</p>
                 <button class="more" @click="toggleExpend">看更多</button>
@@ -114,7 +148,61 @@
                 >
                     <div class="card">
                         <div class="pic pic_food">
-                            <img :src="item.img[0]" alt="share_food" />
+                            <div class="dot_wrap">
+                                <!-- 檢舉按鈕 -->
+                                <div class="dot" @click="showReport(index)">
+                                    <font-awesome-icon
+                                        icon="fa-solid fa-ellipsis-vertical"
+                                    />
+                                </div>
+                                <!-- 檢舉遮罩 -->
+                                <div
+                                    class="mask mask_report"
+                                    v-show="isInputReport"
+                                    @click="inputReport"
+                                ></div>
+                                <!-- 檢舉彈窗 -->
+                                <div class="report">
+                                    <p
+                                        class="text"
+                                        v-show="
+                                            currentProductIndex === index &&
+                                            aaa == true
+                                        "
+                                        @click="inputReport"
+                                    >
+                                        檢舉
+                                    </p>
+                                    <div class="content" v-show="isInputReport">
+                                        <div class="content_wrap">
+                                            <p class="title">檢舉原因</p>
+                                            <button
+                                                class="cross"
+                                                @click="inputReport"
+                                            >
+                                                <font-awesome-icon
+                                                    icon="fa-solid fa-xmark"
+                                                />
+                                            </button>
+                                            <div class="input">
+                                                <textarea
+                                                    v-model="text"
+                                                    placeholder="請輸入檢舉原因"
+                                                    class="report_text"
+                                                ></textarea>
+                                            </div>
+                                            <button class="btn_s report_btn">
+                                                確認送出
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <img
+                                :src="item.img[0]"
+                                alt="share_food"
+                                @click="hideReport"
+                            />
                         </div>
                         <div class="user">
                             <div class="wrap">
@@ -138,7 +226,11 @@
             </button>
         </section>
         <!-- 上傳心得分享彈窗遮罩 -->
-        <div class="mask_upload" v-show="isExpendUpload"></div>
+        <div
+            class="mask mask_upload"
+            v-show="isExpendUpload"
+            @click="uploadExpend"
+        ></div>
         <!-- 上傳心得分享彈窗 -->
         <div class="upload_window" v-show="isExpendUpload">
             <div class="title_window">
@@ -176,8 +268,8 @@
             </div>
         </div>
         <!-- 看更多彈窗遮罩 -->
-        <div class="mask_more" v-show="isExpendVisible"></div>
-        <!-- 看更多心得分享彈窗(回到頂部) -->
+        <div class="mask" v-show="isExpendVisible" @click="toggleExpend"></div>
+        <!-- 看更多心得分享彈窗+回到頂部 -->
         <section class="more_expend" v-show="isExpendVisible" ref="moreRef">
             <div class="title">
                 <div class="type">
@@ -194,8 +286,60 @@
                         :key="index"
                     >
                         <div class="pic pic_food">
-                            <img :src="item.img[0]" alt="share_food" />
+                            <div class="dot_wrap">
+                                <!-- 檢舉按鈕 -->
+                                <div class="dot" @click="showReport(index)">
+                                    <font-awesome-icon
+                                        icon="fa-solid fa-ellipsis-vertical"
+                                    />
+                                </div>
+                                <!-- 檢舉遮罩 -->
+                                <div
+                                    class="mask mask_report"
+                                    v-show="isInputReport"
+                                    @click="inputReport()"
+                                ></div>
+                                <!-- 檢舉彈窗 -->
+                                <div class="report">
+                                    <p
+                                        class="text"
+                                        v-show="currentProductIndex === index"
+                                        @click="inputReport()"
+                                    >
+                                        檢舉
+                                    </p>
+                                    <div class="content" v-show="isInputReport">
+                                        <div class="content_wrap">
+                                            <p class="title">檢舉原因</p>
+                                            <button
+                                                class="cross"
+                                                @click="inputReport()"
+                                            >
+                                                <font-awesome-icon
+                                                    icon="fa-solid fa-xmark"
+                                                />
+                                            </button>
+                                            <div class="input">
+                                                <textarea
+                                                    v-model="text"
+                                                    placeholder="請輸入檢舉原因"
+                                                    class="report_text"
+                                                ></textarea>
+                                            </div>
+                                            <button class="btn_s report_btn">
+                                                確認送出
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <img
+                                :src="item.img[0]"
+                                alt="share_food"
+                                @click="hideReport"
+                            />
                         </div>
+
                         <div class="user">
                             <div class="wrap">
                                 <div class="pic pic_people">
@@ -216,7 +360,7 @@
             <div class="button">
                 <button class="back btn_s btn_left" @click="toggleExpend">
                     <span>back</span>
-                    <i class="fa-sharp fa-solid fa-arrow-left"></i>
+                    <font-awesome-icon icon="fa-solid fa-arrow-left" />
                 </button>
                 <button class="upload btn_s" @click="uploadExpend">
                     上傳烹煮心得
@@ -229,8 +373,20 @@
 <script>
 import productList from "@/assets/data/productList.js";
 import productShare from "@/assets/data/productShare.js";
+//引入輪播圖套件
+import { defineComponent } from "vue";
+import { Carousel, Slide } from "vue3-carousel";
+import "vue3-carousel/dist/carousel.css";
+
 let resizeEvent = null;
-export default {
+export default defineComponent({
+    //輪播圖設定
+    name: "Break-points",
+    components: {
+        Carousel,
+        Slide,
+        // Navigation,
+    },
     data() {
         return {
             newProduct: productList[0],
@@ -238,7 +394,22 @@ export default {
             productShare,
             isExpendVisible: false,
             isExpendUpload: false,
+            currentProductIndex: -1,
+            isInputReport: false,
+            // isExpendReport: false,
             mobile: false,
+            aaa: false,
+            //輪播圖設定
+            settings: {
+                itemsToShow: 2,
+                snapAlign: "center",
+            },
+            breakpoints: {
+                700: {
+                    itemsToShow: 2,
+                    snapAlign: "center",
+                },
+            },
         };
     },
     created() {
@@ -269,9 +440,29 @@ export default {
         uploadExpend() {
             this.isExpendUpload = !this.isExpendUpload;
         },
+        // 心得分享斷點
         setWidth(width) {
             // console.log(width)// 換頁就可以知道unmounted有沒有效
             this.mobile = width <= 768;
+        },
+        // 檢舉按鈕
+        expendReport() {
+            this.isExpendReport = !this.isExpendReport;
+        },
+        showReport(index) {
+            this.currentProductIndex = index;
+            this.isExpendReport = true;
+            this.aaa = true;
+        },
+        hideReport() {
+            this.currentProductIndex = -1;
+            this.isExpendReport = false;
+        },
+        // 檢舉原因輸入
+        inputReport() {
+            this.isInputReport = !this.isInputReport;
+            this.isExpendReport = false;
+            this.aaa = false;
         },
     },
     computed: {
@@ -292,9 +483,10 @@ export default {
             }
         },
     },
-};
+});
 </script>
 
 <style scoped lang="scss">
+@import "@/assets/scss/all.scss";
 @import "@/assets/scss/page/product.scss";
 </style>
