@@ -1,0 +1,199 @@
+main{
+    overflow: hidden;
+    position: relative;
+}
+.member_container > section{
+    padding: $sp4 $sp2;
+    min-width: 360px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 5px 8px 10px 0px rgba(0, 0, 0, 0.25);
+    border-radius: $m-br;
+    margin-top: $sp3;
+    background-color: #fff;
+    & >.title{
+      border-bottom: 2px solid $text;
+      padding: 0 $sp1 $sp3;
+      h5{
+        font-size: $m-font;
+        color: $primary;
+        font-weight: 700;
+      }
+    }
+}
+@include pad-H{
+    .member_container{
+      max-width: 1000px;
+      margin: auto;
+      position: relative;
+      padding-bottom: 350px;
+      &>section{
+        position: absolute;
+        max-width: 570px;
+        width: 488px;
+        & >.title{
+          padding: 0 $sp1 $sp3 $sp3;
+        }
+      }
+    }
+    section.member_info, section.member_gift{
+        margin-left: 0;
+    }
+    section.member_history, section.member_share{
+        margin-right: 0;
+    }
+}
+@include desktop{
+    .member_container{
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+      &>section{
+        // max-width: 570px;
+        width: 570px;
+      }
+    }
+}
+
+.green_blob,
+.red_blob,
+.yellow_blob,
+.onion,
+.corn,
+.lettuce
+{
+    display: none;
+    position: absolute;
+    z-index: -3;
+}
+.onion,
+.corn,
+.lettuce
+{
+    z-index: -1;
+}
+
+@include pad-V{
+    .green_blob,
+    .red_blob,
+    .yellow_blob,
+    .onion,
+    .corn,
+    .lettuce{
+        display: block;
+    }
+    .green_blob{
+        width: 400px;
+        top: 500px;
+        left: -100px;
+    }
+    .yellow_blob{
+        width: 400px;
+        top: 0px;
+        right: -100px;
+    }
+    .red_blob{
+        width: 400px;
+        top: 1000px;
+        right: -100px;
+    }
+    .onion{
+        width: 100px;
+        top: 250px;
+        left: 70px;
+        transform: rotate(30deg);
+    }
+    .corn{
+        width: 70px;
+        top: 600px;
+        right: 70px;
+    }
+    .lettuce{
+        width: 90px;
+        top: 1500px;
+        left: 20px;
+        transform: rotate(-30deg);
+    }
+}
+@include pad-H{
+    
+    .green_blob{
+        width: 600px;
+        top: 800px;
+        left: -200px;
+    }
+    .yellow_blob{
+        width: 500px;
+        top: -70px;
+        right: -300px;
+    }
+    .red_blob{
+        width: 600px;
+        top: 1500px;
+        right: 100px;
+    }
+    .onion{
+        top: 350px;
+        left: -70px;
+    }
+    .corn{
+        width: 100px;
+        top: 1200px;
+        right: -70px;
+    }
+}
+@include desktop{
+    .green_blob{
+        width: 600px;
+        top: 900px;
+        left: -300px;
+    }
+    .yellow_blob{
+        top: 70px;
+        right: -400px;
+    }
+    .red_blob{
+        width: 600px;
+        top: 1400px;
+        right: -300px;
+    }
+    .onion{
+        width: 100px;
+        top: 350px;
+        left: -100px;
+        transform: rotate(30deg);
+    }
+    .lettuce{
+        width: 90px;
+        top: 1700px;
+        left: 100px;
+    }
+}
+
+@keyframes marquee{
+    0%{
+        transform: translate(0, -50%);
+    }
+    100%{
+        transform: translate(-130%, -50%);
+    }
+}
+.bgc_slogan{
+    display: none;
+    font-size: 200px;
+    color: #fff;
+    font-weight: 900;
+    position: fixed;
+    top: 50%;
+    left: 100%;
+    z-index: -2;
+    white-space:nowrap;
+    animation: marquee 50s infinite linear;
+}
+
+@include pad-V{
+    .bgc_slogan{
+        display: block;
+    }
+}

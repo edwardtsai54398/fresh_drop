@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
     this page is FAQ
     <div class="container">
         <section class="question_type">
@@ -10,6 +11,37 @@
             >
                 <div class="pic">
                     <img :src="item.icon" alt="" />
+=======
+        <div class="container">
+                <section class="question_type">
+                        <div class="type" v-for="(item, index) in faq" :key="index" @click="update(index)">
+                                <div class="pic">
+                                        <img :src="item.icon" alt="">
+                                </div>
+                                <p>{{ item.type }}</p>
+                        </div>
+                </section>
+                <p class="question_title">
+                        {{ newFaq.type }}
+                </p>
+                <div class="group_wrap" v-for="(item, index) in newFaq.qa" :key="index" @click="toggleAnswer(item)">
+                        <div class="icon" :class="{ open: item.open }" @click="toggleAnswer(item)">
+                                <svg width="12" height="18" viewBox="0 0 12 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 9.18144L0.75 17.9988L0.75 0.364055L12 9.18144Z" fill="#1F8D61" />
+                                </svg>
+                        </div>
+                        <div class="qa">
+                                <div class="question">
+                                        {{ item.questions }}
+                                </div>
+                                <transition name="slide">
+                                        <div class="answer" v-show="item.open">
+                                                <p> {{ item.answers }}</p>
+                                        </div>
+                                </transition>
+                        </div>
+
+>>>>>>> 93a802dfc34664ae741cd8383064854206eba246
                 </div>
                 <p>{{ item.type }}</p>
             </div>
@@ -101,6 +133,6 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-// @import "@/assets/scss/all.scss";
+@import "@/assets/scss/all.scss";
 @import "@/assets/scss/page/faq.scss";
 </style>

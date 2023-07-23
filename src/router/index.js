@@ -8,9 +8,10 @@ const routesUser = [
     component: HomeView
   },
 
-  {path: '/about',
-  name: 'about',
-     // route level code-splitting
+  {
+    path: '/about',
+    name: 'about',
+    // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     // component: AboutView,
@@ -35,13 +36,13 @@ const routesUser = [
     component: () => import(/* webpackChunkName: "about" */ '../views/ProductView.vue')
   },
   {
-    path: '/login',
-    name: 'login',
+    path: '/member',
+    name: 'member',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     // component: AboutView,
-    component: () => import(/* webpackChunkName: "about" */ '../views/LoginView.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Member/MbrIndexView.vue')
   },
   {
     path: '/giftcard',
@@ -55,15 +56,16 @@ const routesUser = [
   {
     path: '/giftcardprogress',
     name: 'giftcardprogress',
-      // route level code-splitting
+    // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     // component: AboutView,
     component: () => import(/* webpackChunkName: "about" */ '../views/GiftcardProgressView.vue')
   },
-  {path: '/game',
-  name: 'game',
-     // route level code-splitting
+  {
+    path: '/game',
+    name: 'game',
+    // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     // component: AboutView,
@@ -122,6 +124,24 @@ const routesUser = [
     // which is lazy-loaded when the route is visited.
     // component: AboutView,
     component: () => import(/* webpackChunkName: "about" */ '../views/PayView.vue')
+  },
+  {
+    path: '/Aaa',
+    name: 'Aaa',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    // component: AboutView,
+    component: () => import(/* webpackChunkName: "about" */ '../views/AaaView.vue')
+  },
+  {
+    path: '/back',
+    name: 'back',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    // component: AboutView,
+    component: () => import(/* webpackChunkName: "about" */ '../views/Back/Back_Index.vue')
   },
 ]
 

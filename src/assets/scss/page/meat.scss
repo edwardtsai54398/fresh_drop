@@ -33,12 +33,61 @@
         margin: $sp3 0;
         position: relative;
         .meat_card{
+            position: relative;
             margin: 0 $sp4;
             min-width: 315px;
             border: 4px solid #1F8D61;
             border-radius: $xs-br;
             padding: $sp3;
             background-color: $bg--;
+            .chicken_ill{
+                width: 200px;
+                position: absolute;
+                left: 20px;
+                transform: translateY(40%);
+                bottom: 100%;
+                z-index: 1;
+            }
+            .pork_ill{
+                width: 180px;
+                position: absolute;
+                left: -20px;
+                // transform: translateY(10%);
+                bottom: 100%;
+                z-index: -1;
+            }
+            .beef_ill{
+                width: 180px;
+                position: absolute;
+                right: 0px;
+                // transform: translateY(30%);
+                bottom: 100%;
+                z-index: 1;
+            }
+            .goat_ill{
+                width: 160px;
+                position: absolute;
+                // transform: translateY(25%);
+                bottom: 100%;
+                left: -10px;
+                z-index: -1;
+            }
+            .fish_ill{
+                width: 80px;
+                position: absolute;
+                transform: translateY(-60%);
+                top: 100%;
+                left: -30px;
+                z-index: 1;
+            }
+            .shrimp_ill{
+                width: 120px;
+                position: absolute;
+                transform: translateY(35%);
+                bottom: 100%;
+                right: 5px;
+                z-index: 1;
+            }
             .meat_img_mob{
                 width: 100%;
             }
@@ -48,46 +97,49 @@
                 text-align: center;
             }
             .farmer_text{
+                // text-indent:2em;
                 font-size: $s-font;
                 position: relative;
+                z-index: 2;
+            }
+            //輪播
+            // section.carousel {
+            //     padding: 50px 0;
+            // }
+            .box {
+                img{
+                    width: 100%;
+                    padding: 0 $sp2;
+                }
+            }
+            .carousel__next,
+            .carousel__prev {
+                transition: .3s;
+                @extend .btn_flat;
+                aspect-ratio: 1/1;
+                border-radius: 50%;
+                position: absolute;
+                background-color: $primary;
+                svg {
+                    fill: #fff;
+                }
+            
+                &:hover {
+                    transform: translateY(-50%);
+            
+                    svg {
+                        fill: #fff;
+                    }
+                }
+            }
+            .carousel__prev {
+                &::before {
+                    right: -100%;
+                }
             }
         }
-        .chicken_ill{
-            width: 50%;
-            position: absolute;
-            left: 30px;
-            top: -30px;
-        }
-        .pork_ill{
-            width: 50%;
-            position: absolute;
-            left: 0px;
-            top: -30px;
-        }
-        .beef_ill{
-            width: 50%;
-            position: absolute;
-            right: 10px;
-            top: -80px;
-        }
-        .goat_ill{
-            width: 50%;
-            position: absolute;
-            top: -70px;
-            left: -5px;
-        }
-        .fish_ill{
-            width: 23%;
-            position: absolute;
-            bottom: -80px;
-            left: 10px;
-        }
-        .shrimp_ill{
-            width: 30%;
-            position: absolute;
-            top: 5px;
-            right: 15px;
-        }
+        
+        
         .bg_top{
             width: 100%;
             position: absolute;
@@ -179,46 +231,52 @@
             //     }
             // }
             .chicken_ill{
-                width: 35%;
+                width: 250px;
                 position: absolute;
                 z-index: 1;
                 right: 0;
-                top: -70px;
+                transform: translateY(40%);
+                bottom: 100%;
             }
             .pork_ill{
-                width: 35%;
+                width: 250px;
                 position: absolute;
                 z-index: 2;
                 right: 20px;
-                top: -70px;
+                transform: translateY(35%);
+                bottom: 100%;
             }
             .beef_ill{
-                width: 35%;
+                width: 250px;
                 position: absolute;
                 z-index: 2;
                 left: 0;
-                top: -95px;
+                transform: translateY(35%);
+                bottom: 100%;
             }
             .goat_ill{
-                width: 35%;
+                width: 250px;
                 position: absolute;
                 z-index: 2;
                 right: 30px;
-                top: -85px;
+                transform: translateY(35%);
+                bottom: 100%;
             }
             .shrimp_ill{
-                width: 25%;
+                width: 150px;
                 position: absolute;
                 z-index: 2;
                 right: 30px;
-                top: -70px;
+                transform: translateY(40%);
+                bottom: 100%;
             }
             .fish_ill{
-                width: 13%;
+                width: 100px;
                 position: absolute;
                 z-index: 1;
-                left: -45px;
-                bottom: -40px;
+                left: -50px;
+                transform: translateY(-60%);
+                top: 100%;
             }
             .card_top{
                 display: flex;
@@ -236,9 +294,10 @@
                     position: absolute;
                     z-index: 1;
                     left: 20px;
-                    top: 60px;
+                    transform: translateY(150%);
+                    bottom: 100%;
                     width: 40%;
-                    height: 33%;
+                    height: 30%;
                     background-color: $secondary--;
                 }
                 .meat_img_bg_r{
@@ -305,6 +364,13 @@
 
 //斷點 1024px
 @include pad-H{
+    // .meat_card_box{
+    //     .farmer_title{
+    //         h3{
+    //             font-size: $l-font;
+    //         }
+    //     }
+    // }
 }
 
 //斷點 1200px
@@ -312,8 +378,15 @@
     .meat_card_box{
         .farmer_title{
             h3{
+                // outline: solid red;
+                font-size: $l-font;
+            }
+        }
+        .farmer_text{
+            p{
                 font-size: $l-font;
             }
         }
     }
+        
 }

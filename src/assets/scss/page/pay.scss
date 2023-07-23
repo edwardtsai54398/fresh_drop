@@ -1,38 +1,54 @@
 .pay_container {
     padding: 0 30px;
+    max-width: 780px;
+}
+
+@include pad-V {
+    .pay_container {
+        position: relative;
+    }
 }
 
 .pay_title {
-    margin: $sp7 auto;
+    margin: $sp4 auto $sp7;
     font-size: $m-font;
     font-weight: 700;
     color: $primary;
     text-align: center;
 }
 
+.cart_title {
+    display: none;
+}
+
+@include pad-V {
+    .cart_title {
+        display: grid;
+        grid-template-columns: 60% 25% 1fr;
+        padding: $sp1 $sp3;
+        border-bottom: 1px solid $text;
+
+        &>*:last-child {
+            text-align: right;
+        }
+    }
+}
+
 .single_cart_content {
     .cart_item {
         border-bottom: 1px solid $text;
-        padding: $sp4 $sp1 $sp3;
+        padding: $sp4 $sp1 $sp2;
 
         &:first-child {
             border-top: 1px solid $text;
         }
 
-        .price {
-            margin-left: auto;
-            font-size: $s-font;
-        }
-
-        .total_price {
-            display: none;
-        }
     }
 
     .dishes {
         display: flex;
         align-items: center;
-        margin-bottom: $sp4;
+        // margin-bottom: $sp4;
     }
 
     .dishes_pic {
@@ -44,6 +60,7 @@
             aspect-ratio: 5/3;
             border-radius: $s-br;
         }
+
     }
 
     .amount {
@@ -62,19 +79,206 @@
         z-index: 2;
     }
 
-    .dishes_name {
-        .category {
-            @include pill(56px);
-            line-height: 24px;
-            font-size: $xs-font;
-            font-weight: 700;
-            background-color: $secondary--;
-            text-align: center;
+
+    .category {
+        @include pill(56px);
+        line-height: 24px;
+        font-size: $xs-font;
+        font-weight: 700;
+        background-color: $secondary--;
+        text-align: center;
+    }
+
+    .name {
+        margin-top: $sp2;
+        font-size: $xs-font;
+    }
+
+
+}
+
+.price {
+    margin-top: $sp4;
+    font-size: $s-font;
+    text-align: center;
+}
+
+.total_price {
+    display: none;
+}
+
+@include pad-V{
+    .single_cart_content .cart_item,
+    .multi_cart_content,
+    .gift_cart_content{
+        display: grid;
+        grid-template-columns: 60% 25% 1fr;
+        padding: $sp3 $sp3 $sp3;
+        align-items: center;
+    }
+    .price {
+        margin-top: 0;
+        text-align: left;
+    }
+    
+    .total_price {
+        display: block;
+        font-size: $s-font;
+        text-align: right;
+    }
+}
+
+@include pad-V {
+    .single_cart_content {
+        .cart_item {
+
+            &:first-child {
+                border-top: none;
+            }
         }
 
-        .name {
-            margin-top: $sp2;
+
+        .dishes_pic {
+
+            .pic {
+                width: 120px;
+            }
+
+        }
+
+        .dishes_name {
+            .category {
+                line-height: 30px;
+            }
+
+            .name {
+                font-size: $s-font;
+            }
+        }
+
+    }
+    
+}
+
+.multi_cart_content {
+    border-bottom: 1px solid $text;
+    border-top: 1px solid $text;
+    padding: $sp2 $sp1;
+    .week_name {
+        font-size: $s-font;
+        font-weight: 700;
+        text-align: center;
+    }
+    .cart_list{
+        margin-top: $sp3;
+    }
+    .cart_item {
+        display: grid;
+        grid-template-columns: 25% 1fr 10%;
+        column-gap: $sp2;
+        align-items: center;
+        &:not(:first-child){
+            margin-top: $sp1;
+        }
+    }
+
+    .dishes_pic {
+        aspect-ratio: 5/3;
+        width: 100%;
+        grid-area: 1/1/3/2;
+        border-radius: $s-br;
+        
+    }
+
+    .category {
+        @include pill(56px);
+        line-height: 24px;
+        font-size: $xs-font;
+        font-weight: 700;
+        background-color: $secondary--;
+        text-align: center;
+        grid-area: 1/2/2/3;
+    }
+
+    .name {
+        font-size: $xs-font;
+        grid-area: 2/2/3/3;
+        text-align: left;
+    }
+
+    .amount {
+        font-size: $s-font;
+        grid-area: 1/3/3/4;
+        align-self: center;
+    }
+    
+}
+
+@include pad-V{
+    .multi_cart_content {
+        border-top: 1px solid $text;
+
+        .week_name {
             font-size: $xs-font;
+        }
+        .cart_item {
+            grid-template-columns: 25% 1fr 30%;
+        }
+    
+        
+    }
+}
+
+.carousel__slide{
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.carousel__pagination{
+    margin-top: $sp3;
+}
+.carousel__pagination-button{
+    
+    &::after{
+        width: 50px;
+        height: 8px;
+        border-radius: 50rem;
+        background-color: $primary-- ;
+    }
+    &:hover::after{
+        background-color: $primary;
+    }
+}
+.carousel__pagination-button--active::after{
+    background-color: $primary;
+}
+
+.gift_cart_content{
+    border-bottom: 1px solid $text;
+    border-top: 1px solid $text;
+    padding: $sp2;
+    .gift_item{
+        display: flex;
+        gap: $sp2;
+    }
+    .gift_pic{
+        width: 150px;
+        border-radius: $xs-br;
+    }
+    .gift_info{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        p{
+            font-size: $xs-font;
+        }
+    }
+}
+@include pad-V{
+    .gift_cart_content{
+        border-bottom: 1px solid $text;
+        border-top: none;
+        .gift_pic{
+            width: 175px;
         }
     }
 }
@@ -84,8 +288,18 @@
     width: 100%;
 }
 
+@include pad-V {
+    .keep_shopping {
+        margin-top: 0;
+        position: absolute;
+        left: 50px;
+        top: 0px;
+        width: fit-content;
+    }
+}
+
 .calc_pay {
-    margin-top: $sp6;
+    margin-top: $sp4;
 }
 
 .calc_wrap {
@@ -113,17 +327,55 @@
     }
 }
 
-.pay_info {
-    margin-top: $sp7;
 
-    h5 {
+@include pad-V {
+
+    .calc_wrap,
+    .calc_total {
+        display: grid;
+        grid-template-columns: 60% 25% 1fr;
+        padding-left: $sp3;
+        padding-right: $sp3;
+
+        &:not(:first-child) {
+            margin-top: $sp3;
+        }
+
+        span {
+            &:first-child {
+                grid-area: 1/2/2/3;
+            }
+
+            &:last-child {
+                grid-area: 1/3/2/4;
+                text-align: right;
+            }
+        }
+    }
+
+}
+
+.pay_info {
+    margin-top: 120px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+
+    legend {
         padding: 0 $sp2;
         font-size: $s-font;
+        font-weight: 700;
+    }
+}
+
+@include pad-H {
+    .pay_info {
+        max-width: 500px;
     }
 }
 
 .radio_wrap {
-    margin-top: $sp3;
+    margin-top: $sp4;
 
     input[type="radio"] {
         margin-right: $sp1;
@@ -159,32 +411,30 @@
     display: flex;
     flex-direction: column;
     gap: $sp2;
+    @include gridgap($sp1);
 
     &::placeholder {
         font-size: $xs-font;
         color: #aaa;
     }
+
 }
 
-.select_wrap {
-    @include gridgap($sp1);
-
-    .row {
-        margin-left: calc($sp1 * -2);
-        margin-right: calc($sp1 * -2);
-    }
-}
-
-.city_select {
+.city_select,
+input[type="text"] {
     width: 100%;
 }
 
 .payment {
-    margin-top: $sp6;
+    margin-top: $sp7;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
 
-    h5 {
+    legend {
         padding: 0 $sp2;
         font-size: $s-font;
+        font-weight: 700;
     }
 
     .row {
@@ -193,6 +443,7 @@
     }
 }
 
+
 .credit_card {
     max-width: 370px;
     height: 210px;
@@ -200,12 +451,24 @@
     position: relative;
     margin-top: $sp4;
     transform-style: preserve-3d;
-    
     margin-left: -$sp1;
     margin-right: -$sp1;
     transition: .5s;
+
     &.flip_toB {
         transform: perspective(400px) rotateY(180deg);
+    }
+}
+
+@include pad-V {
+    .credit_card {
+        margin-left: auto;
+        margin-right: auto;
+        transition: .5s;
+
+        &.flip_toB {
+            transform: perspective(400px) rotateY(180deg);
+        }
     }
 }
 
@@ -223,7 +486,7 @@
 
 .a_side {
     @extend %creditard_basic;
-    
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -251,6 +514,7 @@ input.holder_name {
     border: none;
     border-radius: 0;
     border-bottom: 1px solid #000;
+    width: 200px;
 }
 
 .toB_side_btn {
@@ -288,16 +552,20 @@ input.security_code {
     display: flex;
     flex-direction: column;
     width: fit-content;
+
     .title {
         font-size: $xs-font;
         text-align: center;
     }
 }
-.exp_date_wrap{
+
+.exp_date_wrap {
     display: flex;
     justify-content: space-between;
     margin-top: $sp1;
-    input.date_m, input.date_y {
+
+    input.date_m,
+    input.date_y {
         padding: 1px 4px;
         width: 30px;
         border: none;
@@ -318,12 +586,24 @@ input.security_code {
     }
 }
 
-.note{
+.note {
     margin-top: $sp5;
-    color: rgba(0,0,0,0.5)
+    color: rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.pay_btn{
+.pay_btn {
     margin-top: $sp3;
     width: 100%;
+}
+
+@include pad-V {
+    .pay_btn {
+        display: block;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
