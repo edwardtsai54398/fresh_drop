@@ -77,14 +77,19 @@
         .cant {
             padding: 20px;
             overflow: auto;
+            height: 427px;
+
 
             .allergy {
                 display: inline-block;
-                padding: 7px 20px;
+                padding: 10px 30px;
                 border-radius: 30px;
                 border: 3px solid #FED550;
-                margin: 5px;
+                margin: 7px;
                 cursor: pointer;
+                flex: 1;
+                width: 30%;
+                text-align: center;
 
                 &:active {
                     background-color: #FFF6B4;
@@ -317,7 +322,8 @@
             }
 
             .radio_plan {
-                font-size: $s-font;
+                font-size: $xs-font;
+                cursor: pointer;
             }
 
             .selected {
@@ -404,7 +410,6 @@
 
 }
 
-
 .dishes {
     //設定卷軸
     max-height: 340px;
@@ -476,6 +481,7 @@
                 display: inline-block;
                 cursor: pointer;
                 border-radius: 50%;
+                flex-shrink: 0;
             }
 
             .common {
@@ -522,7 +528,7 @@
     .main_wrap {
         display: flex;
         flex-direction: row;
-        padding: 40px 50px 0 50px;
+        padding: 0 50px;
         gap: 20px;
     }
 
@@ -559,12 +565,34 @@
         }
     }
 
+    .content_two {
+
+        .topbtn {
+            display: flex;
+            padding: 20px;
+            justify-content: space-between;
+            align-items: center;
+
+            .total_count {
+                font-size: $m-font;
+
+                span {
+                    font-size: $s-font;
+                }
+            }
+
+            .delete {
+                font-size: $xs-font;
+            }
+        }
+    }
+
     // 菜色選擇
     .info {
-        width: 55%;
+        width: 60%;
 
         .food_pic {
-            height: 300px;
+            height: 350px;
         }
 
         .card h3 {
@@ -578,7 +606,7 @@
     }
 
     .choosewrap {
-        width: 35%;
+        width: 30%;
         position: sticky;
         top: 120px;
 
@@ -629,6 +657,15 @@
 
 // min-width: 1024px
 @include pad-H {
+
+    // 菜色選擇
+    .info {
+
+        .food_pic {
+            height: 400px;
+        }
+    }
+
     .step_wrap {
 
         .step {
@@ -647,6 +684,32 @@
         }
     }
 
+    .content_one {
+        .wrap {
+            .choose {
+                .radio_plan {
+                    font-size: $s-font;
+                }
+            }
+        }
+    }
+
+    .content_two {
+        .topbtn {
+
+            .total_count {
+                font-size: $l-font;
+
+                span {
+                    font-size: $m-font;
+                }
+            }
+
+            .delete {
+                font-size: $s-font;
+            }
+        }
+    }
 }
 
 // min-width: 1200px

@@ -11,7 +11,7 @@
 
 .main_title {
     width: 100%;
-    padding: $sp5;
+    padding: $sp2;
     position: relative;
     display: flex;
     align-items: center;
@@ -30,7 +30,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 16px;
         font-size: $l-font;
         color: $text;
 
@@ -611,7 +611,7 @@
         .recommend {
             width: 40%;
             position: relative;
-            padding: 210px 0 0 32px;
+            padding: 165px 0 0 32px;
             display: block;
 
             .hot_ranking {

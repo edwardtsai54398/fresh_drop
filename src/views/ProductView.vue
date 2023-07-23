@@ -6,7 +6,7 @@
                 <div class="main_title">
                     <button class="btn_s btn_left">
                         <span>back</span>
-                        <i class="fa-sharp fa-solid fa-arrow-left"></i>
+                        <font-awesome-icon icon="fa-solid fa-arrow-left" />
                     </button>
                     <div class="title">
                         <div class="type">
@@ -342,7 +342,6 @@
                                 @click="hideReport"
                             />
                         </div>
-
                         <div class="user">
                             <div class="wrap">
                                 <div class="pic pic_people">

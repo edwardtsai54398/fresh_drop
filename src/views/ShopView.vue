@@ -70,19 +70,21 @@
                 <h4 class="menu_title" v-show="mainDishFilter.length > 0">
                     主菜 MAIN DISH
                 </h4>
-                <div class="wrap_main_dish row">
-                    <div
-                        class="card col-6 col-md-4"
-                        v-for="(item, index) in mainDishFilter"
-                        :key="index"
-                    >
-                        <div class="pic">
-                            <img :src="item.img" />
+                <router-link to="/product/">
+                    <div class="wrap_main_dish row">
+                        <div
+                            class="card col-6 col-md-4"
+                            v-for="(item, index) in mainDishFilter"
+                            :key="index"
+                        >
+                            <div class="pic">
+                                <img :src="item.img" />
+                            </div>
+                            <h3>{{ item.name }}</h3>
+                            <div class="btn_scd_s">選購</div>
                         </div>
-                        <h3>{{ item.name }}</h3>
-                        <div class="btn_scd_s">選購</div>
                     </div>
-                </div>
+                </router-link>
             </section>
             <!-- 湯品 -->
             <section class="container" ref="soup">
