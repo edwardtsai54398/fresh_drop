@@ -1,5 +1,5 @@
 <template>
-    <section class="member_info">
+    <section class="member_info" ref="mInfo" :style="{top:`${top}px`, width:`${width}px`}">
       <div class="title">
         <h5>個人資料</h5>
         <button class="btn_icon btn_flat info_edit_btn">
@@ -33,9 +33,10 @@
     
     export default {
       name: 'MbtInfo',
-      // components: {
-      //   ArrowBtn,
-      // },
+      props: {
+        top: Number,
+        width: Number,
+      },
       data() {
         return {
           memberInfo: {

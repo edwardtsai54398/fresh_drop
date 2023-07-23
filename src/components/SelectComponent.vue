@@ -37,7 +37,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/_var.scss";
+@import "@/assets/scss/all.scss";
 %select_bgc {
   background-color: $bg--;
 }
@@ -89,12 +89,12 @@ $select-h: 36px;
   border-bottom-right-radius: calc($select-h / 2);
   border-top: none;
   li {
-    padding: calc($s-br / 2) $sp3;
+    padding: 12px $sp3;
     &:first-child {
-      padding-top: $s-br;
+      padding-top: $sp2;
     }
     &:last-child {
-      padding-bottom: $s-br;
+      padding-bottom: $sp2;
     }
   }
 }
