@@ -26,20 +26,11 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons'
-
-library.add(faPen)
-library.add(faUserSecret)
-library.add(faXmark)
-library.add(faArrowLeft)
-library.add(faSliders)
-library.add(faBoxOpen)
-library.add(faBoxArchive)
-library.add(faPlus)
-library.add(faBowlFood)
-library.add(faTrashCan)
-library.add(faMinus)
-library.add(faEllipsisVertical)
-library.add(faChevronDown, faChevronRight, faChevronLeft, faArrowRight, faInstagram, faFacebookF)
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import { faCamera } from '@fortawesome/free-solid-svg-icons'
+import { faArrowTurnDown } from '@fortawesome/free-solid-svg-icons'
+import { faDollarSign } from '@fortawesome/free-solid-svg-icons'
+library.add(faPen, faMinus, faXmark, faChevronDown, faChevronRight, faChevronLeft, faArrowRight, faInstagram, faFacebookF, faCircleCheck, faCamera, faArrowTurnDown, faDollarSign, faUserSecret, faArrowLeft, faBoxArchive, faSliders, faBoxOpen, faPlus, faBowlFood, faTrashCan, faEllipsisVertical)
 
 //切換router後頁面跳到最上面
 router.afterEach(() => {
