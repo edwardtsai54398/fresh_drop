@@ -1,16 +1,17 @@
 .login-container{
     display: none;
     position: fixed;
-    z-index: 9;
-    top: calc(var(--mobile-head) + $sp2);
+    z-index: 21;
+    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
-    width: 380px;
+    width: 360px;
+    height: fit-content;
     margin: auto;
-    border: solid 2px $primary;
-    border-radius: $xs-br;
+    border-radius: $m-br;
     background-color: $bg--;
-    padding:$sp5;
+    padding:$sp3 $sp4 $sp4;
     &.open{
         display: block;
     }
@@ -21,9 +22,34 @@
         font-size: $m-font;
     }
 }
+@include pad-H{
+    .login-container{
+
+        grid-template-columns: auto 40%;
+        grid-template-rows: repeat(2, auto);
+        column-gap: $sp4;
+        width: 720px;
+        padding-right: 0;
+        &.open{
+            display: grid;
+        }
+    }
+    
+    h4{
+        grid-area: 1/1/2/2;
+    }
+}
+@include pad-H{
+    .login_normal{
+        grid-area: 2/1/3/2;
+    }
+
+}
 .login_input{
     .text_wrap{
-        margin-bottom: $sp3;
+        &:not(:first-child){
+            margin-top: $sp3;
+        }
         label{
             display: block;
             margin-bottom: $sp1;
@@ -38,7 +64,7 @@
         display: flex;
         justify-content: space-between;
         padding: $sp1 0;
-        margin-bottom: $sp5;
+        margin-top: $sp1;
         label{
             font-size: $xs-font;
         }
@@ -56,6 +82,7 @@
     display: block;
     width: 130px;
     margin: auto;
+    margin-top: $sp3;
     margin-bottom: $sp3;
 }
 
@@ -69,13 +96,40 @@
     }
 }
 .login-container{
-    hr{
-        width: 100%;
-    }
+
     p{
         text-align: center;
         margin: $sp2;
         margin-top: $sp3;
+    }
+}
+.login_api_wrap{
+    position: relative;
+    padding-top: 1px;
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        height: 1px;
+        width: 100%;
+        background-color: lighten($text, 30%);
+    }
+}
+
+@include pad-H{
+    .login_api_wrap{
+        grid-area: 1/2/3/3;
+        align-self: center;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        &::before{
+            width: 1px;
+            height: 100%;
+        }
     }
 }
 .login_api{

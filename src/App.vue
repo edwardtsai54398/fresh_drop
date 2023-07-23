@@ -1,4 +1,5 @@
 <template>
+    <<<<<<< HEAD
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -8,6 +9,11 @@
     />
     <MainHeader @toggle="isModalOpen = !isModalOpen"></MainHeader>
     <loginModal :isopen="isModalOpen" @close="isModalOpen = false"></loginModal>
+    =======
+    <MainHeader @toggle="checkMemberStatus" :centerOpen="toggleMemeberCenter" />
+    <loginModal :isopen="isLoginOpen" @close="isLoginOpen = false" />
+    <SignupModal :isopen="isSignupOpen" @close="isSignupOpen = false" />
+    >>>>>>> 93a802dfc34664ae741cd8383064854206eba246
 
     <main><router-view /></main>
 
@@ -17,6 +23,7 @@
 import MainHeader from "@/components/MainHeader.vue";
 import MainFooter from "@/components/MainFooter.vue";
 import loginModal from "@/components/loginModal.vue";
+import SignupModal from "@/components/SignupModal.vue";
 
 export default {
     name: "HomeView",
@@ -24,12 +31,34 @@ export default {
         MainHeader,
         MainFooter,
         loginModal,
+<<<<<<< HEAD
     },
     data() {
         return {
             isModalOpen: false,
         };
     },
+=======
+        SignupModal,
+    },
+
+    data() {
+        return {
+            isLoginOpen: false,
+            isSignupOpen: false,
+            toggleMemeberCenter: false,
+        };
+    },
+    methods: {
+        checkMemberStatus() {
+            if (this.$store.state.isLogin) {
+                this.toggleMemeberCenter = !this.toggleMemeberCenter;
+            } else {
+                this.isLoginOpen = true;
+            }
+        },
+    },
+>>>>>>> 93a802dfc34664ae741cd8383064854206eba246
 };
 </script>
 
@@ -39,7 +68,11 @@ export default {
 
 main {
     // padding-top: calc($mobile-head + 10px);
+<<<<<<< HEAD
     padding-top: 100px;
+=======
+    padding-top: 126px;
+>>>>>>> 93a802dfc34664ae741cd8383064854206eba246
     padding-bottom: $sp7;
 }
 </style>

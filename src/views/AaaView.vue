@@ -1,141 +1,142 @@
-<template>
-    <!-- <swiper
-      :effect="'cards'"
-      :grabCursor="true"
-      :modules="modules"
-      class="mySwiper"
-    >
-      <swiper-slide>Slide 1</swiper-slide>
-      <swiper-slide>Slide 2</swiper-slide><swiper-slide>Slide 3</swiper-slide>
-      <swiper-slide>Slide 4</swiper-slide><swiper-slide>Slide 5</swiper-slide>
-      <swiper-slide>Slide 6</swiper-slide><swiper-slide>Slide 7</swiper-slide>
-      <swiper-slide>Slide 8</swiper-slide><swiper-slide>Slide 9</swiper-slide>
-    </swiper>
-<div class="123">{{ AA }}</div> -->
+<!-- <template>
+  <div class="index_health_banner">
+    <div class="index_health">
+      <div class="index_health_pic">
+        <img src="../assets/images/index/index_vefetable.png" alt="">
+        <h3>Chinese cabbage</h3>
+      </div>
+      <div class="index_health_pic">
+        <img src="../assets/images/index/index_vefetable1.png" alt="">
+        <h3>cauliflower</h3>
+      </div>
+      <div class="index_health_pic">
+        <img src="../assets/images/index/index_vefetable2.png" alt="">
+        <h3>Green pepper</h3>
+      </div>
+      <div class="index_health_pic">
+        <img src="../assets/images/index/index_vefetable3.png" alt="">
+        <h3>pumpkin</h3>
+      </div>
+      <div class="index_health_pic">
+        <img src="../assets/images/index/index_vefetable4.png" alt="">
+        <h3>onion</h3>
+      </div>
+    </div>
+  </div>
+</template>
 
-   
-  </template>
-  <style scoped>
-  html,
-  body {
-    position: relative;
-    height: 100%;
-  }
+<script>
+export default {
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll1);
+  },
+  methods: {
+    handleScroll1() {
+      let scrollY = window.scrollY;
+      let box = document.querySelector('.index_health');
 
-  body {
-    background: #eee;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    color: #000;
-    margin: 0;
-    padding: 0;
+      box.style.transform = `translate(-${scrollY}px, ${scrollY}px)`;
+    }
   }
+};
+</script>
 
-  body {
-    background: #fff;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    color: #000;
-    margin: 0;
-    padding: 0;
-  }
+<style>
+.index_health_banner {
+  position: sticky;
+  overflow: hidden;
+  display: flex;
+  top: 0;
+  height: 2000px;
+}
 
-  html,
-  body {
-    position: relative;
-    height: 100%;
-  }
+.index_health {
+  height: 100vh;
+  position: sticky;
+  flex-shrink: 0;
+  display: flex;
+  top: 0;
+  text-align: center;
 
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+}
 
-  .swiper {
-    width: 240px;
-    height: 320px;
-  }
+.index_health_pic {
+  width: 400px;
+  margin: 200px;
+}
 
-  .swiper-slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 18px;
-    font-size: 22px;
-    font-weight: bold;
-    color: #fff;
-  }
-
-  .swiper-slide:nth-child(1n) {
-    background-color: rgb(206, 17, 17);
-  }
-
-  .swiper-slide:nth-child(2n) {
-    background-color: rgb(0, 140, 255);
-  }
-
-  .swiper-slide:nth-child(3n) {
-    background-color: rgb(10, 184, 111);
-  }
-
-  .swiper-slide:nth-child(4n) {
-    background-color: rgb(211, 122, 7);
-  }
-
-  .swiper-slide:nth-child(5n) {
-    background-color: rgb(118, 163, 12);
-  }
-
-  .swiper-slide:nth-child(6n) {
-    background-color: rgb(180, 10, 47);
-  }
-
-  .swiper-slide:nth-child(7n) {
-    background-color: rgb(35, 99, 19);
-  }
-
-  .swiper-slide:nth-child(8n) {
-    background-color: rgb(0, 68, 255);
-  }
-
-  .swiper-slide:nth-child(9n) {
-    background-color: rgb(218, 12, 218);
-  }
-
-  .swiper-slide:nth-child(10n) {
-    background-color: rgb(54, 94, 77);
-  }
+.index_health_pic img {
+  width: 100%;
+}
 </style>
-  <script>
-    // Import Swiper Vue.js components
-    import { Swiper, SwiperSlide } from 'swiper/vue';
-  
-    // Import Swiper styles
-    import 'swiper/css';
-  
-    import 'swiper/css/effect-cards';
-  
-    // import './style.css';
-  
-    // import required modules
-    import { EffectCards } from 'swiper/modules';
-  
-    export default {
-      components: {
-        Swiper,
-        SwiperSlide,
-      },
-      data() {
-        return {
-          aa: 'AAAA',
-          modules:[EffectCards]
-        }
-      },
-      mounted() {
- 
-      },
-      
+ -->
+
+
+
+ <template>
+  <div class="index_health_banner">
+    <div class="index_health" ref="box">
+      <div class="index_health_pic" v-for="(vegetable, index) in vegetables" :key="index">
+        <img :src="vegetable.image" alt="">
+        <h3>{{ vegetable.name }}</h3>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      vegetables: [
+        { name: 'Chinese cabbage', image: require ('../assets/images/index/index_vefetable.png') },
+        { name: 'cauliflower',image: require ('../assets/images/index/index_vefetable1.png') },
+        { name: 'Green pepper', image: require ('../assets/images/index/index_vefetable2.png') },
+        { name: 'onion', image: require ('../assets/images/index/index_vefetable3.png') },
+        { name: 'Chinese cabbage', image: require ('../assets/images/index/index_vefetable4.png') },
+      ]
     };
-  </script>
-  
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll1);
+  },
+  methods: {
+    handleScroll1() {
+      let scrollY = window.scrollY;
+      let box = this.$refs.box;
+
+      box.style.transform = `translate(-${scrollY}px, ${scrollY}px)`;
+    }
+  }
+};
+</script>
+
+<style>
+.index_health_banner {
+  position: sticky;
+  overflow: hidden;
+  display: flex;
+  top: 0;
+  height: 2000px;
+}
+
+.index_health {
+  height: 100vh;
+  position: sticky;
+  flex-shrink: 0;
+  margin-top: 200px;
+  display: flex;
+  top: 0;
+  text-align: center;
+}
+
+.index_health_pic {
+  width: 400px;
+  margin: 200px;
+}
+
+.index_health_pic img {
+  width: 100%;
+}
+</style>
+

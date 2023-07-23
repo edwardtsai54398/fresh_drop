@@ -20,7 +20,12 @@ import { faBowlFood } from '@fortawesome/free-solid-svg-icons'
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { faMinus } from '@fortawesome/free-solid-svg-icons'
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
-
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { faFacebookF } from '@fortawesome/free-brands-svg-icons'
 
 library.add(faPen)
 library.add(faUserSecret)
@@ -34,6 +39,11 @@ library.add(faBowlFood)
 library.add(faTrashCan)
 library.add(faMinus)
 library.add(faEllipsisVertical)
+library.add(faChevronDown, faChevronRight, faChevronLeft, faArrowRight, faInstagram, faFacebookF)
 
+//切換router後頁面跳到最上面
+router.afterEach(() => {
+    window.scrollTo(0, 0);
+});
 
 createApp(App).use(store).use(router).component('font-awesome-icon', FontAwesomeIcon).mount('#app')

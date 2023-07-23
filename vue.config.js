@@ -12,3 +12,12 @@ module.exports = defineConfig({
     }
   }
 })
+<<<<<<< HEAD
+=======
+
+// module.exports = {
+//     publicPath: process.env.NODE_ENV === 'production'
+//      ? "/chd102/g2/front/" 
+//       : "/",
+// };
+>>>>>>> 93a802dfc34664ae741cd8383064854206eba246

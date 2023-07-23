@@ -104,6 +104,41 @@
     .certified_img_container{
         display: flex;
         justify-content: center;
+        //輪播
+        // section.carousel {
+        // padding: 50px 0;
+        // }
+        .box {
+            img{
+                width: 100%;
+                padding: $sp2 $sp5;
+            }
+        }
+        .carousel__next,
+        .carousel__prev {
+            transition: .3s;
+            @extend .btn_flat;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            position: absolute;
+            background-color: $primary;
+            svg {
+                fill: #fff;
+            }
+            
+            &:hover {
+                transform: translateY(-50%);
+            
+                svg {
+                    fill: #fff;
+                }
+            }
+        }
+        .carousel__prev {
+            &::before {
+                right: -100%;
+            }
+        }
         .certified_img{
             width: 50%;
             margin: $sp4 0;
@@ -152,7 +187,7 @@
                 left: 145px;
                 top: 100px;
                 h5{
-                    font-size: $xl-font;
+                    font-size: $m-font;
                     line-height: 1.5;
                 }
             }
@@ -176,7 +211,7 @@
     }
     //人物插畫
     .personAll_container{
-        margin: $sp2 0;
+        margin: $sp2 $sp3;
         display: flex;
         justify-content: center;
         .person_ill_container{
@@ -191,7 +226,7 @@
                 }
                 .person_title{
                     h6{
-                        font-size: $m-font;
+                        font-size: $s-font;
                         line-height: 1.5;
                     }
                 }
@@ -352,7 +387,7 @@
                 left: 200px;
                 top: 150px;
                 h5{
-                    font-size: 48px;
+                    font-size: $xl-font;
                     line-height: 1.5;
                 }
             }    
@@ -362,6 +397,9 @@
             position: absolute;
             top: 250px;
         }
+    }
+    .personAll_container{
+        margin: $sp2 $sp6;
     }
     .certified_container{
         margin-bottom:200px;
@@ -381,14 +419,19 @@
         }
         .mushroom{
             position: absolute;
-            top: -200px;
+            top: 100%;
+            transform: translateY(-30%);
             left: 40px;
         }
         .doctor{
-            max-width: 20%;
+            max-width: 13%;
             position: absolute;
             right: 100px;
-            top: -350px;
+            top: -250px;
         }
     }
+    .carousel__next,
+    .carousel__prev {
+        margin: 0 $sp4;
+        }
 }
