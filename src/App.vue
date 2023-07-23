@@ -14,7 +14,7 @@ import loginModal from "@/components/loginModal.vue";
 import SignupModal from "@/components/SignupModal.vue";
 
 export default {
-  name: "HomeView",
+    name: "HomeView",
     components: {
         MainHeader,
         MainFooter,
