@@ -1,13 +1,14 @@
 .gift_modal{
     position: fixed;
-    top: 150px;
+    top: 0px;
     left: 0;
     right: 0;
-    z-index: 20;
+    bottom: 0;
+    z-index: 21;
     margin: auto;
-    width: calc(100% - $sp2 * 2);
+    width: 380px;
+    height: fit-content;
     background-color: #fff;
-    border: 2px solid $primary;
     border-radius: $m-br;
     padding: $sp6 $sp3 $sp4;
     &::before{
@@ -20,7 +21,7 @@
     .pic{
         width: 100%;
         aspect-ratio: 9/5;
-        border: 1px solid #000;
+        border: 2px solid $text;
         border-radius: $m-br;
     }
     .info{
@@ -30,6 +31,16 @@
             &:not(:first-child){
                 margin-top: $sp2;
             }
+        }
+    }
+}
+
+@include pad-H{
+    .gift_modal{
+        width: 540px;
+        padding: $sp6 $sp4 $sp5;
+        .info{
+            padding-left: $sp2;
         }
     }
 }

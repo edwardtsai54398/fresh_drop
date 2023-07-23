@@ -1,6 +1,6 @@
 <template>
   <button class="close">
-    <font-awesome-icon icon="fa-solid fa-xmark" />
+    <font-awesome-icon icon="fa-solid fa-xmark" size="xl"/>
   </button>
 </template>
 <style lang="scss" scoped>
@@ -9,9 +9,5 @@
   position: absolute;
   top: $sp2;
   right: $sp2;
-  i {
-    font-size: $s-font;
-    color: $primary;
-  }
 }
 </style>

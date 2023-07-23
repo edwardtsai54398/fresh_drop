@@ -1,3 +1,9 @@
+@include pad-H{
+    .member_info{
+        left: 0;
+        top: 0;
+    }
+}
 .title{
     display: flex;
     justify-content: space-between;
@@ -23,7 +29,17 @@
         height: fit-content;
     }
 }
+@include pad-H{
+    .info{
+        padding: 0 $sp3;
+    }
+}
 
 .change_psw{
     margin-top: $sp2;
+}
+@include pad-H{
+    .change_psw{
+        margin-left: $sp3;
+    }
 }
