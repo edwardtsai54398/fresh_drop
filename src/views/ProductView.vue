@@ -297,14 +297,17 @@
                                 <div
                                     class="mask mask_report"
                                     v-show="isInputReport"
-                                    @click="inputReport()"
+                                    @click="inputReport"
                                 ></div>
                                 <!-- 檢舉彈窗 -->
                                 <div class="report">
                                     <p
                                         class="text"
-                                        v-show="currentProductIndex === index"
-                                        @click="inputReport()"
+                                        v-show="
+                                            currentProductIndex === index &&
+                                            aaa == true
+                                        "
+                                        @click="inputReport"
                                     >
                                         檢舉
                                     </p>
@@ -313,7 +316,7 @@
                                             <p class="title">檢舉原因</p>
                                             <button
                                                 class="cross"
-                                                @click="inputReport()"
+                                                @click="inputReport"
                                             >
                                                 <font-awesome-icon
                                                     icon="fa-solid fa-xmark"
