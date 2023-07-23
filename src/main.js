@@ -18,7 +18,11 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons'
-library.add(faPen, faMinus, faXmark, faChevronDown, faChevronRight, faChevronLeft, faArrowRight, faInstagram, faFacebookF)
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import { faCamera } from '@fortawesome/free-solid-svg-icons'
+import { faArrowTurnDown } from '@fortawesome/free-solid-svg-icons'
+import { faDollarSign } from '@fortawesome/free-solid-svg-icons'
+library.add(faPen, faMinus, faXmark, faChevronDown, faChevronRight, faChevronLeft, faArrowRight, faInstagram, faFacebookF,faCircleCheck, faCamera, faArrowTurnDown, faDollarSign)
 
 //切換router後頁面跳到最上面
 router.afterEach(() => {

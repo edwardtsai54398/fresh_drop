@@ -16,8 +16,7 @@ export default {
   components: {
     MainHeader,
     MainFooter,
-    loginModal,
-    loginModal,
+    loginModal
   },
   data() {
     return {
