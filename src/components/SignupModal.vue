@@ -1,10 +1,10 @@
 <template>
     <div class="mask" :class="{ none: !isopen }" @click="$emit('close')"></div>
-    <div class="login-container" :class="{ open: isopen }">
+    <div class="sign-container" :class="{ open: isopen }">
         <modalClose @click="$emit('close')" />
         <!-- <router-view> -->
-        <div class="login_normal">
-            <h4>會員登入</h4>
+        
+            <h4>註冊會員</h4>
             <div class="login_input">
                 <div class="text_wrap">
                     <label for="email">Email</label>
@@ -34,19 +34,7 @@
             </div>
             <a class="btn_s login_btn" @click="login">登入</a>
             <div class="signup">還不是會員？<a href="#">註冊會員</a></div>
-        </div>
-        <div class="login_api_wrap">
-            <p>或用其他方式登入</p>
-            <div class="login_api">
-                <a href="#" class="btn"
-                    ><img src="../assets/images/icon_bg/facebook.png" alt=""
-                /></a>
-                <a href="#" class="btn"
-                    ><img src="../assets/images/icon_bg/google.png" alt=""
-                /></a>
-            </div>
-        </div>
-        <!-- </router-view> -->
+        
     </div>
 </template>
 <script>
@@ -89,5 +77,5 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/all.scss";
-@import "@/assets/scss/layout/login.scss";
+@import "@/assets/scss/layout/signup.scss";
 </style>

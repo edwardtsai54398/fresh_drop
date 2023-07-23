@@ -1,5 +1,5 @@
 <template>
-  <section class="member_history">
+  <section class="member_history" ref="mShop" :style="{top:`${top}px`}">
     <div class="title">
       <h5>購買紀錄</h5>
       <div class="search_group">
@@ -20,8 +20,8 @@
       <li class="order collapse" v-for="(order, ordIndex) in orderHistory" 
       :key="order.ordNum">
         <div class="order_info">
-          <p>訂購日期：{{ order.date }}</p>
           <p>訂單金額：${{ order.money }}</p>
+          <p>訂購日期：{{ order.date }}</p>
           <p v-if="order.status == 0">狀態：運送中</p>
           <p v-else-if="order.status == 1">狀態：已送達</p>
           <p>訂單編號：{{ order.ordNum }}</p>
@@ -51,6 +51,10 @@
       components: {
         SelectComponent,
       },
+      props: {
+        top: Number,
+        width: Number,
+      },
       data() {
         return {
           yearOptions: [2020,2021,2022,2023],
@@ -63,7 +67,7 @@
         shoplistToggle(i) {
           const orderDOM = document.querySelectorAll('.order')
           orderDOM[i].classList.toggle('collapse')
-
+          this.$emit('toggle')
         }
       },
     }

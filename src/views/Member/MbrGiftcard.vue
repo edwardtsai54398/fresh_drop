@@ -1,5 +1,5 @@
 <template>
-    <section class="member_gift">
+    <section class="member_gift" ref="mGift" :style="{top:`${top}px`, width:`${width}px`}">
       <div class="title">
         <h5>禮物卡查詢</h5>
         <SelectComponent :customOptions="options" :placeholder="'狀態'"/>
@@ -28,6 +28,10 @@
     name: 'MbrGiftcard',
     components: {
       SelectComponent,
+    },
+    props: {
+        top: Number,
+        width: Number,
     },
     data() {
         return {
