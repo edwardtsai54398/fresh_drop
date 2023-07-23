@@ -1,5 +1,4 @@
 <template>
-    this page is FAQ
     <div class="container">
         <section class="question_type">
             <div
@@ -38,7 +37,6 @@
                                         </div>
                                 </transition>
                         </div>
-
                 </div>
                 <p>{{ item.type }}</p>
             </div>
