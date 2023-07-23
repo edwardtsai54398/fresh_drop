@@ -1,5 +1,5 @@
 <template>
-  <section class="member_history" ref="mShop" :style="{top:`${top}px`, width:`${width}px`}">
+  <section class="member_history" ref="mShop" :style="{top:`${top}px`}">
     <div class="title">
       <h5>購買紀錄</h5>
       <div class="search_group">

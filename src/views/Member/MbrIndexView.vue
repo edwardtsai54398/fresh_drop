@@ -1,14 +1,15 @@
 <template>
-    <div class="member_container" ref="mCONTAIN" :style="{minHeight:`${containH}px`}">
+    <div class="member_container" ref="mCONTAIN" :style="{paddingTop:`${containH}px`}"><!---->
       <MbrInfo ref="mINFO" :top="0"/>
 
       <MbrShophistory ref="mSHOP" :top="0" @toggle="cardLayout"/>
 
-      <MbrGiftcard @open="SentDetailToModal" ref="mGIFT" :top="rowGap+infoH"/>
+      <MbrGiftcard @open="SentDetailToModal" ref="mGIFT" :top="rowGap+infoH"/> <!---->
       <MbrGiftModal :isOpen="isGiftModalOpen"
       :giftDetail="giftDetail" @close="isGiftModalOpen = false"/>
 
-      <MbrShare ref="mSHARE" :top="rowGap+shopH"/>
+      <MbrShare ref="mSHARE" :top="rowGap+shopH"/><!---->
+
       <p class="bgc_slogan">Explore the Joy of Cooking, Embrace Harmony with Nature</p>
       <img src="@/assets/images/icon_bg/bg_lightgreen.svg" alt="" class="green_blob">
       <img src="@/assets/images/icon_bg/bg_pink.svg" alt="" class="red_blob">
@@ -41,13 +42,13 @@
         return {
           isGiftModalOpen: false,
           giftDetail: {},
-          colGap: 24,
+          // colGap: 24,
           rowGap: 32,
           infoH:0,
           shopH:0,
           giftH:0,
           shareH:0,
-          containH: 0
+          // containH: 0
         };
       },
       created() {
@@ -55,7 +56,6 @@
       },
       mounted() {
         this.cardLayout()
-        window.addEventListener('resize', this.cardLayout)
       },
       computed: {
         
@@ -79,7 +79,7 @@
             this.giftH = giftCard.offsetHeight
             this.shareH = shareCard.offsetHeight
           }
-          let cardsH =[this.infoH, this.shopH, this.giftH, this.shareH]
+          const cardsH =[this.infoH, this.shopH, this.giftH, this.shareH]
           cardsH.sort((a, b) => b - a);
           this.containH = cardsH[0]+cardsH[1]+this.rowGap*2
         }

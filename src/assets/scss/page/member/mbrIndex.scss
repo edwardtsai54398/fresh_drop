@@ -17,34 +17,40 @@ main{
       padding: 0 $sp1 $sp3;
       h5{
         font-size: $m-font;
-      color: $primary;
-      font-weight: 700;
+        color: $primary;
+        font-weight: 700;
       }
     }
-  }
-  @include pad-H{
+}
+@include pad-H{
     .member_container{
       max-width: 1000px;
       margin: auto;
       position: relative;
+      padding-bottom: 350px;
       &>section{
         position: absolute;
-        max-width: 488px;
+        max-width: 570px;
         width: 488px;
         & >.title{
           padding: 0 $sp1 $sp3 $sp3;
         }
       }
     }
-  }
-  @include desktop{
+    section.member_info, section.member_gift{
+        margin-left: 0;
+    }
+    section.member_history, section.member_share{
+        margin-right: 0;
+    }
+}
+@include desktop{
     .member_container{
       max-width: 1200px;
       margin: auto;
       position: relative;
       &>section{
-        position: absolute;
-        max-width: 570px;
+        // max-width: 570px;
         width: 570px;
       }
     }
@@ -174,6 +180,7 @@ main{
     }
 }
 .bgc_slogan{
+    display: none;
     font-size: 200px;
     color: #fff;
     font-weight: 900;
@@ -183,4 +190,10 @@ main{
     z-index: -2;
     white-space:nowrap;
     animation: marquee 50s infinite linear;
+}
+
+@include pad-V{
+    .bgc_slogan{
+        display: block;
+    }
 }
