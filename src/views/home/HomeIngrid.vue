@@ -130,6 +130,3 @@ export default defineComponent({
 @import "@/assets/scss/all.scss";
 @import "@/assets/scss/page/home/Home_index_health_banner.scss";
 </style>
-
-
-
