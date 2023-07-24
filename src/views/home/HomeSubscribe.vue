@@ -12,7 +12,7 @@
 
       <div class="index_drop_box">
         <div class="index_drop_pic">
-          <img src="../assets/images/index/imdex_box.png" alt="">
+          <img src="@/assets/images/index/imdex_box.png" alt="">
         </div>
         <div class="index_money">
           <h4>原價1600元</h4>
@@ -32,7 +32,7 @@
 
       <div class="index_drop_box">
         <div class="index_drop_pic">
-          <img src="../assets/images/index/imdex_box.png" alt="">
+          <img src="@/assets/images/index/imdex_box.png" alt="">
         </div>
         <div class="index_money">
           <h4>原價1600元</h4>
@@ -51,7 +51,7 @@
       </div>
       <div class="index_drop_box">
         <div class="index_drop_pic">
-          <img src="../assets/images/index/imdex_box.png" alt="">
+          <img src="@/assets/images/index/imdex_box.png" alt="">
         </div>
         <div class="index_money">
           <h4>原價1600元</h4>
@@ -107,7 +107,7 @@ export default{
 
 <style lang="scss" scoped>
 @import "@/assets/scss/all.scss";
-@import "@/assets/scss/page/home/Home_index_subscription.scss";
+@import "@/assets/scss/page/home/homeSubscribe.scss";
 </style>
 
 
