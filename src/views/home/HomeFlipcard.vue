@@ -82,7 +82,6 @@
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { defineComponent } from 'vue';
-// import { Navigation, Slide } from 'vue3-carousel';
 import 'swiper/css';
 import 'swiper/css/effect-cards';
 import 'vue3-carousel/dist/carousel.css';
@@ -93,9 +92,6 @@ export default defineComponent({
   components: {
     Swiper,
     SwiperSlide,
-    // Carousel,
-    // Slide,
-    // Navigation,
   },
   data() {
     return {
@@ -123,31 +119,6 @@ export default defineComponent({
         require('@/assets/images/index/farme1.jpg'),
         require('@/assets/images/index/farme1.jpg'),
         require('@/assets/images/index/farme1.jpg'),
-      ],
-      index_order: [
-        {
-          title: '瀏覽菜色列表',
-          description: '點擊菜色選購頁面，可以使用分類列表或瀏覽不同的頁面找到喜愛的餐點。點擊餐點圖片進入詳細頁面，進一步了解食材來源及製作方法。',
-          image: require('@/assets/images/about/about_step1.svg'),
-        },
-        {
-          title: '選擇您喜愛的食材',
-          description: '在菜色選購頁面，您可以選擇想要的訂閱方案及菜色品項。指定要配送的週期、購買的數量、或其他相關選項（如過敏原及不包含的食材）。',
-          image: require('@/assets/images/about/about_step2.svg'),
-        },
-        {
-          title: '加入購物車',
-          description: '一旦您選擇好菜色的數量和規格，點擊「訂單確認」按鈕。把選購的菜色添加到購物車中。您可以選擇繼續購物、或者前往結帳。也可以修改訂閱方案，選擇一次想要幾份餐，以及多久配送一次，買越多省越多！',
-          image: require('@/assets/images/about/about_step3.svg'),
-        },
-        {
-          title: '結帳與支付',
-          description: '準備結帳。您需要填寫聯繫方式及送貨地址，並提供支付方式的相關資訊。填寫完畢後，請檢查訂單詳細內容並確保一切正確無誤，點擊「結帳」按鈕進入結帳系統支付。',
-          image: require('../assets/images/about/about_step4.svg'),
-          image: require('@/assets/images/about/about_step4.svg'),
-          title: '詢問及配送',
-          image: require('@/assets/images/about/about_step5.svg'),
-        },
       ],
       vegetables: [
         { name: 'Chinese cabbage', image: require('@/assets/images/index/index_vefetable.png') },
