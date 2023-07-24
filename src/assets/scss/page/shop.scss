@@ -1,39 +1,653 @@
-.search{
-    width: 500px;
-    border-radius: 50rem;
-    margin: auto;
-    padding: $sp1 $sp3;
-    margin-bottom: $sp6;
-}
-.menu_title{
-    margin: auto;
-    text-align: center;
-    width: 500px;
-    font-weight: 700;
-    padding: $sp2;
-    font-size: $m-font;
-    border-radius: 50rem;
-    background-color: $primary--;
-    color: $primary;
-    border: solid 6px #fff;
-    margin-bottom: $sp5;
-}
-.wrap_main_dish {
-    width: 960px;
-    margin: auto;
+// 搜尋菜色
+// .search {
+//     width: 500px;
+//     border-radius: 50rem;
+//     margin: auto;
+//     padding: $sp1 $sp3;
+//     margin-bottom: $sp6;
+// }
+
+.main_wrap {
     display: flex;
-    flex-wrap: wrap;
-}
-.card{
-    width: 300px;
-    margin: 10px;
-    padding: 10px;
-    box-sizing: border-box;
+    align-items: flex-start;
     flex-direction: column;
-    align-items: center;
-    display: flex;
+    max-width: 1200px;
+    min-width: 414px;
+    margin: auto;
+    padding-top: 40px;
 }
 
-.card h3{
-    text-align: center;
+//選單
+.selectmain {
+    width: 100%;
+
+    .select_bar {
+        background-color: $secondary;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 10px;
+
+        .item {
+            width: 100%;
+            padding: 12px 40px;
+            font-size: $m-font;
+            font-weight: 700;
+            border-bottom: 5px solid transparent;
+
+            &:hover {
+                border-bottom: 5px solid $text;
+            }
+        }
+    }
 }
+
+
+// 不包含的食材
+.select_adjust {
+    position: relative;
+
+    .adjust {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+
+    mask {
+        z-index: 23;
+    }
+
+    .hatefood {
+        width: 100%;
+        background-color: $bg;
+        border-radius: 20px 20px 0 0;
+        position: fixed;
+        z-index: 24;
+        bottom: 0;
+        height: 780px;
+
+        .title {
+            font-size: $s-font;
+            text-align: center;
+            border-bottom: 1px solid $secondary;
+            padding: 20px;
+        }
+
+        .cant {
+            padding: 20px;
+            overflow: auto;
+
+            .allergy {
+                display: inline-block;
+                padding: 7px 20px;
+                border-radius: 30px;
+                border: 3px solid #FED550;
+                margin: 5px;
+                cursor: pointer;
+
+                &:active {
+                    background-color: #FFF6B4;
+                }
+            }
+        }
+
+        .text {
+            font-size: $xs-font;
+            padding: 10px 26px;
+
+            .connect {
+                font-weight: 700;
+                cursor: pointer;
+                text-decoration: underline;
+
+                &:hover {
+                    color: $primary;
+                }
+            }
+        }
+
+        .adjust_btn {
+            width: 100%;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: fixed;
+            bottom: 0;
+
+            .cross {
+                width: 20%;
+                max-width: 100px;
+            }
+
+            .down {
+                width: 80%;
+                max-width: 350px;
+            }
+        }
+    }
+}
+
+// 菜色選擇
+.info {
+
+    .food_pic {
+        height: 400px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+        }
+
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu_title {
+        // margin: auto;
+        text-align: center;
+        width: 90%;
+        max-width: 500px;
+        font-weight: 700;
+        padding: $sp2;
+        font-size: $m-font;
+        border-radius: 50rem;
+        background-color: #EDEBDA;
+        color: $primary;
+        border: solid 6px #fff;
+        margin: 40px 0 20px 0;
+    }
+
+    .wrap_main_dish {
+        // width: 960px;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        // width: 300px;
+        margin-bottom: 20px;
+        padding: 10px;
+        box-sizing: border-box;
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+
+        .pic {
+            border-radius: $s-br;
+        }
+    }
+
+    .card h3 {
+        text-align: center;
+        font-size: $s-font;
+        padding: 20px;
+    }
+}
+
+// 清單、結帳按鈕
+.choosewrap {
+
+    .shop_btn {
+        position: fixed;
+        bottom: 0px;
+        left: 0;
+        z-index: 21;
+        width: 100%;
+        padding: 30px;
+        display: flex;
+        gap: 20px;
+        background-color: $bg;
+
+        .list_btn {
+            width: 20%;
+        }
+
+        .checkout_btn {
+            width: 80%
+        }
+    }
+}
+
+.step_wrap {
+    width: 100%;
+    height: 780px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    position: fixed;
+    bottom: 0;
+    background-color: $bg;
+    border-radius: 20px 20px 0 0;
+    z-index: 20;
+
+    .one {
+        margin-top: 6%;
+    }
+}
+
+// 步驟
+.step {
+    width: 90%;
+    border: 3px solid $primary;
+    border-radius: 10px;
+
+    .title {
+        display: flex;
+        padding: 20px;
+
+        p {
+            font-size: $m-font;
+            color: $primary;
+            font-weight: 700;
+
+            &:nth-child(3) {
+                margin-left: auto;
+            }
+
+            span {
+                font-size: $s-font;
+                color: $primary;
+                padding: 0 10px;
+            }
+        }
+    }
+}
+
+//步驟過渡動畫
+.expand-enter-active,
+.expand-leave-active {
+    transition: transform 0.1s ease;
+    overflow: hidden;
+}
+
+.expand-enter,
+.expand-leave-to {
+    transform: scaleY(0);
+    opacity: 0;
+    overflow: hidden;
+}
+
+// 步驟一內容
+.content_one {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        p {
+            font-size: $s-font;
+        }
+
+        .choose {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+
+            .option_plan {
+                padding: 20px 0;
+                background-color: $secondary--;
+                border-radius: 10px;
+                font-weight: 700;
+                width: 100%;
+                text-align: center;
+            }
+
+            .option_meal,
+            .option_week {
+                padding: 20px 0;
+                background-color: $secondary--;
+                border-radius: 10px;
+                font-weight: 700;
+                width: 100%;
+                text-align: center;
+            }
+
+            .radio_plan {
+                font-size: $s-font;
+            }
+
+            .selected {
+                background-color: $primary;
+                color: #ffffff;
+                cursor: pointer;
+                border-radius: 10px;
+                font-weight: 700;
+            }
+
+            .single {
+                position: fixed;
+                top: 400px;
+                background-color: $bg;
+                width: 320px;
+                height: 220px;
+
+                p {
+                    font-size: $s-font;
+                    display: flex;
+                    justify-content: center;
+                    transform: translateY(90px);
+                }
+            }
+        }
+    }
+}
+
+//步驟二內容
+.content_two {
+
+    .topbtn {
+        display: flex;
+        padding: 20px;
+        justify-content: space-between;
+        align-items: center;
+
+        .total_count {
+            font-size: $l-font;
+
+            span {
+                font-size: $m-font;
+
+            }
+        }
+    }
+
+    .week_tap {
+        display: flex;
+        // gap: 3px;
+
+
+        .week {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 12px 0;
+            position: relative;
+            border-top: 3px solid $primary;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: $xs-font;
+            background-color: $primary;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -3px;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background-color: $bg;
+            }
+
+            &:active {
+                background-color: $bg;
+                color: $primary;
+                border-top: 3px solid $primary;
+            }
+        }
+    }
+
+}
+
+
+.dishes {
+    //設定卷軸
+    max-height: 340px;
+    overflow: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .circle {
+        display: flex;
+        gap: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid $text;
+    }
+
+    .dishes_pic {
+        width: 30%;
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+        }
+    }
+
+    .dishes_content {
+        width: 70%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .category_and_cancel {
+            display: flex;
+            justify-content: space-between;
+
+            .category {
+                font-size: $xs-font;
+                font-weight: 700;
+                padding: 6px 16px;
+                border-radius: 20px;
+                background-color: $secondary--;
+            }
+
+            .cancel {
+                font-size: $m-font;
+                cursor: pointer;
+            }
+        }
+
+        .dishes_title {
+            font-size: $s-font;
+        }
+
+        .count {
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 20px;
+
+            .reduce,
+            .increase {
+                background-color: transparent;
+                border: none;
+                background-color: $primary;
+                color: #ffffff;
+                width: 30px;
+                height: 30px;
+                text-align: center;
+                display: inline-block;
+                cursor: pointer;
+                border-radius: 50%;
+            }
+
+            .common {
+                width: 40px;
+                background-color: transparent;
+                border: none;
+                padding: 4px 2px;
+                margin: 0 8px;
+                text-align: center;
+
+                &::-webkit-inner-spin-button,
+                &::-webkit-outer-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (min-width: 600px) {
+
+    // 不包含的食材
+    .select_adjust {
+
+        .hatefood {
+            width: 60%;
+            left: 0;
+            height: 100%;
+            border-radius: 0;
+            max-width: 500px;
+
+            .adjust_btn {
+                width: 60%;
+                max-width: 500px;
+            }
+        }
+    }
+}
+
+// min-width: 768px
+@include pad-V {
+    .main_wrap {
+        display: flex;
+        flex-direction: row;
+        padding: 40px 50px 0 50px;
+        gap: 20px;
+    }
+
+    .selectmain {
+        width: 8%;
+        position: sticky;
+        top: 120px;
+
+        .select_bar {
+            flex-direction: column;
+            background-color: $text;
+            width: 5%;
+            gap: 20px;
+
+            .item {
+                padding: 12px 20px;
+                border-bottom: none;
+                border-left: 8px solid transparent;
+
+                &:hover {
+                    border-bottom: none;
+                    border-left: 8px solid $secondary;
+                }
+            }
+        }
+    }
+
+    // 不包含的食材
+    .select_adjust {
+        .adjust {
+            position: relative;
+            right: 0px;
+            top: 30px;
+        }
+    }
+
+    // 菜色選擇
+    .info {
+        width: 55%;
+
+        .food_pic {
+            height: 300px;
+        }
+
+        .card h3 {
+            font-size: $m-font;
+        }
+    }
+
+    // 清單、結帳按鈕
+    .main_wrap {
+        position: relative;
+    }
+
+    .choosewrap {
+        width: 35%;
+        position: sticky;
+        top: 120px;
+
+        .shop_btn {
+            position: relative;
+            padding: 30px 0;
+            z-index: 1;
+
+            .list_btn {
+                display: none;
+            }
+
+            .checkout_btn {
+                width: 90%;
+                margin: auto;
+            }
+        }
+
+        .one {
+            margin-top: 0;
+        }
+    }
+
+
+    .step_wrap {
+        width: 100%;
+        position: relative;
+        border-radius: 0;
+        z-index: 1;
+        height: auto;
+
+        .step {
+            width: 100%;
+
+            .title {
+
+                p {
+                    font-size: $s-font;
+
+                    span {
+                        font-size: $xs-font;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// min-width: 1024px
+@include pad-H {
+    .step_wrap {
+
+        .step {
+
+            .title {
+
+                p {
+                    font-size: $m-font;
+
+                    span {
+                        font-size: $s-font;
+                    }
+
+                }
+            }
+        }
+    }
+
+}
+
+// min-width: 1200px
+@include desktop {}

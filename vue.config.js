@@ -15,6 +15,6 @@ module.exports = defineConfig({
 
 // module.exports = {
 //     publicPath: process.env.NODE_ENV === 'production'
-//      ? "/chd102/g2/front/" 
+//      ? "/chd102/g2/front/"
 //       : "/",
 // };

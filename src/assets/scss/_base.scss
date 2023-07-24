@@ -1,27 +1,31 @@
-body{
-    font-family: $prim-font, 
-                Arial, Helvetica, sans-serif;
+body {
+    font-family: $prim-font,
+        Arial, Helvetica, sans-serif;
     background-color: $bg;
-    
+
 }
-*:not(path){
+
+*:not(path) {
     box-sizing: border-box;
     letter-spacing: 1px;
     color: $text;
 }
 
-p,article{
+p,
+article {
     line-height: 1.5;
     color: $text;
 }
 
-p,article{
+p,
+article {
     line-height: 1.5;
 }
 
-.pic{
+.pic {
     overflow: hidden;
-    img{
+
+    img {
         @include img-fit;
     }
 }

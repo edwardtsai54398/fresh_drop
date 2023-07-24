@@ -1,12 +1,11 @@
-$btn_size:(
-    xs: $xs-font,
+$btn_size:(xs: $xs-font,
     s: $s-font,
     m: $m-font,
     l: $l-font,
 );
 
 [class*="btn_"],
-.btn{
+.btn {
     text-align: center;
     width: fit-content;
     border-radius: 50rem;
@@ -17,31 +16,37 @@ $btn_size:(
     background-color: $primary;
     box-shadow: 0px 3px 0px #000;
 
-    svg{
-        color:#fff;
+    svg {
+        color: #fff;
     }
 
-    &:hover{
+    &:hover {
         box-shadow: none;
         transform: translate(0px, 3px);
     }
 }
-a[class*="btn_"]{
+
+a[class*="btn_"] {
     display: inline-block;
 }
-@each $key, $value in $btn_size{
-    .btn_#{$key}{
+
+@each $key,
+$value in $btn_size {
+    .btn_#{$key} {
         line-height: 2;
         padding: 0 $value;
         font-size: $value;
-        @if $value <= $m-font {
+
+        @if $value <=$m-font {
             letter-spacing: 1px;
         }
+
         @else {
             letter-spacing: 2px;
         }
     }
-    .btn_scd_#{$key}{
+
+    .btn_scd_#{$key} {
         @extend .btn_#{$key};
         background-color: $secondary;
         color: #000;
@@ -56,26 +61,29 @@ a[class*="btn_"]{
 //     }
 // }
 
-.btn_icon{
+.btn_icon {
     aspect-ratio: 1/1;
     box-shadow: 0px 2px 0px #000;
     border-width: 1px;
-    [class*="fa-"]{
+
+    [class*="fa-"] {
         margin: 8px;
     }
-    svg{
-        color:#fff;
+
+    svg {
+        color: #fff;
     }
 }
 
-.btn_flat{
+.btn_flat {
     border: 1px solid $primary;
     box-shadow: none;
     background-color: transparent;
     color: $primary;
     position: relative;
     overflow: hidden;
-    &::before{
+
+    &::before {
         content: '';
         position: absolute;
         top: 0;
@@ -88,79 +96,94 @@ a[class*="btn_"]{
         background-color: $primary;
         transition: .3s;
     }
-    svg{
+
+    svg {
         color: $primary;
     }
-    &:hover{
+
+    &:hover {
         transform: translate(0px, 0px);
         background-color: $primary;
-        color:#fff;
-        svg{
+        color: #fff;
+
+        svg {
             color: #fff;
         }
-        &::before{
+
+        &::before {
             right: 0%;
         }
     }
 }
 
-.btn_flat.btn_icon{
-    svg{
+.btn_flat.btn_icon {
+    svg {
         color: $primary;
     }
 }
 
-.btn_circle{
+.btn_circle {
     aspect-ratio: 1/1;
     padding: $sp2;
 }
 
 //輪播按鈕
-%btn_carousel{
+%btn_carousel {
     @extend .btn_flat;
     display: flex;
     align-items: center;
     gap: $sp1;
-    span{
+
+    span {
         position: absolute;
         transition: .3s;
     }
-    i{
+
+    i {
         line-height: 1.5;
     }
-    &:hover{
-        span{
+
+    &:hover {
+        span {
             position: relative;
 
         }
     }
 }
-.btn_right{
+
+.btn_right {
     @extend %btn_carousel;
-    span{
+
+    span {
         right: 100%;
     }
-    &:hover{
-        span{
+
+    &:hover {
+        span {
             right: 0;
         }
     }
 }
-.btn_left{
+
+.btn_left {
     @extend %btn_carousel;
-    &.btn_flat::before{
+
+    &.btn_flat::before {
         right: 0;
         left: 100%;
     }
-    span{
+
+    span {
         order: 2;
         left: 100%;
     }
-    &:hover{
-        span{
+
+    &:hover {
+        span {
             left: 0;
         }
-        &.btn_flat::before{
+
+        &.btn_flat::before {
             left: 0%;
         }
     }
@@ -169,7 +192,7 @@ a[class*="btn_"]{
 input[type="email"],
 input[type="text"],
 input[type="password"],
-select{
+select {
     display: block;
     font-size: $xs-font;
     line-height: 1.5;
@@ -178,19 +201,21 @@ select{
     border-radius: $xs-br;
     padding: $sp1 $sp3;
     border: 2px solid $text;
-    &::placeholder{
-        color: rgba(0,0,0,0.5);
+
+    &::placeholder {
+        color: rgba(0, 0, 0, 0.5);
         font-size: $xs-font;
     }
 }
-.normal_select{
-    appearance:none;
-    -moz-appearance:none;
-    -webkit-appearance:none;
-    -ms-appearance:none;
+
+.normal_select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
 }
 
-input.search_bar{
+input.search_bar {
     border: 1px solid $primary;
     border-radius: 50rem;
 }
@@ -207,7 +232,8 @@ input.search_bar{
     transition: .3s;
     opacity: 1;
     visibility: visible;
-    &.none{
+
+    &.none {
         opacity: 0;
         visibility: hidden;
     }
