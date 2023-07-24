@@ -3,13 +3,13 @@
   <section class="framer">
     <p>｜小農介紹｜</p>
     <Carousel v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">
-      <Slide v-for="item in farmerImg" :key="item">
+      <Slide v-for="(item, index) in farmerImg" :key="index">
         <div class="farmer_card">
           <div class="index_farmer_pic">
-            <img :src="item" alt="">
+            <img :src="item.img" alt="">
           </div>
           <div class="farmer_name">
-            <p>蔬菜鄉村的李伯伯</p>
+            <p>{{ item.farmername }}</p>
           </div>
         </div>
       </Slide>
@@ -46,7 +46,7 @@ export default defineComponent({
         snapAlign: 'center',
       },
       breakpoints: {
-        700: {
+        768: {
           itemsToShow: 2,
           snapAlign: 'center',
         },
@@ -60,9 +60,34 @@ export default defineComponent({
         },
       },
       farmerImg: [
-        require('@/assets/images/index/farme1.jpg'),
-        require('@/assets/images/index/farme1.jpg'),
-        require('@/assets/images/index/farme1.jpg'),
+        {
+          img: require('@/assets/images/index/farme1.jpg'),
+          farmername: '瓜果鄉村的林伯伯'
+        },
+        {
+          img: require('@/assets/images/index/farme2.jpg'),
+          farmername: '菜園鄉村的張伯伯'
+        },
+        {
+          img: require('@/assets/images/index/farme3.jpg'),
+          farmername: '蔬菜鄉村的李奶奶'
+        },
+        {
+          img: require('@/assets/images/index/farme4.jpg'),
+          farmername: '蔬菜田鄉村的林爺爺'
+        },
+        {
+          img: require('@/assets/images/index/farme5.jpg'),
+          farmername: '蔬菜園鄉村的王叔叔'
+        },
+        {
+          img: require('@/assets/images/index/farme6.jpg'),
+          farmername: '田地鄉村的李大嬸'
+        },
+        {
+          img: require('@/assets/images/index/farme7.jpg'),
+          farmername: '綠葉鄉村的李婆婆'
+        },
       ],
       index_order: [
         {
@@ -114,8 +139,9 @@ export default defineComponent({
 </script>
 
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "@/assets/scss/all.scss";
+
 @import "@/assets/scss/page/home/homeFramer.scss";
 </style>
 

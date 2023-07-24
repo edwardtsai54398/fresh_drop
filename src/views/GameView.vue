@@ -1,5 +1,5 @@
 <template>
-        <div class="container">
+        <div class="game_container">
                 <section class="bar_wrap" v-for="index in 5" :key="index" v-show="step === index">
                         <div class="bar" :style="{ width: progressWidth, background: getBarColor }">
                                 <span v-show="step != 1">{{ progressPercentage }}</span>
@@ -8,55 +8,7 @@
                                 </div>
                         </div>
                 </section>
-                <!-- 進度條 -->
-                <!-- <section class="bar_wrap" v-show="step == 1">
-                        <div class="bar" style="width: 0%;">
-                                <span></span>
-                                <div class="icon">
-                                        <img src="../assets/images/game/carrot.png" alt="">
-                                </div>
-                        </div>
-                </section>
-                <section class="bar_wrap" v-show="step == 2">
-                        <div class="bar" style="width: 20%;">
-                                <span>20%</span>
-                                <div class="icon">
-                                        <img src="../assets/images/game/carrot.png" alt="">
-                                </div>
-                        </div>
-                </section>
-                <section class="bar_wrap" v-show="step == 3">
-                        <div class="bar" style="width: 40%;">
-                                <span>40%</span>
-                                <div class="icon">
-                                        <img src="../assets/images/game/carrot.png" alt="">
-                                </div>
-                        </div>
-                </section>
-                <section class="bar_wrap" v-show="step == 4">
-                        <div class="bar" style="width: 60%;">
-                                <span>60%</span>
-                                <div class="icon">
-                                        <img src="../assets/images/game/carrot.png" alt="">
-                                </div>
-                        </div>
-                </section>
-                <section class="bar_wrap" v-show="step == 5">
-                        <div class="bar" style="width: 80%;">
-                                <span>80%</span>
-                                <div class="icon">
-                                        <img src="../assets/images/game/carrot.png" alt="">
-                                </div>
-                        </div>
-                </section>
-                <section class="bar_wrap" v-show="step == 6">
-                        <div class="bar" style="width: 100%;">
-                                <span>100%</span>
-                                <div class="icon">
-                                        <img src="../assets/images/game/carrot.png" alt="">
-                                </div>
-                        </div>
-                </section> -->
+
                 <!-- 標語 -->
                 <div class="solgan">
                         <p>不知道吃什麼嗎 一起來看看專屬於你的命定料理吧 </p>
@@ -569,16 +521,12 @@ import productList from "@/assets/data/productList.js";
 export default {
         data() {
                 return {
-                        step: 1,
-                        score: 0,
-                        status: true,
+                        step: 1, //遊戲階段
+                        score: 0, //得分
+                        status: true,//狀態:true為遊戲狀態; false為分析狀態
                         isClicked1: false,
                         isClicked2: false,
-                        settings: {
-                                itemsToShow: 1,
-                                snapAlign: 'start',
-                        },
-                        sum: 0,
+                        sum: 0,//總得分
                         card: [
                                 {
                                         title: '第一題 ',

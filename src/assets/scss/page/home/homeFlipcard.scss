@@ -3,7 +3,7 @@
     width: 100%;
     margin-bottom: 100px;
     aspect-ratio: 1920/1050;
-    background-image: url('@/assets/images/index/decoeate1.png');
+    background-image: url('@/assets/images/index/decoeate2.png');
     background-size: cover;
     background-position: center;
 
@@ -153,6 +153,7 @@
         align-items: center;
         justify-content: center;
         gap: 2%;
+        background-image: url('@/assets/images/index/decoeate1.png');
 
         .index_banner_slider {
             margin: 0;
@@ -308,9 +309,7 @@
                 }
             }
 
-            .decorate_day {
-                // margin-right: $sp5;
-            }
+
         }
 
         .index_index_banner_swiper {

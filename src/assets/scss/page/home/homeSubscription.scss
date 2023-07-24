@@ -4,6 +4,7 @@
     border: solid 6px $primary;
     border-radius: 18px;
     padding: 20px;
+    margin-top: 50px;
 
     .subscription_wrap {
         padding: $sp3;
@@ -58,6 +59,19 @@
                     gap: 26px;
 
                     .index_drop_pic {
+                        position: relative;
+
+                        .box_txt {
+                            span {
+                                font-size: $m-font;
+                            }
+
+                            position: absolute;
+                            bottom: 0;
+                            background-color: #0000;
+                            color: #000;
+                        }
+
                         img {}
                     }
 
@@ -138,6 +152,7 @@
         max-width: 800px;
         margin: auto;
         padding: $sp3;
+        margin-top: 50px;
 
         .subscription_wrap {
             p {}
