@@ -5,10 +5,7 @@
             <div class="decorate_index">
                 <div class="index_banner_slider">
                     <div class="decorate_day">
-                        <img
-                            src="../assets/images/index/index_happy.png"
-                            alt=""
-                        />
+                        <img src="../assets/images/index/index_happy.png" alt="" />
                     </div>
                     <!-- 字左 -->
                     <div class="index_text">
@@ -18,10 +15,7 @@
                             <p>左右滑動找到屬於你的菜</p>
                         </div>
                         <div class="index_carrot pic">
-                            <img
-                                src="../assets/images/index/index_decorate_carrot.png"
-                                alt=""
-                            />
+                            <img src="../assets/images/index/index_decorate_carrot.png" alt="" />
                         </div>
                     </div>
                 </div>
@@ -29,82 +23,50 @@
                 <div class="index_index_banner_swiper">
                     <!-- 下一張按鈕 -->
                     <button class="btn_circle btn_flat">NEXT►</button>
-                    <swiper
-                        :effect="'cards'"
-                        :grabCursor="true"
-                        :modules="modules"
-                        class="mySwiper"
-                    >
+                    <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="mySwiper">
                         <swiper-slide>
                             <div class="swiper_pic">
-                                <img
-                                    src="../assets/images/product/1tomaot_egg.jpg"
-                                    alt=""
-                                />
+                                <img src="../assets/images/product/1tomaot_egg.jpg" alt="" />
                             </div>
                         </swiper-slide>
                         <swiper-slide>
                             <div class="swiper_pic">
-                                <img
-                                    src="../assets/images/product/2creamy_beer_clam.jpg"
-                                    alt=""
-                                />
+                                <img src="../assets/images/product/2creamy_beer_clam.jpg" alt="" />
                             </div>
                         </swiper-slide>
                         <swiper-slide>
                             <div class="swiper_pic">
-                                <img
-                                    src="../assets/images/product/3basil_eggplant.jpg"
-                                    alt=""
-                                />
+                                <img src="../assets/images/product/3basil_eggplant.jpg" alt="" />
                             </div>
                         </swiper-slide>
                         <swiper-slide>
                             <div class="swiper_pic">
-                                <img
-                                    src="../assets/images/product/4grill_clam.jpg"
-                                    alt=""
-                                />
+                                <img src="../assets/images/product/4grill_clam.jpg" alt="" />
                             </div>
                         </swiper-slide>
                         <swiper-slide>
                             <div class="swiper_pic">
-                                <img
-                                    src="../assets/images/product/5mapo_tofu.jpg"
-                                    alt=""
-                                />
+                                <img src="../assets/images/product/5mapo_tofu.jpg" alt="" />
                             </div>
                         </swiper-slide>
                         <swiper-slide>
                             <div class="swiper_pic">
-                                <img
-                                    src="../assets/images/product/2creamy_beer_clam.jpg"
-                                    alt=""
-                                />
+                                <img src="../assets/images/product/2creamy_beer_clam.jpg" alt="" />
                             </div>
                         </swiper-slide>
                         <swiper-slide>
                             <div class="swiper_pic">
-                                <img
-                                    src="../assets/images/product/23thai_hot_sour_soup.jpg"
-                                    alt=""
-                                />
+                                <img src="../assets/images/product/23thai_hot_sour_soup.jpg" alt="" />
                             </div>
                         </swiper-slide>
                         <swiper-slide>
                             <div class="swiper_pic">
-                                <img
-                                    src="../assets/images/product/31vietnam_beef_salad.jpg"
-                                    alt=""
-                                />
+                                <img src="../assets/images/product/31vietnam_beef_salad.jpg" alt="" />
                             </div>
                         </swiper-slide>
                         <swiper-slide>
                             <div class="swiper_pic">
-                                <img
-                                    src="../assets/images/product/23thai_hot_sour_soup.jpg"
-                                    alt=""
-                                />
+                                <img src="../assets/images/product/23thai_hot_sour_soup.jpg" alt="" />
                             </div>
                         </swiper-slide>
                     </swiper>
@@ -121,29 +83,11 @@
         </section>
     </div>
     <!-- 水果滑動區 -->
-    <section class="index_health_banner" style="display: none">
-        <p>HEALTH<br />VEGETABLE</p>
-        <div class="index_health_wrap">
-            <div class="index_health" ref="box">
-                <div
-                    class="index_health_pic pic"
-                    v-for="(vegetable, index) in vegetables"
-                    :key="index"
-                >
-                    <img :src="vegetable.image" alt="" />
-                    <h3>{{ vegetable.name }}</h3>
-                </div>
-            </div>
-        </div>
-    </section>
+    <HomeIngrid />
     <!--  小農輪播區-->
     <section class="framer">
         <p>｜小農介紹｜</p>
-        <Carousel
-            v-bind="settings"
-            :breakpoints="breakpoints"
-            :wrap-around="true"
-        >
+        <Carousel v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">
             <Slide v-for="item in farmerImg" :key="item">
                 <div class="index_farmer_pic">
                     <img :src="item" alt="" />
@@ -255,13 +199,14 @@
     </section>
 </template>
 <script>
-import HomeOrder from "./home/HomeOrder.vue";
+import HomeIngrid from './home/HomeIngrid.vue';
 
 export default {
-    name: "HomeView",
+    name: 'HomeView',
     components: {
-        HomeOrder,
+        HomeIngrid,
     },
+
     data() {
         return {};
     },

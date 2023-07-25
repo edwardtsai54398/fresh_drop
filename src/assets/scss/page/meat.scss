@@ -375,18 +375,26 @@
 
 //斷點 1200px
 @include desktop{
-    .meat_card_box{
-        .farmer_title{
-            h3{
-                // outline: solid red;
-                font-size: $l-font;
+    .meat_card_container{
+        .meat_card_box{
+            .card_top{
+                .card_text{
+                    .farmer_title{
+                        h3{
+                            // outline: solid red;
+                            font-size: $m-font;
+                        }
+                    }
+                    .farmer_text{
+                        p{
+                            font-size: $s-font;
+                        }
+                    }
+                }             
             }
-        }
-        .farmer_text{
-            p{
-                font-size: $l-font;
-            }
+            
         }
     }
+    
         
 }

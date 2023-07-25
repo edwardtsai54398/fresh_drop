@@ -1,33 +1,121 @@
+
 .index_health_banner{
-    height: 100vh;
-    overflow: hidden;
+    height: 200vh;
     background-color: $primary--;
-    display: flex;
-    align-items: center;
-    
     .index_health_wrap{
+        position: sticky;
+        width: 100%;
         display: flex; 
-        .title{
-        padding: 0 $sp4;
-        font-size: 64px;
-        font-weight: 900;
-        margin-top: auto;
-        margin-bottom: auto;
-        }
-        div{
-            width: 100%;
-            // min-width: 100vw; //設置最小寬度保證可以橫向排列
-            transition: transform 0.5s ease; 
-        }
+        top: 0;
+        overflow: hidden;
+        height: 100vh;
+        .box{
+            position: relative;
+            display: flex;
+            margin-top: auto;
+            margin-bottom: auto;
+            .title{
+                width: 100%;
+                padding: 0 $sp6;
+                font-size: 64px;
+                font-weight: 900;
+                margin-top: auto;
+                margin-bottom: auto;
+                position: relative;
+                p{
+                    line-height: 1.2;
+                }
+                span{
+                    font-size: $xl-font;
+                    position: absolute;                
+                    bottom: 100%;
+                    transform: translateY(-5%);
+                }
+            }
+            .title_bg{
+                position: absolute;
+                bottom: 100%;
+                left: -200px;
+                transform: translateY(35%);
+                z-index: -1;
+            }
+            div{
+                width: 100%;
+                transition: transform 0.5s ease; 
+                position: relative;
+                .veg_bg{
+                    position: absolute;
+                    width: 200px;
+                    height: 200px;
+                    background-color: $primary;
+                    opacity: 50%;
+                    border-radius: 999em;
+                    top: 100%;
+                    right: 70px;
+                    transform: translateY(-120%);
+                    z-index: -1;
+                }
+                .veg_title{
+                    width: 100%;
+                    position: absolute;
+                    font-size: $l-font;
+                    top: 100%;
+                    transform: translateY(-20%);
+                    z-index: -1;
+                    p{
+                        line-height: 1.2;
+                        text-align: center;
+                    }
+                    .veg_title_bg{
+                        background-color: $secondary;
+                        width: 300px;
+                        height: 60px;
+                        position: absolute;
+                        top: 100%;
+                        right: 70px;
+                        transform: translateY(-80%);
+                        z-index: -1;
+                    }
+                }
+            }
+            .veg01{
+                .veg_bg{
+                    top: 100%;
+                    right: 10px;
+                    transform: translateY(-110%);
+                }
+            }
+        }      
     }
+    
 }
-.index_health_banner.sticky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+
+// mobile 斷點
+@media screen and (max-width:767px){
+    .title{
+        p{
+            font-size: $l-font;
+        }   
+    }
+    .veg01{
+        width: 100%;
+    }
+    .veg_title{
+        p{
+            font-size: $m-font;
+        }
+        // .veg_title_bg{
+        //     // outline: solid red;
+        //     width: 100px;
+        //     height: 60px;
+        //     position: absolute;
+        //     top: 100%;
+        //     right: 70px;
+        //     transform: translateY(-80%);
+        //     z-index: -1;
+        // }
+    }
+    
 }
-.sticky-placeholder {
-    height: 100vh;
-}
+
+
