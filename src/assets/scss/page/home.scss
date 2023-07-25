@@ -1,14 +1,14 @@
 .container {
   width: 100%;
-  max-width: 1920px;
 }
 
 .container .product_container {
-  max-width: 1200px;
+  width: 100%;
   margin: auto;
   display: flex;
 }
 
+// banner滑卡區
 .decorate_index {
   width: 100%;
   margin-bottom: 100px;
@@ -16,174 +16,210 @@
   background-image: url('@/assets/images/index/decoeate1.png');
   background-size: cover;
   background-position: center;
+
+  .index_banner_slider {
+
+    //幸福的一天
+    .decorate_day {
+      width: 20%;
+      margin: 40px auto 0;
+      // position: relative;
+      padding-top: 40px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    // 字左(每日命定料理)
+    .index_text {
+      font-size: $l-font;
+      text-align: center;
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      position: relative;
+      justify-content: center;
+      margin: 0 50px;
+      align-items: center;
+
+      .txt {
+        padding: 30px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+
+        p {
+          font-weight: 700;
+          font-size: 36px;
+          color: $primary;
+          line-height: 1.2;
+        }
+
+        span {
+          font-size: $s-font;
+          color: $primary;
+          font-weight: 700;
+
+        }
+      }
+
+      // 胡蘿蔔
+      .index_carrot {
+        img {
+          max-width: 100px;
+          max-height: 100px;
+        }
+      }
+    }
+  }
+
+  // 中間滑卡
+  .index_index_banner_swiper {
+    margin: auto;
+    width: 65%;
+    position: relative;
+
+    .btn_circle {
+      width: 30%;
+      position: absolute;
+      z-index: 2;
+      text-align: center;
+      font-size: 8px;
+      right: -10%;
+      bottom: -10%;
+      padding: 2px;
+      background-color: #ffffff;
+      border: 3px solid #1F8D61;
+      font-weight: 700;
+    }
+
+    .swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #fff;
+
+      .swiper_pic img {
+        @include img-fit;
+      }
+    }
+  }
+
+  // 字右
+  .index_food_title {
+    display: flex;
+    flex-direction: column;
+    gap: $sp4;
+    padding: $sp2;
+
+    p {
+      color: $primary;
+      line-height: 1.2;
+    }
+
+    .line {
+      span {
+        font-size: $m-font;
+        color: $primary;
+        font-weight: 600;
+      }
+    }
+
+    .index_btn_l {
+      padding: $sp1 $sp3;
+      font-size: 8px;
+      font-weight: 600;
+      margin-left: auto;
+    }
+  }
+
 }
 
-.decorate_day {
-  width: 120px;
-  padding: 20px;
-  margin: auto;
-}
-
-.decorate_day img {
-  width: 100%;
-}
-
-.index_text {
-  font-weight: bolder;
-  font-size: 24px;
-  margin-bottom: 30px;
-  text-align: center;
-  line-height: 0.4;
-  // display: flex;
-}
-
-.index_food_title {
-  display: none;
-}
-
-.index_carrot {
-  width: 90px;
-}
-
-.index_text p {
-  color: $primary;
-  line-height: 1.2;
-}
-
-.index_banner {
-  position: relative;
-  width: 230px;
-  line-height: 0;
-  margin: 170px auto;
-}
 
 
-// banner
-.index_index_banner_swiper {
-  margin: auto;
-  width: 50%;
-  position: relative;
 
-}
 
-.swiper-slide {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 18px;
-  font-size: 22px;
-  font-weight: bold;
-  color: #fff;
-}
 
-.swiper-slide {
-  border-radius: 20px;
-}
 
-.swiper_pic img {
-  @include img-fit;
-}
 
-.index_banner_swiper {
-  margin-top: -50px;
-}
-
-.btn_circle {
-  position: absolute;
-  z-index: 2;
-  text-align: center;
-  width: 30%;
-  aspect-ratio: 1/1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: $xs-font;
-  right: -10%;
-  bottom: 0%;
-  background-color: #ffffff;
-}
-
-.index_btn_l {
-  padding: $sp1;
-  position: relative;
-  left: 120%;
-  font-size: $xs-font;
-}
-
+// 水果滑動區
 .index_health_banner {
   height: 350vh;
   width: 100%;
   background-color: $primary--;
-}
 
-.index_health_banner p {
-  font-size: $l-font;
-  text-align: center;
-  font-weight: bolder;
-  padding: 20px;
-}
+  p {
+    font-size: $l-font;
+    text-align: center;
+    font-weight: bolder;
+    padding: 20px;
+  }
 
-.index_health_wrap {
-  width: 100%;
-  height: 100vh;
-  position: sticky;
-  overflow: hidden;
-  padding-top: 250px;
-  top: 100px;
-}
+  .index_health_wrap {
+    width: 100%;
+    height: 100vh;
+    position: sticky;
+    overflow: hidden;
+    padding-top: 80px;
+    top: 100px;
 
-.index_health {
-  height: 100%;
-  display: flex;
-  text-align: center;
-}
+    .index_health {
+      // height: 100%;
+      display: flex;
+      text-align: center;
 
-.index_health_pic {
-  margin: 0 250px;
-  width: 500px;
-  height: 500px;
-  flex-shrink: 0;
-}
+      .index_health_pic {
+        margin: 0 150px;
+        width: 300px;
+        height: 300px;
+        flex-shrink: 0;
+      }
+    }
+  }
 
+  .carousel__slide {
+    padding: 5px;
+  }
 
-.carousel__slide {
-  padding: 5px;
-}
+  .carousel__viewport {
+    perspective: 2000px;
+  }
 
-.carousel__viewport {
-  perspective: 2000px;
-}
+  .carousel__track {
+    transform-style: preserve-3d;
+  }
 
-.carousel__track {
-  transform-style: preserve-3d;
-}
+  .carousel__slide--sliding {
+    transition: 0.5s;
+  }
 
-.carousel__slide--sliding {
-  transition: 0.5s;
-}
+  .carousel__slide {
+    opacity: 0.9;
+    transform: rotateY(-20deg) scale(0.9);
+  }
 
-.carousel__slide {
-  opacity: 0.9;
-  transform: rotateY(-20deg) scale(0.9);
-}
+  .carousel__slide--active~.carousel__slide {
+    transform: rotateY(20deg) scale(0.9);
+  }
 
-.carousel__slide--active~.carousel__slide {
-  transform: rotateY(20deg) scale(0.9);
-}
+  .carousel__slide--prev {
+    opacity: 1;
+    transform: rotateY(-10deg) scale(0.95);
+  }
 
-.carousel__slide--prev {
-  opacity: 1;
-  transform: rotateY(-10deg) scale(0.95);
-}
+  .carousel__slide--next {
+    opacity: 1;
+    transform: rotateY(10deg) scale(0.95);
+  }
 
-.carousel__slide--next {
-  opacity: 1;
-  transform: rotateY(10deg) scale(0.95);
-}
-
-.carousel__slide--active {
-  opacity: 1;
-  transform: rotateY(0) scale(1.1);
+  .carousel__slide--active {
+    opacity: 1;
+    transform: rotateY(0) scale(1.1);
+  }
 }
 
 // 
@@ -280,86 +316,161 @@
   width: 100%;
 }
 
-// 
+// TODO 訂閱方案
 .index_subscription {
   justify-content: center;
   border: solid 6px $primary;
   border-radius: 18px;
   margin: 20px;
+
+  .subscription_wrap {
+    padding: $sp3;
+
+    p {
+      width: 100%;
+      text-align: center;
+      width: 100%;
+      border-top-left-radius: 0px;
+      background-color: $primary;
+      padding: 20px;
+      color: #fff;
+    }
+
+    .index_menu {
+      padding: $sp2 0;
+
+      h3 {
+        font-size: $s-font;
+        color: $primary;
+      }
+
+    }
+
+    .drop_wrap {
+      display: flex;
+      flex-direction: column;
+      gap: $sp4;
+
+      .index_8drop {
+        border: solid 3px $primary;
+        border-radius: 23px;
+        // margin-bottom: 20px;
+
+        .index_drop {
+          padding: 15px;
+          gap: 30px;
+          border-top-left-radius: 20px;
+          border-top-right-radius: 20px;
+          background-color: $primary;
+        }
+
+        .index_drop_box {
+          margin: 10px;
+          justify-content: center;
+          display: flex;
+          gap: 26px;
+
+          .index_drop_pic {
+            img {}
+          }
+
+          .index_money {
+            text-align: center;
+            align-items: center;
+            display: grid;
+            color: #9F9D9D;
+
+            h4 {}
+
+            .sale_text {
+              background-color: $primary;
+              padding: 8px;
+              margin: 9px;
+
+              h4 {
+                font-size: 20px;
+                color: #fff;
+              }
+            }
+
+            .sale_menu_text {
+              font-size: $xs-font;
+            }
+          }
+        }
+      }
+    }
+
+    .index_one {
+      padding: $sp2 0;
+
+      h3 {
+        font-size: $s-font;
+        color: $primary;
+      }
+    }
+
+    .index_button {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      .index_button_week {
+        background-color: $primary;
+        border-radius: 20px;
+        color: #ffffff;
+        width: 30%;
+        padding: $sp4;
+        text-align: center;
+
+
+        span {
+          font-size: $m-font;
+          color: #ffffff;
+        }
+
+      }
+    }
+
+    .index_illustrate {
+      padding: $sp2 0;
+      line-height: 22px;
+    }
+
+    .index_btn_l_more {
+      margin: $sp2 auto;
+      padding: $sp2;
+
+    }
+  }
 }
 
-.index_subscription p {
-  text-align: center;
-  width: 100%;
-  border-top-left-radius: 0px;
-  background-color: $primary;
-  padding: 20px;
-  color: #fff;
-}
 
-.index_menu {
-  padding: 30px 30px 0 30px;
-}
 
-.index_one {
-  margin: 38px;
-}
 
-.sale_menu_text {
-  font-size: $xs-font;
-}
 
-.index_drop_box {
-  margin: 10px;
-  justify-content: center;
-  display: flex;
-  gap: 26px;
-}
 
-.index_8drop {
-  border: solid 3px $primary;
-  border-radius: 23px;
-  margin: 30px;
-}
 
-.index_money {
-  text-align: center;
-  align-items: center;
-  display: grid;
-}
 
-.sale_text {
-  background-color: $primary;
-  padding: 8px;
-  margin: 9px;
-}
 
-.sale_text h4 {
-  font-size: 20px;
-  color: #fff;
-}
 
-.index_drop {
-  padding: 15px;
-  gap: 30px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  background-color: $primary;
-}
+
+.index_money {}
+
+
+
+
+
+
 
 .index_drop h4 {
   text-align: center;
   color: #fff;
 }
 
-.index_button {
-  display: flex;
-  justify-content: center;
-}
 
-.index_button_week {
-  margin: 5px 10px;
-}
+
+
 
 .index_btn_l_button {
   padding: 20px;
@@ -373,15 +484,10 @@
   justify-content: center;
 }
 
-.index_illustrate {
-  margin: 20px;
-  line-height: 22px;
-}
 
-.index_btn_l_more {
-  margin: $sp2 auto;
-  padding: $sp2;
-}
+
+
+
 
 // 斷點:768px
 @include pad-V {
@@ -411,7 +517,16 @@
 
     .index_banner_slider {
       margin: 0;
-      width: 30%;
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: end;
+
+      .decorate_day {
+        width: 30%;
+        margin-right: $sp5;
+      }
     }
 
     .index_index_banner_swiper {
@@ -423,13 +538,15 @@
       width: 30%;
       margin: 0;
       z-index: 2;
-      font-size: $m-font;
+      gap: 0;
 
 
       p {
-        text-align: center;
+        display: block;
         color: $primary;
         font-weight: 600;
+        font-size: $m-font;
+        padding: $sp1;
       }
 
       .line {
@@ -444,6 +561,13 @@
         }
       }
 
+      .index_btn_l {
+        padding: $sp1 $sp3;
+        font-size: $xs-font;
+        font-weight: 600;
+        margin-top: $sp4;
+      }
+
 
     }
   }
@@ -456,35 +580,14 @@
     margin-top: -50px;
   }
 
-  .btn_circle {
-    position: absolute;
-    z-index: 2;
-    text-align: center;
-    width: 25%;
-    aspect-ratio: 1/1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: $xs-font;
-    right: -10%;
-    bottom: 0%;
-    background-color: #ffffff;
-  }
-
   .index_text {
     position: relative;
     display: flex;
-  }
 
-  .index_carrot {
-    width: 90px;
-    position: relative;
-  }
-
-  .index_btn_l {
-    position: relative;
-    left: 120%;
-    font-size: $s-font;
+    .index_carrot {
+      width: 90px;
+      position: relative;
+    }
   }
 
   .index_health_banner {
@@ -529,10 +632,167 @@
     top: 2%;
   }
 
-  .index_food_title {
-    display: block;
-  }
+
 }
 
 // 斷點:1024px
-@include pad-H {}
+@include pad-H {
+  .decorate_index {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+
+    .index_banner_slider {
+      margin: 0;
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: end;
+
+      .index_text {
+        .txt_wrap {
+          .txt {
+            z-index: 2;
+
+            p {
+              font-size: $l-font;
+            }
+
+            span {
+              font-size: $s-font;
+              z-index: 2;
+            }
+          }
+        }
+      }
+
+      .decorate_day {
+        margin-right: $sp5;
+      }
+    }
+
+    .index_index_banner_swiper {
+      margin: 0;
+      width: 32%;
+
+      .btn_circle {
+        font-size: $s-font;
+        width: 25%;
+      }
+    }
+
+    .index_food_title {
+      width: 30%;
+      margin: 0;
+      z-index: 2;
+      gap: 0;
+
+
+      p {
+        display: block;
+        color: $primary;
+        font-weight: 600;
+        font-size: $m-font;
+        padding: $sp1 $sp2;
+      }
+
+      .line {
+        padding: $sp1 $sp2;
+        border-top: 1px dashed $primary;
+
+        span {
+          color: $primary;
+          padding-top: $sp2;
+          font-size: $xl-font;
+          font-weight: 700;
+        }
+      }
+
+      .index_btn_l {
+        padding: $sp1 $sp3;
+        font-size: $s-font;
+        font-weight: 600;
+        margin: $sp7 auto 0;
+      }
+
+
+    }
+  }
+
+}
+
+//TODO訂閱方案768
+@include pad-V {
+  .index_subscription {
+    max-width: 1080px;
+    margin: auto;
+
+    .subscription_wrap {
+      p {}
+
+      .index_menu {
+        margin-top: $sp5;
+
+        h3 {}
+      }
+
+      .drop_wrap {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0;
+        margin-bottom: $sp5;
+
+        .index_8drop {
+          width: 30%;
+
+          .index_drop {}
+
+          .index_drop_box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .index_drop_pic {}
+
+            .index_money {
+              h4 {}
+
+              .sale_text {
+                h4 {}
+              }
+
+              .sale_menu_text {
+                h4 {}
+              }
+            }
+          }
+        }
+      }
+
+      .index_one {
+        h3 {}
+      }
+
+      .index_button {
+        margin-bottom: $sp5;
+
+        .index_button_week {
+          padding: $sp5;
+        }
+      }
+
+      .index_illustrate {
+        h3 {}
+      }
+
+      .index_btn_l_more {
+        width: 33%;
+        padding: $sp2 $sp5;
+      }
+    }
+  }
+
+}

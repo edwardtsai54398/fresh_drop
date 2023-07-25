@@ -68,6 +68,3 @@ export default{
 @import "@/assets/scss/all.scss";
 @import "@/assets/scss/page/home/homeIngrid.scss";
 </style>
-
-
-
