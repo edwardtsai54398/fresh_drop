@@ -1,10 +1,11 @@
-.container {
+.game_container {
     padding: 20px;
     padding-top: 90px;
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    max-width: 1000px;
+    margin: auto;
 }
 
 // 進度條
@@ -315,7 +316,7 @@
 
     .solgan {
         font-size: $s-font;
-        width: 50%;
+        width: 80%;
     }
 
     // 遊戲卡片

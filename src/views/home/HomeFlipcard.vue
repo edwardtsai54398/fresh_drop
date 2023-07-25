@@ -21,49 +21,9 @@
       <!-- 下一張按鈕 -->
       <button class="btn_circle btn_flat">NEXT►</button>
       <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="mySwiper">
-        <swiper-slide>
+        <swiper-slide v-for="(item, index) in cards" :key="index">
           <div class="swiper_pic">
-            <img src="@/assets/images/product/1tomaot_egg.jpg" alt="">
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="swiper_pic">
-            <img src="@/assets/images/product/2creamy_beer_clam.jpg" alt="">
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="swiper_pic">
-            <img src="@/assets/images/product/3basil_eggplant.jpg" alt="">
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="swiper_pic">
-            <img src="@/assets/images/product/4grill_clam.jpg" alt="">
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="swiper_pic">
-            <img src="@/assets/images/product/5mapo_tofu.jpg" alt="">
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="swiper_pic">
-            <img src="@/assets/images/product/2creamy_beer_clam.jpg" alt="">
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="swiper_pic">
-            <img src="@/assets/images/product/23thai_hot_sour_soup.jpg" alt="">
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="swiper_pic">
-            <img src="@/assets/images/product/31vietnam_beef_salad.jpg" alt="">
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="swiper_pic">
-            <img src="@/assets/images/product/23thai_hot_sour_soup.jpg" alt="">
+            <img :src="item.img" alt="">
           </div>
         </swiper-slide>
       </swiper>
@@ -72,7 +32,7 @@
     <div class="index_food_title">
       <p>清爽無負擔</p>
       <div class="line">
-        <span>希臘烤羊肉</span>
+        <span>{{ cards[0].foodName }}</span>
       </div>
       <button class="index_btn_l">更多食譜</button>
     </div>
@@ -84,7 +44,6 @@ import { defineComponent } from 'vue';
 import 'swiper/css';
 import 'swiper/css/effect-cards';
 import { EffectCards } from 'swiper/modules';
-
 export default defineComponent({
   name: 'HomeView',
   components: {
@@ -98,33 +57,45 @@ export default defineComponent({
         itemsToShow: 1,
         snapAlign: 'center',
       },
-      breakpoints: {
-        700: {
-          itemsToShow: 3.5,
-          snapAlign: 'center',
+      cards: [
+        {
+          img: require('@/assets/images/product/1tomaot_egg.jpg'),
+          foodName: '滑嫩番茄蛋'
         },
-        1024: {
-          itemsToShow: 5.5,
-          snapAlign: 'center',
+        {
+          img: require('@/assets/images/product/2creamy_beer_clam.jpg'),
+          foodName: ''
         },
-        1200: {
-          itemsToShow: 6,
-          snapAlign: 'center',
+        {
+          img: require('@/assets/images/product/3basil_eggplant.jpg'),
+          foodName: ''
         },
-      },
-      farmerImg: [
-        require('@/assets/images/index/farme1.jpg'),
-        require('@/assets/images/index/farme1.jpg'),
-        require('@/assets/images/index/farme1.jpg'),
+        {
+          img: require('@/assets/images/product/4grill_clam.jpg'),
+          foodName: ''
+        },
+        {
+          img: require('@/assets/images/product/5mapo_tofu.jpg'),
+          foodName: ''
+        },
+        {
+          img: require('@/assets/images/product/2creamy_beer_clam.jpg'),
+          foodName: ''
+        },
+        {
+          img: require('@/assets/images/product/23thai_hot_sour_soup.jpg'),
+          foodName: ''
+        },
+        {
+          img: require('@/assets/images/product/31vietnam_beef_salad.jpg'),
+          foodName: ''
+        },
+        {
+          img: require('@/assets/images/product/23thai_hot_sour_soup.jpg'),
+          foodName: ''
+        },
       ],
-      vegetables: [
-        { name: 'Chinese cabbage', image: require('@/assets/images/index/index_vefetable.png') },
-        { name: 'cauliflower', image: require('@/assets/images/index/index_vefetable1.png') },
-        { name: 'Green pepper', image: require('@/assets/images/index/index_vefetable2.png') },
-        { name: 'onion', image: require('@/assets/images/index/index_vefetable3.png') },
-        { name: 'Chinese cabbage', image: require('@/assets/images/index/index_vefetable4.png') },
-      ]
-      // currentIndex: 0, // 当前显示的内容索引
+
     };
   },
 

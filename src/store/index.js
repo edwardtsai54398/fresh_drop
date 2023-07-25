@@ -46,11 +46,15 @@ export default createStore({
             } else if (string == 'gift') {
                 state.giftBuy = {}
             }
-        }
+        },
+        setGameData(state, { userData }) {
+            state.cartList = userData
+        },
+
     },
     actions: {
-        
-        
+
+
     },
     modules: {
     }

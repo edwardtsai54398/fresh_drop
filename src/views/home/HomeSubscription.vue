@@ -1,7 +1,7 @@
 <template>
   <section class="index_subscription">
     <div class="subscription_wrap">
-      <p>｜訂購流程｜</p>
+      <p>｜定期配送｜</p>
       <div class="index_menu">
         <h3>1.一次配送幾餐?</h3>
       </div>
@@ -12,6 +12,7 @@
           </div>
           <div class="index_drop_box">
             <div class="index_drop_pic">
+              <p class="box_txt"><span>4</span>份</p>
               <img src="@/assets/images/index/imdex_box.png" alt="">
             </div>
             <div class="index_money">
@@ -32,6 +33,7 @@
 
           <div class="index_drop_box">
             <div class="index_drop_pic">
+              <p class="box_txt"><span>6</span>份</p>
               <img src="@/assets/images/index/imdex_box.png" alt="">
             </div>
             <div class="index_money">
@@ -51,6 +53,7 @@
           </div>
           <div class="index_drop_box">
             <div class="index_drop_pic">
+              <p class="box_txt"><span>10</span>份</p>
               <img src="@/assets/images/index/imdex_box.png" alt="">
             </div>
             <div class="index_money">

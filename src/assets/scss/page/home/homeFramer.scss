@@ -33,4 +33,29 @@
 }
 
 //輪播箭頭
-// .carousel__icon{} 
+
+.framer {
+    .carousel {
+        .carousel__prev {
+            background-color: #fff;
+            border: 1px solid $primary;
+            border-radius: 50%;
+
+            .carousel__icon {
+                fill: $primary;
+            }
+        }
+
+        .carousel__next {
+            background-color: #fff;
+            border: 1px solid $primary;
+            border-radius: 50%;
+
+            .carousel__icon {
+                fill: $primary;
+            }
+        }
+    }
+
+
+}

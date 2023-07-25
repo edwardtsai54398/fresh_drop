@@ -1,11 +1,14 @@
 // banner滑卡區
 .decorate_index {
+    padding-top: 80px;
     width: 100%;
     margin-bottom: 100px;
     aspect-ratio: 1920/1050;
-    background-image: url('@/assets/images/index/decoeate1.png');
+    background-image: url('@/assets/images/index/decoeate2.png');
     background-size: cover;
     background-position: center;
+    margin-top: -126px;
+
 
     .index_banner_slider {
 
@@ -148,11 +151,14 @@
     }
 
     .decorate_index {
+        padding-top: 100px;
         display: flex;
         width: 100%;
         align-items: center;
         justify-content: center;
         gap: 2%;
+        background-image: url('@/assets/images/index/decoeate1.png');
+        margin-top: -126px;
 
         .index_banner_slider {
             margin: 0;
@@ -282,6 +288,8 @@
         align-items: center;
         justify-content: center;
         gap: 2%;
+        margin-top: -126px;
+
 
         .index_banner_slider {
             margin: 0;
@@ -308,9 +316,7 @@
                 }
             }
 
-            .decorate_day {
-                // margin-right: $sp5;
-            }
+
         }
 
         .index_index_banner_swiper {
@@ -361,4 +367,10 @@
         }
     }
 
+}
+
+@include desktop {
+    .decorate_index {
+        margin-top: -126px;
+    }
 }
