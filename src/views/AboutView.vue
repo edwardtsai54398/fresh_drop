@@ -20,7 +20,9 @@
       <div class="about_farmer_future">
         <h3>{{ farmer.title }}</h3>
         <p>{{ farmer.description }}</p>
-        <div class="index_btn_l">小農介紹</div>
+        <div class="index_btn_l">
+          <router-link to="/Source">小農介紹</router-link>
+        </div>
       </div>
     </div>
 
@@ -62,6 +64,15 @@
         <div class="index_btn_l">送出</div>
       </form>
     </div>
+  </div>
+  <!-- Hover 效果 -->
+    <div class="index_qa">
+      <div class="index_hedgehog">
+        <img src="../assets/images/index/index_qa.png" alt="">
+      </div> 
+      <div class="index_door">
+        <img src="../assets/images/index/qa_door.png" alt="">
+      </div> 
   </div>
 </template>
 
