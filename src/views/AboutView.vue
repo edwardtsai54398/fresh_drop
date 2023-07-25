@@ -20,7 +20,9 @@
       <div class="about_farmer_future">
         <h3>{{ farmer.title }}</h3>
         <p>{{ farmer.description }}</p>
-        <div class="index_btn_l">小農介紹</div>
+        <div class="index_btn_l">
+          <router-link to="/Source">小農介紹</router-link>
+        </div>
       </div>
     </div>
 
