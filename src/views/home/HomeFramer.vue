@@ -1,5 +1,4 @@
 <template>
-  <!--  小農輪播區-->
   <section class="framer">
     <p>｜小農介紹｜</p>
     <Carousel v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">

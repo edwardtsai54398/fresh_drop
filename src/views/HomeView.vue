@@ -1,5 +1,4 @@
 <template>
-    <!-- <div class="container index_container"> -->
         <!-- banner滑卡區 -->
         <HomeFlipcard></HomeFlipcard>
 
@@ -12,7 +11,6 @@
         <HomeOrder></HomeOrder>
         <!-- 訂閱方案 -->
         <HomeSubscription></HomeSubscription>
-    <!-- </div> -->
 </template>
 <script>
 import HomeIngrid from './home/HomeIngrid.vue';
@@ -39,5 +37,4 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/all.scss";
-// @import "@/assets/scss/page/home.scss";
 </style> 

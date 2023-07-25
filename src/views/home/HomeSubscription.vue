@@ -1,5 +1,4 @@
 <template>
-  <!-- 訂閱方案 -->
   <section class="index_subscription">
     <div class="subscription_wrap">
       <p>｜訂購流程｜</p>

@@ -1,5 +1,4 @@
 <template>
-  <!-- banner滑卡區 -->
   <section class="decorate_index">
     <div class="index_banner_slider">
       <!-- 幸福的一天 -->
