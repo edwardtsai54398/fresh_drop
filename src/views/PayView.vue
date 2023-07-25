@@ -63,14 +63,14 @@
                 <div class="price">200元</div>
                 <div class="total_price">{{calcTotalPrice}}元</div>
             </div>
-            <div class="gift_cart_content" v-if="giftBuy.price">
+            <div class="gift_cart_content" v-if="giftBuy.name">
                 <div class="gift_item">
                     <div class="gift_pic pic">
                         <img :src="giftBuy.img" alt="">
                     </div>
                     <div class="gift_info">
-                        <p>禮物卡樣式：{{ giftBuy.type }}</p>
-                        <p>收禮人：{{ giftBuy.sendTo }}</p>
+                        <!-- <p>禮物卡樣式：{{ giftBuy.type }}</p> -->
+                        <p>收禮人：{{ giftBuy.name }}</p>
                     </div>
                 </div>
                 <div class="price">{{giftBuy.money}}元</div>
@@ -313,8 +313,8 @@ export default {
     },
     data() {
         return {
-            cartList: this.$store.state.cartList,
-            giftBuy: this.$store.state.giftBuy,
+            cartList: [[]],
+            giftBuy: {},
             giftcardDiscount: 0,
             twDistrict,
             creditCardSide: true,
@@ -356,8 +356,9 @@ export default {
             }
         }
     },
-    watch: {
-        
+    created() {
+        this.giftBuy = this.$store.state.giftBuy
+        this.cartList = this.$store.state.cartList
     },
 };
 </script>
