@@ -59,13 +59,12 @@
                     主菜 MAIN DISH
                 </h4>
                 <div class="wrap_main_dish row">
-                    <div class="card col-6 col-md-4" v-for="(item, index) in mainDishFilter" :key="index">
-                        <router-link to="/product" @click="sendProductDetail">
-                            <div class="pic">
-                                <img :src="item.img" />
-                            </div>
-                            <h3>{{ item.name }}</h3>
-                        </router-link>
+                    <div class="card col-6 col-md-4" v-for="(item, index) in mainDishFilter" :key="index"
+                        @click="sendProductDetail(item)">
+                        <div class="pic">
+                            <img :src="item.img" />
+                        </div>
+                        <h3>{{ item.name }}</h3>
                         <div class="btn_scd_s" @click="addCart(index, mainDishFilter)">
                             選購
                         </div>
@@ -78,13 +77,12 @@
                     湯品 SOUP
                 </h4>
                 <div class="wrap_main_dish row">
-                    <div class="card col-6 col-md-4" v-for="(item, index) in soupFilter" :key="index">
-                        <router-link to="/product" @click="sendProductDetail">
-                            <div class="pic">
-                                <img :src="item.img" />
-                            </div>
-                            <h3>{{ item.name }}</h3>
-                        </router-link>
+                    <div class="card col-6 col-md-4" v-for="(item, index) in soupFilter" :key="index"
+                        @click="sendProductDetail(item)">
+                        <div class="pic">
+                            <img :src="item.img" />
+                        </div>
+                        <h3>{{ item.name }}</h3>
                         <div class="btn_scd_s" @click="addCart(index, soupFilter)">
                             選購
                         </div>
@@ -97,13 +95,12 @@
                     沙拉 SALAD
                 </h4>
                 <div class="wrap_main_dish row">
-                    <div class="card col-6 col-md-4" v-for="(item, index) in saladFilter" :key="index">
-                        <router-link to="/product" @click="sendProductDetail">
-                            <div class="pic">
-                                <img :src="item.img" />
-                            </div>
-                            <h3>{{ item.name }}</h3>
-                        </router-link>
+                    <div class="card col-6 col-md-4" v-for="(item, index) in saladFilter" :key="index"
+                        @click="sendProductDetail(item)">
+                        <div class="pic">
+                            <img :src="item.img" />
+                        </div>
+                        <h3>{{ item.name }}</h3>
                         <div class="btn_scd_s" @click="addCart(index, saladFilter)">
                             選購
                         </div>
@@ -138,18 +135,17 @@
                                 </div>
                                 <div class="choose">
                                     <div class="option_plan" v-for="option in optionsPlan" :key="option.value" @click="
-                                            selectedOptionPlan = option.value;
-                                            isPlanSelectDone();
-                                        " :class="{
-                                            selected:
-                                                selectedOptionPlan ===
-                                                option.value,
-                                            radio_plan: true,
-                                        }">
+                                        selectedOptionPlan = option.value;
+                                    isPlanSelectDone();
+                                    " :class="{
+    selected:
+        selectedOptionPlan ===
+        option.value,
+    radio_plan: true,
+}">
                                         {{ option.label }}
                                     </div>
-                                    <div class="single" v-show="
-                                            selectedOptionPlan === '單次購買'
+                                    <div class="single" v-show="selectedOptionPlan === '單次購買'
                                         ">
                                         <p>請前往下一步選擇餐點</p>
                                     </div>
@@ -161,13 +157,13 @@
                                 </div>
                                 <div class="choose">
                                     <div class="option_meal" v-for="option in optionsMeal" :key="option" @click="
-                                            selectedOptionMeal = option;
-                                            isPlanSelectDone();
-                                        " :class="{
-                                            selected:
-                                                selectedOptionMeal === option,
-                                            radio_plan: true,
-                                        }">
+                                        selectedOptionMeal = option;
+                                    isPlanSelectDone();
+                                    " :class="{
+    selected:
+        selectedOptionMeal === option,
+    radio_plan: true,
+}">
                                         {{ option }}份
                                     </div>
                                 </div>
@@ -178,13 +174,13 @@
                                 </div>
                                 <div class="choose">
                                     <div class="option_week" v-for="option in optionsWeek" :key="option" @click="
-                                            selectedOptionWeek = option;
-                                            isPlanSelectDone();
-                                        " :class="{
-                                            selected:
-                                                selectedOptionWeek === option,
-                                            radio_plan: true,
-                                        }">
+                                        selectedOptionWeek = option;
+                                    isPlanSelectDone();
+                                    " :class="{
+    selected:
+        selectedOptionWeek === option,
+    radio_plan: true,
+}">
                                         {{ option }}周
                                     </div>
                                 </div>
@@ -197,14 +193,14 @@
                     <div class="title">
                         <p>
                             <font-awesome-icon :style="{
-                                    color: '#1F8D61',
-                                }" icon="fa-solid fa-bowl-food" />
+                                color: '#1F8D61',
+                            }" icon="fa-solid fa-bowl-food" />
                         </p>
                         <p><span>step.2</span>選擇餐點</p>
                         <p>
                             <font-awesome-icon :style="{
-                                    color: '#1F8D61',
-                                }" icon="fa-solid fa-plus" />
+                                color: '#1F8D61',
+                            }" icon="fa-solid fa-plus" />
                         </p>
                     </div>
                     <!-- 過渡動畫 -->
@@ -227,7 +223,8 @@
                             </div>
                             <!-- 頁籤 -->
                             <div class="week_tap" v-show="selectedOptionPlan === '定期配送'">
-                                <div class="week" v-for="n in selectedOptionWeek" :key="n" :class="{ active: n == tabActive }" @click="updateTab(n)">
+                                <div class="week" v-for="n in selectedOptionWeek" :key="n"
+                                    :class="{ active: n == tabActive }" @click="updateTab(n)">
                                     WEEK{{ n }}
                                 </div>
                             </div>
@@ -256,14 +253,14 @@
                                         <div class="count">
                                             <button class="reduce" @click="amountReduce(index)">
                                                 <font-awesome-icon :style="{
-                                                        color: '#ffffff',
-                                                    }" icon="fa-solid fa-minus" />
+                                                    color: '#ffffff',
+                                                }" icon="fa-solid fa-minus" />
                                             </button>
                                             <input type="number" class="common" :value="item.amount" />
                                             <button class="increase" @click="amountIncrease(index)">
                                                 <font-awesome-icon :style="{
-                                                        color: '#ffffff',
-                                                    }" icon="fa-solid fa-plus" />
+                                                    color: '#ffffff',
+                                                }" icon="fa-solid fa-plus" />
                                             </button>
                                         </div>
                                     </div>
@@ -507,6 +504,11 @@ export default {
         // 螢幕寬度大於768自動顯示
         handleResize() {
             this.isDesktop = window.innerWidth >= 768;
+        },
+        sendProductDetail(item) {//取出點擊商品的詳細資訊
+            // console.log(item)
+            this.$store.commit("setProductData", { userData: item });
+            this.$router.push("/product");
         },
     },
     created() {

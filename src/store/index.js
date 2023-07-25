@@ -15,7 +15,8 @@ export default createStore({
             meal: 0,
             week: 1,
         },
-        dishRecommand: []
+        dishRecommand: [],
+        productDetil: []
     },
     getters: {
     },
@@ -49,6 +50,9 @@ export default createStore({
         },
         setGameData(state, { userData }) {
             state.cartList = userData
+        },
+        setProductData(state, { userData }) {
+            state.productDetil = userData
         },
 
     },

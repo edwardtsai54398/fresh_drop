@@ -166,10 +166,10 @@
                 </transition>
 
 
-                sum:{{ sum }}
+                <!-- sum:{{ sum }}
                 status:{{ status }}
                 score:{{ score }}
-                step:{{ step }}
+                step:{{ step }} -->
 
                 <!-- 分析結果 -->
                 <transition name="fade" v-for="(item, index) in result" :key="index">
