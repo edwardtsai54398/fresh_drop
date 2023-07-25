@@ -139,6 +139,7 @@ $toggle-link-h: 52px;
         }
     }
 }
+
 @include desktop {
     .mainheader {
         height: $header-h;
@@ -160,6 +161,9 @@ $toggle-link-h: 52px;
             padding: 0 $sp5;
             margin-right: $sp2;
             margin-left: auto;
+            &.hide{
+                transform: translateY(-150%);
+            }
         }
     
         nav>* {
@@ -668,7 +672,7 @@ $toggle-link-h: 52px;
         display: flex;
         align-items: center;
         padding: 0 $sp2;
-        // background-color: $bg;
+        transition: .3s;
         h4 {
             display: block;
             font-size: $s-font;
@@ -676,6 +680,9 @@ $toggle-link-h: 52px;
             color: $primary;
             font-weight: 700;
             margin-left: $sp1;
+        }
+        &.hide{
+            transform: translateY(-150%);
         }
     }
 
