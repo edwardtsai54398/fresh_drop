@@ -20,27 +20,18 @@
   </section>
 </template>
 <script>
-// import { Swiper, SwiperSlide } from 'swiper/vue';
-import { defineComponent } from 'vue';
 import { Carousel, Navigation, Slide } from 'vue3-carousel';
-import 'swiper/css';
-import 'swiper/css/effect-cards';
 import 'vue3-carousel/dist/carousel.css';
-import { EffectCards } from 'swiper/modules';
 
-export default defineComponent({
+export default {
   name: 'HomeView',
   components: {
-    // Swiper,
-    // SwiperSlide,
     Carousel,
     Slide,
     Navigation,
   },
   data() {
     return {
-      aa: 'AAAA',
-      modules: [EffectCards],
       settings: {
         itemsToShow: 1,
         snapAlign: 'center',
@@ -110,7 +101,7 @@ export default defineComponent({
     window.addEventListener('scroll', this.handleScroll1);
 
   },
-});
+};
 </script>
 
 
