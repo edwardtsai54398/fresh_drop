@@ -5,7 +5,12 @@ export default createStore({
         isLogin: false,
         memberInfoAll: {},
         giftBuy: {},
-        cartList: [],
+        cartList: [[]],
+        shopPlan: {
+            plan: '',
+            meal: 0,
+            week: 1,
+        },
         dishRecommand: []
     },
     getters: {
@@ -14,9 +19,19 @@ export default createStore({
         setUserData(state, { userData }) {
             state.memberInfoAll = userData
             state.isLogin = true
+        },
+        stateCartList(state, cartlist) {
+            state.cartList = cartlist
+        },
+        statePlan(state, planWrap) {
+            state.shopPlan.plan = planWrap.plan
+            state.shopPlan.meal = planWrap.meal
+            state.shopPlan.week = planWrap.week
         }
     },
     actions: {
+        
+        
     },
     modules: {
     }

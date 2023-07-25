@@ -126,8 +126,5 @@ export default ({
 
 <style lang="scss" scoped>
 @import "@/assets/scss/all.scss";
-@import "@/assets/scss/page/home/Home_index_health_banner.scss";
+@import "@/assets/scss/page/home/homeIngrid.scss";
 </style>
-
-
-
