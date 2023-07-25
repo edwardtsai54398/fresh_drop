@@ -263,6 +263,7 @@
     .gift_pic{
         width: 150px;
         border-radius: $xs-br;
+        border: 2px solid $text; 
     }
     .gift_info{
         display: flex;
