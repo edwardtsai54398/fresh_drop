@@ -8,6 +8,7 @@
   }
   .about_us_pic {
     width: 100%;
+    padding: 30px;
     img {
       width: 100%;
     }
@@ -16,13 +17,14 @@
       margin-bottom: 30px;
   }
     h3{
-      font-size: 20px;
-      padding-top: 70px;
+      font-size: $s-font;
+      padding: 20px;
       text-align: center;
       color: $primary;
       font-weight: bolder;
     }
     p{
+    text-indent: 2em;  
     color: $primary; 
     white-space: pre-line;
     }
@@ -30,7 +32,7 @@
 .about_farmer{
   background-color: #fff;
   padding: 15px;
-  margin: 15px;
+  margin: 30px;
   border: solid 5px $primary;
   border-radius: 20px;
   position: relative;
@@ -47,12 +49,16 @@
     }
   }
   .index_btn_l{
-      margin: auto;
-      padding: $sp2;
+      margin: 15px auto;
+      padding: 10px 30px;
+      a{
+        color: #fff;
+      }
   }
   .about_farmer_future{
     p{
       white-space: pre-line;
+      text-indent: 1em;
     }
   }
 }
@@ -73,44 +79,74 @@
     }
   }
 }
-
 .about_ask {
   border: solid $primary 5px;
   padding: 10px;
-  margin: 20px;
+  margin: 40px 50px;
   border-radius: 20px;
 
-  .name {
-  margin: 10px;
-  gap: 10px;
-  display: grid;
-  background-color: #fff;
+  .about_ask_content {
+    h3 {
+      font-size: $s-font;
+      padding: 15px;
+      text-align: center;
+      color: $primary;
+      font-weight: bolder;
+    }
+
+    .form-container {
+      padding: 0 20px;
+      background: border-box;
+    }
   }
-  .email {
-  margin: 10px;
-  gap: 10px;
-  display: grid;
-  background-color: #fff;
+
+  /* 讓所有輸入欄位等寬 */
+  .form-container {
+    padding: 0 20px;
+    background: border-box;
   }
-  .order { 
-      input{
-      margin: 10px;
+
+  .name{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    gap: 10px;
+    input{
+      width: 100%;
       background-color: #fff;
-      gap: 10px;
-      width: 93%;
+    }
   }
+  .email,
+  .order,
+  .note {
+    display: flex;
+    margin-top: 10px;
+    flex-direction: column;
+    gap: 10px;
+    input,
+    textarea {
+  width: 100%;
+  background-color: #fff;
+    }
   }
+
   .note textarea {
-      margin: 9px;
-      width: 95%;
-      padding: 10px;
-      border-radius: 10px;
-      height: 158px;
-      border: 2px solid;
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+    padding: $sp2;
+    height: 200px;
+    border: 2px solid #575655;
+    border-radius: 10px;
+    textarea{
+      width: 100%;
+      background-color: #fff;
+    }
   }
-  .index_btn_l{
-      margin: auto;
-      padding: $sp2;
+
+  .index_btn_l {
+    margin: auto;
+    padding: 15px 40px;
   }
 }
 
@@ -124,6 +160,7 @@
   }
   .about_us_pic{
       flex: 1;
+      padding: 0 80px;
       width: 50%;
       img{
           width: 100%;
@@ -139,7 +176,8 @@
           font-size: $l-font;
       }
       p{
-          font-size: $s-font;
+        font-size: $s-font;
+        text-indent: 2em;
       }
   }
   .about_farmer{
@@ -162,13 +200,14 @@
       }
       p{
           font-size: $s-font;
+          text-indent: 2em;
           line-height: 1.6;
           padding: 20px;
       }
   }
   .about_order {
       h3{
-          font-size: 36px;
+          font-size: $l-font;
       }
    
       .about_orderpic {
@@ -201,37 +240,28 @@
         }
       }
     }
-  .about_ask {
-      justify-content: center;
-      display: grid;
-      .name {
-        margin: 10px;
-        gap: 10px;
-        display: flex;
+    .about_ask{
+      margin: 40px 50px;
+      .about_ask_content{
+          h3 {
+        font-size: $m-font;
+        padding: 15px;
+        text-align: center;
+        color: $primary;
+        font-weight: bolder;
       }
-      .email {
-        margin: 10px;
-        gap: 10px;
-        display: flex;
-      }
-      .order { 
-          input{
-          margin: 10px;
-          width: 460px;
       }
 
+      .form-container{
+        padding: 0 60px;
       }
-      .note textarea {
-        margin: 9px;
-        width: 460px;
+      .email{
+        flex-direction: row;
       }
-      
     }
-}
 // min-width: 1024px
 @include pad-H {
   .about_us_content{
-      padding: 100px 0 100px 0;
       gap: 80px;
       .about_us_text{
           h3{ font-size: $xl-font;
@@ -254,7 +284,6 @@
 }
 // min-width: 1200px
 @include desktop {
-  /* .about_us 樣式 */
   .about_us {
     gap: 20px;
     position: relative;
@@ -263,139 +292,116 @@
       display: flex;
       flex-direction: row-reverse;
       gap: 60px;
+      
     }
   
     &::before,
     &::after {
       position: absolute;
       content: '';
-      width: 100px;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+    }
+    &::before {
+      top: 17%;
+      left: 0%;
+      width: 1200px;
+      z-index: 1;
       height: 300px;
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: contain;
+      background-image: url('../assets/images/about/about_grass_all.png');
     }
-    &::after {
-      top: 15%;
-      left: 50%;
-      background-image: url('../assets/images/about/decorate_grass.png');
-    }
-  
-    &::before {
-      top: 18%;
-      left: 20%;
-      background-image: url('../assets/images/about/decorate_grass.png');
-    }
-  
-    &::after {
-      top: 15%;
-      left: 50%;
-      background-image: url('../assets/images/about/decorate_grass.png');
-    }
-  }
-  
-  .about_us_content {
-    margin: 0px;
-    position: relative;
-  
-    &::before {
-      position: absolute;
-      content: '';
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: contain;
-      bottom: -20px; /* 初始位置 */
-      right: -50px; /* 初始位置 */
-      width: 200px;
-      height: 200px;
-      background-image: url('../assets/images/about/cow.png');
-      animation: moveCow 10s forwards; /* 应用动画，20秒完成一次，动画结束后停留在最终位置 */
-    }
-  }
-  
-  @keyframes moveCow {
-    from {
-      bottom: -20px; /* 动画起始位置 */
-      right: 10px; /* 动画起始位置 */
-    }
-    to {
-      bottom: 2px; /* 动画结束位置 */
-      right: 300px; /* 动画结束位置 */
-    }
-  }
-  
-  .about_farmer {
-    position: relative;
-
-
-    &::before,
-    &::after {
-      position: absolute;
-      content: '';
-      width: 80px;
-      height: 300px;
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: contain;
-      transform: rotate(90deg);
-      display: block;
-      position: absolute;
-    }
-
-    &::before {
-      left: 47%;
-      top: -22%;
-      background-image: url('../assets/images/index/line_green.png');
-    }
-
-    &::after {
-      left: 47%;
-      bottom: -22%;
-      background-image: url('../assets/images/index/line_green.png');
-    }
-    .about_farmer_future {
+    .about_us_content {
+      margin-bottom: 120px;
       position: relative;
-    
-      &::before {
-        position: absolute;
-        content: '';
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: contain;
-        transform: rotate(45deg);
-        display: block;
-        width: 150px;
-        height: 181px;
-        right: -10%;
-        bottom: -13%;
-        background-image: url('https://1.bp.blogspot.com/-BDCMhfuIf_s/W4PJ09cQEUI/AAAAAAABOKU/UkZOJqUZXyEazczrw7VBeD72LEpPGvTowCLcBGAs/s400/kakashi_nobg.png');
-        animation: shake 1.5s infinite alternate;
-      }
+  
+      &::before,
       &::after {
         position: absolute;
         content: '';
         background-repeat: no-repeat;
         background-position: center center;
         background-size: contain;
-        display: block;
+      }
+      &::before{
+        top: 103%;
+        right: -59px;
         width: 200px;
         height: 200px;
-        right: -10%;
-        bottom: -25%;
-        background-image: url('../assets/images/index/index_grass3.png');
+        background-image: url('../assets/images/about/cow.png');
+        animation: moveCow 10s forwards;
       }
-    }
-    @keyframes shake {
-      0% {
-        transform: rotate(45deg) translateX(0);
+      &::after{
+        top: 99%;
+        right: -59px;
+        width: 200px;
+        height: 200px;
+        transform: scaleX(-1);
+        background-image: url('https://1.bp.blogspot.com/-2h8yYyNWPcQ/X3hF2mFnGjI/AAAAAAABbkU/oAne7S28I7UN3crhUPdDIJDi5SMuzkSAgCNcBGAsYHQ/s400/animal_hitsuji_horn.png');
+        animation: movesheep 10s forwards;
       }
-      100% {
-        transform: rotate(-35deg) translateX(10px);
+      .about_us_text{
+        ::after {
+          position: absolute;
+          content: "";
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: contain;
+          display: block;
+          width: 388px;
+          height: 215px;
+          right: 26%;
+          bottom: 75%;
+          background-image: url('../assets/images/about/about_sun.png');
+        }
       }
     }
     
+    @keyframes moveCow {
+      from {
+        bottom: -20px;
+        right: 10px;
+      }
+      to {
+        bottom: 2px;
+        right: 300px;
+      }
+    }
     
-    /* 定义动画关键帧 */
+    @keyframes movesheep {
+      from {
+        bottom: 2px; 
+        left: 10px;
+      }
+      to {
+        bottom: 2px;
+        left: 300px;
+      }
+    }
+  }
+  
+  
+  .about_farmer {
+    position: relative;
+    margin-top: 300px;
+
+    .about_farmer_future {
+      position: relative;
+      &::after {
+        position: absolute;
+        content: "";
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        display: block;
+        width: 200px;
+        height: 163px;
+        right: -7%;
+        bottom: -14%;
+        background-image: url('https://1.bp.blogspot.com/-FWDaUGFw0Js/WwJZ_LYe0dI/AAAAAAABMJU/Tp-Dww8BB1YzG1qWWJ6vu7RBmN0_JuJegCLcBGAs/s800/fruit_nouka_ichigo.png');
+      }
+    }
+    
     @keyframes slide {
       0% {
         right: -30%;
@@ -404,15 +410,12 @@
         right: 10%; /* 设置偽元素的右边距，让它向右移动 */
       }
     }
-    
-
   }
   
-
-  /* .about_order 樣式 */
   .about_order {
     h3 {
-      font-size: 36px;
+      font-size: $l-font;
+      margin: 80px 0 41px 0;
     }
   
     .about_order_content {
@@ -497,12 +500,14 @@
   
 
   .about_ask {
+    width: 900px;
+    margin: 100px auto;
     position: relative;
     &::before,
     &::after {
       position: absolute;
       content: '';
-      width: 150px;
+      width: 200px;
       height: 300px;
       background-repeat: no-repeat;
       background-position: center center;
@@ -521,17 +526,62 @@
     }
 
     .form-container {
-      .name input,
-      .email input {
-        width: 400px;
+      margin: auto;
       }
-      .order input {
-        width: 810px;
+      &::before {
+        position: absolute;
+        content: "";
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        transform: rotate(45deg);
+        display: block;
+        width: 208px;
+        height: 299px;
+        left: 80%;
+        top: 53%;
+        background-image: url(https://1.bp.blogspot.com/-BDCMhfuIf_s/W4PJ09cQEUI/AAAAAAABOKU/UkZOJqUZXyEazczrw7VBeD72LEpPGvTowCLcBGAs/s400/kakashi_nobg.png);
+        animation: shake 1.5s infinite alternate;
       }
+      @keyframes shake {
+        0% {
+          transform: rotate(45deg) translateX(0);
+        }
+        100% {
+          transform: rotate(-35deg) translateX(10px);
+        }
+      }
+
     }
-    .note textarea {
-      margin: 9px;
-      width: 810px;
+  }
+
+/* Hover 效果 */
+.index_qa {
+  display: flex;
+  position: fixed;
+  top: 100px;
+  right: 0;
+  .index_hedgehog {
+    width: 80px;
+    position: relative;
+    pointer-events: none;
+    right: -120px; 
+    bottom: 10px ;
+    img {
+      width: 100%;
+    }
+  }
+  .index_door {
+    width: 70px;
+    img {
+      width: 100%;
     }
   }
 }
+.index_qa:has(.index_door:hover) .index_hedgehog {
+  right: -40px; 
+  width: 80px;
+  transition: right .5s ease;
+}
+}
+

@@ -119,7 +119,7 @@
             transition: .3s;
             @extend .btn_flat;
             aspect-ratio: 1/1;
-            border-radius: 50%;
+            border-radius: $xl-br;
             position: absolute;
             background-color: $primary;
             svg {
