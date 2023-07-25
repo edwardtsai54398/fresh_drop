@@ -14,7 +14,11 @@ export default createStore({
         setUserData(state, { userData }) {
             state.memberInfoAll = userData
             state.isLogin = true
-        }
+        },
+        setGameData(state, { userData }) {
+            state.cartList = userData
+        },
+
     },
     actions: {
     },

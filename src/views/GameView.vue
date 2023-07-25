@@ -15,27 +15,6 @@
                 </div>
 
                 <!-- 遊戲卡片 -->
-                <!-- <section class="game_card" v-for="item in card" :key="item.id">
-                        <div class="clip">
-                                <img src="@/assets/images/game/clip.png" alt="">
-                        </div>
-                        <div class="wrap">
-                                <div class="txt">
-                                        <div class="title">{{ item.title }}</div>
-                                        <div class="question">{{ item.question }}</div>
-                                </div>
-                                <div class="pic">
-                                        <img :src="item.img" alt="">
-                                </div>
-                                <div class="btns_wrap">
-                                        <button class="choose_btn" v-for="(option, index) in item.options" :key="index"
-                                                :class="{ active: option.isClicked }" @click="handleClick(option)">
-                                                {{ option.option }}
-                                        </button>
-                                        <button class="next_btn">下一題</button>
-                                </div>
-                        </div>
-                </section> -->
 
                 <transition name="fade">
                         <!-- card1 -->
@@ -186,329 +165,42 @@
                         </section>
                 </transition>
 
-                <!-- 分析結果 -->
-                <transition name="fade">
-                        <!-- 結果5 -->
-                        <section class="analyze_card" v-show="!status && sum == 5">
-                                <div class="clip">
-                                        <img src="@/assets/images/game/clip.png" alt="">
-                                </div>
-                                <div class="wrap">
-                                        <div class="title">分析結果</div>
-                                        <div class="recommend row">
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[0].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[0].name }}</h2>
-                                                        </div>
-                                                </div>
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[3].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[3].name }}</h2>
-                                                        </div>
-                                                </div>
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[2].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[2].name }}</h2>
-                                                        </div>
-                                                </div>
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[1].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[1].name }}</h2>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                        <div class="analyze">
-                                                <p class="personality">|{{ result[0].personality }}|</p>
-                                                <p class="txt">{{ result[0].txt }}</p>
-                                        </div>
-                                        <div class="btns_wrap">
-                                                <button class="next_btn">前往購買</button>
-                                                <button class="next_btn" @click="restartTest">再玩一次</button>
-                                        </div>
-                                </div>
-                        </section>
-                </transition>
-                <transition name="fade">
-                        <!-- 結果6 -->
-                        <section class="analyze_card" v-show="!status && sum == 6">
-                                <div class="clip">
-                                        <img src="@/assets/images/game/clip.png" alt="">
-                                </div>
-                                <div class="wrap">
-                                        <div class="title">分析結果</div>
-                                        <div class="recommend row">
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[4].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[4].name }}</h2>
-                                                        </div>
-                                                </div>
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[5].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[5].name }}</h2>
-                                                        </div>
-                                                </div>
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[6].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[6].name }}</h2>
-                                                        </div>
-                                                </div>
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[7].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[7].name }}</h2>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                        <div class="analyze">
-                                                <p class="personality">|{{ result[1].personality }}|</p>
-                                                <p class="txt">{{ result[1].txt }}</p>
-                                        </div>
-                                        <div class="btns_wrap">
-                                                <button class="next_btn">前往購買</button>
-                                                <button class="next_btn" @click="restartTest">再玩一次</button>
-                                        </div>
-                                </div>
-                        </section>
-                </transition>
-                <transition name="fade">
-                        <!-- 結果7 -->
-                        <section class="analyze_card" v-show="!status && sum == 7">
-                                <div class="clip">
-                                        <img src="@/assets/images/game/clip.png" alt="">
-                                </div>
-                                <div class="wrap">
-                                        <div class="title">分析結果</div>
-                                        <div class="recommend row">
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[8].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[8].name }}</h2>
-                                                        </div>
-                                                </div>
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[9].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[9].name }}</h2>
-                                                        </div>
-                                                </div>
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[10].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[10].name }}</h2>
-                                                        </div>
-                                                </div>
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[11].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[11].name }}</h2>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                        <div class="analyze">
-                                                <p class="personality">|{{ result[2].personality }}|</p>
-                                                <p class="txt">{{ result[2].txt }}</p>
-                                        </div>
-                                        <div class="btns_wrap">
-                                                <button class="next_btn">前往購買</button>
-                                                <button class="next_btn" @click="restartTest">再玩一次</button>
-                                        </div>
-                                </div>
-                        </section>
-                </transition>
-                <transition name="fade">
-                        <!-- 結果8 -->
-                        <section class="analyze_card" v-show="!status && sum == 8">
-                                <div class="clip">
-                                        <img src="@/assets/images/game/clip.png" alt="">
-                                </div>
-                                <div class="wrap">
-                                        <div class="title">分析結果</div>
-                                        <div class="recommend row">
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[12].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[12].name }}</h2>
-                                                        </div>
-                                                </div>
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[13].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[13].name }}</h2>
-                                                        </div>
-                                                </div>
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[14].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[14].name }}</h2>
-                                                        </div>
-                                                </div>
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[15].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[15].name }}</h2>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                        <div class="analyze">
-                                                <p class="personality">|{{ result[3].personality }}|</p>
-                                                <p class="txt">{{ result[3].txt }}</p>
-                                        </div>
-                                        <div class="btns_wrap">
-                                                <button class="next_btn">前往購買</button>
-                                                <button class="next_btn" @click="restartTest">再玩一次</button>
-                                        </div>
-                                </div>
-                        </section>
-                </transition>
-                <transition name="fade">
-                        <!-- 結果9 -->
-                        <section class="analyze_card" v-show="!status && sum == 9">
-                                <div class="clip">
-                                        <img src="@/assets/images/game/clip.png" alt="">
-                                </div>
-                                <div class="wrap">
-                                        <div class="title">分析結果</div>
-                                        <div class="recommend row">
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[16].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[16].name }}</h2>
-                                                        </div>
-                                                </div>
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[17].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[17].name }}</h2>
-                                                        </div>
-                                                </div>
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[18].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[18].name }}</h2>
-                                                        </div>
-                                                </div>
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[19].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[19].name }}</h2>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                        <div class="analyze">
-                                                <p class="personality">|{{ result[4].personality }}|</p>
-                                                <p class="txt">{{ result[4].txt }}</p>
-                                        </div>
-                                        <div class="btns_wrap">
-                                                <button class="next_btn">前往購買</button>
-                                                <button class="next_btn" @click="restartTest">再玩一次</button>
-                                        </div>
-                                </div>
-                        </section>
-                </transition>
-                <transition name="fade">
-                        <!-- 結果10 -->
-                        <section class="analyze_card" v-show="!status && sum == 10">
-                                <div class="clip">
-                                        <img src="@/assets/images/game/clip.png" alt="">
-                                </div>
-                                <div class="wrap">
-                                        <div class="title">分析結果</div>
-                                        <div class="recommend row">
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[20].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[20].name }}</h2>
-                                                        </div>
-                                                </div>
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[21].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[21].name }}</h2>
-                                                        </div>
-                                                </div>
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[22].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[22].name }}</h2>
-                                                        </div>
-                                                </div>
-                                                <div class="col-6">
-                                                        <div class="pro_card">
-                                                                <div class="pic">
-                                                                        <img :src="productList[23].img" alt="">
-                                                                </div>
-                                                                <h2>{{ productList[23].name }}</h2>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                        <div class="analyze">
-                                                <p class="personality">|{{ result[5].personality }}|</p>
-                                                <p class="txt">{{ result[5].txt }}</p>
-                                        </div>
-                                        <div class="btns_wrap">
-                                                <button class="next_btn">前往購買</button>
-                                                <button class="next_btn" @click="restartTest">再玩一次</button>
-                                        </div>
-                                </div>
-                        </section>
-                </transition>
+
                 sum:{{ sum }}
                 status:{{ status }}
                 score:{{ score }}
                 step:{{ step }}
+
+                <!-- 分析結果 -->
+                <transition name="fade" v-for="(item, index) in result" :key="index">
+                        <section class="analyze_card" v-show="!status && sum == (index + 5)">
+                                <div class="clip">
+                                        <img src="@/assets/images/game/clip.png" alt="">
+                                </div>
+                                <div class="wrap">
+                                        <div class="title">分析結果</div>
+                                        <div class="recommend row">
+                                                <div class="col-6" v-for="(proItem, proIndex) in item.productLists"
+                                                        :key="proIndex">
+                                                        <div class="pro_card">
+                                                                <div class="pic">
+                                                                        <img :src="proItem.img" alt="">
+                                                                </div>
+                                                                <h2>{{ proItem.name }}</h2>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="analyze">
+                                                <p class="personality">|{{ item.personality }}|</p>
+                                                <p class="txt">{{ item.txt }}</p>
+                                        </div>
+                                        <div class="btns_wrap">
+                                                <button class="next_btn" @click="goShop(item.productLists)">前往購買</button>
+                                                <button class="next_btn" @click="restartTest">再玩一次</button>
+                                        </div>
+                                </div>
+                        </section>
+                </transition>
 
 
 
@@ -583,38 +275,188 @@ export default {
                                 {
                                         id: 1,
                                         personality: '冒險家',
-                                        img: ``,
                                         txt: `對新奇和刺激的渴望使你喜歡嘗試不同的味道和料理、你尋求新的口味體驗、並享受冒烹飪過程。`,
+                                        productLists: [
+                                                {
+                                                        name: "西班牙海鮮燉飯",
+                                                        category: "主菜",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/12Spanish_Paella.jpg'),
+                                                },
+                                                {
+                                                        name: "阿根廷燉牛肉",
+                                                        category: "主菜",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/9Argentinian_beef_stew.jpg'),
+                                                },
+                                                {
+                                                        name: "墨西哥辣味雞肉湯",
+                                                        category: "湯品",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/22mexico_spicy_chickn_soup.jpg'),
+                                                },
+                                                {
+                                                        name: "泰式生菜包",
+                                                        category: "沙拉",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/26lettuce_wrap.jpg'),
+                                                }
+                                        ]
                                 },
                                 {
                                         id: 2,
                                         personality: '安逸享受者',
-                                        img: ``,
                                         txt: '分析原因：你對舒適和享受的追求使你喜歡選擇家常菜和溫和口味的食物。你尋求平衡和放鬆，享受那種讓你感到舒服和滿足的味道。',
+                                        productLists: [
+                                                {
+                                                        name: "日本櫻花蝦天婦羅",
+                                                        category: "主菜",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/13tempura.jpg'),
+                                                },
+                                                {
+                                                        name: "奶油啤酒蛤蠣",
+                                                        category: "主菜",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/2creamy_beer_clam.jpg'),
+                                                },
+                                                {
+                                                        name: "馬來西亞椰奶雞湯",
+                                                        category: "湯品",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/19malaysia_coconuts_soup.jpg'),
+                                                },
+                                                {
+                                                        name: "巴西凱撒沙拉",
+                                                        category: "沙拉",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/29brazil_caesar_salad.jpg'),
+                                                }
+                                        ]
                                 },
                                 {
                                         id: 3,
                                         personality: '創意人格',
-                                        img: ``,
                                         txt: '分析原因：你的豐富創意和熱情驅使你追求獨特的飲食體驗。你喜歡嘗試新穎的料理和特色小吃，並將食物視為藝術和表達自我的方式。',
+                                        productLists: [
+                                                {
+                                                        name: "塔香茄子",
+                                                        category: "主菜",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/3basil_eggplant.jpg'),
+                                                },
+                                                {
+                                                        name: "中華彗星炒飯",
+                                                        category: "主菜",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/6friedrice.jpg'),
+                                                },
+                                                {
+                                                        name: "法國洋蔥湯",
+                                                        category: "湯品",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/18onion_soup.jpg'),
+                                                },
+                                                {
+                                                        name: "印度瑪撒拉薯仔沙拉",
+                                                        category: "沙拉",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/28masal_potato_salad.jpg'),
+                                                }
+                                        ]
                                 },
                                 {
                                         id: 4,
                                         personality: '社交達人',
-                                        img: ``,
                                         txt: '分析原因：你喜歡社交和人際交往，食物在社交場合中扮演重要角色。你喜歡分享美食，享受小吃和下午茶點等輕鬆的社交餐點。',
+                                        productLists: [
+                                                {
+                                                        name: "泡椒炒鮮魚",
+                                                        category: "主菜",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/7bell_pepper_fish.jpg'),
+                                                },
+                                                {
+                                                        name: "希臘烤羊肉",
+                                                        category: "主菜",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/11greece_roast_lamb.jpg'),
+                                                },
+                                                {
+                                                        name: "意大利米蘭湯",
+                                                        category: "湯品",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/24milano_soup.jpg'),
+                                                },
+                                                {
+                                                        name: "糖漬番茄",
+                                                        category: "沙拉",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/25candied_tomato.jpg'),
+                                                }
+                                        ]
                                 },
                                 {
                                         id: 5,
                                         personality: '健康控',
-                                        img: ``,
                                         txt: '分析原因：你對健康和營養的關注使你傾向選擇健康沙拉、素食料理和天然有機食物。你重視身體健康和營養均衡的飲食習慣。',
+                                        productLists: [
+                                                {
+                                                        name: "滑嫩番茄蛋",
+                                                        category: "主菜",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/1tomaot_egg.jpg'),
+                                                },
+                                                {
+                                                        name: "麻婆豆腐",
+                                                        category: "主菜",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/5mapo_tofu.jpg'),
+                                                },
+                                                {
+                                                        name: "泰式酸辣湯",
+                                                        category: "湯品",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/23thai_hot_sour_soup.jpg'),
+                                                },
+                                                {
+                                                        name: "中東麥麩沙拉",
+                                                        category: "沙拉",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/27middleast_gluten_salad.jpg'),
+                                                }
+                                        ]
                                 },
                                 {
                                         id: 6,
                                         personality: '情感探索者',
-                                        img: ``,
                                         txt: '分析原因：你對情感和內心探索感興趣，食物對你來說是情感療癒的一部分。你喜歡享受舒緩心情的甜點和心靈療癒的食物，並創造溫馨的烹飪體驗。',
+                                        productLists: [
+                                                {
+                                                        name: "越南河粉湯",
+                                                        category: "主菜",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/14Vietnamese_noodles.jpg'),
+                                                },
+                                                {
+                                                        name: "法國紅酒燉雞",
+                                                        category: "主菜",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/8Coqauvin.jpg'),
+                                                },
+                                                {
+                                                        name: "意大利肉醬千層麵",
+                                                        category: "湯品",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/15Lasagna.jpg'),
+                                                },
+                                                {
+                                                        name: "加拿大蔓越莓野菜沙拉",
+                                                        category: "沙拉",
+                                                        amount: 1,
+                                                        img: require('@/assets/images/product/32crancherry_salad.jpg'),
+                                                }
+                                        ]
                                 },
                         ],
                         productList,
@@ -631,6 +473,7 @@ export default {
                 },
         },
         methods: {
+                // 以下遊戲用
                 nextStep() {
                         this.isClicked1 = false,
                                 this.isClicked2 = false,
@@ -658,6 +501,11 @@ export default {
                         this.score = 2;
                         this.isClicked1 = false;
                         this.isClicked2 = true;
+                },
+                // 前往購買
+                goShop(productLists) {
+                        this.$store.commit("setGameData", { userData: productLists });
+                        this.$router.push("/shop");
                 },
         }
 }
