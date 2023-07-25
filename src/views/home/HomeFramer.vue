@@ -83,11 +83,11 @@ export default {
         },
       ],
       vegetables: [
-        { name: 'Chinese cabbage', image: require('../assets/images/index/index_vefetable.png') },
-        { name: 'cauliflower', image: require('../assets/images/index/index_vefetable1.png') },
-        { name: 'Green pepper', image: require('../assets/images/index/index_vefetable2.png') },
-        { name: 'onion', image: require('../assets/images/index/index_vefetable3.png') },
-        { name: 'Chinese cabbage', image: require('../assets/images/index/index_vefetable4.png') },
+        { name: 'Chinese cabbage', image: require('@/assets/images/index/index_vefetable.png') },
+        { name: 'cauliflower', image: require('@/assets/images/index/index_vefetable1.png') },
+        { name: 'Green pepper', image: require('@/assets/images/index/index_vefetable2.png') },
+        { name: 'onion', image: require('@/assets/images/index/index_vefetable3.png') },
+        { name: 'Chinese cabbage', image: require('@/assets/images/index/index_vefetable4.png') },
       ]
       // currentIndex: 0, // 当前显示的内容索引
     };
