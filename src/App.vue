@@ -1,7 +1,7 @@
 <template>
     <MainHeader @toggle="checkMemberStatus" :centerOpen="toggleMemeberCenter" />
     <loginModal :isopen="isLoginOpen" @close="isLoginOpen = false" />
-    <!-- <SignupModal :isopen="isSignupOpen" @close="isSignupOpen = false" /> -->
+    <SignupModal :isopen="isSignupOpen" @close="isSignupOpen = false" />
 
     <main><router-view /></main>
 
@@ -11,7 +11,7 @@
 import MainHeader from "@/components/MainHeader.vue";
 import MainFooter from "@/components/MainFooter.vue";
 import loginModal from "@/components/loginModal.vue";
-// import SignupModal from "@/components/SignupModal.vue";
+import SignupModal from "@/components/SignupModal.vue";
 
 export default {
     name: "HomeView",
@@ -19,7 +19,7 @@ export default {
         MainHeader,
         MainFooter,
         loginModal,
-        // SignupModal,
+        SignupModal,
     },
 
     data() {
