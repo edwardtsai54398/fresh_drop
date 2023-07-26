@@ -4,20 +4,32 @@
     <aside class="col-md-3">
         <div class="list-group">
             <div class="list-group">
-                <button type="button" class="list-group-item list-group-item-action"
-                    :class="{ active: $route.name === 'backend' }">
+                <button
+                    type="button"
+                    class="list-group-item list-group-item-action"
+                    :class="{ active: $route.name === 'backend' }"
+                >
                     後台首頁
                 </button>
-                <button type="button" class="list-group-item list-group-item-action"
-                    :class="{ active: $route.name === 'package' }">
+                <button
+                    type="button"
+                    class="list-group-item list-group-item-action"
+                    :class="{ active: $route.name === 'package' }"
+                >
                     行程
                 </button>
-                <button type="button" class="list-group-item list-group-item-action"
-                    :class="{ active: $route.name === 'organize' }">
+                <button
+                    type="button"
+                    class="list-group-item list-group-item-action"
+                    :class="{ active: $route.name === 'organize' }"
+                >
                     開團
                 </button>
-                <button type="button" class="list-group-item list-group-item-action"
-                    :class="{ active: $route.name === 'bootstrap' }">
+                <button
+                    type="button"
+                    class="list-group-item list-group-item-action"
+                    :class="{ active: $route.name === 'bootstrap' }"
+                >
                     test bootstrap
                 </button>
             </div>
@@ -79,11 +91,6 @@
 
 
 <script>
-import "bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
 export default {
     components: {},
     data() {
