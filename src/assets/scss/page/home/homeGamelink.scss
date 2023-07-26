@@ -1,0 +1,91 @@
+
+.index_qa {
+    width: 13%;
+    display: flex;
+    position: fixed;
+    top: 30%;
+    right: 0;
+
+
+    .index_hedgehog{
+       position: relative;
+       pointer-events: none;
+       right: -90%;
+       bottom: 20px;
+       animation-name: hedgehog-move;
+       animation-duration: 1.5s;
+       animation-iteration-count: infinite;
+       animation-direction: alternate;
+       animation-timing-function: linear;
+    //    animation-play-state: running;
+
+    //    right: -160px; 
+    //   bottom: 70px ;
+    }
+
+  }
+  
+  .index_hedgehog img,
+  .index_door img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  
+  @keyframes hedgehog-move{
+      from {right: -80%;}
+      to   {right: -71%;}
+    }
+    
+    .index_qa:has(.index_door:hover) .index_hedgehog {
+    animation: none;
+    right: -30%;
+    transition: right .5s ease;
+    }
+
+// .index_qa {
+//     display: flex;
+//     position: fixed;
+//     top: 180px;
+//     right: 0;
+//     .index_hedgehog {
+//       width: 130px;
+//       position: relative;
+//       pointer-events: none;
+//       right: -160px; 
+//       bottom: 70px ;
+//       img {
+//         width: 100%;
+//       }
+//     }
+//     .index_door {
+//       width: 80px;
+      
+//       img {
+//         width: 100%;
+//       }
+//     }
+//   }
+//   .index_qa:has(.index_door:hover) .index_hedgehog {
+//     right: -40px; 
+//     width: 130px;
+//     transition: right .5s ease;
+//   }
+
+
+
+// 斷點768px
+@media screen and (max-width:1199px){
+
+    .index_qa {
+        top: 15%;
+
+}}
+
+// mobile 斷點
+@media screen and (max-width:767px){
+    .index_qa {
+        width: 30%;
+        top:25%;
+    }
+}

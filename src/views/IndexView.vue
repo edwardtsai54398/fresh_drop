@@ -11,6 +11,9 @@
     <HomeOrder></HomeOrder>
     <!-- 訂閱方案 -->
     <HomeSubscription></HomeSubscription>
+    <!-- 遊戲連結 -->
+    <HomeGamelink></HomeGamelink>
+
 </template>
 <script>
 import HomeIngrid from './home/HomeIngrid.vue';
@@ -18,6 +21,7 @@ import HomeFlipcard from './home/HomeFlipcard.vue';
 import HomeFramer from './home/HomeFramer.vue';
 import HomeOrder from './home/HomeOrder.vue';
 import HomeSubscription from './home/HomeSubscription.vue';
+import HomeGamelink from './home/HomeGamelink.vue'
 
 export default {
     name: 'HomeView',
@@ -27,6 +31,7 @@ export default {
         HomeFlipcard,
         HomeFramer,
         HomeOrder,
+        HomeGamelink
     },
 
     data() {
