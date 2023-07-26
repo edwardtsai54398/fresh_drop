@@ -517,7 +517,7 @@ export default {
             const section = document.getElementById(sectionId);
             if (section) {
                 let offset;
-                if (innerWidth.innerWidth >= 1024) {
+                if (window.innerWidth >= 1200) {
                     offset = 20;
                 } else {
                     offset = 100;
