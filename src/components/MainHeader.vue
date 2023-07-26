@@ -1,105 +1,73 @@
 <template>
     <header class="mainheader">
-        <div
-            class="circle"
-            v-for="n in headCircleQty"
-            :key="n"
-            :style="{ width: 100 / headCircleQty + '%' }"
-        ></div>
+        <div class="circle" v-for="n in headCircleQty" :key="n" :style="{ width: 100 / headCircleQty + '%' }"></div>
 
-        <button
-            class="hamburger"
-            @click="
+        <button class="hamburger" @click="
                 isToggleOpen = !isToggleOpen;
                 isSubCartOpen = false;
                 isSourceToggleOpen = false;
-            "
-        >
+            ">
             <span></span>
             <span></span>
             <span></span>
         </button>
         <div class="header_logo">
-            <router-link to="/"><h1>鮮食空投箱 Fresh Drop</h1></router-link>
+            <router-link to="/">
+                <h1>鮮食空投箱 Fresh Drop</h1>
+            </router-link>
         </div>
         <!-- @click="isToggleOpen = false" -->
         <nav class="main_nav" :class="{ open: isToggleOpen , hide: !isScrollUp}">
-            <router-link to="/about" @click="isToggleOpen = false"
-                ><h4>關於我們</h4></router-link
-            >
+            <router-link to="/about" @click="isToggleOpen = false">
+                <h4>關於我們</h4>
+            </router-link>
             <div class="sub_toggle">
-                <div
-                    class="subtoggle_btn"
-                    @click="isSourceToggleOpen = !isSourceToggleOpen"
-                >
+                <div class="subtoggle_btn" @click="isSourceToggleOpen = !isSourceToggleOpen">
                     <h4>食材溯源</h4>
                     <font-awesome-icon icon="fa-solid fa-chevron-right" />
                 </div>
-                <nav
-                    class="sub_toggle_list"
-                    :class="{ open: isSourceToggleOpen }"
-                >
+                <nav class="sub_toggle_list" :class="{ open: isSourceToggleOpen }">
                     <div class="goback" @click="isSourceToggleOpen = false">
                         <font-awesome-icon icon="fa-solid fa-chevron-left" />
                     </div>
-                    <router-link
-                        to="/source"
-                        @click="
+                    <router-link to="/source" @click="
                             isSourceToggleOpen = false;
                             isToggleOpen = false;
-                        "
-                    >
+                        ">
                         <h5>各地小農介紹</h5>
                     </router-link>
-                    <router-link
-                        to="/meat"
-                        @click="
+                    <router-link to="/meat" @click="
                             isSourceToggleOpen = false;
                             isToggleOpen = false;
-                        "
-                    >
+                        ">
                         <h5>安心肉品</h5>
                     </router-link>
-                    <router-link
-                        to="/certified"
-                        @click="
+                    <router-link to="/certified" @click="
                             isSourceToggleOpen = false;
                             isToggleOpen = false;
-                        "
-                    >
+                        ">
                         <h5>相關認證</h5>
                     </router-link>
                 </nav>
             </div>
-            <router-link to="/shop" @click="isToggleOpen = false"
-                ><h4>菜色選購</h4></router-link
-            >
-            <router-link to="/giftcard" @click="isToggleOpen = false"
-                ><h4>禮物卡</h4></router-link
-            >
-            <router-link to="/faq" @click="isToggleOpen = false"
-                ><h4>FAQ</h4></router-link
-            >
+            <router-link to="/shop" @click="isToggleOpen = false">
+                <h4>菜色選購</h4>
+            </router-link>
+            <router-link to="/giftcard" @click="isToggleOpen = false">
+                <h4>禮物卡</h4>
+            </router-link>
+            <router-link to="/faq" @click="isToggleOpen = false">
+                <h4>FAQ</h4>
+            </router-link>
 
             <div class="sub_toggle">
-                <div
-                    class="subtoggle_btn cart_toggle_btn"
-                    @click="isSubCartOpen = true"
-                >
+                <div class="subtoggle_btn cart_toggle_btn" @click="isSubCartOpen = true">
                     <div class="title_wrap">
                         <h4>購物車</h4>
                         <figure class="shopping_bag">
-                            <img
-                                src="@/assets/images/icon_bg/shoppingBag_black.svg"
-                                alt=""
-                                v-if="headCircleQty > 1"
-                            />
-                            <img
-                                src="@/assets/images/icon_bg/shoppingBag_fff.svg"
-                                alt=""
-                                v-else-if="headCircleQty <= 1"
-                            />
-                            <figcaption>16</figcaption>
+                            <img src="@/assets/images/icon_bg/shoppingBag_black.svg" alt="" v-if="headCircleQty > 1" />
+                            <img src="@/assets/images/icon_bg/shoppingBag_fff.svg" alt="" v-else-if="headCircleQty <= 1" />
+                            <figcaption>{{ calcTotalAmount() }}</figcaption>
                         </figure>
                     </div>
                     <font-awesome-icon icon="fa-solid fa-chevron-right" />
@@ -109,60 +77,37 @@
                         <font-awesome-icon icon="fa-solid fa-chevron-left" />
                     </div>
                     <div class="cart_content">
-                        <ol class="week_tabs">
-                            <li class="tab active">week1</li>
-                            <li class="tab">week2</li>
-                            <li class="tab">week3</li>
+                        <ol class="week_tabs" v-show="cartList.length > 1">
+                            <li class="tab" v-for="n in cartList.length" :key="n" 
+                            :style="`width:${100/cartList.length}%`" 
+                            :class="{active: n == tabActive}"
+                            @click="updateTab(n)">week{{ n }}</li>
                         </ol>
-                        <ul class="cart_list">
-                            <li class="cart_item">
+                        <ul class="cart_list" v-for="(week, index) in cartList" :key="index" v-show="index+1 == tabActive">
+                            <li class="cart_item" v-for="item in week" :key="item.name">
                                 <div class="dish_pic">
                                     <div class="pic">
-                                        <img
-                                            src="@/assets/images/product/1tomaot_egg.jpg"
-                                            alt=""
-                                        />
+                                        <img :src="item.img" alt="" />
                                     </div>
-                                    <div class="amount">4</div>
+                                    <div class="amount">{{ item.amount }}</div>
                                 </div>
-                                <div class="category">主菜</div>
-                                <div class="name">滑嫩番茄蛋</div>
+                                <div class="category">{{ item.category }}</div>
+                                <div class="name">{{ item.name }}</div>
                             </li>
                         </ul>
                         <div class="group_btn">
-                            <router-link
-                                class="btn_s btn_flat"
-                                to="/shop"
-                                @click="
+                            <router-link class="btn_s btn_flat" to="/shop" @click="
                                     isSubCartOpen = false;
                                     isToggleOpen = false;
-                                "
-                                >繼續選購</router-link
-                            >
-                            <router-link
-                                class="btn_s"
-                                to="/pay"
-                                @click="
-                                    isSubCartOpen = false;
-                                    isToggleOpen = false;
-                                "
-                                >結帳</router-link
-                            >
+                                ">繼續選購</router-link>
+                            <router-link class="btn_s" to="/pay" @click="payCheck()">結帳</router-link>
                         </div>
                     </div>
                 </div>
             </div>
         </nav>
-        <button
-            class="member"
-            @click="$emit('toggle')"
-            :class="{ had_login: $store.state.isLogin,  hide: !isScrollUp}"
-        >
-            <img
-                src="@/assets/images/icon_bg/header_member.svg"
-                alt=""
-                v-if="!$store.state.isLogin"
-            />
+        <button class="member" @click="$emit('toggle')" :class="{ had_login: $store.state.isLogin,  hide: !isScrollUp}">
+            <img src="@/assets/images/icon_bg/header_member.svg" alt="" v-if="!$store.state.isLogin" />
             <div class="pic avatar_img" v-if="$store.state.isLogin">
                 <img :src="$store.state.memberInfoAll.avatarImg" alt="" />
             </div>
@@ -183,9 +128,9 @@
 </template>
 
 <script>
-// import modalClose from '@/components/modalClose.vue'
+import { tabActive, cartList, payCheck, isCartSelectDone } from "@/assets/js/cart.js";
 export default {
-    name: "modalClose",
+    name: "MainHeader",
     props: {
         centerOpen: Boolean,
     },
@@ -196,7 +141,8 @@ export default {
             isSubCartOpen: false,
             isScrollUp: true,
             prevScrollY: 0,
-
+            tabActive, //從cart.js引入
+            cartList, //從cart.js引入
             headCircleQty: 5,
         };
     },
@@ -208,10 +154,34 @@ export default {
     mounted() {
         this.circleQty();
     },
+    computed: {
+        isCartSelectDone() {
+            //從cart.js引入
+            return isCartSelectDone(this.selectedOptionMeal)
+        },
+    },
     methods: {
+        updateTab(index) {
+            this.tabActive = index
+        },
+        payCheck() {
+            //從cart.js引入
+            payCheck(this.isCartSelectDone)
+            this.isSubCartOpen = false;
+            this.isToggleOpen = false;
+        },
+        calcTotalAmount() {
+            this.cartList = this.$store.state.cartList
+            let total = 0
+            this.cartList.forEach((week) => {
+                week.forEach((item) => {
+                    total += item.amount
+                })
+            })
+            return total ? total : ''
+        },
         circleQty() {
             let windowW = window.innerWidth;
-            // let circle = document.querySelectorAll('.circle')
             if (windowW < 768) {
                 this.headCircleQty = 5;
             } else if (windowW >= 768 && windowW < 1024) {
@@ -219,11 +189,8 @@ export default {
             } else if (windowW >= 1024 && windowW < 1200) {
                 this.headCircleQty = 9;
             }
-            // circle.style.width= windowW / this.headCircleQty
             if (windowW >= 1200) {
                 this.headCircleQty = 0;
-                // let circle = document.querySelector('.circle')
-                // circle.style.width= 0
             }
         },
         logOut() {
