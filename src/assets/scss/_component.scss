@@ -120,6 +120,11 @@ $value in $btn_size {
     svg {
         color: $primary;
     }
+    &:hover{
+        svg{
+            color: #fff;
+        }
+    }
 }
 
 .btn_circle {

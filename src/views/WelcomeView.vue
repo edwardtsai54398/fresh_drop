@@ -18,7 +18,8 @@
                 </div>
             </div>
         </router-link>
-        <div class="backside">
+
+        <a href="https://tibamef2e.com/chd102/g2/back" class="backside">
             <div class="title">
                 <p>後台<br><span>管理員入口</span></p>
             </div>
@@ -28,7 +29,7 @@
             <div class="logo_box2">
                 <img :src="logoImg.img02" alt="">
             </div>
-        </div>
+        </a>
     </section>
     <div class="welcome_copyright">
         <p>本網站為緯育TibaMe_前端設計工程師班第83期學員專題成果作品,本平台僅供學習、展示之用。若有抵觸有關著作權,或有第三人主張侵害智慧財產權等情事,均由學員負法律上責任,緯育公司概不負責。若有侵權疑慮,您可以私訊[
