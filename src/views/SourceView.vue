@@ -455,10 +455,10 @@ export default {
                 // 大於等於 1024px 的預設值
                 this.fadeInThreshold = 650;
                 this.fadeOutThreshold = 1080;
-                this.fadeInThreshold2 = 1100;
-                this.fadeOutThreshold2 = 1600;
+                this.fadeInThreshold2 = 1280;
+                this.fadeOutThreshold2 = 1800;
                 this.fadeInThreshold3 = 1900;
-                this.fadeOutThreshold3 = 2300;
+                this.fadeOutThreshold3 = 2600;
                 this.scrollThreshold = 150;
             }
         },

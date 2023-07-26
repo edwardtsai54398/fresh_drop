@@ -103,10 +103,10 @@
         top: 10%;
     }
     .anchor2{
-        top: 30%;
+        top: 40%;
     }
     .anchor3{
-        top: 50%;
+        top: 60%;
     }
     .taiwan_sticky_container{
         width: 100%;
@@ -254,6 +254,7 @@
         transform: translate(-50%, -50%);
         z-index: 500;
         .farmer1_popup{
+            width: 80%;
             border-radius: $s-br;
             background-color: $bg;
             padding: $sp5;
@@ -264,15 +265,17 @@
                 z-index: 2;
                 text-align: center;
                 margin: $sp3 0;
-                font-size: $m-font;
+                font-size: $s-font;
             }
             p{
-                font-size: $s-font;
+                font-size: $xs-font;
                 position: relative;
                 z-index: 2;
                 margin: $sp1 0;
+                text-indent: 2em;
             }
             .farmer1_pop_img{
+                width: 100%;
                 position: relative;
                 z-index: 2;
             }
@@ -280,26 +283,28 @@
                 width: 50%;
                 position: absolute;
                 left: 25%;
-                top: 10px;
+                top: 20px;
             }
             .popup_bottom{
                 display: flex;
                 p{
-                    width: 50%;
-                    font-size: $s-font;
+                    width: 70%;
+                    font-size: $xs-font;
                     position: relative;
                     margin: 0 $sp1;
+                    margin-top: auto;
+                    margin-bottom: auto;
                 }
                 .farmer1_pop_img2{
-                    width: 50%;
+                    width: 40%;
                     position: relative;
                 }
                 .carrot{
                     position: absolute;
-                    // top: 100%;
-                    transform: translate(90%,155%);
+                    right: -100px;
+                    transform: translateY(170%);
                     img{
-                        width: 60%;
+                        width: 40%;
                     }
                 }
             }
@@ -415,6 +420,8 @@
         }
         .popup{
             .farmer1_popup{
+                margin-left: auto;
+                margin-right: auto;
                 h3{
                     margin: $sp2 0;
                     font-size: $s-font;
@@ -432,28 +439,14 @@
                     top: 20px;
                 }
                 .popup_bottom{
-                    p{
-                        font-size: $xs-font;
-                        position: relative;
-                        margin: 0 0 0  $sp1;
-                    }
-                    .farmer1_pop_img2{
-                        width: 50%;
-                        position: relative;
-                    }
-                    .carrot{
-                        position: absolute;
-                        bottom: 20px;
-                        transform: translateX(50%);
-                        img{
-                            width: 40%;
-                        }
-                    }
+                    display: none;
                 }
                 .popup_title_bg2{
+                    display: flex;
+                    justify-content: center;
                     position: absolute;
                     width: 70%;
-                    top: 30%;
+                    top: 25%;
                     transform: translateX(5%);
                 }
                 
@@ -592,8 +585,10 @@
             }
         }
         .popup{
-            width: 80%;
+            width: 100%;
             .farmer1_popup{
+                margin-left: auto;
+                margin-right: auto;
                 h3{
                     margin: $sp1 0;
                     font-size: $s-font;
@@ -619,8 +614,9 @@
                     }
                     .carrot{
                         position: absolute;
-                        bottom: 20px;
-                        transform: translateX(80%);
+                        bottom: 10px;
+                        right: 0;
+                        transform: translateX(50%);
                         img{
                             width: 40%;
                         }
@@ -629,7 +625,7 @@
                 .popup_title_bg2{
                     position: absolute;
                     width: 70%;
-                    top: 30%;
+                    top: 20%;
                     transform: translateX(5%);
                 }
                 

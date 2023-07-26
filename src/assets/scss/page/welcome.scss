@@ -12,8 +12,10 @@
         }
     }
 }
-.container{
+.welcome_container{
     // height: 100%;
+    max-width: 1200px;
+    margin: auto;
     position: relative;
     display: flex;
     justify-content: center;
@@ -121,7 +123,7 @@
         opacity: 0;
     }
 }
-.copyright{
+.welcome_copyright{
     position: absolute;
     bottom: 0%;
     left: 0;

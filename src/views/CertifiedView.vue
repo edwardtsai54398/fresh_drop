@@ -159,6 +159,10 @@ export default defineComponent({
                 require('@/assets/images/source/certified02.png'),
                 require('@/assets/images/source/certified01.png'),
                 require('@/assets/images/source/certified02.png'),
+                require('@/assets/images/source/certified01.png'),
+                require('@/assets/images/source/certified02.png'),
+                require('@/assets/images/source/certified01.png'),
+                require('@/assets/images/source/certified02.png'),
             ],
         };
     },
