@@ -1,7 +1,7 @@
 <template>
   <section class="framer">
     <p>｜小農介紹｜</p>
-    <Carousel v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">
+    <Carousel class="carousel_wrap" v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">
       <Slide v-for="(item, index) in farmerImg" :key="index">
         <div class="farmer_card">
           <div class="index_farmer_pic">
