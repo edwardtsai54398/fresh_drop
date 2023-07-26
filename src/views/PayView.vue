@@ -297,14 +297,7 @@
 </template>
 <script>
 import twDistrict from "@/assets/data/cityDistrict.js";
-// import {multiWeekCartList} from "@/assets/data/payCartList.js";
-// import {singleCartList} from "@/assets/data/payCartList.js";
-// import { giftCart } from "@/assets/data/payCartList.js";
 import { Carousel, Pagination, Slide } from "vue3-carousel";
-import { cartList } from "@/assets/js/cart.js";
-
-
-
 
 export default {
     components: {
@@ -314,7 +307,7 @@ export default {
     },
     data() {
         return {
-            cartList,
+            cartList: [[]],
             giftBuy: {},
             giftcardDiscount: 0,
             twDistrict,
@@ -359,6 +352,7 @@ export default {
     },
     created() {
         this.giftBuy = this.$store.state.giftBuy
+        this.cartList = this.$store.state.cartList
     },
 };
 </script>

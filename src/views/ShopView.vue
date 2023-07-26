@@ -159,9 +159,7 @@
                                     <p>2.每周幾份餐點</p>
                                 </div>
                                 <div class="choose">
-                                    <div class="option_meal" v-for="option in optionsMeal" :key="option" 
-                                    @click="selectedOptionMeal = option;isPlanSelectDone();" 
-                                    :class="{selected:selectedOptionMeal === option,radio_plan: true,}">
+                                    <div class="option_meal" v-for="option in optionsMeal" :key="option" @click="selectedOptionMeal = option;isPlanSelectDone();" :class="{selected:selectedOptionMeal === option,radio_plan: true,}">
                                         {{ option }}份
                                     </div>
                                 </div>
@@ -171,14 +169,9 @@
                                     <p>3.連續寄送幾周</p>
                                 </div>
                                 <div class="choose">
-                                    <div class="option_week" v-for="option in optionsWeek" :key="option" @click="
-                                        selectedOptionWeek = option;
-                                    isPlanSelectDone();
-                                    " :class="{
-    selected:
-        selectedOptionWeek === option,
-    radio_plan: true,
-}">
+                                    <div class="option_week" v-for="option in optionsWeek" :key="option" 
+                                    @click="selectedOptionWeek = option;isPlanSelectDone();
+                                    " :class="{selected:selectedOptionWeek === option,radio_plan: true,}">
                                         {{ option }}周
                                     </div>
                                 </div>
@@ -281,7 +274,7 @@
 </template>
 <script>
 import productList from "@/assets/data/productList.js";
-import { tabActive, cartList, payCheck, isCartSelectDone } from "@/assets/js/cart.js";
+import { payCheck, isCartSelectDone } from "@/assets/js/cart.js";
 export default {
     data() {
         return {
@@ -308,8 +301,8 @@ export default {
             selectedOptionPlan: "", // 儲存選中的選項
             selectedOptionMeal: 0, // 儲存選中的選項
             selectedOptionWeek: 1, // 儲存選中的選項
-            tabActive, //從cart.js引入
-            cartList, //從cart.js引入
+            tabActive: 1,
+            cartList: [[]],
         };
     },
     computed: {
@@ -504,6 +497,7 @@ export default {
     created() {
         // 不包含的食材
         this.collectUniqueNames();
+        this.cartList = this.$store.state.cartList
         if (this.cartList[0].length > 0) {
             this.isStepOneExpend = false
             this.isStepTwoExpend = true

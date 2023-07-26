@@ -21,6 +21,9 @@ export default createStore({
     getters: {
     },
     mutations: {
+        logOut(state) {
+            state.isLogin = false
+        },
         setUserData(state, { userData }) {
             state.memberInfoAll = userData
             state.isLogin = true
