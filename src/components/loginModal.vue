@@ -65,7 +65,7 @@ export default {
                     type: "setUserData",
                     userData: this.F2ERefugee,
                 });
-                this.$router.push("/");
+                this.$router.push("/index");
             } else {
                 alert("帳號或密碼錯誤，請再試一次");
             }
