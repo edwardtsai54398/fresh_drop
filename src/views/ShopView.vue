@@ -1,12 +1,4 @@
 <template>
-    <!-- 搜尋菜單 -->
-    <!-- <input
-        type="text"
-        class="search"
-        placeholder="請輸入商品名稱"
-        v-model="searchText"
-        @input="searchFilter(searchText)"
-    /> -->
     <div class="main_wrap">
         <!-- 菜色分類 -->
         <aside class="selectmain">
@@ -36,12 +28,23 @@
                 <div class="hatefood" v-show="isAdjustExpend">
                     <p class="title">不包含的食材</p>
                     <div class="cant">
+                        <!-- 過敏原 -->
+                        <p class="subtitle">過敏原</p>
                         <div
                             class="allergy"
                             v-for="allergy in uniqueAllergy"
                             :key="allergy"
                         >
                             {{ allergy }}
+                        </div>
+                        <!-- 不喜愛的 -->
+                        <p class="subtitle">不喜愛的</p>
+                        <div
+                            class="dislike"
+                            v-for="dislike in uniqueDislike"
+                            :key="dislike"
+                        >
+                            {{ dislike }}
                         </div>
                     </div>
                     <p class="text">
@@ -62,7 +65,7 @@
         </aside>
         <!-- 菜色選擇 -->
         <section class="info">
-            <div class="food_pic">
+            <div class="food_pic pic">
                 <img :src="productList[0].img" alt="food" />
             </div>
             <!-- 主菜 -->
@@ -70,21 +73,21 @@
                 <h4 class="menu_title" v-show="mainDishFilter.length > 0">
                     主菜 MAIN DISH
                 </h4>
-                <router-link to="/product/">
-                    <div class="wrap_main_dish row">
-                        <div
-                            class="card col-6 col-md-4"
-                            v-for="(item, index) in mainDishFilter"
-                            :key="index"
-                        >
+                <div class="wrap_main_dish row">
+                    <div
+                        class="card col-6 col-md-4"
+                        v-for="(item, index) in mainDishFilter"
+                        :key="index"
+                    >
+                        <router-link to="/product">
                             <div class="pic">
                                 <img :src="item.img" />
                             </div>
                             <h3>{{ item.name }}</h3>
-                            <div class="btn_scd_s">選購</div>
-                        </div>
+                        </router-link>
+                        <div class="btn_scd_s">選購</div>
                     </div>
-                </router-link>
+                </div>
             </section>
             <!-- 湯品 -->
             <section class="container" ref="soup">
@@ -97,10 +100,12 @@
                         v-for="(item, index) in soupFilter"
                         :key="index"
                     >
-                        <div class="pic">
-                            <img :src="item.img" />
-                        </div>
-                        <h3>{{ item.name }}</h3>
+                        <router-link to="/product">
+                            <div class="pic">
+                                <img :src="item.img" />
+                            </div>
+                            <h3>{{ item.name }}</h3>
+                        </router-link>
                         <div class="btn_scd_s">選購</div>
                     </div>
                 </div>
@@ -116,10 +121,12 @@
                         v-for="(item, index) in saladFilter"
                         :key="index"
                     >
-                        <div class="pic">
-                            <img :src="item.img" />
-                        </div>
-                        <h3>{{ item.name }}</h3>
+                        <router-link to="/product">
+                            <div class="pic">
+                                <img :src="item.img" />
+                            </div>
+                            <h3>{{ item.name }}</h3>
+                        </router-link>
                         <div class="btn_scd_s">選購</div>
                     </div>
                 </div>
@@ -538,6 +545,7 @@ export default {
             searchText: "",
             searchList: productList,
             uniqueAllergy: [],
+            uniqueDislike: [],
             isAdjustExpend: false,
             isStepExpend: false,
             isDesktop: false,
@@ -609,7 +617,8 @@ export default {
     },
     created() {
         // 不包含的食材
-        this.collectUniqueNames();
+        this.collectUniqueAllergy();
+        this.collectUniqueDislike();
     },
     methods: {
         // 搜尋菜單
@@ -634,8 +643,8 @@ export default {
                 });
             }
         },
-        // 不包含的食材
-        collectUniqueNames() {
+        // 不包含的食材-過敏原
+        collectUniqueAllergy() {
             const uniqueAllergySet = new Set();
             this.productList.forEach((item) => {
                 item.allergy.forEach((allergy) => {
@@ -643,6 +652,16 @@ export default {
                 });
             });
             this.uniqueAllergy = Array.from(uniqueAllergySet);
+        },
+        // 不包含的食材-不喜愛的
+        collectUniqueDislike() {
+            const uniqueDislikeSet = new Set();
+            this.productList.forEach((item) => {
+                item.dislike.forEach((dislike) => {
+                    uniqueDislikeSet.add(dislike);
+                });
+            });
+            this.uniqueDislike = Array.from(uniqueDislikeSet);
         },
         // 不包含的食材彈窗
         adjustExpend() {
@@ -685,7 +704,7 @@ export default {
         },
         // 螢幕寬度大於768自動顯示
         handleResize() {
-            this.isDesktop = window.innerWidth >= 768;
+            this.isDesktop = window.innerWidth >= 1024;
         },
         // tap:week點擊後保持樣式(修改)
         updateTab(index) {

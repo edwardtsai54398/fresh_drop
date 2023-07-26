@@ -1,12 +1,3 @@
-// 搜尋菜色
-// .search {
-//     width: 500px;
-//     border-radius: 50rem;
-//     margin: auto;
-//     padding: $sp1 $sp3;
-//     margin-bottom: $sp6;
-// }
-
 .main_wrap {
     display: flex;
     align-items: flex-start;
@@ -60,12 +51,14 @@
 
     .hatefood {
         width: 100%;
+        height: 90%;
         background-color: $bg;
         border-radius: 20px 20px 0 0;
         position: fixed;
         z-index: 24;
         bottom: 0;
-        height: 780px;
+        display: flex;
+        flex-direction: column;
 
         .title {
             font-size: $s-font;
@@ -77,18 +70,24 @@
         .cant {
             padding: 20px;
             overflow: auto;
-            height: 427px;
+            min-height: 20px;
+            flex-grow: 1;
+
+            .subtitle {
+                padding: 20px;
+                font-size: $s-font;
+            }
 
 
-            .allergy {
+            .allergy,
+            .dislike {
                 display: inline-block;
-                padding: 10px 30px;
+                padding: 12px 32px;
                 border-radius: 30px;
                 border: 3px solid #FED550;
                 margin: 7px;
                 cursor: pointer;
                 flex: 1;
-                width: 30%;
                 text-align: center;
 
                 &:active {
@@ -99,7 +98,9 @@
 
         .text {
             font-size: $xs-font;
-            padding: 10px 26px;
+            padding: 30px 30px 0 30px;
+            bottom: 104px;
+            height: fit-content;
 
             .connect {
                 font-weight: 700;
@@ -118,17 +119,14 @@
             display: flex;
             justify-content: center;
             gap: 20px;
-            position: fixed;
-            bottom: 0;
+            height: fit-content;
 
             .cross {
                 width: 20%;
-                max-width: 100px;
             }
 
             .down {
                 width: 80%;
-                max-width: 350px;
             }
         }
     }
@@ -151,13 +149,14 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding: 0 20px;
     }
 
     .menu_title {
         // margin: auto;
         text-align: center;
         width: 90%;
-        max-width: 500px;
+        max-width: 600px;
         font-weight: 700;
         padding: $sp2;
         font-size: $m-font;
@@ -169,14 +168,12 @@
     }
 
     .wrap_main_dish {
-        // width: 960px;
         margin: auto;
         display: flex;
         flex-wrap: wrap;
     }
 
     .card {
-        // width: 300px;
         margin-bottom: 20px;
         padding: 10px;
         box-sizing: border-box;
@@ -199,6 +196,7 @@
 
 // 清單、結帳按鈕
 .choosewrap {
+    z-index: 10;
 
     .shop_btn {
         position: fixed;
@@ -223,7 +221,7 @@
 
 .step_wrap {
     width: 100%;
-    height: 780px;
+    height: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -244,13 +242,16 @@
     width: 90%;
     border: 3px solid $primary;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
 
     .title {
         display: flex;
         padding: 20px;
 
         p {
-            font-size: $m-font;
+            font-size: $s-font;
             color: $primary;
             font-weight: 700;
 
@@ -283,7 +284,7 @@
 
 // 步驟一內容
 .content_one {
-    padding: 24px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -354,19 +355,21 @@
 
 //步驟二內容
 .content_two {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 430px);
 
     .topbtn {
         display: flex;
-        padding: 20px;
+        padding: 0 20px 20px 20px;
         justify-content: space-between;
         align-items: center;
 
         .total_count {
-            font-size: $l-font;
+            font-size: $m-font;
 
             span {
-                font-size: $m-font;
-
+                font-size: $s-font;
             }
         }
     }
@@ -374,7 +377,6 @@
     .week_tap {
         display: flex;
         // gap: 3px;
-
 
         .week {
             flex: 1;
@@ -400,19 +402,17 @@
                 background-color: $bg;
             }
 
-            &:active {
+            &.active {
                 background-color: $bg;
                 color: $primary;
                 border-top: 3px solid $primary;
             }
         }
     }
-
 }
 
 .dishes {
     //設定卷軸
-    max-height: 340px;
     overflow: auto;
     padding: 20px;
     display: flex;
@@ -422,7 +422,7 @@
     .circle {
         display: flex;
         gap: 10px;
-        padding-bottom: 10px;
+        padding-bottom: 20px;
         border-bottom: 1px solid $text;
     }
 
@@ -468,6 +468,7 @@
             display: flex;
             justify-content: flex-end;
             padding-top: 20px;
+            margin-top: auto;
 
             .reduce,
             .increase {
@@ -502,29 +503,61 @@
     }
 }
 
-
-@media screen and (min-width: 600px) {
-
-    // 不包含的食材
-    .select_adjust {
-
-        .hatefood {
-            width: 60%;
-            left: 0;
-            height: 100%;
-            border-radius: 0;
-            max-width: 500px;
-
-            .adjust_btn {
-                width: 60%;
-                max-width: 500px;
-            }
-        }
-    }
-}
+// @media screen and (min-width: 600px) {}
 
 // min-width: 768px
 @include pad-V {
+
+    // 菜色選擇
+    .info {
+
+        .food_pic {
+            height: 500px;
+        }
+    }
+
+    .dishes {
+
+        .dishes_pic {
+            width: 30%;
+        }
+    }
+
+    // 步驟
+    .step {
+
+        .title {
+            padding: 16px;
+        }
+    }
+
+    // 步驟一內容
+    .content_one {
+
+        .wrap {
+
+            .choose {
+
+                .radio_plan {
+                    font-size: $s-font;
+                    cursor: pointer;
+                }
+
+            }
+        }
+    }
+
+    // 步驟二內容
+    .content_two {
+        flex-grow: 1;
+    }
+
+
+}
+
+// min-width: 1024px
+@include pad-H {
+
     .main_wrap {
         display: flex;
         flex-direction: row;
@@ -541,12 +574,13 @@
             flex-direction: column;
             background-color: $text;
             width: 5%;
-            gap: 20px;
+            gap: 10px;
 
             .item {
                 padding: 12px 20px;
                 border-bottom: none;
                 border-left: 8px solid transparent;
+                font-size: $s-font;
 
                 &:hover {
                     border-bottom: none;
@@ -563,13 +597,27 @@
             right: 0px;
             top: 30px;
         }
+
+        .hatefood {
+            width: 50%;
+            left: 0;
+            height: 100%;
+            border-radius: 0;
+
+            .adjust_btn {
+                width: 100%;
+            }
+        }
     }
 
     .content_two {
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 380px);
 
         .topbtn {
             display: flex;
-            padding: 20px;
+            padding: 0 20px 20px 20px;
             justify-content: space-between;
             align-items: center;
 
@@ -594,10 +642,6 @@
         .food_pic {
             height: 350px;
         }
-
-        .card h3 {
-            font-size: $m-font;
-        }
     }
 
     // 清單、結帳按鈕
@@ -612,8 +656,10 @@
 
         .shop_btn {
             position: relative;
+            // bottom: 0;
             padding: 30px 0;
             z-index: 1;
+            width: 100%;
 
             .list_btn {
                 display: none;
@@ -655,62 +701,5 @@
     }
 }
 
-// min-width: 1024px
-@include pad-H {
-
-    // 菜色選擇
-    .info {
-
-        .food_pic {
-            height: 400px;
-        }
-    }
-
-    .step_wrap {
-
-        .step {
-
-            .title {
-
-                p {
-                    font-size: $m-font;
-
-                    span {
-                        font-size: $s-font;
-                    }
-
-                }
-            }
-        }
-    }
-
-    .content_one {
-        .wrap {
-            .choose {
-                .radio_plan {
-                    font-size: $s-font;
-                }
-            }
-        }
-    }
-
-    .content_two {
-        .topbtn {
-
-            .total_count {
-                font-size: $l-font;
-
-                span {
-                    font-size: $m-font;
-                }
-            }
-
-            .delete {
-                font-size: $s-font;
-            }
-        }
-    }
-}
-
 // min-width: 1200px
-@include desktop {}
+//@include desktop {}

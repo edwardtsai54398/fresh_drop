@@ -45,7 +45,7 @@
                             >
                                 <span class="number">{{ index + 1 }}</span>
                                 <div class="title_border">
-                                    <p class="title">{{ step.title }}</p>
+                                    <p class="title_step">{{ step.title }}</p>
                                 </div>
                                 <ul>
                                     <li
@@ -149,53 +149,21 @@
                     <div class="card">
                         <div class="pic pic_food">
                             <div class="dot_wrap">
-                                <!-- 檢舉按鈕 -->
+                                <!-- 更多按鈕 -->
                                 <div class="dot" @click="showReport(index)">
                                     <font-awesome-icon
                                         icon="fa-solid fa-ellipsis-vertical"
                                     />
                                 </div>
-                                <!-- 檢舉遮罩 -->
-                                <div
-                                    class="mask mask_report"
-                                    v-show="isInputReport"
-                                    @click="inputReport"
-                                ></div>
-                                <!-- 檢舉彈窗 -->
+                                <!-- 檢舉按鈕 -->
                                 <div class="report">
                                     <p
                                         class="text"
-                                        v-show="
-                                            currentProductIndex === index &&
-                                            aaa == true
-                                        "
-                                        @click="inputReport"
+                                        v-show="currentIndexForBtn === index"
+                                        @click="currentProductIndex = index"
                                     >
                                         檢舉
                                     </p>
-                                    <div class="content" v-show="isInputReport">
-                                        <div class="content_wrap">
-                                            <p class="title">檢舉原因</p>
-                                            <button
-                                                class="cross"
-                                                @click="inputReport"
-                                            >
-                                                <font-awesome-icon
-                                                    icon="fa-solid fa-xmark"
-                                                />
-                                            </button>
-                                            <div class="input">
-                                                <textarea
-                                                    v-model="text"
-                                                    placeholder="請輸入檢舉原因"
-                                                    class="report_text"
-                                                ></textarea>
-                                            </div>
-                                            <button class="btn_s report_btn">
-                                                確認送出
-                                            </button>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <img
@@ -218,10 +186,61 @@
                             </div>
                             <p class="message">{{ item.message }}</p>
                         </div>
+
+                        <!-- 檢舉遮罩 -->
+                        <!-- <div
+                            class="mask mask_report"
+                            v-show="isInputReport"
+                            @click="inputReport"
+                        ></div> -->
+                        <!-- 檢舉彈窗 -->
+                        <!-- <div class="content_report" v-show="isInputReport">
+                            <div class="content_wrap">
+                                <p class="title">檢舉原因</p>
+                                <button class="cross" @click="inputReport">
+                                    <font-awesome-icon
+                                        icon="fa-solid fa-xmark"
+                                    />
+                                </button>
+                                <div class="input">
+                                    <textarea
+                                        v-model="text"
+                                        placeholder="請輸入檢舉原因"
+                                        class="report_text"
+                                    ></textarea>
+                                </div>
+                                <button class="btn_s report_btn">
+                                    確認送出
+                                </button>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <!-- 檢舉遮罩 -->
+                <div
+                    class="mask mask_report"
+                    v-show="isOpenPopup"
+                    @click="currentProductIndex = -1"
+                ></div>
+                <!-- 檢舉彈窗 -->
+                <div class="content_report" v-show="isOpenPopup">
+                    <div class="content_wrap">
+                        <p class="title">檢舉原因</p>
+                        <button class="cross" @click="currentProductIndex = -1">
+                            <font-awesome-icon icon="fa-solid fa-xmark" />
+                        </button>
+                        <div class="input">
+                            <textarea
+                                v-model="text"
+                                placeholder="請輸入檢舉原因"
+                                class="report_text"
+                            ></textarea>
+                        </div>
+                        <button class="btn_s report_btn">確認送出</button>
                     </div>
                 </div>
             </div>
-            <button class="upload_out btn_l" @click="uploadExpend">
+            <button class="upload_out btn_m" @click="uploadExpend">
                 上傳烹煮心得
             </button>
         </section>
@@ -287,53 +306,21 @@
                     >
                         <div class="pic pic_food">
                             <div class="dot_wrap">
-                                <!-- 檢舉按鈕 -->
+                                <!-- 更多按鈕 -->
                                 <div class="dot" @click="showReport(index)">
                                     <font-awesome-icon
                                         icon="fa-solid fa-ellipsis-vertical"
                                     />
                                 </div>
-                                <!-- 檢舉遮罩 -->
-                                <div
-                                    class="mask mask_report"
-                                    v-show="isInputReport"
-                                    @click="inputReport"
-                                ></div>
-                                <!-- 檢舉彈窗 -->
+                                <!-- 檢舉按鈕 -->
                                 <div class="report">
                                     <p
                                         class="text"
-                                        v-show="
-                                            currentProductIndex === index &&
-                                            aaa == true
-                                        "
-                                        @click="inputReport"
+                                        v-show="currentIndexForBtn === index"
+                                        @click="currentProductIndex = index"
                                     >
                                         檢舉
                                     </p>
-                                    <div class="content" v-show="isInputReport">
-                                        <div class="content_wrap">
-                                            <p class="title">檢舉原因</p>
-                                            <button
-                                                class="cross"
-                                                @click="inputReport"
-                                            >
-                                                <font-awesome-icon
-                                                    icon="fa-solid fa-xmark"
-                                                />
-                                            </button>
-                                            <div class="input">
-                                                <textarea
-                                                    v-model="text"
-                                                    placeholder="請輸入檢舉原因"
-                                                    class="report_text"
-                                                ></textarea>
-                                            </div>
-                                            <button class="btn_s report_btn">
-                                                確認送出
-                                            </button>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <img
@@ -356,6 +343,29 @@
                             </div>
                             <p class="message">{{ item.message }}</p>
                         </div>
+                    </div>
+                </div>
+                <!-- 檢舉遮罩 -->
+                <div
+                    class="mask mask_report"
+                    v-show="isInputReport"
+                    @click="currentProductIndex = -1"
+                ></div>
+                <!-- 檢舉彈窗 -->
+                <div class="content_report" v-show="isOpenPopup">
+                    <div class="content_wrap">
+                        <p class="title">檢舉原因</p>
+                        <button class="cross" @click="currentProductIndex = -1">
+                            <font-awesome-icon icon="fa-solid fa-xmark" />
+                        </button>
+                        <div class="input">
+                            <textarea
+                                v-model="text"
+                                placeholder="請輸入檢舉原因"
+                                class="report_text"
+                            ></textarea>
+                        </div>
+                        <button class="btn_s report_btn">確認送出</button>
                     </div>
                 </div>
             </div>
@@ -383,7 +393,7 @@ import "vue3-carousel/dist/carousel.css";
 let resizeEvent = null;
 export default defineComponent({
     //輪播圖設定
-    name: "Break-points",
+    name: "ProductView",
     components: {
         Carousel,
         Slide,
@@ -397,6 +407,7 @@ export default defineComponent({
             isExpendVisible: false,
             isExpendUpload: false,
             currentProductIndex: -1,
+            currentIndexForBtn: -1,
             isInputReport: false,
             // isExpendReport: false,
             mobile: false,
@@ -412,6 +423,7 @@ export default defineComponent({
                     snapAlign: "center",
                 },
             },
+            text: "",
         };
     },
     created() {
@@ -452,13 +464,14 @@ export default defineComponent({
             this.isExpendReport = !this.isExpendReport;
         },
         showReport(index) {
-            this.currentProductIndex = index;
             this.isExpendReport = true;
             this.aaa = true;
+            this.currentIndexForBtn = index;
         },
         hideReport() {
             this.currentProductIndex = -1;
             this.isExpendReport = false;
+            this.currentIndexForBtn = -1;
         },
         // 檢舉原因輸入
         inputReport() {
@@ -483,6 +496,21 @@ export default defineComponent({
                     (item) => item.id >= 1 && item.id <= 4
                 );
             }
+        },
+        currentProduct() {
+            return (
+                this.productShare.find(
+                    (item, idx) => idx === this.currentProductIndex
+                ) ?? {}
+            );
+        },
+        isOpenPopup() {
+            return this.currentProductIndex !== -1;
+        },
+    },
+    watch: {
+        currentProductIndex(nVal) {
+            if (nVal === -1) this.currentIndexForBtn = -1;
         },
     },
 });
