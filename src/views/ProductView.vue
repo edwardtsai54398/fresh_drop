@@ -320,7 +320,7 @@
                 <!-- 檢舉遮罩 -->
                 <div
                     class="mask mask_report"
-                    v-show="isInputReport"
+                    v-show="isOpenPopup"
                     @click="currentProductIndex = -1"
                 ></div>
                 <!-- 檢舉彈窗 -->

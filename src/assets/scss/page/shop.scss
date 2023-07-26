@@ -5,7 +5,6 @@
     max-width: 1200px;
     min-width: 414px;
     margin: auto;
-    padding-top: 40px;
 }
 
 //選單
@@ -82,7 +81,7 @@
             .allergy,
             .dislike {
                 display: inline-block;
-                padding: 12px 32px;
+                padding: 10px 30px;
                 border-radius: 30px;
                 border: 3px solid #FED550;
                 margin: 7px;
@@ -136,7 +135,7 @@
 .info {
 
     .food_pic {
-        height: 400px;
+        height: 350px;
         overflow: hidden;
 
         img {
@@ -357,7 +356,7 @@
 .content_two {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 430px);
+    height: calc(100vh - 400px);
 
     .topbtn {
         display: flex;
@@ -470,7 +469,8 @@
         }
 
         .dishes_title {
-            font-size: $s-font;
+            font-size: $xs-font;
+            font-weight: 700;
         }
 
         .count {
@@ -560,8 +560,6 @@
     .content_two {
         flex-grow: 1;
     }
-
-
 }
 
 // min-width: 1024px
@@ -583,7 +581,7 @@
             flex-direction: column;
             background-color: $text;
             width: 5%;
-            gap: 10px;
+            gap: 0px;
 
             .item {
                 padding: 12px 20px;
@@ -604,11 +602,11 @@
         .adjust {
             position: relative;
             right: 0px;
-            top: 30px;
+            top: 20px;
         }
 
         .hatefood {
-            width: 50%;
+            width: 40%;
             left: 0;
             height: 100%;
             border-radius: 0;
@@ -622,7 +620,7 @@
     .content_two {
         display: flex;
         flex-direction: column;
-        height: calc(100vh - 380px);
+        height: calc(100vh - 280px);
 
         .topbtn {
             display: flex;
@@ -640,6 +638,20 @@
 
             .delete {
                 font-size: $xs-font;
+            }
+        }
+
+        .dishes {
+            gap: 15px;
+
+            .circle {
+                padding-bottom: 5px;
+            }
+
+            .dishes_content {
+                .count {
+                    padding-top: 10px;
+                }
             }
         }
     }
@@ -661,7 +673,8 @@
     .choosewrap {
         width: 30%;
         position: sticky;
-        top: 120px;
+        top: 30px;
+        z-index: 1;
 
         .shop_btn {
             position: relative;
@@ -697,6 +710,7 @@
             width: 100%;
 
             .title {
+                padding: 12px;
 
                 p {
                     font-size: $s-font;

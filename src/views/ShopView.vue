@@ -669,7 +669,9 @@ export default {
     },
     created() {
         // 不包含的食材
-        this.collectUniqueNames();
+        this.collectUniqueAllergy();
+        this.collectUniqueDislike();
+
         this.cartList = this.$store.state.cartList;
         if (this.cartList[0].length > 0) {
             this.isStepOneExpend = false;
