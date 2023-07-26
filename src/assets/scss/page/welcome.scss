@@ -1,0 +1,207 @@
+.logo_wrap{
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+    .logo{
+        width: 100px;
+        height: 130px;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+.welcome_container{
+    margin: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    .frontside{
+        position: relative;
+        margin: 40px;
+        width: 400px;
+        height: 250px;
+        background-color: #1F8D61;
+        border-radius: 20px;
+        display: flex;
+        align-items:center;
+        justify-content:center;
+        cursor: pointer;
+        &:hover .logo_box {
+            transition: opacity 1s ease;
+            opacity: 0;
+        }
+        &:hover .logo_box2 {
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+        .title{
+            p{
+                color: #fff;
+                font-size: 30px;
+                text-align: center;
+                span{
+                    color: #fff;
+                }
+            }
+        }
+        .logo_box{
+            width: 310px;
+            position: absolute;
+            left: -20px;
+            top: 100%;
+            transform: translateY(-70%);
+            img{
+                width:20%;
+            }
+        }
+        
+        .logo_box2{
+            width: 50%;
+            position: absolute;
+            left: -75px;
+            top: 100%;
+            transform: translateY(-87%);
+            img{
+                width:90%;
+            }
+            opacity: 0;
+            transition: opacity 0.7s ease;
+        }
+    }
+    .backside{
+        position: relative;
+        margin: 40px;
+        width: 400px;
+        height: 250px;
+        background-color: #1F8D61;
+        border-radius: 20px;
+        display: flex;
+        align-items:center;
+        justify-content:center;
+        cursor: pointer;
+        &:hover .logo_box {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        &:hover .logo_box2 {
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+        .title{
+            p{
+                color: #fff;
+                font-size: 30px;
+                text-align: center;
+                span{
+                    color: #fff;
+                }
+            }
+        }
+        .logo_box{
+            width: 310px;
+            position: absolute;
+            left: -20px;
+            top: 100%;
+            transform: translateY(-70%);
+            img{
+                width:20%;
+            }
+        }
+        .logo_box2{
+            width: 50%;
+            position: absolute;
+            left: -75px;
+            top: 100%;
+            transform: translateY(-87%);
+            img{
+                width:90%;
+            }
+            transition: opacity 1s ease;
+            opacity: 0;
+        }
+    }
+}
+
+
+.welcome_copyright{
+    position: absolute;
+    bottom: 0%;
+    left: 0;
+    right: 0;
+    // margin-top: 100px;
+    background-color: #575655;
+    padding: 32px;
+    p{
+        max-width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 14px;
+        color: #FFF7EA;
+    }
+    a{
+        color: #FFF6B4;
+    }
+}
+
+@media screen and (max-width:1023px){
+    .welcome_container{
+        display: block;
+        .frontside{
+            width: 60%;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            .logo_box{
+                position: absolute;
+                left: -20px;
+                // bottom: 100%;
+                transform: translateY(-70%);
+                img{
+                    width:20%;
+                }
+            }
+            
+            .logo_box2{
+                width: 50%;
+                position: absolute;
+                left: -75px;
+                // bottom: 100%;
+                transform: translateY(-87%);
+                img{
+                    width:90%;
+                }
+            }
+        }
+        .backside{
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            .logo_box{
+                position: absolute;
+                left: -20px;
+                // bottom: 100%;
+                transform: translateY(-70%);
+                img{
+                    width:20%;
+                }
+            }
+            
+            .logo_box2{
+                width: 50%;
+                position: absolute;
+                left: -75px;
+                // bottom: 100%;
+                transform: translateY(-87%);
+                img{
+                    width:90%;
+                }
+            }
+        }
+    }
+    .welcome_copyright{
+        bottom:-10%
+    }
+}

@@ -186,34 +186,6 @@
                             </div>
                             <p class="message">{{ item.message }}</p>
                         </div>
-
-                        <!-- 檢舉遮罩 -->
-                        <!-- <div
-                            class="mask mask_report"
-                            v-show="isInputReport"
-                            @click="inputReport"
-                        ></div> -->
-                        <!-- 檢舉彈窗 -->
-                        <!-- <div class="content_report" v-show="isInputReport">
-                            <div class="content_wrap">
-                                <p class="title">檢舉原因</p>
-                                <button class="cross" @click="inputReport">
-                                    <font-awesome-icon
-                                        icon="fa-solid fa-xmark"
-                                    />
-                                </button>
-                                <div class="input">
-                                    <textarea
-                                        v-model="text"
-                                        placeholder="請輸入檢舉原因"
-                                        class="report_text"
-                                    ></textarea>
-                                </div>
-                                <button class="btn_s report_btn">
-                                    確認送出
-                                </button>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
                 <!-- 檢舉遮罩 -->
@@ -427,6 +399,7 @@ export default defineComponent({
         };
     },
     created() {
+        this.newProduct = this.$store.state.productDetil;
         this.setWidth(window.innerWidth);
         resizeEvent = (e) => this.setWidth(e.target.innerWidth);
         window.addEventListener("resize", resizeEvent);

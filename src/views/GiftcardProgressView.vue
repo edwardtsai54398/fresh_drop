@@ -35,10 +35,8 @@
                     <h5>請選擇收禮對象</h5>
                     <!-- 選送親友或自己按鈕 -->
                     <div class="to-button">
-                        <button class="btn_xs" :class="{ inactive: isSelfClicked }" type="button"
-                            @click="isOtherClicked = true, isSelfClicked = false">親友</button>
-                        <button class="btn_xs" :class="{ inactive: isOtherClicked }" type="button"
-                            @click="isSelfClicked = true, isOtherClicked = false, selfClicked()">自己</button>
+                        <button class="btn_xs" :class="{ inactive: isSelfClicked }" type="button" @click="isOtherClicked = true, isSelfClicked = false">親友</button>
+                        <button class="btn_xs" :class="{ inactive: isOtherClicked }" type="button" @click="isSelfClicked = true, isOtherClicked = false, selfClicked()">自己</button>
                     </div>
                     <!-- 送親友才出現輸入框 -->
                     <div class="recipient-input" v-if="isOtherClicked === true">
@@ -48,8 +46,7 @@
                         <input type="text" placeholder="請輸入收禮人姓名" v-model="recipient.name" id="text" />
                     </div>
                     <!-- 輸入框是空的跳錯誤訊息 -->
-                    <div v-if="showErrorMessage && isOtherClicked && (!recipient.email || !recipient.name)"
-                        class="error-message">
+                    <div v-if="showErrorMessage && isOtherClicked && (!recipient.email || !recipient.name)" class="error-message">
                         <span v-if="!recipient.email">請輸入收禮人會員信箱<br></span>
                         <span v-if="!recipient.name">請輸入收禮人姓名</span>
                     </div>
@@ -120,8 +117,7 @@
 
                         <div style="position: relative;">
                             <!-- Image -->
-                            <img :src="uploadedImage || selectedPic" alt="" @mousedown="startDragging1"
-                                @touchmove="startDragging1" :style="{
+                            <img :src="uploadedImage || selectedPic" alt="" @mousedown="startDragging1" @touchmove="startDragging1" :style="{
                                     cursor: dragging ? 'grabbing' : 'grab',
                                 }">
                             <!-- Text -->
@@ -174,14 +170,12 @@
                                      top: 13px;
                                     right: 6px;" />
 
-
                         </div>
 
                         <!-- 文字選取顏色功能待新增 -->
                         <input id="colorPicker" type="color" v-model="color">
 
                     </div>
-
 
                     <button @click="nextStep" class="nextstep btn_s">下一步，選擇禮物卡金額</button>
                     <button @click="previousStep" class="previousstep btn_flat btn_xs">上一步</button>
@@ -201,15 +195,11 @@
                     <h5>請選擇禮物卡金額</h5>
                     <div class="giftcard-money-input">
                         <input type="number" id="giftcard-money" disabled :value="selectedGiftCardAmount">
-                        <font-awesome-icon icon="fa-solid fa-dollar-sign" style="color: #1F8D61; font-size: 20px;
-        position: absolute;
-        top: 28%;
-        left: 10%" />
+                        <font-awesome-icon icon="fa-solid fa-dollar-sign" style="color: #1F8D61; font-size: 20px;position: absolute;top: 28%;left: 10%" />
                     </div>
                     <div class="giftcard-money-wrap">
                         <div v-for="(item, index) in giftcardMoney" :key="index" class="giftcard-money-button">
-                            <button :id="'money-button-' + index" class="btn_flat" type="button"
-                                @click="updateGiftCardAmount(item)">
+                            <button :id="'money-button-' + index" class="btn_flat" type="button" @click="updateGiftCardAmount(item)">
                                 <img src="../assets/images/icon_bg/price.svg" alt="">{{ item }}
                             </button>
                         </div>
@@ -232,8 +222,7 @@
                     </div>
 
                     <div class="finished">
-                        <font-awesome-icon icon="fa-solid fa-circle-check"
-                            style="color: #1F8D61; font-size: 70px; margin-bottom: 10px;" />
+                        <font-awesome-icon icon="fa-solid fa-circle-check" style="color: #1F8D61; font-size: 70px; margin-bottom: 10px;" />
                         <h5>完成！</h5>
                     </div>
 
@@ -272,7 +261,7 @@
                         </div>
                     </div>
 
-                    <button class="nextstep btn_s"><router-link to="#" style="color:#fff">結帳</router-link></button>
+                    <button class="nextstep btn_s" @click="payCheck">結帳</button>
                     <button @click="previousStep" class="previousstep btn_flat btn_xs">上一步</button>
                 </section>
             </form>
@@ -295,10 +284,8 @@ export default defineComponent({
     },
     data() {
         return {
-
             step: 1,
             totalsteps: 5,
-
             // Step 1
             isOtherClicked: true,
             isSelfClicked: false,
@@ -308,8 +295,6 @@ export default defineComponent({
                 email: '',
                 name: '',
             },
-
-
             // Step 2
             uploadedImage: null, //使用者上傳圖片
             selectedPic: require('@/assets/images/gift/giftcard_defaultpic_001.svg'), //預設樣式1
@@ -337,15 +322,15 @@ export default defineComponent({
                     itemsToShow: 3,
                     snapAlign: 'center',
                 },
-                700: {
-                    itemsToShow: 3,
-                    snapAlign: 'center',
-                },
-                // 1024 and up
-                1024: {
-                    itemsToShow: 3,
-                    snapAlign: 'center',
-                }
+                // 700: {
+                //     itemsToShow: 3,
+                //     snapAlign: 'center',
+                // },
+                // // 1024 and up
+                // 1024: {
+                //     itemsToShow: 3,
+                //     snapAlign: 'center',
+                // }
             },
 
             //Step 3
@@ -378,19 +363,34 @@ export default defineComponent({
                 y: 0
             },
             dragging: false,     // 是否正在拖拽文字
-
-
             //Step 4
             giftcardMoney: [500, 800, 1000, 2000, 3000, 5000], //金額按鈕
             selectedGiftCardAmount: 500, //預設金額500
-
             // Step 5
             detailTitle: [],
-
-
         }
     },
     methods: {
+        payCheck() {
+            event.preventDefault();
+            //先登入會員判斷(未做)
+            if (this.$store.state.cartList[0].length > 0) {
+                let choose = confirm('結帳頁仍有商品未結帳，確定要把結帳頁的商品清空嗎?')
+                if (!choose) {
+                    return
+                } else {
+                    this.$store.commit('clearState', 'cart')
+                }
+            }
+            if (this.$store.state.cartList[0].length == 0) {
+                this.$store.commit('stateGiftBuy', {
+                    name: this.recipient.name,
+                    img: this.uploadedImage ? this.uploadedImage : this.selectedPic,
+                    money: this.selectedGiftCardAmount
+                })
+                this.$router.push('/pay')
+            }
+        },
 
         // 收禮人如果選自己, 不出現輸入框
         selfClicked() {

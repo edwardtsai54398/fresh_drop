@@ -8,21 +8,11 @@
             <div class="login_input">
                 <div class="text_wrap">
                     <label for="email">Email</label>
-                    <input
-                        type="email"
-                        placeholder="請輸入信箱"
-                        v-model="user.email"
-                        id="email"
-                    />
+                    <input type="email" placeholder="請輸入信箱" v-model="user.email" id="email" />
                 </div>
                 <div class="text_wrap">
                     <label for="password">密碼</label>
-                    <input
-                        type="password"
-                        placeholder="請輸入密碼(6-12碼英數字混合)"
-                        v-model="user.password"
-                        id="password"
-                    />
+                    <input type="password" placeholder="請輸入密碼(6-12碼英數字混合)" v-model="user.password" id="password" />
                 </div>
                 <div class="check_wrap">
                     <div class="check">
@@ -38,12 +28,8 @@
         <div class="login_api_wrap">
             <p>或用其他方式登入</p>
             <div class="login_api">
-                <a href="#" class="btn"
-                    ><img src="../assets/images/icon_bg/facebook.png" alt=""
-                /></a>
-                <a href="#" class="btn"
-                    ><img src="../assets/images/icon_bg/google.png" alt=""
-                /></a>
+                <a href="#" class="btn"><img src="../assets/images/icon_bg/facebook.png" alt="" /></a>
+                <a href="#" class="btn"><img src="../assets/images/icon_bg/google.png" alt="" /></a>
             </div>
         </div>
         <!-- </router-view> -->

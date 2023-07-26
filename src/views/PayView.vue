@@ -63,21 +63,21 @@
                 <div class="price">200元</div>
                 <div class="total_price">{{calcTotalPrice}}元</div>
             </div>
-            <div class="gift_cart_content" v-if="giftBuy">
+            <div class="gift_cart_content" v-if="giftBuy.name">
                 <div class="gift_item">
                     <div class="gift_pic pic">
                         <img :src="giftBuy.img" alt="">
                     </div>
                     <div class="gift_info">
-                        <p>禮物卡樣式：{{ giftBuy.type }}</p>
-                        <p>收禮人：{{ giftBuy.sendTo }}</p>
+                        <!-- <p>禮物卡樣式：{{ giftBuy.type }}</p> -->
+                        <p>收禮人：{{ giftBuy.name }}</p>
                     </div>
                 </div>
                 <div class="price">{{giftBuy.money}}元</div>
                 <div class="total_price">{{giftBuy.money}}元</div>
             </div>
         </div>
-        <button class="btn_s btn_flat keep_shopping" @click="fetchProduct">
+        <button class="btn_s btn_flat keep_shopping" @click="$router.go(-1)">
             繼續選購
         </button>
         <div class="calc_pay">
@@ -299,7 +299,7 @@
 import twDistrict from "@/assets/data/cityDistrict.js";
 // import {multiWeekCartList} from "@/assets/data/payCartList.js";
 // import {singleCartList} from "@/assets/data/payCartList.js";
-import { giftCart } from "@/assets/data/payCartList.js";
+// import { giftCart } from "@/assets/data/payCartList.js";
 import { Carousel, Pagination, Slide } from "vue3-carousel";
 
 
@@ -313,8 +313,8 @@ export default {
     },
     data() {
         return {
-            cartList: [],
-            giftBuy: giftCart,
+            cartList: [[]],
+            giftBuy: {},
             giftcardDiscount: 0,
             twDistrict,
             creditCardSide: true,
@@ -356,8 +356,9 @@ export default {
             }
         }
     },
-    watch: {
-        
+    created() {
+        this.giftBuy = this.$store.state.giftBuy
+        this.cartList = this.$store.state.cartList
     },
 };
 </script>

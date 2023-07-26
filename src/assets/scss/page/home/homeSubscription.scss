@@ -1,0 +1,222 @@
+// TODO 訂閱方案
+.index_subscription {
+    justify-content: center;
+    border: solid 6px $primary;
+    border-radius: 18px;
+    padding: 20px;
+    margin-top: 50px;
+
+    .subscription_wrap {
+        padding: $sp3;
+
+        p {
+            width: 100%;
+            text-align: center;
+            width: 100%;
+            border-top-left-radius: 0px;
+            background-color: $primary;
+            padding: 20px;
+            color: #fff;
+        }
+
+        .index_menu {
+            padding: $sp2 0;
+
+            h3 {
+                font-size: $s-font;
+                color: $primary;
+            }
+
+        }
+
+        .drop_wrap {
+            display: flex;
+            flex-direction: column;
+            gap: $sp4;
+
+            .index_8drop {
+                border: solid 3px $primary;
+                border-radius: 23px;
+                // margin-bottom: 20px;
+
+                .index_drop {
+                    padding: 15px;
+                    gap: 30px;
+                    border-top-left-radius: 20px;
+                    border-top-right-radius: 20px;
+                    background-color: $primary;
+
+                    h4 {
+                        color: #ffffff;
+                        text-align: center;
+                    }
+                }
+
+                .index_drop_box {
+                    margin: 10px;
+                    justify-content: center;
+                    display: flex;
+                    gap: 26px;
+
+                    .index_drop_pic {
+                        position: relative;
+
+                        .box_txt {
+                            span {
+                                font-size: $m-font;
+                            }
+
+                            position: absolute;
+                            bottom: 0;
+                            background-color: #0000;
+                            color: #000;
+                        }
+
+                        img {}
+                    }
+
+                    .index_money {
+                        text-align: center;
+                        align-items: center;
+                        display: grid;
+                        color: #9F9D9D;
+
+                        h4 {}
+
+                        .sale_text {
+                            background-color: $primary;
+                            padding: 8px;
+                            margin: 9px;
+
+                            h4 {
+                                font-size: 20px;
+                                color: #fff;
+                            }
+                        }
+
+                        .sale_menu_text {
+                            font-size: $xs-font;
+                        }
+                    }
+                }
+            }
+        }
+
+        .index_one {
+            padding: $sp2 0;
+
+            h3 {
+                font-size: $s-font;
+                color: $primary;
+            }
+        }
+
+        .index_button {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            .index_button_week {
+                background-color: $primary;
+                border-radius: 20px;
+                color: #ffffff;
+                width: 30%;
+                padding: $sp4;
+                text-align: center;
+
+
+                span {
+                    font-size: $m-font;
+                    color: #ffffff;
+                }
+
+            }
+        }
+
+        .index_illustrate {
+            padding: $sp2 0;
+            line-height: 22px;
+        }
+
+        .index_btn_l_more {
+            margin: $sp2 auto;
+            padding: $sp2;
+
+        }
+    }
+}
+
+//TODO訂閱方案768
+@include pad-V {
+    .index_subscription {
+        max-width: 800px;
+        margin: auto;
+        padding: $sp3;
+        margin-top: 50px;
+
+        .subscription_wrap {
+            p {}
+
+            .index_menu {
+                margin-top: $sp2;
+
+                h3 {}
+            }
+
+            .drop_wrap {
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 0;
+                margin-bottom: $sp5;
+
+                .index_8drop {
+                    width: 30%;
+
+                    .index_drop {}
+
+                    .index_drop_box {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        .index_drop_pic {}
+
+                        .index_money {
+                            h4 {}
+
+                            .sale_text {
+                                h4 {}
+                            }
+
+                            .sale_menu_text {
+                                h4 {}
+                            }
+                        }
+                    }
+                }
+            }
+
+            .index_one {
+                h3 {}
+            }
+
+            .index_button {
+                margin-bottom: $sp5;
+
+                .index_button_week {
+                    padding: $sp5;
+                }
+            }
+
+            .index_illustrate {
+                h3 {}
+            }
+
+            .index_btn_l_more {
+                width: 33%;
+                padding: $sp2 $sp5;
+            }
+        }
+    }
+
+}

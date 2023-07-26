@@ -119,7 +119,7 @@
             transition: .3s;
             @extend .btn_flat;
             aspect-ratio: 1/1;
-            border-radius: 50%;
+            border-radius: $xl-br;
             position: absolute;
             background-color: $primary;
             svg {
@@ -152,21 +152,24 @@
     .circle{
         position: absolute;
         width: 50%;
-        top: -80px;
+        transform: translateY(-10%);
+        top: 100%;
         z-index: 1;
     }
     .mushroom{
         width: 30%;
         position: absolute;
-        top: -60px;
+        transform: translateY(20%);
+        top: 100%;
         left: 10px;
         z-index: 2;
     }
     .doctor{
         width: 20%;
         position: absolute;
-        top: -150px;
-        right: 10px;
+        transform: translateY(-35%);
+        top: 100%;
+        right: 20px;
         z-index: 2;
     }
 }
@@ -255,17 +258,20 @@
             width: 15%;
             position: absolute;
             right: 40px;
-            top:-200px
+            transform: translateY(-45%);
+            top: 100%;
         }
         .mushroom{
             width: 20%;
             position: absolute;
-            top: -110px;
+            transform: translateY(-5%);
+            top: 100%;
         }
         .circle{
             width: 30%;
             position: absolute;
-            top: -150px;
+            transform: translateY(-10%);
+            top: 100%;
         }
         
     }
@@ -273,97 +279,102 @@
 
 // 斷點1024
 @include pad-H {
-    // //banner區域
-    // .banner_container{
-    //     position: relative;
-    //     .banner_box{
-    //         .banner_title{
-    //             position: absolute;
-    //             left: 145px;
-    //             top: 100px;
-    //             h5{
-    //                 font-size: $xl-font;
-    //                 line-height: 1.5;
-    //             }
-    //         }
-    //         .tom_ill{
-    //             position: absolute;
-    //             bottom: -50px;
-    //             width: 10%;
-    //             right: 80px;
-    //         }
-    //         .veg_ill{
-    //             width: 15%;
-    //             left: 20px;
-    //         }
-    //     }
-    //     .bg_img{
-    //         max-width: 30%;
-    //         position: absolute;
-    //         top: 500px;
+    //banner區域
+    .banner_container{
+        position: relative;
+        .banner_box{
+            .banner_title{
+                position: absolute;
+                left: 145px;
+                top: 100px;
+                h5{
+                    font-size: $xl-font;
+                    line-height: 1.5;
+                }
+            }
+            .tom_ill{
+                position: absolute;
+                bottom: -50px;
+                width: 10%;
+                right: 80px;
+            }
+            .veg_ill{
+                width: 15%;
+                left: 20px;
+            }
+        }
+        .bg_img{
+            max-width: 25%;
+            position: absolute;
+            transform: translateY(50%);
+            top: 100%;
+            right: 0;
 
-    //     }
-    // }
-    // //人物插畫
-    // .personAll_container{
-    //     margin: $sp2 0;
-    //     display: flex;
-    //     justify-content: center;
-    //     .person_ill_container{
-    //         .person_box{
-    //             width: 280px;
-    //             margin: $sp3;
-    //             .person_img{
-    //                 width: 100%;
-    //             }
-    //             .person_img2{
-    //                 width: 100%;
-    //             }
-    //             .person_title{
-    //                 h6{
-    //                     font-size: $m-font;
-    //                     line-height: 1.5;
-    //                 }
-    //             }
-    //         }
+        }
+    }
+    //人物插畫
+    .personAll_container{
+        margin: $sp2 0;
+        display: flex;
+        justify-content: center;
+        .person_ill_container{
+            .person_box{
+                width: 280px;
+                margin: $sp2;
+                .person_img{
+                    width: 100%;
+                }
+                .person_img2{
+                    width: 100%;
+                }
+                .person_title{
+                    h6{
+                        font-size: $m-font;
+                        line-height: 1.5;
+                    }
+                }
+            }
             
-    //     }
-    // }
-    // //檢驗報告
-    // .certified_container{
-    //     // outline: solid red;
-    //     .certified_title{
-    //         h5{
-    //             font-size: $l-font;
-    //         }
-    //     }
-    //     .certified_text{
-    //         p{
-    //             font-size: $m-font;
-    //         }
-    //     }
-    // }
-    // //底部插畫
-    // .bgImg_container{
-    //     position: relative;
-    //     .doctor{
-    //         width: 15%;
-    //         position: absolute;
-    //         right: 40px;
-    //         top:-200px
-    //     }
-    //     .mushroom{
-    //         width: 20%;
-    //         position: absolute;
-    //         top: -110px;
-    //     }
-    //     .circle{
-    //         width: 30%;
-    //         position: absolute;
-    //         top: -150px;
-    //     }
+        }
+    }
+    //檢驗報告
+    .certified_container{
+        // outline: solid red;
+        .certified_title{
+            h5{
+                font-size: $l-font;
+            }
+        }
+        .certified_text{
+            p{
+                font-size: $m-font;
+            }
+        }
+    }
+    //底部插畫
+    .bgImg_container{
+        position: relative;
+        .doctor{
+            width: 15%;
+            position: absolute;
+            right: 40px;
+            transform: translateY(-45%);
+            top: 100%;
+        }
+        .mushroom{
+            width: 20%;
+            position: absolute;
+            transform: translateY(-20%);
+            top: 100%;
+        }
+        .circle{
+            width: 30%;
+            position: absolute;
+            transform: translateY(-10%);
+            top: 100%;
+        }
         
-    // }
+    }
 }
 
 
@@ -375,7 +386,7 @@
         display: flex;
         justify-content: center;
         .banner_box{
-            max-width: 1500px;
+            max-width: 1200px;
             position: relative;
             .banner_img{
                 img{
@@ -395,11 +406,18 @@
         .bg_img{
             width: 30%;
             position: absolute;
-            top: 250px;
+            transform: translateY(10%);
+            top: 100%;
+            right: 0;
         }
     }
     .personAll_container{
-        margin: $sp2 $sp6;
+        margin: $sp2 120px;
+        .person_ill_container{
+            .person_box{
+                min-width: 300px;
+            }
+        }
     }
     .certified_container{
         margin-bottom:200px;
@@ -415,7 +433,8 @@
         position: relative;
         .circle{
             position: absolute;
-            top: -230px;
+            transform: translateY(-20%);
+            top: 100%;
         }
         .mushroom{
             position: absolute;
@@ -424,14 +443,27 @@
             left: 40px;
         }
         .doctor{
-            max-width: 13%;
+            max-width: 15%;
             position: absolute;
             right: 100px;
-            top: -250px;
+            transform: translateY(-60%);
+            top: 100%;
         }
     }
     .carousel__next,
     .carousel__prev {
         margin: 0 $sp4;
         }
+}
+
+@media screen and (min-width:1630px){
+    .banner_container{
+        .bg_img{
+            width: 30%;
+            position: absolute;
+            transform: translateY(-5%);
+            top: 100%;
+            right: 0;
+        }
+    }
 }
