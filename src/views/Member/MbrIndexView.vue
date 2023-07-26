@@ -1,22 +1,20 @@
 <template>
-    <div class="member_container" ref="mCONTAIN" :style="{paddingTop:`${containH}px`}"><!---->
-      <MbrInfo ref="mINFO" :top="0"/>
-
-      <MbrShophistory ref="mSHOP" :top="0" @toggle="cardLayout"/>
-
-      <MbrGiftcard @open="SentDetailToModal" ref="mGIFT" :top="rowGap+infoH"/> <!---->
-      <MbrGiftModal :isOpen="isGiftModalOpen"
-      :giftDetail="giftDetail" @close="isGiftModalOpen = false"/>
-
-      <MbrShare ref="mSHARE" :top="rowGap+shopH"/><!---->
-
-      <p class="bgc_slogan">Explore the Joy of Cooking, Embrace Harmony with Nature</p>
-      <img src="@/assets/images/icon_bg/bg_lightgreen.svg" alt="" class="green_blob">
-      <img src="@/assets/images/icon_bg/bg_pink.svg" alt="" class="red_blob">
-      <img src="@/assets/images/icon_bg/bg_yelloIrregularShape.svg" alt="" class="yellow_blob">
-      <img src="@/assets/images/index/index_decorate_vg2.png" alt="" class="onion">
-      <img src="@/assets/images/index/index_decorate_vg6.png" alt="" class="corn">
-      <img src="@/assets/images/index/index_decorate_vg3.png" alt="" class="lettuce">
+    <div style="width:100%; overflow: hidden; position: relative;">
+        <div class="member_container" ref="mCONTAIN" :style="{paddingTop:`${containH}px`}"><!---->
+          <MbrInfo ref="mINFO" :top="0"/>
+          <MbrShophistory ref="mSHOP" :top="0" @toggle="cardLayout"/>
+          <MbrGiftcard @open="SentDetailToModal" ref="mGIFT" :top="rowGap+infoH"/> <!---->
+          <MbrGiftModal :isOpen="isGiftModalOpen"
+          :giftDetail="giftDetail" @close="isGiftModalOpen = false"/>
+          <MbrShare ref="mSHARE" :top="rowGap+shopH"/><!---->
+          <p class="bgc_slogan">Explore the Joy of Cooking, Embrace Harmony with Nature</p>
+          <img src="@/assets/images/icon_bg/bg_lightgreen.svg" alt="" class="green_blob">
+          <img src="@/assets/images/icon_bg/bg_pink.svg" alt="" class="red_blob">
+          <img src="@/assets/images/icon_bg/bg_yelloIrregularShape.svg" alt="" class="yellow_blob">
+          <img src="@/assets/images/index/index_decorate_vg2.png" alt="" class="onion">
+          <img src="@/assets/images/index/index_decorate_vg6.png" alt="" class="corn">
+          <img src="@/assets/images/index/index_decorate_vg3.png" alt="" class="lettuce">
+        </div>
     </div>
         
         
@@ -87,7 +85,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     @import "@/assets/scss/all.scss";
     @import "@/assets/scss/page/member/mbrIndex.scss";
     

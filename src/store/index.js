@@ -48,9 +48,6 @@ export default createStore({
                 state.giftBuy = {}
             }
         },
-        setGameData(state, { userData }) {
-            state.cartList = userData
-        },
         setProductData(state, { userData }) {
             state.productDetil = userData
         },

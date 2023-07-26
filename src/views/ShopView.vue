@@ -362,7 +362,7 @@ export default {
         },
         isCartSelectDone() {
             //從cart.js引入
-            return isCartSelectDone(this.selectedOptionMeal)
+            return isCartSelectDone(this.selectedOptionMeal, this.cartList)
         },
     },
     methods: {
@@ -490,7 +490,7 @@ export default {
         },
         payCheck() {
             //從cart.js引入
-            payCheck(this.isCartSelectDone)
+            payCheck(this.isCartSelectDone, this.cartList)
         },
         // 螢幕寬度大於768自動顯示
         handleResize() {
@@ -499,13 +499,11 @@ export default {
         sendProductDetail(item) {//取出點擊商品的詳細資訊
             // console.log(item)
             this.$store.commit("setProductData", { userData: item });
-            // this.$router.push("/product");
         },
     },
     created() {
         // 不包含的食材
         this.collectUniqueNames();
-        this.cartList = this.$store.state.cartList
         if (this.cartList[0].length > 0) {
             this.isStepOneExpend = false
             this.isStepTwoExpend = true

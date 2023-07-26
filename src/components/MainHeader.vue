@@ -157,7 +157,7 @@ export default {
     computed: {
         isCartSelectDone() {
             //從cart.js引入
-            return isCartSelectDone(this.selectedOptionMeal)
+            return isCartSelectDone(this.selectedOptionMeal, this.cartList)
         },
     },
     methods: {
@@ -166,7 +166,7 @@ export default {
         },
         payCheck() {
             //從cart.js引入
-            payCheck(this.isCartSelectDone)
+            payCheck(this.isCartSelectDone, this.cartList)
             this.isSubCartOpen = false;
             this.isToggleOpen = false;
         },
@@ -196,7 +196,7 @@ export default {
         logOut() {
             this.F2ERefugee = {};
             this.isLogin = false;
-            this.$router.push("/");
+            this.$router.push("/index");
         },
         navInOut() {
             let scrollY = window.scrollY
