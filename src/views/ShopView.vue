@@ -59,12 +59,13 @@
                     主菜 MAIN DISH
                 </h4>
                 <div class="wrap_main_dish row">
-                    <div class="card col-6 col-md-4" v-for="(item, index) in mainDishFilter" :key="index"
-                        @click="sendProductDetail(item)">
-                        <div class="pic">
-                            <img :src="item.img" />
-                        </div>
-                        <h3>{{ item.name }}</h3>
+                    <div class="card col-6 col-md-4" v-for="(item, index) in mainDishFilter" :key="index">
+                        <router-link @click="sendProductDetail(item)" to="/product">
+                            <div class="pic">
+                                <img :src="item.img" />
+                            </div>
+                            <h3>{{ item.name }}</h3>
+                        </router-link>
                         <div class="btn_scd_s" @click="addCart(index, mainDishFilter)">
                             選購
                         </div>
@@ -77,12 +78,13 @@
                     湯品 SOUP
                 </h4>
                 <div class="wrap_main_dish row">
-                    <div class="card col-6 col-md-4" v-for="(item, index) in soupFilter" :key="index"
-                        @click="sendProductDetail(item)">
-                        <div class="pic">
-                            <img :src="item.img" />
-                        </div>
-                        <h3>{{ item.name }}</h3>
+                    <div class="card col-6 col-md-4" v-for="(item, index) in soupFilter" :key="index">
+                        <router-link @click="sendProductDetail(item)" to="/product">
+                            <div class="pic">
+                                <img :src="item.img" />
+                            </div>
+                            <h3>{{ item.name }}</h3>
+                        </router-link>
                         <div class="btn_scd_s" @click="addCart(index, soupFilter)">
                             選購
                         </div>
@@ -95,12 +97,13 @@
                     沙拉 SALAD
                 </h4>
                 <div class="wrap_main_dish row">
-                    <div class="card col-6 col-md-4" v-for="(item, index) in saladFilter" :key="index"
-                        @click="sendProductDetail(item)">
-                        <div class="pic">
-                            <img :src="item.img" />
-                        </div>
-                        <h3>{{ item.name }}</h3>
+                    <div class="card col-6 col-md-4" v-for="(item, index) in saladFilter" :key="index">
+                        <router-link @click="sendProductDetail(item)" to="/product">
+                            <div class="pic">
+                                <img :src="item.img" />
+                            </div>
+                            <h3>{{ item.name }}</h3>
+                        </router-link>
                         <div class="btn_scd_s" @click="addCart(index, saladFilter)">
                             選購
                         </div>
@@ -156,14 +159,9 @@
                                     <p>2.每周幾份餐點</p>
                                 </div>
                                 <div class="choose">
-                                    <div class="option_meal" v-for="option in optionsMeal" :key="option" @click="
-                                        selectedOptionMeal = option;
-                                    isPlanSelectDone();
-                                    " :class="{
-    selected:
-        selectedOptionMeal === option,
-    radio_plan: true,
-}">
+                                    <div class="option_meal" v-for="option in optionsMeal" :key="option" 
+                                    @click="selectedOptionMeal = option;isPlanSelectDone();" 
+                                    :class="{selected:selectedOptionMeal === option,radio_plan: true,}">
                                         {{ option }}份
                                     </div>
                                 </div>
@@ -223,8 +221,7 @@
                             </div>
                             <!-- 頁籤 -->
                             <div class="week_tap" v-show="selectedOptionPlan === '定期配送'">
-                                <div class="week" v-for="n in selectedOptionWeek" :key="n" 
-                                :class="{ active: n == tabActive }" @click="updateTab(n)">
+                                <div class="week" v-for="n in selectedOptionWeek" :key="n" :class="{ active: n == tabActive }" @click="updateTab(n)">
                                     WEEK{{ n }}
                                 </div>
                             </div>
@@ -284,7 +281,7 @@
 </template>
 <script>
 import productList from "@/assets/data/productList.js";
-import {tabActive, cartList, payCheck, isCartSelectDone} from "@/assets/js/cart.js";
+import { tabActive, cartList, payCheck, isCartSelectDone } from "@/assets/js/cart.js";
 export default {
     data() {
         return {
@@ -364,13 +361,13 @@ export default {
             }
         },
         isCartSelectDone() {
-        //從cart.js引入
+            //從cart.js引入
             return isCartSelectDone(this.selectedOptionMeal)
         },
     },
     methods: {
         updateVuexCart() {
-            this.$store.commit('stateCartList',this.cartList)
+            this.$store.commit('stateCartList', this.cartList)
         },
         // 點擊移動至對應區塊
         scrollToSection(sectionName) {
@@ -502,7 +499,7 @@ export default {
         sendProductDetail(item) {//取出點擊商品的詳細資訊
             // console.log(item)
             this.$store.commit("setProductData", { userData: item });
-            this.$router.push("/product");
+            // this.$router.push("/product");
         },
     },
     created() {

@@ -12,7 +12,7 @@
             <span></span>
         </button>
         <div class="header_logo">
-            <router-link to="/">
+            <router-link to="/index">
                 <h1>鮮食空投箱 Fresh Drop</h1>
             </router-link>
         </div>
