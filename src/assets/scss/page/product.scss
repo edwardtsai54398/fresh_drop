@@ -11,7 +11,7 @@
 
 .main_title {
     width: 100%;
-    padding: $sp5;
+    padding: $sp2;
     position: relative;
     display: flex;
     align-items: center;
@@ -30,7 +30,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 16px;
         font-size: $l-font;
         color: $text;
 
@@ -56,16 +56,17 @@
 .info_pic {
 
     .pic {
-        height: 500px;
+        height: 400px;
         overflow: hidden;
     }
 
     .text {
         font-size: $s-font;
-        text-align: center;
+        text-align: justify;
+        text-indent: 2em;
 
         p {
-            padding: 20px 20px;
+            padding: 20px;
         }
     }
 }
@@ -108,7 +109,7 @@
             .title_border {
                 border-bottom: 2px dashed $secondary;
 
-                .title {
+                .title_step {
                     margin-bottom: 5px;
                 }
             }
@@ -153,7 +154,7 @@
             height: 70px;
             color: $text;
             font-family: $prim-font;
-            font-size: $m-font;
+            font-size: $s-font;
             font-weight: 700;
             border-radius: $xl-br;
             border: 6px solid #ffffff;
@@ -231,7 +232,7 @@
 .text {
     display: flex;
     justify-content: space-between;
-    margin: 0 24px 24px 24px;
+    margin: 0 24px;
     align-items: center;
 
     .title {
@@ -259,6 +260,7 @@
     }
 }
 
+// 心得分享
 .pic_food {
     width: 100%;
     border: 5px solid $bg--;
@@ -266,9 +268,18 @@
 
     &:hover .dot_wrap .dot {
         background-color: #FFF7EAaa;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+
+
     }
 }
 
+// 更多按鈕
 .dot_wrap {
     position: relative;
 
@@ -283,26 +294,14 @@
         justify-content: center;
         align-items: center;
         border-radius: 50%;
-
-        &:hover {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            background-color: #FFF7EAaa;
-        }
+        transform: rotate(90deg);
     }
 
-    //檢舉遮罩
-    .mask_report {
-        z-index: 21;
-    }
-
+    // 檢舉按鈕
     .report {
+
         .text {
-            display: inline-block;
+
             font-size: $s-font;
             padding: 10px 25px;
             border-radius: 10px;
@@ -312,61 +311,66 @@
             right: -10px;
             cursor: pointer;
         }
+    }
+}
 
-        .content {
-            display: flex;
-            flex-direction: column;
-            width: 70%;
-            max-width: 600px;
-            background-color: $secondary--;
-            border-radius: $m-br;
-            align-items: center;
-            margin: auto;
-            // 設定fixed位置
-            position: fixed;
-            z-index: 21;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+//檢舉遮罩
+.mask_report {
+    z-index: 21;
+}
 
-            .content_wrap {
+//檢舉彈窗
+.content_report {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    max-width: 600px;
+    background-color: $secondary--;
+    border-radius: $m-br;
+    align-items: center;
+    margin: auto;
+    position: fixed;
+    z-index: 30;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .content_wrap {
+        width: 100%;
+        text-align: center;
+
+        .title {
+            border-bottom: 1px solid $secondary;
+            font-size: $m-font;
+            padding: 20px 0;
+            display: block;
+            text-align: center;
+        }
+
+        .cross {
+            font-size: $m-font;
+            position: absolute;
+            right: 30px;
+            top: 25px;
+        }
+
+        .input {
+            padding: 20px;
+            width: 100%;
+
+            .report_text {
                 width: 100%;
-                text-align: center;
-
-                .title {
-                    border-bottom: 1px solid $secondary;
-                    font-size: $m-font;
-                    padding: 20px 0;
-                    display: block;
-                    text-align: center;
-                }
-
-                .cross {
-                    font-size: $m-font;
-                    position: absolute;
-                    right: 30px;
-                    top: 25px;
-                }
-
-                .input {
-                    padding: 20px;
-                    width: 100%;
-
-                    .report_text {
-                        width: 100%;
-                        height: 200px;
-                        padding: 20px;
-                        border-radius: 10px;
-                        font-size: $s-font;
-                    }
-                }
-
-                .report_btn {
-                    margin: 10px 0 30px 0;
-                    width: 70%;
-                    font-size: $m-font;
-                }
+                height: 200px;
+                padding: 20px;
+                border-radius: 10px;
+                font-size: $s-font;
             }
+        }
+
+        .report_btn {
+            margin: 10px 0 30px 0;
+            width: 70%;
+            font-size: $m-font;
         }
     }
 }
@@ -611,7 +615,7 @@
         .recommend {
             width: 40%;
             position: relative;
-            padding: 210px 0 0 32px;
+            padding: 165px 0 0 32px;
             display: block;
 
             .hot_ranking {
@@ -623,7 +627,7 @@
                     width: 100%;
                     max-width: 400px;
                     padding: 20px 0;
-                    font-size: $m-font;
+                    font-size: $s-font;
                     border: 6px solid #fff;
                     background: #edebda;
                     position: relative;
@@ -675,7 +679,7 @@
 
                         .hot_name {
                             margin-top: 15px;
-                            font-size: $m-font;
+                            font-size: $s-font;
                             color: $text;
                         }
                     }
@@ -732,6 +736,12 @@
                 height: 500px;
                 overflow: hidden;
             }
+
+            .text {
+                p {
+                    padding: 20px 40px;
+                }
+            }
         }
     }
 
@@ -748,10 +758,6 @@
             width: 100%;
             height: 700px;
         }
-
-        .text {
-            font-size: $m-font;
-        }
     }
 
     .info_text {
@@ -766,7 +772,7 @@
         }
 
         p {
-            font-size: $m-font;
+            font-size: $s-font;
         }
     }
 
@@ -776,7 +782,7 @@
 
     .hot_title {
         padding: 35px 0;
-        font-size: $m-font;
+        font-size: $s-font;
     }
 
     .hot_product {
@@ -800,7 +806,7 @@
             }
 
             .hot_name {
-                font-size: $m-font;
+                font-size: $s-font;
             }
         }
     }
