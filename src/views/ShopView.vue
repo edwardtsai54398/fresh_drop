@@ -59,12 +59,13 @@
                     主菜 MAIN DISH
                 </h4>
                 <div class="wrap_main_dish row">
-                    <div class="card col-6 col-md-4" v-for="(item, index) in mainDishFilter" :key="index"
-                        @click="sendProductDetail(item)">
-                        <div class="pic">
-                            <img :src="item.img" />
-                        </div>
-                        <h3>{{ item.name }}</h3>
+                    <div class="card col-6 col-md-4" v-for="(item, index) in mainDishFilter" :key="index">
+                        <router-link @click="sendProductDetail(item)" to="/product">
+                            <div class="pic">
+                                <img :src="item.img" />
+                            </div>
+                            <h3>{{ item.name }}</h3>
+                        </router-link>
                         <div class="btn_scd_s" @click="addCart(index, mainDishFilter)">
                             選購
                         </div>
@@ -77,12 +78,13 @@
                     湯品 SOUP
                 </h4>
                 <div class="wrap_main_dish row">
-                    <div class="card col-6 col-md-4" v-for="(item, index) in soupFilter" :key="index"
-                        @click="sendProductDetail(item)">
-                        <div class="pic">
-                            <img :src="item.img" />
-                        </div>
-                        <h3>{{ item.name }}</h3>
+                    <div class="card col-6 col-md-4" v-for="(item, index) in soupFilter" :key="index">
+                        <router-link @click="sendProductDetail(item)" to="/product">
+                            <div class="pic">
+                                <img :src="item.img" />
+                            </div>
+                            <h3>{{ item.name }}</h3>
+                        </router-link>
                         <div class="btn_scd_s" @click="addCart(index, soupFilter)">
                             選購
                         </div>
@@ -95,12 +97,13 @@
                     沙拉 SALAD
                 </h4>
                 <div class="wrap_main_dish row">
-                    <div class="card col-6 col-md-4" v-for="(item, index) in saladFilter" :key="index"
-                        @click="sendProductDetail(item)">
-                        <div class="pic">
-                            <img :src="item.img" />
-                        </div>
-                        <h3>{{ item.name }}</h3>
+                    <div class="card col-6 col-md-4" v-for="(item, index) in saladFilter" :key="index">
+                        <router-link @click="sendProductDetail(item)" to="/product">
+                            <div class="pic">
+                                <img :src="item.img" />
+                            </div>
+                            <h3>{{ item.name }}</h3>
+                        </router-link>
                         <div class="btn_scd_s" @click="addCart(index, saladFilter)">
                             選購
                         </div>
@@ -156,14 +159,9 @@
                                     <p>2.每周幾份餐點</p>
                                 </div>
                                 <div class="choose">
-                                    <div class="option_meal" v-for="option in optionsMeal" :key="option" @click="
-                                        selectedOptionMeal = option;
-                                    isPlanSelectDone();
-                                    " :class="{
-    selected:
-        selectedOptionMeal === option,
-    radio_plan: true,
-}">
+                                    <div class="option_meal" v-for="option in optionsMeal" :key="option" 
+                                    @click="selectedOptionMeal = option;isPlanSelectDone();" 
+                                    :class="{selected:selectedOptionMeal === option,radio_plan: true,}">
                                         {{ option }}份
                                     </div>
                                 </div>
@@ -211,20 +209,19 @@
                             <div class="topbtn">
                                 <!-- 總數量要修改 -->
                                 <div class="total_count" v-show="selectedOptionPlan == '定期配送'">
-                                    {{ cartTotalAmount }}/{{ selectedOptionMeal
+                                    {{ cartWeekAmount }}/{{ selectedOptionMeal
                                     }}<span>份</span>
                                 </div>
                                 <div class="total_count" v-show="selectedOptionPlan == '單次購買'">
-                                    {{ cartTotalAmount }}<span>份</span>
+                                    {{ cartWeekAmount }}<span>份</span>
                                 </div>
-                                <div class="btn_s delete" @click="cartList = [[]]">
+                                <div class="btn_s delete" @click="removeCartAll">
                                     全部刪除
                                 </div>
                             </div>
                             <!-- 頁籤 -->
                             <div class="week_tap" v-show="selectedOptionPlan === '定期配送'">
-                                <div class="week" v-for="n in selectedOptionWeek" :key="n"
-                                    :class="{ active: n == tabActive }" @click="updateTab(n)">
+                                <div class="week" v-for="n in selectedOptionWeek" :key="n" :class="{ active: n == tabActive }" @click="updateTab(n)">
                                     WEEK{{ n }}
                                 </div>
                             </div>
@@ -284,7 +281,7 @@
 </template>
 <script>
 import productList from "@/assets/data/productList.js";
-// import {multiWeekCartList } from "@/assets/data/payCartList.js";
+import { tabActive, cartList, payCheck, isCartSelectDone } from "@/assets/js/cart.js";
 export default {
     data() {
         return {
@@ -311,8 +308,8 @@ export default {
             selectedOptionPlan: "", // 儲存選中的選項
             selectedOptionMeal: 0, // 儲存選中的選項
             selectedOptionWeek: 1, // 儲存選中的選項
-            tabActive: 1,
-            cartList: [[]],
+            tabActive, //從cart.js引入
+            cartList, //從cart.js引入
         };
     },
     computed: {
@@ -344,7 +341,7 @@ export default {
             });
             return filterResult;
         },
-        cartTotalAmount() {
+        cartWeekAmount() {
             let total = 0;
             this.cartList[this.tabActive - 1].forEach((item) => {
                 total += item.amount;
@@ -356,28 +353,21 @@ export default {
                 return false;
             } else if (
                 this.selectedOptionPlan === "定期配送" &&
-                this.cartTotalAmount >= this.selectedOptionMeal
+                this.cartWeekAmount >= this.selectedOptionMeal
             ) {
                 return true;
             } else {
                 return false;
             }
         },
-        // isCartSelectDone() {
-        //     let isSelectDone = this.cartList.every((index) => {
-        //         let total = 0;
-        //         this.cartList[index].forEach((item) => {
-        //             total += item.amount;
-        //         });
-        //         console.log(index, total);
-        //         return total > 0
-        //     });
-        //     return isSelectDone;
-        // },
+        isCartSelectDone() {
+            //從cart.js引入
+            return isCartSelectDone(this.selectedOptionMeal)
+        },
     },
     methods: {
-        isCartSelectDone() {
-
+        updateVuexCart() {
+            this.$store.commit('stateCartList', this.cartList)
         },
         // 點擊移動至對應區塊
         scrollToSection(sectionName) {
@@ -410,12 +400,13 @@ export default {
         },
         stepOneExpend() {
             this.isStepOneExpend = !this.isStepOneExpend;
-            this.cartList = [[]];
+            this.cartList = [[]]
             this.selectedOptionPlan = "";
             this.selectedOptionMeal = 1;
             this.selectedOptionWeek = 0;
             this.tabActive = 1;
             this.isStepTwoExpend = false;
+            this.updateVuexCart()
         },
         //方案是否有被選完
         isPlanSelectDone() {
@@ -436,18 +427,18 @@ export default {
             for (let i = 1; i < this.selectedOptionWeek; i++) {
                 this.cartList.push([]);
             }
+            this.$store.commit("statePlan", {
+                plan: this.selectedOptionPlan,
+                meal: this.selectedOptionMeal,
+                week: this.selectedOptionWeek
+            });
         },
         // tap:week點擊後保持樣式(修改)
         updateTab(index) {
-            if (this.tabActive === index) {
-                // this.tabActive = null;
-                return;
-            } else {
-                this.tabActive = index;
-            }
+            //從cart.js引入
+            this.tabActive = index
         },
         //------------ 購物車------------
-        // 禁止購物車數量<0
         amountReduce(index) {
             let target = this.cartList[this.tabActive - 1][index];
             if (target.amount == 1) {
@@ -455,16 +446,18 @@ export default {
             } else {
                 target.amount--;
             }
+            this.updateVuexCart()
         },
         amountIncrease(index) {
             let target = this.cartList[this.tabActive - 1][index];
             if (!this.isCartFull) {
                 target.amount++;
             }
+            this.updateVuexCart()
         },
         //加入側邊購物欄
         addCart(index, list) {
-            if (this.isCartFull) return;
+            if (this.isCartFull || this.selectedOptionPlan == '') return;
             //判斷是否有在購物車裡，沒有的話
             let compareResult = this.cartList[this.tabActive - 1].filter(
                 (item) => {
@@ -482,24 +475,22 @@ export default {
             } else {
                 compareResult[0].amount++;
             }
+            this.updateVuexCart()
         },
         // 取消商品
         removeCart(index) {
             this.cartList[this.tabActive - 1].splice(index, 1);
+            this.updateVuexCart()
+        },
+        removeCartAll() {
+            this.cartList.forEach((item, index) => {
+                this.cartList[index] = []
+            })
+            this.updateVuexCart()
         },
         payCheck() {
-            if (!this.isCartSelectDone) {
-                alert("購物車未選完");
-                return;
-            } else {
-                this.$store.commit("stateCartList", this.cartList);
-                this.$store.commit("statePlan", {
-                    plan: this.selectedOptionPlan,
-                    meal: this.selectedOptionMeal,
-                    week: this.selectedOptionWeek
-                });
-                this.$router.push("/pay");
-            }
+            //從cart.js引入
+            payCheck(this.isCartSelectDone)
         },
         // 螢幕寬度大於768自動顯示
         handleResize() {
@@ -508,7 +499,7 @@ export default {
         sendProductDetail(item) {//取出點擊商品的詳細資訊
             // console.log(item)
             this.$store.commit("setProductData", { userData: item });
-            this.$router.push("/product");
+            // this.$router.push("/product");
         },
     },
     created() {

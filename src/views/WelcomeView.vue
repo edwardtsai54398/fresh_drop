@@ -41,7 +41,7 @@
 
 
 export default ({
-    name: 'Break-points',
+    name: 'WelcomeView',
     components: {
 
     },
@@ -60,7 +60,7 @@ export default ({
     },
 });
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/scss/all.scss";
 @import "@/assets/scss/page/welcome.scss";
 </style>
