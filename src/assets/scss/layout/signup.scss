@@ -1,0 +1,66 @@
+
+.signup_container{
+    margin: 20px;
+    padding: 30px;
+    width: 450px;
+    border: solid 2px;
+    border-radius: 10px;
+    background-color: #ffffff80;
+    h4{
+        text-align: center;
+        margin: 10px;
+        font-size: $m-font;
+    }
+    .signup_input{
+        display: flex;
+        justify-content: space-between;
+        label{
+            margin: 5px 0;
+        }
+        input{
+            margin: 5px 0;
+        }
+
+        .sex_wrap{
+            // height: 50px;
+            margin: 10px;
+            width: 50%;
+            margin-top: auto;
+            margin-bottom: auto;
+            .check{
+                display: flex;
+                margin: 13px 0;
+                .female{
+                    margin: 0 10px;
+                }
+            }
+        }
+    }
+    .select_box{
+        label{
+            margin: 5px 0;
+        }
+        .select_wrap{
+            display: flex;
+            justify-content: space-between;
+            select{
+                margin: 5px 0;
+            }
+        }
+    }
+    .text_wrap{
+        margin: 10px 0;
+        input{
+            margin: 5px 0;
+            width: 100%;
+        }
+    }
+    .address_wrap{
+        display: flex;
+    }
+    .confirm_btn{
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+}
