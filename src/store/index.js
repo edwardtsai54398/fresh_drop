@@ -21,6 +21,9 @@ export default createStore({
     getters: {
     },
     mutations: {
+        logOut(state) {
+            state.isLogin = false
+        },
         setUserData(state, { userData }) {
             state.memberInfoAll = userData
             state.isLogin = true
@@ -47,9 +50,6 @@ export default createStore({
             } else if (string == 'gift') {
                 state.giftBuy = {}
             }
-        },
-        setGameData(state, { userData }) {
-            state.cartList = userData
         },
         setProductData(state, { userData }) {
             state.productDetil = userData

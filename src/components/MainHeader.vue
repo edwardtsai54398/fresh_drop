@@ -78,10 +78,7 @@
                     </div>
                     <div class="cart_content">
                         <ol class="week_tabs" v-show="cartList.length > 1">
-                            <li class="tab" v-for="n in cartList.length" :key="n" 
-                            :style="`width:${100/cartList.length}%`" 
-                            :class="{active: n == tabActive}"
-                            @click="updateTab(n)">week{{ n }}</li>
+                            <li class="tab" v-for="n in cartList.length" :key="n" :style="`width:${100/cartList.length}%`" :class="{active: n == tabActive}" @click="updateTab(n)">week{{ n }}</li>
                         </ol>
                         <ul class="cart_list" v-for="(week, index) in cartList" :key="index" v-show="index+1 == tabActive">
                             <li class="cart_item" v-for="item in week" :key="item.name">
@@ -96,11 +93,11 @@
                             </li>
                         </ul>
                         <div class="group_btn">
-                            <router-link class="btn_s btn_flat" to="/shop" @click="
-                                    isSubCartOpen = false;
-                                    isToggleOpen = false;
-                                ">繼續選購</router-link>
-                            <router-link class="btn_s" to="/pay" @click="payCheck()">結帳</router-link>
+                            <router-link class="btn_s btn_flat" to="/shop" 
+                            @click="isSubCartOpen = false;isToggleOpen = false;">
+                                繼續選購
+                            </router-link>
+                            <button class="btn_s" @click="payCheck">結帳</button>
                         </div>
                     </div>
                 </div>
@@ -128,7 +125,7 @@
 </template>
 
 <script>
-import { tabActive, cartList, payCheck, isCartSelectDone } from "@/assets/js/cart.js";
+import { payCheck, isCartSelectDone } from "@/assets/js/cart.js";
 export default {
     name: "MainHeader",
     props: {
@@ -141,14 +138,15 @@ export default {
             isSubCartOpen: false,
             isScrollUp: true,
             prevScrollY: 0,
-            tabActive, //從cart.js引入
-            cartList, //從cart.js引入
+            tabActive: 1,
+            cartList: [[]],
             headCircleQty: 5,
         };
     },
     created() {
         window.addEventListener("resize", this.circleQty);
         window.addEventListener("scroll", this.navInOut);
+        
 
     },
     mounted() {
@@ -157,7 +155,7 @@ export default {
     computed: {
         isCartSelectDone() {
             //從cart.js引入
-            return isCartSelectDone(this.selectedOptionMeal)
+            return isCartSelectDone(this.$store.state.shopPlan.meal, this.cartList)
         },
     },
     methods: {
@@ -166,7 +164,8 @@ export default {
         },
         payCheck() {
             //從cart.js引入
-            payCheck(this.isCartSelectDone)
+
+            payCheck(this.isCartSelectDone, this.cartList)
             this.isSubCartOpen = false;
             this.isToggleOpen = false;
         },
@@ -195,8 +194,8 @@ export default {
         },
         logOut() {
             this.F2ERefugee = {};
-            this.isLogin = false;
-            this.$router.push("/");
+            this.$store.commit('logOut');
+            this.$router.push("/index");
         },
         navInOut() {
             let scrollY = window.scrollY
