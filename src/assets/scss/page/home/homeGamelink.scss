@@ -1,47 +1,51 @@
-
 .index_qa {
     width: 13%;
     display: flex;
     position: fixed;
     top: 30%;
     right: 0;
+    z-index: 3;
 
+    .index_hedgehog {
+        position: relative;
+        pointer-events: none;
+        right: -90%;
+        bottom: 20px;
+        animation-name: hedgehog-move;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-timing-function: linear;
+        //    animation-play-state: running;
 
-    .index_hedgehog{
-       position: relative;
-       pointer-events: none;
-       right: -90%;
-       bottom: 20px;
-       animation-name: hedgehog-move;
-       animation-duration: 1.5s;
-       animation-iteration-count: infinite;
-       animation-direction: alternate;
-       animation-timing-function: linear;
-    //    animation-play-state: running;
-
-    //    right: -160px; 
-    //   bottom: 70px ;
+        //    right: -160px; 
+        //   bottom: 70px ;
     }
 
-  }
-  
-  .index_hedgehog img,
-  .index_door img {
+}
+
+.index_hedgehog img,
+.index_door img {
     max-width: 100%;
     height: auto;
-  }
+}
 
-  
-  @keyframes hedgehog-move{
-      from {right: -80%;}
-      to   {right: -71%;}
+
+@keyframes hedgehog-move {
+    from {
+        right: -80%;
     }
-    
-    .index_qa:has(.index_door:hover) .index_hedgehog {
+
+    to {
+        right: -71%;
+    }
+}
+
+.index_qa:has(.index_door:hover) .index_hedgehog {
     animation: none;
     right: -30%;
     transition: right .5s ease;
-    }
+}
 
 // .index_qa {
 //     display: flex;
@@ -60,7 +64,7 @@
 //     }
 //     .index_door {
 //       width: 80px;
-      
+
 //       img {
 //         width: 100%;
 //       }
@@ -75,17 +79,18 @@
 
 
 // 斷點768px
-@media screen and (max-width:1199px){
+@media screen and (max-width:1199px) {
 
     .index_qa {
         top: 15%;
 
-}}
+    }
+}
 
 // mobile 斷點
-@media screen and (max-width:767px){
+@media screen and (max-width:767px) {
     .index_qa {
         width: 30%;
-        top:25%;
+        top: 25%;
     }
 }
