@@ -85,7 +85,9 @@
       <div class="index_illustrate">
         <h3>從第二次訂購開始，您可以選擇跳過、暫停或取消訂閱。我們沒有設定任何訂單次數的限制，也沒有與暫停或取消訂閱相關的違約金。</h3>
       </div>
-      <div class="index_btn_l_more">更多食譜</div>
+      <router-link to="/shop">
+        <div class="index_btn_l_more">更多食譜</div>
+      </router-link>
     </div>
   </section>
 </template>
