@@ -69,7 +69,7 @@
                 <img :src="productList[0].img" alt="food" />
             </div>
             <!-- 主菜 -->
-            <section class="container" ref="main">
+            <section class="container" id="main">
                 <h4 class="menu_title" v-show="mainDishFilter.length > 0">
                     主菜 MAIN DISH
                 </h4>
@@ -98,7 +98,7 @@
                 </div>
             </section>
             <!-- 湯品 -->
-            <section class="container" ref="soup">
+            <section class="container" id="soup">
                 <h4 class="menu_title" v-show="soupFilter.length > 0">
                     湯品 SOUP
                 </h4>
@@ -127,7 +127,7 @@
                 </div>
             </section>
             <!-- 沙拉 -->
-            <section class="container" ref="salad">
+            <section class="container" id="salad">
                 <h4 class="menu_title" v-show="saladFilter.length > 0">
                     沙拉 SALAD
                 </h4>
@@ -442,21 +442,15 @@ export default {
             isStepOneExpend: false,
             isStepTwoExpend: false,
             isActive: false,
-            // 點擊移動至對應區塊(定義滾動目標區塊的 `ref` 名稱)
-            sectionRefs: {
-                main: null,
-                soup: null,
-                salad: null,
-            },
             optionsPlan: [
                 { value: "單次購買", label: "單次購買" },
                 { value: "定期配送", label: "定期配送" },
             ],
             optionsMeal: [4, 6, 10],
             optionsWeek: [2, 3, 4],
-            selectedOptionPlan: "", // 儲存選中的選項
-            selectedOptionMeal: 0, // 儲存選中的選項
-            selectedOptionWeek: 1, // 儲存選中的選項
+            selectedOptionPlan: "",
+            selectedOptionMeal: 0,
+            selectedOptionWeek: 1,
             tabActive: 1,
             cartList: [[]],
         };
@@ -519,18 +513,20 @@ export default {
             this.$store.commit("stateCartList", this.cartList);
         },
         // 點擊移動至對應區塊
-        scrollToSection(sectionName) {
-            const section = this.$refs[sectionName];
+        scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
             if (section) {
-                // 計算目標區塊的頂部位置
-                const topOffset = section.getBoundingClientRect().top;
-                // 向上滑動 100px
-                const offset = -90;
-                const scrollToPosition = topOffset + offset;
-                window.scrollTo({
-                    top: scrollToPosition,
-                    behavior: "smooth",
-                });
+                let offset;
+                if (innerWidth.innerWidth >= 1024) {
+                    offset = 20;
+                } else {
+                    offset = 100;
+                }
+                const topPos =
+                    section.getBoundingClientRect().top +
+                    window.pageYOffset -
+                    offset;
+                window.scrollTo({ top: topPos, behavior: "smooth" });
             }
         },
         // 不包含的食材-過敏原

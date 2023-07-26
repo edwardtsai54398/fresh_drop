@@ -595,6 +595,11 @@
 
 // min-width: 768px
 @include pad-V {
+
+    .product_container {
+        padding: 0 50px;
+    }
+
     .main {
         width: 60%;
         overflow: hidden;

@@ -375,7 +375,6 @@
 
     .week_tap {
         display: flex;
-        // gap: 3px;
         margin-left: -3px;
         margin-right: -3px;
 
@@ -393,16 +392,6 @@
             font-weight: 700;
             font-size: $xs-font;
             background-color: $primary;
-
-            // &::after {
-            //     content: '';
-            //     position: absolute;
-            //     bottom: -3px;
-            //     left: 0;
-            //     right: 0;
-            //     height: 4px;
-            //     background-color: $bg;
-            // }
 
             &.active {
                 background-color: $bg;
@@ -559,6 +548,7 @@
     // 步驟二內容
     .content_two {
         flex-grow: 1;
+        height: calc(100vh - 430px);
     }
 }
 
@@ -620,7 +610,7 @@
     .content_two {
         display: flex;
         flex-direction: column;
-        height: calc(100vh - 280px);
+        height: calc(100vh - 375px);
 
         .topbtn {
             display: flex;
@@ -673,7 +663,7 @@
     .choosewrap {
         width: 30%;
         position: sticky;
-        top: 30px;
+        top: 130px;
         z-index: 1;
 
         .shop_btn {
@@ -697,7 +687,6 @@
             margin-top: 0;
         }
     }
-
 
     .step_wrap {
         width: 100%;
@@ -725,4 +714,13 @@
 }
 
 // min-width: 1200px
-//@include desktop {}
+@include desktop {
+
+    .choosewrap {
+        top: 30px;
+    }
+
+    .content_two {
+        height: calc(100vh - 275px);
+    }
+}
