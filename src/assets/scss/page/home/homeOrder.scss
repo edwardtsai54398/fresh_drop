@@ -55,6 +55,11 @@ section.order {
             left: 0;
 
         }
+        &:nth-child(3){
+            width: 120%;
+            transform: translate(-20%,-20%);
+            
+        }
     }
 }
 
