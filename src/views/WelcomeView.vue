@@ -5,8 +5,8 @@
         </div>
     </div>
     <section class="welcome_container">
-        <div class="frontside">
-            <router-link to="front">
+        <router-link to="front">
+            <div class="frontside">
                 <div class="title">
                     <p>前台<br><span>訪客/會員入口</span></p>
                 </div>
@@ -16,8 +16,8 @@
                 <div class="logo_box2">
                     <img :src="logoImg.img02" alt="">
                 </div>
-            </router-link>
-        </div>
+            </div>
+        </router-link>
         <div class="backside">
             <div class="title">
                 <p>後台<br><span>管理員入口</span></p>
