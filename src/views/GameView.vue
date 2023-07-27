@@ -165,7 +165,7 @@
                 <div class="wrap">
                     <div class="title">分析結果</div>
                     <div class="recommend row">
-                        <div class="col-6" v-for="(proItem, proIndex) in item.productLists" :key="proIndex">
+                        <div class="col-6" v-for="(proItem, proIndex) in item.productLists[0]" :key="proIndex">
                             <div class="pro_card">
                                 <div class="pic">
                                     <img :src="proItem.img" alt="">
@@ -490,7 +490,7 @@ export default {
             this.$store.commit("statePlan", {
                 plan: '單次購買',
                 meal: 1,
-                week:1
+                week: 1
             });
             this.$router.push("/shop");
         },

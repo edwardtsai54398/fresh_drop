@@ -1,7 +1,6 @@
 <template>
     <div class="container pay_container">
         <h4 class="pay_title">| 結帳 |</h4>
-
         <div class="cart_content_all">
             <div class="cart_title">
                 <h6>商品名稱</h6>
@@ -47,10 +46,8 @@
                                 <div class="pic dishes_pic">
                                     <img :src="item.img" alt="" />
                                 </div>
-
                                 <div class="category">{{ item.category }}</div>
                                 <div class="name">{{ item.name }}</div>
-
                                 <div class="amount">X{{ item.amount }}</div>
                             </li>
                         </ul>
@@ -61,36 +58,43 @@
                 </carousel>
 
                 <div class="price">200元</div>
-                <div class="total_price">{{calcTotalPrice}}元</div>
+                <div class="total_price">{{ calcTotalPrice }}元</div>
             </div>
             <div class="gift_cart_content" v-if="giftBuy.name">
                 <div class="gift_item">
                     <div class="gift_pic pic">
-                        <img :src="giftBuy.img" alt="">
+                        <img :src="giftBuy.img" alt="" />
                     </div>
                     <div class="gift_info">
                         <!-- <p>禮物卡樣式：{{ giftBuy.type }}</p> -->
                         <p>收禮人：{{ giftBuy.name }}</p>
                     </div>
                 </div>
-                <div class="price">{{giftBuy.money}}元</div>
-                <div class="total_price">{{giftBuy.money}}元</div>
+                <div class="price">{{ giftBuy.money }}元</div>
+                <div class="total_price">{{ giftBuy.money }}元</div>
             </div>
         </div>
-        <button class="btn_s btn_flat keep_shopping" @click="$router.go(-1)">
+        <button class="btn_s btn_flat keep_shopping" @click.prevent="$router.go(-1)">
             繼續選購
         </button>
         <div class="calc_pay">
             <div class="calc_wrap">
                 <span>商品金額</span><span>{{ calcTotalPrice }}元</span>
             </div>
-            <div class="calc_wrap" v-show="!giftBuy"><span>禮物卡折抵</span><span>-元</span></div>
-            <div class="calc_wrap" v-show="cartList.length > 1"><span>優惠折抵</span><span>-{{discount()}}元</span></div>
+            <div class="calc_wrap" v-show="!giftBuy">
+                <span>禮物卡折抵</span><span>-元</span>
+            </div>
+            <div class="calc_wrap" v-show="cartList.length > 1">
+                <span>優惠折抵</span><span>-{{ discount() }}元</span>
+            </div>
             <div class="calc_wrap" v-show="!giftBuy">
                 <span>運費</span><span>{{ freightCalc() }}元</span>
             </div>
             <div class="calc_total">
-                <span>合計</span><span>{{ calcTotalPrice + freightCalc() - discount() }}元</span>
+                <span>合計</span
+                ><span
+                    >{{ calcTotalPrice + freightCalc() - discount() }}元</span
+                >
             </div>
         </div>
 
@@ -242,7 +246,7 @@
                         />
                         <button
                             class="toB_side_btn"
-                            @click="creditCardSide = false"
+                            @click.prevent="creditCardSide = false;"
                         >
                             Back<img
                                 src="@/assets/images/icon_bg/return_icon.svg"
@@ -278,7 +282,7 @@
                         </div>
                         <button
                             class="toA_side_btn"
-                            @click="creditCardSide = true"
+                            @click.prevent="creditCardSide = true;"
                         >
                             <img
                                 src="@/assets/images/icon_bg/return_icon.svg"
@@ -298,7 +302,6 @@
 <script>
 import twDistrict from "@/assets/data/cityDistrict.js";
 import { Carousel, Pagination, Slide } from "vue3-carousel";
-
 export default {
     components: {
         Carousel,
@@ -321,38 +324,37 @@ export default {
                 this.cartList.forEach((week) => {
                     week.forEach((item) => {
                         total += item.amount * 200;
-                    })
+                    });
                 });
             } else if (this.cartList.length == 1) {
                 this.cartList[0].forEach((item) => {
                     total += item.amount * 200;
-                })
+                });
             } else if (this.giftBuy !== {}) {
-                total = this.giftBuy.money
-                
+                total = this.giftBuy.money;
             }
             return total;
         },
     },
     methods: {
-        freightCalc() { 
+        freightCalc() {
             if (this.giftBuy) {
-                return 0
+                return 0;
             } else {
-                return 80
+                return 80;
             }
         },
         discount() {
             if (this.cartList.length > 1) {
-                return this.calcTotalPrice * 0.2
+                return this.calcTotalPrice * 0.2;
             } else {
-                return 0
+                return 0;
             }
-        }
+        },
     },
     created() {
-        this.giftBuy = this.$store.state.giftBuy
-        this.cartList = this.$store.state.cartList
+        this.giftBuy = this.$store.state.giftBuy;
+        this.cartList = this.$store.state.cartList;
     },
 };
 </script>

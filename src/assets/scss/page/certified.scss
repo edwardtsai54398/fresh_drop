@@ -109,9 +109,11 @@
         // padding: 50px 0;
         // }
         .box {
+            width: 80%;
             img{
+                object-fit: cover;
                 width: 100%;
-                padding: $sp2 $sp5;
+                // padding: $sp2 $sp5;
             }
         }
         .carousel__next,
@@ -139,10 +141,7 @@
                 right: -100%;
             }
         }
-        .certified_img{
-            width: 50%;
-            margin: $sp4 0;
-        }
+
     }
 }
 //底部插畫

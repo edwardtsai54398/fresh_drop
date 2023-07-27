@@ -34,7 +34,9 @@
       <div class="line">
         <span>{{ cards[0].foodName }}</span>
       </div>
-      <button class="index_btn_l">更多食譜</button>
+      <router-link to="/shop">
+        <button class="index_btn_l">更多食譜</button>
+      </router-link>
     </div>
   </section>
 </template>

@@ -1,0 +1,36 @@
+
+.verify_container{
+    height: 500px;
+    overflow: scroll;
+    margin: 20px;
+    padding: 30px;
+    width: 450px;
+    border: solid 2px;
+    border-radius: 10px;
+    background-color: #ffffff80;
+    
+    .verify_normal{
+        h4{
+            text-align: center;
+            margin: 10px;
+            font-size: $m-font;
+        }
+        height: 420px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .text_wrap{
+            input{
+                margin: 10px 0;
+                width: 100%;
+                padding: $sp1;
+                border-radius: $xs-br;
+            }
+        }
+        .submit_btn{
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    }
+}

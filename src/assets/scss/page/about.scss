@@ -555,33 +555,6 @@
     }
   }
 
-/* Hover 效果 */
-.index_qa {
-  display: flex;
-  position: fixed;
-  top: 100px;
-  right: 0;
-  .index_hedgehog {
-    width: 80px;
-    position: relative;
-    pointer-events: none;
-    right: -120px; 
-    bottom: 10px ;
-    img {
-      width: 100%;
-    }
-  }
-  .index_door {
-    width: 70px;
-    img {
-      width: 100%;
-    }
-  }
-}
-.index_qa:has(.index_door:hover) .index_hedgehog {
-  right: -40px; 
-  width: 80px;
-  transition: right .5s ease;
-}
+
 }
 

@@ -1,44 +1,49 @@
 <template>
     <section class="index_health_banner" ref="indexHealthBanner">
         <div class="index_health_wrap">
-            <div class="box" :style="`transform:translateX(-${translate}px)`" ref="healthWrap">
+            <div
+                class="box"
+                :style="`transform:translateX(-${translate}px)`"
+                ref="healthWrap"
+            >
                 <div class="title">
-                    <p>HEALTH<br>VEGETABLE<br>
+                    <p>
+                        HEALTH<br />VEGETABLE<br />
                         <span>食材朔源</span>
                     </p>
                     <div class="title_bg">
-                        <img :src="vegetable.bg" alt="">
+                        <img :src="vegetable.bg" alt="" />
                     </div>
                 </div>
                 <div class="veg01 show_text" ref="veg01">
-                    <img :src="vegetable.Img" alt="">
+                    <img :src="vegetable.Img" alt="" />
                     <div class="veg_bg"></div>
                     <div class="veg_title">
-                        <p>高麗菜<br>CABBAGE</p>
+                        <p>高麗菜<br />CABBAGE</p>
                         <div class="veg_title_bg"></div>
                     </div>
                 </div>
                 <div class="veg02" ref="veg02">
-                    <img :src="vegetable.Img2" alt="">
+                    <img :src="vegetable.Img2" alt="" />
                     <div class="veg_bg"></div>
                     <div class="veg_title">
-                        <p>花椰菜<br>BROCOLI</p>
+                        <p>花椰菜<br />BROCOLI</p>
                         <div class="veg_title_bg"></div>
                     </div>
                 </div>
                 <div class="veg03" ref="veg03">
-                    <img :src="vegetable.Img3" alt="">
+                    <img :src="vegetable.Img3" alt="" />
                     <div class="veg_bg"></div>
                     <div class="veg_title">
-                        <p>甜椒<br>PEPPER</p>
+                        <p>甜椒<br />PEPPER</p>
                         <div class="veg_title_bg"></div>
                     </div>
                 </div>
                 <div class="veg04" ref="veg04">
-                    <img :src="vegetable.Img4" alt="">
+                    <img :src="vegetable.Img4" alt="" />
                     <div class="veg_bg"></div>
                     <div class="veg_title">
-                        <p>南瓜<br>PUMPKIN</p>
+                        <p>南瓜<br />PUMPKIN</p>
                         <div class="veg_title_bg"></div>
                     </div>
                 </div>
@@ -71,30 +76,38 @@ export default ({
 
     methods: {
         handleScroll() {
-            if (this.winW < 1200) {
-                return
-            } else if(this.winW >= 1200){
-                const bannerTop = this.$refs.indexHealthBanner.offsetTop;
-                const scrollY = window.scrollY;
-    
-                if (scrollY >= bannerTop) {
-                    const veg04 = this.$refs.veg04;
-                    const veg04Right = veg04.getBoundingClientRect().right;
-                    const halfWindowWidth = this.winW / 2;
-                    const vegs = document.querySelectorAll('[class*="veg0"]')
-                    vegs.forEach((item, index) => {
-                        const itemLeft = item.getBoundingClientRect().left;
-                        const itemRight = item.getBoundingClientRect().right;
-                        console.log(`${index+1}:${itemRight}`);
-                        if (itemLeft < halfWindowWidth) {
+            const bannerTop = this.$refs.indexHealthBanner.offsetTop;
+            const scrollY = window.scrollY;
+            const halfWindowWidth = this.winW / 2;
+            const halfWindowH = window.innerHeight / 2;
+            const vegs = document.querySelectorAll('[class*="veg0"]')
+            if (scrollY >= bannerTop) {
+                if (this.winW < 1200) {
+                    // return
+                    vegs.forEach((item) => {
+                        const itemTop = item.getBoundingClientRect().top;
+                        const itemBottom = item.getBoundingClientRect().bottom;
+                        if (itemTop < halfWindowH) {
                             item.classList.add('show_text')
                         }
-                        if (itemRight < halfWindowWidth || itemLeft>halfWindowWidth) {
-                            console.log(`第${index+1}離開`);
+                        if (itemTop > halfWindowH || itemBottom < halfWindowH){
                             item.classList.remove('show_text')
                         }
                     })
-                    
+                } else if (this.winW >= 1200) {
+                    const veg04 = this.$refs.veg04;
+                    const veg04Right = veg04.getBoundingClientRect().right;
+                    vegs.forEach((item) => {
+                        const itemLeft = item.getBoundingClientRect().left;
+                        const itemRight = item.getBoundingClientRect().right;
+                        if (itemLeft < halfWindowWidth) {
+                            item.classList.add('show_text')
+                        }
+                        if (itemRight < halfWindowWidth || itemLeft > halfWindowWidth) {
+                            item.classList.remove('show_text')
+                        }
+                    })
+
                     if (veg04Right > halfWindowWidth) {
                         this.scrollY = scrollY - bannerTop;
                         this.translate = this.scrollY;
@@ -110,11 +123,10 @@ export default ({
                         }
                     }
 
-                    // 更新上一次滾動的位置
-                    this.prevScrollY = scrollY;
                 }
-            }
-
+                // 更新上一次滾動的位置
+                this.prevScrollY = scrollY;
+            }    
         },
 
     },
