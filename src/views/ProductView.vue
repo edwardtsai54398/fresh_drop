@@ -4,9 +4,9 @@
             <!-- 產品介紹 -->
             <section class="main">
                 <div class="main_title">
-                    <button class="btn_s btn_left">
-                        <span>back</span>
+                    <button class="btn_s btn_left" @click="goBack">
                         <font-awesome-icon icon="fa-solid fa-arrow-left" />
+                        <span>Back</span>
                     </button>
                     <div class="title">
                         <div class="type">

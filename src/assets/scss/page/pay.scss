@@ -424,7 +424,8 @@
 }
 
 .city_select,
-input[type="text"] {
+input[type="text"],
+input[type="tel"] {
     width: 100%;
 }
 
@@ -589,7 +590,7 @@ input.security_code {
     }
 }
 
-.note {
+.remark {
     margin-top: $sp5;
     color: rgba(0, 0, 0, 0.5);
     max-width: 400px;
