@@ -496,15 +496,12 @@
 
 //斷點 768px
 @include pad-V {
-    main {
-        padding-bottom: 0px;
-    }
-
     .bgc {
         background-image: url(@/assets/images/icon_bg/bg_lightgreenWave.svg);
         background-repeat: no-repeat;
         background-position: 0% 100%;
         background-size: 100%;
+        margin-bottom: -80px;
         z-index: -1;
     }
 
