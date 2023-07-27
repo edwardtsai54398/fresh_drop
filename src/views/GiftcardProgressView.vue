@@ -24,7 +24,7 @@
             </div>
             <form>
                 <!-- step 1 -->
-                <section v-if="step == 1" class="form-container">
+                <section v-if="step == 1" class="form_container">
                     <div class="decoration-tomato pic">
                         <img src="../assets/images/source/tomato.png" alt="">
                     </div>
@@ -50,11 +50,11 @@
                         <span v-if="!recipient.email">請輸入收禮人會員信箱<br></span>
                         <span v-if="!recipient.name">請輸入收禮人姓名</span>
                     </div>
-                    <button @click="validateAndNext($event)" class="nextstep btn_s">下一步，挑選禮物卡</button>
+                    <button @click="validateAndNext($event)" class="nextstep btn_xs">下一步，挑選禮物卡</button>
                 </section>
 
                 <!-- step 2 -->
-                <section v-if="step == 2" class="form-container">
+                <section v-if="step == 2" class="form_container">
                     <!-- 桌機板蔬果裝飾 -->
                     <div class="decoration-tomato pic">
                         <img src="../assets/images/source/tomato.png" alt="">
@@ -96,12 +96,12 @@
                         <br>＊檔案不得大於 1MB，小於 100K。
                     </p>
 
-                    <button @click="nextStep" class="nextstep btn_s">下一步，客製禮物卡</button>
+                    <button @click="nextStep" class="nextstep btn_xs">下一步，客製禮物卡</button>
                     <button @click="previousStep" class="previousstep btn_flat btn_xs">上一步</button>
                 </section>
 
                 <!-- step 3 -->
-                <section v-if="step == 3" class="form-container">
+                <section v-if="step == 3" class="form_container">
                     <!-- 桌機板蔬果裝飾 -->
                     <div class="decoration-tomato pic">
                         <img src="../assets/images/source/tomato.png" alt="">
@@ -166,9 +166,7 @@
                     <div class="add-text-content">
                         <div class="text-input">
                             <input v-model="text" type="text" placeholder="請輸入訊息" />
-                            <font-awesome-icon icon="fa-solid fa-arrow-turn-down" rotation=90 style="color: #1f8d61; position: absolute;
-                                     top: 13px;
-                                    right: 6px;" />
+                            <font-awesome-icon icon="fa-solid fa-arrow-turn-down" rotation=90 />
 
                         </div>
 
@@ -177,13 +175,13 @@
 
                     </div>
 
-                    <button @click="nextStep" class="nextstep btn_s">下一步，選擇禮物卡金額</button>
+                    <button @click="nextStep" class="nextstep btn_xs">下一步，選擇禮物卡金額</button>
                     <button @click="previousStep" class="previousstep btn_flat btn_xs">上一步</button>
 
                 </section>
 
                 <!-- step 4 -->
-                <section v-if="step == 4" class="form-container">
+                <section v-if="step == 4" class="form_container">
                     <!-- 桌機板蔬果裝飾 -->
                     <div class="decoration-tomato pic">
                         <img src="../assets/images/source/tomato.png" alt="">
@@ -206,13 +204,13 @@
 
                     </div>
 
-                    <button @click="nextStep" class="nextstep btn_s">下一步</button>
+                    <button @click="nextStep" class="nextstep btn_xs">下一步</button>
                     <button @click="previousStep" class="previousstep btn_flat btn_xs">上一步</button>
                 </section>
 
                 <!-- step 5 -->
 
-                <section v-if="step == 5" class="form-container">
+                <section v-if="step == 5" class="form_container">
                     <!-- 桌機板蔬果裝飾 -->
                     <div class="decoration-tomato pic">
                         <img src="../assets/images/source/tomato.png" alt="">

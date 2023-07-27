@@ -23,7 +23,7 @@
                 <div class="buyGiftcard_text">
                     <p>{{ item.text }}</p>
                     <!-- 手機板按鈕 -->
-                    <button class="btn_arrow btn_s" id="giftcard_button_mobile"><router-link :to="item.link" style="color:#fff">{{ item.btn }}
+                    <button class="btn_arrow btn_xs" id="giftcard_button_mobile"><router-link :to="item.link" style="color:#fff">{{ item.btn }}
                         </router-link></button>
                     <!-- 768以上按鈕 (有箭頭)-->
                     <button id="giftcard_button_desktop" class="btn_arrow" href="" :class="{ 'btn_flat': isFlat, [`btn_${s}`]: true }" @mouseover="hover"
@@ -67,7 +67,7 @@ export default {
                 title: '餘額查詢',
                 text: '已經有禮物卡？請登入您的會員帳號，至會員中心查詢您的禮物卡餘額、使用狀況。',
                 btn: '會員中心',
-                link: '#'
+                link: '/member'
             }
             ],
             bgcShape: {
