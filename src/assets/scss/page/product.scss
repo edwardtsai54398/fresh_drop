@@ -476,19 +476,47 @@
         }
 
         .upload_file {
+
+            .file_btn {
+
+                z-index: 10;
+                width: 100%;
+                height: 100%;
+
+                .file_text {
+                    font-size: $s-font;
+                    background-color: #ffffffaa;
+                    padding: 6px 20px;
+                    border-radius: 20px;
+                    display: inline-block;
+                }
+            }
+
             width: 100%;
-            height: 200px;
+            height: 250px;
             text-align: center;
             border: 2px solid $secondary;
             border-radius: $m-br;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
 
             &::placeholder {
                 width: 100px;
             }
+
+            .upload_pic {
+                position: absolute;
+
+                img {
+                    width: 100%;
+                }
+            }
         }
+
+
 
         .text_wrap {
             width: 100%;
@@ -716,7 +744,7 @@
             }
 
             .upload_btn {
-                font-size: $l-font;
+                font-size: $m-font;
             }
         }
     }
@@ -768,7 +796,7 @@
         padding-bottom: 80px;
 
         >div>p {
-            font-size: $l-font;
+            font-size: $m-font;
         }
 
         .wrap {

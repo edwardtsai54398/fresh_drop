@@ -239,11 +239,23 @@
             <div class="upload_wrap">
                 <div>
                     <div class="upload_file">
-                        <input type="file" @change="handleFileUpload" />
-                        <button @click="uploadFile">
-                            <!-- <span><i class="fa-regular fa-image"></i></span>
-                                <span>點擊上傳照片</span> -->
+                        <button class="file_btn" @click="triggerFileInput">
+                            <p class="file_text">點擊上傳照片</p>
                         </button>
+                        <input
+                            id="fileInput"
+                            type="file"
+                            ref="fileInput"
+                            @change="handleFileUpload"
+                            style="display: none"
+                        />
+                        <div class="upload_pic" v-if="previewImage">
+                            <img
+                                class="pic"
+                                :src="previewImage"
+                                alt="Preview"
+                            />
+                        </div>
                     </div>
                     <div class="text_wrap">
                         <textarea
@@ -253,7 +265,7 @@
                         ></textarea>
                     </div>
                 </div>
-                <button @click="uploadText" class="upload_btn btn_m">
+                <button @click="uploadText" class="upload_btn btn_s">
                     發布心得
                 </button>
             </div>
@@ -396,6 +408,8 @@ export default defineComponent({
                 },
             },
             text: "",
+            //上傳圖片
+            previewImage: null,
         };
     },
     created() {
@@ -452,6 +466,26 @@ export default defineComponent({
             this.isExpendReport = false;
             this.aaa = false;
         },
+        goBack() {
+            window.history.back();
+        },
+        //上傳圖片
+        triggerFileInput() {
+            this.$refs.fileInput.click(); // 触发文件输入框的点击事件
+        },
+        handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    this.previewImage = e.target.result; // 将图片 base64 编码设置为预览图片
+                };
+                reader.readAsDataURL(file);
+            } else {
+                this.previewImage = null;
+            }
+        },
+        // -------
     },
     computed: {
         filteredProductList() {
