@@ -14,11 +14,11 @@
                         <label for="text">性別</label>
                         <div class="check">
                             <div class="man">
-                                <input type="checkbox" id="check" />
+                                <input type="radio" name="sex" />
                                 <label for="check">男</label>
                             </div>
                             <div class="female">
-                                <input type="checkbox" id="check" />
+                                <input type="radio" name="sex" />
                                 <label for="check">女</label>
                             </div>
                         </div>
@@ -60,12 +60,15 @@
                 <div class="text_wrap">
                     <label for="text">商品寄送地址</label>
                     <div class="address_wrap">
-                        <input type="text" placeholder="城市" id="" />
-                        <input type="text" placeholder="行政區" id="" />
+                        <div class="city">
+                            <input type="text" placeholder="城市" id="" />
+                        </div>
+                        <div class="state"><input type="text" placeholder="行政區" id="" />
+                        </div>
                     </div>
                     <input type="text" placeholder="地址" id="" />
                 </div>
-            <div class="confirm_btn"><a class="btn_s" @click="confirm">確認</a></div>
+            <div class="submit_btn"><a class="btn_s" @click="submit">送出</a></div>
         </div>
 
         <!-- </router-view> -->
