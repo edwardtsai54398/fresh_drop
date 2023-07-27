@@ -1,14 +1,5 @@
-.framer p {
-    text-align: center;
-    color: $primary;
-    padding: 30px;
-    font-weight: bolder;
-    font-size: $s-font;
-}
-
-// 
 .index_farmer_pic {
-    width: 250px;
+    // width: 250px;
 }
 
 .framer p {
@@ -28,35 +19,44 @@
     /* 或者你想要設定的適當寬度 */
 }
 
-.carousel_wrap {
-    padding-bottom: 100px;
-}
+
 
 
 //輪播箭頭
 
 .framer {
-    .carousel {
+    .carousel_wrap {
+        max-width: 1200px;
+        margin: 100px auto 100px;
+
+        .carousel__next,
         .carousel__prev {
             background-color: #fff;
             border: 1px solid $primary;
             border-radius: 50%;
+            top: 42%;
+            transform: translateY(-50%);
 
             .carousel__icon {
                 fill: $primary;
             }
         }
 
-        .carousel__next {
-            background-color: #fff;
-            border: 1px solid $primary;
-            border-radius: 50%;
+        .farmer_card {
+            .index_farmer_pic {
 
-            .carousel__icon {
-                fill: $primary;
+                width: 350px;
             }
+        }
+
+
+    }
+}
+
+@include pad-V {
+    .farmer_name {
+        p {
+            font-size: $m-font;
         }
     }
-
-
 }
