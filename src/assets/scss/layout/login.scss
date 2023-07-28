@@ -1,4 +1,4 @@
-.login-container{
+.login-modal{
     display: none;
     position: fixed;
     z-index: 21;
@@ -23,7 +23,7 @@
     }
 }
 @include pad-H{
-    .login-container{
+    .login-modal{
 
         grid-template-columns: auto 40%;
         grid-template-rows: repeat(2, auto);
@@ -95,7 +95,7 @@
         text-decoration: underline;
     }
 }
-.login-container{
+.login-modal{
 
     p{
         text-align: center;
