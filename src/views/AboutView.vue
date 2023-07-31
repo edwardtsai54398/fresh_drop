@@ -65,13 +65,6 @@
       </form>
     </div>
   </div>
-      <div class="index_hedgehog">
-        <img src="../assets/images/index/index_qa.png" alt="">
-      </div> 
-      <div class="index_door">
-        <img src="../assets/images/index/qa_door.png" alt="">
-      </div> 
-  </div> -->
 </template>
 
 
