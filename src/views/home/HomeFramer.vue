@@ -1,6 +1,11 @@
 <template>
   <section class="framer">
-    <p>｜小農介紹｜</p>
+    <p class="title">｜小農介紹｜</p>
+    <div class="introduce">
+      <p>
+        我們深感榮幸地與在地小農合作，致力於提供最新鮮、健康、經濟可行的農產品。我們認識到在地小農的重要性，他們是我們社區不可或缺的一部分，為我們提供美味的農產品，同時也保護了我們的土地與環境。並將產品直接送到我們的餐桌上。這樣的合作模式不僅縮短了農產品的運輸距離，減少了碳排放，也確保了食物的新鮮度和品質。
+      </p>
+    </div>
     <Carousel class="carousel_wrap" v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">
       <Slide v-for="(item, index) in farmerImg" :key="index">
         <div class="farmer_card">
