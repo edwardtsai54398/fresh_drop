@@ -66,7 +66,7 @@ $input-h: 32px;
 .order_history{
     margin-top: $sp3;
 }
-.order{
+.order_item{
     margin-top: $sp2;
     border: 2px solid $primary;
     border-radius: $m-br;
@@ -74,10 +74,9 @@ $input-h: 32px;
     padding: $sp2;
     &.collapse{
         position: relative;
-        .shop_item:not(:first-child){
+        .shop_item:not(:nth-child(1)){
             opacity: 0;
             visibility: hidden;
-            // display: none;
             position: absolute;
             transition: opacity 0s , visibility 0s;
         }
@@ -114,14 +113,14 @@ $input-h: 32px;
 }
 
 @include desktop{
-    .order{
+    .order_item{
         &.collapse{
             .shop_item{
                 opacity: 0;
                 visibility: hidden;
                 position: absolute;
                 transition: opacity 0s , visibility 0s;
-                &:first-child, &:nth-child(2){
+                &:nth-child(1), &:nth-child(2){
                     opacity: 1;
                     visibility: visible;
                     position: relative;

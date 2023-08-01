@@ -1,0 +1,57 @@
+.verify_container{
+    position: relative;
+    overflow: hidden;
+}
+.email_container, .vertify_container{
+    height: calc(100% - 48px);
+    width: 100%;
+    
+    padding-top: 100px;
+    label{
+        margin-left: $sp2;
+        font-size: $s-font;
+    }
+    input[type="phone"],
+    input[type="email"]{
+        width: 100%;
+        margin-top: $sp1;
+    }
+    p{
+        font-size: $xs-font;
+        margin-left: $sp2;
+    }
+    [class*="btn_"]{
+        margin-top: $sp3;
+        width: 100%;
+    }
+}
+.email_container p{
+    visibility: hidden;
+    color: $third;
+    &.show{
+        visibility: visible;
+    }
+}
+.vertify_container{
+    padding-left: $sp4;
+    padding-right: $sp4;
+    padding-bottom: $sp4;
+    background-color: $bg--;
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    transition: .3s;
+    &.open{
+        left: 0;
+    }
+}
+.vertify_btngroup{
+    margin-top: $sp3;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    [class*="btn_"]{
+        margin-top: 0;
+        width: fit-content;
+    }
+}

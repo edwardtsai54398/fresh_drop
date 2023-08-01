@@ -4,9 +4,9 @@
             <!-- 產品介紹 -->
             <section class="main">
                 <div class="main_title">
-                    <button class="btn_s btn_left">
-                        <span>back</span>
-                        <i class="fa-sharp fa-solid fa-arrow-left"></i>
+                    <button class="btn_s btn_left" @click="goBack">
+                        <span>Back</span>
+                        <font-awesome-icon icon="fa-solid fa-arrow-left" />
                     </button>
                     <div class="title">
                         <div class="type">
@@ -45,7 +45,7 @@
                             >
                                 <span class="number">{{ index + 1 }}</span>
                                 <div class="title_border">
-                                    <p class="title">{{ step.title }}</p>
+                                    <p class="title_step">{{ step.title }}</p>
                                 </div>
                                 <ul>
                                     <li
@@ -149,53 +149,21 @@
                     <div class="card">
                         <div class="pic pic_food">
                             <div class="dot_wrap">
-                                <!-- 檢舉按鈕 -->
+                                <!-- 更多按鈕 -->
                                 <div class="dot" @click="showReport(index)">
                                     <font-awesome-icon
                                         icon="fa-solid fa-ellipsis-vertical"
                                     />
                                 </div>
-                                <!-- 檢舉遮罩 -->
-                                <div
-                                    class="mask mask_report"
-                                    v-show="isInputReport"
-                                    @click="inputReport"
-                                ></div>
-                                <!-- 檢舉彈窗 -->
+                                <!-- 檢舉按鈕 -->
                                 <div class="report">
                                     <p
                                         class="text"
-                                        v-show="
-                                            currentProductIndex === index &&
-                                            aaa == true
-                                        "
-                                        @click="inputReport"
+                                        v-show="currentIndexForBtn === index"
+                                        @click="currentProductIndex = index"
                                     >
                                         檢舉
                                     </p>
-                                    <div class="content" v-show="isInputReport">
-                                        <div class="content_wrap">
-                                            <p class="title">檢舉原因</p>
-                                            <button
-                                                class="cross"
-                                                @click="inputReport"
-                                            >
-                                                <font-awesome-icon
-                                                    icon="fa-solid fa-xmark"
-                                                />
-                                            </button>
-                                            <div class="input">
-                                                <textarea
-                                                    v-model="text"
-                                                    placeholder="請輸入檢舉原因"
-                                                    class="report_text"
-                                                ></textarea>
-                                            </div>
-                                            <button class="btn_s report_btn">
-                                                確認送出
-                                            </button>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <img
@@ -220,8 +188,31 @@
                         </div>
                     </div>
                 </div>
+                <!-- 檢舉遮罩 -->
+                <div
+                    class="mask mask_report"
+                    v-show="isOpenPopup"
+                    @click="currentProductIndex = -1"
+                ></div>
+                <!-- 檢舉彈窗 -->
+                <div class="content_report" v-show="isOpenPopup">
+                    <div class="content_wrap">
+                        <p class="title">檢舉原因</p>
+                        <button class="cross" @click="currentProductIndex = -1">
+                            <font-awesome-icon icon="fa-solid fa-xmark" />
+                        </button>
+                        <div class="input">
+                            <textarea
+                                v-model="text"
+                                placeholder="請輸入檢舉原因"
+                                class="report_text"
+                            ></textarea>
+                        </div>
+                        <button class="btn_s report_btn">確認送出</button>
+                    </div>
+                </div>
             </div>
-            <button class="upload_out btn_l" @click="uploadExpend">
+            <button class="upload_out btn_m" @click="uploadExpend">
                 上傳烹煮心得
             </button>
         </section>
@@ -248,11 +239,23 @@
             <div class="upload_wrap">
                 <div>
                     <div class="upload_file">
-                        <input type="file" @change="handleFileUpload" />
-                        <button @click="uploadFile">
-                            <!-- <span><i class="fa-regular fa-image"></i></span>
-                                <span>點擊上傳照片</span> -->
+                        <button class="file_btn" @click="triggerFileInput">
+                            <p class="file_text">點擊上傳照片</p>
                         </button>
+                        <input
+                            id="fileInput"
+                            type="file"
+                            ref="fileInput"
+                            @change="handleFileUpload"
+                            style="display: none"
+                        />
+                        <div class="upload_pic" v-if="previewImage">
+                            <img
+                                class="pic"
+                                :src="previewImage"
+                                alt="Preview"
+                            />
+                        </div>
                     </div>
                     <div class="text_wrap">
                         <textarea
@@ -262,7 +265,7 @@
                         ></textarea>
                     </div>
                 </div>
-                <button @click="uploadText" class="upload_btn btn_m">
+                <button @click="uploadText" class="upload_btn btn_s">
                     發布心得
                 </button>
             </div>
@@ -287,53 +290,21 @@
                     >
                         <div class="pic pic_food">
                             <div class="dot_wrap">
-                                <!-- 檢舉按鈕 -->
+                                <!-- 更多按鈕 -->
                                 <div class="dot" @click="showReport(index)">
                                     <font-awesome-icon
                                         icon="fa-solid fa-ellipsis-vertical"
                                     />
                                 </div>
-                                <!-- 檢舉遮罩 -->
-                                <div
-                                    class="mask mask_report"
-                                    v-show="isInputReport"
-                                    @click="inputReport"
-                                ></div>
-                                <!-- 檢舉彈窗 -->
+                                <!-- 檢舉按鈕 -->
                                 <div class="report">
                                     <p
                                         class="text"
-                                        v-show="
-                                            currentProductIndex === index &&
-                                            aaa == true
-                                        "
-                                        @click="inputReport"
+                                        v-show="currentIndexForBtn === index"
+                                        @click="currentProductIndex = index"
                                     >
                                         檢舉
                                     </p>
-                                    <div class="content" v-show="isInputReport">
-                                        <div class="content_wrap">
-                                            <p class="title">檢舉原因</p>
-                                            <button
-                                                class="cross"
-                                                @click="inputReport"
-                                            >
-                                                <font-awesome-icon
-                                                    icon="fa-solid fa-xmark"
-                                                />
-                                            </button>
-                                            <div class="input">
-                                                <textarea
-                                                    v-model="text"
-                                                    placeholder="請輸入檢舉原因"
-                                                    class="report_text"
-                                                ></textarea>
-                                            </div>
-                                            <button class="btn_s report_btn">
-                                                確認送出
-                                            </button>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <img
@@ -342,7 +313,6 @@
                                 @click="hideReport"
                             />
                         </div>
-
                         <div class="user">
                             <div class="wrap">
                                 <div class="pic pic_people">
@@ -357,6 +327,29 @@
                             </div>
                             <p class="message">{{ item.message }}</p>
                         </div>
+                    </div>
+                </div>
+                <!-- 檢舉遮罩 -->
+                <div
+                    class="mask mask_report"
+                    v-show="isOpenPopup"
+                    @click="currentProductIndex = -1"
+                ></div>
+                <!-- 檢舉彈窗 -->
+                <div class="content_report" v-show="isOpenPopup">
+                    <div class="content_wrap">
+                        <p class="title">檢舉原因</p>
+                        <button class="cross" @click="currentProductIndex = -1">
+                            <font-awesome-icon icon="fa-solid fa-xmark" />
+                        </button>
+                        <div class="input">
+                            <textarea
+                                v-model="text"
+                                placeholder="請輸入檢舉原因"
+                                class="report_text"
+                            ></textarea>
+                        </div>
+                        <button class="btn_s report_btn">確認送出</button>
                     </div>
                 </div>
             </div>
@@ -384,7 +377,7 @@ import "vue3-carousel/dist/carousel.css";
 let resizeEvent = null;
 export default defineComponent({
     //輪播圖設定
-    name: "Break-points",
+    name: "ProductView",
     components: {
         Carousel,
         Slide,
@@ -398,6 +391,7 @@ export default defineComponent({
             isExpendVisible: false,
             isExpendUpload: false,
             currentProductIndex: -1,
+            currentIndexForBtn: -1,
             isInputReport: false,
             // isExpendReport: false,
             mobile: false,
@@ -413,9 +407,13 @@ export default defineComponent({
                     snapAlign: "center",
                 },
             },
+            text: "",
+            //上傳圖片
+            previewImage: null,
         };
     },
     created() {
+        this.newProduct = this.$store.state.productDetil;
         this.setWidth(window.innerWidth);
         resizeEvent = (e) => this.setWidth(e.target.innerWidth);
         window.addEventListener("resize", resizeEvent);
@@ -453,13 +451,14 @@ export default defineComponent({
             this.isExpendReport = !this.isExpendReport;
         },
         showReport(index) {
-            this.currentProductIndex = index;
             this.isExpendReport = true;
             this.aaa = true;
+            this.currentIndexForBtn = index;
         },
         hideReport() {
             this.currentProductIndex = -1;
             this.isExpendReport = false;
+            this.currentIndexForBtn = -1;
         },
         // 檢舉原因輸入
         inputReport() {
@@ -467,6 +466,26 @@ export default defineComponent({
             this.isExpendReport = false;
             this.aaa = false;
         },
+        goBack() {
+            window.history.back();
+        },
+        //上傳圖片
+        triggerFileInput() {
+            this.$refs.fileInput.click(); // 触发文件输入框的点击事件
+        },
+        handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    this.previewImage = e.target.result; // 将图片 base64 编码设置为预览图片
+                };
+                reader.readAsDataURL(file);
+            } else {
+                this.previewImage = null;
+            }
+        },
+        // -------
     },
     computed: {
         filteredProductList() {
@@ -484,6 +503,21 @@ export default defineComponent({
                     (item) => item.id >= 1 && item.id <= 4
                 );
             }
+        },
+        currentProduct() {
+            return (
+                this.productShare.find(
+                    (item, idx) => idx === this.currentProductIndex
+                ) ?? {}
+            );
+        },
+        isOpenPopup() {
+            return this.currentProductIndex !== -1;
+        },
+    },
+    watch: {
+        currentProductIndex(nVal) {
+            if (nVal === -1) this.currentIndexForBtn = -1;
         },
     },
 });

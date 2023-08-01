@@ -40,13 +40,6 @@
             </div>
             <section id="chickenSection">
                 <div class="meat_card_box">
-                    <!-- 四個角的圓形 -->
-                    <!-- <div class="circle_box">
-                        <div class="circle_lt"></div>
-                        <div class="circle_rt"></div>
-                        <div class="circle_lb"></div>
-                        <div class="circle_rb"></div>
-                    </div> -->
                     <div class="meat_title">
                         <h5>{{ chicken.title }}</h5>
                     </div>
@@ -130,13 +123,6 @@
             </div>
             <section id="porkSection">
                 <div class="meat_card_box">
-                    <!-- 四個角的圓形 -->
-                    <!-- <div class="circle_box">
-                        <div class="circle_lt"></div>
-                        <div class="circle_rt"></div>
-                        <div class="circle_lb"></div>
-                        <div class="circle_rb"></div>
-                    </div> -->
                     <div class="meat_title">
                         <h5>{{ pork.title }}</h5>
                     </div>
@@ -214,13 +200,6 @@
             </div>
             <section id="beefSection">
                 <div class="meat_card_box">
-                    <!-- 四個角的圓形 -->
-                    <!-- <div class="circle_box">
-                        <div class="circle_lt"></div>
-                        <div class="circle_rt"></div>
-                        <div class="circle_lb"></div>
-                        <div class="circle_rb"></div>
-                    </div> -->
                     <div class="meat_title">
                         <h5>{{ beef.title }}</h5>
                     </div>
@@ -301,13 +280,6 @@
             </div>
             <section id="goatSection">
                 <div class="meat_card_box">
-                    <!-- 四個角的圓形 -->
-                    <!-- <div class="circle_box">
-                        <div class="circle_lt"></div>
-                        <div class="circle_rt"></div>
-                        <div class="circle_lb"></div>
-                        <div class="circle_rb"></div>
-                    </div> -->
                     <div class="meat_title">
                         <h5>{{ goat.title }}</h5>
                     </div>
@@ -391,13 +363,6 @@
             </div>
             <section id="seafoodSection">
                 <div class="meat_card_box">
-                    <!-- 四個角的圓形 -->
-                    <!-- <div class="circle_box">
-                        <div class="circle_lt"></div>
-                        <div class="circle_rt"></div>
-                        <div class="circle_lb"></div>
-                        <div class="circle_rb"></div>
-                    </div> -->
                     <div class="meat_title">
                         <h5>{{ seafood.title }}</h5>
                     </div>

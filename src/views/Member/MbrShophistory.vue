@@ -17,7 +17,7 @@
       </div>
     </div>
     <ul class="order_history">
-      <li class="order collapse" v-for="(order, ordIndex) in orderHistory" 
+      <li class="order_item collapse" v-for="(order, ordIndex) in orderHistory" 
       :key="order.ordNum">
         <div class="order_info">
           <p>訂單金額：${{ order.money }}</p>
@@ -65,7 +65,7 @@
       },
       methods: {
         shoplistToggle(i) {
-          const orderDOM = document.querySelectorAll('.order')
+          const orderDOM = document.querySelectorAll('.order_item')
           orderDOM[i].classList.toggle('collapse')
           this.$emit('toggle')
         }
@@ -73,7 +73,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     @import "@/assets/scss/all.scss";
     @import "@/assets/scss/page/member/mbrShophistory.scss";
 </style>

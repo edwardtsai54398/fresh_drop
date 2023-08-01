@@ -4,34 +4,76 @@
         top: 0;
     }
 }
-.title{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.info_edit_btn{
-    i{
-        font-size: $xs-font;
-        margin: 4px;
+.member_info{
+    .title{
+        display: flex;
+        align-items: center;
+        h5{
+            margin-right: auto;
+        }
     }
-}
-.info{
-    padding: 0 $sp1;
-}
-.info_item{
-    font-size: $xs-font;
-    margin-top: $sp2;
-    input{
-        display: inline;
-        background-color: transparent;
-        border: none;
-        padding: 0;
-        height: fit-content;
+    .edit_store{
+        opacity: 0;
+        visibility: hidden;
+        transition: .3s;
+        &.show{
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    .info_edit_btn{
+        margin-left: $sp1;
+        &.unclickable{
+            border-color: #aaa;
+            cursor: auto;
+            svg{
+                color: #aaa;
+            }
+            &:hover{
+                background-color: transparent;
+            }
+            &::before{
+                background-color: transparent;
+            }
+        }
+        
+    }
+    .info{
+        padding: 0 $sp1;
+    }
+    .info_item{
+        font-size: $xs-font;
+        margin-top: $sp2;
+        display: flex;
+        align-items: center;
+
+        input{
+            padding: 0 $sp1;
+            height: 36px;
+            &.noedit{
+                background-color: transparent;
+                border: none;
+                padding: 0;
+                height: fit-content;
+            }
+        }
+    }
+    .address_info_item{
+        align-items: flex-start;
+        label{
+            flex-shrink: 0;
+        }
+        input{
+            flex-grow: 1;
+        }
     }
 }
 @include pad-H{
-    .info{
-        padding: 0 $sp3;
+    .member_info{
+
+        .info{
+            padding: 0 $sp3;
+        }
     }
 }
 

@@ -15,14 +15,14 @@ $btn_size:(xs: $xs-font,
     color: #fff;
     background-color: $primary;
     box-shadow: 0px 3px 0px #000;
-
+    transform: translate(0px, -3px);
     svg {
         color: #fff;
     }
 
     &:hover {
         box-shadow: none;
-        transform: translate(0px, 3px);
+        transform: translate(0px, 0px);
     }
 }
 
@@ -53,14 +53,6 @@ $value in $btn_size {
     }
 }
 
-// .btn_arrow{
-//     display: flex;
-//     align-items: center;
-//     img[src*="arrow_long"]{
-//         margin-left: 20px;
-//     }
-// }
-
 .btn_icon {
     aspect-ratio: 1/1;
     box-shadow: 0px 2px 0px #000;
@@ -82,6 +74,7 @@ $value in $btn_size {
     color: $primary;
     position: relative;
     overflow: hidden;
+    transform: translate(0px, 0px);
 
     &::before {
         content: '';
@@ -102,7 +95,6 @@ $value in $btn_size {
     }
 
     &:hover {
-        transform: translate(0px, 0px);
         background-color: $primary;
         color: #fff;
 
@@ -120,6 +112,12 @@ $value in $btn_size {
     svg {
         color: $primary;
     }
+
+    &:hover {
+        svg {
+            color: #fff;
+        }
+    }
 }
 
 .btn_circle {
@@ -136,12 +134,11 @@ $value in $btn_size {
 
     span {
         position: absolute;
-        transition: .3s;
+        color: #fff;
+        transition: .5s;
+
     }
 
-    i {
-        line-height: 1.5;
-    }
 
     &:hover {
         span {
@@ -156,6 +153,7 @@ $value in $btn_size {
 
     span {
         right: 100%;
+        margin-left: $sp1;
     }
 
     &:hover {
@@ -180,7 +178,7 @@ $value in $btn_size {
 
     &:hover {
         span {
-            left: 0;
+            left: 10%;
         }
 
         &.btn_flat::before {
@@ -192,6 +190,9 @@ $value in $btn_size {
 input[type="email"],
 input[type="text"],
 input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="phone"],
 select {
     display: block;
     font-size: $xs-font;
@@ -208,11 +209,30 @@ select {
     }
 }
 
-.normal_select {
+input[type="number"] {
+    appearance: none;
+    margin: 0;
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+
+    &:hover,
+    &:focus {
+        appearance: none;
+        margin: 0;
+        -moz-appearance: textfield;
+        -webkit-appearance: none;
+        -ms-appearance: none;
+    }
+}
+
+select {
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
     -ms-appearance: none;
+    background: url('@/assets/images/icon_bg/arrowDown.svg') 95% center no-repeat scroll transparent;
+    background-size: 10px 10px;
 }
 
 input.search_bar {
@@ -236,5 +256,24 @@ input.search_bar {
     &.none {
         opacity: 0;
         visibility: hidden;
+    }
+}
+
+//滾軸
+%scrollbar_style{
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $secondary;
+        width: 5px;
+        border-radius: 8px;
     }
 }

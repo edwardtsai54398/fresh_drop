@@ -1,7 +1,6 @@
 <template>
     <div class="container pay_container">
         <h4 class="pay_title">| 結帳 |</h4>
-
         <div class="cart_content_all">
             <div class="cart_title">
                 <h6>商品名稱</h6>
@@ -9,11 +8,7 @@
                 <h6>總計</h6>
             </div>
             <ul class="single_cart_content" v-if="cartList.length == 1">
-                <li
-                    class="cart_item"
-                    v-for="item in cartList[0]"
-                    :key="item.number"
-                >
+                <li class="cart_item" v-for="item in cartList[0]" :key="item.number">
                     <div class="dishes">
                         <div class="dishes_pic">
                             <div class="amount">{{ item.amount }}</div>
@@ -32,25 +27,15 @@
             </ul>
             <div class="multi_cart_content" v-if="cartList.length > 1">
                 <carousel :items-to-show="1" class="weeks">
-                    <slide
-                        v-for="(slide, index) in cartList"
-                        :key="slide"
-                        class="one_week"
-                    >
+                    <slide v-for="(slide, index) in cartList" :key="slide" class="one_week">
                         <div class="week_name">WEEK{{ index + 1 }}</div>
                         <ul class="cart_list">
-                            <li
-                                class="cart_item"
-                                v-for="item in slide"
-                                :key="item.name"
-                            >
+                            <li class="cart_item" v-for="item in slide" :key="item.name">
                                 <div class="pic dishes_pic">
                                     <img :src="item.img" alt="" />
                                 </div>
-
                                 <div class="category">{{ item.category }}</div>
                                 <div class="name">{{ item.name }}</div>
-
                                 <div class="amount">X{{ item.amount }}</div>
                             </li>
                         </ul>
@@ -61,36 +46,43 @@
                 </carousel>
 
                 <div class="price">200元</div>
-                <div class="total_price">{{calcTotalPrice}}元</div>
+                <div class="total_price">{{ calcTotalPrice }}元</div>
             </div>
-            <div class="gift_cart_content" v-if="giftBuy">
+            <div class="gift_cart_content" v-if="giftBuy.name">
                 <div class="gift_item">
                     <div class="gift_pic pic">
-                        <img :src="giftBuy.img" alt="">
+                        <img :src="giftBuy.img" alt="" />
                     </div>
                     <div class="gift_info">
-                        <p>禮物卡樣式：{{ giftBuy.type }}</p>
-                        <p>收禮人：{{ giftBuy.sendTo }}</p>
+                        <!-- <p>禮物卡樣式：{{ giftBuy.type }}</p> -->
+                        <p>收禮人：{{ giftBuy.name }}</p>
                     </div>
                 </div>
-                <div class="price">{{giftBuy.money}}元</div>
-                <div class="total_price">{{giftBuy.money}}元</div>
+                <div class="price">{{ giftBuy.money }}元</div>
+                <div class="total_price">{{ giftBuy.money }}元</div>
             </div>
         </div>
-        <button class="btn_s btn_flat keep_shopping" @click="fetchProduct">
-            繼續選購
-        </button>
+        <button class="btn_s btn_flat keep_shopping" @click.prevent="$router.go(-1)">繼續選購</button>
         <div class="calc_pay">
             <div class="calc_wrap">
-                <span>商品金額</span><span>{{ calcTotalPrice }}元</span>
+                <span>商品金額</span>
+                <span>{{ calcTotalPrice }}元</span>
             </div>
-            <div class="calc_wrap" v-show="!giftBuy"><span>禮物卡折抵</span><span>-元</span></div>
-            <div class="calc_wrap" v-show="cartList.length > 1"><span>優惠折抵</span><span>-{{discount()}}元</span></div>
             <div class="calc_wrap" v-show="!giftBuy">
-                <span>運費</span><span>{{ freightCalc() }}元</span>
+                <span>禮物卡折抵</span>
+                <span>-元</span>
+            </div>
+            <div class="calc_wrap" v-show="cartList.length > 1">
+                <span>優惠折抵</span>
+                <span>-{{ discount() }}元</span>
+            </div>
+            <div class="calc_wrap" v-show="!giftBuy">
+                <span>運費</span>
+                <span>{{ freightCalc() }}元</span>
             </div>
             <div class="calc_total">
-                <span>合計</span><span>{{ calcTotalPrice + freightCalc() - discount() }}元</span>
+                <span>合計</span>
+                <span>{{ calcTotalPrice + freightCalc() - discount() }}元</span>
             </div>
         </div>
 
@@ -98,12 +90,7 @@
             <fieldset class="pay_info">
                 <legend>收件人資訊</legend>
                 <div class="radio_wrap">
-                    <input
-                        type="radio"
-                        name="mem_info"
-                        id="mem_info"
-                        class="circle"
-                    />
+                    <input type="radio" name="mem_info" id="mem_info" class="circle" />
                     <label for="mem_info">同會員資料</label>
                 </div>
                 <div class="input_group">
@@ -112,43 +99,28 @@
                             <input type="text" placeholder="請輸入姓名" />
                         </div>
                         <div class="col-6">
-                            <input type="text" placeholder="請輸入電話" />
+                            <input type="tel" placeholder="請輸入電話" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            <select
-                                name=""
-                                id="sent_city"
-                                class="city_select normal_select"
-                            >
-                                <option value="" disabled selected>
-                                    請選擇縣市
-                                </option>
-                                <option
-                                    value=""
-                                    v-for="city in twDistrict"
-                                    :key="city.name"
-                                >
+                            <select name="" id="sent_city" class="city_select" @change="changeDistrict($event)">
+                                <!-- <font-awesome-icon icon="fa-solid fa-chevron-down" size="s"/> -->
+                                <option value="none" disabled selected>請選擇縣市</option>
+                                <option v-for="city in twDistrict" :key="city.name" :value="city.name">
                                     {{ city.name }}
                                 </option>
                             </select>
                         </div>
                         <div class="col-6">
-                            <select
-                                name=""
-                                id="sent_district"
-                                class="city_select normal_select"
-                            >
-                                <option value="" disabled selected>
-                                    請選擇行政區
-                                </option>
+                            <select name="" id="sent_district" class="city_select">
+                                <option value="none" disabled selected>請選擇行政區</option>
                                 <option
-                                    value=""
-                                    v-for="city in twDistrict"
-                                    :key="city.name"
+                                    v-for="district in selectCityDistrict"
+                                    :key="district.name"
+                                    :value="district.name"
                                 >
-                                    {{ city.name }}
+                                    {{ district.name }}
                                 </option>
                             </select>
                         </div>
@@ -162,34 +134,19 @@
                 <div class="row">
                     <div class="col">
                         <div class="radio_wrap">
-                            <input
-                                type="radio"
-                                name="payment"
-                                id="credit"
-                                class="circle"
-                            />
+                            <input type="radio" name="payment" id="credit" class="circle" />
                             <label for="credit">信用卡</label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="radio_wrap">
-                            <input
-                                type="radio"
-                                name="payment"
-                                id="atm"
-                                class="circle"
-                            />
+                            <input type="radio" name="payment" id="atm" class="circle" />
                             <label for="atm">ATM轉帳</label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="radio_wrap">
-                            <input
-                                type="radio"
-                                name="payment"
-                                id="cash"
-                                class="circle"
-                            />
+                            <input type="radio" name="payment" id="cash" class="circle" />
                             <label for="cash">貨到付款</label>
                         </div>
                     </div>
@@ -197,57 +154,19 @@
                 <div class="credit_card" :class="{ flip_toB: !creditCardSide }">
                     <div class="a_side">
                         <div class="credit_16num">
-                            <input
-                                type="text"
-                                name=""
-                                id=""
-                                class="credit_4num"
-                                max="4"
-                            />
-                            <span> - </span>
-                            <input
-                                type="text"
-                                name=""
-                                id=""
-                                class="credit_4num"
-                                max="4"
-                            />
-                            <span> - </span>
-                            <input
-                                type="text"
-                                name=""
-                                id=""
-                                class="credit_4num"
-                                max="4"
-                            />
-                            <span> - </span>
-                            <input
-                                type="text"
-                                name=""
-                                id=""
-                                class="credit_4num"
-                                max="4"
-                            />
+                            <input type="tel" name="" id="" class="credit_4num" maxlength="4" @input="checkMax" />
+                            <span>-</span>
+                            <input type="tel" name="" id="" class="credit_4num" maxlength="4" @input="checkMax" />
+                            <span>-</span>
+                            <input type="tel" name="" id="" class="credit_4num" maxlength="4" @input="checkMax" />
+                            <span>-</span>
+                            <input type="tel" name="" id="" class="credit_4num" maxlength="4" @input="checkMax" />
                         </div>
-                        <img
-                            src="@/assets/images/icon_bg/credit_sensor.svg"
-                            alt=""
-                        />
-                        <input
-                            type="text"
-                            name=""
-                            id=""
-                            placeholder="請輸入信用卡上的姓名"
-                            class="holder_name"
-                        />
-                        <button
-                            class="toB_side_btn"
-                            @click="creditCardSide = false"
-                        >
-                            Back<img
-                                src="@/assets/images/icon_bg/return_icon.svg"
-                                alt=""
-                            />
+                        <img src="@/assets/images/icon_bg/credit_sensor.svg" alt="" />
+                        <input type="text" name="" id="" placeholder="請輸入信用卡上的姓名" class="holder_name" />
+                        <button class="toB_side_btn" @click.prevent="creditCardSide = false">
+                            Back
+                            <img src="@/assets/images/icon_bg/return_icon.svg" alt="" />
                         </button>
                     </div>
                     <div class="b_side">
@@ -256,55 +175,32 @@
                             type="text"
                             class="security_code"
                             placeholder="安全碼"
-                            max="3"
+                            maxlength="3"
+                            @input="toNextInput"
                         />
                         <div class="exp">
                             <div class="title">有效日期</div>
                             <div class="exp_date_wrap">
-                                <input
-                                    type=""
-                                    class="date_m"
-                                    max="2"
-                                    placeholder="月"
-                                />
-                                <span> / </span>
-                                <input
-                                    type=""
-                                    class="date_y"
-                                    max="2"
-                                    placeholder="年"
-                                />
+                                <input type="" class="date_m" maxlength="2" placeholder="月" @input="checkMax" />
+                                <span>/</span>
+                                <input type="" class="date_y" maxlength="2" placeholder="年" @input="checkMax" />
                             </div>
                         </div>
-                        <button
-                            class="toA_side_btn"
-                            @click="creditCardSide = true"
-                        >
-                            <img
-                                src="@/assets/images/icon_bg/return_icon.svg"
-                                alt=""
-                            />Front
+                        <button class="toA_side_btn" @click.prevent="creditCardSide = true">
+                            <img src="@/assets/images/icon_bg/return_icon.svg" alt="" />
+                            Front
                         </button>
                     </div>
                 </div>
             </fieldset>
-            <p class="note">
-                *本司心用卡付款使用第三方支付，點擊結帳將前往藍新金流付款頁面。
-            </p>
+            <p class="remark">*本司心用卡付款使用第三方支付，點擊結帳將前往藍新金流付款頁面。</p>
             <button class="btn_scd_m pay_btn">結帳</button>
         </form>
     </div>
 </template>
 <script>
-import twDistrict from "@/assets/data/cityDistrict.js";
-// import {multiWeekCartList} from "@/assets/data/payCartList.js";
-// import {singleCartList} from "@/assets/data/payCartList.js";
-import { giftCart } from "@/assets/data/payCartList.js";
 import { Carousel, Pagination, Slide } from "vue3-carousel";
-
-
-
-
+import axios from "axios";
 export default {
     components: {
         Carousel,
@@ -313,10 +209,11 @@ export default {
     },
     data() {
         return {
-            cartList: [],
-            giftBuy: giftCart,
+            cartList: [[]],
+            giftBuy: {},
             giftcardDiscount: 0,
-            twDistrict,
+            twDistrict: [],
+            selectCityDistrict: [],
             creditCardSide: true,
         };
     },
@@ -327,37 +224,89 @@ export default {
                 this.cartList.forEach((week) => {
                     week.forEach((item) => {
                         total += item.amount * 200;
-                    })
+                    });
                 });
             } else if (this.cartList.length == 1) {
                 this.cartList[0].forEach((item) => {
                     total += item.amount * 200;
-                })
+                });
             } else if (this.giftBuy !== {}) {
-                total = this.giftBuy.money
-                
+                total = this.giftBuy.money;
             }
             return total;
         },
     },
     methods: {
-        freightCalc() { 
+        checkMax(e) {
+            let Target = e.target;
+            let valLen = Target.value.length;
+            let maxLen = Target.getAttribute("maxlength");
+            if (valLen >= maxLen) {
+                let nextInput = Target.nextElementSibling;
+                if (nextInput === null) {
+                    return;
+                } else {
+                    while (nextInput !== null && nextInput.tagName !== "INPUT") {
+                        nextInput = nextInput.nextElementSibling;
+                        nextInput.focus();
+                    }
+                }
+            }
+        },
+        toNextInput(e) {
+            let Target = e.target;
+            let valLen = Target.value.length;
+            let maxLen = Target.getAttribute("maxlength");
+            if (valLen >= maxLen) {
+                let nextInput = document.querySelector(".date_m");
+                nextInput.focus();
+            }
+        },
+        changeDistrict(e) {
+            let selectValue = e.target.value;
+            let selectCity = this.twDistrict.find((item) => {
+                return item.name == selectValue;
+            });
+            this.selectCityDistrict = selectCity.districts;
+        },
+        freightCalc() {
             if (this.giftBuy) {
-                return 0
+                return 0;
             } else {
-                return 80
+                return 80;
             }
         },
         discount() {
             if (this.cartList.length > 1) {
-                return this.calcTotalPrice * 0.2
+                return this.calcTotalPrice * 0.2;
             } else {
-                return 0
+                return 0;
             }
-        }
+        },
+        getTwDistrict() {
+            let url =
+                "https://gist.githubusercontent.com/abc873693/2804e64324eaaf26515281710e1792df/raw/a1e1fc17d04b47c564bbd9dba0d59a6a325ec7c1/taiwan_districts.json";
+            axios
+                .get(url)
+                .then((response) => {
+                    if (response.status !== 200) {
+                        alert("錯誤");
+                        return;
+                    }
+                    this.twDistrict = response.data;
+                    console.log(this.twDistrict);
+                })
+                .catch((error) => {
+                    console.log("發生錯誤:", error);
+                });
+        },
     },
-    watch: {
-        
+    created() {
+        this.giftBuy = this.$store.state.giftBuy;
+        this.cartList = this.$store.state.cartList;
+    },
+    mounted() {
+        this.getTwDistrict();
     },
 };
 </script>

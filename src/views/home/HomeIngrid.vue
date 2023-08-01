@@ -1,135 +1,149 @@
 <template>
-  <!-- 水果滑動區 -->
-  <section class="index_health_banner">
-    <p>HEALTH<br>VEGETABLE</p>
-    <div class="index_health_wrap">
-      <div class="index_health" ref="box">
-        <div class="index_health_pic pic" v-for="(vegetable, index) in vegetables" :key="index">
-          <img :src="vegetable.image" alt="">
-          <h3>{{ vegetable.name }}</h3>
+    <section class="index_health_banner" ref="indexHealthBanner">
+        <div class="index_health_wrap">
+            <div
+                class="box"
+                :style="`transform:translateX(-${translate}px)`"
+                ref="healthWrap"
+            >
+                <div class="title">
+                    <p>
+                        HEALTH<br />VEGETABLE<br />
+                        <span>食材朔源</span>
+                    </p>
+                    <div class="title_bg">
+                        <img :src="vegetable.bg" alt="" />
+                    </div>
+                </div>
+                <div class="veg01 show_text" ref="veg01">
+                    <img :src="vegetable.Img" alt="" />
+                    <div class="veg_bg"></div>
+                    <div class="veg_title">
+                        <p>高麗菜<br />CABBAGE</p>
+                        <div class="veg_title_bg"></div>
+                    </div>
+                </div>
+                <div class="veg02" ref="veg02">
+                    <img :src="vegetable.Img2" alt="" />
+                    <div class="veg_bg"></div>
+                    <div class="veg_title">
+                        <p>花椰菜<br />BROCOLI</p>
+                        <div class="veg_title_bg"></div>
+                    </div>
+                </div>
+                <div class="veg03" ref="veg03">
+                    <img :src="vegetable.Img3" alt="" />
+                    <div class="veg_bg"></div>
+                    <div class="veg_title">
+                        <p>甜椒<br />PEPPER</p>
+                        <div class="veg_title_bg"></div>
+                    </div>
+                </div>
+                <div class="veg04" ref="veg04">
+                    <img :src="vegetable.Img4" alt="" />
+                    <div class="veg_bg"></div>
+                    <div class="veg_title">
+                        <p>南瓜<br />PUMPKIN</p>
+                        <div class="veg_title_bg"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 </template>
 <script>
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { defineComponent } from 'vue';
-import { Carousel, Navigation, Slide } from 'vue3-carousel';
-import 'swiper/css';
-import 'swiper/css/effect-cards';
-import 'vue3-carousel/dist/carousel.css';
-import { EffectCards } from 'swiper/modules';
 
-export default defineComponent({
-  name: 'HomeView',
-  components: {
-    Swiper,
-    SwiperSlide,
-    Carousel,
-    Slide,
-    Navigation,
-  },
-  data() {
-    return {
-      aa: 'AAAA',
-      modules: [EffectCards],
-      settings: {
-        itemsToShow: 1,
-        snapAlign: 'center',
-      },
-      breakpoints: {
-        700: {
-          itemsToShow: 3.5,
-          snapAlign: 'center',
-        },
-        1024: {
-          itemsToShow: 5.5,
-          snapAlign: 'center',
-        },
-        1200: {
-          itemsToShow: 6,
-          snapAlign: 'center',
-        },
-      },
-      farmerImg: [
-        require('../assets/images/index/farme1.jpg'),
-        require('../assets/images/index/farme1.jpg'),
-        require('../assets/images/index/farme1.jpg'),
-      ],
-      index_order: [
-        {
-          title: '瀏覽菜色列表',
-          description: '點擊菜色選購頁面，可以使用分類列表或瀏覽不同的頁面找到喜愛的餐點。點擊餐點圖片進入詳細頁面，進一步了解食材來源及製作方法。',
-          image: require('../assets/images/about/about_step1.svg'),
-        },
-        {
-          title: '選擇您喜愛的食材',
-          description: '在菜色選購頁面，您可以選擇想要的訂閱方案及菜色品項。指定要配送的週期、購買的數量、或其他相關選項（如過敏原及不包含的食材）。',
-          image: require('../assets/images/about/about_step2.svg'),
-        },
-        {
-          title: '加入購物車',
-          description: '一旦您選擇好菜色的數量和規格，點擊「訂單確認」按鈕。把選購的菜色添加到購物車中。您可以選擇繼續購物、或者前往結帳。也可以修改訂閱方案，選擇一次想要幾份餐，以及多久配送一次，買越多省越多！',
-          image: require('../assets/images/about/about_step3.svg'),
-        },
-        {
-          title: '結帳與支付',
-          description: '準備結帳。您需要填寫聯繫方式及送貨地址，並提供支付方式的相關資訊。填寫完畢後，請檢查訂單詳細內容並確保一切正確無誤，點擊「結帳」按鈕進入結帳系統支付。',
-          image: require('../assets/images/about/about_step4.svg'),
-        },
-        {
-          title: '詢問及配送',
-          description: '等待物流配送至目的地的同時，您可以在會員中心查看歷史記錄及追蹤訂單狀態，讓您了解發貨情況和預計到達時間。如需修改配送选项也可以在会员中心或与客服团队联系的情况下进行修改。我們會判專員盡快與您回覆！',
-          image: require('../assets/images/about/about_step5.svg'),
-        },
-      ],
-      vegetables: [
-        { name: 'Chinese cabbage', image: require('../assets/images/index/index_vefetable.png') },
-        { name: 'cauliflower', image: require('../assets/images/index/index_vefetable1.png') },
-        { name: 'Green pepper', image: require('../assets/images/index/index_vefetable2.png') },
-        { name: 'onion', image: require('../assets/images/index/index_vefetable3.png') },
-        { name: 'Chinese cabbage', image: require('../assets/images/index/index_vefetable4.png') },
-      ]
-      // currentIndex: 0, // 当前显示的内容索引
-    };
-  },
 
-  methods: {
-    handleScroll() {
-      const container = this.$el;
-      const scrollTop = container.scrollTop || container.scrollTop;
-      const windowHeight = container.clientHeight || container.innerHeight;
-      const scrollHeight = container.scrollHeight || container.offsetHeight;
-
-      const scrollPercentage = scrollTop / (scrollHeight - windowHeight);
-      const newIndex = Math.floor(scrollPercentage * this.index_order.length);
-
-      this.currentIndex = newIndex;
+export default ({
+    name: 'HomeView',
+    data() {
+        return {
+            vegetable: {
+                Img: require('@/assets/images/index/index_vefetable.png'),
+                Img2: require('@/assets/images/index/index_vefetable1.png'),
+                Img3: require('@/assets/images/index/index_vefetable2.png'),
+                Img4: require('@/assets/images/index/index_vefetable3.png'),
+                Img5: require('@/assets/images/index/zucchini.png'),
+                bg: require('@/assets/images/icon_bg/bg_wholeyellow.svg'),
+            },
+            // isScrolling: false,
+            scrollY: 0,
+            translate: 0,
+            prevScrollY: 0,//保存上一次的滾動位置
+            winW: 0,
+        };
     },
 
-    handleScroll1() {
-      if (scrollY >= 800 && scrollY <= 4000) {
-        let scrollY = window.scrollY;
-        let box = document.querySelector('.index_health');
-        box.style.transform = `translateX(-${scrollY - 800}px)`;
-        // box.style.transform = `translateX(-${scrollY-2000}px)`;
-      }
-      // console.log(scrollY)
-    }
-  },
+    methods: {
+        handleScroll() {
+            const bannerTop = this.$refs.indexHealthBanner.offsetTop;
+            const scrollY = window.scrollY;
+            const halfWindowWidth = this.winW / 2;
+            const halfWindowH = window.innerHeight / 2;
+            const vegs = document.querySelectorAll('[class*="veg0"]')
+            if (scrollY >= bannerTop) {
+                if (this.winW < 1200) {
+                    // return
+                    vegs.forEach((item) => {
+                        const itemTop = item.getBoundingClientRect().top;
+                        const itemBottom = item.getBoundingClientRect().bottom;
+                        if (itemTop < halfWindowH) {
+                            item.classList.add('show_text')
+                        }
+                        if (itemTop > halfWindowH || itemBottom < halfWindowH){
+                            item.classList.remove('show_text')
+                        }
+                    })
+                } else if (this.winW >= 1200) {
+                    const veg04 = this.$refs.veg04;
+                    const veg04Right = veg04.getBoundingClientRect().right;
+                    vegs.forEach((item) => {
+                        const itemLeft = item.getBoundingClientRect().left;
+                        const itemRight = item.getBoundingClientRect().right;
+                        if (itemLeft < halfWindowWidth) {
+                            item.classList.add('show_text')
+                        }
+                        if (itemRight < halfWindowWidth || itemLeft > halfWindowWidth) {
+                            item.classList.remove('show_text')
+                        }
+                    })
 
-  mounted() {
-    window.addEventListener('scroll', this.handleScroll1);
+                    if (veg04Right > halfWindowWidth) {
+                        this.scrollY = scrollY - bannerTop;
+                        this.translate = this.scrollY;
+                    } else {
+                        // 判断滾動方向，根据滾動方向決定滑動方向
+                        if (scrollY < this.prevScrollY) {
+                            // 向上滾動，計算滾動的偏移量，取負值實現向右滑動效果
+                            const scrollOffset = scrollY - this.prevScrollY;
+                            this.translate += scrollOffset;
+                        } else if (scrollY > this.prevScrollY) {
+                            // 向下滾動，計算滾動的偏移量，實現向左滑動效果
+                            return
+                        }
+                    }
 
-  },
+                }
+                // 更新上一次滾動的位置
+                this.prevScrollY = scrollY;
+            }    
+        },
+
+    },
+    created() {
+        this.winW = window.innerWidth
+    },
+    mounted() {
+        window.addEventListener('scroll', this.handleScroll);
+    },
+    beforeUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+    },
+
 });
 </script>
 
 <style lang="scss" scoped>
 @import "@/assets/scss/all.scss";
-@import "@/assets/scss/page/home/Home_index_health_banner.scss";
+@import "@/assets/scss/page/home/homeIngrid.scss";
 </style>
-
-
-

@@ -207,29 +207,14 @@
             display: block;
             position: relative;
             margin: $sp5 $sp7;
-            max-width: 1500px;
+            max-width: 1200px;
             border: 4px solid #1F8D61;
             border-radius: $xs-br;
             padding: $sp2 $sp5;
             background-color: $bg--;
             .meat_title{
-                margin: $sp2 0;
+                margin: $sp3 0;
             }
-            //四個角的圓形
-            // .circle_box{
-            //     position: relative;
-            //     div{
-            //         width: 30px;
-            //         height: 30px;
-            //         background-color: $secondary--;
-            //         border: 3px solid $primary;
-            //         border-radius: 999em;
-            //     }
-            //     .circle_lt{
-            //         position: relative;
-            //         left: -20px;
-            //     }
-            // }
             .chicken_ill{
                 width: 250px;
                 position: absolute;
@@ -294,19 +279,20 @@
                     position: absolute;
                     z-index: 1;
                     left: 20px;
-                    transform: translateY(150%);
+                    transform: translateY(172%);
                     bottom: 100%;
                     width: 40%;
-                    height: 30%;
+                    height: 20%;
                     background-color: $secondary--;
                 }
                 .meat_img_bg_r{
                     position: absolute;
                     z-index: 1;
                     right: 20px;
-                    top: 60px;
+                    transform: translateY(168%);
+                    bottom: 100%;
                     width: 40%;
-                    height: 33%;
+                    height: 20%;
                     background-color: $secondary--;
                 }
                 .card_text{
@@ -364,27 +350,80 @@
 
 //斷點 1024px
 @include pad-H{
-    // .meat_card_box{
-    //     .farmer_title{
-    //         h3{
-    //             font-size: $l-font;
-    //         }
-    //     }
-    // }
+    .meat_card_container{
+        .meat_card_box{
+            .card_top{
+                .meat_img_bg{
+
+                    left: 20px;
+                    transform: translateY(165%);
+                    bottom: 100%;
+                    width: 40%;
+                    height: 30%;
+                }
+                .meat_img_bg_r{
+                    position: absolute;
+                    z-index: 1;
+                    right: 20px;
+                    transform: translateY(160%);
+                    bottom: 100%;
+                    width: 40%;
+                    height: 30%;
+                    background-color: $secondary--;
+                }
+                .card_text{
+                    .farmer_title{
+                        h3{
+                            // outline: solid red;
+                            font-size: $m-font;
+                        }
+                    }
+                    .farmer_text{
+                        p{
+                            font-size: $s-font;
+                            text-indent: 2em;
+                        }
+                    }
+                }             
+            }
+            
+        }
+    }
 }
 
 //斷點 1200px
 @include desktop{
-    .meat_card_box{
-        .farmer_title{
-            h3{
-                // outline: solid red;
-                font-size: $l-font;
+    .meat_card_container{
+        .meat_card_box{
+            width: 1000px;
+            .card_top{
+                .card_text{
+                    .farmer_title{
+                        h3{
+                            font-size: $m-font;
+                            margin: 0 $sp1;
+                        }
+                    }
+                    .farmer_text{
+                        p{
+                            margin: 0 $sp1;
+                            font-size: $s-font;
+                            text-indent: 2em;
+                        }
+                    }
+                }             
             }
-        }
-        .farmer_text{
-            p{
-                font-size: $l-font;
+            .card_bottom{
+                margin: $sp2 0;
+                display: flex;
+                p{
+                    font-size: $xs-font;
+                }
+                span{
+                    font-size: $s-font;
+                    margin: $sp1 0;
+                }
+            
             }
         }
     }
