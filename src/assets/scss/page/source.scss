@@ -92,7 +92,7 @@
     // height: 1500px;
     overflow: hidden;
     width: 100%;
-    height: 400vh;
+    height: 280vh;
     .anchor1, .anchor2, .anchor3{
         position: absolute;
         display: block;
@@ -103,10 +103,10 @@
         top: 10%;
     }
     .anchor2{
-        top: 40%;
+        top: 50%;
     }
     .anchor3{
-        top: 60%;
+        top: 70%;
     }
     .taiwan_sticky_container{
         width: 100%;
@@ -121,7 +121,7 @@
         position: absolute;
         top: 0%;
         left: 40%;
-        transition: 3s;
+        transition: 1.5s;
     }
     .taiwan_img img{
         display: block;
@@ -346,15 +346,15 @@
         }
     }
     .taiwan_container{
-        height: 300vh;
+        height: 200vh;
         .anchor1{
-            top: 10%;
+            top: 20%;
         }
         .anchor2{
-            top: 40%;
+            top: 60%;
         }
         .anchor3{
-            top: 50%;
+            top: 80%;
         }
         .taiwan_img.acr1{
             height: auto;
@@ -480,15 +480,15 @@
         }
     }
     .taiwan_container{
-        height: 200vh;
+        height: 150vh;
         .anchor1{
-            top: -10%;
+            top: 20%;
         }
         .anchor2{
-            top: 50%;
+            top: 70%;
         }
         .anchor3{
-            top: 70%;
+            top: 90%;
         }
         .taiwan_img{
             width: 70%;
@@ -496,7 +496,7 @@
             position: absolute;
             top: 0%;
             left: 40%;
-            transition: 3s;
+            transition: 1.5s;
         }
         .taiwan_img img{
             display: block;
@@ -512,12 +512,12 @@
             top: 0%;
         }
         .taiwan_img.acr2{
-            width: 180%;
+            width: 190%;
             left: 10%;
             top: -130%;
         }
         .taiwan_img.acr3{
-            width: 160%;
+            width: 140%;
             left: 20%;
             top: -200%;
         }

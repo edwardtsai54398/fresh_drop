@@ -438,11 +438,11 @@ export default {
             if (screenWidth < 768) {
                 this.fadeInThreshold = 600;
                 this.fadeOutThreshold = 900;
-                this.fadeInThreshold2 = 900;
+                this.fadeInThreshold2 = 950;
                 this.fadeOutThreshold2 = 1300;
                 this.fadeInThreshold3 = 1350;
                 this.fadeOutThreshold3 = 1700;
-                this.scrollThreshold = 100;
+                this.scrollThreshold = 200;
             } else if (screenWidth >= 768 && screenWidth < 1024) {
                 this.fadeInThreshold = 700;
                 this.fadeOutThreshold = 1050;
@@ -450,16 +450,16 @@ export default {
                 this.fadeOutThreshold2 = 1350;
                 this.fadeInThreshold3 = 1350;
                 this.fadeOutThreshold3 = 1700;
-                this.scrollThreshold = 150;
+                this.scrollThreshold = 350;
             } else {
                 // 大於等於 1024px 的預設值
                 this.fadeInThreshold = 650;
                 this.fadeOutThreshold = 1080;
-                this.fadeInThreshold2 = 1280;
-                this.fadeOutThreshold2 = 1800;
+                this.fadeInThreshold2 = 1200;
+                this.fadeOutThreshold2 = 1700;
                 this.fadeInThreshold3 = 1900;
-                this.fadeOutThreshold3 = 2600;
-                this.scrollThreshold = 150;
+                this.fadeOutThreshold3 = 2500;
+                this.scrollThreshold = 500;
             }
         },
     },
