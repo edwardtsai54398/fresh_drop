@@ -11,6 +11,7 @@
 
 
     .index_banner_slider {
+        position: relative;
 
         //幸福的一天
         .decorate_day {
@@ -131,6 +132,16 @@
 
 }
 
+.running_text {
+    display: none;
+}
+
+
+
+
+
+
+
 // 斷點:768px
 @include pad-V {
 
@@ -138,6 +149,8 @@
         width: 50%;
 
     }
+
+
 
     .swiper-slide {
         display: flex;
@@ -290,6 +303,38 @@
         gap: 2%;
         margin-top: -126px;
 
+        // 滑動提示
+        .running_text {
+            padding: $sp1;
+            color: #bbb;
+            display: inline-block;
+            overflow: hidden;
+            animation: running 8s linear infinite;
+            font-size: $xs-font;
+            position: absolute;
+            left: 0;
+            // bottom: -5px;
+
+            .fa-arrow-left,
+            .fa-arrow-right {
+                color: #bbb;
+            }
+
+            @keyframes running {
+                0% {
+                    transform: translateX(0);
+                }
+
+                50% {
+                    transform: translateX(75%);
+                }
+
+                100% {
+                    transform: translateX(0);
+                }
+            }
+        }
+
 
         .index_banner_slider {
             margin: 0;
@@ -372,5 +417,37 @@
 @include desktop {
     .decorate_index {
         margin-top: -126px;
+    }
+
+    // 滑動提示
+    .running_text {
+        padding: $sp1;
+        color: #bbb;
+        display: inline-block;
+        overflow: hidden;
+        animation: running 8s linear infinite;
+        font-size: $xs-font;
+        position: absolute;
+        left: 0;
+        // bottom: -5px;
+
+        .fa-arrow-left,
+        .fa-arrow-right {
+            color: #bbb;
+        }
+
+        @keyframes running {
+            0% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
     }
 }

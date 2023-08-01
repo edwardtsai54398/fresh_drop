@@ -8,7 +8,7 @@
       <div class="drop_wrap">
         <div class="index_8drop">
           <div class="index_drop">
-            <h4>8 DROP</h4>
+            <h4>4 DROP</h4>
           </div>
           <div class="index_drop_box">
             <div class="index_drop_pic">
@@ -28,7 +28,7 @@
         </div>
         <div class="index_8drop">
           <div class="index_drop">
-            <h4>12 DROP</h4>
+            <h4>6 DROP</h4>
           </div>
 
           <div class="index_drop_box">
@@ -49,7 +49,7 @@
         </div>
         <div class="index_8drop">
           <div class="index_drop">
-            <h4>20 DROP</h4>
+            <h4>10 DROP</h4>
           </div>
           <div class="index_drop_box">
             <div class="index_drop_pic">

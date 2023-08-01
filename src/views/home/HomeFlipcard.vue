@@ -9,7 +9,7 @@
       <div class="index_text">
         <div class="txt">
           <p>每日命定料理</p>
-          <span>左右滑動找到屬於你的菜</span>
+          <span>探索不同文化的烹飪風情</span>
         </div>
         <div class="index_carrot pic">
           <img src="@/assets/images/index/index_decorate_carrot.png" alt="">
@@ -18,15 +18,22 @@
     </div>
     <!-- 中間滑卡 -->
     <div class="index_index_banner_swiper">
-      <!-- 下一張按鈕 -->
-      <button class="btn_circle btn_flat">NEXT►</button>
       <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="mySwiper">
         <swiper-slide v-for="(item, index) in cards" :key="index">
           <div class="swiper_pic">
             <img :src="item.img" alt="">
           </div>
         </swiper-slide>
+
       </swiper>
+
+      <!-- 滑動提示 -->
+      <div class="running_text">
+        <font-awesome-icon icon="fa-solid fa-arrow-left" />
+        左右滑動找到屬於你的菜
+        <font-awesome-icon icon="fa-solid fa-arrow-right" />
+      </div>
+
     </div>
     <!-- 字右 -->
     <div class="index_food_title">
