@@ -12,7 +12,6 @@
           <div class="info">
             <p v-if="gift.status == 0">狀態：使用完畢</p>
             <p v-else-if="gift.status == 1">狀態：可使用</p>
-            <p>可用金額：{{ gift.remain }}</p>
             <p>禮物卡號碼：{{ gift.num }}</p>
           </div>
           <div class="show_more btn_xs btn_flat" @click="sentGiftInfo(index)">查看更多</div>
@@ -58,7 +57,7 @@
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     @import "@/assets/scss/all.scss";
     @import "@/assets/scss/page/member/mbrGift.scss";
 </style>

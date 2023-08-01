@@ -1,5 +1,5 @@
 <template>
-    <div class="mask" :class="{none: !isopen}" @click="$emit('close')"></div>
+    <div class="mask" :class="{none: !isOpen}" @click="$emit('close')"></div>
     <div class="gift_modal" v-show="isOpen">
       <modalClose @click="$emit('close')"/>
       <div class="pic">
@@ -37,7 +37,7 @@
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     @import "@/assets/scss/all.scss";
     @import "@/assets/scss/page/member/giftModal.scss";
     

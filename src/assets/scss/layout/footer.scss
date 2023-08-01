@@ -28,6 +28,7 @@
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(3,auto);
         column-gap: $sp4;
+        align-items: center;
         padding-left: $sp4;
         padding-right: $sp4;
         .logo{
@@ -133,8 +134,8 @@
 @include pad-H{
     .shoplink_wrap{
         @include gridgap(20px);
-        grid-area: 3/1/4/2;
-        // margin-top: $sp4;
+        grid-area: 1/2/2/3;
+        align-self: flex-end;
         a{
             font-size: $s-font;
         }
@@ -233,6 +234,11 @@
 
 .contact_wrap{
     @extend .shoplink_wrap;
+    a{
+        background-color: transparent;
+        border: 2px solid $bg;
+        color: $bg;
+    }
 }
 @include pad-V{
     .contact_wrap{
@@ -241,8 +247,9 @@
 }
 @include pad-H{
     .contact_wrap{
-        grid-area: 1/2/2/3;
-        align-self: center;
+        grid-area: 3/1/4/2;
+        
+        align-self: flex-start;
     }
 }
 .copyright{

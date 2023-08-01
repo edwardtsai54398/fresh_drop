@@ -1,5 +1,5 @@
 <template>
-    <header class="mainheader">
+    <header class="mainheader" :class="{hide: !isScrollUp}">
         <div class="circle" v-for="n in headCircleQty" :key="n" :style="{ width: 100 / headCircleQty + '%' }"></div>
 
         <button class="hamburger" @click="
@@ -17,7 +17,7 @@
             </router-link>
         </div>
         <!-- @click="isToggleOpen = false" -->
-        <nav class="main_nav" :class="{ open: isToggleOpen , hide: !isScrollUp}">
+        <nav class="main_nav" :class="{ open: isToggleOpen}">
             <router-link to="/about" @click="isToggleOpen = false">
                 <h4>關於我們</h4>
             </router-link>
@@ -103,7 +103,7 @@
                 </div>
             </div>
         </nav>
-        <button class="member" @click="$emit('toggle')" :class="{ had_login: $store.state.isLogin,  hide: !isScrollUp}">
+        <button class="member" @click="$emit('toggle')" :class="{ had_login: $store.state.isLogin}">
             <img src="@/assets/images/icon_bg/header_member.svg" alt="" v-if="!$store.state.isLogin" />
             <div class="pic avatar_img" v-if="$store.state.isLogin">
                 <img :src="$store.state.memberInfoAll.avatarImg" alt="" />

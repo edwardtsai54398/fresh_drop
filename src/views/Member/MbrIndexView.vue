@@ -85,7 +85,7 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     @import "@/assets/scss/all.scss";
     @import "@/assets/scss/page/member/mbrIndex.scss";
     

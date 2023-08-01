@@ -65,7 +65,7 @@
       },
       methods: {
         shoplistToggle(i) {
-          const orderDOM = document.querySelectorAll('.order')
+          const orderDOM = document.querySelectorAll('.order_item')
           orderDOM[i].classList.toggle('collapse')
           this.$emit('toggle')
         }
