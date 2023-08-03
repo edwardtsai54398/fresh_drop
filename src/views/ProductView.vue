@@ -471,14 +471,14 @@ export default defineComponent({
         },
         //上傳圖片
         triggerFileInput() {
-            this.$refs.fileInput.click(); // 触发文件输入框的点击事件
+            this.$refs.fileInput.click();
         },
         handleFileUpload(event) {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = (e) => {
-                    this.previewImage = e.target.result; // 将图片 base64 编码设置为预览图片
+                    this.previewImage = e.target.result;
                 };
                 reader.readAsDataURL(file);
             } else {
