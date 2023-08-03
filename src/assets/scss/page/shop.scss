@@ -444,6 +444,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    @extend %scrollbar_style;
 
     .no_item {
         font-size: $s-font;
@@ -891,9 +892,6 @@
 
 // min-width: 1200px
 @include desktop {
-    .main_wrap {
-        // top: -10px
-    }
 
     .selectmain {
         top: 30px;
