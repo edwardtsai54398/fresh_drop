@@ -198,9 +198,13 @@
                 <div class="content_report" v-show="isOpenPopup">
                     <div class="content_wrap">
                         <p class="title">檢舉原因</p>
-                        <button class="cross" @click="currentProductIndex = -1">
-                            <font-awesome-icon icon="fa-solid fa-xmark" />
-                        </button>
+                        <modalClose
+                            class="cross"
+                            @click="currentProductIndex = -1"
+                        />
+                        <!-- <button class="    " @click="currentProductIndex = -1"> -->
+                        <!-- <font-awesome-icon icon="fa-solid fa-xmark" /> -->
+                        <!-- </button> -->
                         <div class="input">
                             <textarea
                                 v-model="text"
@@ -226,9 +230,10 @@
         <div class="upload_window" v-show="isExpendUpload">
             <div class="title_window">
                 <p class="text_title">心得分享</p>
-                <button class="cross" @click="uploadExpend">
+                <modalClose class="cross" @click="uploadExpend" />
+                <!-- <button class="cross" @click="uploadExpend">
                     <font-awesome-icon icon="fa-solid fa-xmark" />
-                </button>
+                </button> -->
             </div>
             <div class="title">
                 <div class="type">
@@ -339,9 +344,13 @@
                 <div class="content_report" v-show="isOpenPopup">
                     <div class="content_wrap">
                         <p class="title">檢舉原因</p>
-                        <button class="cross" @click="currentProductIndex = -1">
+                        <modalClose
+                            class="cross"
+                            @click="currentProductIndex = -1"
+                        />
+                        <!-- <button class="cross" @click="currentProductIndex = -1">
                             <font-awesome-icon icon="fa-solid fa-xmark" />
-                        </button>
+                        </button> -->
                         <div class="input">
                             <textarea
                                 v-model="text"
@@ -369,6 +378,7 @@
 <script>
 import productList from "@/assets/data/productList.js";
 import productShare from "@/assets/data/productShare.js";
+import modalClose from "@/components/modalClose.vue";
 //引入輪播圖套件
 import { defineComponent } from "vue";
 import { Carousel, Slide } from "vue3-carousel";
@@ -382,6 +392,7 @@ export default defineComponent({
         Carousel,
         Slide,
         // Navigation,
+        modalClose,
     },
     data() {
         return {
