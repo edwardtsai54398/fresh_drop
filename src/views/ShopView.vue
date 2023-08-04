@@ -461,12 +461,16 @@
             </div>
         </aside>
         <!-- enter_hint遮罩 -->
-        <div class="mask" v-show="isEnterHintVisible" @click="closeHint"></div>
+        <div
+            class="mask"
+            v-show="isEnterHintVisible"
+            @click="closeEnterHint"
+        ></div>
         <!-- step one圖示 < 1024 -->
         <div
             class="shop_btn step_one_hint_mb"
             v-show="isEnterHintVisible"
-            @click="closeHint"
+            @click="closeEnterHint"
         >
             <button class="list_btn btn_s step_one_hint_mb_btn">
                 <font-awesome-icon icon="fa-solid fa-box-open" />
@@ -476,7 +480,7 @@
         <div
             class="step one step_one_hint_pc"
             v-show="isEnterHintVisible"
-            @click="closeHint"
+            @click="closeEnterHint"
         >
             <div class="title">
                 <p>
@@ -500,7 +504,7 @@
                 <p>請從「選擇方案」開始</p>
             </div>
             <div class="close">
-                <p class="btn_s" @click="closeHint">關閉</p>
+                <p class="btn_s" @click="closeEnterHint">關閉</p>
             </div>
         </div>
         <!-- enter_hint彈窗 > 1024 -->
@@ -509,7 +513,7 @@
                 <p>請從「選擇方案」開始</p>
             </div>
             <div class="close">
-                <p class="btn_s" @click="closeHint">關閉</p>
+                <p class="btn_s" @click="closeEnterHint">關閉</p>
             </div>
         </div>
     </div>
@@ -530,7 +534,7 @@ export default {
             isStepTwoExpend: false,
             isActive: false,
 
-            // isEnterHint: true,
+            //enter_hint
             isEnterHintVisible: false,
 
             //選擇方案替換文字
@@ -914,16 +918,26 @@ export default {
         },
 
         // enter_hint
-        closeHint() {
+        closeEnterHint() {
             this.isEnterHintVisible = false;
             localStorage.setItem("isEnterHintVisible", "true"); // 將標記設置為已顯示，存儲在localStorage中
+            // 當點擊 closeHint 事件後，移除滾動事件監聽器
+            window.removeEventListener("scroll", this.preventScroll);
         },
         checkEnterHint() {
             const isShown = localStorage.getItem("isEnterHintVisible");
             this.isEnterHintVisible = isShown === null; // 檢查localStorage中是否有標記，若無則顯示彈窗
+            // 如果彈窗顯示，則阻止頁面滾動
+            if (this.isEnterHintVisible) {
+                window.addEventListener("scroll", this.preventScroll);
+            }
+        },
+        preventScroll() {
+            // 阻止頁面滾動
+            window.scrollTo(0, 0);
         },
 
-        // closeHint() {
+        // closeEnterHint() {
         //     this.isEnterHint = !this.isEnterHint;
         // },
     },
