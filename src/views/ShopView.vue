@@ -521,6 +521,7 @@
 <script>
 import productList from "@/assets/data/productList.js";
 import { payCheck, isCartSelectDone } from "@/assets/js/cart.js";
+import axios from "axios";
 export default {
     data() {
         return {
@@ -653,6 +654,18 @@ export default {
         },
     },
     methods: {
+        getProductData() {
+            let url = `${this.$url}product.php`;
+            
+            axios
+                .get(url)
+                .then((res) => {
+                    console.log(res.data)
+                })
+                .catch((error) => {
+                    console.log("發生錯誤:", error);
+                });
+        },
         updateVuexCart() {
             this.$store.commit("stateCartList", this.cartList);
         },
@@ -942,6 +955,7 @@ export default {
         // },
     },
     created() {
+        this.getProductData()
         // 不包含的食材
         this.collectUniqueAllergy();
         this.collectUniqueDislike();

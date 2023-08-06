@@ -22,9 +22,14 @@ export default createStore({
     },
     mutations: {
         logOut(state) {
+            console.log('logout');
+            state.memberInfoAll = {}
             state.isLogin = false
+            sessionStorage.removeItem("cus_no")
         },
-        setUserData(state, { userData }) {
+        setUserData(state, userData) {
+            sessionStorage.setItem("cus_no", userData.cus_no);
+            userData.cus_no = parseInt(userData.cus_no) + 1000
             state.memberInfoAll = userData
             state.isLogin = true
         },

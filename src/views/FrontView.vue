@@ -26,21 +26,38 @@ export default {
         };
     },
     methods: {
-        checkMemberStatus() {
+        checkMemberStatus(val) {
             if (this.$store.state.isLogin) {
                 this.toggleMemeberCenter = !this.toggleMemeberCenter;
+            } else if (val == '登出') {
+                return
             } else {
                 this.isLoginOpen = true;
             }
         },
         signupOpen() {
-            this.isLoginOpen = false
-            this.isSignupOpen = true
+            this.isLoginOpen = false;
+            this.isSignupOpen = true;
         },
+        checkLogin() {
+            let cusNo = sessionStorage.getItem("cus_no");
+            if (cusNo) {
+                let url = `${this.$url}sessionLogin.php`;
+                let params = new URLSearchParams();
+                params.append("cusNo", cusNo);
+                this.axios.post(url, params).then((res) => {
+                    this.$store.commit("setUserData", res.data);
+                });
+            } else {
+                this.$store.commit('logOut');
+            }
+        },
+    },
+    mounted() {
+        this.checkLogin();
     },
 };
 </script>
-
 
 <style lang="scss">
 @import "@/assets/scss/all.scss";

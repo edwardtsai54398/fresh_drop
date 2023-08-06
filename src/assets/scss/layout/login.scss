@@ -10,7 +10,7 @@
 .login_input{
     .text_wrap{
         &:not(:first-child){
-            margin-top: $sp3;
+            margin-top: $sp2;
         }
         label{
             display: block;
@@ -22,10 +22,15 @@
             width: 100%;
         }
     }
+    .err_msg{
+        color: $third;
+        font-size: $xs-font;
+        margin-top: $sp1;
+        height: 14px;
+    }
     .check_wrap{
         display: flex;
         justify-content: space-between;
-        padding: $sp1 0;
         margin-top: $sp1;
         label{
             font-size: $xs-font;

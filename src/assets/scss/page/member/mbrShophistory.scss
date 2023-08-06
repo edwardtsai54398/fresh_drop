@@ -93,7 +93,7 @@ $input-h: 32px;
 .order_info{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: auto;
     p{
         font-size: $xs-font;
     }

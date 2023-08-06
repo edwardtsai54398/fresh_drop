@@ -20,6 +20,7 @@
                             id="login-password"
                         />
                     </div>
+                    <p class="err_msg">{{ errMsg }}</p>
                     <div class="check_wrap">
                         <div class="check">
                             <input type="checkbox" id="check" />
@@ -37,8 +38,14 @@
             <div class="login_api_wrap">
                 <p>或用其他方式登入</p>
                 <div class="login_api">
-                    <div class="btn_api"><img src="../assets/images/icon_bg/facebook.svg" alt="" /><span>以FACEBOOK方式登入</span></div>
-                    <div class="btn_api"><img src="../assets/images/icon_bg/google.svg" alt="" /><span>以GOOGLE方式登入</span></div>
+                    <div class="btn_api">
+                        <img src="../assets/images/icon_bg/facebook.svg" alt="" />
+                        <span>以FACEBOOK方式登入</span>
+                    </div>
+                    <div class="btn_api">
+                        <img src="../assets/images/icon_bg/google.svg" alt="" />
+                        <span>以GOOGLE方式登入</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -48,9 +55,10 @@
 </template>
 <script>
 import modalClose from "@/components/modalClose.vue";
-import F2ERefugee from "@/assets/data/memberInfoAll.js";
+// import F2ERefugee from "@/assets/data/memberInfoAll.js";
 import SignupModal from "@/components/SignupModal.vue";
 import VertifyModal from "@/components/VertifyModal.vue";
+// import axios from "axios";
 export default {
     name: "Login-Modal",
     props: {
@@ -63,11 +71,12 @@ export default {
     },
     data() {
         return {
+            errMsg: '',
             user: {
                 email: "",
                 password: "",
             },
-            F2ERefugee,
+            // F2ERefugee,
             SignupOpen: false,
             forgotPswOpen: false,
             pswForgetOpen: false,
@@ -75,17 +84,28 @@ export default {
     },
     methods: {
         login() {
-            if (this.user.email === "test" && this.user.password === "test") {
-                alert("登入成功");
-                this.$emit("close");
-                //這裡應該用api抓會員資料??
-                this.$store.commit({
-                    type: "setUserData",
-                    userData: this.F2ERefugee,
+            if (this.user.email !== "" && this.user.password !== "") {
+                let url = `${this.$url}login.php`;
+                let params = new URLSearchParams();
+                params.append("email", this.user.email);
+                params.append("password", this.user.password);
+                this.axios.post(url, params).then((res) => {
+                    console.log(res.data)
+                    if (res.data == 0) {
+                        this.errMsg = '*帳號密碼錯誤，請再試一次'
+                    } else {
+                        this.$store.commit("setUserData", res.data);
+                        this.$emit("close");
+                        this.user.email = ''
+                        this.user.password = ''
+                        this.errMsg = ''
+                        // this.$router.push("/index");
+                    }
                 });
-                this.$router.push("/index");
-            } else {
-                alert("帳號或密碼錯誤，請再試一次");
+            } else if (this.user.email === "") {
+                this.errMsg = '*請填寫E-mail'
+            }else if (this.user.password === "") {
+                this.errMsg = '*請填寫密碼'
             }
         },
         modalAllClose() {
