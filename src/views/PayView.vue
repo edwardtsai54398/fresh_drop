@@ -102,30 +102,6 @@
                             <input type="tel" placeholder="請輸入電話" />
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <select name="" id="sent_city" class="city_select" @change="changeDistrict($event)">
-                                <!-- <font-awesome-icon icon="fa-solid fa-chevron-down" size="s"/> -->
-                                <option value="none" disabled selected>請選擇縣市</option>
-                                <option v-for="city in twDistrict" :key="city.name" :value="city.name">
-                                    {{ city.name }}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="col-6">
-                            <select name="" id="sent_district" class="city_select">
-                                <option value="none" disabled selected>請選擇行政區</option>
-                                <option
-                                    v-for="district in selectCityDistrict"
-                                    :key="district.name"
-                                    :value="district.name"
-                                >
-                                    {{ district.name }}
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-
                     <input type="text" placeholder="請輸入地址" />
                 </div>
             </fieldset>
@@ -294,7 +270,6 @@ export default {
                         return;
                     }
                     this.twDistrict = response.data;
-                    console.log(this.twDistrict);
                 })
                 .catch((error) => {
                     console.log("發生錯誤:", error);

@@ -21,6 +21,18 @@ module.exports = defineConfig({
     
         }
     },
+    // devServer: {
+    //     proxy: {
+    //         "/api_server": {
+    //           // 本地端測試用路徑
+    //             target: "http://localhost/fresh_drop_vue/public/phps/",
+    //             changeOrigin: true,
+    //             pathRewrite: {
+    //                 "^/api_server": "",
+    //             },
+    //         },
+    //     },
+    // },
     publicPath: process.env.NODE_ENV === "production" ? "/chd102/g2/" : "/",
 });
 
