@@ -11,6 +11,7 @@
 
 
     .index_banner_slider {
+        position: relative;
 
         //幸福的一天
         .decorate_day {
@@ -127,17 +128,59 @@
             font-weight: 600;
             margin-left: auto;
         }
+
+        a {
+            margin: auto;
+        }
     }
 
 }
 
+
+
+
+
+// 滑動提示字
+.running_text {
+    text-align: center;
+    color: #bbb;
+    padding: $sp1;
+    font-size: $xs-font;
+}
+
+// 滑動手指
+.hand_wrap {
+    display: none;
+}
+
+.index_index_banner_swiper {
+    width: 50%;
+
+}
+
+
+
+@keyframes rotateAnimation {
+    0% {
+        transform: rotate(40deg);
+    }
+
+    50% {
+        transform: rotate(-20deg);
+    }
+
+    100% {
+        transform: rotate(40deg);
+    }
+}
+
+
 // 斷點:768px
 @include pad-V {
 
-    .index_index_banner_swiper {
-        width: 50%;
 
-    }
+
+
 
     .swiper-slide {
         display: flex;
@@ -157,16 +200,16 @@
         align-items: center;
         justify-content: center;
         gap: 2%;
-        background-image: url('@/assets/images/index/decoeate1.png');
+        background-image: url('@/assets/images/index/decoeate2.png');
         margin-top: -126px;
 
         .index_banner_slider {
             margin: 0;
-            width: 40%;
+            width: 30%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: end;
+            align-items: center;
 
             .decorate_day {
                 width: 30%;
@@ -229,6 +272,12 @@
         position: relative;
         display: flex;
 
+        .txt {
+            p {
+                white-space: nowrap;
+            }
+        }
+
         .index_carrot {
             width: 90px;
             position: relative;
@@ -282,6 +331,31 @@
 
 // 斷點:1024px
 @include pad-H {
+
+    // 滑動手指頭
+    .hand_wrap {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: -15px;
+        z-index: 5;
+        transform: translate(-50%, -50%);
+
+        .hand_pointer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            animation: rotateAnimation 1s linear infinite;
+            transform-origin: center bottom;
+            font-size: 30px;
+        }
+    }
+
+    .mySwiper {
+        position: relative;
+    }
+
+
     .decorate_index {
         display: flex;
         width: 100%;
@@ -289,6 +363,32 @@
         justify-content: center;
         gap: 2%;
         margin-top: -126px;
+
+        // 滑動提示
+        .running_text {
+            padding: $sp1;
+            color: #bbb;
+            text-align: center;
+
+            .fa-arrow-left,
+            .fa-arrow-right {
+                color: #bbb;
+            }
+
+            @keyframes running {
+                0% {
+                    transform: translateX(0);
+                }
+
+                50% {
+                    transform: translateX(75%);
+                }
+
+                100% {
+                    transform: translateX(0);
+                }
+            }
+        }
 
 
         .index_banner_slider {
@@ -372,5 +472,18 @@
 @include desktop {
     .decorate_index {
         margin-top: -126px;
+    }
+
+    // 滑動提示
+    .running_text {
+        padding: $sp1;
+        color: #bbb;
+        font-size: $xs-font;
+        text-align: center;
+
+        .fa-arrow-left,
+        .fa-arrow-right {
+            color: #bbb;
+        }
     }
 }

@@ -1,15 +1,27 @@
 <template>
     <div class="main_wrap">
         <!-- 菜色分類 -->
-        <aside class="selectmain">
-            <div class="select_bar">
-                <button class="item" @click="scrollToSection('main')">
+        <aside class="selectmain" :class="{ 'scroll-up': isScrollUp }">
+            <div class="select_bar" ref="navbar">
+                <button
+                    class="item"
+                    :class="{ active: activeNavItem === 0 }"
+                    @click.prevent="scrollToSection('main')"
+                >
                     主菜
                 </button>
-                <button class="item" @click="scrollToSection('soup')">
+                <button
+                    class="item"
+                    :class="{ active: activeNavItem === 1 }"
+                    @click.prevent="scrollToSection('soup')"
+                >
                     湯品
                 </button>
-                <button class="item" @click="scrollToSection('salad')">
+                <button
+                    class="item"
+                    :class="{ active: activeNavItem === 2 }"
+                    @click.prevent="scrollToSection('salad')"
+                >
                     沙拉
                 </button>
             </div>
@@ -35,7 +47,14 @@
                             v-for="allergy in uniqueAllergy"
                             :key="allergy"
                         >
-                            {{ allergy }}
+                            <span>{{ allergy }}</span>
+                            <input
+                                type="checkbox"
+                                :value="allergy"
+                                v-model="tempSelectedAllergies"
+                                @click="onAllergyClick(allergy)"
+                                class="custom_checkbox"
+                            />
                         </div>
                         <!-- 不喜愛的 -->
                         <p class="subtitle">不喜愛的</p>
@@ -44,21 +63,30 @@
                             v-for="dislike in uniqueDislike"
                             :key="dislike"
                         >
-                            {{ dislike }}
+                            <input
+                                type="checkbox"
+                                :value="dislike"
+                                v-model="tempSelectedDislikes"
+                                @click="onDislikeClick(dislike)"
+                                class="custom_checkbox"
+                            />
+                            <span>{{ dislike }}</span>
                         </div>
                     </div>
                     <p class="text">
-                        如果您有不食用上述以外的食材，請<a
-                            href="#"
-                            class="connect"
-                            >聯繫我們</a
+                        如果您有不食用上述以外的食材，請
+
+                        <router-link to="/about" class="connect"
+                            >聯繫我們</router-link
                         >，謝謝。
                     </p>
                     <div class="adjust_btn">
                         <button class="cross btn_s" @click="adjustExpend">
                             <font-awesome-icon icon="fa-solid fa-xmark" />
                         </button>
-                        <button class="down btn_s">設定完成</button>
+                        <button class="down btn_s" @click="onClickDownBtn">
+                            設定完成
+                        </button>
                     </div>
                 </div>
             </div>
@@ -76,7 +104,7 @@
                 <div class="wrap_main_dish row">
                     <div
                         class="card col-6 col-md-4"
-                        v-for="(item, index) in mainDishFilter"
+                        v-for="(item, index) in productMainDish"
                         :key="index"
                     >
                         <router-link
@@ -90,7 +118,7 @@
                         </router-link>
                         <div
                             class="btn_scd_s"
-                            @click="addCart(index, mainDishFilter)"
+                            @click="addCart(index, productMainDish)"
                         >
                             選購
                         </div>
@@ -105,7 +133,7 @@
                 <div class="wrap_main_dish row">
                     <div
                         class="card col-6 col-md-4"
-                        v-for="(item, index) in soupFilter"
+                        v-for="(item, index) in productSoup"
                         :key="index"
                     >
                         <router-link
@@ -119,7 +147,7 @@
                         </router-link>
                         <div
                             class="btn_scd_s"
-                            @click="addCart(index, soupFilter)"
+                            @click="addCart(index, productSoup)"
                         >
                             選購
                         </div>
@@ -134,7 +162,7 @@
                 <div class="wrap_main_dish row">
                     <div
                         class="card col-6 col-md-4"
-                        v-for="(item, index) in saladFilter"
+                        v-for="(item, index) in productSalad"
                         :key="index"
                     >
                         <router-link
@@ -148,7 +176,7 @@
                         </router-link>
                         <div
                             class="btn_scd_s"
-                            @click="addCart(index, saladFilter)"
+                            @click="addCart(index, productSalad)"
                         >
                             選購
                         </div>
@@ -157,12 +185,12 @@
             </section>
         </section>
         <!-- 清單、結帳按鈕 -->
-        <aside class="choosewrap">
+        <aside class="choosewrap" :class="{ 'scroll-up': isScrollUp }">
             <!-- 訂購步驟遮罩 -->
             <div
                 class="mask"
                 v-show="isStepExpend"
-                @click="this.isStepExpend = !this.isStepExpend"
+                @click="isStepExpend = !isStepExpend"
             ></div>
             <!-- 訂購步驟 -->
             <div class="step_wrap" v-show="isStepExpend || isDesktop">
@@ -175,7 +203,10 @@
                                 icon="fa-solid fa-box-archive"
                             />
                         </p>
-                        <p><span>step.1</span>選擇方案</p>
+                        <p>
+                            <span>step.1</span>{{ stepOneText }}
+                            {{ selectedOptionPlan }}
+                        </p>
                         <p>
                             <font-awesome-icon
                                 :style="{ color: '#1F8D61' }"
@@ -298,10 +329,14 @@
                     <!-- 過渡動畫 -->
                     <transition name="expand">
                         <!-- 步驟二內容 -->
-                        <div class="content_two" v-show="isStepTwoExpend">
+                        <div
+                            class="content_two"
+                            v-show="isStepTwoExpend"
+                            :class="{ 'scroll-up-content': isScrollUp }"
+                        >
                             <!-- 總數、全部刪除按鈕 -->
                             <div class="topbtn">
-                                <!-- 總數量要修改 -->
+                                <!-- 總數量 -->
                                 <div
                                     class="total_count"
                                     v-show="selectedOptionPlan == '定期配送'"
@@ -415,7 +450,7 @@
             <div class="shop_btn">
                 <button
                     class="list_btn btn_s"
-                    @click="this.isStepExpend = !this.isStepExpend"
+                    @click="isStepExpend = !isStepExpend"
                     :disabled="isDesktop"
                 >
                     <font-awesome-icon icon="fa-solid fa-box-open" />
@@ -425,11 +460,68 @@
                 </button>
             </div>
         </aside>
+        <!-- enter_hint遮罩 -->
+        <div
+            class="mask"
+            v-show="isEnterHintVisible"
+            @click="closeEnterHint"
+        ></div>
+        <!-- step one圖示 < 1024 -->
+        <div
+            class="shop_btn step_one_hint_mb"
+            v-show="isEnterHintVisible"
+            @click="closeEnterHint"
+        >
+            <button class="list_btn btn_s step_one_hint_mb_btn">
+                <font-awesome-icon icon="fa-solid fa-box-open" />
+            </button>
+        </div>
+        <!-- step one圖示 > 1024 -->
+        <div
+            class="step one step_one_hint_pc"
+            v-show="isEnterHintVisible"
+            @click="closeEnterHint"
+        >
+            <div class="title">
+                <p>
+                    <font-awesome-icon
+                        :style="{ color: '#1F8D61' }"
+                        icon="fa-solid fa-box-archive"
+                    />
+                </p>
+                <p><span>step.1</span>選擇方案</p>
+                <p>
+                    <font-awesome-icon
+                        :style="{ color: '#1F8D61' }"
+                        icon="fa-solid fa-plus"
+                    />
+                </p>
+            </div>
+        </div>
+        <!-- enter_hint彈窗 < 1024 -->
+        <div class="enter_hint_mb" v-show="isEnterHintVisible">
+            <div class="start">
+                <p>請從「選擇方案」開始</p>
+            </div>
+            <div class="close">
+                <p class="btn_s" @click="closeEnterHint">關閉</p>
+            </div>
+        </div>
+        <!-- enter_hint彈窗 > 1024 -->
+        <div class="enter_hint_pc" v-show="isEnterHintVisible">
+            <div class="start">
+                <p>請從「選擇方案」開始</p>
+            </div>
+            <div class="close">
+                <p class="btn_s" @click="closeEnterHint">關閉</p>
+            </div>
+        </div>
     </div>
 </template>
 <script>
 import productList from "@/assets/data/productList.js";
 import { payCheck, isCartSelectDone } from "@/assets/js/cart.js";
+import axios from "axios";
 export default {
     data() {
         return {
@@ -442,6 +534,12 @@ export default {
             isStepOneExpend: false,
             isStepTwoExpend: false,
             isActive: false,
+
+            //enter_hint
+            isEnterHintVisible: false,
+
+            //選擇方案替換文字
+            stepOneText: "選擇方案",
             optionsPlan: [
                 { value: "單次購買", label: "單次購買" },
                 { value: "定期配送", label: "定期配送" },
@@ -453,6 +551,22 @@ export default {
             selectedOptionWeek: 1,
             tabActive: 1,
             cartList: [[]],
+
+            //choosewrap scroll-up
+            isScrollUp: true,
+            prevScrollY: 0,
+            isToggleOpen: false,
+
+            //篩選過敏原/不喜愛的食材
+            selectedAllergies: [],
+            selectedDislikes: [],
+            filteredProductList: [], // 儲存篩選後的結果
+            tempSelectedAllergies: [], // 暫存選取的過敏原
+            tempSelectedDislikes: [], // 暫存選取的不喜愛的食材
+            clickedDownBtn: false, // 追蹤是否點擊了 down btn_s 按鈕
+
+            //select_bar變色
+            activeNavItem: 0,
         };
     },
     computed: {
@@ -507,12 +621,72 @@ export default {
             //從cart.js引入
             return isCartSelectDone(this.selectedOptionMeal, this.cartList);
         },
+        productListWithAllergy() {
+            return this.productList.filter(
+                (v) =>
+                    !v.allergy.some(
+                        (u) => this.selectedAllergies.indexOf(u) > -1
+                    )
+            );
+        },
+        productListWithDislike() {
+            return this.productListWithAllergy.filter(
+                (v) =>
+                    !v.dislike.some(
+                        (u) => this.selectedDislikes.indexOf(u) > -1
+                    )
+            );
+        },
+        productMainDish() {
+            return this.productListWithDislike.filter(
+                (v) => v.category === "主菜"
+            );
+        },
+        productSoup() {
+            return this.productListWithDislike.filter(
+                (v) => v.category === "湯品"
+            );
+        },
+        productSalad() {
+            return this.productListWithDislike.filter(
+                (v) => v.category === "沙拉"
+            );
+        },
     },
     methods: {
+        getProductData() {
+            let url = `${this.$url}product.php`;
+            
+            axios
+                .get(url)
+                .then((res) => {
+                    console.log(res.data)
+                })
+                .catch((error) => {
+                    console.log("發生錯誤:", error);
+                });
+        },
         updateVuexCart() {
             this.$store.commit("stateCartList", this.cartList);
         },
-        // 點擊移動至對應區塊
+        // select_bar點擊移動至對應區塊 & 變色
+        setActiveNavItem() {
+            const scrollPosition = window.scrollY;
+            const containers = document.querySelectorAll(".container");
+
+            containers.forEach((container, index) => {
+                const containerTop =
+                    container.offsetTop - this.$refs.navbar.offsetHeight;
+                const containerBottom = containerTop + container.offsetHeight;
+
+                if (
+                    scrollPosition >= containerTop &&
+                    scrollPosition < containerBottom
+                ) {
+                    this.activeNavItem = index;
+                }
+            });
+        },
         scrollToSection(sectionId) {
             const section = document.getElementById(sectionId);
             if (section) {
@@ -522,13 +696,18 @@ export default {
                 } else {
                     offset = 100;
                 }
-                const topPos =
+                const targetPosition =
                     section.getBoundingClientRect().top +
                     window.pageYOffset -
                     offset;
-                window.scrollTo({ top: topPos, behavior: "smooth" });
+
+                window.scroll({
+                    top: targetPosition,
+                    behavior: "smooth",
+                });
             }
         },
+
         // 不包含的食材-過敏原
         collectUniqueAllergy() {
             const uniqueAllergySet = new Set();
@@ -562,6 +741,15 @@ export default {
             this.tabActive = 1;
             this.isStepTwoExpend = false;
             this.updateVuexCart();
+
+            //在點擊事件中根據選擇的方案更新文字;
+            if (this.selectedOptionPlan == "") {
+                this.stepOneText = "選擇方案";
+            } else if (this.selectedOptionPlan === "單次購買") {
+                this.stepOneText = "";
+            } else if (this.selectedOptionPlan === "定期配送") {
+                this.stepOneText = "";
+            }
         },
         //方案是否有被選完
         isPlanSelectDone() {
@@ -619,7 +807,6 @@ export default {
                     return item.name === list[index].name;
                 }
             );
-
             if (compareResult.length == 0) {
                 let addItem = {};
                 addItem.amount = 1;
@@ -647,7 +834,7 @@ export default {
             //從cart.js引入
             payCheck(this.isCartSelectDone, this.cartList);
         },
-        // 螢幕寬度大於768自動顯示
+        // 螢幕寬度大於1024時step_wrap自動顯示
         handleResize() {
             this.isDesktop = window.innerWidth >= 1024;
         },
@@ -656,8 +843,119 @@ export default {
             // console.log(item)
             this.$store.commit("setProductData", { userData: item });
         },
+        choosewrapInOut() {
+            let scrollY = window.scrollY;
+            let winW = window.innerWidth;
+            if (winW >= 1200 && scrollY > 100) {
+                if (scrollY > this.prevScrollY) {
+                    this.isScrollUp = false;
+                } else if (scrollY < this.prevScrollY) {
+                    this.isScrollUp = true;
+                }
+            } else {
+                this.isScrollUp = true;
+            }
+            this.prevScrollY = scrollY;
+        },
+        contentTwoInOut() {
+            let scrollY = window.scrollY;
+            let winW = window.innerWidth;
+            if (winW >= 1200 && scrollY > 100) {
+                if (scrollY > this.prevScrollY) {
+                    this.isScrollUp = false;
+                } else if (scrollY < this.prevScrollY) {
+                    this.isScrollUp = true;
+                }
+            } else {
+                this.isScrollUp = true;
+            }
+            this.prevScrollY = scrollY;
+        },
+
+        // 過濾過敏原/不喜愛的食材，並更新 uniqueAllergy 和 uniqueDislike
+        getUniqueAllergyAndDislike() {
+            const allergiesSet = new Set();
+            const dislikesSet = new Set();
+
+            // 從 productList 獲取所有的過敏原和不喜愛的食材
+            for (const product of productList) {
+                for (const allergy of product.allergy) {
+                    allergiesSet.add(allergy);
+                }
+                for (const dislike of product.dislike) {
+                    dislikesSet.add(dislike);
+                }
+            }
+            // 將 Set 轉換為陣列，並賦值給 uniqueAllergy 和 uniqueDislike
+            this.uniqueAllergy = Array.from(allergiesSet);
+            this.uniqueDislike = Array.from(dislikesSet);
+        },
+        // 篩選出不含過敏原和不喜愛的產品並賦值給 filteredProductList
+        filterHatefood() {
+            this.filteredProductList = this.productList.filter((product) => {
+                const hasAllergy = this.tempSelectedAllergies.some((allergy) =>
+                    product.allergy.includes(allergy)
+                );
+                const hasDislike = this.tempSelectedDislikes.some((dislike) =>
+                    product.dislike.includes(dislike)
+                );
+                return !hasAllergy && !hasDislike;
+            });
+        },
+        // 取消點擊 allergy
+        onAllergyClick(allergy) {
+            const index = this.tempSelectedAllergies.indexOf(allergy);
+            if (index !== -1) {
+                this.tempSelectedAllergies.splice(index, 1); // 從 tempSelectedAllergies 移除點擊的 allergy
+            }
+        },
+        // 取消點擊 dislike
+        onDislikeClick(dislike) {
+            const index = this.tempSelectedDislikes.indexOf(dislike);
+            if (index !== -1) {
+                this.tempSelectedDislikes.splice(index, 1); // 從 tempSelectedDislikes 移除點擊的 dislike
+            }
+        },
+        // 點擊 down btn_s 後的處理方法
+        applyFiltersAndUpdateProductList() {
+            // 保存目前的選取狀態
+            this.selectedAllergies = [...this.tempSelectedAllergies];
+            this.selectedDislikes = [...this.tempSelectedDislikes];
+
+            // 隱藏不包含的食材內容
+            this.isAdjustExpend = false;
+        },
+        onClickDownBtn() {
+            this.clickedDownBtn = true;
+            this.applyFiltersAndUpdateProductList();
+        },
+
+        // enter_hint
+        closeEnterHint() {
+            this.isEnterHintVisible = false;
+            localStorage.setItem("isEnterHintVisible", "true"); // 將標記設置為已顯示，存儲在localStorage中
+            // 當點擊 closeHint 事件後，移除滾動事件監聽器
+            window.removeEventListener("scroll", this.preventScroll);
+        },
+        checkEnterHint() {
+            const isShown = localStorage.getItem("isEnterHintVisible");
+            this.isEnterHintVisible = isShown === null; // 檢查localStorage中是否有標記，若無則顯示彈窗
+            // 如果彈窗顯示，則阻止頁面滾動
+            if (this.isEnterHintVisible) {
+                window.addEventListener("scroll", this.preventScroll);
+            }
+        },
+        preventScroll() {
+            // 阻止頁面滾動
+            window.scrollTo(0, 0);
+        },
+
+        // closeEnterHint() {
+        //     this.isEnterHint = !this.isEnterHint;
+        // },
     },
     created() {
+        this.getProductData()
         // 不包含的食材
         this.collectUniqueAllergy();
         this.collectUniqueDislike();
@@ -670,13 +968,31 @@ export default {
             this.selectedOptionMeal = this.$store.state.shopPlan.meal;
             this.selectedOptionWeek = this.$store.state.shopPlan.week;
         }
+        window.addEventListener("scroll", this.choosewrapInOut);
     },
     mounted() {
         this.isDesktop = window.innerWidth >= 768;
         window.addEventListener("resize", this.handleResize);
+        window.addEventListener("scroll", this.choosewrapInOut);
+        //過濾過敏原/不喜愛的食材
+        this.getUniqueAllergyAndDislike();
+        this.filterHatefood();
+
+        //select_bar變色
+        document.addEventListener("scroll", this.setActiveNavItem);
+
+        //enter_hint
+        this.checkEnterHint();
     },
     beforeUnmount() {
         window.removeEventListener("resize", this.handleResize);
+        window.removeEventListener("scroll", this.choosewrapInOut);
+
+        //select_bar變色
+        document.removeEventListener("scroll", this.setActiveNavItem);
+    },
+    unmounted() {
+        window.removeEventListener("scroll", this.choosewrapInOut);
     },
 };
 </script>

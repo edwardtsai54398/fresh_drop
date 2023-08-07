@@ -9,7 +9,7 @@
       <div class="index_text">
         <div class="txt">
           <p>每日命定料理</p>
-          <span>左右滑動找到屬於你的菜</span>
+          <span>探索不同文化的烹飪風情</span>
         </div>
         <div class="index_carrot pic">
           <img src="@/assets/images/index/index_decorate_carrot.png" alt="">
@@ -17,16 +17,26 @@
       </div>
     </div>
     <!-- 中間滑卡 -->
-    <div class="index_index_banner_swiper">
-      <!-- 下一張按鈕 -->
-      <button class="btn_circle btn_flat">NEXT►</button>
+    <div class="index_index_banner_swiper" @mouseenter="hideElement" @mouseleave="showElement">
       <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="mySwiper">
         <swiper-slide v-for="(item, index) in cards" :key="index">
           <div class="swiper_pic">
             <img :src="item.img" alt="">
           </div>
         </swiper-slide>
+        <!-- 滑動提示 -->
+        <div class="running_text">
+          左右滑動找到屬於你的菜
+        </div>
+        <div class="hand_wrap" v-if="isVisible">
+          <div class="hand_pointer">
+            <font-awesome-icon icon="fa-solid fa-hand-pointer" flip="horizontal" :style="{ color: '#1F8D61' }" />
+          </div>
+        </div>
       </swiper>
+
+
+
     </div>
     <!-- 字右 -->
     <div class="index_food_title">
@@ -97,8 +107,18 @@ export default defineComponent({
           foodName: ''
         },
       ],
+      isVisible: true,
+
 
     };
+  },
+  methods: {
+    hideElement() {
+      this.isVisible = false;
+    },
+    showElement() {
+      this.isVisible = false; // 在鼠标离开时也保持隐藏状态
+    }
   },
 
 });

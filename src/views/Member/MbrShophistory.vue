@@ -25,6 +25,8 @@
           <p v-if="order.status == 0">狀態：運送中</p>
           <p v-else-if="order.status == 1">狀態：已送達</p>
           <p>訂單編號：{{ order.ordNum }}</p>
+          <p>收件人：</p>
+          <p>地址：</p>
         </div>
         <ul class="order_list">
           <li class="shop_item" v-for="item in order.content" :key="item.name">
@@ -65,7 +67,7 @@
       },
       methods: {
         shoplistToggle(i) {
-          const orderDOM = document.querySelectorAll('.order')
+          const orderDOM = document.querySelectorAll('.order_item')
           orderDOM[i].classList.toggle('collapse')
           this.$emit('toggle')
         }

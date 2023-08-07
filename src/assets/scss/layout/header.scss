@@ -14,7 +14,7 @@ $toggle-link-h: 52px;
 
     align-items: center;
     padding: 0 $sp3;
-
+    transition: .8s;
     .main_nav {
         display: flex;
         padding-top: $sp3;
@@ -26,7 +26,7 @@ $toggle-link-h: 52px;
         height: calc(100vh - $header-h);
         background-color: $bg--;
         flex-direction: column;
-        transition: .3s;
+        
 
         &.open {
             right: 0;
@@ -144,7 +144,9 @@ $toggle-link-h: 52px;
     .mainheader {
         height: $header-h;
         justify-content: flex-start;
-    
+        &.hide{
+            top: -150px;
+        }
         .main_nav {
             position: relative;
             top: 0;
@@ -161,9 +163,7 @@ $toggle-link-h: 52px;
             padding: 0 $sp5;
             margin-right: $sp2;
             margin-left: auto;
-            &.hide{
-                transform: translateY(-150%);
-            }
+            
         }
     
         nav>* {
@@ -394,7 +394,7 @@ $toggle-link-h: 52px;
         margin: auto;
         padding-bottom: 0;
         background-color: $bg--;
-        width: 300px;
+        width: 320px;
         max-height: 600px;
         height: 70vh;
     }
@@ -447,6 +447,7 @@ $toggle-link-h: 52px;
     overflow-y: scroll;
     flex-grow: 1;
     width: 100%;
+    @extend %scrollbar_style;
 }
 
 .cart_item {
@@ -473,9 +474,9 @@ $toggle-link-h: 52px;
 
     .amount {
         position: absolute;
-        bottom: 100%;
-        right: 10px;
-        transform: translateY(50%);
+        top: 0;
+        right: 0px;
+        transform: translate(50%,-50%);
         width: 30px;
         height: 30px;
         line-height: 30px;
@@ -512,6 +513,7 @@ $toggle-link-h: 52px;
 @include desktop{
     .cart_list {
         padding: 0 $sp2;
+        
     }
     
     .cart_item {
@@ -680,9 +682,7 @@ $toggle-link-h: 52px;
             font-weight: 700;
             margin-left: $sp1;
         }
-        &.hide{
-            transform: translateY(-150%);
-        }
+        
     }
 
     .member_center{

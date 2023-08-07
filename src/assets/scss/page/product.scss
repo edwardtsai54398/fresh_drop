@@ -341,17 +341,17 @@
         .title {
             border-bottom: 1px solid $secondary;
             font-size: $m-font;
-            padding: 20px 0;
+            padding: 10px 0;
             display: block;
             text-align: center;
         }
 
-        .cross {
-            font-size: $m-font;
-            position: absolute;
-            right: 30px;
-            top: 25px;
-        }
+        // .cross {
+        //     font-size: $m-font;
+        //     position: absolute;
+        //     right: 30px;
+        //     top: 25px;
+        // }
 
         .input {
             padding: 20px;
@@ -444,17 +444,17 @@
 
         .text_title {
             font-size: $m-font;
-            padding: 20px 0;
+            padding: 10px 0;
             display: block;
             text-align: center;
         }
 
-        .cross {
-            font-size: $m-font;
-            position: absolute;
-            right: 30px;
-            top: 25px;
-        }
+        // .cross {
+        //     font-size: $m-font;
+        //     position: absolute;
+        //     right: 30px;
+        //     top: 25px;
+        // }
     }
 
     .title {
@@ -562,6 +562,7 @@
     width: 90%;
     height: 80%;
     max-width: 1200px;
+    @extend %scrollbar_style;
 }
 
 .title {

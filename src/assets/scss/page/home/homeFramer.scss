@@ -1,22 +1,9 @@
-.index_farmer_pic {
-    // width: 250px;
-}
-
-.framer p {
-    text-align: center;
-    color: $primary;
-    padding: 30px;
-    font-weight: bolder;
-    font-size: $s-font;
-}
-
 .index_farmer_pic img {
     width: 100%;
 }
 
 .carousel__track {
     width: 100%;
-    /* 或者你想要設定的適當寬度 */
 }
 
 
@@ -25,6 +12,31 @@
 //輪播箭頭
 
 .framer {
+
+    .title {
+        text-align: center;
+        color: $primary;
+        padding: 30px;
+        font-weight: bolder;
+        font-size: $l-font;
+        padding-top: 50px;
+    }
+
+    .introduce {
+        max-width: 1200px;
+        margin: auto;
+        text-align: indent;
+        padding: $sp3;
+
+        p {
+            font-size: $s-font;
+            text-align: center;
+            color: $primary;
+            padding: 30px;
+            font-weight: bolder;
+        }
+    }
+
     .carousel_wrap {
         max-width: 1200px;
         margin: 100px auto 100px;
@@ -47,6 +59,11 @@
 
                 width: 350px;
             }
+        }
+
+        p {
+            color: $primary;
+            font-weight: bolder;
         }
 
 
