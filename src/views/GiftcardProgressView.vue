@@ -4,21 +4,23 @@
             <!-- 步驟條 -->
             <div class="root">
                 <div class="progressbar-container">
+                    
                     <!-- 手機版 -->
                     <ul class="progressbar">
-                        <li @click=changeStep(1) :class="{ active: step >= 1 }">收禮人</li>
-                        <li @click=changeStep(2) :class="{ active: step >= 2 }">樣式</li>
-                        <li @click=changeStep(3) :class="{ active: step >= 3 }">客製</li>
-                        <li @click=changeStep(4) :class="{ active: step >= 4 }">金額</li>
-                        <li @click=changeStep(5) :class="{ active: step >= 5 }">完成</li>
+
+                        <li @click=changeStep(1) :class="{ active: step >= 1 }" :disabled="!canChangeStep[1]">收禮人</li>
+                        <li @click=changeStep(2) :class="{ active: step >= 2 }" :disabled="!canChangeStep[2]">樣式</li>
+                        <li @click=changeStep(3) :class="{ active: step >= 3 }" :disabled="!canChangeStep[3]">客製</li>
+                        <li @click=changeStep(4) :class="{ active: step >= 4 }" :disabled="!canChangeStep[4]">金額</li>
+                        <li @click=changeStep(5) :class="{ active: step >= 5 }" :disabled="!canChangeStep[5]">完成</li>
                     </ul>
                     <!-- 768以上版 -->
                     <ul id="progressbar" class="progressbar">
-                        <li @click=changeStep(1) :class="{ active: step >= 1 }">選擇收禮人</li>
-                        <li @click=changeStep(2) :class="{ active: step >= 2 }">選擇樣式</li>
-                        <li @click=changeStep(3) :class="{ active: step >= 3 }">客製禮物卡</li>
-                        <li @click=changeStep(4) :class="{ active: step >= 4 }">選擇金額</li>
-                        <li @click=changeStep(5) :class="{ active: step >= 5 }">完成</li>
+                        <li @click=changeStep(1) :class="{ active: step >= 1 }" :disabled="!canChangeStep[1]">選擇收禮人</li>
+                        <li @click=changeStep(2) :class="{ active: step >= 2 }" :disabled="!canChangeStep[2]">選擇樣式</li>
+                        <li @click=changeStep(3) :class="{ active: step >= 3 }" :disabled="!canChangeStep[3]">客製禮物卡</li>
+                        <li @click=changeStep(4) :class="{ active: step >= 4 }" :disabled="!canChangeStep[4]">選擇金額</li>
+                        <li @click=changeStep(5) :class="{ active: step >= 5 }" :disabled="!canChangeStep[5]">完成</li>
                     </ul>
                 </div>
             </div>
@@ -35,8 +37,10 @@
                     <h5>請選擇收禮對象</h5>
                     <!-- 選送親友或自己按鈕 -->
                     <div class="to-button">
-                        <button class="btn_xs" :class="{ inactive: isSelfClicked }" type="button" @click="isOtherClicked = true, isSelfClicked = false">親友</button>
-                        <button class="btn_xs" :class="{ inactive: isOtherClicked }" type="button" @click="isSelfClicked = true, isOtherClicked = false, selfClicked()">自己</button>
+                        <button class="btn_xs" :class="{ inactive: isSelfClicked }" type="button"
+                            @click="isOtherClicked = true, isSelfClicked = false">親友</button>
+                        <button class="btn_xs" :class="{ inactive: isOtherClicked }" type="button"
+                            @click="isSelfClicked = true, isOtherClicked = false, selfClicked()">自己</button>
                     </div>
                     <!-- 送親友才出現輸入框 -->
                     <div class="recipient-input" v-if="isOtherClicked === true">
@@ -46,7 +50,8 @@
                         <input type="text" placeholder="請輸入收禮人姓名" v-model="recipient.name" id="text" />
                     </div>
                     <!-- 輸入框是空的跳錯誤訊息 -->
-                    <div v-if="showErrorMessage && isOtherClicked && (!recipient.email || !recipient.name)" class="error-message">
+                    <div v-if="showErrorMessage && isOtherClicked && (!recipient.email || !recipient.name)"
+                        class="error-message">
                         <span v-if="!recipient.email">請輸入收禮人會員信箱<br></span>
                         <span v-if="!recipient.name">請輸入收禮人姓名</span>
                     </div>
@@ -113,11 +118,16 @@
                     <h5>客製您的禮物卡</h5>
 
                     <!-- 拖拉功能待修改 -->
+
+                   
+
+
                     <div class="select-pic pic" ref="pic" @mousemove="onDrag" @touchmove="onDrag">
 
                         <div style="position: relative;">
                             <!-- Image -->
-                            <img :src="uploadedImage || selectedPic" alt="" @mousedown="startDragging1" @touchmove="startDragging1" :style="{
+                            <img :src="uploadedImage || selectedPic" alt="" @mousedown="startDragging1"
+                                @touchmove="startDragging1" :style="{
                                     cursor: dragging ? 'grabbing' : 'grab',
                                 }">
                             <!-- Text -->
@@ -193,11 +203,13 @@
                     <h5>請選擇禮物卡金額</h5>
                     <div class="giftcard-money-input">
                         <input type="number" id="giftcard-money" disabled :value="selectedGiftCardAmount">
-                        <font-awesome-icon icon="fa-solid fa-dollar-sign" style="color: #1F8D61; font-size: 20px;position: absolute;top: 28%;left: 10%" />
+                        <font-awesome-icon icon="fa-solid fa-dollar-sign"
+                            style="color: #1F8D61; font-size: 20px;position: absolute;top: 28%;left: 10%" />
                     </div>
                     <div class="giftcard-money-wrap">
                         <div v-for="(item, index) in giftcardMoney" :key="index" class="giftcard-money-button">
-                            <button :id="'money-button-' + index" class="btn_flat" type="button" @click="updateGiftCardAmount(item)">
+                            <button :id="'money-button-' + index" class="btn_flat" type="button"
+                                @click="updateGiftCardAmount(item)">
                                 <img src="../assets/images/icon_bg/price.svg" alt="">{{ item }}
                             </button>
                         </div>
@@ -220,7 +232,8 @@
                     </div>
 
                     <div class="finished">
-                        <font-awesome-icon icon="fa-solid fa-circle-check" style="color: #1F8D61; font-size: 70px; margin-bottom: 10px;" />
+                        <font-awesome-icon icon="fa-solid fa-circle-check"
+                            style="color: #1F8D61; font-size: 70px; margin-bottom: 10px;" />
                         <h5>完成！</h5>
                     </div>
 
@@ -267,7 +280,10 @@
         </div>
     </div>
 </template>
+
+
 <script>
+
 import { defineComponent } from 'vue';
 import { Carousel, Navigation, Slide } from 'vue3-carousel';
 
@@ -284,6 +300,7 @@ export default defineComponent({
         return {
             step: 1,
             totalsteps: 5,
+            canChangeStep: [true, true, false, false, false],
             // Step 1
             isOtherClicked: true,
             isSelfClicked: false,
@@ -383,7 +400,7 @@ export default defineComponent({
             if (this.$store.state.cartList[0].length == 0) {
                 this.$store.commit('stateGiftBuy', {
                     name: this.recipient.name,
-                    img: this.uploadedImage ? this.uploadedImage : this.selectedPic,
+                    img: this.customImageURL,
                     money: this.selectedGiftCardAmount
                 })
                 this.$router.push('/pay')
@@ -417,11 +434,19 @@ export default defineComponent({
                 }
             }
 
+            for (let i = 0; i <= this.step + 1; i++) {
+                this.canChangeStep[i] = true;
+            }
             this.step++;
+            
         },
 
         //下一步
         nextStep() {
+
+            for (let i = 0; i <= this.step + 1; i++) {
+                this.canChangeStep[i] = true;
+            }
             this.step++;
         },
 
@@ -432,7 +457,13 @@ export default defineComponent({
 
         //進度條切換步驟
         changeStep(newStep) {
-            this.step = newStep;
+            if (this.canChangeStep[newStep] && !(this.isOtherClicked && (!this.recipient.email || !this.recipient.name))) {
+                this.step = newStep;
+            } else {
+                this.showErrorMessage = true;
+                return;
+
+            }
         },
 
         //選擇的樣式圖片
@@ -599,7 +630,5 @@ export default defineComponent({
 );
 
 </script>
-<style lang="scss">
-@import "@/assets/scss/all.scss";
-@import "@/assets/scss/page/giftcard_progress.scss";
-</style>
+<style lang="scss">@import "@/assets/scss/all.scss";
+@import "@/assets/scss/page/giftcard_progress.scss";</style>
