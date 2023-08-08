@@ -46,7 +46,7 @@ export default {
                 let params = new URLSearchParams();
                 params.append("cusNo", cusNo);
                 this.axios.post(url, params).then((res) => {
-                    this.$store.commit("setUserData", res.data);
+                    this.$store.commit("setUserInfo", res.data);
                 });
             } else {
                 this.$store.commit('logOut');

@@ -3,7 +3,7 @@ import { createStore } from 'vuex'
 export default createStore({
     state: {
         isLogin: false,
-        memberInfoAll: {},
+        memberInfoAll: {info:'',shop:'',giftcard:'',share:''},
         giftBuy: {
             name: '',
             img: '',
@@ -23,16 +23,11 @@ export default createStore({
     mutations: {
         logOut(state) {
             console.log('logout');
-            state.memberInfoAll = {}
+            state.memberInfoAll = {info:'',shop:'',giftcard:'',share:''}
             state.isLogin = false
             sessionStorage.removeItem("cus_no")
         },
-        setUserData(state, userData) {
-            sessionStorage.setItem("cus_no", userData.cus_no);
-            userData.cus_no = parseInt(userData.cus_no) + 1000
-            state.memberInfoAll = userData
-            state.isLogin = true
-        },
+        
         stateCartList(state, cartlist) {
             state.cartList = cartlist
         },
@@ -59,7 +54,18 @@ export default createStore({
         setProductData(state, { userData }) {
             state.productDetil = userData
         },
-
+        //後端資料
+        setUserInfo(state, userInfo) {
+            sessionStorage.setItem("cus_no", userInfo.cus_no);
+            userInfo.cus_no = parseInt(userInfo.cus_no) + 1000
+            state.memberInfoAll.info = userInfo
+            state.isLogin = true
+        },
+        sendMemDetail(state, data) {
+            state.memberInfoAll.shop = data[0]
+            state.memberInfoAll.giftcard = data[1]
+            state.memberInfoAll.share = data[2]
+        }
     },
     actions: {
 
