@@ -143,14 +143,29 @@
 // 滑動提示字
 .running_text {
     text-align: center;
-    color: #bbb;
     padding: $sp1;
     font-size: $xs-font;
+    color: #1F8D61;
+    font-weight: 700;
 }
 
-// 滑動手指
+// 滑動手指頭
 .hand_wrap {
-    display: none;
+    display: block;
+    position: absolute;
+    top: 55%;
+    left: -25px;
+    z-index: 5;
+    transform: translate(-50%, -50%);
+
+    .hand_pointer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        animation: rotateAnimation 1s linear infinite;
+        transform-origin: center bottom;
+        font-size: 40px;
+    }
 }
 
 .index_index_banner_swiper {
@@ -178,7 +193,24 @@
 // 斷點:768px
 @include pad-V {
 
+    // 滑動手指頭
+    .hand_wrap {
+        display: block;
+        position: absolute;
+        top: 55%;
+        left: -20px;
+        z-index: 5;
+        transform: translate(-50%, -50%);
 
+        .hand_pointer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            animation: rotateAnimation 1s linear infinite;
+            transform-origin: center bottom;
+            font-size: 30px;
+        }
+    }
 
 
 
@@ -336,8 +368,8 @@
     .hand_wrap {
         display: block;
         position: absolute;
-        top: 50%;
-        left: -15px;
+        top: 55%;
+        left: -40px;
         z-index: 5;
         transform: translate(-50%, -50%);
 
@@ -347,7 +379,7 @@
             left: 0;
             animation: rotateAnimation 1s linear infinite;
             transform-origin: center bottom;
-            font-size: 30px;
+            font-size: 70px;
         }
     }
 
@@ -366,9 +398,6 @@
 
         // 滑動提示
         .running_text {
-            padding: $sp1;
-            color: #bbb;
-            text-align: center;
 
             .fa-arrow-left,
             .fa-arrow-right {
@@ -405,11 +434,11 @@
                         z-index: 2;
 
                         p {
-                            font-size: $m-font;
+                            font-size: $l-font;
                         }
 
                         span {
-                            font-size: $s-font;
+                            font-size: $m-font;
                             z-index: 2;
                         }
                     }
@@ -472,18 +501,38 @@
 @include desktop {
     .decorate_index {
         margin-top: -126px;
+
+        .index_banner_slider {
+
+            .index_text {
+                .txt_wrap {
+                    .txt {
+                        z-index: 2;
+
+                        p {
+                            font-size: $m-font;
+                        }
+
+                        span {
+                            font-size: $s-font;
+                            z-index: 2;
+                        }
+                    }
+                }
+            }
+        }
+
     }
 
     // 滑動提示
     .running_text {
-        padding: $sp1;
-        color: #bbb;
-        font-size: $xs-font;
-        text-align: center;
+        font-size: $s-font;
 
         .fa-arrow-left,
         .fa-arrow-right {
             color: #bbb;
         }
     }
+
+
 }
