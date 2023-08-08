@@ -106,12 +106,12 @@
         <button class="member" @click="$emit('toggle')" :class="{ had_login: $store.state.isLogin}">
             <img src="@/assets/images/icon_bg/header_member.svg" alt="" v-if="!$store.state.isLogin" />
             <div class="pic avatar_img" v-if="$store.state.isLogin">
-                <img :src="$store.state.memberInfoAll.cus_pic" alt="" />
+                <img :src="$store.state.memberInfoAll.info.cus_pic" alt="" />
             </div>
             <h4>
                 {{
-                    $store.state.memberInfoAll.cus_name
-                        ? $store.state.memberInfoAll.cus_name
+                    $store.state.memberInfoAll.info.cus_acc
+                        ? $store.state.memberInfoAll.info.cus_acc
                         : "會員登入"
                 }}
             </h4>

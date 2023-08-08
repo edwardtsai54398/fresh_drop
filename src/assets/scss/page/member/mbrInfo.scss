@@ -23,17 +23,15 @@
     }
     .info_edit_btn{
         margin-left: $sp1;
-        &.unclickable{
-            border-color: #aaa;
-            cursor: auto;
-            svg{
-                color: #aaa;
+        .fa-floppy-disk{
+            display: none;
+        }
+        &.can_edit{
+            .fa-floppy-disk{
+                display: block;
             }
-            &:hover{
-                background-color: transparent;
-            }
-            &::before{
-                background-color: transparent;
+            .fa-pen{
+                display: none;
             }
         }
         

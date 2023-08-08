@@ -94,7 +94,7 @@ export default {
                     if (res.data == 0) {
                         this.errMsg = '*帳號密碼錯誤，請再試一次'
                     } else {
-                        this.$store.commit("setUserData", res.data);
+                        this.$store.commit("setUserInfo", res.data);
                         this.$emit("close");
                         this.user.email = ''
                         this.user.password = ''

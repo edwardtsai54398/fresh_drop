@@ -21,10 +21,11 @@ try{
         echo json_encode([0]);
     }else{
         $memberRow = $member->fetch(PDO::FETCH_ASSOC);
-        session_start();
-        $_SESSION["cus_no"] = $memberRow["cus_no"];
-        // $_SESSION["isLogin"] = true;
         
+        //整理手機號碼
+        $front4 = substr($memberRow["phone"],0,4);
+        $back6 = substr($memberRow["phone"],4,6);
+        $memberRow["phone"] = $front4 . "-" . $back6;
         echo json_encode($memberRow);
 
     }
