@@ -4,7 +4,7 @@
             <!-- 步驟條 -->
             <div class="root">
                 <div class="progressbar-container">
-                    
+
                     <!-- 手機版 -->
                     <ul class="progressbar">
 
@@ -76,9 +76,9 @@
                     <!-- 預設圖清單(輪播) -->
                     <div class="piclist">
                         <carousel v-bind="settings" :breakpoints="breakpoints">
-                            <slide v-for="slide in defaultPic" :key="slide">
-                                <div class="giftcard_pic box" @click="selectPic(slide)">
-                                    <img :src="slide" alt="">
+                            <slide v-for="slide in giftcardData" :key="slide">
+                                <div class="giftcard_pic box" @click="selectPic(slide.giftcard_defaultpic_url)">
+                                    <img :src="require(`@/assets/images/gift/${slide.giftcard_defaultpic_url}`)" alt="">
                                 </div>
                             </slide>
                             <template #addons>
@@ -117,17 +117,13 @@
 
                     <h5>客製您的禮物卡</h5>
 
-                    <!-- 拖拉功能待修改 -->
-
-                   
-
-
-                    <div class="select-pic pic" ref="pic" @mousemove="onDrag" @touchmove="onDrag">
+                    <div class="select-pic pic html2canvas" ref="html2canvas" id="capture" @mousemove="onDrag"
+                        @touchmove="onDrag" @mousedown="startDragging1" @touchstart="startDragging1">
 
                         <div style="position: relative;">
                             <!-- Image -->
                             <img :src="uploadedImage || selectedPic" alt="" @mousedown="startDragging1"
-                                @touchmove="startDragging1" :style="{
+                                @touchmove="startDragging1" @mouseup="stopDragging1" :style="{
                                     cursor: dragging ? 'grabbing' : 'grab',
                                 }">
                             <!-- Text -->
@@ -135,21 +131,44 @@
                                 position: 'absolute',
                                 left: textPosition.x + 'px',
                                 top: textPosition.y + 'px',
-                                background: 'rgba(255, 255, 255, 0.7)',
                                 color: textColor,
+                                background: 'rgba(255, 255, 255, 0.7)',
                                 padding: '4px 8px',
                                 borderRadius: '4px',
-                            }">{{ text }}</div>
+
+
+                            }" @mouseup="stopDragging">{{ text }}</div>
+
+                            <div v-for="selectedSlide in selectedSlides" :key="selectedSlide.src" :style="{
+                                position: 'absolute',
+                                left: selectedSlide.x + 'px',
+                                top: selectedSlide.y + 'px',
+                                // width: selectedSlide.width + 'px',
+                                // height: selectedSlide.height + 'px',
+
+                            }" @mousedown="startDragging(selectedSlide, $event)"
+                                @touchstart="startDragging(selectedSlide, $event)"
+                                @mousemove="onDragging(selectedSlide, $event)"
+                                @touchmove="onDragging(selectedSlide, $event)" @touchend="stopDragging"
+                                @mouseup="stopDragging">
+                                <img :src="selectedSlide.src" alt="">
+                            </div>
+
+
                         </div>
+
+
+
+
                     </div>
 
                     <!-- 圖示拖拉 -->
-                    <div class="sticker-overlay" ref="stickerOverlay" v-if="selectedSticker" :style="{
+                    <!-- <div class="sticker-overlay" ref="stickerOverlay" v-if="selectedSticker" :style="{
                         backgroundImage: 'url(' + selectedSticker.src + ')',
                         width: selectedSticker.width + 'px',
                         height: selectedSticker.height + 'px',
                         transform: 'translate(' + selectedSticker.x + 'px, ' + selectedSticker.y + 'px)'
-                    }" @touchstart="startDragging" @mousedown="startDragging"></div>
+                    }" @touchstart="startDragging" @mousedown="startDragging"></div> -->
 
                     <!--  圖示輪播 -->
                     <div class="add-sticker">
@@ -180,12 +199,13 @@
 
                         </div>
 
-                        <!-- 文字選取顏色功能待新增 -->
-                        <input id="colorPicker" type="color" v-model="color">
+
+                        <input id="colorPicker" type="color" v-model="textColor">
 
                     </div>
 
-                    <button @click="nextStep" class="nextstep btn_xs">下一步，選擇禮物卡金額</button>
+                    <button @click="downloadCanvas" class="nextstep btn_xs" id="btnDownload"
+                        type="button">下一步，選擇禮物卡金額</button>
                     <button @click="previousStep" class="previousstep btn_flat btn_xs">上一步</button>
 
                 </section>
@@ -239,8 +259,8 @@
 
                     <div class="giftcard-detail">
                         <!-- 待改使用者客製圖片 -->
-                        <div class="finished-pic select-pic pic">
-                            <img :src="uploadedImage || selectedPic" alt="">
+                        <div class="finished-pic pic">
+                            <img :src="customImageURL" alt="">
                         </div>
 
                         <div class="text-wrap">
@@ -286,7 +306,7 @@
 
 import { defineComponent } from 'vue';
 import { Carousel, Navigation, Slide } from 'vue3-carousel';
-
+import html2canvas from 'html2canvas'; // eslint-disable-line no-unused-vars
 import 'vue3-carousel/dist/carousel.css';
 // 輪播
 export default defineComponent({
@@ -298,6 +318,8 @@ export default defineComponent({
     },
     data() {
         return {
+            dragData: null, // 用來儲存拖拉起始點的資料,
+            customImageURL: "",
             step: 1,
             totalsteps: 5,
             canChangeStep: [true, true, false, false, false],
@@ -313,13 +335,13 @@ export default defineComponent({
             // Step 2
             uploadedImage: null, //使用者上傳圖片
             selectedPic: require('@/assets/images/gift/giftcard_defaultpic_001.svg'), //預設樣式1
-            defaultPic: [ // 樣式圖片
-                require('@/assets/images/gift/giftcard_defaultpic_001.svg'),
-                require('@/assets/images/gift/giftcard_defaultpic_002.svg'),
-                require('@/assets/images/gift/giftcard_defaultpic_003.svg'),
-                require('@/assets/images/gift/giftcard_defaultpic_004.svg'),
-                require('@/assets/images/gift/giftcard_defaultpic_005.svg'),
-                require('@/assets/images/gift/giftcard_defaultpic_006.svg')
+            giftcardData: [ // 樣式圖片
+
+                // require('@/assets/images/gift/giftcard_defaultpic_002.svg'),
+                // require('@/assets/images/gift/giftcard_defaultpic_003.svg'),
+                // require('@/assets/images/gift/giftcard_defaultpic_004.svg'),
+                // require('@/assets/images/gift/giftcard_defaultpic_005.svg'),
+                // require('@/assets/images/gift/giftcard_defaultpic_006.svg')
             ],
 
             // 禮物卡樣式輪播
@@ -349,7 +371,7 @@ export default defineComponent({
             },
 
             //Step 3
-            selectedSticker: [], //使用者選取圖示
+            selectedSlides: [], //使用者選取圖示
             sticker: [ //圖示圖片
                 require('@/assets/images/gift/openmoji_wrapped-gift.svg'),
                 require('@/assets/images/gift/openmoji_flower.svg'),
@@ -378,6 +400,7 @@ export default defineComponent({
                 y: 0
             },
             dragging: false,     // 是否正在拖拽文字
+            draggingText: false,
             //Step 4
             giftcardMoney: [500, 800, 1000, 2000, 3000, 5000], //金額按鈕
             selectedGiftCardAmount: 500, //預設金額500
@@ -438,7 +461,7 @@ export default defineComponent({
                 this.canChangeStep[i] = true;
             }
             this.step++;
-            
+
         },
 
         //下一步
@@ -482,8 +505,8 @@ export default defineComponent({
 
             // 设置选中图片，并为其添加selected类名
             this.uploadedImage = null;
-            this.selectedPic = pic;
-            const selectedPicElement = document.querySelector(`.piclist .giftcard_pic img[src="${pic}"]`);
+            this.selectedPic = require(`@/assets/images/gift/${pic}`);
+            const selectedPicElement = document.querySelector(`.piclist .giftcard_pic img[src="${this.selectedPic}"]`);
             if (selectedPicElement) {
                 selectedPicElement.parentElement.classList.add('selected');
             }
@@ -505,130 +528,148 @@ export default defineComponent({
         },
 
         //點選圖示(待修正)
-        selectSticker(sticker) {
+        selectSticker(slide) {
 
-            this.selectedSticker = {
-                src: sticker,
+            this.selectedSlides.push({
+                src: slide,
                 x: 0,
-                y: 40,
-                width: 50,
-                height: 50,
-            };
+                y: 0,
+                width: 60,
+                height: 60,
+            });
+        },
+
+        getGiftcardData() {
+            let url = `${this.$url}giftcardPic.php`
+            this.axios.get(url).then(res => {
+                // res.data.forEach(item => {
+                //     if (item.phone.substr(4, 1) == '-' && item.phone.length == 10) {
+                //         let front4 = item.phone.substr(0, 4)
+                //         let back6 = item.phone.substr(4, 6)
+                //         item.phone = front4.concat('-', back6)
+                //     } else if (item.phone.length !== 10) {
+                //         console.log(item.phone);
+                //     }
+                //})
+                this.giftcardData = res.data;
+
+            }).catch(err => {
+                console.log(err);
+            })
         },
 
 
-        //-------------------圖示&文字拖拉開始(待修正)------------------
-        startDragging(event) {
-            // Prevent default touch behavior
-            event.preventDefault();
+        //-------------------圖示&文字拖拉開始------------------
 
-            // Get the initial mouse/touch position
-            const x = event.pageX || (event.touches && event.touches[0].pageX);
-            const y = event.pageY || (event.touches && event.touches[0].pageY);
-
-            // Get the sticker overlay element using the ref
-            const stickerOverlay = this.$refs.stickerOverlay;
-            if (!stickerOverlay) {
-                // Return if the sticker overlay is not found
-                return;
+        startDragging(selectedSlide, event) {
+            if (event.type === 'touchstart') {
+                const touch = event.touches[0]; // Get the first touch
+                this.dragData = {
+                    selectedSlide,
+                    startX: touch.clientX,
+                    startY: touch.clientY,
+                    startLeft: selectedSlide.x,
+                    startTop: selectedSlide.y,
+                };
+            } else {
+                this.dragData = {
+                    selectedSlide,
+                    startX: event.clientX,
+                    startY: event.clientY,
+                    startLeft: selectedSlide.x,
+                    startTop: selectedSlide.y,
+                };
             }
-
-            // Calculate the initial position of the sticker relative to its position within the container
-            const containerRect = this.$refs.pic.getBoundingClientRect();
-            const stickerRect = stickerOverlay.getBoundingClientRect();
-            const offsetX = x - containerRect.left;
-            const offsetY = y - containerRect.top;
-
-            // Set the initial position of the sticker
-            this.selectedSticker.x = offsetX - stickerRect.width / 2;
-            this.selectedSticker.y = offsetY - stickerRect.height / 2;
-
-            // Add event listeners to handle dragging to the document
-            document.addEventListener('mousemove', this.dragSticker);
-            document.addEventListener('touchmove', this.dragSticker);
-            document.addEventListener('mouseup', this.stopDragging);
-            document.addEventListener('touchend', this.stopDragging);
+            this.dragging = true;
         },
 
-        dragSticker(event) {
-            // Prevent default touch behavior
-            event.preventDefault();
-
-            // Get the sticker overlay element using the ref
-            const stickerOverlay = this.$refs.stickerOverlay;
-            if (!stickerOverlay) {
-                // Return if the sticker overlay is not found
-                return;
+        onDragging(selectedSlide, event) {
+            if (this.dragging && this.dragData && this.dragData.selectedSlide === selectedSlide) {
+                if (event.type === 'touchmove') {
+                    const touch = event.touches[0]; // Get the first touch
+                    const deltaX = touch.clientX - this.dragData.startX;
+                    const deltaY = touch.clientY - this.dragData.startY;
+                    selectedSlide.x = this.dragData.startLeft + deltaX;
+                    selectedSlide.y = this.dragData.startTop + deltaY;
+                } else {
+                    const deltaX = event.clientX - this.dragData.startX;
+                    const deltaY = event.clientY - this.dragData.startY;
+                    selectedSlide.x = this.dragData.startLeft + deltaX;
+                    selectedSlide.y = this.dragData.startTop + deltaY;
+                }
             }
-
-            // Calculate the boundaries for the sticker's draggable area (within the container)
-            const containerRect = this.$refs.pic.getBoundingClientRect();
-            const stickerRect = stickerOverlay.getBoundingClientRect();
-
-            const maxX = containerRect.width - stickerRect.width;
-            const maxY = containerRect.height - stickerRect.height + 40;
-
-            // Get the current mouse/touch position relative to the container
-            const x = event.pageX || (event.touches && event.touches[0].pageX);
-            const y = event.pageY || (event.touches && event.touches[0].pageY);
-            const offsetX = x - containerRect.left;
-            const offsetY = y - containerRect.top;
-
-            // Calculate the new position for the sticker within the boundaries
-            let newX = offsetX - stickerRect.width / 2;
-            let newY = offsetY - stickerRect.height / 2;
-
-            // Ensure the sticker stays within the boundaries
-            newX = Math.max(0, Math.min(newX, maxX));
-            newY = Math.max(40, Math.min(newY, maxY));
-
-            // Update the position of the sticker
-            this.selectedSticker.x = newX;
-            this.selectedSticker.y = newY;
         },
-
 
         stopDragging() {
-            // Remove the event listeners used for dragging
-            document.removeEventListener('mousemove', this.dragSticker);
-            document.removeEventListener('touchmove', this.dragSticker);
-            document.removeEventListener('mouseup', this.stopDragging);
-            document.removeEventListener('touchend', this.stopDragging);
+            this.dragging = false;
+            this.dragData = null;
         },
+
+
         startDragging1(e) {
             e.preventDefault();
             this.dragging = true;
         },
+
+
         onDrag(e) {
-            if (!this.dragging) return;
-            const imgRect = this.$refs.pic.getBoundingClientRect();
+            if (this.dragging) {
+                const imgRect = this.$refs.html2canvas.getBoundingClientRect();
+                const newX = e.type === 'touchmove' ? e.touches[0].clientX - imgRect.left : e.clientX - imgRect.left;
+                const newY = e.type === 'touchmove' ? e.touches[0].clientY - imgRect.top : e.clientY - imgRect.top;
 
-            // Calculate the new position for the text within the boundaries
-            const newX = e.type === 'touchmove' ? e.touches[0].clientX - imgRect.left : e.clientX - imgRect.left;
-            const newY = e.type === 'touchmove' ? e.touches[0].clientY - imgRect.top : e.clientY - imgRect.top;
-
-
-            // Ensure the text stays within the boundaries of the image container
-
-            this.textPosition.x = Math.max(0, Math.min(newX, imgRect.width));
-            this.textPosition.y = Math.max(0, Math.min(newY, imgRect.height));
+                if (this.dragData && this.dragData.selectedSlide) {
+                    const selectedSlide = this.dragData.selectedSlide;
+                    selectedSlide.x = Math.max(0, Math.min(newX, imgRect.width));
+                    selectedSlide.y = Math.max(0, Math.min(newY, imgRect.height));
+                } else {
+                    this.textPosition.x = Math.max(0, Math.min(newX, imgRect.width));
+                    this.textPosition.y = Math.max(0, Math.min(newY, imgRect.height));
+                }
+            }
         },
 
         stopDragging1() {
             this.dragging = false;
         },
         //-------------------圖示&文字拖拉結束------------------
-
         //選擇金額
         updateGiftCardAmount(amount) {
             this.selectedGiftCardAmount = amount;
         },
+        downloadCanvas() {
+            this.saveCapture();
+            this.nextStep();
+        },
+        saveCapture() {
+            html2canvas(this.$el.querySelector("#capture")).then((canvas) => {
+                //console.log(canvas.toDataURL("image/png"));
+                const imageURL = canvas.toDataURL("image/png");
+                this.customImageURL = imageURL; // Set the customImageURL to the generated image URL
+                // this.download(canvas.toDataURL("image/png"));
+            });
+        },
+        download(url) {
+            var a = document.createElement("a");
+            a.style.display = "none";
+            a.href = url;
+            a.download = "test.png";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        },
     },
+    mounted() {
+        this.getGiftcardData()
+    },
+
 
 },
 
 );
 
 </script>
-<style lang="scss">@import "@/assets/scss/all.scss";
-@import "@/assets/scss/page/giftcard_progress.scss";</style>
+<style lang="scss">
+@import "@/assets/scss/all.scss";
+@import "@/assets/scss/page/giftcard_progress.scss";
+</style>
