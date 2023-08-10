@@ -157,7 +157,7 @@
                 step:{{ step }} -->
 
         <!-- 分析結果 -->
-        <transition name="fade" v-for="(item, index) in result" :key="index">
+        <transition name="fade" v-for="(item, index) in gameData" :key="index">
             <section class="analyze_card" v-show="!status && sum == (index + 5)">
                 <div class="clip">
                     <img src="@/assets/images/game/clip.png" alt="">
@@ -165,21 +165,46 @@
                 <div class="wrap">
                     <div class="title">分析結果</div>
                     <div class="recommend row">
-                        <div class="col-6" v-for="(proItem, proIndex) in item.productLists[0]" :key="proIndex">
+                        <div class="col-6">
                             <div class="pro_card">
                                 <div class="pic">
-                                    <img :src="proItem.img" alt="">
+                                    <img :src="require(`../assets/images/product/${item.dish1_pic}`)" alt="">
+
                                 </div>
-                                <h2>{{ proItem.name }}</h2>
+                                <h2>{{ item.dish1_recipe }}</h2>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="pro_card">
+                                <div class="pic">
+                                    <img :src="require(`../assets/images/product/${item.dish2_pic}`)" alt="">
+                                </div>
+                                <h2>{{ item.dish2_recipe }}</h2>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="pro_card">
+                                <div class="pic">
+                                    <img :src="require(`../assets/images/product/${item.dish3_pic}`)" alt="">
+                                </div>
+                                <h2>{{ item.dish3_recipe }}</h2>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="pro_card">
+                                <div class="pic">
+                                    <img :src="require(`../assets/images/product/${item.dish4_pic}`)" alt="">
+                                </div>
+                                <h2>{{ item.dish4_recipe }}</h2>
                             </div>
                         </div>
                     </div>
                     <div class="analyze">
                         <p class="personality">|{{ item.personality }}|</p>
-                        <p class="txt">{{ item.txt }}</p>
+                        <p class="txt">{{ item.content }}</p>
                     </div>
                     <div class="btns_wrap">
-                        <button class="next_btn" @click="goShop(item.productLists)">前往購買</button>
+                        <button class="next_btn" @click="goShop(item)">前往購買</button>
                         <button class="next_btn" @click="restartTest">再玩一次</button>
                     </div>
                 </div>
@@ -190,7 +215,7 @@
 </template>
 
 <script>
-import productList from "@/assets/data/productList.js";
+// import productList from "@/assets/data/productList.js";
 
 export default {
     data() {
@@ -253,195 +278,9 @@ export default {
                     id: 5
                 }
             ],
-            result: [
-                {
-                    id: 1,
-                    personality: '冒險家',
-                    txt: `對新奇和刺激的渴望使你喜歡嘗試不同的味道和料理、你尋求新的口味體驗、並享受冒烹飪過程。`,
-                    productLists: [[
-                        {
-                            name: "西班牙海鮮燉飯",
-                            category: "主菜",
-                            amount: 1,
-                            img: require('@/assets/images/product/12Spanish_Paella.jpg'),
-                        },
-                        {
-                            name: "阿根廷燉牛肉",
-                            category: "主菜",
-                            amount: 1,
-                            img: require('@/assets/images/product/9Argentinian_beef_stew.jpg'),
-                        },
-                        {
-                            name: "墨西哥辣味雞肉湯",
-                            category: "湯品",
-                            amount: 1,
-                            img: require('@/assets/images/product/22mexico_spicy_chickn_soup.jpg'),
-                        },
-                        {
-                            name: "泰式生菜包",
-                            category: "沙拉",
-                            amount: 1,
-                            img: require('@/assets/images/product/26lettuce_wrap.jpg'),
-                        }
-                    ]]
-                },
-                {
-                    id: 2,
-                    personality: '安逸享受者',
-                    txt: '分析原因：你對舒適和享受的追求使你喜歡選擇家常菜和溫和口味的食物。你尋求平衡和放鬆，享受那種讓你感到舒服和滿足的味道。',
-                    productLists: [[
-                        {
-                            name: "日本櫻花蝦天婦羅",
-                            category: "主菜",
-                            amount: 1,
-                            img: require('@/assets/images/product/13tempura.jpg'),
-                        },
-                        {
-                            name: "奶油啤酒蛤蠣",
-                            category: "主菜",
-                            amount: 1,
-                            img: require('@/assets/images/product/2creamy_beer_clam.jpg'),
-                        },
-                        {
-                            name: "馬來西亞椰奶雞湯",
-                            category: "湯品",
-                            amount: 1,
-                            img: require('@/assets/images/product/19malaysia_coconuts_soup.jpg'),
-                        },
-                        {
-                            name: "巴西凱撒沙拉",
-                            category: "沙拉",
-                            amount: 1,
-                            img: require('@/assets/images/product/29brazil_caesar_salad.jpg'),
-                        }
-                    ]]
-                },
-                {
-                    id: 3,
-                    personality: '創意人格',
-                    txt: '分析原因：你的豐富創意和熱情驅使你追求獨特的飲食體驗。你喜歡嘗試新穎的料理和特色小吃，並將食物視為藝術和表達自我的方式。',
-                    productLists: [[
-                        {
-                            name: "塔香茄子",
-                            category: "主菜",
-                            amount: 1,
-                            img: require('@/assets/images/product/3basil_eggplant.jpg'),
-                        },
-                        {
-                            name: "中華彗星炒飯",
-                            category: "主菜",
-                            amount: 1,
-                            img: require('@/assets/images/product/6friedrice.jpg'),
-                        },
-                        {
-                            name: "法國洋蔥湯",
-                            category: "湯品",
-                            amount: 1,
-                            img: require('@/assets/images/product/18onion_soup.jpg'),
-                        },
-                        {
-                            name: "印度瑪撒拉薯仔沙拉",
-                            category: "沙拉",
-                            amount: 1,
-                            img: require('@/assets/images/product/28masal_potato_salad.jpg'),
-                        }
-                    ]]
-                },
-                {
-                    id: 4,
-                    personality: '社交達人',
-                    txt: '分析原因：你喜歡社交和人際交往，食物在社交場合中扮演重要角色。你喜歡分享美食，享受小吃和下午茶點等輕鬆的社交餐點。',
-                    productLists: [[
-                        {
-                            name: "泡椒炒鮮魚",
-                            category: "主菜",
-                            amount: 1,
-                            img: require('@/assets/images/product/7bell_pepper_fish.jpg'),
-                        },
-                        {
-                            name: "希臘烤羊肉",
-                            category: "主菜",
-                            amount: 1,
-                            img: require('@/assets/images/product/11greece_roast_lamb.jpg'),
-                        },
-                        {
-                            name: "意大利米蘭湯",
-                            category: "湯品",
-                            amount: 1,
-                            img: require('@/assets/images/product/24milano_soup.jpg'),
-                        },
-                        {
-                            name: "糖漬番茄",
-                            category: "沙拉",
-                            amount: 1,
-                            img: require('@/assets/images/product/25candied_tomato.jpg'),
-                        }
-                    ]]
-                },
-                {
-                    id: 5,
-                    personality: '健康控',
-                    txt: '分析原因：你對健康和營養的關注使你傾向選擇健康沙拉、素食料理和天然有機食物。你重視身體健康和營養均衡的飲食習慣。',
-                    productLists: [[
-                        {
-                            name: "滑嫩番茄蛋",
-                            category: "主菜",
-                            amount: 1,
-                            img: require('@/assets/images/product/1tomaot_egg.jpg'),
-                        },
-                        {
-                            name: "麻婆豆腐",
-                            category: "主菜",
-                            amount: 1,
-                            img: require('@/assets/images/product/5mapo_tofu.jpg'),
-                        },
-                        {
-                            name: "泰式酸辣湯",
-                            category: "湯品",
-                            amount: 1,
-                            img: require('@/assets/images/product/23thai_hot_sour_soup.jpg'),
-                        },
-                        {
-                            name: "中東麥麩沙拉",
-                            category: "沙拉",
-                            amount: 1,
-                            img: require('@/assets/images/product/27middleast_gluten_salad.jpg'),
-                        }
-                    ]]
-                },
-                {
-                    id: 6,
-                    personality: '情感探索者',
-                    txt: '分析原因：你對情感和內心探索感興趣，食物對你來說是情感療癒的一部分。你喜歡享受舒緩心情的甜點和心靈療癒的食物，並創造溫馨的烹飪體驗。',
-                    productLists: [[
-                        {
-                            name: "越南河粉湯",
-                            category: "主菜",
-                            amount: 1,
-                            img: require('@/assets/images/product/14Vietnamese_noodles.jpg'),
-                        },
-                        {
-                            name: "法國紅酒燉雞",
-                            category: "主菜",
-                            amount: 1,
-                            img: require('@/assets/images/product/8Coqauvin.jpg'),
-                        },
-                        {
-                            name: "意大利肉醬千層麵",
-                            category: "湯品",
-                            amount: 1,
-                            img: require('@/assets/images/product/15Lasagna.jpg'),
-                        },
-                        {
-                            name: "加拿大蔓越莓野菜沙拉",
-                            category: "沙拉",
-                            amount: 1,
-                            img: require('@/assets/images/product/32crancherry_salad.jpg'),
-                        }
-                    ]]
-                },
-            ],
-            productList,
+            gameData: [],
+            types: [],
+            productLists: []
         }
     },
     computed: {
@@ -473,6 +312,7 @@ export default {
             this.step = 1;
             this.status = true;
             this.sum = 0;
+            this.productLists = []
         },
         handleClick1() {
             this.score = 1;
@@ -485,16 +325,46 @@ export default {
             this.isClicked2 = true;
         },
         // 前往購買
-        goShop(productLists) {
-            this.$store.commit("stateCartList", productLists);
-            this.$store.commit("statePlan", {
-                plan: '單次購買',
-                meal: 1,
-                week: 1
-            });
-            this.$router.push("/shop");
+        goShop(item) {
+            console.log(123)
+            console.log(item)
+            console.log(item.dish1)
+            this.productLists.push(
+                { dish: item.dish1, dish_pic: item.dish1_pic, dish1_recipe: item.dish1_recipe, amount: 1, main: "主菜" },
+                { dish: item.dish2, dish_pic: item.dish2_pic, dish2_recipe: item.dish2_recipe, amount: 1, main: "主菜" },
+                { dish: item.dish3, dish_pic: item.dish3_pic, dish3_recipe: item.dish3_recipe, amount: 1, main: "湯品" },
+                { dish: item.dish4, dish_pic: item.dish4_pic, dish4_recipe: item.dish4_recipe, amount: 1, main: "沙拉" },
+            );
+
+            // this.$store.commit("stateCartList", this.productLists);
+            // this.$store.commit("statePlan", {
+            //     plan: '單次購買',
+            //     meal: 1,
+            //     week: 1
+            // });
+            // this.$router.push("/shop");
         },
-    }
+        //取得資料庫資料
+        getGameData() {
+            let url = `${this.$url}gameRows.php`
+            this.axios.get(url).then(res => {
+                this.gameData = res.data
+            }).catch(err => {
+                console.log(err);
+            })
+        },
+    },
+    watch: {
+        gameData: {
+            handler: function () {
+                this.searchResult = this.gameData
+            },
+            deep: true
+        },
+    },
+    mounted() {
+        this.getGameData()
+    },
 }
 </script>
 <style scoped lang="scss">
