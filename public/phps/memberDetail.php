@@ -4,8 +4,8 @@ header('Access-Control-Allow-Origin:*');
 try {
     require_once("connect_chd102g2.php");
 
-    // $cusNo = $_POST["cusNo"];
-    $cusNo = 1;
+    $cusNo = $_POST["cusNo"];
+    // $cusNo = 1;
     $sql = "select o.ord_date, o.ord_no, o.ord_addr, o.total_price as price, o.ord_cus,
                     d.ord_status, d.deliv_no, d.week, d2.deliv_detail_no,
                     r.recipe_name, r.recipe_pic, r.class, d2.qty,

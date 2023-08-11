@@ -305,6 +305,22 @@
     margin-top: $sp4;
 }
 
+.giftcard_select{
+    display: flex;
+    justify-content: center;
+    .select{
+        width: 160px;
+    }
+    
+    .placeholder, li{
+        font-size: $s-font;
+    }
+    .placeholder{
+        line-height: 40px;
+        border-radius: 20px;
+    }
+}
+
 .calc_wrap {
     display: flex;
     justify-content: space-between;
@@ -332,7 +348,14 @@
 
 
 @include pad-V {
-
+    .calc_pay {
+        position: relative;
+    }
+    .giftcard_select{
+        position: absolute;
+        top: 0;
+        left: $sp3;
+    }
     .calc_wrap,
     .calc_total {
         display: grid;
@@ -380,31 +403,9 @@
 .radio_wrap {
     margin-top: $sp4;
 
-    input[type="radio"] {
-        margin-right: $sp1;
-        opacity: 0;
-
-        &:checked+label::before {
-            box-shadow: .125rem .125rem 0 $bg inset, -.125rem -.125rem 0 $bg inset, -.125rem .125rem 0 #fff inset, .125rem -.125rem 0 #fff inset, .3rem .3rem 0 $primary-- inset, -.5rem -.5rem 0 $primary-- inset;
-        }
-    }
 
     label {
         font-size: $xs-font;
-        position: relative;
-
-        &::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: calc(100% + 4px);
-            transform: translateY(-50%);
-            display: block;
-            width: 14px;
-            aspect-ratio: 1/1;
-            border-radius: 50%;
-            border: 2px solid $text;
-        }
     }
 
 }

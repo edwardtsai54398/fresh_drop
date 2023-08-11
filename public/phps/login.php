@@ -22,10 +22,6 @@ try{
     }else{
         $memberRow = $member->fetch(PDO::FETCH_ASSOC);
         
-        //整理手機號碼
-        $front4 = substr($memberRow["phone"],0,4);
-        $back6 = substr($memberRow["phone"],4,6);
-        $memberRow["phone"] = $front4 . "-" . $back6;
         echo json_encode($memberRow);
 
     }

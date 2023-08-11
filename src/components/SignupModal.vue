@@ -13,12 +13,12 @@
                 <label for="sign-gender">性別<span class="must_fill">*此欄位必填</span></label>
                 <div class="check">
                     <div class="man">
-                        <input type="radio" name="gender" value="男" v-model="user.gender"/>
-                        <label for="check">男</label>
+                        <input type="radio" name="gender" id="male" value="男" v-model="user.gender"/>
+                        <label for="male">男</label>
                     </div>
                     <div class="female">
-                        <input type="radio" name="gender" value="男" v-model="user.gender"/>
-                        <label for="check">女</label>
+                        <input type="radio" name="gender" id="female" value="女" v-model="user.gender"/>
+                        <label for="female">女</label>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
         </div>
         <div class="text_wrap">
             <label for="sign-phone">手機號碼<span class="must_fill">*此欄位必填</span></label>
-            <input type="text" placeholder="請輸入手機號碼" v-model="user.phone" id="sign-phone" name="sign-phone" @blur="checkFilled(user.phone, $event)"/>
+            <input type="text" placeholder="請輸入手機號碼(09xx-xxxxxx)" v-model="user.phone" id="sign-phone" name="sign-phone" @blur="checkFilled(user.phone, $event)"/>
         </div>
         <div class="text_wrap">
             <label for="sign-email">Email<span class="must_fill">*此欄位必填</span></label>
@@ -141,8 +141,31 @@ export default {
             }
             if (this.user.psw !== this.user.confirmPsw) {
                 alert('請再次確認密碼')
+                this.user.psw = ''
+                this.user.confirmPsw = ''
+            } else if (this.user.phone.substr(4,1) !== '-') {
+                alert('手機號碼格式：09xx-xxxxxx')
             } else {
                 console.log('註冊成功');
+                let url = `${this.$url}signup.php`;
+                let params = new URLSearchParams();
+                
+                params.append("name", this.user.name)
+                params.append("gender", this.user.gender)
+                params.append("birth", this.user.birth)
+                params.append("phone", this.user.phone)
+                params.append("email", this.user.email)
+                params.append("psw", this.user.psw)
+                params.append("add", this.user.add)
+                this.axios.post(url, params).then((res) => {
+                    alert(res.data)
+                    if (res.data == '註冊成功') {
+                        this.$emit('close')
+                    } else if (res.data == '此密碼已有人使用') {
+                        this.user.psw = ''
+                        this.user.confirmPsw = ''
+                    }
+                });
             }
         }
     },

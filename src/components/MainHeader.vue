@@ -195,8 +195,9 @@ export default {
         logOut() {
             this.$emit('toggle', '登出');
             this.$store.commit('logOut');
-            if (this.$router.path == '/pay' ||
-                this.$router.path == '/member') {
+            if (this.$route.path == '/pay' ||
+                this.$route.path == '/member') {
+                console.log('logout');
                 this.$router.push("/index")
             }
         },

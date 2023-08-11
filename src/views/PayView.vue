@@ -45,7 +45,7 @@
                     </template>
                 </carousel>
 
-                <div class="price">200元</div>
+                <div class="price">{{ calcTotalPrice }}元</div>
                 <div class="total_price">{{ calcTotalPrice }}元</div>
             </div>
             <div class="gift_cart_content" v-if="giftBuy.name">
@@ -64,25 +64,28 @@
         </div>
         <button class="btn_s btn_flat keep_shopping" @click.prevent="$router.go(-1)">繼續選購</button>
         <div class="calc_pay">
+            <div class="giftcard_select" v-if="giftcardsOwned.length > 0">
+                <SelectComponent :customOptions="giftcardsOwned" :placeholder="'禮物卡折抵'" />
+            </div>
             <div class="calc_wrap">
                 <span>商品金額</span>
                 <span>{{ calcTotalPrice }}元</span>
             </div>
-            <div class="calc_wrap" v-show="!giftBuy">
+            <div class="calc_wrap" v-show="giftcardDiscount">
                 <span>禮物卡折抵</span>
-                <span>-元</span>
+                <span>-{{ giftcardDiscount }}元</span>
             </div>
             <div class="calc_wrap" v-show="cartList.length > 1">
                 <span>優惠折抵</span>
                 <span>-{{ discount() }}元</span>
             </div>
-            <div class="calc_wrap" v-show="!giftBuy">
+            <div class="calc_wrap" v-show="!giftBuy.name">
                 <span>運費</span>
                 <span>{{ freightCalc() }}元</span>
             </div>
             <div class="calc_total">
                 <span>合計</span>
-                <span>{{ calcTotalPrice + freightCalc() - discount() }}元</span>
+                <span>{{ payPrice }}元</span>
             </div>
         </div>
 
@@ -176,17 +179,19 @@
 </template>
 <script>
 import { Carousel, Pagination, Slide } from "vue3-carousel";
-import axios from "axios";
+import SelectComponent from "@/components/SelectComponent.vue";
 export default {
     components: {
         Carousel,
         Pagination,
         Slide,
+        SelectComponent,
     },
     data() {
         return {
             cartList: [[]],
             giftBuy: {},
+            giftcardsOwned:['3001','3010'],
             giftcardDiscount: 0,
             twDistrict: [],
             selectCityDistrict: [],
@@ -194,6 +199,9 @@ export default {
         };
     },
     computed: {
+        payPrice() {
+            return this.calcTotalPrice + this.freightCalc() - this.discount() - this.giftcardDiscount
+        },
         calcTotalPrice() {
             let total = 0;
             if (this.cartList.length > 1) {
@@ -246,7 +254,7 @@ export default {
             this.selectCityDistrict = selectCity.districts;
         },
         freightCalc() {
-            if (this.giftBuy) {
+            if (this.giftBuy.name) {
                 return 0;
             } else {
                 return 80;
@@ -259,29 +267,13 @@ export default {
                 return 0;
             }
         },
-        getTwDistrict() {
-            let url =
-                "https://gist.githubusercontent.com/abc873693/2804e64324eaaf26515281710e1792df/raw/a1e1fc17d04b47c564bbd9dba0d59a6a325ec7c1/taiwan_districts.json";
-            axios
-                .get(url)
-                .then((response) => {
-                    if (response.status !== 200) {
-                        alert("錯誤");
-                        return;
-                    }
-                    this.twDistrict = response.data;
-                })
-                .catch((error) => {
-                    console.log("發生錯誤:", error);
-                });
-        },
+        
     },
     created() {
         this.giftBuy = this.$store.state.giftBuy;
         this.cartList = this.$store.state.cartList;
     },
     mounted() {
-        this.getTwDistrict();
     },
 };
 </script>
