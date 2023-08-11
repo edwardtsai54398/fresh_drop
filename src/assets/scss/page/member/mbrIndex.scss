@@ -17,6 +17,11 @@
         font-weight: 700;
       }
     }
+    .no_data{
+        text-align: center;
+        margin-top: $sp2;
+        font-size: $xs-font;
+    }
 }
 @include pad-H{
     .member_container{

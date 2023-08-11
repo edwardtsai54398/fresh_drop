@@ -1,18 +1,19 @@
 <template>
-    <section class="member_gift" ref="mGift" :style="{ top: `${top}px`, width: `${width}px` }">
+    <section class="member_gift" ref="mGift" :style="{ top: `${top}px` }">
         <div class="title">
             <h5>禮物卡查詢</h5>
             <SelectComponent :customOptions="options" :placeholder="'狀態'" />
         </div>
-        <ul class="gift_history">
+        <p class="no_data" v-if="giftcard.length == 0">無任何禮物卡紀錄</p>
+        <ul class="gift_history" v-if="giftcard.length > 0">
             <li class="gift_card" v-for="(gift, index) in giftcard" :key="gift.g_no">
                 <div class="pic">
                     <!-- 開發用 -->
                     <img :src="require(`@/assets/images/gift/${gift.g_pic}`)" alt="" />
                 </div>
                 <div class="info">
-                    <p v-if="gift.g_no == 0">狀態：使用完畢</p>
-                    <p v-else-if="gift.g_no > 0">狀態：可使用</p>
+                    <p v-if="gift.remain == 0">狀態：使用完畢</p>
+                    <p v-else-if="gift.remain > 0">狀態：可使用</p>
                     <p>禮物卡號碼：{{ parseInt(gift.g_no)+3000 }}</p>
                     <p>剩餘金額：${{ parseInt(gift.remain) }}</p>
                     <p>寄送者：{{ gift.giver }}</p>
@@ -42,8 +43,7 @@ export default {
     },
     methods: {
         sentGiftInfo(i) {
-            this.$emit("open", this.giftHistory[i]);
-            console.log(this.giftHistory[i]);
+            this.$store.commit('sendGiftDetail',this.giftcard[i] )
         },
     },
     watch: {

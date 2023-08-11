@@ -1,6 +1,8 @@
 .signup_container{
    
     overflow-y: scroll;
+    border-bottom-left-radius: $s-br;
+    border-bottom-right-radius: $s-br;
     @extend %scrollbar_style;
     &::-webkit-scrollbar-thumb {
         background-color: #aaa;
@@ -34,8 +36,11 @@
         .check{
             display: flex;
             margin: 13px 0;
+            &>*{
+                display: flex;
+            }
             .female{
-                margin: 0 10px;
+                margin: 0 $sp3;
             }
         }
     }

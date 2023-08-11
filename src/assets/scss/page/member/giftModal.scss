@@ -1,16 +1,6 @@
 .gift_modal{
-    position: fixed;
-    top: 0px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 21;
-    margin: auto;
     width: 380px;
-    height: fit-content;
-    background-color: #fff;
-    border-radius: $m-br;
-    padding: $sp6 $sp3 $sp4;
+    padding: $sp3 0 $sp1;
     &::before{
         position: absolute;
         z-index: -1;

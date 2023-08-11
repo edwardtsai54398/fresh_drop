@@ -3,7 +3,9 @@ import { createStore } from 'vuex'
 export default createStore({
     state: {
         isLogin: false,
-        memberInfoAll: {info:'',shop:'',giftcard:'',share:''},
+        memberInfoAll: { info: '', shop: '', giftcard: '', share: '' },
+        giftDetail: {},
+        //購買商品
         giftBuy: {
             name: '',
             img: '',
@@ -16,13 +18,15 @@ export default createStore({
             week: 1,
         },
         dishRecommand: [],
-        productDetil: []
+        productDetil: [],
+        //視窗開關
+        pswIsOpen: false,
+        giftModalIsOpen: false,
     },
     getters: {
     },
     mutations: {
         logOut(state) {
-            console.log('logout');
             state.memberInfoAll = {info:'',shop:'',giftcard:'',share:''}
             state.isLogin = false
             sessionStorage.removeItem("cus_no")
@@ -54,10 +58,13 @@ export default createStore({
         setProductData(state, { userData }) {
             state.productDetil = userData
         },
+        sendGiftDetail(state, data) {
+            state.giftDetail = data
+            state.giftModalIsOpen = true
+        },
         //後端資料
         setUserInfo(state, userInfo) {
             sessionStorage.setItem("cus_no", userInfo.cus_no);
-            userInfo.cus_no = parseInt(userInfo.cus_no) + 1000
             state.memberInfoAll.info = userInfo
             state.isLogin = true
         },

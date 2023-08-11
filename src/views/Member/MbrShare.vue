@@ -4,7 +4,8 @@
             <h5>烹飪心得</h5>
             <SelectComponent :customOptions="selectOptions" :placeholder="'日期排序'" />
         </div>
-        <ul class="share_list">
+        <p class="no_data" v-if="memberShare.length == 0">無任何食譜分享紀錄</p>
+        <ul class="share_list" v-if="memberShare.length > 0">
             <li class="share_item" v-for="(share, index) in memberShare" :key="share.opinion_no">
                 <div class="pic">
                     <img :src="require(`@/assets/images/product/${share.share_pic}`)" alt="" />
@@ -44,7 +45,10 @@ export default {
             memberShare:[],
         };
     },
-    created() {},
+    created() { },
+    updated() {
+        this.$emit('toggle')
+    },
     computed: {},
     methods: {
         shareEllipsis(msg) {
