@@ -3,11 +3,12 @@
         <div class="member_container" ref="mCONTAIN" :style="{ paddingTop: `${containH}px` }">
             <!---->
             <MbrInfo ref="mINFO" :top="0" @toggle="cardLayout"/>
+            <MbrChangePsw />
             <MbrShophistory ref="mSHOP" :top="0" @toggle="cardLayout" />
-            <MbrGiftcard @open="SentDetailToModal" ref="mGIFT" :top="rowGap + infoH" />
+            <MbrGiftcard ref="mGIFT" :top="rowGap + infoH" />
             <!---->
-            <MbrGiftModal :isOpen="isGiftModalOpen" :giftDetail="giftDetail" @close="isGiftModalOpen = false" />
-            <MbrShare ref="mSHARE" :top="rowGap + shopH" />
+            <MbrGiftModal />
+            <MbrShare ref="mSHARE" :top="rowGap + shopH" @toggle="cardLayout"/>
             <!---->
             <p class="bgc_slogan">Explore the Joy of Cooking, Embrace Harmony with Nature</p>
             <img src="@/assets/images/icon_bg/bg_lightgreen.svg" alt="" class="green_blob" />
@@ -26,20 +27,22 @@ import MbrShophistory from "@/views/Member/MbrShophistory.vue";
 import MbrGiftcard from "@/views/Member/MbrGiftcard.vue";
 import MbrShare from "@/views/Member/MbrShare.vue";
 import MbrGiftModal from "@/views/Member/MbrGiftModal.vue";
+import MbrChangePsw from "@/views/Member/MbrChangePsw.vue";
 
 export default {
     name: "MbrIndexView",
     components: {
-        MbrInfo,
-        MbrShophistory,
-        MbrGiftcard,
-        MbrShare,
-        MbrGiftModal,
-    },
+    MbrInfo,
+    MbrShophistory,
+    MbrGiftcard,
+    MbrShare,
+    MbrGiftModal,
+    MbrChangePsw
+},
     data() {
         return {
             isGiftModalOpen: false,
-            giftDetail: {},
+
             rowGap: 32,
             infoH: 0,
             shopH: 0,
@@ -50,9 +53,6 @@ export default {
     created() {
         window.addEventListener("resize", this.cardLayout);
         this.getMemDeatailData();
-    },
-    mounted() {
-        this.cardLayout();
     },
     unmounted() {
         window.removeEventListener("resize", this.cardLayout);
@@ -78,10 +78,7 @@ export default {
                 this.$router.push("/index");
             }
         },
-        SentDetailToModal(data) {
-            this.isGiftModalOpen = true;
-            this.giftDetail = data;
-        },
+       
         cardLayout() {
             const winW = window.innerWidth;
             const infoCard = this.$refs.mINFO.$refs.mInfo;

@@ -1,61 +1,62 @@
 <template>
-    <div class="mask" :class="{ none: !isopen }" @click="modalAllClose"></div>
-    <div class="login-modal" :class="{ open: isopen }">
-        <modalClose @click="modalAllClose" />
-        <!-- <router-view> -->
-        <div class="login_container" style="visibility: visible">
-            <div class="login_normal">
-                <h4>會員登入</h4>
-                <div class="login_input">
-                    <div class="text_wrap">
-                        <label for="login-email">Email</label>
-                        <input type="email" placeholder="請輸入信箱" v-model="user.email" id="login-email" />
-                    </div>
-                    <div class="text_wrap">
-                        <label for="login-password">密碼</label>
-                        <input
-                            type="password"
-                            placeholder="請輸入密碼(6-12碼英數字混合)"
-                            v-model="user.password"
-                            id="login-password"
-                        />
-                    </div>
-                    <p class="err_msg">{{ errMsg }}</p>
-                    <div class="check_wrap">
-                        <div class="check">
-                            <input type="checkbox" id="check" />
-                            <label for="check">記住我</label>
+    <modalComponent @close="modalAllClose" :isopen="isopen">
+        <template v-slot:content>
+            <div class="login-modal">
+                <div class="login_container" style="visibility: visible">
+                    <div class="login_normal">
+                        <h4>會員登入</h4>
+                        <div class="login_input">
+                            <div class="text_wrap">
+                                <label for="login-email">Email</label>
+                                <input type="email" placeholder="請輸入信箱" v-model="user.email" id="login-email" />
+                            </div>
+                            <div class="text_wrap">
+                                <label for="login-password">密碼</label>
+                                <input
+                                    type="password"
+                                    placeholder="請輸入密碼(6-12碼英數字混合)"
+                                    v-model="user.password"
+                                    id="login-password"
+                                />
+                            </div>
+                            <p class="err_msg">{{ errMsg }}</p>
+                            <div class="check_wrap">
+                                <div class="check">
+                                    <input type="checkbox" id="check" />
+                                    <label for="check">記住我</label>
+                                </div>
+                                <a href="#" @click.prevent="forgotPswOpen = true">忘記密碼？</a>
+                            </div>
                         </div>
-                        <a href="#" @click.prevent="forgotPswOpen = true">忘記密碼？</a>
+                        <a class="btn_s login_btn" @click="login">登入</a>
+                        <div class="signup">
+                            還不是會員？
+                            <a href="#" @click.prevent="SignupOpen = true">註冊會員</a>
+                        </div>
+                    </div>
+                    <div class="login_api_wrap">
+                        <p>或用其他方式登入</p>
+                        <div class="login_api">
+                            <div class="btn_api">
+                                <img src="../assets/images/icon_bg/facebook.svg" alt="" />
+                                <span>以FACEBOOK方式登入</span>
+                            </div>
+                            <div class="btn_api">
+                                <img src="../assets/images/icon_bg/google.svg" alt="" />
+                                <span>以GOOGLE方式登入</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <a class="btn_s login_btn" @click="login">登入</a>
-                <div class="signup">
-                    還不是會員？
-                    <a href="#" @click.prevent="SignupOpen = true">註冊會員</a>
-                </div>
+                <SignupModal :isSlidein="SignupOpen" @close="SignupOpen = false" />
+                <VertifyModal :isSlidein="forgotPswOpen" @close="forgotPswOpen = false" />
             </div>
-            <div class="login_api_wrap">
-                <p>或用其他方式登入</p>
-                <div class="login_api">
-                    <div class="btn_api">
-                        <img src="../assets/images/icon_bg/facebook.svg" alt="" />
-                        <span>以FACEBOOK方式登入</span>
-                    </div>
-                    <div class="btn_api">
-                        <img src="../assets/images/icon_bg/google.svg" alt="" />
-                        <span>以GOOGLE方式登入</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <SignupModal :isSlidein="SignupOpen" @close="SignupOpen = false" />
-        <VertifyModal :isSlidein="forgotPswOpen" @close="forgotPswOpen = false" />
-    </div>
+        </template>
+    </modalComponent>
+    
 </template>
 <script>
-import modalClose from "@/components/modalClose.vue";
-// import F2ERefugee from "@/assets/data/memberInfoAll.js";
+import modalComponent from "@/components/modalComponent.vue";
 import SignupModal from "@/components/SignupModal.vue";
 import VertifyModal from "@/components/VertifyModal.vue";
 // import axios from "axios";
@@ -65,13 +66,13 @@ export default {
         isopen: Boolean,
     },
     components: {
-        modalClose,
+        modalComponent,
         SignupModal,
         VertifyModal,
     },
     data() {
         return {
-            errMsg: '',
+            errMsg: "",
             user: {
                 email: "",
                 password: "",
@@ -90,22 +91,22 @@ export default {
                 params.append("email", this.user.email);
                 params.append("password", this.user.password);
                 this.axios.post(url, params).then((res) => {
-                    console.log(res.data)
                     if (res.data == 0) {
-                        this.errMsg = '*帳號密碼錯誤，請再試一次'
+                        this.errMsg = "*帳號密碼錯誤，請再試一次";
                     } else {
+                        console.log(res.data);
                         this.$store.commit("setUserInfo", res.data);
                         this.$emit("close");
-                        this.user.email = ''
-                        this.user.password = ''
-                        this.errMsg = ''
+                        this.user.email = "";
+                        this.user.password = "";
+                        this.errMsg = "";
                         // this.$router.push("/index");
                     }
                 });
             } else if (this.user.email === "") {
-                this.errMsg = '*請填寫E-mail'
-            }else if (this.user.password === "") {
-                this.errMsg = '*請填寫密碼'
+                this.errMsg = "*請填寫E-mail";
+            } else if (this.user.password === "") {
+                this.errMsg = "*請填寫密碼";
             }
         },
         modalAllClose() {
@@ -118,24 +119,9 @@ export default {
 <style lang="scss">
 @import "@/assets/scss/all.scss";
 .login-modal {
-    display: none;
-    position: fixed;
-    z-index: 21;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
     max-width: 400px;
-    height: fit-content;
-    margin: auto;
-    border-radius: $m-br;
     overflow: hidden;
-    background-color: $bg--;
-    padding: $sp3 $sp4 $sp4;
-    &.open {
-        display: block;
-    }
-
+    // position: relative;
     h4 {
         text-align: center;
         margin: $sp3;
