@@ -6,11 +6,7 @@ export default createStore({
         memberInfoAll: { info: '', shop: '', giftcard: '', share: '' },
         giftDetail: {},
         //購買商品
-        giftBuy: {
-            name: '',
-            img: '',
-            money: 0
-        },
+        giftBuy: null,
         cartList: [[]],
         shopPlan: {
             plan: '',
@@ -20,6 +16,7 @@ export default createStore({
         dishRecommand: [],
         productDetil: [],
         //視窗開關
+        isLoginOpen:false,
         pswIsOpen: false,
         giftModalIsOpen: false,
     },
@@ -41,9 +38,7 @@ export default createStore({
             state.shopPlan.week = planWrap.week
         },
         stateGiftBuy(state, giftWrap) {
-            state.giftBuy.name = giftWrap.name
-            state.giftBuy.img = giftWrap.img
-            state.giftBuy.money = giftWrap.money
+            state.giftBuy = giftWrap
         },
         clearState(state, string) {
             if (string == 'cart') {
@@ -52,7 +47,7 @@ export default createStore({
                 state.shopPlan.meal = 0
                 state.shopPlan.week = 1
             } else if (string == 'gift') {
-                state.giftBuy = {}
+                state.giftBuy = null
             }
         },
         setProductData(state, { userData }) {

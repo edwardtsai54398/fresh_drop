@@ -1,6 +1,6 @@
 <template>
-    <MainHeader @toggle="checkMemberStatus" :centerOpen="toggleMemeberCenter" />
-    <loginModal :isopen="isLoginOpen" @close="isLoginOpen = false" />
+    <MainHeader />
+    <loginModal />
 
     <main><router-view /></main>
 
@@ -21,20 +21,10 @@ export default {
 
     data() {
         return {
-            isLoginOpen: false,
-            toggleMemeberCenter: false,
         };
     },
     methods: {
-        checkMemberStatus(val) {
-            if (this.$store.state.isLogin) {
-                this.toggleMemeberCenter = !this.toggleMemeberCenter;
-            } else if (val == '登出') {
-                return
-            } else {
-                this.isLoginOpen = true;
-            }
-        },
+        
         signupOpen() {
             this.isLoginOpen = false;
             this.isSignupOpen = true;

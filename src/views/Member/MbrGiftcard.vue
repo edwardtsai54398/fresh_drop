@@ -9,14 +9,15 @@
             <li class="gift_card" v-for="(gift, index) in giftcard" :key="gift.g_no">
                 <div class="pic">
                     <!-- 開發用 -->
-                    <img :src="require(`@/assets/images/gift/${gift.g_pic}`)" alt="" />
+                    <img :src="`/data_images/gift/${gift.g_pic}`" alt="" />
+                    <!-- <img :src="gift.g_pic" alt="" /> -->
                 </div>
                 <div class="info">
                     <p v-if="gift.remain == 0">狀態：使用完畢</p>
                     <p v-else-if="gift.remain > 0">狀態：可使用</p>
                     <p>禮物卡號碼：{{ parseInt(gift.g_no)+3000 }}</p>
-                    <p>剩餘金額：${{ parseInt(gift.remain) }}</p>
-                    <p>寄送者：{{ gift.giver }}</p>
+                    <p>剩餘金額：${{ gift.remain }}</p>
+                    <p>寄送者：{{ (gift.giver==$store.state.memberInfoAll.info.cus_name) ? "自己":gift.giver }}</p>
                 </div>
                 <div class="show_more btn_xs btn_flat" @click="sentGiftInfo(index)">查看更多</div>
             </li>

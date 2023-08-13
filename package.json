@@ -17,6 +17,7 @@
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
     "core-js": "^3.8.3",
+    "firebase": "^10.1.0",
     "html2canvas": "^1.4.1",
     "intersection-observer": "^0.12.2",
     "popper.js": "^1.16.1",
@@ -25,6 +26,7 @@
     "vue-axios": "^3.5.2",
     "vue-router": "^4.0.3",
     "vue3-carousel": "^0.3.1",
+    "vuefire": "^3.1.13",
     "vuex": "^4.0.0"
   },
   "devDependencies": {

@@ -48,13 +48,12 @@
                 <div class="price">{{ calcTotalPrice }}元</div>
                 <div class="total_price">{{ calcTotalPrice }}元</div>
             </div>
-            <div class="gift_cart_content" v-if="giftBuy.name">
+            <div class="gift_cart_content" v-if="giftBuy">
                 <div class="gift_item">
                     <div class="gift_pic pic">
                         <img :src="giftBuy.img" alt="" />
                     </div>
                     <div class="gift_info">
-                        <!-- <p>禮物卡樣式：{{ giftBuy.type }}</p> -->
                         <p>收禮人：{{ giftBuy.name }}</p>
                     </div>
                 </div>
@@ -64,7 +63,8 @@
         </div>
         <button class="btn_s btn_flat keep_shopping" @click.prevent="$router.go(-1)">繼續選購</button>
         <div class="calc_pay">
-            <div class="giftcard_select" v-if="giftcardsOwned.length > 0">
+            <div class="giftcard_select" v-if="giftcardsOwned.length > 0
+                && !$store.state.giftBuy">
                 <SelectComponent :customOptions="giftcardsOwned" :placeholder="'禮物卡折抵'" />
             </div>
             <div class="calc_wrap">
@@ -79,7 +79,7 @@
                 <span>優惠折抵</span>
                 <span>-{{ discount() }}元</span>
             </div>
-            <div class="calc_wrap" v-show="!giftBuy.name">
+            <div class="calc_wrap" v-show="!giftBuy">
                 <span>運費</span>
                 <span>{{ freightCalc() }}元</span>
             </div>
@@ -90,22 +90,22 @@
         </div>
 
         <form action="">
-            <fieldset class="pay_info">
+            <fieldset class="pay_info" v-if="!giftBuy">
                 <legend>收件人資訊</legend>
                 <div class="radio_wrap">
-                    <input type="radio" name="mem_info" id="mem_info" class="circle" />
+                    <input type="radio" name="mem_info" id="mem_info" class="circle" @change="bindMemInfo" />
                     <label for="mem_info">同會員資料</label>
                 </div>
                 <div class="input_group">
                     <div class="row">
                         <div class="col-6">
-                            <input type="text" placeholder="請輸入姓名" />
+                            <input type="text" placeholder="請輸入姓名" v-model="sendCus" />
                         </div>
                         <div class="col-6">
-                            <input type="tel" placeholder="請輸入電話" />
+                            <input type="tel" placeholder="請輸入電話" v-model="sendPhone" />
                         </div>
                     </div>
-                    <input type="text" placeholder="請輸入地址" />
+                    <input type="text" placeholder="請輸入地址" v-model="sendAddress" />
                 </div>
             </fieldset>
             <fieldset class="payment">
@@ -133,13 +133,13 @@
                 <div class="credit_card" :class="{ flip_toB: !creditCardSide }">
                     <div class="a_side">
                         <div class="credit_16num">
-                            <input type="tel" name="" id="" class="credit_4num" maxlength="4" @input="checkMax" />
+                            <input type="tel" name="" id="num4" class="credit_4num" maxlength="4" @input="checkMax" />
                             <span>-</span>
-                            <input type="tel" name="" id="" class="credit_4num" maxlength="4" @input="checkMax" />
+                            <input type="tel" name="" id="num8" class="credit_4num" maxlength="4" @input="checkMax" />
                             <span>-</span>
-                            <input type="tel" name="" id="" class="credit_4num" maxlength="4" @input="checkMax" />
+                            <input type="tel" name="" id="num12" class="credit_4num" maxlength="4" @input="checkMax" />
                             <span>-</span>
-                            <input type="tel" name="" id="" class="credit_4num" maxlength="4" @input="checkMax" />
+                            <input type="tel" name="" id="num16" class="credit_4num" maxlength="4" @input="checkMax" />
                         </div>
                         <img src="@/assets/images/icon_bg/credit_sensor.svg" alt="" />
                         <input type="text" name="" id="" placeholder="請輸入信用卡上的姓名" class="holder_name" />
@@ -150,13 +150,7 @@
                     </div>
                     <div class="b_side">
                         <div class="magnet_bar"></div>
-                        <input
-                            type="text"
-                            class="security_code"
-                            placeholder="安全碼"
-                            maxlength="3"
-                            @input="toNextInput"
-                        />
+                        <input type="text" class="security_code" placeholder="安全碼" maxlength="3" @input="toNextInput" />
                         <div class="exp">
                             <div class="title">有效日期</div>
                             <div class="exp_date_wrap">
@@ -173,7 +167,7 @@
                 </div>
             </fieldset>
             <p class="remark">*本司心用卡付款使用第三方支付，點擊結帳將前往藍新金流付款頁面。</p>
-            <button class="btn_scd_m pay_btn">結帳</button>
+            <button class="btn_scd_m pay_btn" @click="pay">結帳</button>
         </form>
     </div>
 </template>
@@ -191,11 +185,14 @@ export default {
         return {
             cartList: [[]],
             giftBuy: {},
-            giftcardsOwned:['3001','3010'],
+            giftcardsOwned: [],
             giftcardDiscount: 0,
             twDistrict: [],
             selectCityDistrict: [],
             creditCardSide: true,
+            sendCus: '',
+            sendPhone: '',
+            sendAddress: '',
         };
     },
     computed: {
@@ -204,7 +201,9 @@ export default {
         },
         calcTotalPrice() {
             let total = 0;
-            if (this.cartList.length > 1) {
+            if (this.giftBuy) {
+                total = this.giftBuy.money;
+            } else if (this.cartList.length > 1) {
                 this.cartList.forEach((week) => {
                     week.forEach((item) => {
                         total += item.amount * 200;
@@ -214,13 +213,29 @@ export default {
                 this.cartList[0].forEach((item) => {
                     total += item.amount * 200;
                 });
-            } else if (this.giftBuy !== {}) {
-                total = this.giftBuy.money;
             }
             return total;
         },
     },
     methods: {
+        getGiftcardData() {
+            let cusNo = this.$store.state.memberInfoAll.info.cus_no
+            let url = `${this.$url}memberDetail.php`;
+            let params = new URLSearchParams();
+            params.append("cusNo", cusNo);
+            this.axios
+                .post(url, params)
+                .then((res) => {
+                    console.log(res.data);
+                    this.$store.commit("sendMemDetail", res.data);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        },
+        giftRemainCalc(giftOwned) {
+            console.log(giftOwned);
+        },
         checkMax(e) {
             let Target = e.target;
             let valLen = Target.value.length;
@@ -246,15 +261,8 @@ export default {
                 nextInput.focus();
             }
         },
-        changeDistrict(e) {
-            let selectValue = e.target.value;
-            let selectCity = this.twDistrict.find((item) => {
-                return item.name == selectValue;
-            });
-            this.selectCityDistrict = selectCity.districts;
-        },
         freightCalc() {
-            if (this.giftBuy.name) {
+            if (this.giftBuy) {
                 return 0;
             } else {
                 return 80;
@@ -267,7 +275,42 @@ export default {
                 return 0;
             }
         },
-        
+        bindMemInfo() {
+            console.log('');
+            this.sendCus = this.$store.state.memberInfoAll.info.cus_name
+            this.sendPhone = this.$store.state.memberInfoAll.info.phone
+            this.sendAddress = this.$store.state.memberInfoAll.info.address
+        },
+        pay() {
+            event.preventDefault()
+            let url = `${this.$url}createOrder.php`;
+            let params = new URLSearchParams();
+            params.append("cusNo", this.$store.state.memberInfoAll.info.cus_no);
+            if (this.giftBuy) {
+                params.append("type", "giftcard");
+                params.append("reciveCusEmail", this.giftBuy.email);
+                params.append("pic", this.giftBuy.img);
+                params.append("money", this.giftBuy.money);
+            }
+            this.axios
+                .post(url, params)
+                .then((res) => {
+                    console.log(res.data);
+                    this.$store.commit("sendMemDetail", res.data);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        },
+    },
+    watch: {
+        "$store.state.memberInfoAll": {
+            hamdler: function (newval) { 
+                this.giftcardsOwned = newval.giftcard
+                this.giftRemainCalc(this.giftcardsOwned)
+            },
+            deep:true
+        }
     },
     created() {
         this.giftBuy = this.$store.state.giftBuy;

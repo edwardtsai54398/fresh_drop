@@ -47,4 +47,15 @@ import VueAxios from 'vue-axios'
 const apiURL = 'http://localhost/fresh_drop/public/phps/'
 app.config.globalProperties.$url = apiURL
 
+//firebase vue
+import { VueFire, VueFireAuth } from 'vuefire'
+import { firebaseApp } from '@/assets/js/firebase.js'
+app.use(VueFire, {
+    firebaseApp,
+    modules: [
+    
+      VueFireAuth(),
+    ]
+  })
+
 app.use(store).use(router).use(VueAxios,axios).component('font-awesome-icon', FontAwesomeIcon).mount('#app')

@@ -1,5 +1,5 @@
 <template>
-    <modalComponent @close="modalAllClose" :isopen="isopen">
+    <modalComponent @close="modalAllClose" :isopen="$store.state.isLoginOpen">
         <template v-slot:content>
             <div class="login-modal">
                 <div class="login_container" style="visibility: visible">
@@ -12,12 +12,8 @@
                             </div>
                             <div class="text_wrap">
                                 <label for="login-password">密碼</label>
-                                <input
-                                    type="password"
-                                    placeholder="請輸入密碼(6-12碼英數字混合)"
-                                    v-model="user.password"
-                                    id="login-password"
-                                />
+                                <input type="password" placeholder="請輸入密碼(6-12碼英數字混合)" v-model="user.password"
+                                        id="login-password" />
                             </div>
                             <p class="err_msg">{{ errMsg }}</p>
                             <div class="check_wrap">
@@ -41,7 +37,7 @@
                                 <img src="../assets/images/icon_bg/facebook.svg" alt="" />
                                 <span>以FACEBOOK方式登入</span>
                             </div>
-                            <div class="btn_api">
+                            <div class="btn_api" @click="signinWithFirebase">
                                 <img src="../assets/images/icon_bg/google.svg" alt="" />
                                 <span>以GOOGLE方式登入</span>
                             </div>
@@ -53,12 +49,15 @@
             </div>
         </template>
     </modalComponent>
-    
 </template>
 <script>
 import modalComponent from "@/components/modalComponent.vue";
 import SignupModal from "@/components/SignupModal.vue";
 import VertifyModal from "@/components/VertifyModal.vue";
+
+import { signInWithPopup } from 'firebase/auth'
+import { useFirebaseAuth } from 'vuefire'
+import { GoogleAuthProvider } from 'firebase/auth';
 // import axios from "axios";
 export default {
     name: "Login-Modal",
@@ -94,9 +93,8 @@ export default {
                     if (res.data == 0) {
                         this.errMsg = "*帳號密碼錯誤，請再試一次";
                     } else {
-                        console.log(res.data);
                         this.$store.commit("setUserInfo", res.data);
-                        this.$emit("close");
+                        this.$store.state.isLoginOpen = false
                         this.user.email = "";
                         this.user.password = "";
                         this.errMsg = "";
@@ -109,24 +107,49 @@ export default {
                 this.errMsg = "*請填寫密碼";
             }
         },
+        signinWithFirebase() {
+            const auth = useFirebaseAuth();
+            const googleProvider = new GoogleAuthProvider();
+            signInWithPopup(auth, googleProvider)
+                .then(result => {
+                    let user = result.user
+                    let cus_name = user.displayName
+                    let cus_email = user.email
+                    let cus_pic = user.photoURL
+                    this.$store.commit("setUserInfo", {
+                        cus_name,
+                        cus_email,
+                        cus_pic,
+                        cus_acc: cus_name
+                    });
+                    this.$store.state.isLoginOpen = false
+                })
+                .catch(reson => {
+                    console.error(reson);
+                })
+        },
         modalAllClose() {
             this.SignupOpen = false;
-            this.$emit("close");
+            this.$store.state.isLoginOpen = false;
         },
     },
+
 };
 </script>
 <style lang="scss">
 @import "@/assets/scss/all.scss";
+
 .login-modal {
     max-width: 400px;
     overflow: hidden;
+
     // position: relative;
     h4 {
         text-align: center;
         margin: $sp3;
         font-size: $m-font;
     }
+
     .signup_container,
     .verify_container {
         background-color: $bg--;
@@ -137,14 +160,17 @@ export default {
         height: calc(100% - $sp6);
         width: 100%;
         transition: 0.3s;
+
         &.open {
             left: 0;
         }
+
         legend {
             text-align: center;
             margin-bottom: $sp3;
             font-size: $m-font;
         }
+
         .go_back {
             position: absolute;
             left: $sp3;
@@ -152,5 +178,6 @@ export default {
         }
     }
 }
+
 @import "@/assets/scss/layout/login.scss";
 </style>

@@ -7,17 +7,7 @@
                     <label for="newpsw">新密碼：</label>
                     <input id="newpsw" v-model="newPsw" type="password" placeholder="請輸入新密碼" />
                     <label for="confirm-newpsw">確認新密碼：</label>
-                    <input
-                        id="confirm-newpsw"
-                        type="password"
-                        placeholder="再次輸入新密碼"
-                        v-model="newPswConfirm"
-                        @paste="
-                            (e) => {
-                                e.preventDefault();
-                            }
-                        "
-                    />
+                    <input id="confirm-newpsw" type="password" placeholder="再次輸入新密碼" v-model="newPswConfirm" @paste="(e) => { e.preventDefault();}" />
                 </form>
                 <button class="btn_s btn_flat" @click="changePsw">確認變更</button>
             </div>
@@ -81,30 +71,36 @@ export default {
 </script>
 <style lang="scss">
 @keyframes shake {
+
     0%,
     100% {
         transform: translateX(0);
     }
+
     20%,
     60% {
         transform: translateX(-10px);
     }
+
     40%,
     80% {
         transform: translateX(10px);
     }
 }
+
 .changepsw_container {
     margin-top: $sp2;
     display: flex;
     flex-direction: column;
     align-items: center;
+
     h4 {
         text-align: center;
         font-size: $m-font;
         font-weight: 700;
         color: $primary;
     }
+
     form {
         margin-top: $sp4;
         display: grid;
@@ -112,17 +108,21 @@ export default {
         grid-template-columns: repeat(2, auto);
         row-gap: $sp2;
         column-gap: $sp1;
+
         label {
             font-size: $s-font;
             justify-self: end;
+
             &.shake {
                 animation: shake 1s ease;
-                & + input {
+
+                &+input {
                     animation: shake 1s ease;
                 }
             }
         }
     }
+
     button {
         margin-top: $sp3;
     }
