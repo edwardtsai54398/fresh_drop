@@ -44,7 +44,12 @@ router.afterEach(() => {
 //全域引入axios
 import axios from 'axios';
 import VueAxios from 'vue-axios'
+
+//開發用
 const apiURL = 'http://localhost/fresh_drop/public/phps/'
+
+//上線用
+// const apiURL = 'http://localhost/chd102/g2/phps/'
 app.config.globalProperties.$url = apiURL
 
 //firebase vue
