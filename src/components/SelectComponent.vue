@@ -5,9 +5,11 @@
             <font-awesome-icon icon="fa-solid fa-chevron-down" />
         </div>
         <ul class="option" v-show="isSelectOpen">
+            <li v-show="selectedOption!==placeholder && selectedOption" @click="selectOption('')">{{ placeholder }}</li>
             <li v-for="item in customOptions" :key="item" @click="selectOption(item)">
                 {{ item }}
             </li>
+
         </ul>
     </div>
 </template>
@@ -29,6 +31,9 @@ export default {
         selectOption(option) {
             this.selectedOption = option;
             this.isSelectOpen = false;
+            if (option) {
+                this.$emit('func', option)
+            }
         },
     },
 };

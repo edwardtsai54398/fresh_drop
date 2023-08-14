@@ -62,7 +62,7 @@
             </div>
             <!-- 主菜 -->
             <section class="container" id="main">
-                <h4 class="menu_title" v-show="mainDishFilter.length > 0">
+                <h4 class="menu_title" v-show="productMainDish.length > 0">
                     主菜 MAIN DISH
                 </h4>
                 <div class="wrap_main_dish row">
@@ -81,7 +81,7 @@
             </section>
             <!-- 湯品 -->
             <section class="container" id="soup">
-                <h4 class="menu_title" v-show="soupFilter.length > 0">
+                <h4 class="menu_title" v-show="productSoup.length > 0">
                     湯品 SOUP
                 </h4>
                 <div class="wrap_main_dish row">
@@ -100,7 +100,7 @@
             </section>
             <!-- 沙拉 -->
             <section class="container" id="salad">
-                <h4 class="menu_title" v-show="saladFilter.length > 0">
+                <h4 class="menu_title" v-show="productSalad.length > 0">
                     沙拉 SALAD
                 </h4>
                 <div class="wrap_main_dish row">
@@ -147,15 +147,9 @@
                                     <p>1.選擇購買方案</p>
                                 </div>
                                 <div class="choose">
-                                    <div class="option_plan" v-for="option in optionsPlan" :key="option.value" @click="
-                                        selectedOptionPlan = option.value;
-                                    isPlanSelectDone();
-                                    " :class="{
-    selected:
-        selectedOptionPlan ===
-        option.value,
-    radio_plan: true,
-}">
+                                    <div class="option_plan" v-for="option in optionsPlan" :key="option.value"
+                                            @click="selectedOptionPlan = option.value; isPlanSelectDone();"
+                                            :class="{ selected: selectedOptionPlan === option.value, radio_plan: true, }">
                                         {{ option.label }}
                                     </div>
                                     <div class="single" v-show="selectedOptionPlan === '單次購買'
@@ -169,14 +163,9 @@
                                     <p>2.每周幾份餐點</p>
                                 </div>
                                 <div class="choose">
-                                    <div class="option_meal" v-for="option in optionsMeal" :key="option" @click="
-                                        selectedOptionMeal = option;
-                                    isPlanSelectDone();
-                                    " :class="{
-    selected:
-        selectedOptionMeal === option,
-    radio_plan: true,
-}">
+                                    <div class="option_meal" v-for="option in optionsMeal" :key="option"
+                                            @click="selectedOptionMeal = option; isPlanSelectDone();"
+                                            :class="{ selected: selectedOptionMeal === option, radio_plan: true, }">
                                         {{ option }}份
                                     </div>
                                 </div>
@@ -654,7 +643,6 @@ export default {
                     return
                 } else {
                     this.$store.state.giftBuy = null
-                    
                 }
             }
             //從cart.js引入
