@@ -65,7 +65,7 @@
         <div class="calc_pay">
             <div class="giftcard_select" v-if="giftcardsOwned.length > 0
                 && !$store.state.giftBuy">
-                <SelectComponent :customOptions="giftcardsOwned" :placeholder="'禮物卡折抵'" />
+                <SelectComponent :customOptions="giftRemainFilter" :placeholder="'禮物卡折抵'" @func="chooseGiftDiscount" />
             </div>
             <div class="calc_wrap">
                 <span>商品金額</span>
@@ -186,6 +186,7 @@ export default {
             cartList: [[]],
             giftBuy: {},
             giftcardsOwned: [],
+            giftRemainArr: [],
             giftcardDiscount: 0,
             twDistrict: [],
             selectCityDistrict: [],
@@ -216,10 +217,19 @@ export default {
             }
             return total;
         },
+        giftRemainFilter() {
+            let giftRemainArr = []
+            this.giftcardsOwned.forEach(gift => {
+                if (parseInt(gift.remain) > 0) {
+                    giftRemainArr.push(parseInt(gift.g_no) + 3000)
+                }
+            })
+            return giftRemainArr
+        },
     },
     methods: {
         getGiftcardData() {
-            let cusNo = this.$store.state.memberInfoAll.info.cus_no
+            let cusNo = sessionStorage.getItem('cus_no')
             let url = `${this.$url}memberDetail.php`;
             let params = new URLSearchParams();
             params.append("cusNo", cusNo);
@@ -233,8 +243,21 @@ export default {
                     console.log(err);
                 });
         },
-        giftRemainCalc(giftOwned) {
-            console.log(giftOwned);
+        
+        chooseGiftDiscount(giftNo) {
+            console.log(typeof giftNo);
+            if (typeof giftNo == 'number') {
+                let gift_no = giftNo - 3000
+                console.log(gift_no);
+                let chosenCard = this.giftcardsOwned.find(gift => {
+                    return gift.g_no == gift_no
+                })
+                console.log(chosenCard.remain);
+                this.giftcardDiscount = parseInt(chosenCard.remain)
+                if (this.giftcardDiscount > this.calcTotalPrice) {
+                    this.giftcardDiscount = this.calcTotalPrice
+                }
+            }
         },
         checkMax(e) {
             let Target = e.target;
@@ -305,11 +328,10 @@ export default {
     },
     watch: {
         "$store.state.memberInfoAll": {
-            hamdler: function (newval) { 
+            handler: function (newval) {
                 this.giftcardsOwned = newval.giftcard
-                this.giftRemainCalc(this.giftcardsOwned)
             },
-            deep:true
+            deep: true
         }
     },
     created() {
@@ -317,6 +339,7 @@ export default {
         this.cartList = this.$store.state.cartList;
     },
     mounted() {
+        this.getGiftcardData()
     },
 };
 </script>
