@@ -5,9 +5,12 @@
             <font-awesome-icon icon="fa-solid fa-chevron-down" />
         </div>
         <ul class="option" v-show="isSelectOpen">
+            <li v-show="selectedOption !== placeholder && selectedOption" @click="selectOption(placeholder)">{{ placeholder }}
+            </li>
             <li v-for="item in customOptions" :key="item" @click="selectOption(item)">
                 {{ item }}
             </li>
+
         </ul>
     </div>
 </template>
@@ -29,6 +32,9 @@ export default {
         selectOption(option) {
             this.selectedOption = option;
             this.isSelectOpen = false;
+
+            this.$emit('func', option)
+
         },
     },
 };
@@ -36,10 +42,13 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/all.scss";
+
 %select_bgc {
     background-color: $bg--;
 }
+
 $select-h: 36px;
+
 .select {
     position: relative;
     // height: $select-h;
@@ -48,6 +57,7 @@ $select-h: 36px;
     text-align: center;
     cursor: pointer;
     transition: 0.1s;
+
     &.open {
         .placeholder {
             @extend %select_bgc;
@@ -67,6 +77,7 @@ $select-h: 36px;
     width: 100%;
     border: 1px solid $primary;
     border-radius: calc($select-h / 2);
+
     .fa-chevron-down {
         position: absolute;
         top: 50%;
@@ -87,17 +98,20 @@ $select-h: 36px;
     border-bottom-left-radius: calc($select-h / 2);
     border-bottom-right-radius: calc($select-h / 2);
     border-top: none;
+
     li {
         padding: 12px $sp3;
+
         &:first-child {
             padding-top: $sp2;
         }
+
         &:last-child {
             padding-bottom: $sp2;
         }
-        &:hover{
+
+        &:hover {
             background-color: $secondary--;
         }
     }
-}
-</style>
+}</style>

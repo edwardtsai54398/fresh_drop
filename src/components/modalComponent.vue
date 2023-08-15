@@ -41,7 +41,7 @@ export default {
     border-radius: $m-br;
     overflow: hidden;
     background-color: $bg--;
-    padding: $sp3 $sp4 $sp4;
+    padding: $sp3 $sp4;
     transform: rotateX(90deg) translateZ(400px);
     transform-origin: center center;
     transform-style: preserve-3d;

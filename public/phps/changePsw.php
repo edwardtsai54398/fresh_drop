@@ -5,7 +5,7 @@ try {
     require_once("connect_chd102g2.php");
 
     $cusNo = $_POST["cusNo"];
-    $cusNo = $_POST["newPsw"];
+    $newPsw = $_POST["newPsw"];
 
 
     $sql = "update customer

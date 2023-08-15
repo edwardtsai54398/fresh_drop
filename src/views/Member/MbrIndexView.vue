@@ -68,7 +68,6 @@ export default {
                 this.axios
                     .post(url, params)
                     .then((res) => {
-                        console.log(res.data);
                         this.$store.commit("sendMemDetail", res.data);
                     })
                     .catch((err) => {

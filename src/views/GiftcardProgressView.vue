@@ -38,9 +38,9 @@
                     <!-- 選送親友或自己按鈕 -->
                     <div class="to-button">
                         <button class="btn_xs" :class="{ inactive: isSelfClicked }" type="button"
-                            @click="isOtherClicked = true, isSelfClicked = false">親友</button>
+                                @click="isOtherClicked = true, isSelfClicked = false">親友</button>
                         <button class="btn_xs" :class="{ inactive: isOtherClicked }" type="button"
-                            @click="isSelfClicked = true, isOtherClicked = false, selfClicked()">自己</button>
+                                @click="isSelfClicked = true, isOtherClicked = false, selfClicked()">自己</button>
                     </div>
                     <!-- 送親友才出現輸入框 -->
                     <div class="recipient-input" v-if="isOtherClicked === true">
@@ -51,7 +51,7 @@
                     </div>
                     <!-- 輸入框是空的跳錯誤訊息 -->
                     <div v-if="showErrorMessage && isOtherClicked && (!recipient.email || !recipient.name)"
-                        class="error-message">
+                            class="error-message">
                         <span v-if="!recipient.email">請輸入收禮人會員信箱<br></span>
                         <span v-if="!recipient.name">請輸入收禮人姓名</span>
                     </div>
@@ -118,14 +118,14 @@
                     <h5>客製您的禮物卡</h5>
 
                     <div class="select-pic pic html2canvas" ref="html2canvas" id="capture" @mousemove="onDrag"
-                        @touchmove="onDrag" @mousedown="startDragging1" @touchstart="startDragging1">
+                            @touchmove="onDrag" @mousedown="startDragging1" @touchstart="startDragging1">
 
                         <div style="position: relative;">
                             <!-- Image -->
                             <img :src="uploadedImage || selectedPic" alt="" @mousedown="startDragging1"
-                                @touchmove="startDragging1" @mouseup="stopDragging1" :style="{
-                                    cursor: dragging ? 'grabbing' : 'grab',
-                                }">
+                                    @touchmove="startDragging1" @mouseup="stopDragging1" :style="{
+                                        cursor: dragging ? 'grabbing' : 'grab',
+                                    }">
                             <!-- Text -->
                             <div :style="{
                                 position: 'absolute',
@@ -135,8 +135,6 @@
                                 background: 'rgba(255, 255, 255, 0.7)',
                                 padding: '4px 8px',
                                 borderRadius: '4px',
-
-
                             }" @mouseup="stopDragging">{{ text }}</div>
 
                             <div v-for="selectedSlide in selectedSlides" :key="selectedSlide.src" :style="{
@@ -147,10 +145,10 @@
                                 // height: selectedSlide.height + 'px',
 
                             }" @mousedown="startDragging(selectedSlide, $event)"
-                                @touchstart="startDragging(selectedSlide, $event)"
-                                @mousemove="onDragging(selectedSlide, $event)"
-                                @touchmove="onDragging(selectedSlide, $event)" @touchend="stopDragging"
-                                @mouseup="stopDragging">
+                                    @touchstart="startDragging(selectedSlide, $event)"
+                                    @mousemove="onDragging(selectedSlide, $event)"
+                                    @touchmove="onDragging(selectedSlide, $event)" @touchend="stopDragging"
+                                    @mouseup="stopDragging">
                                 <img :src="selectedSlide.src" alt="">
                             </div>
 
@@ -196,16 +194,12 @@
                         <div class="text-input">
                             <input v-model="text" type="text" placeholder="請輸入訊息" />
                             <font-awesome-icon icon="fa-solid fa-arrow-turn-down" rotation=90 />
-
                         </div>
-
-
                         <input id="colorPicker" type="color" v-model="textColor">
-
                     </div>
 
                     <button @click="downloadCanvas" class="nextstep btn_xs" id="btnDownload"
-                        type="button">下一步，選擇禮物卡金額</button>
+                            type="button">下一步，選擇禮物卡金額</button>
                     <button @click="previousStep" class="previousstep btn_flat btn_xs">上一步</button>
 
                 </section>
@@ -224,12 +218,12 @@
                     <div class="giftcard-money-input">
                         <input type="number" id="giftcard-money" disabled :value="selectedGiftCardAmount">
                         <font-awesome-icon icon="fa-solid fa-dollar-sign"
-                            style="color: #1F8D61; font-size: 20px;position: absolute;top: 28%;left: 10%" />
+                                style="color: #1F8D61; font-size: 20px;position: absolute;top: 28%;left: 10%" />
                     </div>
                     <div class="giftcard-money-wrap">
                         <div v-for="(item, index) in giftcardMoney" :key="index" class="giftcard-money-button">
                             <button :id="'money-button-' + index" class="btn_flat" type="button"
-                                @click="updateGiftCardAmount(item)">
+                                    @click="updateGiftCardAmount(item)">
                                 <img src="../assets/images/icon_bg/price.svg" alt="">{{ item }}
                             </button>
                         </div>
@@ -253,7 +247,7 @@
 
                     <div class="finished">
                         <font-awesome-icon icon="fa-solid fa-circle-check"
-                            style="color: #1F8D61; font-size: 70px; margin-bottom: 10px;" />
+                                style="color: #1F8D61; font-size: 70px; margin-bottom: 10px;" />
                         <h5>完成！</h5>
                     </div>
 
@@ -310,7 +304,7 @@ import html2canvas from 'html2canvas'; // eslint-disable-line no-unused-vars
 import 'vue3-carousel/dist/carousel.css';
 // 輪播
 export default defineComponent({
-    name: 'Break-points',
+    name: 'GiftProgress',
     components: {
         Carousel,
         Slide,
@@ -411,23 +405,38 @@ export default defineComponent({
     methods: {
         payCheck() {
             event.preventDefault();
-            //先登入會員判斷(未做)
-            if (this.$store.state.cartList[0].length > 0) {
-                let choose = confirm('結帳頁仍有商品未結帳，確定要把結帳頁的商品清空嗎?')
-                if (!choose) {
-                    return
-                } else {
-                    this.$store.commit('clearState', 'cart')
+            if (!this.$store.state.isLogin) {
+                alert('請先登入會員')
+                this.$store.state.isLoginOpen = true
+            } else {
+                if (this.$store.state.cartList[0].length > 0) {
+                    let choose = confirm('結帳頁仍有商品未結帳，確定要把結帳頁的商品清空嗎?')
+                    if (!choose) {
+                        return
+                    } else {
+                        this.$store.commit('clearState', 'cart')
+                    }
+                }
+                if (this.$store.state.cartList[0].length == 0) {
+                    let name = ''
+                    let email = ''
+                    if (this.isSelfClicked) {
+                        name = '自己'
+                        email = this.$store.state.memberInfoAll.info.cus_email
+                    } else {
+                        name = this.recipient.name
+                        email = this.recipient.email
+                    }
+                    this.$store.commit('stateGiftBuy', {
+                        name: name,
+                        email: email,
+                        img: this.customImageURL,
+                        money: this.selectedGiftCardAmount
+                    })
+                    this.$router.push('/pay')
                 }
             }
-            if (this.$store.state.cartList[0].length == 0) {
-                this.$store.commit('stateGiftBuy', {
-                    name: this.recipient.name,
-                    img: this.customImageURL,
-                    money: this.selectedGiftCardAmount
-                })
-                this.$router.push('/pay')
-            }
+
         },
 
         // 收禮人如果選自己, 不出現輸入框
@@ -456,12 +465,31 @@ export default defineComponent({
                     this.detailTitle.push({ '收禮人姓名': this.recipient.name });
                 }
             }
+            if (this.isOtherClicked) {
+                let url = `${this.$url}giftReciveExist.php`
+                let params = new URLSearchParams()
+                params.append("email", this.recipient.email)
+                this.axios.post(url, params)
+                    .then(res => {
+                        if (!res.data) {
+                            alert('此E-mail不是我們的會員，無法收到禮物卡。\r請確認收禮者的E-mail有註冊會員')
+                            return
+                        }
+                        for (let i = 0; i <= this.step + 1; i++) {
+                            this.canChangeStep[i] = true;
+                        }
+                        this.step++;
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            } else {
 
-            for (let i = 0; i <= this.step + 1; i++) {
-                this.canChangeStep[i] = true;
+                for (let i = 0; i <= this.step + 1; i++) {
+                    this.canChangeStep[i] = true;
+                }
+                this.step++;
             }
-            this.step++;
-
         },
 
         //下一步
@@ -542,15 +570,6 @@ export default defineComponent({
         getGiftcardData() {
             let url = `${this.$url}giftcardPic.php`
             this.axios.get(url).then(res => {
-                // res.data.forEach(item => {
-                //     if (item.phone.substr(4, 1) == '-' && item.phone.length == 10) {
-                //         let front4 = item.phone.substr(0, 4)
-                //         let back6 = item.phone.substr(4, 6)
-                //         item.phone = front4.concat('-', back6)
-                //     } else if (item.phone.length !== 10) {
-                //         console.log(item.phone);
-                //     }
-                //})
                 this.giftcardData = res.data;
 
             }).catch(err => {
@@ -643,17 +662,22 @@ export default defineComponent({
         },
         saveCapture() {
             html2canvas(this.$el.querySelector("#capture")).then((canvas) => {
-                //console.log(canvas.toDataURL("image/png"));
-                const imageURL = canvas.toDataURL("image/png");
+                // console.log(canvas.toDataURL("image/png"));
+                // const imageURL = canvas.toDataURL("image/png");
+                const imageURL = canvas.toDataURL("image/jepg");
+                console.log(`jepgLen:${imageURL.length}`);
                 this.customImageURL = imageURL; // Set the customImageURL to the generated image URL
-                // this.download(canvas.toDataURL("image/png"));
+                // this.download(imageURL);
             });
         },
         download(url) {
-            var a = document.createElement("a");
+            let a = document.createElement("a");
             a.style.display = "none";
             a.href = url;
-            a.download = "test.png";
+            let uniqFileName = `gift_${Date.now()}`
+
+            a.download = `${uniqFileName}.png`;
+            console.log('download');
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);

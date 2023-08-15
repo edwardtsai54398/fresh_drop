@@ -373,7 +373,6 @@ export default {
         handleScroll() {
             const scrollY = window.scrollY;
             const fadeOutThreshold = 500; // 超過後開始淡出
-            console.log(scrollY)
             //farm_img 的偏移量
             this.farmImgOffset = scrollY * 0.5;
             //farmer_img 的偏移量

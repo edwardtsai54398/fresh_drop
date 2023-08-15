@@ -86,18 +86,12 @@ export default {
                 let url = `${this.$url}changeInfo.php`;
                 let params = new URLSearchParams();
                 params.append("cusNo", cusNo);
-                params.append("acc", this.user.cus_acc);
-                params.append("phone", this.user.phone);
-                params.append("email", this.user.cus_email);
-                params.append("address", this.user.address);
+                params.append("acc", this.memberInfo.cus_acc);
+                params.append("phone", this.memberInfo.phone);
+                params.append("email", this.memberInfo.cus_email);
+                params.append("address", this.memberInfo.address);
                 this.axios
                     .post(url, params)
-                    .then((res) => {
-                        alert(res.data);
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
             }
         },
         openChangePsw() {

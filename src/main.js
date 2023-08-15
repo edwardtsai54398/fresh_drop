@@ -38,13 +38,28 @@ library.add(faPen, faMinus, faXmark, faChevronDown, faChevronRight, faChevronLef
 
 //切換router後頁面跳到最上面
 router.afterEach(() => {
-    window.scrollTo(0, 0);
+  window.scrollTo(0, 0);
 });
 
 //全域引入axios
 import axios from 'axios';
 import VueAxios from 'vue-axios'
+//開發用
 const apiURL = 'http://localhost/fresh_drop/public/phps/'
+//上線用
+// const apiURL = 'https://tibamef2e.com/chd102/g2/phps/'
+
 app.config.globalProperties.$url = apiURL
 
-app.use(store).use(router).use(VueAxios,axios).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
+//firebase vue
+import { VueFire, VueFireAuth } from 'vuefire'
+import { firebaseApp } from '@/assets/js/firebase.js'
+app.use(VueFire, {
+  firebaseApp,
+  modules: [
+
+    VueFireAuth(),
+  ]
+})
+
+app.use(store).use(router).use(VueAxios, axios).component('font-awesome-icon', FontAwesomeIcon).mount('#app')

@@ -10,14 +10,23 @@
                     </button>
                     <div class="title">
                         <div class="type">
-                            <span>{{ newProduct.category }}</span>
+                            <!-- <span>{{ newProduct.class }}</span> -->
+                            <span v-if="newProduct.class == 0">主菜</span>
+                            <span v-if="newProduct.class == 1">湯品</span>
+                            <span v-if="newProduct.class == 2">沙拉</span>
                         </div>
-                        <h2>{{ newProduct.name }}</h2>
+                        <h2>{{ newProduct.recipe_name }}</h2>
                     </div>
                 </div>
                 <div class="info_pic">
                     <div class="pic">
-                        <img :src="newProduct.img" alt="product" />
+                        <!-- 暫時隱藏 -->
+                        <!-- <img
+                            :src="
+                                require(`../assets/images/product/${newProduct.recipe_pic}`)
+                            "
+                            alt=""
+                        /> -->
                     </div>
                     <div class="text">
                         <p>{{ newProduct.des }}</p>
@@ -29,14 +38,41 @@
                         <div class="wrap">
                             <p
                                 class="ingred"
-                                v-for="(item, index) in newProduct.ingred"
+                                v-for="(item, index) in newProduct.ingreds"
                                 :key="index"
                             >
-                                {{ item }}
+                                {{ item.ingred_name }}，{{ item.quantity_unit }}
                             </p>
                         </div>
                     </div>
+
                     <div>
+                        <p>步驟</p>
+                        <div class="wrap">
+                            <p class="info">{{ newProduct.step }}</p>
+                        </div>
+                        <!-- <ol class="wrap">
+                            <li
+                                v-for="(step, index) in newProduct.step"
+                                :key="index"
+                            >
+                                <span class="number">{{ index + 1 }}</span>
+                                <div class="title_border">
+                                    <p class="title_step">{{ step.title }}</p>
+                                </div>
+                                <ul>
+                                    <li
+                                        v-for="(subStep, subIndex) in step.step"
+                                        :key="subIndex"
+                                    >
+                                        <p class="info">{{ subStep }}</p>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ol> -->
+                    </div>
+
+                    <!-- <div>
                         <p>步驟</p>
                         <ol class="wrap">
                             <li
@@ -57,16 +93,17 @@
                                 </ul>
                             </li>
                         </ol>
-                    </div>
+                    </div> -->
                     <div>
                         <p>過敏原</p>
-                        <div class="wrap">
+                        <div class="wrap allergy_wrap">
                             <p
                                 class="allergy"
-                                v-for="(item, index) in newProduct.allergy"
+                                v-for="(item, index) in newProduct.allergys"
                                 :key="index"
+                                v-show="item.allergy === '1'"
                             >
-                                {{ item }}
+                                {{ item.ingred_name }}
                             </p>
                         </div>
                     </div>
@@ -400,6 +437,8 @@ export default defineComponent({
     data() {
         return {
             newProduct: productList[0],
+            // newProduct: recipeData[0],
+            recipeData: [],
             productList,
             productShare,
             opinionData: [],
@@ -408,7 +447,6 @@ export default defineComponent({
             currentProductIndex: -1,
             currentIndexForBtn: -1,
             isInputReport: false,
-            // isExpendReport: false,
             mobile: false,
             aaa: false,
             //輪播圖設定
@@ -515,6 +553,19 @@ export default defineComponent({
             }
         },
         // -------
+        //串接recipe資料庫
+        getRecipeData() {
+            let url = `${this.$url}recipeRows.php`;
+            this.axios
+                .get(url)
+                .then((res) => {
+                    console.log(res.data);
+                    this.recipeData = res.data;
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        },
     },
     computed: {
         filteredProductList() {
@@ -554,6 +605,10 @@ export default defineComponent({
             },
             deep: true
         },
+    },
+    mounted() {
+        //串接recipe資料庫
+        this.getRecipeData();
     },
 });
 </script>
