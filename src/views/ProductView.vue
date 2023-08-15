@@ -199,7 +199,10 @@
                                     </p>
                                 </div>
                             </div>
-                            <img :src="require(`@/assets/images/product/${item.opinion_no_pic}`)"
+                            <img
+                                :src="
+                                    require(`@/assets/images/product/${item.opinion_no_pic}`)
+                                "
                                 alt="share_food"
                                 @click="hideReport"
                             />
@@ -207,7 +210,10 @@
                         <div class="user">
                             <div class="wrap">
                                 <div class="pic pic_people">
-                                    <img src="./@/../../../../fresh_drop/src/assets/images/logo/robo.png" alt="">
+                                    <img
+                                        src="./@/../../../../fresh_drop/src/assets/images/logo/robo.png"
+                                        alt=""
+                                    />
                                 </div>
                                 <div class="name">
                                     <p>匿名</p>
@@ -260,9 +266,11 @@
             </div>
             <div class="title">
                 <div class="type">
-                    <span>{{ newProduct.category }}</span>
+                    <span v-if="newProduct.class == 0">主菜</span>
+                    <span v-if="newProduct.class == 1">湯品</span>
+                    <span v-if="newProduct.class == 2">沙拉</span>
                 </div>
-                <h2>{{ newProduct.name }}</h2>
+                <h2>{{ newProduct.recipe_name }}</h2>
             </div>
             <div class="upload_wrap">
                 <div>
@@ -304,9 +312,11 @@
         <section class="more_expend" v-show="isExpendVisible" ref="moreRef">
             <div class="title">
                 <div class="type">
-                    <span>{{ newProduct.category }}</span>
+                    <span v-if="newProduct.class == 0">主菜</span>
+                    <span v-if="newProduct.class == 1">湯品</span>
+                    <span v-if="newProduct.class == 2">沙拉</span>
                 </div>
-                <h2>{{ newProduct.name }}</h2>
+                <h2>{{ newProduct.recipe_name }}</h2>
                 <span>一起做</span>
             </div>
             <div class="content">
@@ -335,7 +345,10 @@
                                     </p>
                                 </div>
                             </div>
-                            <img :src="require(`@/assets/images/product/${item.opinion_no_pic}`)"
+                            <img
+                                :src="
+                                    require(`@/assets/images/product/${item.opinion_no_pic}`)
+                                "
                                 alt="share_food"
                                 @click="hideReport"
                             />
@@ -343,7 +356,10 @@
                         <div class="user">
                             <div class="wrap">
                                 <div class="pic pic_people">
-                                    <img src="./@/../../../../fresh_drop/src/assets/images/logo/robo.png" alt="">
+                                    <img
+                                        src="./@/../../../../fresh_drop/src/assets/images/logo/robo.png"
+                                        alt=""
+                                    />
                                 </div>
                                 <div class="name">
                                     <p>匿名</p>
@@ -527,7 +543,7 @@ export default defineComponent({
                     console.log(err);
                 });
         },
-         //串接opinion資料庫
+        //串接opinion資料庫
         getopinionData() {
             let url = `${this.$url}opinion.php`;
             this.axios
@@ -559,7 +575,7 @@ export default defineComponent({
         //     }
         // },
         showMaxFour() {
-            return this.opinionData.slice(0,4);
+            return this.opinionData.slice(0, 4);
         },
         currentProduct() {
             return (
@@ -600,6 +616,3 @@ export default defineComponent({
 @import "@/assets/scss/all.scss";
 @import "@/assets/scss/page/product.scss";
 </style>
-
-
-

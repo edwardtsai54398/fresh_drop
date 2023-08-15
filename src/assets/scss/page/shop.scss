@@ -61,9 +61,45 @@
 
 }
 
-mask {
-    z-index: 23;
+//彈窗過渡動畫-不包含食材
+.mask-enter-active,
+.mask-leave-active {
+    transition: opacity 0.3s linear;
 }
+
+.mask-enter,
+.mask-leave-to {
+    opacity: 0;
+}
+
+.hatefood-enter-active,
+.hatefood-leave-active {
+    transition: transform opacity 0.5s ease-out;
+}
+
+.hatefood-enter,
+.hatefood-leave-to {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+//彈窗過渡動畫-購物車展開
+.step-enter-active,
+.step-leave-active {
+    transition: transform opacity 0.5s ease-out;
+}
+
+.step-enter,
+.step-leave-to {
+    opacity: 0;
+    transform: translateY(-100%);
+
+}
+
+
+// mask {
+//     z-index: 23;
+// }
 
 .hatefood {
     position: absolute;
@@ -91,6 +127,7 @@ mask {
         overflow: auto;
         min-height: 20px;
         flex-grow: 1;
+        @extend %scrollbar_style;
 
         .subtitle {
             padding: 20px;
@@ -544,7 +581,7 @@ mask {
 
 // step_one_hint
 .step_one_hint_mb {
-    position: absolute;
+    position: fixed;
     bottom: 30px;
     left: 30px;
     z-index: 30;
@@ -557,7 +594,7 @@ mask {
 
 // enter_hint_mb
 .enter_hint_mb {
-    position: absolute;
+    position: fixed;
     left: 30px;
     bottom: 110px;
     width: 45%;
@@ -710,12 +747,18 @@ mask {
 
     }
 
+    // .fade-enter,
+    // .fade-leave-to {
+    //     transform: translateX(-100%);
+    // }
+
     .hatefood {
         width: 40%;
         left: 0;
         height: 100%;
         border-radius: 0;
         z-index: 20;
+
 
         .adjust_btn {
             width: 100%;
@@ -830,7 +873,7 @@ mask {
 
     // step_one_hint
     .step_one_hint_mb {
-        // display: none;
+        display: none;
     }
 
     .step_one_hint_pc {
@@ -849,7 +892,7 @@ mask {
 
     // enter_hint_mb
     .enter_hint_mb {
-        // display: none;
+        display: none;
     }
 
     // enter_hint_pc

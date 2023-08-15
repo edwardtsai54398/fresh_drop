@@ -32,61 +32,71 @@
                 </button>
             </div>
         </aside>
-        <!-- 不包含的食材遮罩 -->
-        <div class="mask" v-show="isAdjustExpend" @click="adjustExpend"></div>
-        <!-- 不包含的食材內容 -->
-        <div class="hatefood" v-show="isAdjustExpend">
-            <p class="title">不包含的食材</p>
-            <div class="cant">
-                <!-- 過敏原 -->
-                <p class="subtitle">過敏原</p>
-                <div
-                    class="allergy"
-                    v-for="allergy in uniqueAllergy"
-                    :key="allergy"
-                >
-                    <span>{{ allergy.name }}</span>
-                    <input
-                        type="checkbox"
-                        :value="allergy.name"
-                        v-model="tempSelectedAllergies"
-                        class="custom_checkbox"
-                    />
-                </div>
-                <!-- 不喜愛的 -->
-                <p class="subtitle">不喜愛的</p>
-                <div
-                    class="dislike"
-                    v-for="dislike in uniqueDislike"
-                    :key="dislike"
-                >
-                    <input
-                        type="checkbox"
-                        :value="dislike.name"
-                        v-model="tempSelectedDislikes"
-                        class="custom_checkbox"
-                    />
-                    <span>{{ dislike.name }}</span>
-                </div>
-            </div>
-            <p class="text">
-                如果您有不食用上述以外的食材，請
 
-                <router-link to="/about" class="connect">聯繫我們</router-link
-                >，謝謝。
-            </p>
-            <div class="adjust_btn">
-                <button class="cross btn_s" @click="adjustExpend">
-                    <font-awesome-icon icon="fa-solid fa-xmark" />
-                </button>
-                <button
-                    class="down btn_s"
-                    @click="applyFiltersAndUpdateProductList"
-                >
-                    設定完成
-                </button>
+        <transition name="mask" mode="out-in" appear>
+            <!-- 不包含的食材遮罩 -->
+            <div
+                class="mask"
+                v-show="isAdjustExpend"
+                @click="adjustExpend"
+            ></div
+        ></transition>
+        <transition name="hatefood" mode="out-in" appear>
+            <!-- 不包含的食材內容 -->
+            <div class="hatefood" v-show="isAdjustExpend">
+                <p class="title">不包含的食材</p>
+                <div class="cant">
+                    <!-- 過敏原 -->
+                    <p class="subtitle">過敏原</p>
+                    <div
+                        class="allergy"
+                        v-for="allergy in uniqueAllergy"
+                        :key="allergy"
+                    >
+                        <span>{{ allergy.name }}</span>
+                        <input
+                            type="checkbox"
+                            :value="allergy.name"
+                            v-model="tempSelectedAllergies"
+                            class="custom_checkbox"
+                        />
+                    </div>
+                    <!-- 不喜愛的 -->
+                    <p class="subtitle">不喜愛的</p>
+                    <div
+                        class="dislike"
+                        v-for="dislike in uniqueDislike"
+                        :key="dislike"
+                    >
+                        <input
+                            type="checkbox"
+                            :value="dislike.name"
+                            v-model="tempSelectedDislikes"
+                            class="custom_checkbox"
+                        />
+                        <span>{{ dislike.name }}</span>
+                    </div>
+                </div>
+                <p class="text">
+                    如果您有不食用上述以外的食材，請
+
+                    <router-link to="/about" class="connect"
+                        >聯繫我們</router-link
+                    >，謝謝。
+                </p>
+                <div class="adjust_btn">
+                    <button class="cross btn_s" @click="adjustExpend">
+                        <font-awesome-icon icon="fa-solid fa-xmark" />
+                    </button>
+                    <button
+                        class="down btn_s"
+                        @click="applyFiltersAndUpdateProductList"
+                    >
+                        設定完成
+                    </button>
+                </div>
             </div>
-        </div>
+        </transition>
         <!-- 菜色選擇 -->
         <section class="info">
             <div class="food_pic pic" v-if="recipeData.length > 0">
@@ -210,281 +220,295 @@
         <!-- 清單、結帳按鈕 -->
         <aside class="choosewrap" :class="{ 'scroll-up': isScrollUp }">
             <!-- 訂購步驟遮罩 -->
-            <div
-                class="mask"
-                v-show="isStepExpend"
-                @click="isStepExpend = !isStepExpend"
-            ></div>
-            <!-- 訂購步驟 -->
-            <div class="step_wrap" v-show="isStepExpend || isDesktop">
-                <!-- 步驟一 -->
-                <div class="step one">
-                    <div class="title" @click="stepOneExpend">
-                        <p>
-                            <font-awesome-icon
-                                :style="{ color: '#1F8D61' }"
-                                icon="fa-solid fa-box-archive"
-                            />
-                        </p>
-                        <p>
-                            <span>step.1</span>{{ stepOneText }}
-                            {{ selectedOptionPlan }}
-                        </p>
-                        <p>
-                            <font-awesome-icon
-                                :style="{ color: '#1F8D61' }"
-                                icon="fa-solid fa-plus"
-                            />
-                        </p>
-                    </div>
-                    <!-- 過渡動畫 -->
-                    <transition name="expand">
-                        <!-- 步驟一內容 -->
-                        <div class="content_one" v-show="isStepOneExpend">
-                            <div class="wrap">
-                                <div>
-                                    <p>1.選擇購買方案</p>
-                                </div>
-                                <div class="choose">
-                                    <div
-                                        class="option_plan"
-                                        v-for="option in optionsPlan"
-                                        :key="option.value"
-                                        @click="
-                                            selectedOptionPlan = option.value;
-                                            isPlanSelectDone();
-                                        "
-                                        :class="{
-                                            selected:
-                                                selectedOptionPlan ===
-                                                option.value,
-                                            radio_plan: true,
-                                        }"
-                                    >
-                                        {{ option.label }}
-                                    </div>
-                                    <div
-                                        class="single"
-                                        v-show="
-                                            selectedOptionPlan === '單次購買'
-                                        "
-                                    >
-                                        <p>請前往下一步選擇餐點</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="wrap"
-                                v-if="selectedOptionPlan == '定期配送'"
-                            >
-                                <div>
-                                    <p>2.每周幾份餐點</p>
-                                </div>
-                                <div class="choose">
-                                    <div
-                                        class="option_meal"
-                                        v-for="option in optionsMeal"
-                                        :key="option"
-                                        @click="
-                                            selectedOptionMeal = option;
-                                            isPlanSelectDone();
-                                        "
-                                        :class="{
-                                            selected:
-                                                selectedOptionMeal === option,
-                                            radio_plan: true,
-                                        }"
-                                    >
-                                        {{ option }}份
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="wrap"
-                                v-if="selectedOptionPlan == '定期配送'"
-                            >
-                                <div>
-                                    <p>3.連續寄送幾周</p>
-                                </div>
-                                <div class="choose">
-                                    <div
-                                        class="option_week"
-                                        v-for="option in optionsWeek"
-                                        :key="option"
-                                        @click="
-                                            selectedOptionWeek = option;
-                                            isPlanSelectDone();
-                                        "
-                                        :class="{
-                                            selected:
-                                                selectedOptionWeek === option,
-                                            radio_plan: true,
-                                        }"
-                                    >
-                                        {{ option }}周
-                                    </div>
-                                </div>
-                            </div>
+            <transition name="mask" mode="out-in" appear>
+                <div
+                    class="mask"
+                    v-show="isStepExpend"
+                    @click="isStepExpend = !isStepExpend"
+                ></div>
+            </transition>
+            <transition name="step" mode="out-in" appear>
+                <!-- 訂購步驟 -->
+                <div class="step_wrap" v-show="isStepExpend || isDesktop">
+                    <!-- 步驟一 -->
+                    <div class="step one">
+                        <div class="title" @click="stepOneExpend">
+                            <p>
+                                <font-awesome-icon
+                                    :style="{ color: '#1F8D61' }"
+                                    icon="fa-solid fa-box-archive"
+                                />
+                            </p>
+                            <p><span>step.1</span>{{ stepOneText }}</p>
+                            <p>
+                                <font-awesome-icon
+                                    :style="{ color: '#1F8D61' }"
+                                    icon="fa-solid fa-plus"
+                                />
+                            </p>
                         </div>
-                    </transition>
-                </div>
-                <!-- 步驟二 -->
-                <div class="step two">
-                    <div class="title">
-                        <p>
-                            <font-awesome-icon
-                                :style="{
-                                    color: '#1F8D61',
-                                }"
-                                icon="fa-solid fa-bowl-food"
-                            />
-                        </p>
-                        <p><span>step.2</span>選擇餐點</p>
-                        <p>
-                            <font-awesome-icon
-                                :style="{
-                                    color: '#1F8D61',
-                                }"
-                                icon="fa-solid fa-plus"
-                            />
-                        </p>
-                    </div>
-                    <!-- 過渡動畫 -->
-                    <transition name="expand">
-                        <!-- 步驟二內容 -->
-                        <div
-                            class="content_two"
-                            v-show="isStepTwoExpend"
-                            :class="{ 'scroll-up-content': isScrollUp }"
-                        >
-                            <!-- 總數、全部刪除按鈕 -->
-                            <div class="topbtn">
-                                <!-- 總數量 -->
-                                <div
-                                    class="total_count"
-                                    v-show="selectedOptionPlan == '定期配送'"
-                                >
-                                    {{ cartWeekAmount }}/{{ selectedOptionMeal
-                                    }}<span>份</span>
+                        <!-- 過渡動畫 -->
+                        <transition name="expand">
+                            <!-- 步驟一內容 -->
+                            <div class="content_one" v-show="isStepOneExpend">
+                                <div class="wrap">
+                                    <div>
+                                        <p>1.選擇購買方案</p>
+                                    </div>
+                                    <div class="choose">
+                                        <div
+                                            class="option_plan"
+                                            v-for="option in optionsPlan"
+                                            :key="option.value"
+                                            @click="
+                                                selectedOptionPlan =
+                                                    option.value;
+                                                isPlanSelectDone();
+                                            "
+                                            :class="{
+                                                selected:
+                                                    selectedOptionPlan ===
+                                                    option.value,
+                                                radio_plan: true,
+                                            }"
+                                        >
+                                            {{ option.label }}
+                                        </div>
+                                        <div
+                                            class="single"
+                                            v-show="
+                                                selectedOptionPlan ===
+                                                '單次購買'
+                                            "
+                                        >
+                                            <p>請前往下一步選擇餐點</p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div
-                                    class="total_count"
-                                    v-show="selectedOptionPlan == '單次購買'"
+                                    class="wrap"
+                                    v-if="selectedOptionPlan == '定期配送'"
                                 >
-                                    {{ cartWeekAmount }}<span>份</span>
+                                    <div>
+                                        <p>2.每周幾份餐點</p>
+                                    </div>
+                                    <div class="choose">
+                                        <div
+                                            class="option_meal"
+                                            v-for="option in optionsMeal"
+                                            :key="option"
+                                            @click="
+                                                selectedOptionMeal = option;
+                                                isPlanSelectDone();
+                                            "
+                                            :class="{
+                                                selected:
+                                                    selectedOptionMeal ===
+                                                    option,
+                                                radio_plan: true,
+                                            }"
+                                        >
+                                            {{ option }}份
+                                        </div>
+                                    </div>
                                 </div>
                                 <div
-                                    class="btn_s delete"
-                                    @click="removeCartAll"
+                                    class="wrap"
+                                    v-if="selectedOptionPlan == '定期配送'"
                                 >
-                                    全部刪除
+                                    <div>
+                                        <p>3.連續寄送幾周</p>
+                                    </div>
+                                    <div class="choose">
+                                        <div
+                                            class="option_week"
+                                            v-for="option in optionsWeek"
+                                            :key="option"
+                                            @click="
+                                                selectedOptionWeek = option;
+                                                isPlanSelectDone();
+                                            "
+                                            :class="{
+                                                selected:
+                                                    selectedOptionWeek ===
+                                                    option,
+                                                radio_plan: true,
+                                            }"
+                                        >
+                                            {{ option }}周
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- 頁籤 -->
+                        </transition>
+                    </div>
+                    <!-- 步驟二 -->
+                    <div class="step two">
+                        <div class="title">
+                            <p>
+                                <font-awesome-icon
+                                    :style="{
+                                        color: '#1F8D61',
+                                    }"
+                                    icon="fa-solid fa-bowl-food"
+                                />
+                            </p>
+                            <p><span>step.2</span>選擇餐點</p>
+                            <p>
+                                <font-awesome-icon
+                                    :style="{
+                                        color: '#1F8D61',
+                                    }"
+                                    icon="fa-solid fa-plus"
+                                />
+                            </p>
+                        </div>
+                        <!-- 過渡動畫 -->
+                        <transition name="expand">
+                            <!-- 步驟二內容 -->
                             <div
-                                class="week_tap"
-                                v-show="selectedOptionPlan === '定期配送'"
+                                class="content_two"
+                                v-show="isStepTwoExpend"
+                                :class="{ 'scroll-up-content': isScrollUp }"
                             >
+                                <!-- 總數、全部刪除按鈕 -->
+                                <div class="topbtn">
+                                    <!-- 總數量 -->
+                                    <div
+                                        class="total_count"
+                                        v-show="
+                                            selectedOptionPlan == '定期配送'
+                                        "
+                                    >
+                                        {{ cartWeekAmount }}/{{
+                                            selectedOptionMeal
+                                        }}<span>份</span>
+                                    </div>
+                                    <div
+                                        class="total_count"
+                                        v-show="
+                                            selectedOptionPlan == '單次購買'
+                                        "
+                                    >
+                                        {{ cartWeekAmount }}<span>份</span>
+                                    </div>
+                                    <div
+                                        class="btn_s delete"
+                                        @click="removeCartAll"
+                                    >
+                                        全部刪除
+                                    </div>
+                                </div>
+                                <!-- 頁籤 -->
                                 <div
-                                    class="week"
+                                    class="week_tap"
+                                    v-show="selectedOptionPlan === '定期配送'"
+                                >
+                                    <div
+                                        class="week"
+                                        v-for="n in selectedOptionWeek"
+                                        :key="n"
+                                        :class="{ active: n == tabActive }"
+                                        @click="updateTab(n)"
+                                    >
+                                        WEEK{{ n }}
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="dishes"
                                     v-for="n in selectedOptionWeek"
                                     :key="n"
-                                    :class="{ active: n == tabActive }"
-                                    @click="updateTab(n)"
+                                    v-show="tabActive == n"
                                 >
-                                    WEEK{{ n }}
-                                </div>
-                            </div>
-
-                            <div
-                                class="dishes"
-                                v-for="n in selectedOptionWeek"
-                                :key="n"
-                                v-show="tabActive == n"
-                            >
-                                <p
-                                    class="no_item"
-                                    v-show="cartList[tabActive - 1].length == 0"
-                                >
-                                    購物欄內目前沒有商品
-                                </p>
-                                <div
-                                    class="circle"
-                                    v-for="(item, index) in cartList[n - 1]"
-                                    :key="index"
-                                >
-                                    <div class="dishes_pic">
-                                        <!-- <img :src="item.img" /> -->
-                                        <!-- 開發用 -->
-                                        <img
-                                            :src="`/data_images/product/${item.recipe_pic}`"
-                                            alt=""
-                                        />
-                                        <!-- 上線用 -->
-                                        <!-- <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" alt=""/> -->
-                                    </div>
-                                    <div class="dishes_content">
-                                        <div class="category_and_cancel">
-                                            <div class="category">
-                                                <!-- {{ item.class }} -->
-                                                <span v-if="item.class == 0"
-                                                    >主菜</span
-                                                >
-                                                <span v-if="item.class == 1"
-                                                    >湯品</span
-                                                >
-                                                <span v-if="item.class == 2"
-                                                    >沙拉</span
-                                                >
-                                            </div>
-                                            <button
-                                                class="cancel"
-                                                @click="removeCart(index)"
-                                            >
-                                                <font-awesome-icon
-                                                    icon="fa-solid fa-trash-can"
-                                                />
-                                            </button>
-                                        </div>
-                                        <div class="dishes_title">
-                                            <h2>{{ item.recipe_name }}</h2>
-                                        </div>
-                                        <div class="count">
-                                            <button
-                                                class="reduce"
-                                                @click="amountReduce(index)"
-                                            >
-                                                <font-awesome-icon
-                                                    :style="{
-                                                        color: '#ffffff',
-                                                    }"
-                                                    icon="fa-solid fa-minus"
-                                                />
-                                            </button>
-                                            <input
-                                                type="number"
-                                                class="common"
-                                                :value="item.amount"
+                                    <p
+                                        class="no_item"
+                                        v-show="
+                                            cartList[tabActive - 1].length == 0
+                                        "
+                                    >
+                                        購物欄內目前沒有商品
+                                    </p>
+                                    <div
+                                        class="circle"
+                                        v-for="(item, index) in cartList[n - 1]"
+                                        :key="index"
+                                    >
+                                        <div class="dishes_pic">
+                                            <!-- <img :src="item.img" /> -->
+                                            <!-- 開發用 -->
+                                            <img
+                                                :src="`/data_images/product/${item.recipe_pic}`"
+                                                alt=""
                                             />
-                                            <button
-                                                class="increase"
-                                                @click="amountIncrease(index)"
-                                            >
-                                                <font-awesome-icon
-                                                    :style="{
-                                                        color: '#ffffff',
-                                                    }"
-                                                    icon="fa-solid fa-plus"
+                                            <!-- 上線用 -->
+                                            <!-- <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" alt=""/> -->
+                                        </div>
+                                        <div class="dishes_content">
+                                            <div class="category_and_cancel">
+                                                <div class="category">
+                                                    <!-- {{ item.class }} -->
+                                                    <span v-if="item.class == 0"
+                                                        >主菜</span
+                                                    >
+                                                    <span v-if="item.class == 1"
+                                                        >湯品</span
+                                                    >
+                                                    <span v-if="item.class == 2"
+                                                        >沙拉</span
+                                                    >
+                                                </div>
+                                                <button
+                                                    class="cancel"
+                                                    @click="removeCart(index)"
+                                                >
+                                                    <font-awesome-icon
+                                                        icon="fa-solid fa-trash-can"
+                                                    />
+                                                </button>
+                                            </div>
+                                            <div class="dishes_title">
+                                                <h2>{{ item.recipe_name }}</h2>
+                                            </div>
+                                            <div class="count">
+                                                <button
+                                                    class="reduce"
+                                                    @click="amountReduce(index)"
+                                                >
+                                                    <font-awesome-icon
+                                                        :style="{
+                                                            color: '#ffffff',
+                                                        }"
+                                                        icon="fa-solid fa-minus"
+                                                    />
+                                                </button>
+                                                <input
+                                                    type="number"
+                                                    class="common"
+                                                    :value="item.amount"
                                                 />
-                                            </button>
+                                                <button
+                                                    class="increase"
+                                                    @click="
+                                                        amountIncrease(index)
+                                                    "
+                                                >
+                                                    <font-awesome-icon
+                                                        :style="{
+                                                            color: '#ffffff',
+                                                        }"
+                                                        icon="fa-solid fa-plus"
+                                                    />
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </transition>
+                        </transition>
+                    </div>
                 </div>
-            </div>
+            </transition>
             <!-- 按鈕 -->
             <div class="shop_btn">
                 <button
@@ -742,6 +766,7 @@ export default {
         },
         //方案是否有被選完
         isPlanSelectDone() {
+            this.stepOneText = this.selectedOptionPlan;
             if (this.selectedOptionPlan === "單次購買") {
                 this.isStepTwoExpend = true;
                 this.isStepOneExpend = false;
