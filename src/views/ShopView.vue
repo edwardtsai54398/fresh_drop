@@ -414,12 +414,28 @@
                                     :key="index"
                                 >
                                     <div class="dishes_pic">
-                                        <img :src="item.img" />
+                                        <!-- <img :src="item.img" /> -->
+                                        <!-- 開發用 -->
+                                        <img
+                                            :src="`/data_images/product/${item.recipe_pic}`"
+                                            alt=""
+                                        />
+                                        <!-- 上線用 -->
+                                        <!-- <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" alt=""/> -->
                                     </div>
                                     <div class="dishes_content">
                                         <div class="category_and_cancel">
                                             <div class="category">
-                                                {{ item.category }}
+                                                <!-- {{ item.class }} -->
+                                                <span v-if="item.class == 0"
+                                                    >主菜</span
+                                                >
+                                                <span v-if="item.class == 1"
+                                                    >湯品</span
+                                                >
+                                                <span v-if="item.class == 2"
+                                                    >沙拉</span
+                                                >
                                             </div>
                                             <button
                                                 class="cancel"
@@ -431,7 +447,7 @@
                                             </button>
                                         </div>
                                         <div class="dishes_title">
-                                            <h2>{{ item.name }}</h2>
+                                            <h2>{{ item.recipe_name }}</h2>
                                         </div>
                                         <div class="count">
                                             <button

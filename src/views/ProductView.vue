@@ -10,7 +10,6 @@
                     </button>
                     <div class="title">
                         <div class="type">
-                            <!-- <span>{{ newProduct.class }}</span> -->
                             <span v-if="newProduct.class == 0">主菜</span>
                             <span v-if="newProduct.class == 1">湯品</span>
                             <span v-if="newProduct.class == 2">沙拉</span>
@@ -48,15 +47,6 @@
 
                     <div>
                         <p>步驟</p>
-                        <!-- <div class="wrap">
-                            <p
-                                class="info"
-                                v-for="(item, index) in newProduct.step"
-                                :key="index"
-                            >
-                                {{ item }}
-                            </p>
-                        </div> -->
                         <ol
                             class="wrap"
                             ref=""
@@ -81,30 +71,6 @@
                             </li>
                         </ol>
                     </div>
-
-                    <!-- 步驟原始資料 -->
-                    <!-- <div>
-                        <p>步驟</p>
-                        <ol class="wrap">
-                            <li
-                                v-for="(step, index) in newProduct.step"
-                                :key="index"
-                            >
-                                <span class="number">{{ index + 1 }}</span>
-                                <div class="title_border">
-                                    <p class="title_step">{{ step.title }}</p>
-                                </div>
-                                <ul>
-                                    <li
-                                        v-for="(subStep, subIndex) in step.step"
-                                        :key="subIndex"
-                                    >
-                                        <p class="info">{{ subStep }}</p>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ol>
-                    </div> -->
                     <div>
                         <p>過敏原</p>
                         <div class="wrap allergy_wrap">
@@ -112,9 +78,8 @@
                                 class="allergy"
                                 v-for="(item, index) in newProduct.allergys"
                                 :key="index"
-                                v-show="item.allergy === '1'"
                             >
-                                {{ item.ingred_name }}
+                                {{ item }}
                             </p>
                         </div>
                     </div>
