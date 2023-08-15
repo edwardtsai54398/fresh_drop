@@ -20,13 +20,13 @@
                 </div>
                 <div class="info_pic">
                     <div class="pic">
-                        <!-- 暫時隱藏 -->
-                        <!-- <img
-                            :src="
-                                require(`../assets/images/product/${newProduct.recipe_pic}`)
-                            "
+                        <!-- 開發用 -->
+                        <img
+                            :src="`/data_images/product/${newProduct.recipe_pic}`"
                             alt=""
-                        /> -->
+                        />
+                        <!-- 上線用 -->
+                        <!-- <img :src="`/chd102/g2/data_images/product/${newProduct.recipe_pic}`" alt="" /> -->
                     </div>
                     <div class="text">
                         <p>{{ newProduct.des }}</p>
@@ -48,30 +48,41 @@
 
                     <div>
                         <p>步驟</p>
-                        <div class="wrap">
-                            <p class="info">{{ newProduct.step }}</p>
-                        </div>
-                        <!-- <ol class="wrap">
-                            <li
-                                v-for="(step, index) in newProduct.step"
+                        <!-- <div class="wrap">
+                            <p
+                                class="info"
+                                v-for="(item, index) in newProduct.step"
                                 :key="index"
                             >
+                                {{ item }}
+                            </p>
+                        </div> -->
+                        <ol
+                            class="wrap"
+                            ref=""
+                            v-for="(item, index) in newProductStep"
+                            :key="index"
+                        >
+                            <li class="li_wrap">
                                 <span class="number">{{ index + 1 }}</span>
                                 <div class="title_border">
-                                    <p class="title_step">{{ step.title }}</p>
+                                    <p class="title_step">
+                                        {{ item.title }}
+                                    </p>
                                 </div>
-                                <ul>
+                                <ul class="ul_wrap">
                                     <li
-                                        v-for="(subStep, subIndex) in step.step"
+                                        v-for="(subitem, subIndex) in item.desc"
                                         :key="subIndex"
                                     >
-                                        <p class="info">{{ subStep }}</p>
+                                        <p class="info">{{ subitem }}</p>
                                     </li>
                                 </ul>
                             </li>
-                        </ol> -->
+                        </ol>
                     </div>
 
+                    <!-- 步驟原始資料 -->
                     <!-- <div>
                         <p>步驟</p>
                         <ol class="wrap">
@@ -114,23 +125,33 @@
                 <div class="hot_ranking">
                     <div class="hot_title">
                         <img
-                            src="../assets/images/product/crown.svg"
-                            alt="recommend pic"
+                            :src="require(`../assets/images/product/crown.svg`)"
+                            alt=""
                         />
                         熱門推薦
                     </div>
                     <div
                         class="hot_product"
                         v-for="(item, index) in filteredProductList"
-                        :key="item.id"
+                        :key="item.recipe_no"
                         @click="update(index)"
                     >
                         <div class="pic">
-                            <img :src="item.img" alt="" />
+                            <!-- 開發用 -->
+                            <img
+                                :src="`/data_images/product/${item.recipe_pic}`"
+                                alt=""
+                            />
+                            <!-- 上線用 -->
+                            <!-- <img :src="`/chd102/g2/data_images/product/${newProduct.recipe_pic}`" alt="" /> -->
                         </div>
                         <div class="hot_info">
-                            <div class="hot_type">{{ item.category }}</div>
-                            <h2 class="hot_name">{{ item.name }}</h2>
+                            <div class="hot_type">
+                                <span v-if="item.class == 0">主菜</span>
+                                <span v-if="item.class == 1">湯品</span>
+                                <span v-if="item.class == 2">沙拉</span>
+                            </div>
+                            <h2 class="hot_name">{{ item.recipe_name }}</h2>
                         </div>
                     </div>
                 </div>
@@ -140,8 +161,8 @@
                 <div class="hot_ranking">
                     <div class="hot_title">
                         <img
-                            src="../assets/images/product/crown.svg"
-                            alt="recommend pic"
+                            :src="require(`../assets/images/product/crown.svg`)"
+                            alt=""
                         />
                         熱門推薦
                     </div>
@@ -152,15 +173,25 @@
                     >
                         <slide
                             v-for="(item, index) in filteredProductList"
-                            :key="item.id"
+                            :key="item.recipe_no"
                             @click="update(index)"
                         >
                             <div class="pic">
-                                <img :src="item.img" alt="" />
+                                <!-- 開發用 -->
+                                <img
+                                    :src="`/data_images/product/${item.recipe_pic}`"
+                                    alt=""
+                                />
+                                <!-- 上線用 -->
+                                <!-- <img :src="`/chd102/g2/data_images/product/${newProduct.recipe_pic}`" alt="" /> -->
                             </div>
                             <div class="hot_info">
-                                <div class="hot_type">{{ item.category }}</div>
-                                <h2 class="hot_name">{{ item.name }}</h2>
+                                <div class="hot_type">
+                                    <span v-if="item.class == 0">主菜</span>
+                                    <span v-if="item.class == 1">湯品</span>
+                                    <span v-if="item.class == 2">沙拉</span>
+                                </div>
+                                <h2 class="hot_name">{{ item.recipe_name }}</h2>
                             </div>
                         </slide>
                         <template #addons>
@@ -268,9 +299,6 @@
             <div class="title_window">
                 <p class="text_title">心得分享</p>
                 <modalClose class="cross" @click="uploadExpend" />
-                <!-- <button class="cross" @click="uploadExpend">
-                    <font-awesome-icon icon="fa-solid fa-xmark" />
-                </button> -->
             </div>
             <div class="title">
                 <div class="type">
@@ -385,9 +413,6 @@
                             class="cross"
                             @click="currentProductIndex = -1"
                         />
-                        <!-- <button class="cross" @click="currentProductIndex = -1">
-                            <font-awesome-icon icon="fa-solid fa-xmark" />
-                        </button> -->
                         <div class="input">
                             <textarea
                                 v-model="text"
@@ -434,7 +459,6 @@ export default defineComponent({
     data() {
         return {
             newProduct: productList[0],
-            // newProduct: recipeData[0],
             recipeData: [],
             productList,
             productShare,
@@ -551,8 +575,8 @@ export default defineComponent({
     },
     computed: {
         filteredProductList() {
-            return this.productList.filter(
-                (item) => item.id >= 2 && item.id <= 6
+            return this.recipeData.filter(
+                (item) => item.recipe_no >= 2 && item.recipe_no <= 6
             );
         },
         filteredProductShare() {
@@ -575,6 +599,17 @@ export default defineComponent({
         },
         isOpenPopup() {
             return this.currentProductIndex !== -1;
+        },
+        // 製作步驟資料整理
+        newProductStep() {
+            let originalStep = this.newProduct?.step ?? [];
+            let result = [];
+            for (let i = 0, j = 0; i < originalStep.length; i += 2, j++) {
+                result[j] = {};
+                result[j].title = originalStep[i][0];
+                result[j].desc = originalStep[i + 1];
+            }
+            return result;
         },
     },
     watch: {

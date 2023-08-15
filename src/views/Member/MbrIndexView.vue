@@ -52,14 +52,14 @@ export default {
     },
     created() {
         window.addEventListener("resize", this.cardLayout);
-        this.getMemDeatailData();
+        this.getMemDetailData();
     },
     unmounted() {
         window.removeEventListener("resize", this.cardLayout);
     },
     computed: {},
     methods: {
-        getMemDeatailData() {
+        getMemDetailData() {
             let id = sessionStorage.getItem("cus_no");
             if (id) {
                 let url = `${this.$url}memberDetail.php`;
