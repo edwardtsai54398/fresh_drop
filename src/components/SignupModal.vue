@@ -13,7 +13,7 @@
                 <label for="sign-gender">性別<span class="must_fill">*此欄位必填</span></label>
                 <div class="check">
                     <div class="man">
-                        <input type="radio" name="gender" id="male" value="男" v-model="user.gender"/>
+                        <input type="radio" name="gender" id="male" value="男" v-model="user.gender" checked/>
                         <label for="male">男</label>
                     </div>
                     <div class="female">
@@ -71,23 +71,23 @@ export default {
     data() {
         return {
             user: {
-                name: "",
+                name: "蔡宗驊",
                 gender: "",
                 birth:"",
-                phone: "",
-                email: "",
+                phone: "0952-339567",
+                email: "myNameIsEdward9487@gmail.com",
                 psw: "",
                 confirmPsw: "",
-                add: "",
+                add: "台中市大稻埕美好路46號",
             },
             twDistrict: [],
             selectCityDistrict: [],
             years:[],
             months:[1,2,3,4,5,6,7,8,9,10,11,12],
             days: [],
-            selectedYear:new Date().getFullYear(),
-            selectedMonth:new Date().getMonth()+1,
-            selectedDay: new Date().getDate(),
+            selectedYear:1994,
+            selectedMonth:5,
+            selectedDay: 24,
             
         };
     },

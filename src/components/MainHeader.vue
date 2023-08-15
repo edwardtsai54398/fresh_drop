@@ -76,7 +76,8 @@
                     <div class="goback" @click="isSubCartOpen = false">
                         <font-awesome-icon icon="fa-solid fa-chevron-left" />
                     </div>
-                    <div class="cart_content">
+                    <div class="cart_content cart_zero">
+                        <p v-show="cartList[0].length==0">購物籃中沒有商品</p>
                         <ol class="week_tabs" v-show="cartList.length > 1">
                             <li class="tab" v-for="n in cartList.length" :key="n" :style="`width:${100/cartList.length}%`" :class="{active: n == tabActive}" @click="updateTab(n)">week{{ n }}</li>
                         </ol>
@@ -92,7 +93,7 @@
                                 <div class="name">{{ item.name }}</div>
                             </li>
                         </ul>
-                        <div class="group_btn">
+                        <div class="group_btn" v-show="cartList[0].length>0">
                             <router-link class="btn_s btn_flat" to="/shop" 
                             @click="isSubCartOpen = false;isToggleOpen = false;">
                                 繼續選購
@@ -103,7 +104,7 @@
                 </div>
             </div>
         </nav>
-        <button class="member" @click="$emit('toggle')" :class="{ had_login: $store.state.isLogin}">
+        <button class="member" @click="checkMemberStatus" :class="{ had_login: $store.state.isLogin}">
             <img src="@/assets/images/icon_bg/header_member.svg" alt="" v-if="!$store.state.isLogin" />
             <div class="pic avatar_img" v-if="$store.state.isLogin">
                 <img :src="$store.state.memberInfoAll.info.cus_pic" alt="" />
@@ -126,13 +127,13 @@
 
 <script>
 import { payCheck, isCartSelectDone } from "@/assets/js/cart.js";
+import {signOut} from 'firebase/auth'
+import { useFirebaseAuth } from 'vuefire'
 export default {
     name: "MainHeader",
-    props: {
-        centerOpen: Boolean,
-    },
     data() {
         return {
+            centerOpen: false,
             isToggleOpen: false,
             isSourceToggleOpen: false,
             isSubCartOpen: false,
@@ -192,14 +193,22 @@ export default {
                 this.headCircleQty = 0;
             }
         },
+        checkMemberStatus() {
+            if (this.$store.state.isLogin) {
+                this.centerOpen = !this.centerOpen;
+            }  else {
+                this.$store.state.isLoginOpen = true;
+            }
+        },
         logOut() {
-            this.$emit('toggle', '登出');
             this.$store.commit('logOut');
+            this.centerOpen = false
             if (this.$route.path == '/pay' ||
                 this.$route.path == '/member') {
-                console.log('logout');
                 this.$router.push("/index")
             }
+            const auth = new useFirebaseAuth()
+            signOut(auth)
         },
         navInOut() {
             let scrollY = window.scrollY

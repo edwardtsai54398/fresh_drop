@@ -3,7 +3,11 @@
     <template v-slot:content>
         <div class="gift_modal" v-if="giftDetail">
             <div class="pic">
-                <img :src="`/data_images/gift/${giftDetail.g_pic}`" alt="" />
+                <!-- 開發用 -->
+                <!-- <img :src="`/data_images/gift/${giftDetail.g_pic}`" alt="" /> -->
+                <!-- 上線用 -->
+                <img :src="`/chd102/g2/data_images/gift/${giftDetail.g_pic}`" alt="" />
+
             </div>
             <div class="info">
                 <p v-if="giftDetail.remain == 0">狀態：使用完畢</p>

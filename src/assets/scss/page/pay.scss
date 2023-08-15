@@ -38,6 +38,9 @@
     .cart_item {
         border-bottom: 1px solid $text;
         padding: $sp4 $sp1 $sp2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
         &:first-child {
             border-top: 1px solid $text;
@@ -229,7 +232,9 @@
     }
 }
 .multi_cart_content{
-
+    .carousel{
+        cursor: pointer;
+    }
     .carousel__slide{
         flex-direction: column;
         justify-content: flex-start;

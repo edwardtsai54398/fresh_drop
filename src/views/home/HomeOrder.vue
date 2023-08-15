@@ -32,9 +32,7 @@
         </div>
       </div>
       <div class="order_dots">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
+        <div class="dot" v-for="n in 7" :key="n"></div>
       </div>
       <div class="order_text">
         <p>

@@ -26,7 +26,7 @@ $toggle-link-h: 52px;
         height: calc(100vh - $header-h);
         background-color: $bg--;
         flex-direction: column;
-        
+        transition: .3s;
 
         &.open {
             right: 0;
@@ -188,7 +188,13 @@ $toggle-link-h: 52px;
         }
     }
 }
-
+@media screen and (min-width: 1500px){
+    .mainheader .main_nav{
+        width: 960px;
+        padding: 0 $sp6;
+        margin-right: $sp7;
+    }
+}
 
 
 .subtoggle_btn {
@@ -242,6 +248,7 @@ $toggle-link-h: 52px;
             .sub_toggle_list{
                 opacity: 1;
                 visibility: visible;
+                transform: translate(-50%,0px);
             }
             .subtoggle_btn svg{
                 transform: rotate(270deg);
@@ -268,7 +275,7 @@ $toggle-link-h: 52px;
         height: fit-content;
         top: 60px;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translate(-50%,-10px);
         z-index: -1;
         background-color: $text;
         border-radius: $s-br;
@@ -298,7 +305,8 @@ $toggle-link-h: 52px;
         }
         
         &.open {
-            top: 65px;
+            // top: 65px;
+            left: 50%;
         }
     }
     
@@ -375,6 +383,15 @@ $toggle-link-h: 52px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    &.cart_zero{
+        flex-grow: 0;
+        justify-content: center;
+        &>p{
+            text-align: center;
+            font-size: $s-font;
+
+        }
+    }
 }
 @include pad-V {
     .sub_toggle_cart {
@@ -395,13 +412,18 @@ $toggle-link-h: 52px;
         padding-bottom: 0;
         background-color: $bg--;
         width: 320px;
-        max-height: 600px;
-        height: 70vh;
+        max-height: 70vh;
     }
     
     .cart_content {
         width: 100%;
         margin-top: 0px;
+    }
+}
+
+@media screen and (min-width: 1500px){
+    .sub_toggle_cart{
+        max-height: 600px;
     }
 }
 
@@ -449,24 +471,25 @@ $toggle-link-h: 52px;
     width: 100%;
     @extend %scrollbar_style;
 }
+.cart_zero .cart_list{
+    flex-grow: 0;
+}
 
 .cart_item {
     border-bottom: 2px solid lighten($text, 40%);
     padding: $sp2 0;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: 70% 1fr;
+    grid-template-rows: repeat(2, auto);
     align-items: center;
     column-gap: $sp2;
 
     .dish_pic {
         position: relative;
-        grid-row: 2 span;
         width: 100%;
     }
 
     .pic {
-        grid-row: 2 span;
         aspect-ratio: 9/5;
         border-radius: $xs-br;
 
@@ -477,9 +500,9 @@ $toggle-link-h: 52px;
         top: 0;
         right: 0px;
         transform: translate(50%,-50%);
-        width: 30px;
-        height: 30px;
-        line-height: 30px;
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
         border-radius: 50%;
         font-size: $s-font;
         text-align: center;
@@ -488,10 +511,10 @@ $toggle-link-h: 52px;
     }
 
     .category {
-        font-size: $xs-font;
+        font-size: $s-font;
         font-weight: 700;
         text-align: center;
-        line-height: 30px;
+        line-height: 40px;
         padding: 0 $sp2;
         width: fit-content;
         background-color: $secondary--;
@@ -500,6 +523,7 @@ $toggle-link-h: 52px;
 
     .name {
         font-size: $s-font;
+        grid-column: 2 span;
     }
 
 }
@@ -518,20 +542,17 @@ $toggle-link-h: 52px;
     
     .cart_item {
         padding: $sp2 0 $sp1;
-    
-        .pic {
-            aspect-ratio: 1/1;
-        }
+        grid-template-columns: 60% 1fr;
     
         .amount {
-            width: 24px;
-            height: 24px;
-            line-height: 24px;
-            font-size: $xs-font;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            // font-size: $xs-font;
         }
     
         .name {
-            font-size: $xs-font;
+            font-size: $s-font;
         }
     
     }
@@ -681,6 +702,8 @@ $toggle-link-h: 52px;
             color: $primary;
             font-weight: 700;
             margin-left: $sp1;
+            min-width: 84px;
+            text-align: center;
         }
         
     }

@@ -15,24 +15,31 @@
 
         <!-- 購買&查詢禮物卡區塊 -->
         <div class="giftcardSection">
-            <div class="sectionWrap" v-for="(item, index) in giftcardSection" :key="index">
+            <div class="sectionWrap">
                 <div class="giftcard_title">
-                    <img :src="item.icon" :alt="item.icon">
-                    <span>{{ item.title }}</span>
+                    <img src="@/assets/images/icon_bg/footer_icon_giftcard.svg" alt="購買禮物卡">
+                    <span>購買禮物卡</span>
                 </div>
                 <div class="buyGiftcard_text">
-                    <p>{{ item.text }}</p>
+                    <p>常煩惱送禮不知道要送什麼嗎？您可親手製作獨一無二的禮物卡圖面，禮物卡是您最好的選擇。數種食譜讓對方盡情挑選，快速存入帳戶，購物超輕鬆！</p>
                     <!-- 手機板按鈕 -->
-                    <button class="btn_arrow btn_xs" id="giftcard_button_mobile"><router-link :to="item.link" style="color:#fff">{{ item.btn }}
+                    <button class="btn_arrow btn_xs" id="giftcard_button_mobile"><router-link :to="'/giftcardProgress'" style="color:#fff">購買
                         </router-link></button>
                     <!-- 768以上按鈕 (有箭頭)-->
-                    <button id="giftcard_button_desktop" class="btn_arrow" href="" :class="{ 'btn_flat': isFlat, [`btn_${s}`]: true }" @mouseover="hover"
-                        @mouseleave="mousLeave"><router-link :to="item.link" style="color:#fff">
-                        {{ item.btn }}
-                        <img src="@/assets/images/icon_bg/arrow_long_prim.svg" alt="" v-if="isBgcFFF">
-                        <img src="@/assets/images/icon_bg/arrow_long_fff.svg" alt="" v-if="!isBgcFFF"></router-link>
-                    </button>
-
+                    <ArrowBtn id="giftcard_button_desktop" :text="'購買'" @click="$router.push('/giftcardProgress')"/>
+                </div>
+            </div>
+            <div class="sectionWrap">
+                <div class="giftcard_title">
+                    <img src="@/assets/images/icon_bg/footer_icon_giftcard.svg" alt="購買禮物卡">
+                    <span>餘額查詢</span>
+                </div>
+                <div class="buyGiftcard_text">
+                    <p>已經有禮物卡？請登入您的會員帳號，至會員中心查詢您的禮物卡餘額、使用狀況。</p>
+                    <!-- 手機板按鈕 -->
+                    <button class="btn_arrow btn_xs" id="giftcard_button_mobile" @click="goMemeber">會員中心</button>
+                    <!-- 768以上按鈕 (有箭頭)-->
+                    <ArrowBtn id="giftcard_button_desktop" :text="'會員中心'" @click="goMemeber"/>
                 </div>
             </div>
 
@@ -48,36 +55,34 @@
 </template>
 
 <script>
+import ArrowBtn from '@/components/ArrowBtn.vue'
 export default {
+    components: {
+        ArrowBtn,
+    },
     data() {
         return {
             banner: {
                 title: '禮物卡',
                 text: '最令人安心的禮物<br>送給最重要的人'
             },
-            giftcardSection: [{
-                icon: require('@/assets/images/icon_bg/footer_icon_giftcard.svg'),
-                title: '購買禮物卡',
-                text: '常煩惱送禮不知道要送什麼嗎？您可親手製作獨一無二的禮物卡圖面，禮物卡是您最好的選擇。數種食譜讓對方盡情挑選，快速存入帳戶，購物超輕鬆！',
-                btn: '購買',
-                link: '/giftcardProgress'
-            },
-            {
-                icon: require('@/assets/images/icon_bg/wallet.svg'),
-                title: '餘額查詢',
-                text: '已經有禮物卡？請登入您的會員帳號，至會員中心查詢您的禮物卡餘額、使用狀況。',
-                btn: '會員中心',
-                link: '/member'
-            }
-            ],
             bgcShape: {
                 yellow: require('@/assets/images/icon_bg/bg_wholeyellow.svg'),
                 pink: require('@/assets/images/icon_bg/bg_redOval.svg')
             }
         }
     },
-    methods: {},
-    // component:{ArrowBtn}
+    methods: {
+        goMemeber() {
+            if (this.$store.state.isLogin) {
+                this.$router.push('/member')
+            } else {
+                alert('請先登入會員')
+                this.$store.state.isLoginOpen = true
+            }
+        },
+    },
+    
 }
 </script>
 <style lang="scss">

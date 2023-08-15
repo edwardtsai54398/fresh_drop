@@ -15,7 +15,7 @@ try {
         set cus_acc=:newAcc,
             phone=:newPhone,
             cus_email=:newEmail,
-            address=:newAddress,
+            address=:newAddress
         where cus_no=:cusNo";
     $member = $pdo->prepare($sql);
 
@@ -28,7 +28,7 @@ try {
     echo json_encode(["資料修改成功！"]);
 } catch (Exception $e) {
     // echo "連線失敗";
-    echo json_encode(["Something went wrong...!We're truely sorry QQ"]);
-    // echo json_encode([$e]);
+    // echo json_encode(["Something went wrong...!We're truely sorry QQ"]);
+    echo json_encode([$e]);
 }
 ?>
