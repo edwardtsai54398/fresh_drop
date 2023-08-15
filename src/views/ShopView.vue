@@ -602,7 +602,15 @@ export default {
         },
         //加入側邊購物欄
         addCart(index, list) {
-            if (this.isCartFull || this.selectedOptionPlan == "") return;
+            if (this.isCartFull) {
+                alert('購物車已滿')
+                return;
+            } else if (this.selectedOptionPlan == "") { 
+                alert('你未選擇購買方案')
+                this.isStepOneExpend = true;
+                return;
+            } 
+                
             //判斷是否有在購物車裡，沒有的話
             let compareResult = this.cartList[this.tabActive - 1].filter(
                 (item) => {
@@ -615,6 +623,8 @@ export default {
                 addItem.name = list[index].name;
                 addItem.category = list[index].category;
                 addItem.img = list[index].img;
+                addItem.id = list[index].id;
+                
                 this.cartList[this.tabActive - 1].push(addItem);
             } else {
                 compareResult[0].amount++;
@@ -642,7 +652,7 @@ export default {
                 if (!choose) {
                     return
                 } else {
-                    this.$store.state.giftBuy = null
+                    this.$store.commit('clearState', 'gift')
                 }
             }
             //從cart.js引入
@@ -654,7 +664,6 @@ export default {
         },
         sendProductDetail(item) {
             //取出點擊商品的詳細資訊
-            // console.log(item)
             this.$store.commit("setProductData", { userData: item });
         },
         choosewrapInOut() {

@@ -4,10 +4,10 @@ header('Access-Control-Allow-Origin:*');
 try {
     require_once("connect_chd102g2.php");
 
-    $type = $_POST["type"];
-    $cusNo = $_POST["cusNo"];
-    // $type = "giftcard";
-    // $cusNo = "1";
+    // $type = $_POST["type"];
+    // $cusNo = $_POST["cusNo"];
+    $type = "single_cart";
+    $cusNo = "1";
     if ($type == "giftcard") {
         $reciveCusEmail = $_POST["reciveCusEmail"];
         $pic = $_POST["pic"];
@@ -18,11 +18,11 @@ try {
 
         //
         define('UPLOAD_DIR', __DIR__ . '/../data_images/gift/');
-        
+
         $pic = str_replace('data:image/png;base64,', '', $pic);
         $pic = str_replace(' ', '+', $pic);
         $data = base64_decode($pic);
-        $fileName =  uniqid() . '.png';
+        $fileName = uniqid() . '.png';
         $fileDir = UPLOAD_DIR . $fileName;
         $success = file_put_contents($fileDir, $data);
         // print $success ? $fileDir : 'Unable to save the file.';
@@ -53,12 +53,100 @@ try {
         $order->bindValue(":picUrl", $fileName);
         $order->bindValue(":money", $money);
         $order->execute();
+    } else if ($type == "single_cart") {
+        $payment = $_POST["payment"];
+        $ord_price = $_POST["ord_price"];
+        $address = $_POST["address"];
+        $cusName = $_POST["cusName"];
+        $phone = $_POST["phone"];
+        $credit_no = $_POST["credit_no"];
+        $credit_name = $_POST["credit_name"];
+        $cart = $_POST["cart"];
+        $cart = json_decode($cart, true);
+        $discount_price = $_POST["discount_price"];
+        if ($discount_price == 0) {
+            $discount_cardno = null;
+        } else {
+            $discount_cardno = $_POST["discount_cardno"];
+            $discountSql = "update giftcard
+                set giftcard_balance = giftcard_balance - :discount_price
+                where giftcard_no = :g_no";
+            $discount = $pdo->prepare($discountSql);
+            $discount->bindValue(":discount_price", intval($discount_price));
+            $discount->bindValue(":g_no", $discount_cardno);
+            $discount->execute();
+        }
+
+        $ordSql = "insert into orders(
+                            cus_no,
+                            ord_date,
+                            payment,
+                            ord_price,
+                            discount_price,
+                            ord_addr,
+                            ord_cus,
+                            ord_phone,
+                            ord_credit_no,
+                            ord_credit_name,
+                            discount_cardno)
+            values(:cusNo, current_date(), :payment, :ord_price,
+                    :discount_price, :ord_addr, :ord_cus,
+                    :ord_phone, :ord_credit_no, :ord_credit_name,
+                    :discount_cardno)";
+
+        $order = $pdo->prepare($ordSql);
+        $order->bindValue(":cusNo", $cusNo);
+        $order->bindValue(":payment", $payment);
+        $order->bindValue(":ord_price", $ord_price);
+        $order->bindValue(":discount_price", $discount_price);
+        $order->bindValue(":ord_addr", $address);
+        $order->bindValue(":ord_cus", $cusName);
+        $order->bindValue(":ord_phone", $phone);
+        $order->bindValue(":ord_credit_no", $credit_no);
+        $order->bindValue(":ord_credit_name", $credit_name);
+        $order->bindValue(":discount_cardno", $discount_cardno);
+        $order->execute();
+
+        $sql = "select MAX(ord_no) as 'max_ord_no' from orders";
+        $orderNewest = $pdo->query($sql);
+        $ordNo = $orderNewest->fetch(PDO::FETCH_ASSOC)["max_ord_no"];
+        
+        foreach ($cart as $index => $week) {
+            $delivSql = "insert into delivery(
+                                    ord_no,
+                                    week,
+                                    ord_status)
+                values(:ordNo, :week, 1)";
+            $deliv = $pdo->prepare($delivSql);
+            $deliv->bindValue(":ordNo", $ordNo);
+            $deliv->bindValue(":week", $index + 1);
+            $deliv->execute();
+
+            $sql = "select MAX(deliv_no) as 'max_deliv_no' from delivery";
+            $delivNewest = $pdo->query($sql);
+            $delivNo = $delivNewest->fetch(PDO::FETCH_ASSOC)["max_deliv_no"];
+            echo json_encode([$ordNo,$delivNo]);
+            foreach ($week as $index => $dish) {
+                $d2Sql = "insert into deliv_detail(
+                                        deliv_no,
+                                        dishno,
+                                        qty)
+                    values(:delivNo, :dishno, :qty)";
+                $d2 = $pdo->prepare($d2Sql);
+                $d2->bindValue(":delivNo", $delivNo);
+                $d2->bindValue(":dishno", $dish["id"]);
+                $d2->bindValue(":qty", $dish["amount"]);
+                $d2->execute();
+            }
+        }
+        
+        // exit();
     }
 
     // echo json_encode(["訂單完成！"]);
 } catch (Exception $e) {
     // echo "連線失敗";
-    echo json_encode(["Something went wrong...!We're truely sorry QQ"]);
-    // echo json_encode([$e]);
+    // echo json_encode(["Something went wrong...!We're truely sorry QQ"]);
+    echo json_encode([$e]);
 }
 ?>

@@ -71,13 +71,14 @@
                 <span>商品金額</span>
                 <span>{{ calcTotalPrice }}元</span>
             </div>
-            <div class="calc_wrap" v-show="giftcardDiscount">
-                <span>禮物卡折抵</span>
-                <span>-{{ giftcardDiscount }}元</span>
-            </div>
+            
             <div class="calc_wrap" v-show="cartList.length > 1">
                 <span>優惠折抵</span>
                 <span>-{{ discount() }}元</span>
+            </div>
+            <div class="calc_wrap" v-show="giftcardDiscount">
+                <span>禮物卡折抵</span>
+                <span>-{{ giftcardDiscount }}元</span>
             </div>
             <div class="calc_wrap" v-show="!giftBuy">
                 <span>運費</span>
@@ -188,8 +189,9 @@ export default {
             giftcardsOwned: [],
             giftRemainArr: [],
             giftcardDiscount: 0,
-            twDistrict: [],
-            selectCityDistrict: [],
+            discountCardNo: 0,
+            creditCardNo:'1234-3456-8765-9876',
+            creditName:'Chunghua Tsai',
             creditCardSide: true,
             sendCus: '',
             sendPhone: '',
@@ -245,18 +247,18 @@ export default {
         },
         
         chooseGiftDiscount(giftNo) {
-            console.log(typeof giftNo);
             if (typeof giftNo == 'number') {
                 let gift_no = giftNo - 3000
-                console.log(gift_no);
+                this.discountCardNo = gift_no
                 let chosenCard = this.giftcardsOwned.find(gift => {
                     return gift.g_no == gift_no
                 })
-                console.log(chosenCard.remain);
                 this.giftcardDiscount = parseInt(chosenCard.remain)
-                if (this.giftcardDiscount > this.calcTotalPrice) {
-                    this.giftcardDiscount = this.calcTotalPrice
+                if (this.giftcardDiscount > this.calcTotalPrice - this.discount()) {
+                    this.giftcardDiscount = this.calcTotalPrice - this.discount()
                 }
+            } else { 
+                this.giftcardDiscount = 0
             }
         },
         checkMax(e) {
@@ -314,12 +316,35 @@ export default {
                 params.append("reciveCusEmail", this.giftBuy.email);
                 params.append("pic", this.giftBuy.img);
                 params.append("money", this.giftBuy.money);
+            } else if (this.cartList[0].length>0) {
+                params.append("type", "single_cart");
+                params.append("payment", 1);
+                params.append("ord_price", this.calcTotalPrice + this.freightCalc() - this.discount());
+                params.append("discount_price", this.giftcardDiscount);
+                params.append("discount_cardno", this.discountCardNo);
+                params.append("address", this.sendAddress);
+                params.append("cusName", this.sendCus);
+                params.append("phone", this.sendPhone);
+                params.append("credit_no", this.creditCardNo);
+                params.append("credit_name", this.creditName);
+                params.append("week", 1);
+                console.log(JSON.stringify(this.cartList));
+                params.append("cart",JSON.stringify(this.cartList));
+                if (this.cartList.length > 1) {
+                    params.append("type", "multi_week");
+                }
+                
             }
             this.axios
                 .post(url, params)
                 .then((res) => {
-                    console.log(res.data);
-                    this.$store.commit("sendMemDetail", res.data);
+                    if (res.data == "success") {
+                        alert('訂單完成')
+                        this.$store.commit('clearState', 'gift')
+                        this.$store.commit('clearState', 'cart')
+                        this.$router.push('/index')
+                    }
+                    
                 })
                 .catch((err) => {
                     console.log(err);

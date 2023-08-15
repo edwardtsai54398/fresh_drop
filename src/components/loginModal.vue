@@ -11,11 +11,11 @@
                                 <input type="email" placeholder="請輸入信箱" v-model="user.email" id="login-email" />
                             </div>
                             <div class="text_wrap">
-                                <label for="login-password">密碼</label>
+                                <label for="login-password">密碼<span class="err_msg">{{ errMsg }}</span></label>
                                 <input type="password" placeholder="請輸入密碼(6-12碼英數字混合)" v-model="user.password"
                                         id="login-password" />
                             </div>
-                            <p class="err_msg">{{ errMsg }}</p>
+                            
                             <div class="check_wrap">
                                 <div class="check">
                                     <input type="checkbox" id="check" />
@@ -146,7 +146,7 @@ export default {
     // position: relative;
     h4 {
         text-align: center;
-        margin: $sp3;
+        margin: $sp2 $sp3 $sp1;
         font-size: $m-font;
     }
 
@@ -154,9 +154,9 @@ export default {
     .verify_container {
         background-color: $bg--;
         position: absolute;
-        top: 48px;
+        top: 40px;
         left: 100%;
-        padding: 0 $sp4 $sp4;
+        padding: 0 $sp4 $sp2;
         height: calc(100% - $sp6);
         width: 100%;
         transition: 0.3s;

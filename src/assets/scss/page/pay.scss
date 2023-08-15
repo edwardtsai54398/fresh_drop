@@ -232,7 +232,9 @@
     }
 }
 .multi_cart_content{
-
+    .carousel{
+        cursor: pointer;
+    }
     .carousel__slide{
         flex-direction: column;
         justify-content: flex-start;

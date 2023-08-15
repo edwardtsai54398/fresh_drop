@@ -9,8 +9,9 @@
             <li class="gift_card" v-for="(gift, index) in giftcard" :key="gift.g_no">
                 <div class="pic">
                     <!-- 開發用 -->
-                    <img :src="`/data_images/gift/${gift.g_pic}`" alt="" />
-                    <!-- <img :src="gift.g_pic" alt="" /> -->
+                    <!-- <img :src="`/data_images/gift/${gift.g_pic}`" alt="" /> -->
+                    <!-- 上線用 -->
+                    <img :src="`/chd102/g2/data_images/gift/${gift.g_pic}`" alt="" />
                 </div>
                 <div class="info">
                     <p v-if="gift.remain == 0">狀態：使用完畢</p>
