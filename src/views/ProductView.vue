@@ -135,6 +135,7 @@
             </aside>
         </div>
         <!-- 心得分享 -->
+        {{ opinionData }}
         <section class="share">
             <div class="text">
                 <p class="title">一起做</p>
@@ -143,7 +144,7 @@
             <div class="cook row">
                 <div
                     class="wrap col-6 col-md-3"
-                    v-for="(item, index) in filteredProductShare"
+                    v-for="(item, index) in opinionData"
                     :key="index"
                 >
                     <div class="card">
@@ -181,10 +182,10 @@
                                     />
                                 </div>
                                 <div class="name">
-                                    {{ item.name }}
+                                    {{ item.report_no }}
                                 </div>
                             </div>
-                            <p class="message">{{ item.message }}</p>
+                            <p class="message">{{ item.experience }}</p>
                         </div>
                     </div>
                 </div>
@@ -384,6 +385,8 @@ import { defineComponent } from "vue";
 import { Carousel, Slide } from "vue3-carousel";
 import "vue3-carousel/dist/carousel.css";
 
+
+
 let resizeEvent = null;
 export default defineComponent({
     //輪播圖設定
@@ -399,6 +402,7 @@ export default defineComponent({
             newProduct: productList[0],
             productList,
             productShare,
+            opinionData: [],
             isExpendVisible: false,
             isExpendUpload: false,
             currentProductIndex: -1,
@@ -429,6 +433,9 @@ export default defineComponent({
         resizeEvent = (e) => this.setWidth(e.target.innerWidth);
         window.addEventListener("resize", resizeEvent);
     },
+    mounted() {
+        this.getOpinionData()
+    },
     unmounted() {
         window.removeEventListener("resize", resizeEvent);
     },
@@ -448,6 +455,17 @@ export default defineComponent({
                 });
             }
         },
+        //取得資料庫資料
+        getOpinionData() {
+            let url = `${this.$url}opinion.php`
+            this.axios.get(url).then(res => {
+                console.log(res.data)
+                this.opinionData = res.data;
+            }).catch(err => {
+                console.log(err);
+            })
+        },
+        
         // 上傳心得分享彈窗
         uploadExpend() {
             this.isExpendUpload = !this.isExpendUpload;
@@ -529,6 +547,12 @@ export default defineComponent({
     watch: {
         currentProductIndex(nVal) {
             if (nVal === -1) this.currentIndexForBtn = -1;
+        },
+        opinionData: {
+            handler: function () {
+                this.searchResult = this.opinionData
+            },
+            deep: true
         },
     },
 });
