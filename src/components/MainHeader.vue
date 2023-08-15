@@ -107,7 +107,8 @@
         <button class="member" @click="checkMemberStatus" :class="{ had_login: $store.state.isLogin}">
             <img src="@/assets/images/icon_bg/header_member.svg" alt="" v-if="!$store.state.isLogin" />
             <div class="pic avatar_img" v-if="$store.state.isLogin">
-                <img :src="$store.state.memberInfoAll.info.cus_pic" alt="" />
+                <img :src="`/chd102/g2/data_images/${$store.state.memberInfoAll.info.cus_pic}`" alt="" v-if="$store.state.memberInfoAll.info.cus_pic.indexOf('https') < 0"/>
+                <img :src="$store.state.memberInfoAll.info.cus_pic" alt="" v-else-if="$store.state.memberInfoAll.info.cus_pic.indexOf('https') >= 0"/>
             </div>
             <h4>
                 {{
