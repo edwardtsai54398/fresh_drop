@@ -94,6 +94,10 @@
         align-items: flex-start;
         gap: 16px;
 
+        .li_wrap {
+            padding-bottom: 20px;
+        }
+
         li {
             width: 100%;
 
@@ -113,8 +117,12 @@
                 }
             }
 
+            .ul_wrap {
+                padding: 10px 0;
+            }
+
             .info {
-                padding: 4px 0;
+                padding: 6px 0;
             }
         }
     }

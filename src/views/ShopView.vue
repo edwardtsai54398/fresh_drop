@@ -89,12 +89,16 @@
         <!-- 菜色選擇 -->
         <section class="info">
             <div class="food_pic pic" v-if="recipeData.length > 0">
+                <!-- 開發用 -->
                 <img
-                    :src="
-                        require(`../assets/images/product/${recipeData[0].recipe_pic}`)
-                    "
-                    alt="food"
+                    :src="`/data_images/product/${recipeData[0].recipe_pic}`"
+                    alt=""
                 />
+                <!-- 上線用 -->
+                <!-- <img
+                    :src="`/chd102/g2/data_images/product/${recipeData[0].recipe_pic}`"
+                    alt="food"
+                /> -->
             </div>
             <!-- 主菜 -->
             <section class="container" id="main">
