@@ -45,12 +45,11 @@
                     v-for="allergy in uniqueAllergy"
                     :key="allergy"
                 >
-                    <span>{{ allergy }}</span>
+                    <span>{{ allergy.name }}</span>
                     <input
                         type="checkbox"
-                        :value="allergy"
+                        :value="allergy.name"
                         v-model="tempSelectedAllergies"
-                        @click="onAllergyClick(allergy)"
                         class="custom_checkbox"
                     />
                 </div>
@@ -63,12 +62,11 @@
                 >
                     <input
                         type="checkbox"
-                        :value="dislike"
+                        :value="dislike.name"
                         v-model="tempSelectedDislikes"
-                        @click="onDislikeClick(dislike)"
                         class="custom_checkbox"
                     />
-                    <span>{{ dislike }}</span>
+                    <span>{{ dislike.name }}</span>
                 </div>
             </div>
             <p class="text">
@@ -81,7 +79,10 @@
                 <button class="cross btn_s" @click="adjustExpend">
                     <font-awesome-icon icon="fa-solid fa-xmark" />
                 </button>
-                <button class="down btn_s" @click="onClickDownBtn">
+                <button
+                    class="down btn_s"
+                    @click="applyFiltersAndUpdateProductList"
+                >
                     設定完成
                 </button>
             </div>
@@ -89,12 +90,16 @@
         <!-- 菜色選擇 -->
         <section class="info">
             <div class="food_pic pic" v-if="recipeData.length > 0">
+                <!-- 開發用 -->
                 <img
-                    :src="
-                        require(`../assets/images/product/${recipeData[0].recipe_pic}`)
-                    "
-                    alt="food"
+                    :src="`/data_images/product/${recipeData[0].recipe_pic}`"
+                    alt=""
                 />
+                <!-- 上線用 -->
+                <!-- <img
+                    :src="`/chd102/g2/data_images/product/${recipeData[0].recipe_pic}`"
+                    alt="food"
+                /> -->
             </div>
             <!-- 主菜 -->
             <section class="container" id="main">
@@ -104,7 +109,7 @@
                 <div class="wrap_main_dish row">
                     <div
                         class="card col-6 col-md-4"
-                        v-for="(item, index) in mainDishFilter"
+                        v-for="(item, index) in productMainDish"
                         :key="index"
                     >
                         <router-link
@@ -112,12 +117,13 @@
                             to="/product"
                         >
                             <div class="pic">
+                                <!-- 開發用 -->
                                 <img
-                                    :src="
-                                        require(`../assets/images/product/${item.recipe_pic}`)
-                                    "
+                                    :src="`/data_images/product/${item.recipe_pic}`"
                                     alt=""
                                 />
+                                <!-- 上線用 -->
+                                <!-- <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" alt="" /> -->
                             </div>
                             <h3>{{ item.recipe_name }}</h3>
                         </router-link>
@@ -131,8 +137,8 @@
                 </div>
             </section>
             <!-- 湯品 -->
-            <!-- <section class="container" id="soup">
-                <h4 class="menu_title" v-show="soupFilter.length > 0">
+            <section class="container" id="soup">
+                <h4 class="menu_title" v-show="productSoup.length > 0">
                     湯品 SOUP
                 </h4>
                 <div class="wrap_main_dish row">
@@ -146,12 +152,13 @@
                             to="/product"
                         >
                             <div class="pic">
+                                <!-- 開發用 -->
                                 <img
-                                    :src="
-                                        require(`./@/../../../../fresh_drop/src/assets/images/product/${item.recipe_pic}`)
-                                    "
+                                    :src="`/data_images/product/${item.recipe_pic}`"
                                     alt=""
                                 />
+                                <!-- 上線用 -->
+                                <!-- <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" alt=""/> -->
                             </div>
                             <h3>{{ item.recipe_name }}</h3>
                         </router-link>
@@ -163,10 +170,10 @@
                         </div>
                     </div>
                 </div>
-            </section> -->
+            </section>
             <!-- 沙拉 -->
-            <!-- <section class="container" id="salad">
-                <h4 class="menu_title" v-show="saladFilter.length > 0">
+            <section class="container" id="salad">
+                <h4 class="menu_title" v-show="productSalad.length > 0">
                     沙拉 SALAD
                 </h4>
                 <div class="wrap_main_dish row">
@@ -180,12 +187,13 @@
                             to="/product"
                         >
                             <div class="pic">
+                                <!-- 開發用 -->
                                 <img
-                                    :src="
-                                        require(`./@/../../../../fresh_drop/src/assets/images/product/${item.recipe_pic}`)
-                                    "
+                                    :src="`/data_images/product/${item.recipe_pic}`"
                                     alt=""
                                 />
+                                <!-- 上線用 -->
+                                <!-- <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" alt=""/> -->
                             </div>
                             <h3>{{ item.recipe_name }}</h3>
                         </router-link>
@@ -197,7 +205,7 @@
                         </div>
                     </div>
                 </div>
-            </section> -->
+            </section>
         </section>
         <!-- 清單、結帳按鈕 -->
         <aside class="choosewrap" :class="{ 'scroll-up': isScrollUp }">
@@ -585,34 +593,6 @@ export default {
         };
     },
     computed: {
-        //篩選菜色類別
-        mainDishFilter() {
-            let filterResult = [];
-            this.recipeData.forEach((item, index) => {
-                if (item.class == "0") {
-                    filterResult.push(this.recipeData[index]);
-                }
-            });
-            return filterResult;
-        },
-        soupFilter() {
-            let filterResult = [];
-            this.recipeData.forEach((item, index) => {
-                if (item.class == "1") {
-                    filterResult.push(this.recipeData[index]);
-                }
-            });
-            return filterResult;
-        },
-        saladFilter() {
-            let filterResult = [];
-            this.recipeData.forEach((item, index) => {
-                if (item.class == "2") {
-                    filterResult.push(this.recipeData[index]);
-                }
-            });
-            return filterResult;
-        },
         cartWeekAmount() {
             let total = 0;
             this.cartList[this.tabActive - 1].forEach((item) => {
@@ -636,70 +616,45 @@ export default {
             //從cart.js引入
             return isCartSelectDone(this.selectedOptionMeal, this.cartList);
         },
-        // productListWithAllergy() {
-        //     return this.recipeData.filter(
-        //         (v) =>
-        //             !v.allergy.some(
-        //                 (u) => this.selectedAllergies.indexOf(u) > -1
-        //             )
-        //     );
-        // },
-
-        // productListWithDislike() {
-        //     return this.productListWithAllergy.filter(
-        //         (v) =>
-        //             !v.dislike.some(
-        //                 (u) => this.selectedDislikes.indexOf(u) > -1
-        //             )
-        //     );
-        // },
-
+        //篩選菜色
         productListWithAllergy() {
-            const productsWithNoAllergy = [];
-
-            for (const recipe of this.recipeData) {
-                const filteredIngreds = recipe.ingreds.filter(
-                    (ingred) => !this.selectedAllergies.includes(ingred.allergy)
-                );
-
-                productsWithNoAllergy.push(...filteredIngreds);
-            }
-
-            return productsWithNoAllergy;
+            return this.recipeData.filter(
+                (v) =>
+                    !v.allergys.some(
+                        (u) => this.selectedAllergies.indexOf(u) > -1
+                    )
+            );
         },
 
-        // productListWithDislike() {
-        //     const productsWithNoDislike = this.productListWithAllergy().filter(
-        //         (product) =>
-        //             !product.ingreds.some((ingred) =>
-        //                 this.selectedDislikes.includes(ingred.dislike)
-        //             )
-        //     );
+        productListWithDislike() {
+            return this.productListWithAllergy.filter(
+                (v) =>
+                    !v.dislikes.some(
+                        (u) => this.selectedDislikes.indexOf(u) > -1
+                    )
+            );
+        },
 
-        //     return productsWithNoDislike;
-        // },
-
-        // productMainDish() {
-        //     return this.productListWithDislike.filter((v) => v.class === "0");
-        // },
         productMainDish() {
-            return this.productListWithAllergy.filter((v) => v.class === "0");
+            return this.productListWithDislike.filter((v) => v.class === "0");
         },
-        // productSoup() {
-        //     return this.productListWithDislike.filter((v) => v.class === "1");
-        // },
-        // productSalad() {
-        //     return this.productListWithDislike.filter((v) => v.class === "2");
-        // },
+        productSoup() {
+            return this.productListWithDislike.filter((v) => v.class === "1");
+        },
+        productSalad() {
+            return this.productListWithDislike.filter((v) => v.class === "2");
+        },
     },
     methods: {
-        getProductData() {
-            let url = `${this.$url}product.php`;
+        getAllergData() {
+            let url = `${this.$url}allergy.php`;
 
             this.axios
                 .get(url)
                 .then((res) => {
                     console.log(res.data);
+                    this.uniqueAllergy = res.data[0];
+                    this.uniqueDislike = res.data[1];
                 })
                 .catch((error) => {
                     console.log("發生錯誤:", error);
@@ -747,27 +702,6 @@ export default {
             }
         },
 
-        // 不包含的食材-過敏原
-        collectUniqueAllergy() {
-            const uniqueAllergySet = new Set();
-            this.recipeData.forEach((item) => {
-                item.allergy.forEach((allergy) => {
-                    uniqueAllergySet.add(allergy);
-                });
-            });
-            this.uniqueAllergy = Array.from(uniqueAllergySet);
-        },
-        // 不包含的食材-不喜愛的
-        collectUniqueDislike() {
-            const uniqueDislikeSet = new Set();
-            this.recipeData.forEach((item) => {
-                item.dislike.forEach((dislike) => {
-                    uniqueDislikeSet.add(dislike);
-                });
-            });
-            this.uniqueDislike = Array.from(uniqueDislikeSet);
-        },
-        // 不包含的食材彈窗
         adjustExpend() {
             this.isAdjustExpend = !this.isAdjustExpend;
         },
@@ -932,51 +866,6 @@ export default {
             this.prevScrollY = scrollY;
         },
 
-        // 過濾過敏原/不喜愛的食材，並更新 uniqueAllergy 和 uniqueDislike
-        getUniqueAllergyAndDislike() {
-            const allergiesSet = new Set();
-            const dislikesSet = new Set();
-
-            // 從 productList 獲取所有的過敏原和不喜愛的食材
-            for (const product of this.recipeData) {
-                for (const allergy of product.allergy) {
-                    allergiesSet.add(allergy);
-                }
-                for (const dislike of product.dislike) {
-                    dislikesSet.add(dislike);
-                }
-            }
-            // 將 Set 轉換為陣列，並賦值給 uniqueAllergy 和 uniqueDislike
-            this.uniqueAllergy = Array.from(allergiesSet);
-            this.uniqueDislike = Array.from(dislikesSet);
-        },
-        // 篩選出不含過敏原和不喜愛的產品並賦值給 filteredProductList
-        filterHatefood() {
-            this.filteredProductList = this.productList.filter((product) => {
-                const hasAllergy = this.tempSelectedAllergies.some((allergy) =>
-                    product.allergy.includes(allergy)
-                );
-                const hasDislike = this.tempSelectedDislikes.some((dislike) =>
-                    product.dislike.includes(dislike)
-                );
-                return !hasAllergy && !hasDislike;
-            });
-        },
-        // 取消點擊 allergy
-        onAllergyClick(allergy) {
-            const index = this.tempSelectedAllergies.indexOf(allergy);
-            if (index !== -1) {
-                this.tempSelectedAllergies.splice(index, 1); // 從 tempSelectedAllergies 移除點擊的 allergy
-            }
-        },
-        // 取消點擊 dislike
-        onDislikeClick(dislike) {
-            const index = this.tempSelectedDislikes.indexOf(dislike);
-            if (index !== -1) {
-                this.tempSelectedDislikes.splice(index, 1); // 從 tempSelectedDislikes 移除點擊的 dislike
-            }
-        },
-        // 點擊 down btn_s 後的處理方法
         applyFiltersAndUpdateProductList() {
             // 保存目前的選取狀態
             this.selectedAllergies = [...this.tempSelectedAllergies];
@@ -985,11 +874,6 @@ export default {
             // 隱藏不包含的食材內容
             this.isAdjustExpend = false;
         },
-        onClickDownBtn() {
-            this.clickedDownBtn = true;
-            this.applyFiltersAndUpdateProductList();
-        },
-
         // enter_hint
         closeEnterHint() {
             this.isEnterHintVisible = false;
@@ -1024,11 +908,6 @@ export default {
         },
     },
     created() {
-        this.getProductData();
-        // 不包含的食材
-        this.collectUniqueAllergy();
-        this.collectUniqueDislike();
-
         this.cartList = this.$store.state.cartList;
         if (this.cartList[0].length > 0) {
             this.isStepOneExpend = false;
@@ -1043,9 +922,6 @@ export default {
         this.isDesktop = window.innerWidth >= 768;
         window.addEventListener("resize", this.handleResize);
         window.addEventListener("scroll", this.choosewrapInOut);
-        //過濾過敏原/不喜愛的食材
-        this.getUniqueAllergyAndDislike();
-        this.filterHatefood();
 
         //select_bar變色
         document.addEventListener("scroll", this.setActiveNavItem);
@@ -1055,6 +931,7 @@ export default {
 
         //串接recipe資料庫
         this.getRecipeData();
+        this.getAllergData();
     },
     beforeUnmount() {
         window.removeEventListener("resize", this.handleResize);

@@ -20,12 +20,20 @@ try{
 
     $newRecipeArr = array();
     $ingredAdded = array();
-    $stepsArr = array();
+
     foreach($recipeRows as $index => $item){
+        $stepLines = explode("\n", $item["step"]);
+        $stepArray = array();
+            foreach ($stepLines as $stepLine) {
+            $lineBreaks = str_replace(" ", "\n", $stepLine);
+            $explodedSteps = explode("\n", $lineBreaks);
+            $stepArray[] = $explodedSteps;
+        };
+
         $dish = array(
             "recipe_no"=>$item["recipe_no"],
             "recipe_name"=>$item["recipe_name"],
-            "step"=>$item["step"],
+            "step"=>$stepArray,
             "state"=>$item["state"],
             "des"=>$item["des"],
             "recipe_pic"=>$item["recipe_pic"],
@@ -34,9 +42,6 @@ try{
             "allergys"=>array(),
             "dislikes"=>array()
         );
-
-        $stepLines = explode("\n", $item["step"]);
-        $stepsArr[$index] = $stepLines;
 
         $ingredsArr = array();
         foreach($recipeRows as $index2 => $item2){
@@ -50,24 +55,18 @@ try{
             }
         };
 
-        $allergysArr = array();
         foreach($recipeRows as $index2 => $item2){
-            if($item2["recipe_no"] === $item["recipe_no"]){
-                $allergy = array(
-                    "allergy"=>$item2["allergy"],
-                    "ingred_name"=>$item2["ingred_name"],
-                );
+            if($item2["recipe_no"] === $item["recipe_no"]
+            && $item2["allergy"] == 1){
+                $allergy = $item2["ingred_name"];
                 array_push($dish["allergys"], $allergy);
             }
         };
 
-        $dislikesArr = array();
         foreach($recipeRows as $index2 => $item2){
-            if($item2["recipe_no"] === $item["recipe_no"]){
-                $dislike = array(
-                    "dislike"=>$item2["dislike"],
-                    "ingred_name"=>$item2["ingred_name"],
-                );
+            if($item2["recipe_no"] === $item["recipe_no"]
+            && $item2["dislike"] == 1){
+                $dislike = $item2["ingred_name"];
                 array_push($dish["dislikes"], $dislike);
             }
         };

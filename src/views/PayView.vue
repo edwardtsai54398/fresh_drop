@@ -170,7 +170,7 @@
             <p class="remark">*本司心用卡付款使用第三方支付，點擊結帳將前往藍新金流付款頁面。</p>
             <button class="btn_scd_m pay_btn" @click="pay">結帳</button>
 
-            <form ref="emailForm" @submit.prevent="sendEmail" style="display: none;">
+            <form ref="emailForm" @submit.prevent="sendEmail" style="display: none;" v-if="giftBuy">
                 <input type="email" v-model="this.giftBuy.email" name="email" />
                 <input type="text" v-model="this.giftBuy.name" name="name"/>
                 <input type="text" :value="$store.state.memberInfoAll.info.cus_acc" name="sender">
@@ -193,7 +193,7 @@ export default {
     data() {
         return {
             cartList: [[]],
-            giftBuy: {},
+            giftBuy: null,
             giftcardsOwned: [],
             giftRemainArr: [],
             giftcardDiscount: 0,
