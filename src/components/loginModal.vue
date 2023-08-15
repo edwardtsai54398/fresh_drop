@@ -33,14 +33,15 @@
                     <div class="login_api_wrap">
                         <p>或用其他方式登入</p>
                         <div class="login_api">
-                            <div class="btn_api">
-                                <img src="../assets/images/icon_bg/facebook.svg" alt="" />
-                                <span>以FACEBOOK方式登入</span>
-                            </div>
                             <div class="btn_api" @click="signinWithFirebase">
                                 <img src="../assets/images/icon_bg/google.svg" alt="" />
                                 <span>以GOOGLE方式登入</span>
                             </div>
+                            <div class="btn_api">
+                                <img src="../assets/images/icon_bg/facebook.svg" alt="" />
+                                <span>以FACEBOOK方式登入</span>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
