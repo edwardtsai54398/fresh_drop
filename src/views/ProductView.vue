@@ -21,12 +21,12 @@
                 <div class="info_pic">
                     <div class="pic">
                         <!-- 暫時隱藏 -->
-                        <!-- <img
+                        <img
                             :src="
                                 require(`../assets/images/product/${newProduct.recipe_pic}`)
                             "
                             alt=""
-                        /> -->
+                        />
                     </div>
                     <div class="text">
                         <p>{{ newProduct.des }}</p>
@@ -172,7 +172,6 @@
             </aside>
         </div>
         <!-- 心得分享 -->
-        {{ opinionData }}
         <section class="share">
             <div class="text">
                 <p class="title">一起做</p>
@@ -181,7 +180,7 @@
             <div class="cook row">
                 <div
                     class="wrap col-6 col-md-3"
-                    v-for="(item, index) in opinionData"
+                    v-for="(item, index) in showMaxFour"
                     :key="index"
                 >
                     <div class="card">
@@ -204,8 +203,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <img
-                                :src="item.img[0]"
+                            <img :src="require(`@/assets/images/product/${item.opinion_no_pic}`)"
                                 alt="share_food"
                                 @click="hideReport"
                             />
@@ -213,13 +211,10 @@
                         <div class="user">
                             <div class="wrap">
                                 <div class="pic pic_people">
-                                    <img
-                                        :src="item.img[1]"
-                                        alt="share_people"
-                                    />
+                                    <img src="./@/../../../../fresh_drop/src/assets/images/logo/robo.png" alt="">
                                 </div>
                                 <div class="name">
-                                    {{ item.report_no }}
+                                    <p>匿名</p>
                                 </div>
                             </div>
                             <p class="message">{{ item.experience }}</p>
@@ -240,9 +235,6 @@
                             class="cross"
                             @click="currentProductIndex = -1"
                         />
-                        <!-- <button class="    " @click="currentProductIndex = -1"> -->
-                        <!-- <font-awesome-icon icon="fa-solid fa-xmark" /> -->
-                        <!-- </button> -->
                         <div class="input">
                             <textarea
                                 v-model="text"
@@ -269,9 +261,6 @@
             <div class="title_window">
                 <p class="text_title">心得分享</p>
                 <modalClose class="cross" @click="uploadExpend" />
-                <!-- <button class="cross" @click="uploadExpend">
-                    <font-awesome-icon icon="fa-solid fa-xmark" />
-                </button> -->
             </div>
             <div class="title">
                 <div class="type">
@@ -328,7 +317,7 @@
                 <div class="row">
                     <div
                         class="card col-6 col-md-3"
-                        v-for="(item, index) in productShare"
+                        v-for="(item, index) in opinionData"
                         :key="index"
                     >
                         <div class="pic pic_food">
@@ -350,8 +339,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <img
-                                :src="item.img[0]"
+                            <img :src="require(`@/assets/images/product/${item.opinion_no_pic}`)"
                                 alt="share_food"
                                 @click="hideReport"
                             />
@@ -359,16 +347,13 @@
                         <div class="user">
                             <div class="wrap">
                                 <div class="pic pic_people">
-                                    <img
-                                        :src="item.img[1]"
-                                        alt="share_people"
-                                    />
+                                    <img src="./@/../../../../fresh_drop/src/assets/images/logo/robo.png" alt="">
                                 </div>
                                 <div class="name">
-                                    {{ item.name }}
+                                    <p>匿名</p>
                                 </div>
                             </div>
-                            <p class="message">{{ item.message }}</p>
+                            <p class="message">{{ item.experience }}</p>
                         </div>
                     </div>
                 </div>
@@ -422,8 +407,6 @@ import { defineComponent } from "vue";
 import { Carousel, Slide } from "vue3-carousel";
 import "vue3-carousel/dist/carousel.css";
 
-
-
 let resizeEvent = null;
 export default defineComponent({
     //輪播圖設定
@@ -439,9 +422,9 @@ export default defineComponent({
             newProduct: productList[0],
             // newProduct: recipeData[0],
             recipeData: [],
+            opinionData: [],
             productList,
             productShare,
-            opinionData: [],
             isExpendVisible: false,
             isExpendUpload: false,
             currentProductIndex: -1,
@@ -471,9 +454,6 @@ export default defineComponent({
         resizeEvent = (e) => this.setWidth(e.target.innerWidth);
         window.addEventListener("resize", resizeEvent);
     },
-    mounted() {
-        this.getOpinionData()
-    },
     unmounted() {
         window.removeEventListener("resize", resizeEvent);
     },
@@ -493,17 +473,6 @@ export default defineComponent({
                 });
             }
         },
-        //取得資料庫資料
-        getOpinionData() {
-            let url = `${this.$url}opinion.php`
-            this.axios.get(url).then(res => {
-                console.log(res.data)
-                this.opinionData = res.data;
-            }).catch(err => {
-                console.log(err);
-            })
-        },
-        
         // 上傳心得分享彈窗
         uploadExpend() {
             this.isExpendUpload = !this.isExpendUpload;
@@ -566,6 +535,19 @@ export default defineComponent({
                     console.log(err);
                 });
         },
+         //串接opinion資料庫
+        getopinionData() {
+            let url = `${this.$url}opinion.php`;
+            this.axios
+                .get(url)
+                .then((res) => {
+                    console.log(res.data);
+                    this.opinionData = res.data;
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        },
     },
     computed: {
         filteredProductList() {
@@ -573,20 +555,23 @@ export default defineComponent({
                 (item) => item.id >= 2 && item.id <= 6
             );
         },
-        filteredProductShare() {
-            if (this.mobile) {
-                return this.productShare.filter(
-                    (item) => item.id >= 1 && item.id <= 2
-                );
-            } else {
-                return this.productShare.filter(
-                    (item) => item.id >= 1 && item.id <= 4
-                );
-            }
+        // filteredProductShare() {
+        //     if (this.mobile) {
+        //         return this.opinionData.filter(
+        //             (item) => item.id >= 1 && item.id <= 2
+        //         );
+        //     } else {
+        //         return this.opinionData.filter(
+        //             (item) => item.id >= 1 && item.id <= 4
+        //         );
+        //     }
+        // },
+        showMaxFour() {
+            return this.opinionData.slice(0,4);
         },
         currentProduct() {
             return (
-                this.productShare.find(
+                this.opinionData.find(
                     (item, idx) => idx === this.currentProductIndex
                 ) ?? {}
             );
@@ -599,16 +584,11 @@ export default defineComponent({
         currentProductIndex(nVal) {
             if (nVal === -1) this.currentIndexForBtn = -1;
         },
-        opinionData: {
-            handler: function () {
-                this.searchResult = this.opinionData
-            },
-            deep: true
-        },
     },
     mounted() {
         //串接recipe資料庫
         this.getRecipeData();
+        this.getopinionData();
     },
 });
 </script>
@@ -617,3 +597,6 @@ export default defineComponent({
 @import "@/assets/scss/all.scss";
 @import "@/assets/scss/page/product.scss";
 </style>
+
+
+
