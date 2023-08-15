@@ -119,6 +119,10 @@
         }
     }
 
+    .allergy_wrap {
+        flex-direction: row;
+    }
+
     div:nth-child(3)>* {
         //選取info_text的第三個div之下的子元素
         flex-direction: row;
