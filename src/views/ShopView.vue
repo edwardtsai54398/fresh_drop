@@ -3,25 +3,13 @@
         <!-- 菜色分類 -->
         <aside class="selectmain" :class="{ 'scroll-up': isScrollUp }">
             <div class="select_bar" ref="navbar">
-                <button
-                    class="item"
-                    :class="{ active: activeNavItem === 0 }"
-                    @click.prevent="scrollToSection('main')"
-                >
+                <button class="item" :class="{ active: activeNavItem === 0 }" @click.prevent="scrollToSection('main')">
                     主菜
                 </button>
-                <button
-                    class="item"
-                    :class="{ active: activeNavItem === 1 }"
-                    @click.prevent="scrollToSection('soup')"
-                >
+                <button class="item" :class="{ active: activeNavItem === 1 }" @click.prevent="scrollToSection('soup')">
                     湯品
                 </button>
-                <button
-                    class="item"
-                    :class="{ active: activeNavItem === 2 }"
-                    @click.prevent="scrollToSection('salad')"
-                >
+                <button class="item" :class="{ active: activeNavItem === 2 }" @click.prevent="scrollToSection('salad')">
                     沙拉
                 </button>
             </div>
@@ -40,48 +28,28 @@
             <div class="cant">
                 <!-- 過敏原 -->
                 <p class="subtitle">過敏原</p>
-                <div
-                    class="allergy"
-                    v-for="allergy in uniqueAllergy"
-                    :key="allergy"
-                >
-                    <span>{{ allergy }}</span>
-                    <input
-                        type="checkbox"
-                        :value="allergy"
-                        v-model="tempSelectedAllergies"
-                        @click="onAllergyClick(allergy)"
-                        class="custom_checkbox"
-                    />
+                <div class="allergy" v-for="allergy in uniqueAllergy" :key="allergy">
+                    <span>{{ allergy.name }}</span>
+                    <input type="checkbox" :value="allergy.name" v-model="tempSelectedAllergies" 
+                            class="custom_checkbox" />
                 </div>
                 <!-- 不喜愛的 -->
                 <p class="subtitle">不喜愛的</p>
-                <div
-                    class="dislike"
-                    v-for="dislike in uniqueDislike"
-                    :key="dislike"
-                >
-                    <input
-                        type="checkbox"
-                        :value="dislike"
-                        v-model="tempSelectedDislikes"
-                        @click="onDislikeClick(dislike)"
-                        class="custom_checkbox"
-                    />
-                    <span>{{ dislike }}</span>
+                <div class="dislike" v-for="dislike in uniqueDislike" :key="dislike">
+                    <input type="checkbox" :value="dislike.name" v-model="tempSelectedDislikes" class="custom_checkbox" />
+                    <span>{{ dislike.name }}</span>
                 </div>
             </div>
             <p class="text">
                 如果您有不食用上述以外的食材，請
 
-                <router-link to="/about" class="connect">聯繫我們</router-link
-                >，謝謝。
+                <router-link to="/about" class="connect">聯繫我們</router-link>，謝謝。
             </p>
             <div class="adjust_btn">
                 <button class="cross btn_s" @click="adjustExpend">
                     <font-awesome-icon icon="fa-solid fa-xmark" />
                 </button>
-                <button class="down btn_s" @click="onClickDownBtn">
+                <button class="down btn_s" @click="applyFiltersAndUpdateProductList">
                     設定完成
                 </button>
             </div>
@@ -89,12 +57,10 @@
         <!-- 菜色選擇 -->
         <section class="info">
             <div class="food_pic pic" v-if="recipeData.length > 0">
-                <img
-                    :src="
-                        require(`../assets/images/product/${recipeData[0].recipe_pic}`)
-                    "
-                    alt="food"
-                />
+                <!-- 開發用 -->
+                <img :src="`/data_images/product/${recipeData[0].recipe_pic}`" alt="food" />
+                <!-- 上線用 -->
+                <!-- <img :src="`/chd102/g2/data_images/product/${recipeData[0].recipe_pic}`" alt="food" /> -->
             </div>
             <!-- 主菜 -->
             <section class="container" id="main">
@@ -102,56 +68,34 @@
                     主菜 MAIN DISH
                 </h4>
                 <div class="wrap_main_dish row">
-                    <div
-                        class="card col-6 col-md-4"
-                        v-for="(item, index) in mainDishFilter"
-                        :key="index"
-                    >
-                        <router-link
-                            @click="sendProductDetail(item)"
-                            to="/product"
-                        >
+                    <div class="card col-6 col-md-4" v-for="(item, index) in productMainDish" :key="index">
+                        <router-link @click="sendProductDetail(item)" to="/product">
                             <div class="pic">
-                                <img
-                                    :src="
-                                        require(`../assets/images/product/${item.recipe_pic}`)
-                                    "
-                                    alt=""
-                                />
+                                <!-- 開發用 -->
+                                <img :src="`/data_images/product/${item.recipe_pic}`" alt="" />
+                                <!-- 上線用 -->
+                                <!-- <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" alt="" /> -->
+                                
                             </div>
                             <h3>{{ item.recipe_name }}</h3>
                         </router-link>
-                        <div
-                            class="btn_scd_s"
-                            @click="addCart(index, productMainDish)"
-                        >
-                            選購
-                        </div>
+                        <div class="btn_scd_s" @click="addCart(index, productMainDish)">選購</div>
                     </div>
                 </div>
             </section>
             <!-- 湯品 -->
-            <!-- <section class="container" id="soup">
-                <h4 class="menu_title" v-show="soupFilter.length > 0">
+            <section class="container" id="soup">
+                <h4 class="menu_title" v-show="productSoup.length > 0">
                     湯品 SOUP
                 </h4>
                 <div class="wrap_main_dish row">
-                    <div
-                        class="card col-6 col-md-4"
-                        v-for="(item, index) in productSoup"
-                        :key="index"
-                    >
-                        <router-link
-                            @click="sendProductDetail(item)"
-                            to="/product"
-                        >
+                    <div class="card col-6 col-md-4" v-for="(item, index) in productSoup" :key="index">
+                        <router-link @click="sendProductDetail(item)" to="/product">
                             <div class="pic">
-                                <img
-                                    :src="
-                                        require(`./@/../../../../fresh_drop/src/assets/images/product/${item.recipe_pic}`)
-                                    "
-                                    alt=""
-                                />
+                                <!-- 開發用 -->
+                                <img :src="`/data_images/product/${item.recipe_pic}`" alt=""/>
+                                <!-- 上線用 -->
+                                <!-- <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" alt=""/> -->
                             </div>
                             <h3>{{ item.recipe_name }}</h3>
                         </router-link>
@@ -163,29 +107,20 @@
                         </div>
                     </div>
                 </div>
-            </section> -->
+            </section>
             <!-- 沙拉 -->
-            <!-- <section class="container" id="salad">
-                <h4 class="menu_title" v-show="saladFilter.length > 0">
+            <section class="container" id="salad">
+                <h4 class="menu_title" v-show="productSalad.length > 0">
                     沙拉 SALAD
                 </h4>
                 <div class="wrap_main_dish row">
-                    <div
-                        class="card col-6 col-md-4"
-                        v-for="(item, index) in productSalad"
-                        :key="index"
-                    >
-                        <router-link
-                            @click="sendProductDetail(item)"
-                            to="/product"
-                        >
+                    <div class="card col-6 col-md-4" v-for="(item, index) in productSalad" :key="index">
+                        <router-link @click="sendProductDetail(item)" to="/product">
                             <div class="pic">
-                                <img
-                                    :src="
-                                        require(`./@/../../../../fresh_drop/src/assets/images/product/${item.recipe_pic}`)
-                                    "
-                                    alt=""
-                                />
+                                <!-- 開發用 -->
+                                <img :src=" `/data_images/product/${item.recipe_pic}`" alt=""/>
+                                <!-- 上線用 -->
+                                <!-- <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" alt=""/> -->
                             </div>
                             <h3>{{ item.recipe_name }}</h3>
                         </router-link>
@@ -197,36 +132,26 @@
                         </div>
                     </div>
                 </div>
-            </section> -->
+            </section>
         </section>
         <!-- 清單、結帳按鈕 -->
         <aside class="choosewrap" :class="{ 'scroll-up': isScrollUp }">
             <!-- 訂購步驟遮罩 -->
-            <div
-                class="mask"
-                v-show="isStepExpend"
-                @click="isStepExpend = !isStepExpend"
-            ></div>
+            <div class="mask" v-show="isStepExpend" @click="isStepExpend = !isStepExpend"></div>
             <!-- 訂購步驟 -->
             <div class="step_wrap" v-show="isStepExpend || isDesktop">
                 <!-- 步驟一 -->
                 <div class="step one">
                     <div class="title" @click="stepOneExpend">
                         <p>
-                            <font-awesome-icon
-                                :style="{ color: '#1F8D61' }"
-                                icon="fa-solid fa-box-archive"
-                            />
+                            <font-awesome-icon :style="{ color: '#1F8D61' }" icon="fa-solid fa-box-archive" />
                         </p>
                         <p>
                             <span>step.1</span>{{ stepOneText }}
                             {{ selectedOptionPlan }}
                         </p>
                         <p>
-                            <font-awesome-icon
-                                :style="{ color: '#1F8D61' }"
-                                icon="fa-solid fa-plus"
-                            />
+                            <font-awesome-icon :style="{ color: '#1F8D61' }" icon="fa-solid fa-plus" />
                         </p>
                     </div>
                     <!-- 過渡動畫 -->
@@ -238,81 +163,53 @@
                                     <p>1.選擇購買方案</p>
                                 </div>
                                 <div class="choose">
-                                    <div
-                                        class="option_plan"
-                                        v-for="option in optionsPlan"
-                                        :key="option.value"
-                                        @click="
-                                            selectedOptionPlan = option.value;
-                                            isPlanSelectDone();
-                                        "
-                                        :class="{
-                                            selected:
-                                                selectedOptionPlan ===
-                                                option.value,
-                                            radio_plan: true,
-                                        }"
-                                    >
+                                    <div class="option_plan" v-for="option in optionsPlan" :key="option.value" @click="
+                                        selectedOptionPlan = option.value;
+                                    isPlanSelectDone();
+                                    " :class="{
+    selected:
+        selectedOptionPlan ===
+        option.value,
+    radio_plan: true,
+}">
                                         {{ option.label }}
                                     </div>
-                                    <div
-                                        class="single"
-                                        v-show="
-                                            selectedOptionPlan === '單次購買'
-                                        "
-                                    >
+                                    <div class="single" v-show="selectedOptionPlan === '單次購買'
+                                        ">
                                         <p>請前往下一步選擇餐點</p>
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="wrap"
-                                v-if="selectedOptionPlan == '定期配送'"
-                            >
+                            <div class="wrap" v-if="selectedOptionPlan == '定期配送'">
                                 <div>
                                     <p>2.每周幾份餐點</p>
                                 </div>
                                 <div class="choose">
-                                    <div
-                                        class="option_meal"
-                                        v-for="option in optionsMeal"
-                                        :key="option"
-                                        @click="
-                                            selectedOptionMeal = option;
-                                            isPlanSelectDone();
-                                        "
-                                        :class="{
-                                            selected:
-                                                selectedOptionMeal === option,
-                                            radio_plan: true,
-                                        }"
-                                    >
+                                    <div class="option_meal" v-for="option in optionsMeal" :key="option" @click="
+                                        selectedOptionMeal = option;
+                                    isPlanSelectDone();
+                                    " :class="{
+    selected:
+        selectedOptionMeal === option,
+    radio_plan: true,
+}">
                                         {{ option }}份
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="wrap"
-                                v-if="selectedOptionPlan == '定期配送'"
-                            >
+                            <div class="wrap" v-if="selectedOptionPlan == '定期配送'">
                                 <div>
                                     <p>3.連續寄送幾周</p>
                                 </div>
                                 <div class="choose">
-                                    <div
-                                        class="option_week"
-                                        v-for="option in optionsWeek"
-                                        :key="option"
-                                        @click="
-                                            selectedOptionWeek = option;
-                                            isPlanSelectDone();
-                                        "
-                                        :class="{
-                                            selected:
-                                                selectedOptionWeek === option,
-                                            radio_plan: true,
-                                        }"
-                                    >
+                                    <div class="option_week" v-for="option in optionsWeek" :key="option" @click="
+                                        selectedOptionWeek = option;
+                                    isPlanSelectDone();
+                                    " :class="{
+    selected:
+        selectedOptionWeek === option,
+    radio_plan: true,
+}">
                                         {{ option }}周
                                     </div>
                                 </div>
@@ -324,87 +221,48 @@
                 <div class="step two">
                     <div class="title">
                         <p>
-                            <font-awesome-icon
-                                :style="{
-                                    color: '#1F8D61',
-                                }"
-                                icon="fa-solid fa-bowl-food"
-                            />
+                            <font-awesome-icon :style="{
+                                color: '#1F8D61',
+                            }" icon="fa-solid fa-bowl-food" />
                         </p>
                         <p><span>step.2</span>選擇餐點</p>
                         <p>
-                            <font-awesome-icon
-                                :style="{
-                                    color: '#1F8D61',
-                                }"
-                                icon="fa-solid fa-plus"
-                            />
+                            <font-awesome-icon :style="{
+                                color: '#1F8D61',
+                            }" icon="fa-solid fa-plus" />
                         </p>
                     </div>
                     <!-- 過渡動畫 -->
                     <transition name="expand">
                         <!-- 步驟二內容 -->
-                        <div
-                            class="content_two"
-                            v-show="isStepTwoExpend"
-                            :class="{ 'scroll-up-content': isScrollUp }"
-                        >
+                        <div class="content_two" v-show="isStepTwoExpend" :class="{ 'scroll-up-content': isScrollUp }">
                             <!-- 總數、全部刪除按鈕 -->
                             <div class="topbtn">
                                 <!-- 總數量 -->
-                                <div
-                                    class="total_count"
-                                    v-show="selectedOptionPlan == '定期配送'"
-                                >
+                                <div class="total_count" v-show="selectedOptionPlan == '定期配送'">
                                     {{ cartWeekAmount }}/{{ selectedOptionMeal
                                     }}<span>份</span>
                                 </div>
-                                <div
-                                    class="total_count"
-                                    v-show="selectedOptionPlan == '單次購買'"
-                                >
+                                <div class="total_count" v-show="selectedOptionPlan == '單次購買'">
                                     {{ cartWeekAmount }}<span>份</span>
                                 </div>
-                                <div
-                                    class="btn_s delete"
-                                    @click="removeCartAll"
-                                >
+                                <div class="btn_s delete" @click="removeCartAll">
                                     全部刪除
                                 </div>
                             </div>
                             <!-- 頁籤 -->
-                            <div
-                                class="week_tap"
-                                v-show="selectedOptionPlan === '定期配送'"
-                            >
-                                <div
-                                    class="week"
-                                    v-for="n in selectedOptionWeek"
-                                    :key="n"
-                                    :class="{ active: n == tabActive }"
-                                    @click="updateTab(n)"
-                                >
+                            <div class="week_tap" v-show="selectedOptionPlan === '定期配送'">
+                                <div class="week" v-for="n in selectedOptionWeek" :key="n"
+                                        :class="{ active: n == tabActive }" @click="updateTab(n)">
                                     WEEK{{ n }}
                                 </div>
                             </div>
 
-                            <div
-                                class="dishes"
-                                v-for="n in selectedOptionWeek"
-                                :key="n"
-                                v-show="tabActive == n"
-                            >
-                                <p
-                                    class="no_item"
-                                    v-show="cartList[tabActive - 1].length == 0"
-                                >
+                            <div class="dishes" v-for="n in selectedOptionWeek" :key="n" v-show="tabActive == n">
+                                <p class="no_item" v-show="cartList[tabActive - 1].length == 0">
                                     購物欄內目前沒有商品
                                 </p>
-                                <div
-                                    class="circle"
-                                    v-for="(item, index) in cartList[n - 1]"
-                                    :key="index"
-                                >
+                                <div class="circle" v-for="(item, index) in cartList[n - 1]" :key="index">
                                     <div class="dishes_pic">
                                         <img :src="item.img" />
                                     </div>
@@ -413,45 +271,24 @@
                                             <div class="category">
                                                 {{ item.category }}
                                             </div>
-                                            <button
-                                                class="cancel"
-                                                @click="removeCart(index)"
-                                            >
-                                                <font-awesome-icon
-                                                    icon="fa-solid fa-trash-can"
-                                                />
+                                            <button class="cancel" @click="removeCart(index)">
+                                                <font-awesome-icon icon="fa-solid fa-trash-can" />
                                             </button>
                                         </div>
                                         <div class="dishes_title">
                                             <h2>{{ item.name }}</h2>
                                         </div>
                                         <div class="count">
-                                            <button
-                                                class="reduce"
-                                                @click="amountReduce(index)"
-                                            >
-                                                <font-awesome-icon
-                                                    :style="{
-                                                        color: '#ffffff',
-                                                    }"
-                                                    icon="fa-solid fa-minus"
-                                                />
+                                            <button class="reduce" @click="amountReduce(index)">
+                                                <font-awesome-icon :style="{
+                                                    color: '#ffffff',
+                                                }" icon="fa-solid fa-minus" />
                                             </button>
-                                            <input
-                                                type="number"
-                                                class="common"
-                                                :value="item.amount"
-                                            />
-                                            <button
-                                                class="increase"
-                                                @click="amountIncrease(index)"
-                                            >
-                                                <font-awesome-icon
-                                                    :style="{
-                                                        color: '#ffffff',
-                                                    }"
-                                                    icon="fa-solid fa-plus"
-                                                />
+                                            <input type="number" class="common" :value="item.amount" />
+                                            <button class="increase" @click="amountIncrease(index)">
+                                                <font-awesome-icon :style="{
+                                                    color: '#ffffff',
+                                                }" icon="fa-solid fa-plus" />
                                             </button>
                                         </div>
                                     </div>
@@ -463,11 +300,7 @@
             </div>
             <!-- 按鈕 -->
             <div class="shop_btn">
-                <button
-                    class="list_btn btn_s"
-                    @click="isStepExpend = !isStepExpend"
-                    :disabled="isDesktop"
-                >
+                <button class="list_btn btn_s" @click="isStepExpend = !isStepExpend" :disabled="isDesktop">
                     <font-awesome-icon icon="fa-solid fa-box-open" />
                 </button>
                 <button class="checkout_btn btn_s" @click="payCheck">
@@ -476,40 +309,22 @@
             </div>
         </aside>
         <!-- enter_hint遮罩 -->
-        <div
-            class="mask"
-            v-show="isEnterHintVisible"
-            @click="closeEnterHint"
-        ></div>
+        <div class="mask" v-show="isEnterHintVisible" @click="closeEnterHint"></div>
         <!-- step one圖示 < 1024 -->
-        <div
-            class="shop_btn step_one_hint_mb"
-            v-show="isEnterHintVisible"
-            @click="closeEnterHint"
-        >
+        <div class="shop_btn step_one_hint_mb" v-show="isEnterHintVisible" @click="closeEnterHint">
             <button class="list_btn btn_s step_one_hint_mb_btn">
                 <font-awesome-icon icon="fa-solid fa-box-open" />
             </button>
         </div>
         <!-- step one圖示 > 1024 -->
-        <div
-            class="step one step_one_hint_pc"
-            v-show="isEnterHintVisible"
-            @click="closeEnterHint"
-        >
+        <div class="step one step_one_hint_pc" v-show="isEnterHintVisible" @click="closeEnterHint">
             <div class="title">
                 <p>
-                    <font-awesome-icon
-                        :style="{ color: '#1F8D61' }"
-                        icon="fa-solid fa-box-archive"
-                    />
+                    <font-awesome-icon :style="{ color: '#1F8D61' }" icon="fa-solid fa-box-archive" />
                 </p>
                 <p><span>step.1</span>選擇方案</p>
                 <p>
-                    <font-awesome-icon
-                        :style="{ color: '#1F8D61' }"
-                        icon="fa-solid fa-plus"
-                    />
+                    <font-awesome-icon :style="{ color: '#1F8D61' }" icon="fa-solid fa-plus" />
                 </p>
             </div>
         </div>
@@ -585,34 +400,6 @@ export default {
         };
     },
     computed: {
-        //篩選菜色類別
-        mainDishFilter() {
-            let filterResult = [];
-            this.recipeData.forEach((item, index) => {
-                if (item.class == "0") {
-                    filterResult.push(this.recipeData[index]);
-                }
-            });
-            return filterResult;
-        },
-        soupFilter() {
-            let filterResult = [];
-            this.recipeData.forEach((item, index) => {
-                if (item.class == "1") {
-                    filterResult.push(this.recipeData[index]);
-                }
-            });
-            return filterResult;
-        },
-        saladFilter() {
-            let filterResult = [];
-            this.recipeData.forEach((item, index) => {
-                if (item.class == "2") {
-                    filterResult.push(this.recipeData[index]);
-                }
-            });
-            return filterResult;
-        },
         cartWeekAmount() {
             let total = 0;
             this.cartList[this.tabActive - 1].forEach((item) => {
@@ -636,70 +423,45 @@ export default {
             //從cart.js引入
             return isCartSelectDone(this.selectedOptionMeal, this.cartList);
         },
-        // productListWithAllergy() {
-        //     return this.recipeData.filter(
-        //         (v) =>
-        //             !v.allergy.some(
-        //                 (u) => this.selectedAllergies.indexOf(u) > -1
-        //             )
-        //     );
-        // },
-
-        // productListWithDislike() {
-        //     return this.productListWithAllergy.filter(
-        //         (v) =>
-        //             !v.dislike.some(
-        //                 (u) => this.selectedDislikes.indexOf(u) > -1
-        //             )
-        //     );
-        // },
-
+        //篩選菜色
         productListWithAllergy() {
-            const productsWithNoAllergy = [];
-
-            for (const recipe of this.recipeData) {
-                const filteredIngreds = recipe.ingreds.filter(
-                    (ingred) => !this.selectedAllergies.includes(ingred.allergy)
-                );
-
-                productsWithNoAllergy.push(...filteredIngreds);
-            }
-
-            return productsWithNoAllergy;
+            return this.recipeData.filter(
+                (v) =>
+                    !v.allergys.some(
+                        (u) => this.selectedAllergies.indexOf(u) > -1
+                    )
+            );
         },
 
-        // productListWithDislike() {
-        //     const productsWithNoDislike = this.productListWithAllergy().filter(
-        //         (product) =>
-        //             !product.ingreds.some((ingred) =>
-        //                 this.selectedDislikes.includes(ingred.dislike)
-        //             )
-        //     );
+        productListWithDislike() {
+            return this.productListWithAllergy.filter(
+                (v) =>
+                    !v.dislikes.some(
+                        (u) => this.selectedDislikes.indexOf(u) > -1
+                    )
+            );
+        },
 
-        //     return productsWithNoDislike;
-        // },
-
-        // productMainDish() {
-        //     return this.productListWithDislike.filter((v) => v.class === "0");
-        // },
         productMainDish() {
-            return this.productListWithAllergy.filter((v) => v.class === "0");
+            return this.productListWithDislike.filter((v) => v.class === "0");
         },
-        // productSoup() {
-        //     return this.productListWithDislike.filter((v) => v.class === "1");
-        // },
-        // productSalad() {
-        //     return this.productListWithDislike.filter((v) => v.class === "2");
-        // },
+        productSoup() {
+            return this.productListWithDislike.filter((v) => v.class === "1");
+        },
+        productSalad() {
+            return this.productListWithDislike.filter((v) => v.class === "2");
+        },
     },
     methods: {
-        getProductData() {
-            let url = `${this.$url}product.php`;
+        getAllergData() {
+            let url = `${this.$url}allergy.php`;
 
             this.axios
                 .get(url)
                 .then((res) => {
                     console.log(res.data);
+                    this.uniqueAllergy = res.data[0]
+                    this.uniqueDislike = res.data[1]
                 })
                 .catch((error) => {
                     console.log("發生錯誤:", error);
@@ -747,27 +509,6 @@ export default {
             }
         },
 
-        // 不包含的食材-過敏原
-        collectUniqueAllergy() {
-            const uniqueAllergySet = new Set();
-            this.recipeData.forEach((item) => {
-                item.allergy.forEach((allergy) => {
-                    uniqueAllergySet.add(allergy);
-                });
-            });
-            this.uniqueAllergy = Array.from(uniqueAllergySet);
-        },
-        // 不包含的食材-不喜愛的
-        collectUniqueDislike() {
-            const uniqueDislikeSet = new Set();
-            this.recipeData.forEach((item) => {
-                item.dislike.forEach((dislike) => {
-                    uniqueDislikeSet.add(dislike);
-                });
-            });
-            this.uniqueDislike = Array.from(uniqueDislikeSet);
-        },
-        // 不包含的食材彈窗
         adjustExpend() {
             this.isAdjustExpend = !this.isAdjustExpend;
         },
@@ -932,51 +673,6 @@ export default {
             this.prevScrollY = scrollY;
         },
 
-        // 過濾過敏原/不喜愛的食材，並更新 uniqueAllergy 和 uniqueDislike
-        getUniqueAllergyAndDislike() {
-            const allergiesSet = new Set();
-            const dislikesSet = new Set();
-
-            // 從 productList 獲取所有的過敏原和不喜愛的食材
-            for (const product of this.recipeData) {
-                for (const allergy of product.allergy) {
-                    allergiesSet.add(allergy);
-                }
-                for (const dislike of product.dislike) {
-                    dislikesSet.add(dislike);
-                }
-            }
-            // 將 Set 轉換為陣列，並賦值給 uniqueAllergy 和 uniqueDislike
-            this.uniqueAllergy = Array.from(allergiesSet);
-            this.uniqueDislike = Array.from(dislikesSet);
-        },
-        // 篩選出不含過敏原和不喜愛的產品並賦值給 filteredProductList
-        filterHatefood() {
-            this.filteredProductList = this.productList.filter((product) => {
-                const hasAllergy = this.tempSelectedAllergies.some((allergy) =>
-                    product.allergy.includes(allergy)
-                );
-                const hasDislike = this.tempSelectedDislikes.some((dislike) =>
-                    product.dislike.includes(dislike)
-                );
-                return !hasAllergy && !hasDislike;
-            });
-        },
-        // 取消點擊 allergy
-        onAllergyClick(allergy) {
-            const index = this.tempSelectedAllergies.indexOf(allergy);
-            if (index !== -1) {
-                this.tempSelectedAllergies.splice(index, 1); // 從 tempSelectedAllergies 移除點擊的 allergy
-            }
-        },
-        // 取消點擊 dislike
-        onDislikeClick(dislike) {
-            const index = this.tempSelectedDislikes.indexOf(dislike);
-            if (index !== -1) {
-                this.tempSelectedDislikes.splice(index, 1); // 從 tempSelectedDislikes 移除點擊的 dislike
-            }
-        },
-        // 點擊 down btn_s 後的處理方法
         applyFiltersAndUpdateProductList() {
             // 保存目前的選取狀態
             this.selectedAllergies = [...this.tempSelectedAllergies];
@@ -985,11 +681,6 @@ export default {
             // 隱藏不包含的食材內容
             this.isAdjustExpend = false;
         },
-        onClickDownBtn() {
-            this.clickedDownBtn = true;
-            this.applyFiltersAndUpdateProductList();
-        },
-
         // enter_hint
         closeEnterHint() {
             this.isEnterHintVisible = false;
@@ -1024,11 +715,6 @@ export default {
         },
     },
     created() {
-        this.getProductData();
-        // 不包含的食材
-        this.collectUniqueAllergy();
-        this.collectUniqueDislike();
-
         this.cartList = this.$store.state.cartList;
         if (this.cartList[0].length > 0) {
             this.isStepOneExpend = false;
@@ -1043,9 +729,6 @@ export default {
         this.isDesktop = window.innerWidth >= 768;
         window.addEventListener("resize", this.handleResize);
         window.addEventListener("scroll", this.choosewrapInOut);
-        //過濾過敏原/不喜愛的食材
-        this.getUniqueAllergyAndDislike();
-        this.filterHatefood();
 
         //select_bar變色
         document.addEventListener("scroll", this.setActiveNavItem);
@@ -1055,6 +738,7 @@ export default {
 
         //串接recipe資料庫
         this.getRecipeData();
+        this.getAllergData();
     },
     beforeUnmount() {
         window.removeEventListener("resize", this.handleResize);

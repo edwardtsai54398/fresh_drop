@@ -50,24 +50,18 @@ try{
             }
         };
 
-        $allergysArr = array();
         foreach($recipeRows as $index2 => $item2){
-            if($item2["recipe_no"] === $item["recipe_no"]){
-                $allergy = array(
-                    "allergy"=>$item2["allergy"],
-                    "ingred_name"=>$item2["ingred_name"],
-                );
+            if($item2["recipe_no"] === $item["recipe_no"]
+            && $item2["allergy"] == 1){
+                $allergy = $item2["ingred_name"];
                 array_push($dish["allergys"], $allergy);
             }
         };
 
-        $dislikesArr = array();
         foreach($recipeRows as $index2 => $item2){
-            if($item2["recipe_no"] === $item["recipe_no"]){
-                $dislike = array(
-                    "dislike"=>$item2["dislike"],
-                    "ingred_name"=>$item2["ingred_name"],
-                );
+            if($item2["recipe_no"] === $item["recipe_no"]
+            && $item2["dislike"] == 1){
+                $dislike = $item2["ingred_name"];
                 array_push($dish["dislikes"], $dislike);
             }
         };
