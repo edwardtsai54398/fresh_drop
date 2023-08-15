@@ -38,7 +38,7 @@ library.add(faPen, faMinus, faXmark, faChevronDown, faChevronRight, faChevronLef
 
 //切換router後頁面跳到最上面
 router.afterEach(() => {
-    window.scrollTo(0, 0);
+  window.scrollTo(0, 0);
 });
 
 //全域引入axios
@@ -51,11 +51,11 @@ app.config.globalProperties.$url = apiURL
 import { VueFire, VueFireAuth } from 'vuefire'
 import { firebaseApp } from '@/assets/js/firebase.js'
 app.use(VueFire, {
-    firebaseApp,
-    modules: [
-    
-      VueFireAuth(),
-    ]
-  })
+  firebaseApp,
+  modules: [
 
-app.use(store).use(router).use(VueAxios,axios).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
+    VueFireAuth(),
+  ]
+})
+
+app.use(store).use(router).use(VueAxios, axios).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
