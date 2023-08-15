@@ -47,6 +47,7 @@ export default {
                         .post(url, params)
                         .then((res) => {
                             alert(res.data);
+                            this.$store.state.pswIsOpen = false;
                         })
                         .catch((err) => {
                             console.log(err);
