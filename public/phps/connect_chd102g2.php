@@ -4,6 +4,7 @@ $user = "root";
 $psw = "";
 $port = 3306;
 $dbname = "fresh_drop";
+$dbname = "fresh_drop";
 
 // //上線用
 // $user = "tibamefe_since2021";

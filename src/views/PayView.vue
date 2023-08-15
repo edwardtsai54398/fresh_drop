@@ -169,12 +169,20 @@
             </fieldset>
             <p class="remark">*本司心用卡付款使用第三方支付，點擊結帳將前往藍新金流付款頁面。</p>
             <button class="btn_scd_m pay_btn" @click="pay">結帳</button>
+
+            <form ref="emailForm" @submit.prevent="sendEmail" style="display: none;">
+                <input type="email" v-model="this.giftBuy.email" name="email" />
+                <input type="text" v-model="this.giftBuy.name" name="name"/>
+                <input type="text" :value="$store.state.memberInfoAll.info.cus_acc" name="sender">
+            </form>
         </form>
     </div>
 </template>
 <script>
 import { Carousel, Pagination, Slide } from "vue3-carousel";
 import SelectComponent from "@/components/SelectComponent.vue";
+import emailjs from 'emailjs-com';
+
 export default {
     components: {
         Carousel,
@@ -312,6 +320,7 @@ export default {
             let params = new URLSearchParams();
             params.append("cusNo", this.$store.state.memberInfoAll.info.cus_no);
             if (this.giftBuy) {
+                this.sendEmail();
                 params.append("type", "giftcard");
                 params.append("reciveCusEmail", this.giftBuy.email);
                 params.append("pic", this.giftBuy.img);
@@ -350,10 +359,30 @@ export default {
                     console.log(err);
                 });
         },
+        sendEmail() {
+            const emailParams = {
+                name: this.giftBuy.name,
+                email: this.giftBuy.email,
+                sender: this.$store.state.memberInfoAll.info.cus_acc,
+            };
+            emailjs.sendForm(
+                'service_98rszzb',
+                'template_stjo8xt',
+                this.$refs.emailForm, //  Use the form reference here
+                'JyHk3JXY97U_5Xu0S',
+                emailParams
+            )
+                .then((result) => {
+                    console.log('SUCCESS!', result.text);
+                })
+                .catch((error) => {
+                    console.log('FAILED...', error.text);
+                });
+        },
     },
     watch: {
         "$store.state.memberInfoAll": {
-            handler: function (newval) {
+            hamdler: function (newval) {
                 this.giftcardsOwned = newval.giftcard
             },
             deep: true
