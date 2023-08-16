@@ -660,7 +660,7 @@
         .recommend {
             width: 40%;
             position: relative;
-            padding: 165px 0 0 32px;
+            padding: 60px 0 0 32px;
             display: block;
 
             .hot_ranking {
@@ -696,8 +696,10 @@
                     cursor: pointer;
 
                     .pic {
-                        width: 165px;
-                        height: 165px;
+                        width: 50%;
+                        height: 50%;
+                        max-width: 150px;
+                        max-height: 150px;
                         border-radius: 5px;
                         flex-shrink: 0;
 
@@ -773,7 +775,7 @@
 // min-width: 1024px
 @include pad-H {
     .main {
-        width: 70%;
+        width: 65%;
 
         .info_pic {
 
@@ -821,37 +823,48 @@
         }
     }
 
-    .recommend {
-        width: 30%;
-    }
+    .main_wrap {
 
-    .hot_title {
-        padding: 35px 0;
-        font-size: $s-font;
-    }
+        .recommend {
+            width: 35%;
 
-    .hot_product {
-        gap: 35px;
+            .hot_ranking {
+                top: 60px;
 
-        .pic {
-            width: 180px;
-            height: 180px;
+                .hot_title {
+                    padding: 20px 0;
+                    font-size: $s-font;
+                }
 
-            img {
-                width: 100%;
-                height: 100%;
+                .hot_product {
+                    gap: 35px;
+
+                    .pic {
+                        width: 180px;
+                        height: 180px;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    .hot_info {
+
+                        .hot_type {
+                            font-size: $s-font;
+                            width: auto;
+                        }
+
+                        .hot_name {
+                            font-size: $s-font;
+                        }
+                    }
+                }
             }
-        }
 
-        .hot_info {
-
-            .hot_type {
-                font-size: $s-font;
-                width: auto;
-            }
-
-            .hot_name {
-                font-size: $s-font;
+            .hot_ranking.scroll-up {
+                top: 130px;
             }
         }
     }

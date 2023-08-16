@@ -87,7 +87,7 @@
             </section>
             <!-- 熱門推薦(screen > 768) -->
             <aside class="recommend">
-                <div class="hot_ranking">
+                <div class="hot_ranking" :class="{ 'scroll-up': isScrollUp }">
                     <div class="hot_title">
                         <img
                             :src="require(`../assets/images/product/crown.svg`)"
@@ -108,7 +108,7 @@
                                 alt=""
                             />
                             <!-- 上線用 -->
-                            <!-- <img :src="`/chd102/g2/data_images/product/${newProduct.recipe_pic}`" alt="" /> -->
+                            <!-- <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" alt="" /> -->
                         </div>
                         <div class="hot_info">
                             <div class="hot_type">
@@ -148,7 +148,7 @@
                                     alt=""
                                 />
                                 <!-- 上線用 -->
-                                <!-- <img :src="`/chd102/g2/data_images/product/${newProduct.recipe_pic}`" alt="" /> -->
+                                <!-- <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" alt="" /> -->
                             </div>
                             <div class="hot_info">
                                 <div class="hot_type">
@@ -454,6 +454,11 @@ export default defineComponent({
             text: "",
             //上傳圖片
             previewImage: null,
+
+            //hot_ranking scroll-up
+            isScrollUp: true,
+            prevScrollY: 0,
+            isToggleOpen: false,
         };
     },
     created() {
@@ -530,6 +535,20 @@ export default defineComponent({
             }
         },
         // -------
+        hotRankingInOut() {
+            let scrollY = window.scrollY;
+            let winW = window.innerWidth;
+            if (winW >= 1200 && scrollY > 100) {
+                if (scrollY > this.prevScrollY) {
+                    this.isScrollUp = false;
+                } else if (scrollY < this.prevScrollY) {
+                    this.isScrollUp = true;
+                }
+            } else {
+                this.isScrollUp = true;
+            }
+            this.prevScrollY = scrollY;
+        },
         //串接recipe資料庫
         getRecipeData() {
             let url = `${this.$url}recipeRows.php`;
@@ -608,6 +627,12 @@ export default defineComponent({
         //串接recipe資料庫
         this.getRecipeData();
         this.getopinionData();
+
+        this.isDesktop = window.innerWidth >= 768;
+        window.addEventListener("scroll", this.hotRankingInOut);
+    },
+    beforeUnmount() {
+        window.removeEventListener("scroll", this.hotRankingInOut);
     },
 });
 </script>

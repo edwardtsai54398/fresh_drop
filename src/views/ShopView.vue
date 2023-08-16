@@ -756,13 +756,13 @@ export default {
             this.updateVuexCart();
 
             //在點擊事件中根據選擇的方案更新文字;
-            if (this.selectedOptionPlan == "") {
-                this.stepOneText = "選擇方案";
-            } else if (this.selectedOptionPlan === "單次購買") {
-                this.stepOneText = "";
-            } else if (this.selectedOptionPlan === "定期配送") {
-                this.stepOneText = "";
-            }
+            // if (this.selectedOptionPlan == "") {
+            //     this.stepOneText = "選擇方案";
+            // } else if (this.selectedOptionPlan === "單次購買") {
+            //     this.stepOneText = "";
+            // } else if (this.selectedOptionPlan === "定期配送") {
+            //     this.stepOneText = "";
+            // }
         },
         //方案是否有被選完
         isPlanSelectDone() {
