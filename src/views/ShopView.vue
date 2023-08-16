@@ -264,19 +264,22 @@
                                 </p>
                                 <div class="circle" v-for="(item, index) in cartList[n - 1]" :key="index">
                                     <div class="dishes_pic">
-                                        <img :src="item.img" />
+                                        <!-- 開發用 -->
+                                        <img :src="`/data_images/product/${item.recipe_pic}`" />
+                                        <!-- 上線用 -->
+                                        <!-- <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" /> -->
                                     </div>
                                     <div class="dishes_content">
                                         <div class="category_and_cancel">
-                                            <div class="category">
-                                                {{ item.category }}
-                                            </div>
+                                            <div class="category" v-show="item.class == 0">主菜</div>
+                                            <div class="category" v-show="item.class == 1">湯品</div>
+                                            <div class="category" v-show="item.class == 2">沙拉</div>
                                             <button class="cancel" @click="removeCart(index)">
                                                 <font-awesome-icon icon="fa-solid fa-trash-can" />
                                             </button>
                                         </div>
                                         <div class="dishes_title">
-                                            <h2>{{ item.name }}</h2>
+                                            <h2>{{ item.recipe_name }}</h2>
                                         </div>
                                         <div class="count">
                                             <button class="reduce" @click="amountReduce(index)">
@@ -459,7 +462,6 @@ export default {
             this.axios
                 .get(url)
                 .then((res) => {
-                    console.log(res.data);
                     this.uniqueAllergy = res.data[0]
                     this.uniqueDislike = res.data[1]
                 })
@@ -601,6 +603,7 @@ export default {
                 addItem.recipe_name = list[index].recipe_name;
                 addItem.class = list[index].class;
                 addItem.recipe_pic = list[index].recipe_pic;
+                addItem.id = list[index].recipe_no;
                 this.cartList[this.tabActive - 1].push(addItem);
             } else {
                 compareResult[0].amount++;
