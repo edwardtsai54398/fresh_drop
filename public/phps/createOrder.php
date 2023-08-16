@@ -125,7 +125,6 @@ try {
             $sql = "select MAX(deliv_no) as 'max_deliv_no' from delivery";
             $delivNewest = $pdo->query($sql);
             $delivNo = $delivNewest->fetch(PDO::FETCH_ASSOC)["max_deliv_no"];
-            echo json_encode([$ordNo,$delivNo]);
             foreach ($week as $index => $dish) {
                 $d2Sql = "insert into deliv_detail(
                                         deliv_no,
@@ -143,7 +142,7 @@ try {
         // exit();
     }
 
-    // echo json_encode(["訂單完成！"]);
+    echo json_encode(["success"]);
 } catch (Exception $e) {
     // echo "連線失敗";
     // echo json_encode(["Something went wrong...!We're truely sorry QQ"]);

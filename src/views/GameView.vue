@@ -329,22 +329,41 @@ export default {
             console.log(123)
             console.log(item)
             console.log(item.dish1)
-            this.productLists.push(
-                { dish: item.dish1, dish_pic: item.dish1_pic, dish1_recipe: item.dish1_recipe, amount: 1, main: "主菜" },
-                { dish: item.dish2, dish_pic: item.dish2_pic, dish2_recipe: item.dish2_recipe, amount: 1, main: "主菜" },
-                { dish: item.dish3, dish_pic: item.dish3_pic, dish3_recipe: item.dish3_recipe, amount: 1, main: "湯品" },
-                { dish: item.dish4, dish_pic: item.dish4_pic, dish4_recipe: item.dish4_recipe, amount: 1, main: "沙拉" },
+            this.productLists.push([
+                {
+                    recipe_name: item.dish1_recipe,
+                    recipe_pic: item.dish1_pic,
+                    amount: 1,
+                    class: "0"
+                },
+                {
+                    recipe_name: item.dish2_recipe,
+                    recipe_pic: item.dish2_pic,
+                    amount: 1,
+                    class: "0"
+                },
+                {
+                    recipe_name: item.dish3_recipe,
+                    recipe_pic: item.dish3_pic,
+                    amount: 1,
+                    class: "1"
+                },
+                {
+                    recipe_name: item.dish4_recipe,
+                    recipe_pic: item.dish4_pic,
+                    amount: 1,
+                    class: "2"
+                }
+            ]
             );
-
-            // this.$store.commit("stateCartList", this.productLists);
-            // this.$store.commit("statePlan", {
-            //     plan: '單次購買',
-            //     meal: 1,
-            //     week: 1
-            // });
-            // this.$router.push("/shop");
+            this.$store.commit("stateCartList", this.productLists);
+            this.$store.commit("statePlan", {
+                plan: '單次購買',
+                meal: 1,
+                week: 1
+            });
+            this.$router.push("/shop");
         },
-        //取得資料庫資料
         getGameData() {
             let url = `${this.$url}gameRows.php`
             this.axios.get(url).then(res => {

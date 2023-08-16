@@ -5,7 +5,8 @@ try {
     require_once("connect_chd102g2.php");
 
     $sql = "select *
-            from faq";
+            from faq
+            where status = 1";
     $faq = $pdo->query($sql);
     $faqRows = $faq->fetchAll(PDO::FETCH_ASSOC);
     // echo json_encode(["連線成功"]);

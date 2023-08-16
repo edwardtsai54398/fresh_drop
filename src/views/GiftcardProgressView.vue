@@ -685,6 +685,7 @@ export default defineComponent({
     },
     mounted() {
         this.getGiftcardData()
+  
     },
 
 
