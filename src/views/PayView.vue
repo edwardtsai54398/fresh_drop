@@ -14,13 +14,13 @@
                             <div class="amount">{{ item.amount }}</div>
                             <div class="pic">
                                 <!-- 開發用 -->
-                                <img :src="`/data_images/product/${item.recipe_pic}`" alt="" />
+                                <!-- <img :src="`/data_images/product/${item.recipe_pic}`" alt="" /> -->
                                 <!-- 上線用 -->
-                                <!-- <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" alt="" /> -->
+                                <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" alt="" />
                             </div>
                         </div>
                         <div class="dishes_name">
-                            <div class="category">{{ item.category }}</div>
+                            <div class="category">{{ item.class }}</div>
                             <div class="name">{{ item.recipe_name }}</div>
                         </div>
                     </div>
@@ -33,12 +33,15 @@
                     <slide v-for="(slide, index) in cartList" :key="slide" class="one_week">
                         <div class="week_name">WEEK{{ index + 1 }}</div>
                         <ul class="cart_list">
-                            <li class="cart_item" v-for="item in slide" :key="item.name">
+                            <li class="cart_item" v-for="item in slide" :key="item.id">
                                 <div class="pic dishes_pic">
-                                    <img :src="item.img" alt="" />
+                                    <!-- 開發用 -->
+                                <!-- <img :src="`/data_images/product/${item.recipe_pic}`" alt="" /> -->
+                                <!-- 上線用 -->
+                                <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" alt="" />
                                 </div>
-                                <div class="category">{{ item.category }}</div>
-                                <div class="name">{{ item.name }}</div>
+                                <div class="category">{{ item.class }}</div>
+                                <div class="name">{{ item.recipe_name }}</div>
                                 <div class="amount">X{{ item.amount }}</div>
                             </li>
                         </ul>
@@ -251,6 +254,7 @@ export default {
                 .then((res) => {
                     console.log(res.data);
                     this.$store.commit("sendMemDetail", res.data);
+                    this.giftcardsOwned = this.$store.state.memberInfoAll.giftcard
                 })
                 .catch((err) => {
                     console.log(err);
@@ -340,11 +344,7 @@ export default {
                 params.append("credit_no", this.creditCardNo);
                 params.append("credit_name", this.creditName);
                 params.append("week", 1);
-                console.log(JSON.stringify(this.cartList));
                 params.append("cart",JSON.stringify(this.cartList));
-                if (this.cartList.length > 1) {
-                    params.append("type", "multi_week");
-                }
                 
             }
             this.axios
@@ -382,14 +382,6 @@ export default {
                     console.log('FAILED...', error.text);
                 });
         },
-    },
-    watch: {
-        "$store.state.memberInfoAll": {
-            hamdler: function (newval) {
-                this.giftcardsOwned = newval.giftcard
-            },
-            deep: true
-        }
     },
     created() {
         this.giftBuy = this.$store.state.giftBuy;
