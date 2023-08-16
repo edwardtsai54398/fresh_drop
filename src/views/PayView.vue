@@ -8,17 +8,20 @@
                 <h6>總計</h6>
             </div>
             <ul class="single_cart_content" v-if="cartList.length == 1">
-                <li class="cart_item" v-for="item in cartList[0]" :key="item.number">
+                <li class="cart_item" v-for="item in cartList[0]" :key="item.id">
                     <div class="dishes">
                         <div class="dishes_pic">
                             <div class="amount">{{ item.amount }}</div>
                             <div class="pic">
-                                <img :src="item.img" alt="" />
+                                <!-- 開發用 -->
+                                <img :src="`/data_images/product/${item.recipe_pic}`" alt="" />
+                                <!-- 上線用 -->
+                                <!-- <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" alt="" /> -->
                             </div>
                         </div>
                         <div class="dishes_name">
                             <div class="category">{{ item.category }}</div>
-                            <div class="name">{{ item.name }}</div>
+                            <div class="name">{{ item.recipe_name }}</div>
                         </div>
                     </div>
                     <div class="price">200元</div>

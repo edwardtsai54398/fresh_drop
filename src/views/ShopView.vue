@@ -415,100 +415,49 @@
                                     </div>
                                 </div>
 
-                                <div
-                                    class="dishes"
-                                    v-for="n in selectedOptionWeek"
-                                    :key="n"
-                                    v-show="tabActive == n"
-                                >
-                                    <p
-                                        class="no_item"
-                                        v-show="
-                                            cartList[tabActive - 1].length == 0
-                                        "
-                                    >
-                                        購物欄內目前沒有商品
-                                    </p>
-                                    <div
-                                        class="circle"
-                                        v-for="(item, index) in cartList[n - 1]"
-                                        :key="index"
-                                    >
-                                        <div class="dishes_pic">
-                                            <!-- <img :src="item.img" /> -->
-                                            <!-- 開發用 -->
-                                            <img
-                                                :src="`/data_images/product/${item.recipe_pic}`"
-                                                alt=""
-                                            />
-                                            <!-- 上線用 -->
-                                            <!-- <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" alt=""/> -->
+                            <div class="dishes" v-for="n in selectedOptionWeek" :key="n" v-show="tabActive == n">
+                                <p class="no_item" v-show="cartList[tabActive - 1].length == 0">
+                                    購物欄內目前沒有商品
+                                </p>
+                                <div class="circle" v-for="(item, index) in cartList[n - 1]" :key="index">
+                                    <div class="dishes_pic">
+                                        <!-- 開發用 -->
+                                        <img :src="`/data_images/product/${item.recipe_pic}`" />
+                                        <!-- 上線用 -->
+                                        <!-- <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" /> -->
+                                    </div>
+                                    <div class="dishes_content">
+                                        <div class="category_and_cancel">
+                                            <div class="category" v-show="item.class == 0">主菜</div>
+                                            <div class="category" v-show="item.class == 1">湯品</div>
+                                            <div class="category" v-show="item.class == 2">沙拉</div>
+                                            <button class="cancel" @click="removeCart(index)">
+                                                <font-awesome-icon icon="fa-solid fa-trash-can" />
+                                            </button>
                                         </div>
-                                        <div class="dishes_content">
-                                            <div class="category_and_cancel">
-                                                <div class="category">
-                                                    <!-- {{ item.class }} -->
-                                                    <span v-if="item.class == 0"
-                                                        >主菜</span
-                                                    >
-                                                    <span v-if="item.class == 1"
-                                                        >湯品</span
-                                                    >
-                                                    <span v-if="item.class == 2"
-                                                        >沙拉</span
-                                                    >
-                                                </div>
-                                                <button
-                                                    class="cancel"
-                                                    @click="removeCart(index)"
-                                                >
-                                                    <font-awesome-icon
-                                                        icon="fa-solid fa-trash-can"
-                                                    />
-                                                </button>
-                                            </div>
-                                            <div class="dishes_title">
-                                                <h2>{{ item.recipe_name }}</h2>
-                                            </div>
-                                            <div class="count">
-                                                <button
-                                                    class="reduce"
-                                                    @click="amountReduce(index)"
-                                                >
-                                                    <font-awesome-icon
-                                                        :style="{
-                                                            color: '#ffffff',
-                                                        }"
-                                                        icon="fa-solid fa-minus"
-                                                    />
-                                                </button>
-                                                <input
-                                                    type="number"
-                                                    class="common"
-                                                    :value="item.amount"
-                                                />
-                                                <button
-                                                    class="increase"
-                                                    @click="
-                                                        amountIncrease(index)
-                                                    "
-                                                >
-                                                    <font-awesome-icon
-                                                        :style="{
-                                                            color: '#ffffff',
-                                                        }"
-                                                        icon="fa-solid fa-plus"
-                                                    />
-                                                </button>
-                                            </div>
+                                        <div class="dishes_title">
+                                            <h2>{{ item.recipe_name }}</h2>
+                                        </div>
+                                        <div class="count">
+                                            <button class="reduce" @click="amountReduce(index)">
+                                                <font-awesome-icon :style="{
+                                                    color: '#ffffff',
+                                                }" icon="fa-solid fa-minus" />
+                                            </button>
+                                            <input type="number" class="common" :value="item.amount" />
+                                            <button class="increase" @click="amountIncrease(index)">
+                                                <font-awesome-icon :style="{
+                                                    color: '#ffffff',
+                                                }" icon="fa-solid fa-plus" />
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </transition>
-                    </div>
+                        </div>
+                    </transition>
                 </div>
-            </transition>
+            </div>
             <!-- 按鈕 -->
             <div class="shop_btn">
                 <button
@@ -693,8 +642,8 @@ export default {
                 .get(url)
                 .then((res) => {
                     console.log(res.data);
-                    this.uniqueAllergy = res.data[0];
-                    this.uniqueDislike = res.data[1];
+                    this.uniqueAllergy = res.data[0]
+                    this.uniqueDislike = res.data[1]
                 })
                 .catch((error) => {
                     console.log("發生錯誤:", error);
@@ -835,6 +784,7 @@ export default {
                 addItem.recipe_name = list[index].recipe_name;
                 addItem.class = list[index].class;
                 addItem.recipe_pic = list[index].recipe_pic;
+                addItem.id = list[index].recipe_no;
                 this.cartList[this.tabActive - 1].push(addItem);
             } else {
                 compareResult[0].amount++;

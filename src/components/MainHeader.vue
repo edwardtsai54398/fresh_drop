@@ -1,12 +1,12 @@
 <template>
-    <header class="mainheader" :class="{hide: !isScrollUp}">
+    <header class="mainheader" :class="{ hide: !isScrollUp }">
         <div class="circle" v-for="n in headCircleQty" :key="n" :style="{ width: 100 / headCircleQty + '%' }"></div>
 
         <button class="hamburger" @click="
-                isToggleOpen = !isToggleOpen;
-                isSubCartOpen = false;
-                isSourceToggleOpen = false;
-            ">
+            isToggleOpen = !isToggleOpen;
+        isSubCartOpen = false;
+        isSourceToggleOpen = false;
+        ">
             <span></span>
             <span></span>
             <span></span>
@@ -17,7 +17,7 @@
             </router-link>
         </div>
         <!-- @click="isToggleOpen = false" -->
-        <nav class="main_nav" :class="{ open: isToggleOpen}">
+        <nav class="main_nav" :class="{ open: isToggleOpen }">
             <router-link to="/about" @click="isToggleOpen = false">
                 <h4>關於我們</h4>
             </router-link>
@@ -31,21 +31,21 @@
                         <font-awesome-icon icon="fa-solid fa-chevron-left" />
                     </div>
                     <router-link to="/source" @click="
-                            isSourceToggleOpen = false;
-                            isToggleOpen = false;
-                        ">
+                        isSourceToggleOpen = false;
+                    isToggleOpen = false;
+                    ">
                         <h5>各地小農介紹</h5>
                     </router-link>
                     <router-link to="/meat" @click="
-                            isSourceToggleOpen = false;
-                            isToggleOpen = false;
-                        ">
+                        isSourceToggleOpen = false;
+                    isToggleOpen = false;
+                    ">
                         <h5>安心肉品</h5>
                     </router-link>
                     <router-link to="/certified" @click="
-                            isSourceToggleOpen = false;
-                            isToggleOpen = false;
-                        ">
+                        isSourceToggleOpen = false;
+                    isToggleOpen = false;
+                    ">
                         <h5>相關認證</h5>
                     </router-link>
                 </nav>
@@ -77,25 +77,31 @@
                         <font-awesome-icon icon="fa-solid fa-chevron-left" />
                     </div>
                     <div class="cart_content cart_zero">
-                        <p v-show="cartList[0].length==0">購物籃中沒有商品</p>
+                        <p v-show="cartList[0].length == 0">購物籃中沒有商品</p>
                         <ol class="week_tabs" v-show="cartList.length > 1">
-                            <li class="tab" v-for="n in cartList.length" :key="n" :style="`width:${100/cartList.length}%`" :class="{active: n == tabActive}" @click="updateTab(n)">week{{ n }}</li>
+                            <li class="tab" v-for="n in cartList.length" :key="n" :style="`width:${100 / cartList.length}%`"
+                                    :class="{ active: n == tabActive }" @click="updateTab(n)">week{{ n }}</li>
                         </ol>
-                        <ul class="cart_list" v-for="(week, index) in cartList" :key="index" v-show="index+1 == tabActive">
+                        <ul class="cart_list" v-for="(week, index) in cartList" :key="index" v-show="index + 1 == tabActive">
                             <li class="cart_item" v-for="item in week" :key="item.name">
                                 <div class="dish_pic">
                                     <div class="pic">
-                                        <img :src="item.img" alt="" />
+                                        <!-- 開發 -->
+                                        <img :src="`/data_images/product/${item.recipe_pic}`" alt="" />
+                                        <!-- 上線用 -->
+                                        <!-- <img :src="`/data_images/product/${item.recipe_pic}`" alt="" /> -->
                                     </div>
                                     <div class="amount">{{ item.amount }}</div>
                                 </div>
-                                <div class="category">{{ item.category }}</div>
-                                <div class="name">{{ item.name }}</div>
+                                <div class="category" v-show="item.class == 0">主菜</div>
+                                <div class="category" v-show="item.class == 1">湯品</div>
+                                <div class="category" v-show="item.class == 2">沙拉</div>
+                                <div class="name">{{ item.recipe_name }}</div>
                             </li>
                         </ul>
-                        <div class="group_btn" v-show="cartList[0].length>0">
-                            <router-link class="btn_s btn_flat" to="/shop" 
-                            @click="isSubCartOpen = false;isToggleOpen = false;">
+                        <div class="group_btn" v-show="cartList[0].length > 0">
+                            <router-link class="btn_s btn_flat" to="/shop"
+                                    @click="isSubCartOpen = false; isToggleOpen = false;">
                                 繼續選購
                             </router-link>
                             <button class="btn_s" @click="payCheck">結帳</button>
@@ -104,17 +110,19 @@
                 </div>
             </div>
         </nav>
-        <button class="member" @click="checkMemberStatus" :class="{ had_login: $store.state.isLogin}">
+        <button class="member" @click="checkMemberStatus" :class="{ had_login: $store.state.isLogin }">
             <img src="@/assets/images/icon_bg/header_member.svg" alt="" v-if="!$store.state.isLogin" />
             <div class="pic avatar_img" v-if="$store.state.isLogin">
-                <img :src="`/chd102/g2/data_images/${$store.state.memberInfoAll.info.cus_pic}`" alt="" v-if="$store.state.memberInfoAll.info.cus_pic.indexOf('https') < 0"/>
-                <img :src="$store.state.memberInfoAll.info.cus_pic" alt="" v-else-if="$store.state.memberInfoAll.info.cus_pic.indexOf('https') >= 0"/>
+                <img :src="`/chd102/g2/data_images/${$store.state.memberInfoAll.info.cus_pic}`" alt=""
+                        v-if="$store.state.memberInfoAll.info.cus_pic.indexOf('https') < 0" />
+                <img :src="$store.state.memberInfoAll.info.cus_pic" alt=""
+                        v-else-if="$store.state.memberInfoAll.info.cus_pic.indexOf('https') >= 0" />
             </div>
             <h4>
                 {{
                     $store.state.memberInfoAll.info.cus_acc
-                        ? $store.state.memberInfoAll.info.cus_acc
-                        : "會員登入"
+                    ? $store.state.memberInfoAll.info.cus_acc
+                    : "會員登入"
                 }}
             </h4>
             <div class="member_center" :class="{ open: centerOpen }">
@@ -128,7 +136,7 @@
 
 <script>
 import { payCheck, isCartSelectDone } from "@/assets/js/cart.js";
-import {signOut} from 'firebase/auth'
+import { signOut } from 'firebase/auth'
 import { useFirebaseAuth } from 'vuefire'
 export default {
     name: "MainHeader",
@@ -148,7 +156,7 @@ export default {
     created() {
         window.addEventListener("resize", this.circleQty);
         window.addEventListener("scroll", this.navInOut);
-        
+
 
     },
     mounted() {
@@ -197,7 +205,7 @@ export default {
         checkMemberStatus() {
             if (this.$store.state.isLogin) {
                 this.centerOpen = !this.centerOpen;
-            }  else {
+            } else {
                 this.$store.state.isLoginOpen = true;
             }
         },
@@ -233,7 +241,5 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-@import "@/assets/scss/all.scss";
-@import "@/assets/scss/layout/header.scss";
-</style>
+<style lang="scss" scoped>@import "@/assets/scss/all.scss";
+@import "@/assets/scss/layout/header.scss";</style>
