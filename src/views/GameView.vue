@@ -336,13 +336,13 @@ export default {
                 { dish: item.dish4, dish_pic: item.dish4_pic, dish4_recipe: item.dish4_recipe, amount: 1, main: "沙拉" },
             );
 
-            // this.$store.commit("stateCartList", this.productLists);
-            // this.$store.commit("statePlan", {
-            //     plan: '單次購買',
-            //     meal: 1,
-            //     week: 1
-            // });
-            // this.$router.push("/shop");
+            this.$store.commit("stateCartList", this.productLists);
+            this.$store.commit("statePlan", {
+                plan: '單次購買',
+                meal: 1,
+                week: 1
+            });
+            this.$router.push("/shop");
         },
         //取得資料庫資料
         getGameData() {

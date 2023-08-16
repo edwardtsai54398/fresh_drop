@@ -20,12 +20,12 @@
                 <div class="info_pic">
                     <div class="pic">
                         <!-- 開發用 -->
-                        <img
+                        <!-- <img
                             :src="`/data_images/product/${newProduct.recipe_pic}`"
                             alt=""
-                        />
+                        /> -->
                         <!-- 上線用 -->
-                        <!-- <img :src="`/chd102/g2/data_images/product/${newProduct.recipe_pic}`" alt="" /> -->
+                        <img :src="`/chd102/g2/data_images/product/${newProduct.recipe_pic}`" alt="" />
                     </div>
                     <div class="text">
                         <p>{{ newProduct.des }}</p>
@@ -103,12 +103,12 @@
                     >
                         <div class="pic">
                             <!-- 開發用 -->
-                            <img
+                            <!-- <img
                                 :src="`/data_images/product/${item.recipe_pic}`"
                                 alt=""
-                            />
+                            /> -->
                             <!-- 上線用 -->
-                            <!-- <img :src="`/chd102/g2/data_images/product/${newProduct.recipe_pic}`" alt="" /> -->
+                            <img :src="`/chd102/g2/data_images/product/${newProduct.recipe_pic}`" alt="" />
                         </div>
                         <div class="hot_info">
                             <div class="hot_type">
@@ -143,12 +143,12 @@
                         >
                             <div class="pic">
                                 <!-- 開發用 -->
-                                <img
+                                <!-- <img
                                     :src="`/data_images/product/${item.recipe_pic}`"
                                     alt=""
-                                />
+                                /> -->
                                 <!-- 上線用 -->
-                                <!-- <img :src="`/chd102/g2/data_images/product/${newProduct.recipe_pic}`" alt="" /> -->
+                                <img :src="`/chd102/g2/data_images/product/${newProduct.recipe_pic}`" alt="" />
                             </div>
                             <div class="hot_info">
                                 <div class="hot_type">
@@ -211,7 +211,7 @@
                             <div class="wrap">
                                 <div class="pic pic_people">
                                     <img
-                                        src="./@/../../../../fresh_drop/src/assets/images/logo/robo.png"
+                                        src="@/assets/images/logo/robo.png"
                                         alt=""
                                     />
                                 </div>
@@ -357,7 +357,7 @@
                             <div class="wrap">
                                 <div class="pic pic_people">
                                     <img
-                                        src="./@/../../../../fresh_drop/src/assets/images/logo/robo.png"
+                                        src="@/assets/images/logo/robo.png"
                                         alt=""
                                     />
                                 </div>

@@ -4,10 +4,10 @@ header('Access-Control-Allow-Origin:*');
 try {
     require_once("connect_chd102g2.php");
 
-    // $type = $_POST["type"];
-    // $cusNo = $_POST["cusNo"];
-    $type = "single_cart";
-    $cusNo = "1";
+    $type = $_POST["type"];
+    $cusNo = $_POST["cusNo"];
+    // $type = "single_cart";
+    // $cusNo = "1";
     if ($type == "giftcard") {
         $reciveCusEmail = $_POST["reciveCusEmail"];
         $pic = $_POST["pic"];

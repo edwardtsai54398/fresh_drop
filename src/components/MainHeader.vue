@@ -87,15 +87,14 @@
                                 <div class="dish_pic">
                                     <div class="pic">
                                         <!-- 開發 -->
-                                        <img :src="`/data_images/product/${item.recipe_pic}`" alt="" />
-                                        <!-- 上線用 -->
                                         <!-- <img :src="`/data_images/product/${item.recipe_pic}`" alt="" /> -->
+                                        <!-- 上線用 -->
+                                        <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" alt="" />
                                     </div>
                                     <div class="amount">{{ item.amount }}</div>
                                 </div>
-                                <div class="category" v-show="item.class == 0">主菜</div>
-                                <div class="category" v-show="item.class == 1">湯品</div>
-                                <div class="category" v-show="item.class == 2">沙拉</div>
+                                <div class="category">{{ item.class }}</div>
+                                
                                 <div class="name">{{ item.recipe_name }}</div>
                             </li>
                         </ul>

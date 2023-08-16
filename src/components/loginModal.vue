@@ -74,8 +74,8 @@ export default {
         return {
             errMsg: "",
             user: {
-                email: "Andy_Evans@freshdrop.com",
-                password: "865nQtf2",
+                email: "Jesse_Grant@freshdrop.com",
+                password: "UvZ6Mghf",
             },
             // F2ERefugee,
             SignupOpen: false,
