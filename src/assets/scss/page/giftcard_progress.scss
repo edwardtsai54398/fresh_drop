@@ -238,10 +238,17 @@
     }
 
 }
-
+.giftcard_pic{
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
 .giftcard_pic img {
     border-radius: 20px;
     border: 2px solid $text;
+    width: 144px;
+    height: 87px
 }
 
 .previousstep {
