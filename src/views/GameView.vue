@@ -334,25 +334,25 @@ export default {
                     recipe_name: item.dish1_recipe,
                     recipe_pic: item.dish1_pic,
                     amount: 1,
-                    class: "0"
+                    class: "主菜"
                 },
                 {
                     recipe_name: item.dish2_recipe,
                     recipe_pic: item.dish2_pic,
                     amount: 1,
-                    class: "0"
+                    class: "主菜"
                 },
                 {
                     recipe_name: item.dish3_recipe,
                     recipe_pic: item.dish3_pic,
                     amount: 1,
-                    class: "1"
+                    class: "湯品"
                 },
                 {
                     recipe_name: item.dish4_recipe,
                     recipe_pic: item.dish4_pic,
                     amount: 1,
-                    class: "2"
+                    class: "沙拉"
                 }
             ]
             );

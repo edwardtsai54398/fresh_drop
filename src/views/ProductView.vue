@@ -108,7 +108,7 @@
                                 alt=""
                             /> -->
                             <!-- 上線用 -->
-                            <img :src="`/chd102/g2/data_images/product/${newProduct.recipe_pic}`" alt="" />
+                            <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" alt="" />
                         </div>
                         <div class="hot_info">
                             <div class="hot_type">
@@ -148,7 +148,7 @@
                                     alt=""
                                 /> -->
                                 <!-- 上線用 -->
-                                <img :src="`/chd102/g2/data_images/product/${newProduct.recipe_pic}`" alt="" />
+                                <img :src="`/chd102/g2/data_images/product/${item.recipe_pic}`" alt="" />
                             </div>
                             <div class="hot_info">
                                 <div class="hot_type">
