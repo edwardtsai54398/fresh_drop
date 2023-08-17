@@ -1,0 +1,222 @@
+.giftcard_container {
+    padding: $sp2;
+    position: relative;
+
+    .giftcard_banner {
+        position: relative;
+
+        h3 {
+            font-size: 32px;
+            color: $primary;
+            text-align: center;
+            font-weight: bold;
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+
+        p {
+            font-size: $xs-font;
+            color: $primary;
+            text-align: center;
+            font-weight: bold;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+    }
+
+    .giftcardSection {
+
+        .giftcard_title {
+            width: 202px;
+            height: 50px;
+            border: solid 2px $primary;
+            border-radius: 60px;
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+            align-items: center;
+            align-content: center;
+            position: relative;
+            top: 25px;
+            background-color: $bg--;
+
+            img {
+                margin-left: 20px;
+            }
+
+            span {
+                color: $primary;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+
+        .buyGiftcard_text {
+            width: 100%;
+            height: 278px;
+            border: solid 2px $primary;
+            border-radius: 40px;
+            background-color: $bg--;
+            padding: $sp3;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+
+            p {
+                margin-top: auto;
+            }
+
+            button {
+                margin-left: auto;
+                margin-top: auto;
+            }
+        }
+    }
+
+    .bgcShape_middle {
+
+        display: block;
+        position: absolute;
+        width: 100%;
+        right: 0%;
+        bottom: 50%;
+        z-index: -1;
+
+    }
+
+
+    .bgcShape_bottom {
+        display: block;
+        position: absolute;
+        width: 100%;
+        left: -40%;
+        bottom: -20%;
+        z-index: -1;
+    }
+
+}
+
+// 隱藏桌機banner
+#banner_desktop {
+    display: none;
+}
+
+// 隱藏桌機版有箭頭的按鈕
+#giftcard_button_desktop {
+    display: none;
+}
+
+//斷點 768px
+@include pad-V {
+
+    .giftcard_container {
+
+        //隱藏手機板banner
+        #banner_mobile {
+            display: none;
+        }
+
+        //顯示桌機banner
+        #banner_desktop {
+            display: block;
+        }
+
+        //隱藏手機板按鈕
+        #giftcard_button_mobile {
+            display: none;
+        }
+
+        //顯示桌機板按鈕
+        #giftcard_button_desktop {
+            display: flex;
+        }
+
+        //購買&查餘額框框並排
+        .giftcardSection {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+
+            // 框框寬度
+            .sectionWrap {
+                width: 45%;
+            }
+        }
+
+        .giftcard_title {
+            h3 {
+                font-size: 32px;
+                left: 51%;
+                top: 29%;
+            }
+
+            p {
+                font-size: $s-font;
+                left: 51%;
+                top: 55%;
+            }
+        }
+
+        .bgcShape_middle {
+            width: 50%;
+            bottom: 20%;
+        }
+
+        .bgcShape_bottom {
+            bottom: -100%;
+        }
+    }
+}
+
+
+
+//斷點 1024px 
+@include pad-H {
+
+    //背景定位
+    .giftcard_container {
+
+        .bgcShape_bottom {
+            bottom: -150%;
+        }
+    }
+}
+
+
+
+//斷點 1420px
+@media screen and (min-width: 1400px) {
+
+    //背景定位
+    .giftcard_container {
+        .bgcShape_middle {
+            bottom: 20%;
+            right: -10%;
+        }
+
+    }
+}
+
+//斷點 1600px
+@media screen and (min-width: 1600px) {
+
+    //背景定位
+    .giftcard_container {
+        .bgcShape_middle {
+            right: -20%;
+        }
+
+    }
+}

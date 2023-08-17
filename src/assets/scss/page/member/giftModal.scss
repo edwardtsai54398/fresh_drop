@@ -1,0 +1,35 @@
+.gift_modal{
+    width: 380px;
+    padding: $sp3 0 $sp1;
+    &::before{
+        position: absolute;
+        z-index: -1;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0,0,0,0.5);
+    }
+    .pic{
+        width: 100%;
+        aspect-ratio: 9/5;
+        border: 2px solid $text;
+        border-radius: $m-br;
+    }
+    .info{
+        margin-top: $sp4;
+        p{
+            font-size: $s-font;
+            &:not(:first-child){
+                margin-top: $sp2;
+            }
+        }
+    }
+}
+
+@include pad-H{
+    .gift_modal{
+        
+        .info{
+            padding-left: $sp2;
+        }
+    }
+}

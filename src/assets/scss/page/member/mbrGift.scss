@@ -1,0 +1,68 @@
+@include pad-H{
+    .member_gift{
+        left: 0;
+    }
+}
+.member_gift .title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.gift_card{
+    padding: $sp3 $sp2;
+    background-color: $bg--;
+    border: 2px solid $primary;
+    border-radius: $m-br;
+    margin-top: $sp3;
+    .pic{
+        border: 1px solid $text;
+        border-radius: $s-br;
+    }
+    .info{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: repeat(2 1fr);
+        row-gap: $sp2;
+        margin-top: $sp3;
+        p{
+            font-size: $xs-font;
+        }
+    }
+}
+.show_more.btn_flat{
+    margin-top: $sp3;
+    width: 100%;
+    line-height: 36px;
+}
+
+@include pad-H{
+    .gift_card{
+        .info{
+            padding: 0 $sp2;
+        }
+    }
+}
+
+@include desktop{
+    .gift_card{
+        display: grid;
+        grid-template-columns: 55% 1fr;
+        grid-template-rows: repeat(2,auto);
+        column-gap: $sp2;
+        .pic{
+            grid-area: 1/1/3/2;
+        }
+        .info{
+            display: block;
+            margin-top: 0;
+            p{
+                margin-top: $sp2;
+            }
+        }
+        .show_more.btn_flat{
+            width: fit-content;
+            justify-self: end;
+            margin-top: $sp4;
+        }
+    }
+}

@@ -16,11 +16,17 @@ $primary--: #CAE0C4;
 $secondary--: #FFF6B4;
 $third--: #FFAB87;
 $bg--: #FDFAF5;
-:root{
+
+:root {
     --prim-rgb: 31, 141, 97;
     --scnd-rgb: 254, 213, 80;
     --trd-rgb: 255, 114, 114;
     --bg-rgb: 255, 247, 234;
+}
+
+:root {
+    --mobile-head: 90px;
+    --desktop-head: 110px;
 }
 
 //margin & padding
@@ -41,4 +47,4 @@ $l-br: 32px;
 $xl-br: 48px;
 
 //border
-$br-dr: 1px solid $primary;
+$brdr: 1px solid $primary;

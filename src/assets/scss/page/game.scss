@@ -1,0 +1,546 @@
+.game_container {
+    padding: 20px;
+    // padding-top: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 850px;
+    margin: auto;
+}
+
+// 進度條
+.bar_wrap {
+    @include pill(85%, 20px);
+    // max-width: 500px;
+    border-radius: 31px;
+    border: 2px solid #2F9748;
+    background: #FFF;
+    margin-top: $sp6;
+
+    .bar {
+        @include pill(50%, 100%);
+        font-size: 0;
+        background-color: #FF7272;
+        color: #fff;
+        text-align: center;
+        position: relative;
+
+        span {
+            font-size: $xs-font;
+            line-height: $xs-font;
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            right: -30px;
+            top: -25px;
+
+            img {
+                width: 100%;
+                vertical-align: top;
+            }
+        }
+    }
+}
+
+// 標語
+.solgan {
+    font-size: $xs-font;
+    color: $primary;
+    margin-top: $sp4;
+    text-align: center;
+    width: 50%;
+}
+
+//過度秒數線性設定
+.analyze_card,
+.game_card {
+    transition: opacity .6s, transform .5s ease-in-out;
+}
+
+// 過度效果起始跟結束的狀態
+.analyze_card.fade-enter-active,
+.analyze_card.fade-leave-active,
+.game_card.fade-enter-active,
+.game_card.fade-leave-active {
+
+    // 透明淡出
+    opacity: 0;
+    // 左滑消失
+    transform: translateX(0);
+    // 縮小消失
+    transform: scale(0);
+}
+
+// 進入合離開過度的中間狀態
+.analyze_card.fade-enter,
+.analyze_card.fade-leave-to,
+.game_card.fade-enter,
+.game_card.fade-leave-to {
+
+    // 透明淡出
+    opacity: 0;
+    // 左滑消失
+    transform: translateX(-100%);
+    // 縮小消失
+    transform: scale(0);
+}
+
+// 遊戲卡片
+.game_card {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 30px;
+    border: 4px solid #1F8D61;
+    padding: 25px;
+    margin-top: $sp6;
+    background-color: $primary--;
+
+    .clip {
+        //資料夾子
+        display: none;
+    }
+
+    .wrap {
+        width: 100%;
+        border-radius: 30px;
+        background-color: $bg--;
+        font-weight: 700;
+        display: grid;
+        grid-template-columns: 1fr;
+        // grid-template-rows: 0.2fr 1fr 1fr;
+        padding: $sp2;
+
+        .txt {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: auto;
+            width: 100%;
+
+            .title {
+                font-size: $xs-font;
+                color: $primary;
+            }
+
+            .question {
+                font-size: $s-font;
+                text-align: center;
+                color: $primary;
+                margin-top: $sp2;
+                width: 90%;
+                line-height: 1.2;
+            }
+        }
+
+        .pic {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 0;
+        }
+
+        .btns_wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 $sp1 $sp1;
+
+            .choose_btn {
+                padding: $sp2 $sp3;
+                font-size: $s-font;
+                background-color: $secondary--;
+                width: 100%;
+                margin-top: $sp2;
+                border-radius: 30px;
+            }
+
+            .active {
+                background-color: $secondary;
+            }
+
+            .next_btn {
+                padding: $sp2 $sp3;
+                font-size: $s-font;
+                background-color: $secondary--;
+                width: 100%;
+                margin-top: $sp2;
+                border-radius: 30px;
+                color: #FFF;
+                background-color: $primary;
+                margin-top: $sp4;
+                width: 80%;
+            }
+        }
+
+
+
+    }
+
+}
+
+// 分析結果
+.analyze_card {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 30px;
+    border: 4px solid #1F8D61;
+    padding: 25px;
+    margin-top: $sp6;
+    background-color: $primary--;
+
+    .wrap {
+        width: 100%;
+        border-radius: 30px;
+        background-color: $bg--;
+        font-weight: 700;
+        display: grid;
+        grid-template-columns: 1fr;
+        // grid-template-rows: 0.2fr 1fr .3fr 0.5fr;
+        padding: $sp2;
+
+        .title {
+            margin: auto;
+        }
+
+        .recommend {
+            display: flex;
+            justify-content: space-between;
+            margin-top: $sp2;
+
+            .col-6 {
+                padding: 5px;
+
+                .pro_card {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 5px;
+
+                    .pic {
+                        border-radius: 12px;
+                    }
+                }
+            }
+        }
+
+        .analyze {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .personality {
+                margin-top: $sp3;
+                color: $primary;
+                font-weight: 700;
+                font-size: $m-font;
+            }
+
+            .txt {
+                margin-top: $sp2;
+                margin-bottom: $sp3;
+                line-height: 1.5;
+                padding: $sp1;
+                width: 80%;
+            }
+        }
+
+
+        .btns_wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+
+            .next_btn {
+                color: #FFF;
+                background-color: $primary;
+                margin-top: $sp2;
+                padding: $sp2 $sp3;
+                width: 80%;
+                font-size: $s-font;
+                border-radius: 30px
+            }
+        }
+
+    }
+
+    .clip {
+        display: none;
+    }
+}
+
+// 斷點768px
+@include pad-V {
+    .container {
+        min-height: 1300px;
+    }
+
+    .bar_wrap {
+        @include pill(85%, 25px);
+        // max-width: 500px;
+        border-radius: 31px;
+        border: 2px solid #2F9748;
+        background: #FFF;
+        margin-top: $sp6;
+
+        .bar {
+            @include pill(50%, 100%);
+            font-size: 0;
+            background-color: #FF7272;
+            color: #fff;
+            text-align: center;
+            position: relative;
+
+            span {
+                font-size: $s-font;
+                line-height: $s-font;
+            }
+
+            .icon {
+                width: 90px;
+                height: 90px;
+                position: absolute;
+                right: -45px;
+                top: -45px;
+
+                img {
+                    width: 100%;
+                    vertical-align: top;
+                }
+            }
+        }
+    }
+
+    .solgan {
+        font-size: $s-font;
+        width: 80%;
+    }
+
+    // 遊戲卡片
+    .game_card {
+        width: 100%;
+        max-width: 1500px;
+        border-radius: 30px;
+        border: 4px solid #1F8D61;
+        padding: 25px;
+        margin-top: $sp6;
+        background-color: $primary--;
+        position: relative;
+
+        .clip {
+            //資料夾子
+            position: absolute;
+            display: block;
+            width: 20%;
+            top: -5%;
+            left: 40%;
+
+            img {
+                width: 100%;
+                vertical-align: middle;
+            }
+        }
+
+        .wrap {
+            width: 100%;
+            aspect-ratio: 1200/840;
+            border-radius: 0;
+            background-color: $primary--;
+            font-weight: 700;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 0.3fr 0.7fr;
+            padding: $sp2;
+            background-image: url(@/assets/images/game/game_bg.png);
+            background-size: cover;
+
+
+            .txt {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: auto;
+                width: 100%;
+                padding-top: 15%;
+
+                .title {
+                    font-size: $s-font;
+                    color: $primary;
+                }
+
+                .question {
+                    font-size: $m-font;
+                    text-align: center;
+                    color: $primary;
+                    margin-top: $sp2;
+                    width: 90%;
+                    line-height: 1.2;
+                }
+            }
+
+            .pic {
+                width: 100%;
+                margin: auto;
+                border-radius: 0;
+                grid-area: 1/1/3/2;
+            }
+
+            .btns_wrap {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 0 $sp1 $sp1;
+                width: 90%;
+                margin: auto;
+
+
+                .choose_btn {
+                    padding: $sp2 $sp3;
+                    font-size: $m-font;
+                    background-color: $secondary--;
+                    width: 100%;
+                    margin-top: $sp2;
+                    border-radius: 30px;
+                    aspect-ratio: 430/160;
+                }
+
+                .active {
+                    background-color: $secondary;
+                }
+
+                .next_btn {
+                    color: #FFF;
+                    background-color: #1F8D61;
+                    margin-top: $sp6;
+                    width: 80%;
+                }
+            }
+        }
+
+
+
+
+
+    }
+
+    //分析卡片
+    .analyze_card {
+        width: 100%;
+        max-width: 1500px;
+        border-radius: 30px;
+        border: 4px solid #1F8D61;
+        padding: 25px;
+        margin-top: $sp6;
+        background-color: $primary--;
+        position: relative;
+
+        .clip {
+            //資料夾子
+            position: absolute;
+            display: block;
+            width: 20%;
+            top: -5%;
+            left: 40%;
+
+            img {
+                width: 100%;
+                vertical-align: middle;
+            }
+        }
+
+        .wrap {
+            width: 100%;
+            aspect-ratio: 1200/840;
+            border-radius: 0;
+            background-color: $primary--;
+            font-weight: 700;
+            display: grid;
+            grid-template-columns: .9fr 1fr;
+            grid-template-rows: 0.2fr 0.5fr 0.5fr;
+            padding: $sp2;
+            background-image: url(@/assets/images/game/game_bg.png);
+            background-size: cover;
+
+            .title {
+                font-size: $m-font;
+            }
+
+
+            .recommend {
+                display: flex;
+                justify-content: space-between;
+                margin: auto;
+                grid-area: 1/1/4/2;
+                padding-left: 80px;
+
+                .col-6 {
+                    padding: 20px;
+
+                    .pro_card {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 10px;
+
+                        h2 {
+                            font-size: $s-font;
+                        }
+
+                        .pic {
+                            border-radius: 12px;
+                        }
+                    }
+                }
+            }
+
+            .analyze {
+
+                .personality {
+                    margin-top: $sp3;
+                    color: $primary;
+                    font-weight: 700;
+                    font-size: $l-font;
+                }
+
+                .txt {
+                    margin-top: $sp2;
+                    margin-bottom: $sp3;
+                    line-height: 1.5;
+                    padding: $sp1;
+                    width: 80%;
+                    font-size: $m-font;
+                }
+            }
+
+
+            .btns_wrap {
+                .next_btn {
+                    // @extend .choose_btn;
+                    color: #FFF;
+                    background-color: $primary;
+                    margin-top: $sp1;
+                    margin-bottom: $sp1;
+                    width: 50%;
+                }
+            }
+
+
+        }
+    }
+
+
+}
+
+// 斷點1024
+@include pad-H {}
+
+// 斷點1200
+@include desktop {
+    .container {
+        max-width: 1200px;
+    }
+}

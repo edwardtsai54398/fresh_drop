@@ -1,0 +1,79 @@
+.index_farmer_pic img {
+    width: 100%;
+}
+
+.carousel__track {
+    width: 100%;
+}
+
+
+
+
+//輪播箭頭
+
+.framer {
+
+    .title {
+        text-align: center;
+        color: $primary;
+        padding: 30px;
+        font-weight: bolder;
+        font-size: $l-font;
+        padding-top: 50px;
+    }
+
+    .introduce {
+        max-width: 1200px;
+        margin: auto;
+        text-align: indent;
+        padding: $sp3;
+
+        p {
+            font-size: $s-font;
+            text-align: center;
+            color: $primary;
+            padding: 30px;
+            font-weight: bolder;
+        }
+    }
+
+    .carousel_wrap {
+        max-width: 1200px;
+        margin: 100px auto 100px;
+
+        .carousel__next,
+        .carousel__prev {
+            background-color: #fff;
+            border: 1px solid $primary;
+            border-radius: 50%;
+            top: 42%;
+            transform: translateY(-50%);
+
+            .carousel__icon {
+                fill: $primary;
+            }
+        }
+
+        .farmer_card {
+            .index_farmer_pic {
+
+                width: 350px;
+            }
+        }
+
+        p {
+            color: $primary;
+            font-weight: bolder;
+        }
+
+
+    }
+}
+
+@include pad-V {
+    .farmer_name {
+        p {
+            font-size: $m-font;
+        }
+    }
+}

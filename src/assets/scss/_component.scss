@@ -1,12 +1,11 @@
-$btn_size:(
-    xs: $xs-font,
+$btn_size:(xs: $xs-font,
     s: $s-font,
     m: $m-font,
     l: $l-font,
 );
 
 [class*="btn_"],
-.btn{
+.btn {
     text-align: center;
     width: fit-content;
     border-radius: 50rem;
@@ -16,59 +15,69 @@ $btn_size:(
     color: #fff;
     background-color: $primary;
     box-shadow: 0px 3px 0px #000;
-    &:hover{
+    transform: translate(0px, -3px);
+
+    svg {
+        color: #fff;
+    }
+
+    &:hover {
         box-shadow: none;
-        transform: translate(0px, 3px);
+        transform: translate(0px, 0px);
     }
 }
-a[class*="btn_"]{
+
+a[class*="btn_"] {
     display: inline-block;
 }
-@each $key, $value in $btn_size{
-    .btn_#{$key}{
+
+@each $key,
+$value in $btn_size {
+    .btn_#{$key} {
         line-height: 2;
         padding: 0 $value;
         font-size: $value;
-        @if $value <= $m-font {
+
+        @if $value <=$m-font {
             letter-spacing: 1px;
         }
+
         @else {
             letter-spacing: 2px;
         }
     }
-    .btn_scd_#{$key}{
+
+    .btn_scd_#{$key} {
         @extend .btn_#{$key};
         background-color: $secondary;
         color: #000;
     }
 }
 
-.btn_arrow{
-    display: flex;
-    align-items: center;
-    img[src*="arrow_long"]{
-        margin-left: 20px;
-    }
-}
-
-.btn_icon{
+.btn_icon {
     aspect-ratio: 1/1;
     box-shadow: 0px 2px 0px #000;
     border-width: 1px;
-    i{
-        font-size: $s-font;
-        margin: 2px;
+
+    [class*="fa-"] {
+        margin: 8px;
+    }
+
+    svg {
+        color: #fff;
     }
 }
 
-.btn_flat{
-    border: 2px solid $primary;
+.btn_flat {
+    border: 1px solid $primary;
     box-shadow: none;
     background-color: transparent;
     color: $primary;
     position: relative;
     overflow: hidden;
-    &::before{
+    transform: translate(0px, 0px);
+
+    &::before {
         content: '';
         position: absolute;
         top: 0;
@@ -81,67 +90,99 @@ a[class*="btn_"]{
         background-color: $primary;
         transition: .3s;
     }
-    &:hover{
-        transform: translate(0px, 0px);
+
+    svg {
+        color: $primary;
+    }
+
+    &:hover {
         background-color: $primary;
         color: #fff;
-        &::before{
+
+        svg {
+            color: #fff;
+        }
+
+        &::before {
             right: 0%;
         }
     }
 }
 
-.btn_circle{
+.btn_flat.btn_icon {
+    svg {
+        color: $primary;
+    }
+
+    &:hover {
+        svg {
+            color: #fff;
+        }
+    }
+}
+
+.btn_circle {
     aspect-ratio: 1/1;
     padding: $sp2;
 }
 
 //輪播按鈕
-%btn_carousel{
+%btn_carousel {
     @extend .btn_flat;
     display: flex;
     align-items: center;
     gap: $sp1;
-    span{
+
+    span {
         position: absolute;
-        transition: .3s;
+        color: #fff;
+        transition: .5s;
+
     }
-    i{
-        line-height: 1.5;
-    }
-    &:hover{
-        span{
+
+
+    &:hover {
+        span {
             position: relative;
 
         }
     }
 }
-.btn_right{
+
+.btn_right {
     @extend %btn_carousel;
-    span{
+
+    span {
         right: 100%;
+        margin-left: $sp1;
     }
-    &:hover{
-        span{
+
+    &:hover {
+        span {
             right: 0;
         }
     }
 }
-.btn_left{
+
+.btn_left {
     @extend %btn_carousel;
-    &.btn_flat::before{
+
+    &.btn_flat::before {
         right: 0;
         left: 100%;
     }
-    span{
+
+    span {
         order: 2;
         left: 100%;
     }
-    &:hover{
-        span{
-            left: 0;
+
+    &:hover {
+        span {
+            left: 10%;
         }
-        &.btn_flat::before{
+
+        &.btn_flat::before {
             left: 0%;
         }
     }
@@ -149,72 +190,116 @@ a[class*="btn_"]{
 
 input[type="email"],
 input[type="text"],
-input[type="password"]{
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="phone"],
+select {
     display: block;
     font-size: $xs-font;
     line-height: 1.5;
+    height: 40px;
     background-color: transparent;
     border-radius: $xs-br;
     padding: $sp1 $sp3;
-    &::placeholder{
-        color: rgba(0,0,0,0.5);
+    border: 2px solid $text;
+
+    &::placeholder {
+        color: rgba(0, 0, 0, 0.5);
         font-size: $xs-font;
     }
 }
-.test{
-    @include gridgap(18px);           
+
+input[type="number"] {
+    appearance: none;
+    margin: 0;
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+
+    &:hover,
+    &:focus {
+        appearance: none;
+        margin: 0;
+        -moz-appearance: textfield;
+        -webkit-appearance: none;
+        -ms-appearance: none;
+    }
 }
-//input:select
-%select_bgc{
-    background-color: lighten($third, 10%);
-    border: 1px solid #000;
-}
-.select{
-    position: relative;
-    width: 110px;
-    height: 36px;
-    font-size: $xs-font;
-    text-align: center;
-    color: #000;
-    border: 1px solid #000;
-    border-radius: 18px;
-    cursor: pointer;
-    transition: .1s;
-    &.open{
-        @extend %select_bgc;
-        border-bottom-left-radius: 0px;
-        border-bottom-right-radius: 0px;
-        .option{
-            @extend %select_bgc;
+
+input[type="radio"] {
+    margin-right: $sp1;
+    opacity: 0;
+
+    &:checked+label::before {
+        box-shadow: .125rem .125rem 0 $bg inset, -.125rem -.125rem 0 $bg inset, -.125rem .125rem 0 #fff inset, .125rem -.125rem 0 #fff inset, .3rem .3rem 0 $primary-- inset, -.5rem -.5rem 0 $primary-- inset;
+    }
+
+    &+label{
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: calc(100% + 4px);
+            transform: translateY(-50%);
+            display: block;
+            width: 14px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            border: 2px solid $text;
         }
     }
 }
 
-.placeholder{
-    padding: 0px $sp3;
-    line-height: 36px;
+select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    background: url('@/assets/images/icon_bg/arrowDown.svg') 95% center no-repeat scroll transparent;
+    background-size: 10px 10px;
 }
-.placeholder{
-    .fa-chevron-down{
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: 10px;
-        font-size: 10px;
+
+input.search_bar {
+    border: 1px solid $primary;
+    border-radius: 50rem;
+}
+
+//彈窗遮罩
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 20;
+    transition: .3s;
+    opacity: 1;
+    visibility: visible;
+
+    &.none {
+        opacity: 0;
+        visibility: hidden;
     }
 }
-.option{
-    position: absolute;
-    width: 100%;
-    top: 100%;
-    left: 0;
-    li{
-        padding: calc($s-br / 2) $sp3;
-        &:first-child{
-            padding-top: $s-br
-        }
-        &:last-child{
-            padding-bottom: $s-br
-        }
+
+//滾軸
+%scrollbar_style {
+
+    &::-webkit-scrollbar { 
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb { 
+        background-color: $secondary;
+        width: 5px;
+        border-radius: 8px;
     }
 }

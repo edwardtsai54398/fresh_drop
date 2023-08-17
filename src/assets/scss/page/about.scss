@@ -1,0 +1,560 @@
+.about_us {
+  max-width: 1200px;
+  margin: auto;
+  
+  .about_us_content{
+      margin: 20px;
+      flex-direction:column-reverse;
+  }
+  .about_us_pic {
+    width: 100%;
+    padding: 30px;
+    img {
+      width: 100%;
+    }
+  }
+  .about_us_text{
+      margin-bottom: 30px;
+  }
+    h3{
+      font-size: $s-font;
+      padding: 20px;
+      text-align: center;
+      color: $primary;
+      font-weight: bolder;
+    }
+    p{
+    text-indent: 2em;  
+    color: $primary; 
+    white-space: pre-line;
+    }
+}
+.about_farmer{
+  background-color: #fff;
+  padding: 15px;
+  margin: 30px;
+  border: solid 5px $primary;
+  border-radius: 20px;
+  position: relative;
+  .about_farmer_decorate,.about_farmer_decorate1{
+      display: none;
+  }
+  .farmer_pic{
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  border-radius: 20px;
+  img {
+      width: 100%;
+    }
+  }
+  .index_btn_l{
+      margin: 15px auto;
+      padding: 10px 30px;
+      a{
+        color: #fff;
+      }
+  }
+  .about_farmer_future{
+    p{
+      white-space: pre-line;
+      text-indent: 1em;
+    }
+  }
+}
+
+.about_order {
+  .about_orderpic {
+    width: 60%;
+    margin: auto;
+    .index_order_pic {
+      width: 100%;
+      position: relative;
+      img {
+        width: 100%;
+      }
+    }
+    .index_order_arrow{
+      display: none;
+    }
+  }
+}
+.about_ask {
+  border: solid $primary 5px;
+  padding: 10px;
+  margin: 40px 50px;
+  border-radius: 20px;
+
+  .about_ask_content {
+    h3 {
+      font-size: $s-font;
+      padding: 15px;
+      text-align: center;
+      color: $primary;
+      font-weight: bolder;
+    }
+
+    .form-container {
+      padding: 0 20px;
+      background: border-box;
+    }
+  }
+
+  /* 讓所有輸入欄位等寬 */
+  .form-container {
+    padding: 0 20px;
+    background: border-box;
+  }
+
+  .name{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    gap: 10px;
+    input{
+      width: 100%;
+      background-color: #fff;
+    }
+  }
+  .email,
+  .order,
+  .note {
+    display: flex;
+    margin-top: 10px;
+    flex-direction: column;
+    gap: 10px;
+    input,
+    textarea {
+  width: 100%;
+  background-color: #fff;
+    }
+  }
+
+  .note textarea {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+    padding: $sp2;
+    height: 200px;
+    border: 2px solid #575655;
+    border-radius: 10px;
+    textarea{
+      width: 100%;
+      background-color: #fff;
+    }
+  }
+
+  .index_btn_l {
+    margin: auto;
+    padding: 15px 40px;
+  }
+}
+
+// min-width: 768px
+@include pad-V {
+  .about_us_content{
+      align-items: center;
+      display: flex;
+      flex-direction: row-reverse;
+      flex: 1;
+  }
+  .about_us_pic{
+      flex: 1;
+      padding: 0 80px;
+      width: 50%;
+      img{
+          width: 100%;
+      }
+  }
+  .about_us_text {
+      flex: 1;
+      text-align: left;
+      position: relative;
+      justify-content: center;
+      h3{
+          padding: 20px;
+          font-size: $l-font;
+      }
+      p{
+        font-size: $s-font;
+        text-indent: 2em;
+      }
+  }
+  .about_farmer{
+      display: flex;
+      .farmer_pic{
+          flex: 1;
+      }
+      img{
+          width: 100%;
+      }
+  }
+  .about_farmer_future{
+      align-items: center;
+      display: flex;
+      flex: 1.5;
+      flex-direction: column;
+      justify-content: center;
+      h3{
+          font-size: $l-font;
+      }
+      p{
+          font-size: $s-font;
+          text-indent: 2em;
+          line-height: 1.6;
+          padding: 20px;
+      }
+  }
+  .about_order {
+      h3{
+          font-size: $l-font;
+      }
+   
+      .about_orderpic {
+        width: 60%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+    
+        // 偶數索引
+        &.even {
+          margin-left: 35%;
+        }
+    
+        // 奇數索引
+        &.odd {
+          margin-right: 35%;
+        }
+    
+        .index_order_pic {
+          justify-content: center;
+          display: grid;
+    
+          img {
+            width: 100%;
+          }
+        }
+    
+        .index_order_arrow {
+          display: none;
+        }
+      }
+    }
+    .about_ask{
+      margin: 40px 50px;
+      .about_ask_content{
+          h3 {
+        font-size: $m-font;
+        padding: 15px;
+        text-align: center;
+        color: $primary;
+        font-weight: bolder;
+      }
+      }
+
+      .form-container{
+        padding: 0 60px;
+      }
+      .email{
+        flex-direction: row;
+      }
+    }
+// min-width: 1024px
+@include pad-H {
+  .about_us_content{
+      gap: 80px;
+      .about_us_text{
+          h3{ font-size: $xl-font;
+          }
+      }
+  }
+  .about_farmer{
+      padding: 50px;
+      .farmer_pic{
+          flex: 1;
+      }
+      .about_farmer_future{
+          flex: 2;
+      }
+      .about_orderpic{
+          display: flex;
+      }
+  }
+
+}
+// min-width: 1200px
+@include desktop {
+  .about_us {
+    gap: 20px;
+    position: relative;
+  
+    .about_us_item {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 60px;
+      
+    }
+  
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+    }
+    &::before {
+      top: 17%;
+      left: 0%;
+      width: 1200px;
+      z-index: 1;
+      height: 300px;
+      background-image: url('../assets/images/about/about_grass_all.png');
+    }
+    .about_us_content {
+      margin-bottom: 120px;
+      position: relative;
+  
+      &::before,
+      &::after {
+        position: absolute;
+        content: '';
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+      }
+      &::before{
+        top: 103%;
+        right: -59px;
+        width: 200px;
+        height: 200px;
+        background-image: url('../assets/images/about/cow.png');
+        animation: moveCow 10s forwards;
+      }
+      &::after{
+        top: 99%;
+        right: -59px;
+        width: 200px;
+        height: 200px;
+        transform: scaleX(-1);
+        background-image: url('https://1.bp.blogspot.com/-2h8yYyNWPcQ/X3hF2mFnGjI/AAAAAAABbkU/oAne7S28I7UN3crhUPdDIJDi5SMuzkSAgCNcBGAsYHQ/s400/animal_hitsuji_horn.png');
+        animation: movesheep 10s forwards;
+      }
+      .about_us_text{
+        ::after {
+          position: absolute;
+          content: "";
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: contain;
+          display: block;
+          width: 388px;
+          height: 215px;
+          right: 26%;
+          bottom: 75%;
+          background-image: url('../assets/images/about/about_sun.png');
+        }
+      }
+    }
+    
+    @keyframes moveCow {
+      from {
+        bottom: -20px;
+        right: 10px;
+      }
+      to {
+        bottom: 2px;
+        right: 300px;
+      }
+    }
+    
+    @keyframes movesheep {
+      from {
+        bottom: 2px; 
+        left: 10px;
+      }
+      to {
+        bottom: 2px;
+        left: 300px;
+      }
+    }
+  }
+  
+  
+  .about_farmer {
+    position: relative;
+    margin-top: 300px;
+
+    .about_farmer_future {
+      position: relative;
+      &::after {
+        position: absolute;
+        content: "";
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        display: block;
+        width: 200px;
+        height: 163px;
+        right: -7%;
+        bottom: -14%;
+        background-image: url('https://1.bp.blogspot.com/-FWDaUGFw0Js/WwJZ_LYe0dI/AAAAAAABMJU/Tp-Dww8BB1YzG1qWWJ6vu7RBmN0_JuJegCLcBGAs/s800/fruit_nouka_ichigo.png');
+      }
+    }
+    
+    @keyframes slide {
+      0% {
+        right: -30%;
+      }
+      100% {
+        right: 10%; /* 设置偽元素的右边距，让它向右移动 */
+      }
+    }
+  }
+  
+  .about_order {
+    h3 {
+      font-size: $l-font;
+      margin: 80px 0 41px 0;
+    }
+  
+    .about_order_content {
+      display: flex;
+      justify-content: center;
+  
+      .about_order_pic {
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+  
+        .about_orderpic {
+          flex-wrap: wrap;
+          .index_order_pic {
+            width: 80%;
+            align-items: center;
+            // position: relative;
+  
+            img {
+              width: 100%;
+            }
+          }
+  
+          /* 使用:nth-child選擇器來隱藏特定索引位置的箭頭 */
+          &:nth-child(1),
+          &:nth-child(2) {
+            .index_order_pic::after {
+              content: '';
+              position: absolute;
+              width: 50px;
+              height: 50px;
+              background-image: url('../assets/images/about/arrow.png');
+              background-size: contain;
+              background-position: center center;
+              background-repeat: no-repeat;
+              top: 50%;
+              right: -75px;
+            }
+          }
+  
+          /* 第四張照片的特殊設定 */
+          &:nth-child(4) {
+            .index_order_pic::after {
+              content: '';
+              position: absolute;
+              /* 加入您想要的特殊設定，例如： */
+              position: absolute;
+              width: 50px;
+              height: 50px;
+              background-image: url('../assets/images/about/arrow.png');
+              background-size: contain;
+              background-position: center center;
+              background-repeat: no-repeat;
+              top: 50%;
+              right: -181px;
+            }
+          }
+        }
+  
+        /* 下面2张照片样式 */
+        .even,
+        .odd {
+          width: 30%;
+          margin-bottom: 20px;
+  
+          // 奇数索引（即下面两张照片）在desktop下水平居中
+          @include desktop {
+            margin: 0 auto 20px;
+          }
+        }
+  
+        /* 調整順序使下面2張照片在上面3張照片後面 */
+        .even,
+        .odd {
+          order: 2;
+        }
+      }
+    }
+  }
+  
+  
+
+  .about_ask {
+    width: 900px;
+    margin: 100px auto;
+    position: relative;
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+      width: 200px;
+      height: 300px;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+    }
+    &::before {
+      left: -1%;
+      top: 65%;
+      background-image: url('../assets/images/index/index_grass3.png');
+    }
+
+    &::after {
+      bottom: -28%;
+      right: -2%;
+      background-image: url('../assets/images/index/index_grass3.png');
+    }
+
+    .form-container {
+      margin: auto;
+      }
+      &::before {
+        position: absolute;
+        content: "";
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        transform: rotate(45deg);
+        display: block;
+        width: 208px;
+        height: 299px;
+        left: 80%;
+        top: 53%;
+        background-image: url(https://1.bp.blogspot.com/-BDCMhfuIf_s/W4PJ09cQEUI/AAAAAAABOKU/UkZOJqUZXyEazczrw7VBeD72LEpPGvTowCLcBGAs/s400/kakashi_nobg.png);
+        animation: shake 1.5s infinite alternate;
+      }
+      @keyframes shake {
+        0% {
+          transform: rotate(45deg) translateX(0);
+        }
+        100% {
+          transform: rotate(-35deg) translateX(10px);
+        }
+      }
+
+    }
+  }
+
+
+}
+

@@ -1,0 +1,538 @@
+// banner滑卡區
+.decorate_index {
+    padding-top: 80px;
+    width: 100%;
+    margin-bottom: 100px;
+    aspect-ratio: 1920/1050;
+    background-image: url('@/assets/images/index/decoeate2.png');
+    background-size: cover;
+    background-position: center;
+    margin-top: -126px;
+
+
+    .index_banner_slider {
+        position: relative;
+
+        //幸福的一天
+        .decorate_day {
+            width: 20%;
+            margin: 40px auto 0;
+            // position: relative;
+            padding-top: 40px;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        // 字左(每日命定料理)
+        .index_text {
+            font-size: $l-font;
+            text-align: center;
+            display: flex;
+            position: relative;
+            justify-content: center;
+            margin: 0 50px;
+            align-items: center;
+
+            .txt {
+                padding: 30px 0;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 10px;
+
+                p {
+                    font-weight: 700;
+                    font-size: $s-font;
+                    color: $primary;
+                    line-height: 1.2;
+                }
+
+                span {
+                    font-size: $xs-font;
+                    color: $primary;
+                    font-weight: 700;
+
+                }
+            }
+
+            // 胡蘿蔔
+            .index_carrot {
+                img {
+                    max-width: 70px;
+                    max-height: 70px;
+                }
+            }
+        }
+    }
+
+    // 中間滑卡
+    .index_index_banner_swiper {
+        margin: auto;
+        width: 55%;
+        position: relative;
+
+        .btn_circle {
+            width: 30%;
+            position: absolute;
+            z-index: 2;
+            text-align: center;
+            font-size: 8px;
+            right: -10%;
+            bottom: -10%;
+            padding: 2px;
+            background-color: #ffffff;
+            border: 3px solid #1F8D61;
+            font-weight: 700;
+        }
+
+        .swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+
+            .swiper_pic img {
+                @include img-fit;
+            }
+        }
+    }
+
+    // 字右
+    .index_food_title {
+        display: flex;
+        flex-direction: column;
+        gap: $sp4;
+        padding: $sp2;
+
+        p {
+            color: $primary;
+            line-height: 1.2;
+        }
+
+        .line {
+            span {
+                font-size: $m-font;
+                color: $primary;
+                font-weight: 600;
+            }
+        }
+
+        .index_btn_l {
+            padding: $sp1 $sp3;
+            font-size: 8px;
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        a {
+            margin: auto;
+        }
+    }
+
+}
+
+
+
+
+
+// 滑動提示字
+.running_text {
+    text-align: center;
+    padding: $sp1;
+    font-size: $xs-font;
+    color: #1F8D61;
+    font-weight: 700;
+}
+
+// 滑動手指頭
+.hand_wrap {
+    display: block;
+    position: absolute;
+    top: 55%;
+    left: -25px;
+    z-index: 5;
+    transform: translate(-50%, -50%);
+
+    .hand_pointer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        animation: rotateAnimation 1s linear infinite;
+        transform-origin: center bottom;
+        font-size: 40px;
+    }
+}
+
+.index_index_banner_swiper {
+    width: 50%;
+
+}
+
+
+
+@keyframes rotateAnimation {
+    0% {
+        transform: rotate(40deg);
+    }
+
+    50% {
+        transform: rotate(-20deg);
+    }
+
+    100% {
+        transform: rotate(40deg);
+    }
+}
+
+
+// 斷點:768px
+@include pad-V {
+
+    // 滑動手指頭
+    .hand_wrap {
+        display: block;
+        position: absolute;
+        top: 55%;
+        left: -20px;
+        z-index: 5;
+        transform: translate(-50%, -50%);
+
+        .hand_pointer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            animation: rotateAnimation 1s linear infinite;
+            transform-origin: center bottom;
+            font-size: 30px;
+        }
+    }
+
+
+
+    .swiper-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 18px;
+        font-size: 22px;
+        font-weight: bold;
+        color: #fff;
+        border-radius: 20px;
+    }
+
+    .decorate_index {
+        padding-top: 100px;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        gap: 2%;
+        background-image: url('@/assets/images/index/decoeate2.png');
+        margin-top: -126px;
+
+        .index_banner_slider {
+            margin: 0;
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .decorate_day {
+                width: 30%;
+                // margin-right: $sp5;
+            }
+        }
+
+        .index_index_banner_swiper {
+            margin: 0;
+            width: 30%;
+        }
+
+        .index_food_title {
+            width: 30%;
+            margin: 0;
+            z-index: 2;
+            gap: 0;
+
+
+            p {
+                display: block;
+                color: $primary;
+                font-weight: 600;
+                font-size: $m-font;
+                padding: $sp1;
+            }
+
+            .line {
+                padding: $sp1;
+                border-top: 1px dashed $primary;
+
+                span {
+                    color: $primary;
+                    padding-top: $sp2;
+                    font-size: $l-font;
+                    font-weight: 700;
+                }
+            }
+
+            .index_btn_l {
+                padding: $sp1 $sp3;
+                font-size: $xs-font;
+                font-weight: 600;
+                margin-top: $sp4;
+            }
+
+
+        }
+    }
+
+    .swiper_pic img {
+        @include img-fit;
+    }
+
+    .index_banner_swiper {
+        margin-top: -50px;
+    }
+
+    .index_text {
+        position: relative;
+        display: flex;
+
+        .txt {
+            p {
+                white-space: nowrap;
+            }
+        }
+
+        .index_carrot {
+            width: 90px;
+            position: relative;
+        }
+    }
+
+    .index_health_banner {
+        height: 350vh;
+        width: 100%;
+        background-color: $primary--;
+    }
+
+    .index_health_wrap {
+        width: 100%;
+        height: 100vh;
+        position: sticky;
+        overflow: hidden;
+        padding-top: 250px;
+        top: 100px;
+    }
+
+    .index_health {
+        height: 100%;
+        display: flex;
+        text-align: center;
+    }
+
+    .index_health_pic {
+        margin: 0 250px;
+        width: 500px;
+        height: 500px;
+        flex-shrink: 0;
+    }
+
+    .green_line {
+        display: block;
+        position: absolute;
+        left: 5%;
+        top: 2%;
+    }
+
+    .green_line1 {
+        display: block;
+        position: absolute;
+        right: 5%;
+        top: 2%;
+    }
+
+
+}
+
+// 斷點:1024px
+@include pad-H {
+
+    // 滑動手指頭
+    .hand_wrap {
+        display: block;
+        position: absolute;
+        top: 55%;
+        left: -40px;
+        z-index: 5;
+        transform: translate(-50%, -50%);
+
+        .hand_pointer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            animation: rotateAnimation 1s linear infinite;
+            transform-origin: center bottom;
+            font-size: 70px;
+        }
+    }
+
+    .mySwiper {
+        position: relative;
+    }
+
+
+    .decorate_index {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        gap: 2%;
+        margin-top: -126px;
+
+        // 滑動提示
+        .running_text {
+
+            .fa-arrow-left,
+            .fa-arrow-right {
+                color: #bbb;
+            }
+
+            @keyframes running {
+                0% {
+                    transform: translateX(0);
+                }
+
+                50% {
+                    transform: translateX(75%);
+                }
+
+                100% {
+                    transform: translateX(0);
+                }
+            }
+        }
+
+
+        .index_banner_slider {
+            margin: 0;
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: end;
+
+            .index_text {
+                .txt_wrap {
+                    .txt {
+                        z-index: 2;
+
+                        p {
+                            font-size: $l-font;
+                        }
+
+                        span {
+                            font-size: $m-font;
+                            z-index: 2;
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+        .index_index_banner_swiper {
+            margin: 0;
+            width: 32%;
+
+            .btn_circle {
+                font-size: $s-font;
+                width: 25%;
+            }
+        }
+
+        .index_food_title {
+            width: 30%;
+            margin: 0;
+            z-index: 2;
+            gap: 0;
+
+
+            p {
+                display: block;
+                color: $primary;
+                font-weight: 600;
+                font-size: $m-font;
+                padding: $sp1 $sp2;
+            }
+
+            .line {
+                padding: $sp1 $sp2;
+                border-top: 1px dashed $primary;
+
+                span {
+                    color: $primary;
+                    padding-top: $sp2;
+                    font-size: $xl-font;
+                    font-weight: 700;
+                }
+            }
+
+            .index_btn_l {
+                padding: $sp1 $sp3;
+                font-size: $s-font;
+                font-weight: 600;
+                margin: $sp7 auto 0;
+            }
+
+
+        }
+    }
+
+}
+
+@include desktop {
+    .decorate_index {
+        margin-top: -126px;
+
+        .index_banner_slider {
+
+            .index_text {
+                .txt_wrap {
+                    .txt {
+                        z-index: 2;
+
+                        p {
+                            font-size: $m-font;
+                        }
+
+                        span {
+                            font-size: $s-font;
+                            z-index: 2;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    // 滑動提示
+    .running_text {
+        font-size: $s-font;
+
+        .fa-arrow-left,
+        .fa-arrow-right {
+            color: #bbb;
+        }
+    }
+
+
+}

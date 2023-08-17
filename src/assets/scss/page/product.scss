@@ -1,0 +1,943 @@
+.product_container {
+    position: relative;
+    // min-width: 414px;
+    max-width: 1200px;
+    padding: 0 32px;
+}
+
+.main {
+    width: 100%;
+}
+
+.main_title {
+    width: 100%;
+    padding: $sp2;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    font-weight: 700;
+
+    .btn_s.btn_left {
+        position: absolute;
+        left: 0;
+        height: 40px;
+    }
+
+    .title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        font-size: $l-font;
+        color: $text;
+
+        .type {
+            width: 98px;
+            height: 42px;
+            flex-shrink: 0;
+            border-radius: $l-br;
+            background: $secondary;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            span {
+                color: #ffffff;
+                font-size: $m-font;
+                font-family: "Noto Sans TC";
+            }
+        }
+    }
+}
+
+.info_pic {
+
+    .pic {
+        height: 400px;
+        overflow: hidden;
+    }
+
+    .text {
+        font-size: $s-font;
+        text-align: justify;
+        text-indent: 2em;
+
+        p {
+            padding: 20px;
+        }
+    }
+}
+
+.info_text {
+    padding: 10px 20px 80px 20px;
+
+    >div>p {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: $m-font;
+        padding: 12px 0;
+        margin: $sp4 0;
+        border: 6px solid #ffffff;
+        background-color: #EDEBDA;
+        border-radius: 50px;
+        color: $primary;
+        font-weight: 700;
+    }
+
+    .wrap {
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+
+        .li_wrap {
+            padding-bottom: 20px;
+        }
+
+        li {
+            width: 100%;
+
+            .number {
+                font-size: 40px;
+                color: $secondary;
+                font-weight: 700;
+                padding-right: 10px;
+                font-style: italic;
+            }
+
+            .title_border {
+                border-bottom: 2px dashed $secondary;
+
+                .title_step {
+                    margin-bottom: 5px;
+                }
+            }
+
+            .ul_wrap {
+                padding: 10px 0;
+            }
+
+            .info {
+                padding: 6px 0;
+            }
+        }
+    }
+
+    .allergy_wrap {
+        flex-direction: row;
+    }
+
+    div:nth-child(3)>* {
+        //選取info_text的第三個div之下的子元素
+        flex-direction: row;
+        flex-wrap: wrap
+    }
+
+    p {
+        font-size: $s-font;
+    }
+
+    .allergy {
+        display: inline-block;
+        padding: 4px 30px;
+        border-radius: 30px;
+        border: 3px solid $secondary;
+        background-color: $secondary--;
+    }
+}
+
+.recommend {
+    display: none;
+}
+
+// 熱門推薦輪播圖
+.recommend_carousel {
+
+    .hot_ranking {
+        padding: 50px 0 120px 0;
+
+        .hot_title {
+            width: 80%;
+            height: 70px;
+            color: $text;
+            font-family: $prim-font;
+            font-size: $s-font;
+            font-weight: 700;
+            border-radius: $xl-br;
+            border: 6px solid #ffffff;
+            background: #edebda;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin: auto;
+            margin-bottom: 30px;
+
+            img {
+                position: absolute;
+                top: -10px;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+
+    .carousel__slide {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 50%;
+        height: 50%;
+
+        .pic {
+            width: 90%;
+            height: 90%;
+            border-radius: 10px;
+            flex-shrink: 0;
+
+            img {
+                border-radius: 5px;
+                vertical-align: top;
+            }
+        }
+
+        .hot_info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+
+            .hot_type {
+                padding: 8px;
+                width: 80px;
+                background-color: $secondary;
+                font-size: $s-font;
+                border-radius: 30px;
+            }
+
+            .hot_name {
+                font-size: $m-font;
+            }
+        }
+    }
+
+    .carousel__prev {
+        &::before {
+            right: -100%;
+        }
+    }
+}
+
+.share {
+    max-width: 1920px;
+    overflow: hidden;
+    padding: 20px 10px 60px 10px;
+    background-color: $secondary--;
+    border-radius: $m-br;
+}
+
+.text {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 24px;
+    align-items: center;
+
+    .title {
+        font-size: $m-font;
+        color: $primary;
+        font-weight: 700;
+    }
+
+    .more {
+        font-size: $s-font;
+        color: $text;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.cook {
+    display: flex;
+    margin-bottom: 40px;
+
+    .card {
+        padding: 10px;
+    }
+}
+
+// 心得分享
+.pic_food {
+    width: 100%;
+    border: 5px solid $bg--;
+    border-radius: $l-br;
+
+    &:hover .dot_wrap .dot {
+        background-color: #FFF7EAaa;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+
+
+    }
+}
+
+// 更多按鈕
+.dot_wrap {
+    position: relative;
+
+    .dot {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: $m-font;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        transform: rotate(90deg);
+    }
+
+    // 檢舉按鈕
+    .report {
+
+        .text {
+
+            font-size: $s-font;
+            padding: 10px 25px;
+            border-radius: 10px;
+            background-color: $bg;
+            position: absolute;
+            top: 70px;
+            right: -10px;
+            cursor: pointer;
+        }
+    }
+}
+
+//檢舉遮罩
+.mask_report {
+    z-index: 21;
+}
+
+//檢舉彈窗
+.content_report {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    max-width: 600px;
+    background-color: $secondary--;
+    border-radius: $m-br;
+    align-items: center;
+    margin: auto;
+    position: fixed;
+    z-index: 30;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .content_wrap {
+        width: 100%;
+        text-align: center;
+
+        .title {
+            border-bottom: 1px solid $secondary;
+            font-size: $m-font;
+            padding: 10px 0;
+            display: block;
+            text-align: center;
+        }
+
+        // .cross {
+        //     font-size: $m-font;
+        //     position: absolute;
+        //     right: 30px;
+        //     top: 25px;
+        // }
+
+        .input {
+            padding: 20px;
+            width: 100%;
+
+            .report_text {
+                width: 100%;
+                height: 200px;
+                padding: 20px;
+                border-radius: 10px;
+                font-size: $s-font;
+            }
+        }
+
+        .report_btn {
+            margin: 10px 0 30px 0;
+            width: 70%;
+            font-size: $m-font;
+        }
+    }
+}
+
+.user {
+    display: flex;
+    margin: 20px 8px;
+    align-items: center;
+    flex-direction: column;
+
+    .wrap {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        margin-bottom: 16px;
+        flex-direction: column;
+        gap: 10px;
+
+
+        .pic_people {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .name {
+            font-size: $s-font;
+            word-break: break-all;
+        }
+    }
+
+    .message {
+        font-size: $xs-font;
+        width: 100%;
+    }
+}
+
+.upload_out {
+    display: flex;
+    margin: auto;
+    width: 90%;
+    font-size: 24px;
+    max-width: 500px;
+    justify-content: center;
+}
+
+//上傳心得分享彈窗遮罩
+.mask_upload {
+    z-index: 21;
+}
+
+// 上傳心得分享彈窗
+.upload_window {
+    width: 90%;
+    max-width: 900px;
+    background-color: $secondary--;
+    border-radius: $m-br;
+    align-items: center;
+    margin: auto;
+    // 設定fixed位置
+    position: fixed;
+    z-index: 21;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+    .title_window {
+        border-bottom: 1px solid $secondary;
+        position: relative;
+
+        .text_title {
+            font-size: $m-font;
+            padding: 10px 0;
+            display: block;
+            text-align: center;
+        }
+
+        // .cross {
+        //     font-size: $m-font;
+        //     position: absolute;
+        //     right: 30px;
+        //     top: 25px;
+        // }
+    }
+
+    .title {
+        justify-content: center;
+    }
+
+    .upload_wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0px 30px 30px 30px;
+        align-items: center;
+
+        >div {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .upload_file {
+
+            .file_btn {
+
+                z-index: 10;
+                width: 100%;
+                height: 100%;
+
+                .file_text {
+                    font-size: $s-font;
+                    background-color: #ffffffaa;
+                    padding: 6px 20px;
+                    border-radius: 20px;
+                    display: inline-block;
+                }
+            }
+
+            width: 100%;
+            height: 250px;
+            text-align: center;
+            border: 2px solid $secondary;
+            border-radius: $m-br;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+
+            &::placeholder {
+                width: 100px;
+            }
+
+            .upload_pic {
+                position: absolute;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+
+
+
+        .text_wrap {
+            width: 100%;
+            height: 200px;
+
+            .upload_text {
+                width: 100%;
+                height: 100%;
+                border: 2px solid $secondary;
+                border-radius: $m-br;
+                padding: 20px;
+                font-size: $s-font;
+
+                &:focus::placeholder {
+                    color: transparent;
+                }
+            }
+
+        }
+
+        .upload_btn {
+            width: 90%;
+            max-width: 500px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+
+// 看更多心得分享彈窗
+.more_expend {
+    background-color: $secondary--;
+    margin: 20px 0;
+    border-radius: 20px;
+    padding: 20px 10px;
+    position: fixed;
+    z-index: 20;
+    overflow-y: scroll;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 80%;
+    max-width: 1200px;
+    @extend %scrollbar_style;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-size: $m-font;
+    color: $text;
+    padding: 20px;
+
+    .type {
+        width: 70px;
+        height: 36px;
+        flex-shrink: 0;
+        border-radius: $l-br;
+        background: $secondary;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        span {
+            color: #ffffff;
+            font-size: $s-font;
+            font-family: "Noto Sans TC";
+        }
+    }
+}
+
+.content {
+    display: flex;
+
+    .card {
+        padding: 10px;
+    }
+}
+
+.button {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+
+
+    .back {
+        width: 20%;
+        justify-content: center;
+        max-width: 100px;
+    }
+
+    .upload {
+        width: 80%;
+        max-width: 500px;
+    }
+}
+
+
+// min-width: 768px
+@include pad-V {
+
+    .product_container {
+        padding: 0 50px;
+    }
+
+    .main {
+        width: 60%;
+        overflow: hidden;
+
+        .info_pic {
+
+            .pic {
+                height: 400px;
+                overflow: hidden;
+            }
+        }
+    }
+
+    .main_wrap {
+        display: flex;
+        flex-direction: row;
+
+        .recommend {
+            width: 40%;
+            position: relative;
+            padding: 60px 0 0 32px;
+            display: block;
+
+            .hot_ranking {
+                margin-bottom: 60px;
+                position: sticky;
+                top: 160px;
+
+                .hot_title {
+                    width: 100%;
+                    max-width: 400px;
+                    padding: 20px 0;
+                    font-size: $s-font;
+                    border: 6px solid #fff;
+                    background: #edebda;
+                    position: relative;
+                    bottom: 0;
+                    right: 0;
+                    border-radius: $xl-br;
+                    text-align: center;
+
+                    img {
+                        position: absolute;
+                        top: -10px;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+
+                .hot_product {
+                    display: flex;
+                    margin-top: 35px;
+                    gap: 28px;
+                    cursor: pointer;
+
+                    .pic {
+                        width: 50%;
+                        height: 50%;
+                        max-width: 150px;
+                        max-height: 150px;
+                        border-radius: 5px;
+                        flex-shrink: 0;
+
+                        img {
+                            border-radius: 5px;
+                            vertical-align: top;
+                        }
+                    }
+
+                    .hot_info {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+
+                        .hot_type {
+                            padding: 8px 20px;
+                            border-radius: $m-br;
+                            background-color: $secondary--;
+                            font-size: $s-font;
+                            font-weight: 700;
+                            width: 90px;
+                            text-align: center;
+                        }
+
+                        .hot_name {
+                            margin-top: 15px;
+                            font-size: $s-font;
+                            color: $text;
+                        }
+                    }
+                }
+            }
+        }
+
+        .recommend_carousel {
+            display: none;
+        }
+    }
+
+
+
+    .btn_l {
+        @include pill(500px, 70px);
+        font-size: $l-font;
+    }
+
+    .upload_window {
+
+        .upload_wrap {
+
+            >div {
+                flex-direction: row;
+            }
+
+            .text_wrap {
+                height: 250px;
+            }
+
+            .upload_btn {
+                font-size: $m-font;
+            }
+        }
+    }
+
+    .user {
+
+        .message {
+            font-size: $s-font;
+        }
+    }
+}
+
+// min-width: 1024px
+@include pad-H {
+    .main {
+        width: 65%;
+
+        .info_pic {
+
+            .pic {
+                height: 500px;
+                overflow: hidden;
+            }
+
+            .text {
+                p {
+                    padding: 20px 40px;
+                }
+            }
+        }
+    }
+
+    .main_title {
+
+        .title {
+            font-size: $xl-font;
+
+        }
+    }
+
+    .info_pic {
+        .pic {
+            width: 100%;
+            height: 700px;
+        }
+    }
+
+    .info_text {
+        padding-bottom: 80px;
+
+        >div>p {
+            font-size: $m-font;
+        }
+
+        .wrap {
+            padding: 0 40px;
+        }
+
+        p {
+            font-size: $s-font;
+        }
+    }
+
+    .main_wrap {
+
+        .recommend {
+            width: 35%;
+
+            .hot_ranking {
+                top: 60px;
+
+                .hot_title {
+                    padding: 20px 0;
+                    font-size: $s-font;
+                }
+
+                .hot_product {
+                    gap: 35px;
+
+                    .pic {
+                        width: 180px;
+                        height: 180px;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    .hot_info {
+
+                        .hot_type {
+                            font-size: $s-font;
+                            width: auto;
+                        }
+
+                        .hot_name {
+                            font-size: $s-font;
+                        }
+                    }
+                }
+            }
+
+            .hot_ranking.scroll-up {
+                top: 130px;
+            }
+        }
+    }
+
+    .share {
+        padding: 40px 40px 60px 40px;
+    }
+
+    .text {
+
+        .title {
+            font-size: $l-font;
+        }
+
+        .more {
+            font-size: $m-font;
+        }
+    }
+
+    .user {
+
+        .wrap {
+            flex-direction: row;
+            gap: 0;
+
+            .pic_people {
+                width: 60px;
+                height: 60px;
+                margin-right: 16px;
+            }
+        }
+
+        .message {
+            font-size: $m-font;
+        }
+    }
+
+    .btn_l {
+        margin: auto;
+        @include pill(500px, 70px)
+    }
+
+    .more_expend {
+        padding: 20px 40px;
+
+        .button {
+            width: 100%;
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+
+
+            .back {
+                width: 30%;
+                justify-content: center;
+                max-width: 150px;
+                font-size: $l-font;
+            }
+
+            .upload {
+                width: 80%;
+                max-width: 500px;
+                font-size: $m-font;
+            }
+        }
+    }
+}
+
+
+// min-width: 1200px
+@include desktop {
+    .user {
+        margin: 24px;
+    }
+}

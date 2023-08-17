@@ -1,0 +1,645 @@
+
+
+.source_container{
+    transition: opacity 0.5s ease;
+    .sourcePage_title{
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        padding: 20px 0;
+        h4{
+            font-size: $xl-font;
+            color: $primary;
+            width: 275px;
+            border-left: solid 3px $primary;
+            border-right: solid 3px $primary;
+        }
+        span{
+            font-size: $l-font;
+            color: $primary;
+        }
+    }
+    .sourcePage_text{
+        p{
+            font-size: $s-font;
+            color: $primary;
+            text-align: center;
+            white-space: pre-line;
+            line-height: 30px;
+        }
+        h5{
+            font-size: $s-font;
+            color: $third;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .arrow{
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+            animation: shake 1s infinite;
+            .triangle{
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 20px 10px 0 10px;
+                border-color: $third transparent transparent transparent;
+            }
+            @keyframes shake {
+                0% {
+                  transform: translateY(0);
+                }
+                50% {
+                  transform: translateY(-10px);
+                }
+                100% {
+                  transform: translateY(0);
+                }
+            }
+        }
+    }
+    .source_img_container{
+        position: relative;
+        transform: translateY(-25%);
+        .farm_img{
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            // transform: translateY(30%);
+            bottom: 100%;
+            transition: opacity 1s;
+            }
+        }
+        .farmer_img{
+            width: 50%;
+            position: absolute;
+            transform: translateY(95%);
+            bottom: 100%;
+            left: -40px;
+            transition: opacity 1s;
+        }
+        .pepper_img{
+            width: 30%;
+            position: absolute;
+            right: 20px;
+            transform: translateY(120%);
+            bottom: 100%;
+            transition: opacity 1s;
+        }
+}
+.taiwan_container{
+    position: relative;
+    // height: 1500px;
+    overflow: hidden;
+    width: 100%;
+    height: 280vh;
+    .anchor1, .anchor2, .anchor3{
+        position: absolute;
+        display: block;
+        width: 100%;
+        // border: 1px red solid;
+    }
+    .anchor1{
+        top: 10%;
+    }
+    .anchor2{
+        top: 50%;
+    }
+    .anchor3{
+        top: 70%;
+    }
+    .taiwan_sticky_container{
+        width: 100%;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        overflow: hidden;
+    }
+    .taiwan_img{
+        width: 50%;
+        /* height: 100%; */
+        position: absolute;
+        top: 0%;
+        left: 40%;
+        transition: 1.5s;
+    }
+    .taiwan_img img{
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .taiwan_img.acr1{
+        height: auto;
+        width: 100%;
+        left:-15%;
+        top: 0%;
+    }
+    .taiwan_img.acr2{
+        // outline: solid red;
+        height: auto;
+        width: 120%;
+        left: 10%;
+        top: -50%;
+    }
+    .taiwan_img.acr3{
+        height: auto;
+        width: 90%;
+        left: 25%;
+        top: -100%;
+    }
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity 0.5s;
+    }
+    
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
+    }
+    
+    .ta_farmer01 {
+        cursor: pointer;
+        width: 30%;
+        position: absolute;
+        transform: translateX(40%);
+        h3{
+            padding: $sp2;
+            background-color: $primary;
+            color: #fff;
+            border-radius: $xs-br;
+            margin: $sp1 0;
+            font-size: $s-font;
+            text-align: center;
+        }
+    }
+    .ta_farmer02 {
+        cursor: pointer;
+        width: 30%;
+        right: 120px;
+        position: absolute;
+        transform: translateY(50%);
+        h3{
+            padding: $sp2;
+            background-color: $primary;
+            color: #fff;
+            border-radius: $xs-br;
+            margin: $sp1 0;
+            font-size: $s-font;
+            text-align: center;
+        }
+    }
+    .ta_farmer03 {
+        cursor: pointer;
+        width: 30%;
+        left: 250px;
+        position: absolute;
+        transform: translateY(240%);
+        h3{
+            padding: $sp2;
+            background-color: $primary;
+            color: #fff;
+            border-radius: $xs-br;
+            margin: $sp1 0;
+            font-size: $s-font;
+            text-align: center;
+        }
+    }
+    .ta_farmer04 {
+        cursor: pointer;
+        width: 30%;
+        left: 110px;
+        position: absolute;
+        bottom: 100%;
+        transform: translateY(500%);
+        h3{
+            padding: $sp2;
+            background-color: $primary;
+            color: #fff;
+            border-radius: $xs-br;
+            margin: $sp1 0;
+            font-size: $s-font;
+            text-align: center;
+        }
+    }
+    .ta_farmer05 {
+        cursor: pointer;
+        width: 30%;
+        left: 300px;
+        position: absolute;
+        transform: translateY(530%);
+        h3{
+            padding: $sp2;
+            background-color: $primary;
+            color: #fff;
+            border-radius: $xs-br;
+            margin: $sp1 0;
+            font-size: $s-font;
+            text-align: center;
+        }
+    }
+    .ta_farmer06 {
+        cursor: pointer;
+        width: 30%;
+        right: 80px;
+        position: absolute;
+        transform: translateY(445%);
+        h3{
+            padding: $sp2;
+            background-color: $primary;
+            color: #fff;
+            border-radius: $xs-br;
+            margin: $sp1 0;
+            font-size: $s-font;
+            text-align: center;
+        }
+    }
+    //彈窗
+    .popup{
+        position: fixed;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 500;
+        .farmer1_popup{
+            width: 80%;
+            border-radius: $s-br;
+            background-color: $bg;
+            padding: $sp5;
+            position: relative;
+            // z-index: 500;
+            h3{
+                position: relative;
+                z-index: 2;
+                text-align: center;
+                margin: $sp3 0;
+                font-size: $s-font;
+            }
+            p{
+                font-size: $xs-font;
+                position: relative;
+                z-index: 2;
+                margin: $sp1 0;
+                text-indent: 2em;
+            }
+            .farmer1_pop_img{
+                width: 100%;
+                position: relative;
+                z-index: 2;
+            }
+            .popup_title_bg{
+                width: 50%;
+                position: absolute;
+                left: 25%;
+                top: 20px;
+            }
+            .popup_bottom{
+                display: flex;
+                p{
+                    width: 70%;
+                    font-size: $xs-font;
+                    position: relative;
+                    margin: 0 $sp1;
+                    margin-top: auto;
+                    margin-bottom: auto;
+                }
+                .farmer1_pop_img2{
+                    width: 40%;
+                    position: relative;
+                }
+                .carrot{
+                    position: absolute;
+                    right: -100px;
+                    transform: translateY(170%);
+                    img{
+                        width: 40%;
+                    }
+                }
+            }
+            .popup_title_bg2{
+                position: absolute;
+                width: 80%;
+                top: 150px;
+                transform: translateX(5%);
+            }
+            
+        }
+    }
+}
+
+// 斷點768px
+@media screen and (max-width:1199px){
+    .source_img_container{
+        position: relative;
+        transform: translateY(-25%);
+        .farm_img{
+            position: relative;
+            width: 100%;
+            height: 70vh;
+        }
+        .farmer_img{
+            transform: translateY(135%);
+            bottom: 100%;
+            left: -40px;  
+        } 
+        .pepper_img{
+            // width: 50%;
+            transform: translateY(200%);
+        }
+    }
+    .taiwan_container{
+        height: 200vh;
+        .anchor1{
+            top: 20%;
+        }
+        .anchor2{
+            top: 60%;
+        }
+        .anchor3{
+            top: 80%;
+        }
+        .taiwan_img.acr1{
+            height: auto;
+            width: 100%;
+            left:-10%;
+            top: 0%;
+        }
+        .taiwan_img.acr3{
+            width: 90%;
+            left: 25%;
+            top: -200%;
+        }
+        .ta_farmer01 {
+            // width: 30%;
+            position: absolute;
+            top:140px;
+            transform: translateX(20%);
+            h3{
+                font-size: $xs-font;
+                text-align: left;
+            }
+        }
+        .ta_farmer02 {
+            right: 0px;
+            top:400px;
+            position: absolute;
+            transform: translateX(-20%);
+            h3{
+                font-size: $xs-font;
+                text-align: left;
+            }
+        }
+        .ta_farmer03 {
+            left: 150px;
+            position: absolute;
+            transform: translateY(210%);
+            h3{
+                font-size: $xs-font;
+                text-align: left;
+            }
+        }
+        .ta_farmer04 {
+            left: 50px;
+            position: absolute;
+            bottom: 100%;
+            transform: translateY(450%);
+            h3{
+                font-size: $xs-font;
+                text-align: left;
+            }
+        }
+        .ta_farmer05 {
+            left: 200px;
+            position: absolute;
+            transform: translateY(435%);
+            h3{
+                font-size: $xs-font;
+                text-align: left;
+            }
+        }
+        .ta_farmer06 {
+            right: 50px;
+            position: absolute;
+            transform: translateY(395%);
+            h3{
+                font-size: $xs-font;
+                text-align: left;
+            }
+        }
+        .popup{
+            .farmer1_popup{
+                margin-left: auto;
+                margin-right: auto;
+                h3{
+                    margin: $sp2 0;
+                    font-size: $s-font;
+                }
+                p{
+                    font-size: $xs-font;
+                    position: relative;
+                    z-index: 2;
+                    margin: $sp1 0;
+                }
+                .popup_title_bg{
+                    width: 50%;
+                    position: absolute;
+                    left: 25%;
+                    top: 20px;
+                }
+                .popup_bottom{
+                    display: none;
+                }
+                .popup_title_bg2{
+                    display: flex;
+                    justify-content: center;
+                    position: absolute;
+                    width: 70%;
+                    top: 25%;
+                    transform: translateX(5%);
+                }
+                
+            }
+        }
+    }
+}
+
+// mobile 斷點
+@media screen and (max-width:767px){
+    .source_img_container{
+        position: relative;
+        transform: translateY(-25%);
+        .farm_img{
+            position: relative;
+            width: 100%;
+            height: 70vh;
+        }
+        .farmer_img{
+            display: none;   
+        } 
+        .pepper_img{
+            width: 50%;
+            transform: translateY(200%);
+        }
+    }
+    .taiwan_container{
+        height: 150vh;
+        .anchor1{
+            top: 20%;
+        }
+        .anchor2{
+            top: 70%;
+        }
+        .anchor3{
+            top: 90%;
+        }
+        .taiwan_img{
+            width: 70%;
+            // height: 100%;
+            position: absolute;
+            top: 0%;
+            left: 40%;
+            transition: 1.5s;
+        }
+        .taiwan_img img{
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .taiwan_img.acr1{
+            // outline: solid red;
+            height: auto;
+            width: 140%;
+            left:-30%;
+            top: 0%;
+        }
+        .taiwan_img.acr2{
+            width: 190%;
+            left: 10%;
+            top: -130%;
+        }
+        .taiwan_img.acr3{
+            width: 140%;
+            left: 20%;
+            top: -200%;
+        }
+        .ta_farmer01 {
+            position: absolute;
+            top:-20px;
+            width: 50%;
+            transform: translateX(20%);
+            h3{
+                font-size: $s-font;
+                line-height: 1.3;
+                text-align: left;
+            }
+        }
+        .ta_farmer02 {
+            width: 50%;
+            transform: translateX(20%);
+            left: 0;
+            top:265px;
+            position: absolute;
+            h3{
+                font-size: $s-font;
+                line-height: 1.3;
+                text-align: left;
+            }
+        }
+        .ta_farmer03 {
+            width: 50%;
+            transform: translateX(20%);
+            top:350px;
+            left: 0;
+            position: absolute;
+            h3{
+                font-size: $s-font;
+                line-height: 1.3;
+                text-align: left;
+            }
+        }
+        .ta_farmer04 {
+            width: 50%;
+            left: 40px;
+            position: absolute;
+            bottom: 100%;
+            transform: translateY(330%);
+            h3{
+                font-size: $s-font;
+                line-height: 1.3;
+                text-align: left;
+            }
+        }
+        .ta_farmer05 {
+            width: 50%;
+            left: 40px;
+            position: absolute;
+            transform: translateY(335%);
+            h3{
+                font-size: $s-font;
+                line-height: 1.3;
+                text-align: left;
+            }
+        }
+        .ta_farmer06 {
+            width: 50%;
+            left: 40px;
+            position: absolute;
+            transform: translateY(440%);
+            h3{
+                font-size: $s-font;
+                line-height: 1.3;
+                text-align: left;
+            }
+        }
+        .popup{
+            width: 100%;
+            .farmer1_popup{
+                margin-left: auto;
+                margin-right: auto;
+                h3{
+                    margin: $sp1 0;
+                    font-size: $s-font;
+                }
+                p{
+                    font-size: $s-font;
+                    position: relative;
+                    z-index: 2;
+                    margin: $sp1 0;
+                }
+                .popup_title_bg{
+                    width: 50%;
+                    position: absolute;
+                    left: 25%;
+                    top: 20px;
+                }
+                .popup_bottom{
+                    p{
+                        display: none;
+                    }
+                    .farmer1_pop_img2{
+                        display: none;
+                    }
+                    .carrot{
+                        position: absolute;
+                        bottom: 10px;
+                        right: 0;
+                        transform: translateX(50%);
+                        img{
+                            width: 40%;
+                        }
+                    }
+                }
+                .popup_title_bg2{
+                    position: absolute;
+                    width: 70%;
+                    top: 20%;
+                    transform: translateX(5%);
+                }
+                
+            }
+        }
+    }
+}
+
+
+
+

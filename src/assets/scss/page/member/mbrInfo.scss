@@ -1,0 +1,81 @@
+@include pad-H{
+    .member_info{
+        left: 0;
+        top: 0;
+    }
+}
+.member_info{
+    .title{
+        display: flex;
+        align-items: center;
+        h5{
+            margin-right: auto;
+        }
+    }
+    .edit_store{
+        opacity: 0;
+        visibility: hidden;
+        transition: .3s;
+        &.show{
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    .info_edit_btn{
+        margin-left: $sp1;
+        .fa-floppy-disk{
+            display: none;
+        }
+        &.can_edit{
+            .fa-floppy-disk{
+                display: block;
+            }
+            .fa-pen{
+                display: none;
+            }
+        }
+        
+    }
+    .info{
+        padding: 0 $sp1;
+    }
+    .info_item{
+        font-size: $xs-font;
+        margin-top: $sp2;
+        display: flex;
+        align-items: center;
+        label{
+            flex-shrink: 0;
+        }
+
+        input{
+            flex-grow: 1;
+            padding: 0 $sp1;
+            height: 36px;
+            &.noedit{
+                background-color: transparent;
+                border: none;
+                padding: 0;
+                height: fit-content;
+            }
+        }
+    }
+
+}
+@include pad-H{
+    .member_info{
+
+        .info{
+            padding: 0 $sp3;
+        }
+    }
+}
+
+.change_psw{
+    margin-top: $sp2;
+}
+@include pad-H{
+    .change_psw{
+        margin-left: $sp3;
+    }
+}

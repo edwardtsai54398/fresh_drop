@@ -1,0 +1,133 @@
+@include pad-H{
+    .login_container{
+        width: 100%;
+        padding-right: 0;
+        
+    }
+    
+}
+
+.login_input{
+    .text_wrap{
+        &:not(:first-child){
+            margin-top: $sp2;
+        }
+        label{
+            display: block;
+            margin-bottom: $sp1;
+            font-size: $s-font;
+        }
+        input{
+            display: block;
+            width: 100%;
+        }
+    }
+    .err_msg{
+        color: $third;
+        font-size: $xs-font;
+        margin-left: $sp6;
+        height: 14px;
+    }
+    .check_wrap{
+        display: flex;
+        justify-content: space-between;
+        margin-top: $sp1;
+        label{
+            font-size: $xs-font;
+        }
+        input{
+            width: 10px;
+            margin-right: $sp1;
+        }
+        a{
+            font-size: $xs-font;
+            text-decoration: underline;
+        }
+    }
+}
+.login_btn.btn_s{
+    display: block;
+    margin: auto;
+    margin-top: $sp2;
+    margin-bottom: $sp2;
+}
+
+.signup{
+    display: flex;
+    justify-content: right;
+    font-size: $xs-font;
+    margin-bottom: $sp2;
+    a{
+        text-decoration: underline;
+    }
+}
+
+.login_api_wrap{
+    position: relative;
+    padding-top: 1px;
+    p{
+        display: none;
+        
+    }
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        height: 1px;
+        width: 100%;
+        background-color: lighten($text, 30%);
+    }
+}
+
+@include pad-H{
+    .login_api_wrap{
+        grid-area: 1/2/3/3;
+        align-self: center;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width: 1500px){
+    .login_api_wrap{
+        p{
+            display: block;
+            text-align: center;
+            margin-top: $sp2;
+        }
+    }
+}
+.login_api{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $sp2;
+    padding: 0 $sp3;
+    margin-top: $sp3;
+    .btn_api{
+        background-color: #eee;
+        border-radius: $s-br;
+        border: 2px solid $text;
+        box-shadow: 0 3px 0px $text;
+        color: $text;
+        padding: 0 $sp1;
+        width: 100%;
+        display: flex;
+        // justify-content: center;
+        align-items: center;
+        img{
+            display: inline-block;
+            width: 30px;
+            margin: 8px;
+        }
+        span{
+            flex-grow: 1;
+            text-align: center;
+        }
+
+    }
+}
