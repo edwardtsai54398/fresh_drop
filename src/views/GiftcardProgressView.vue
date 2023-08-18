@@ -78,7 +78,7 @@
                         <carousel v-bind="settings" :breakpoints="breakpoints">
                             <slide v-for="slide in giftcardData" :key="slide">
                                 <div class="giftcard_pic box" @click="selectPic(slide.giftcard_defaultpic_url)">
-                                    <img :src="require(`@/assets/images/gift/${slide.giftcard_defaultpic_url}`)" alt="">
+                                    <img :src="`/chd102/g2/back/gift_images/${slide.giftcard_defaultpic_url}`" alt="">
                                 </div>
                             </slide>
                             <template #addons>
