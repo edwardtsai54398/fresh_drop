@@ -1,15 +1,15 @@
 <?php
 //開發用
-// $user = "root";
-// $psw = "";
-// $port = 3306;
-// $dbname = "fresh_drop";
+$user = "root";
+$psw = "";
+$port = 3306;
+$dbname = "fresh_drop";
 
 // //上線用
-$user = "tibamefe_since2021";
-$psw = "vwRBSb.j&K#E";
-$port = 3306;
-$dbname = "tibamefe_chd102g2";
+// $user = "tibamefe_since2021";
+// $psw = "vwRBSb.j&K#E";
+// $port = 3306;
+// $dbname = "tibamefe_chd102g2";
 
 $dsn = "mysql:host=localhost;port=$port;dbname=$dbname;charset=utf8";
 
