@@ -16,7 +16,7 @@
         </div>
         <p class="no_data" v-if="orderHistory.length == 0">無任何購買紀錄</p>
         <ul class="order_history" v-if="orderHistory.length > 0">
-            <li class="order_item collapse" v-for="(order, ordIndex) in orderHistory" :key="order.ordNum">
+            <li class="order_item collapse" v-for="(order, ordIndex) in orderHistory" :key="order.ord_no">
                 <div class="order_info">
                     <p>訂單編號：{{ parseInt(order.ord_no)+2000 }}</p>
                     <p>訂購日期：{{ order.ord_date }}</p>
@@ -63,7 +63,8 @@ export default {
             yearOptions: [2020, 2021, 2022, 2023],
             monthOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
             dayOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-            orderHistory:[],
+            orderHistory: [],
+            orderShow: [],
         };
     },
     methods: {
