@@ -2,7 +2,7 @@
 
 ## 網站介紹：
 鮮食空投箱是一個虛擬的鮮食訂購平台。使用者可以選購菜色，然後在家收到簡單快速料理的鮮食食材包，以解決現代人忙碌沒時間烹煮和購買食材的問題。<br>
-<a href="[https://github.com/dailinco](https://tibamef2e.com/chd102/g2/)" target="blank">展示頁面 Display page</a>
+<a href="https://tibamef2e.com/chd102/g2/" target="blank">展示頁面 Display page</a>
 
 ## 使用技術：
 * Javascript ES6 以上標準
@@ -69,7 +69,7 @@
 * 首頁滑卡的菜色名稱要隨呈現的菜色而替換名稱
 
 ## 網頁介紹影片：
-[YouTube Video](https://www.youtube.com/watch?v=nDHlYifPmdM)<br>
+<a href="https://www.youtube.com/watch?v=nDHlYifPmdM" target="blank">YouTube Video</a><br>
 影片說明欄有時間戳記，可跳至想看的功能介紹
 
 ## 協作者：
