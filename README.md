@@ -3,14 +3,6 @@
 ## 網站介紹：
 鮮食空投箱是一個虛擬的鮮食訂購平台。使用者可以選購菜色，然後在家收到簡單快速料理的鮮食食材包，以解決現代人忙碌沒時間烹煮和購買食材的問題。<br>
 <a href="[https://github.com/dailinco](https://tibamef2e.com/chd102/g2/)" target="blank">展示頁面 Display page</a>
-## 協作者：
-<ul>
-  <li><a href="https://github.com/dailinco" target="blank">李岱霖</a></li>
-  <li><a href="https://github.com/huang-li-ping" target="blank">黃莉萍</a></li>
-  <li><a href="https://github.com/bob821229" target="blank">許弘毅</a></li>
-  <li><a href="https://github.com/Cliffzzzz" target="blank">江瑀庭</a></li>
-  <li><a href="https://github.com/lannysyu" target="blank">徐億籃</a></li>
-</ul>
 
 ## 使用技術：
 * Javascript ES6 以上標準
@@ -53,11 +45,15 @@
 * 可以選擇前往會員中心查看禮物卡餘額，或購買禮物卡
 * 可選擇買禮物卡給自己或別人(對象必須是會員)
 * 客製化禮物卡樣式和選擇金額
+* 對禮物卡結帳完成後，系統會發信給收禮會員的信箱
 ### 菜色選購：
 * 必須先選擇「單次購買」或「定期配送」
 * 「定期配送」可選一次配送幾餐、連續幾周
 * 加入購物車和數量調整
-* 查看商品詳細資訊
+### 商品詳細頁：
+* 介紹食譜的食材與製作步驟
+* 可分享製作的心得
+* 檢舉心得
 ### 小遊戲：
 * 六題心理測驗測出推薦的菜色
 * 結果按鈕導向商品頁購買
@@ -73,5 +69,33 @@
 * 首頁滑卡的菜色名稱要隨呈現的菜色而替換名稱
 
 ## 網頁介紹影片：
-![YouTube Video]([https://www.youtube.com/watch?v=VIDEO_ID](https://www.youtube.com/watch?v=nDHlYifPmdM)https://www.youtube.com/watch?v=nDHlYifPmdM)<br>
+[YouTube Video](https://www.youtube.com/watch?v=nDHlYifPmdM)<br>
 影片說明欄有時間戳記，可跳至想看的功能介紹
+
+## 協作者：
+### [蔡宗驊](https://github.com/edwardtsai54398)
+負責項目：<br>
+* 前台：會員中心/結帳/首頁訂購區塊
+* 後台：會員資料管理
+* 其他：Scss變數撰寫/統一元件樣式/專案進度控管
+### [李岱霖](https://github.com/dailinco)
+負責項目：<br>
+* 前台：關於我們/首頁滑卡區塊
+* 後台：心得檢舉管理
+### [黃莉萍](https://github.com/huang-li-ping)
+負責項目：<br>
+* 前台：禮物卡
+* 後台：禮物卡管理/管理員帳號管理
+### [許弘毅](https://github.com/bob821229)
+負責項目：<br>
+* 前台：FAQ/小遊戲
+* 後台：遊戲結果管理/FAQ管理
+### [江瑀庭](https://github.com/Cliffzzzz)
+負責項目：<br>
+* 前台：食材溯源/首頁水果滑動區塊
+* 後台：訂單管理
+* 其他：Logo設計
+### [徐億籃](https://github.com/lannysyu)
+負責項目：
+* 前台：菜色選購/商品詳細頁
+* 後台：菜色管理/食材管理
